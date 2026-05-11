@@ -1,9 +1,11 @@
 import React from 'react';
+import {useTranslations} from "next-intl";
 
 const Page = () => {
+    const t=useTranslations("greetings")
     return (
         <div>
-          welcome on board
+            {t("welcome")}
         </div>
     );
 };
