@@ -43,7 +43,10 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>
+          <Navbar />
           <AppProvider>{children}</AppProvider>
+
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
