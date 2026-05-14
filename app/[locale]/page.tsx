@@ -16,8 +16,9 @@ const Page = () => {
           text="Submit"
           icon={<ArrowRight className="text-black ml-8 text-4xl" />}
         />
-      </div>
-    );
+      <ContactSection />
+    </main>
+  );
 };
 
 export default Page;
