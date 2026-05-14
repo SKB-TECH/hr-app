@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Ubuntu, Ubuntu_Mono } from "next/font/google";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { AppProvider } from "@/context/AppContext";
+import Navbar from "../../components/shared/Navbar";
+import Footer from "../../components/shared/Footer";
+import { Manrope, Archivo_Black, Ubuntu, Ubuntu_Mono } from "next/font/google";
 
 const ubuntuSans = Ubuntu({
   variable: "--font-ubuntu-sans",
