@@ -1,14 +1,15 @@
-import React from 'react';
+
 import { useTranslations } from "next-intl";
 import ReusableButton from '@/components/ui/ReusableButton';
 import { ArrowRight } from 'lucide-react';
 import { ReusableTittle } from '@/components/ui/ReusableTittle';
-
+import Hero from "@/components/shared/Hero";
+import ContactSection from "@/components/contact/ContactSection";
 
 const Page = () => {
-    const t=useTranslations("greetings")
-    return (
-      <div>
+  return (
+    <main className="flex-1">
+      <Hero />
         <ReusableTittle
           firstTittle="misson"
           secondTittle="We’ve managed over 2.5 million candidates"
@@ -18,8 +19,9 @@ const Page = () => {
           text="Submit"
           icon={<ArrowRight className="text-black ml-8 text-4xl" />}
         />
-      </div>
-    );
+      <ContactSection />
+    </main>
+  );
 };
 
 export default Page;
