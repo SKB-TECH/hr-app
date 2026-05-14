@@ -1,3 +1,6 @@
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+
 interface InputFieldProps {
   label: string;
   type: string;
@@ -7,15 +10,16 @@ interface InputFieldProps {
 export default function InputField({ label, type, name }: InputFieldProps) {
   return (
     <div>
-      <label htmlFor={name} className="block text-gray-700 font-medium mb-3">
+      <Label htmlFor={name} className='block text-gray-700 font-medium mb-3'>
         {label}
-      </label>
+      </Label>
 
-      <input
+      <Input
+        placeholder={label}
         id={name}
         name={name}
         type={type}
-        className="w-full h-14 px-4 border border-gray-200 rounded-xl bg-white outline-none focus:ring-2 focus:ring-[#40EBC7] focus:border-transparent"
+        className='w-full h-14 px-4 border border-gray-200 rounded-md bg-white outline-none focus:ring-2 focus:ring-[#40EBC7] focus:border-transparent'
       />
     </div>
   );
