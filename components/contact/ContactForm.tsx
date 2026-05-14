@@ -27,7 +27,7 @@ export default function ContactForm() {
         <Textarea
           id='message'
           placeholder={t("message")}
-          className='w-full h-32 px-4 py-3 border border-gray-200 rounded-md bg-white outline-none focus:ring-2 focus:ring-[#40EBC7] focus:border-transparent'
+          className='w-full h-40 px-4 py-3 border border-gray-200 rounded-md bg-white outline-none focus:ring-2 focus:ring-[#40EBC7] focus:border-transparent'
         />
       </div>
 
