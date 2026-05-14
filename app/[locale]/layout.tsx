@@ -7,17 +7,16 @@ import Navbar from "../../components/shared/Navbar";
 import Footer from "../../components/shared/Footer";
 import { Manrope, Archivo_Black } from "next/font/google";
 
-const manrope = Manrope({
+const ubuntuSans = Ubuntu({
+  variable: "--font-ubuntu-sans",
   subsets: ["latin"],
-  display: "swap",
-  variable: "--font-manrope",
+  weight: ["300", "400", "500", "700"],
 });
 
-const archivoBlack = Archivo_Black({
-  weight: "400",
+const ubuntuMono = Ubuntu_Mono({
+  variable: "--font-ubuntu-mono",
   subsets: ["latin"],
-  display: "swap",
-  variable: "--font-archivo-black",
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -36,13 +35,15 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${manrope.className} ${archivoBlack.variable} h-full antialiased overflow-x-hidden`}
+      className={`${ubuntuSans.variable} ${ubuntuMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col font-sans overflow-x-hidden">
+      <body
+        className='min-h-full flex flex-col font-sans'
+        suppressHydrationWarning
+      >
         <NextIntlClientProvider messages={messages}>
-          <Navbar />
           <AppProvider>{children}</AppProvider>
-          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
