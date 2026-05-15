@@ -13,7 +13,7 @@ const Page = () => {
       <ReusableTittle
         firstTittle='misson'
         secondTittle='We’ve managed over 2.5 million candidates'
-        text='Lorem ipsum dolor sit amet consectetur. Turpis sed pulvinar sed blandit rhoncus tellus senectus at quis. Mi at fermentum imperdiet velit magna a aliquam. Faucibus et quam ac elit placerat tristique vulputate. Elit sit varius condimentum tempor vel commodo malesuada. '
+        text='Our mission is to connect talented professionals with companies that value their skills and potential. We believe in building meaningful career relationships that benefit both employers and candidates. With years of experience in recruitment, we pride ourselves on finding the perfect match for every role.'
       />
 
       <ReusableButton
