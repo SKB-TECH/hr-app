@@ -7,7 +7,7 @@ import Image from "next/image";
 export const Misson = () => {
   return (
     <section className="flex flex-col lg:flex-row items-center bg-white/50">
-      {/* Left Content */}
+      
       <div className="w-full lg:w-1/2 p-5 sm:p-8 md:p-10 lg:p-20">
         <ReusableTittle
           firstTittle="Misson"
@@ -20,7 +20,7 @@ export const Misson = () => {
         </div>
       </div>
 
-      {/* Right Image */}
+      
       <div className="w-full lg:w-1/2 flex justify-center items-center">
         <Image
           src="/images/image.png"
