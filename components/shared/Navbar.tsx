@@ -28,24 +28,24 @@ function Navbar() {
   };
 
   return (
-    <header className='relative z-20 w-full bg-[#132745]'>
-      <div className='mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-12'>
+    <header className="relative z-20 w-full bg-[#132745]">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-12">
         <Link
-          href='/'
-          className='text-xl text-white font-extrabold sm:text-2xl md:text-3xl'
+          href="/"
+          className="text-xl text-white font-extrabold sm:text-2xl md:text-3xl"
         >
           Recruit.
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className='hidden md:flex items-center gap-8'>
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={`text-sm font-medium transition-colors ${
                 isActive(link)
-                  ? "text-[#40EBC7] border-b-2 border-[#40EBC7] pb-1"
+                  ? "text-brand border-b-2 border-brand pb-1"
                   : "text-gray-300 hover:text-white"
               }`}
             >
@@ -56,24 +56,24 @@ function Navbar() {
 
         {/* Mobile Menu Button */}
         <Button
-          variant='ghost'
-          size='icon'
-          aria-label='Open menu'
-          className='md:hidden relative h-8 w-10 text-white hover:bg-white/10'
+          variant="ghost"
+          size="icon"
+          aria-label="Open menu"
+          className="md:hidden relative h-8 w-10 text-white hover:bg-white/10"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? (
-            <X className='h-6 w-6' />
+            <X className="h-6 w-6" />
           ) : (
-            <Menu className='h-6 w-6' />
+            <Menu className="h-6 w-6" />
           )}
         </Button>
       </div>
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className='md:hidden bg-[#0a1a2e] border-t border-gray-700'>
-          <nav className='flex flex-col px-6 py-4 gap-4'>
+        <div className="md:hidden bg-[#0a1a2e] border-t border-gray-700">
+          <nav className="flex flex-col px-6 py-4 gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -81,7 +81,7 @@ function Navbar() {
                 onClick={() => setIsMenuOpen(false)}
                 className={`text-sm font-medium py-2 transition-colors ${
                   isActive(link)
-                    ? "text-[#40EBC7] border-l-2 border-[#40EBC7] pl-3"
+                    ? "text-brand border-l-2 border-brand pl-3"
                     : "text-gray-300 hover:text-white"
                 }`}
               >

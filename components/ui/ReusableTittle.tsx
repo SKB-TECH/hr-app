@@ -9,7 +9,7 @@ interface TittleProps {
 export const ReusableTittle = ({ firstTittle, secondTittle }: TittleProps) => {
   return (
     <div className="space-y-4 md:space-y-6 ">
-      <p className="text-[#40EBC7] font-bold uppercase text-3xl mb-8">
+      <p className="text-brand font-bold uppercase text-3xl mb-8">
         {firstTittle}
       </p>
       <h2 className="text-4xl md:text-5xl font-extrabold text-[#0D2145] leading-tight mb-8">
