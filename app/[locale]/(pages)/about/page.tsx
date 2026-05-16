@@ -5,7 +5,7 @@ const AboutUsPage = () => {
   return (
     <div className="min-h-screen ">
       <ReusableHero>
-        <h2 className="font-bold text-4xl leading-tight sm:text-7xl md:text-8xl lg:text-[100px] text-white wrap-break-word">
+        <h2 className="font-bold text-4xl leading-tight sm:text-5xl md:text-6xl  text-white wrap-break-word">
           ABOUT
         </h2>
       </ReusableHero>

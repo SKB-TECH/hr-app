@@ -6,25 +6,15 @@ interface TittleProps {
   text?: string;
 }
 
-export const ReusableTittle = ({
-  firstTittle,
-  secondTittle,
-  text,
-}: TittleProps) => {
+export const ReusableTittle = ({ firstTittle, secondTittle }: TittleProps) => {
   return (
-    <div className='space-y-6 mt-20'>
-      <h1 className='text-[#41ECC3] font-semibold text-[30px] leading-[100%] tracking-[5%] uppercase'>
+    <div className="space-y-4 md:space-y-6 ">
+      <p className="text-[#40EBC7] font-bold uppercase text-3xl mb-8">
         {firstTittle}
-      </h1>
-
-      <h2 className='text-[#132745] w-[609px] h-[70px] opacity-100 font-semibold text-[48px] leading-[100%] tracking-[0%]'>
+      </p>
+      <h2 className="text-4xl md:text-5xl font-extrabold text-[#0D2145] leading-tight mb-8">
         {secondTittle}
       </h2>
-      {text && (
-        <p className='text-[#000000] w-[581px] h-[169px] opacity-100 font-normal text-[20px] leading-[100%] tracking-[0.05em] leading-tight mt-15'>
-          {text}
-        </p>
-      )}
     </div>
   );
 };

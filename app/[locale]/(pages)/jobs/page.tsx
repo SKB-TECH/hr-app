@@ -19,13 +19,13 @@ export default function JobsPage() {
   return (
     <div>
       <ReusableHero>
-        <h2 className="font-bold text-4xl leading-tight sm:text-7xl md:text-8xl lg:text-[100px] text-white wrap-break-word">
+        <h2 className="font-bold text-4xl leading-tight sm:text-5xl md:text-6xl  text-white wrap-break-word">
           JOBS
         </h2>
       </ReusableHero>
 
-      <div className="w-full max-w-7xl px-6 py-16 md:px-12">
-        {/* Search Bar */}
+      <div className="w-full max-w-7xl mx-auto px-6 py-16 md:px-12">
+        {/* Search Bar */}  
         <div className="flex mb-12 border border-gray-200">
           <input
             type="text"
