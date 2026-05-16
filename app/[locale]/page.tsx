@@ -4,13 +4,13 @@ import { ArrowRight } from "lucide-react";
 import { ReusableTittle } from "@/components/ui/ReusableTittle";
 import ContactSection from "@/components/contact/ContactSection";
 import ReusableHero from "../../components/shared/ReusableHero";
-import HomeHeroContent from "../../components/HomeHeroContent";
+import HomeHeroContent from "../../components/static/HomeHeroContent";
 
 const Page = () => {
   return (
     <main className="flex-1">
       <ReusableHero>
-        <HomeHeroContent/>
+        <HomeHeroContent />
       </ReusableHero>
 
       <ReusableTittle

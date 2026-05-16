@@ -1,6 +1,6 @@
 import React from "react";
 // import JobCard from "@/components/JobCard";
-import { JobCard } from "@/components/JobCard";
+import { JobCard } from "@/components/ui/JobCard";
 import { Search } from "lucide-react";
 import ReusableHero from "../../../../components/shared/ReusableHero";
 

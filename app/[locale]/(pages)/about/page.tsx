@@ -1,4 +1,4 @@
-import CEOMessage from "@/components/CEOMessage";
+import CEOMessage from "@/components/static/CEOMessage";
 import ReusableHero from "../../../../components/shared/ReusableHero";
 
 const AboutUsPage = () => {
@@ -10,8 +10,7 @@ const AboutUsPage = () => {
         </h2>
       </ReusableHero>
       <div className=" px-6 py-16 md:px-12 max-w-7xl mx-auto">
-        {/* this heading does not match with figma */}
-        {/* <h2 className="text-4xl font-black text-center">About Us</h2> */}
+        {/* leon: deleted about us page, which was not needed*/}
         <CEOMessage />
       </div>
     </div>

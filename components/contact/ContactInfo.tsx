@@ -6,7 +6,7 @@ export default function ContactInfo() {
   const t = useTranslations("contact");
 
   return (
-    <div className='max-w-md'>
+    <div>
       <p className='text-[#40EBC7] font-bold uppercase  text-3xl mb-8'>
         {t("title")}
       </p>
