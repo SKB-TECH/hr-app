@@ -23,10 +23,10 @@ const MOCK_JOBS: JobDetail[] = [
     jobType: "Hybrid, Permanent",
     companyLine: "UK Leading Ecommerce Firm - Manchester - Hybrid",
     descriptionParagraphs: [
-      "We're looking for an experienced Frontend Developer to join our dynamic team. You'll work with modern technologies including React, Next.js, TypeScript, and Tailwind CSS to build responsive, user-friendly web applications across our digital platforms.",
-      "You'll collaborate closely with designers and product teams to translate wireframes and prototypes into polished, accessible interfaces. This role is ideal for someone who cares about performance, code quality, and delivering excellent user experiences.",
-      "Our company is a UK-leading ecommerce firm with a strong culture of innovation. We offer a hybrid working model based in Manchester, with flexibility and support for professional growth.",
-      "If you're passionate about frontend development and want to make an impact in a fast-paced environment, we'd love to hear from you.",
+      "Tech stack: Front End Developer, React, ReactJS 18, React Hooks, React.js, Shopify platform, JavaScript, TypeScript, HTML, CSS, UI, UX, User Interface, User Experience, Javascript Developer, Front End Engineer, Front End Developer",
+      "Our client is UK's leading Ecommerce clothing company. They are looking for a Front End Developer with experience in React and Shopify platform. You will be responsible for predominantly implementing new Figma designs and functionality to the Shopify store, through fluent, maintainable code. You will work alongside designers within the creative team, and other senior members on multiple technical projects.",
+      "My client is looking for Front End Developers who has current and relevant experience working with React and Shopify platform. You will be building new pages, features and functionality on the Ecommerce site. You will also discover and debug issues and ensure the consistent quality and UX across all devices and browsers.",
+      "Our client is looking for passionate Front End Developers with experience in some or all of the following (full training will be provided to fill any gaps in your skill set): React, ReactJS 18, React Hooks, React.js, Shopify platform, JavaScript, TypeScript, HTML, CSS, GIT, API's, UI, UX, User Interface, User Experience.",
     ],
   },
 ];
@@ -71,18 +71,21 @@ export default async function JobDetailsPage({
       <ReusableHero title={job.title.toUpperCase()} subtitle={job.location} />
 
       <div className="px-6 py-10 md:py-14 md:px-12 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-          {/* Left sidebar */}
+        <div className="grid grid-cols-1 lg:grid-cols-12  gap-10 lg:gap-14">
+        
           <aside className="lg:col-span-4 xl:col-span-4">
-            <div className="border-4 border-[#1e6fff] bg-white p-6 sm:p-8">
+            <div className="border-4 border-gray-100 bg-white p-6 sm:p-8">
               <SidebarRow label="Location" value={job.location} />
               <hr className="border-gray-200 my-5" />
               <SidebarRow label="Salary" value={job.salary} />
-              <hr className="border-gray-200 my-5" />
+              <hr className="border-gray-200  my-5" />
               <SidebarRow label="Job Type" value={job.jobType} />
             </div>
 
-            <p className="mt-4 text-sm font-mono text-gray-500">{job.ref}</p>
+            <div className="mt-4 border-4 border-gray-100 px-4 py-3">
+              <p className="text-xs font-bold text-gray-900 uppercase tracking-widest mb-1">Reference</p>
+              <p className="text-sm font-mono text-gray-600">{job.ref}</p>
+            </div>
 
             <Link
               href="/jobs"
@@ -146,7 +149,7 @@ export default async function JobDetailsPage({
 function SidebarRow({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-sm font-bold text-gray-900 mb-1">{label}</p>
+      <p className="text-sm font-bold text-gray-900 mb-1 uppercase tracking-widest">{label}</p>
       <p className="text-sm text-gray-600 leading-relaxed">{value}</p>
     </div>
   );
