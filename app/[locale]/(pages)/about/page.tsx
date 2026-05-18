@@ -1,5 +1,7 @@
-import CEOMessage from "@/components/static/CEOMessage";
+import CEOMessage from "@/app/[locale]/(pages)/about/components/CEOMessage";
 import ReusableHero from "../../../../components/shared/ReusableHero";
+import ContactSection from "@/components/contact/ContactSection";
+import OurTeam from "./components/OurTeam";
 
 const AboutUsPage = () => {
   return (
@@ -9,9 +11,11 @@ const AboutUsPage = () => {
           ABOUT
         </h2>
       </ReusableHero>
-      <div className=" px-6 py-16 md:px-12 max-w-7xl mx-auto">
+      <div className="">
         {/* leon: deleted about us page, which was not needed*/}
         <CEOMessage />
+        <OurTeam />
+        <ContactSection />
       </div>
     </div>
   );
