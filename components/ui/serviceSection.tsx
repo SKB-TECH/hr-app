@@ -10,7 +10,7 @@ const ServiceSection = () => {
         "Lorem ipsum dolor sit amet consectetur. Turpis sed pulvinar sed blandit rhoncus tellus senectus at quis.",
       icon: (
         <div className="relative h-10 w-10">
-          <Image src="/images/search-icon.png" alt="Search" fill className="object-contain" />
+          <Image src="/images/search-icon.png" alt="Search" fill sizes="40px" className="object-contain" />
         </div>
       ),
     },
@@ -20,7 +20,7 @@ const ServiceSection = () => {
         "Lorem ipsum dolor sit amet consectetur. Turpis sed pulvinar sed blandit rhoncus tellus senectus at quis.",
       icon: (
         <div className="relative h-10 w-10">
-          <Image src="/images/filter-icon.png" alt="Filter" fill className="object-contain" />
+          <Image src="/images/filter-icon.png" alt="Filter" fill sizes="40px" className="object-contain" />
         </div>
       ),
     },
@@ -30,7 +30,7 @@ const ServiceSection = () => {
         "Lorem ipsum dolor sit amet consectetur. Turpis sed pulvinar sed blandit rhoncus tellus senectus at quis.",
       icon: (
         <div className="relative h-10 w-10">
-          <Image src="/images/check-icon.png" alt="Reference" fill className="object-contain" />
+          <Image src="/images/check-icon.png" alt="Reference" fill sizes="40px" className="object-contain" />
         </div>
       ),
     },
@@ -40,7 +40,7 @@ const ServiceSection = () => {
         "Lorem ipsum dolor sit amet consectetur. Turpis sed pulvinar sed blandit rhoncus tellus senectus at quis.",
       icon: (
         <div className="relative h-10 w-10">
-          <Image src="/images/work-icon.png" alt="Onboard" fill className="object-contain" />
+          <Image src="/images/work-icon.png" alt="Onboard" fill sizes="40px" className="object-contain" />
         </div>
       ),
     },
