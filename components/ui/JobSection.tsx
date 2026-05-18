@@ -34,9 +34,9 @@ const JobSection = () => {
   ];
   return (
     <div className="px-6 py-20 md:px-12 max-w-7xl mx-auto">
-      <div className="flex items-center justify-between mb-12">
+      <div className="flex items-center justify-between mb-12 ">
         <ReusableTittle firstTittle="jobs" secondTittle="Latest Openings" />
-        <div className="hidden sm:block">
+        <div >
           <Button
             size="icon"
             className="bg-[#32FFCE] hover:bg-[#32FFCE]/90 text-black h-12 w-12 rounded-none"
@@ -99,14 +99,8 @@ const JobSection = () => {
         })}
       </div>
 
-      <div className="mt-8 sm:hidden flex justify-center">
-        <Button
-          size="icon"
-          className="bg-[#32FFCE] hover:bg-[#32FFCE]/90 text-black h-12 w-12 rounded-none"
-        >
-          <ArrowRight className="h-6 w-6" />
-        </Button>
-      </div>
+      {/* leon: removed another button which was useless */}
+     
     </div>
   );
 };
