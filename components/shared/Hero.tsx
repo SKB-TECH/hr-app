@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="relative flex-1 overflow-hidden bg-[#132745]">
+    <section className="relative flex-1 overflow-hidden bg-[#132745] h-screen">
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-35"

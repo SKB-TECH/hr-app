@@ -12,7 +12,7 @@ export const ReusableTittle = ({
   text,
 }: TittleProps) => {
   return (
-    <div className="space-y-5 lg:space-y-6 mt-10 lg:mt-20">
+    <div className="space-y-5 lg:space-y-6">
      
       <h1
         className="text-[#41ECC3] font-semibold uppercase tracking-[5%]
