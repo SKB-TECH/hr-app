@@ -2,11 +2,9 @@ import Image from "next/image";
 
 export default function CEOMessage() {
   return (
-    <section className="w-full bg-white py-16 px-6 md:px-16 lg:px-24">
-      <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
-
-        <div className="flex-1 min-w-0">
-
+    <section className="w-full bg-white py-16 ">
+      <div className=" max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
+        <div className="flex-1 min-w-0 px-6 md:px-12 ">
           <p className="text-sm font-semibold tracking-widest uppercase text-brand mb-4">
             Message from CEO
           </p>
@@ -34,7 +32,7 @@ export default function CEOMessage() {
           </p>
         </div>
 
-        <div className="flex flex-col items-center lg:items-end flex-shrink-0">
+        <div className="flex flex-col items-center lg:items-end flex-shrink-0 ">
           <div className="relative w-64 h-80 md:w-72 md:h-96  overflow-hidden">
             <Image
               src="/ceoImg.png"
@@ -54,7 +52,6 @@ export default function CEOMessage() {
             </p>
           </div>
         </div>
-
       </div>
     </section>
   );
