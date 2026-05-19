@@ -81,4 +81,3 @@ export const TeamSection = ({ users = defaultUsers }: TeamSectionProps) => {
   );
 };
 
-export { TeamSection };
