@@ -2,7 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import { Button } from "../ui/button";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 

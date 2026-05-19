@@ -3,15 +3,16 @@
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-export default function SubmitButton() {
+export default function SubmitButton({ isLoading }: { isLoading: boolean }) {
   const t = useTranslations("contact");
 
   return (
     <button
       type="submit"
+      disabled={isLoading}
       className="cursor-pointer inline-flex items-center gap-6 bg-brand hover:opacity-90 text-[#0D2145] font-medium px-8 py-4 transition-colors"
     >
-      <span>{t("submit")}</span>
+      <span>{isLoading ? t("submitting") : t("submit")}</span>
       <ArrowRight size={20} strokeWidth={2.5} />
     </button>
   );
