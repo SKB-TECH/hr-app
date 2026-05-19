@@ -7,7 +7,7 @@ export default function CEOMessage() {
 
         <div className="flex-1 min-w-0">
 
-          <p className="text-sm font-semibold tracking-widest uppercase text-brand mb-4">
+          <p className="text-3xl font-semibold tracking-widest uppercase text-brand mb-4">
             Message from CEO
           </p>
 

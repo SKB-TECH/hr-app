@@ -47,7 +47,7 @@ export default function OurTeam() {
 
     
         <div className="text-center mb-12">
-          <p className="text-sm font-semibold tracking-widest uppercase text-brand mb-2">
+          <p className="text-3xl font-semibold tracking-widest uppercase text-brand mb-2">
             Our Team
           </p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#0d2b4e]">
