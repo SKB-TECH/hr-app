@@ -1,8 +1,9 @@
-import React from "react";
-// import JobCard from "@/components/JobCard";
 import { JobCard } from "@/components/ui/JobCard";
-import { Search } from "lucide-react";
+
 import ReusableHero from "../../../../components/shared/ReusableHero";
+import SearchInput from "../../../../components/static/SearchInput";
+import { getAllJobs } from "../../../../services/job.service";
+import { Job } from "../../../../core/types";
 
 const cardcontent = {
   id: "FDMAN2038-234",
@@ -15,9 +16,10 @@ const cardcontent = {
     "We're looking for an experienced Frontend Developer to join our dynamic team. You'll work with modern technologies like React, TypeScript, and Tailwind CSS to build responsive, user-friendly web applications. This is an excellent opportunity to grow your skills in a collaborative environment with a focus on code quality and innovation.",
 };
 
-export default function JobsPage() {
+export default async function JobsPage() {
+  const jobsList: Job[] = await getAllJobs();
   return (
-    <div>
+    <div className="bg-[#fcfcfc] min-h-screen">
       <ReusableHero>
         <h2 className="font-bold text-4xl leading-tight sm:text-5xl md:text-6xl  text-white wrap-break-word">
           JOBS
@@ -26,27 +28,12 @@ export default function JobsPage() {
 
       <div className="w-full max-w-7xl mx-auto px-6 py-16 md:px-12">
         {/* Search Bar */}
-        <div className="flex mb-12 border border-gray-200">
-          <input
-            type="text"
-            placeholder="Search for job titles..."
-            className="flex-1 px-5 py-4 text-gray-500 placeholder-gray-400 outline-none text-sm"
-          />
-          <button
-            className="flex items-center justify-center px-5 py-4 text-white"
-            style={{ backgroundColor: "#00c896" }}
-            aria-label="Search"
-          >
-            <Search size={20} />
-          </button>
-        </div>
+        <SearchInput />
 
         <div className="space-y-6">
-          {/* Example job cards */}
-          <JobCard job={cardcontent} />
-          <JobCard job={cardcontent} />
-          <JobCard job={cardcontent} />
-          <JobCard job={cardcontent} />
+          {jobsList.map((job: Job) => (
+            <JobCard key={job.id} job={job} />
+          ))}
         </div>
 
         {/* Pagination */}

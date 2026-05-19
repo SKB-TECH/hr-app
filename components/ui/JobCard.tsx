@@ -10,32 +10,39 @@ interface JobCardProps {
 
 export function JobCard({ job }: JobCardProps) {
   return (
-    <div className="flex flex-col sm:flex-row border border-gray-200 mb-4">
-      {/* Left info */}
-      <div className="sm:w-72 flex-shrink-0 p-6 flex flex-col justify-between">
-        <div>
-          <p className="text-xs text-gray-400 mb-3">Job Ref: {job.ref}</p>
-          <h2 className="text-xl font-bold text-gray-900 mb-1">{job.title}</h2>
-          <p className="text-sm text-gray-600 mb-4">{job.location}</p>
-          <p className="text-sm font-medium text-gray-800">{job.salary}</p>
-        </div>
+    <div className="flex flex-col md:flex-row border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 mb-6 min-h-[220px]">
+      {/* Left Section: Job Metadata */}
+      <div className="md:w-1/3 flex flex-col justify-center p-8 lg:p-12 ">
+        <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-4">
+          Job Ref: {job.ref}
+        </p>
+        <h2 className="text-2xl text-[#132745]  font-bold leading-tight mb-2">
+          {job.title}
+        </h2>
+        <p className="text-base text-[#132745]  font-medium mb-4">
+          {job.location}
+        </p>
+        <p className="text-lg font-bold text-[#132745]  tracking-tight">
+          {job.salary}
+        </p>
       </div>
 
-      {/* Divider */}
+      {/* Right Section: Description and Action */}
+      <div className="flex-1 p-8 lg:px-18 flex flex-col relative">
+        <div className="flex-1 pr-12">
+          <p className="text-[15px] text-[#132745] leading-[1.7] line-clamp-4 md:line-clamp-none">
+            {job.description}
+          </p>
+        </div>
 
-      {/* Right description + arrow */}
-      <div className="flex-1 p-6 flex flex-col justify-between">
-        <p className="text-sm text-gray-500 leading-relaxed whitespace-pre-line">
-          {job.description}
-        </p>
-        <div className="flex justify-end mt-6">
+        {/* Detail Button - Fixed bottom right */}
+        <div className="absolute bottom-0 right-0">
           <Link
             href={`/jobs/${job.id}`}
-            className="flex items-center justify-center w-10 h-10 text-white transition-opacity hover:opacity-80"
-            style={{ backgroundColor: "#00c896" }}
+            className="flex items-center justify-center w-12 h-12 text-white transition-all duration-300 hover:brightness-95 bg-[#00c896]"
             aria-label={`View ${job.title} details`}
           >
-            <ArrowRight size={18} />
+            <ArrowRight size={20} strokeWidth={2.5} />
           </Link>
         </div>
       </div>
