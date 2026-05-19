@@ -25,7 +25,7 @@ export default function JobsPage() {
       </ReusableHero>
 
       <div className="w-full max-w-7xl mx-auto px-6 py-16 md:px-12">
-        {/* Search Bar */}  
+        {/* Search Bar */}
         <div className="flex mb-12 border border-gray-200">
           <input
             type="text"

@@ -12,7 +12,7 @@ const AboutUsPage = () => {
         </h2>
       </ReusableHero>
       <div className="">
-        {/* leon: deleted about us page, which was not needed*/}
+        {/* leon: deleted about us page title, which was not needed*/}
         <CEOMessage />
         <OurTeam />
         <ContactSection />

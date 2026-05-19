@@ -1,11 +1,9 @@
-import { useTranslations } from "next-intl";
-import ReusableButton from "@/components/ui/ReusableButton";
-import { ArrowRight } from "lucide-react";
-import { ReusableTittle } from "@/components/ui/ReusableTittle";
 import ContactSection from "@/components/contact/ContactSection";
 import ReusableHero from "../../components/shared/ReusableHero";
 import HomeHeroContent from "../../components/static/HomeHeroContent";
-import MissionSection from "../../components/contact/MissionSection";
+import MissionSection from "@/components/contact/MissionSection";
+import ServiceSection from "@/components/ui/serviceSection";
+import JobSection from "@/components/ui/JobSection";
 
 const Page = () => {
   return (
@@ -15,6 +13,8 @@ const Page = () => {
       </ReusableHero>
 
       <MissionSection />
+      <ServiceSection />
+      <JobSection />
       <ContactSection />
     </main>
   );
