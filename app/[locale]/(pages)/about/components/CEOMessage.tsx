@@ -6,7 +6,7 @@ export default function CEOMessage() {
       <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
         {/* freddy: remove px-12 and keep max-w-7xl for better alignment */}
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold tracking-widest uppercase text-brand mb-4">
+          <p className="text-lg font-semibold tracking-widest uppercase text-brand mb-4">
             Message from CEO
           </p>
 
