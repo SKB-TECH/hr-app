@@ -68,13 +68,17 @@ export default async function JobDetailsPage({
 
   return (
     <main className="flex-1 bg-white">
-      <ReusableHero title={job.title.toUpperCase()} subtitle={job.location} />
+      <ReusableHero>
+        <h2 className="font-bold text-4xl leading-tight sm:text-5xl md:text-6xl  text-white wrap-break-word">
+          {job.title.toUpperCase()}
+        </h2>
+        <p className="text-xl text-white font-medium">{job.location}</p>
+      </ReusableHero>
 
       <div className="px-6 py-10 md:py-14 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12  gap-10 lg:gap-14">
-        
           <aside className="lg:col-span-4 xl:col-span-4">
-            <div className="border-4 border-gray-100 bg-white p-6 sm:p-8">
+            <div className="border border-gray-200 bg-white p-6 sm:p-8">
               <SidebarRow label="Location" value={job.location} />
               <hr className="border-gray-200 my-5" />
               <SidebarRow label="Salary" value={job.salary} />
@@ -82,8 +86,10 @@ export default async function JobDetailsPage({
               <SidebarRow label="Job Type" value={job.jobType} />
             </div>
 
-            <div className="mt-4 border-4 border-gray-100 px-4 py-3">
-              <p className="text-xs font-bold text-gray-900 uppercase tracking-widest mb-1">Reference</p>
+            <div className="mt-4 border border-gray-200 px-4 py-3">
+              <p className="text-xs font-bold text-gray-900 uppercase tracking-widest mb-1">
+                Reference
+              </p>
               <p className="text-sm font-mono text-gray-600">{job.ref}</p>
             </div>
 
@@ -149,7 +155,9 @@ export default async function JobDetailsPage({
 function SidebarRow({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-sm font-bold text-gray-900 mb-1 uppercase tracking-widest">{label}</p>
+      <p className="text-sm font-bold text-gray-900 mb-1 uppercase tracking-widest">
+        {label}
+      </p>
       <p className="text-sm text-gray-600 leading-relaxed">{value}</p>
     </div>
   );
