@@ -1,5 +1,20 @@
+// services/job.service.ts
 import axios from "axios";
 import api from "../lib/axios";
+
+export interface PaginationParams {
+  page?: number;
+  limit?: number;
+  search?: string;
+}
+
+export interface PaginatedResponse<T> {
+  data: T[];
+  totalItems: number;
+  currentPage: number;
+  totalPages: number;
+  itemsPerPage: number;
+}
 
 export const fetchJob = async (jobQuery: string) => {
   try {
@@ -15,13 +30,22 @@ export const fetchJob = async (jobQuery: string) => {
   }
 };
 
-export const getAllJobs = async () => {
+export const getAllJobs = async (
+  params: PaginationParams = {},
+): Promise<PaginatedResponse<any>> => {
   try {
+    const { page = 1, limit = 10, search = "" } = params;
+
     const response = await api.get("/posts", {
       params: {
-        _limit: 10,
+        _page: page,
+        _limit: limit,
+        ...(search && { title_like: search }),
       },
     });
+    const totalItems = parseInt(response.headers["x-total-count"] || "0");
+    const totalPages = Math.ceil(totalItems / limit);
+
     const data = response.data.map((post: any) => ({
       id: post.id.toString(),
       ref: `#FDMAN2038-${post.id}`,
@@ -33,11 +57,23 @@ export const getAllJobs = async () => {
           .join(" ") + " Developer",
       location: "Manchester, UK",
       salary: "£40000 - £55000 per annum",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis sed pulvinar sed blandit rhoncus tellus senectus at quis. Mi at fermentum imperdiet velit magna a aliquam.",
+      description: `Lorem ipsum, dolor sit amet consectetur
+                      adipisicing elit. Consectetur neque nostrum consequuntur
+                      optio, nam eveniet. Voluptates dolorum illum rerum ad
+                      nihil cumque eum iste ipsum commodi. Officia nam maxime
+                      quae? Lorem ipsum, dolor sit amet consectetur adipisicing
+                      elit. Consectetur neque nostrum consequuntur optio, nam
+                      eveniet. Voluptates dolorum illum rerum ad nihil cumque
+                      eum iste ipsum commodi. Officia nam maxime quae?`,
     }));
 
-    return data;
+    return {
+      data,
+      totalItems,
+      currentPage: page,
+      totalPages,
+      itemsPerPage: limit,
+    };
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.response?.data.message || "Unable to get jobs.");
