@@ -1,4 +1,4 @@
-// hooks/useSearchQuery.ts
+
 import { useState, useEffect } from "react";
 
 function useSearchQuery(initialValue = "", delay = 500) {
