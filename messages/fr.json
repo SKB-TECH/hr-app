@@ -18,5 +18,14 @@
     "title": "mission",
     "heading": "Nous avons géré plus de 2,5 millions de candidats",
     "description": "Notre mission est de connecter des professionnels talentueux avec des entreprises qui valorisent leurs compétences et leur potentiel. Nous croyons en la construction de relations de carrière significatives qui profitent tant aux employeurs qu'aux candidats. Avec des années d'expérience en recrutement, nous sommes fiers de trouver le candidat idéal pour chaque rôle."
+  },
+  "jobs": {
+    "title": "Emplois",
+    "errorLoading": "Échec du chargement des offres d'emploi. Veuillez réessayer plus tard.",
+    "noJobs": "Aucune offre d'emploi disponible pour le moment.",
+    "tryAgain": "Réessayer",
+    "showing": "Affichage de",
+    "of": "sur",
+    "entries": "entrées"
   }
 }
