@@ -64,6 +64,7 @@ export default function OurTeam() {
 
   return (
     <section className="w-full bg-[#F9F9F9] py-16 px-6 md:px-12">
+      {/* freddy: added max width container for better content alignment */}
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-3xl font-semibold tracking-widest uppercase text-brand mb-2">
@@ -74,18 +75,17 @@ export default function OurTeam() {
           </h2>
         </div>
 
-          {/* leon: added class container */}
-          <div className="px-6 md:px-12  ">
+          <div className="px-6 md:px-12">
             {/* Top row — 4 cards */}
-            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5 mb-5 ">
+            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5 mb-5">
               {topRow.map((member) => (
                 <MemberCard key={member.name} member={member} />
               ))}
             </div>
-
-            <div className="flex justify-center gap-5">
+          {/* freddy: added bottom row for 2 remaining team members */}
+            <div className="flex flex-col sm:flex-row justify-center gap-5">
               {bottomRow.map((member) => (
-                <div key={member.name} className="w-1/2 md:w-1/4">
+                <div key={member.name} className="w-full sm:w-1/2 md:w-1/4">
                   <MemberCard member={member} />
                 </div>
               ))}
