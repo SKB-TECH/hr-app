@@ -39,7 +39,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className='min-h-full flex flex-col font-sans'
+        className="min-h-full flex flex-col font-sans"
         suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>

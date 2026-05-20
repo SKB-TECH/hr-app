@@ -1,7 +1,7 @@
-import CEOMessage from "@/app/[locale]/(pages)/about/components/CEOMessage";
+import CEOMessage from "@/components/About/CEOMessage";
 import ReusableHero from "../../../../components/shared/ReusableHero";
 import ContactSection from "@/components/contact/ContactSection";
-import OurTeam from "./components/OurTeam";
+import OurTeam from "../../../../components/About/OurTeam";
 
 const AboutUsPage = () => {
   return (

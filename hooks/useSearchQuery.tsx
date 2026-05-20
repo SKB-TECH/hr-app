@@ -1,22 +1,19 @@
-"use client";
-import { useEffect, useState } from "react";
+// hooks/useSearchQuery.ts
+import { useState, useEffect } from "react";
 
-const useSearchQuery = (delay: number = 300) => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchQuery);
+function useSearchQuery(initialValue = "", delay = 500) {
+  const [searchQuery, setSearchQuery] = useState(initialValue);
+  const [debouncedSearchQuery, setDebouncedSearchQuery] =
+    useState(initialValue);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (searchQuery.trim() === "") {
-        setDebouncedSearchQuery("");
-      } else {
-        setDebouncedSearchQuery(searchQuery);
-      }
+      setDebouncedSearchQuery(searchQuery);
     }, delay);
+
     return () => clearTimeout(timer);
   }, [searchQuery, delay]);
 
   return { debouncedSearchQuery, setSearchQuery };
-};
-
+}
 export default useSearchQuery;

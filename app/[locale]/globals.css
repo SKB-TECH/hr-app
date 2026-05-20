@@ -48,6 +48,7 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --color-brand-hover: var(--brand-hover);
 }
 
 :root {
@@ -55,6 +56,7 @@
   --foreground: oklch(0.145 0 0);
   --foreground-2: #132745;
   --brand: #40EBC7;
+  --brand-hover: #2DCCA8;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);

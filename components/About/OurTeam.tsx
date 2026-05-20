@@ -75,22 +75,22 @@ export default function OurTeam() {
           </h2>
         </div>
 
-          <div className="px-6 md:px-12">
-            {/* Top row — 4 cards */}
-            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5 mb-5">
-              {topRow.map((member) => (
-                <MemberCard key={member.name} member={member} />
-              ))}
-            </div>
-          {/* freddy: added bottom row for 2 remaining team members */}
-            <div className="flex flex-col sm:flex-row justify-center gap-5">
-              {bottomRow.map((member) => (
-                <div key={member.name} className="w-full sm:w-1/2 md:w-1/4">
-                  <MemberCard member={member} />
-                </div>
-              ))}
-            </div>
+        <div className="px-6 md:px-12">
+          {/* Top row — 4 cards */}
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5 mb-5">
+            {topRow.map((member) => (
+              <MemberCard key={member.name} member={member} />
+            ))}
           </div>
+          {/* freddy: added bottom row for 2 remaining team members */}
+          <div className="flex flex-col sm:flex-row justify-center gap-5">
+            {bottomRow.map((member) => (
+              <div key={member.name} className="w-full sm:w-1/2 md:w-1/4">
+                <MemberCard member={member} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
