@@ -1,6 +1,7 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, usePathname } from "@/i18n/routing";
+import { useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import useSearchQuery from "../../hooks/useSearchQuery";
 import { useEffect } from "react";
@@ -8,6 +9,7 @@ import { useEffect } from "react";
 function SearchInput() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const currentSearchParam = searchParams.get("search") || "";
   const { searchQuery, debouncedSearchQuery, setSearchQuery } =
     useSearchQuery(currentSearchParam);
@@ -30,8 +32,8 @@ function SearchInput() {
 
     params.delete("page");
 
-    router.push(`?${params.toString()}`, { scroll: false });
-  }, [debouncedSearchQuery, router, searchParams]);
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  }, [debouncedSearchQuery, pathname, router, searchParams]);
 
   const handleSearchClick = () => {
     const params = new URLSearchParams(searchParams.toString());
@@ -43,7 +45,7 @@ function SearchInput() {
     }
 
     params.delete("page");
-    router.push(`?${params.toString()}`, { scroll: false });
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   return (
