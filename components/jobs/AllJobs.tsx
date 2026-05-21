@@ -98,56 +98,59 @@ function AllJobs({
 
             {/* Pagination - only show if there are multiple pages */}
             {pagination && pagination.totalPages > 1 && (
-              <div className="flex items-center justify-between pt-8 border-t mt-8">
-                <p className="text-sm text-gray-500">
-                  {t("showing")} {startItem} - {endItem} {t("of")}{" "}
-                  {pagination.totalItems} {t("entries")}
-                </p>
+  <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t mt-8">
+    
+    <p className="text-sm text-gray-500 text-center md:text-left">
+      {t("showing")} {startItem} - {endItem} {t("of")}{" "}
+      {pagination.totalItems} {t("entries")}
+    </p>
 
-                <div className="flex items-center gap-2 text-sm">
-                  {/* Previous Button */}
-                  {pagination.currentPage > 1 && (
-                    <button
-                      onClick={() => goToPage(pagination.currentPage - 1)}
-                      className="px-3 py-1 rounded hover:bg-gray-100 transition-colors cursor-pointer"
-                    >
-                      ← Previous
-                    </button>
-                  )}
+    <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
+      
+      {/* Previous Button */}
+      {pagination.currentPage > 1 && (
+        <button
+          onClick={() => goToPage(pagination.currentPage - 1)}
+          className="px-3 py-1 rounded hover:bg-gray-100 transition-colors cursor-pointer"
+        >
+          ← Previous
+        </button>
+      )}
 
-                  {/* Page Numbers */}
-                  <div className="flex items-center gap-1">
-                    {pageNumbers.map((pageNum, index) => (
-                      <div key={pageNum} className="flex items-center gap-1">
-                        <button
-                          onClick={() => goToPage(pageNum)}
-                          className={`px-2 py-1 rounded transition-colors cursor-pointer hover:bg-gray-100 ${
-                            pageNum === pagination.currentPage
-                              ? " text-black font-bold"
-                              : "text-gray-600 "
-                          }`}
-                        >
-                          {pageNum}
-                        </button>
-                        {index < pageNumbers.length - 1 && (
-                          <span className="text-gray-300">|</span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+      {/* Page Numbers */}
+      <div className="flex flex-wrap items-center justify-center gap-1">
+        {pageNumbers.map((pageNum, index) => (
+          <div key={pageNum} className="flex items-center gap-1">
+            <button
+              onClick={() => goToPage(pageNum)}
+              className={`px-2 py-1 rounded transition-colors cursor-pointer hover:bg-gray-100 ${
+                pageNum === pagination.currentPage
+                  ? "text-black font-bold"
+                  : "text-gray-600"
+              }`}
+            >
+              {pageNum}
+            </button>
 
-                  {/* Next Button */}
-                  {pagination.currentPage < pagination.totalPages && (
-                    <button
-                      onClick={() => goToPage(pagination.currentPage + 1)}
-                      className="px-3 py-1 rounded hover:bg-gray-100 transition-colors cursor-pointer"
-                    >
-                      Next →
-                    </button>
-                  )}
-                </div>
-              </div>
+            {index < pageNumbers.length - 1 && (
+              <span className="text-gray-300">|</span>
             )}
+          </div>
+        ))}
+      </div>
+
+      {/* Next Button */}
+      {pagination.currentPage < pagination.totalPages && (
+        <button
+          onClick={() => goToPage(pagination.currentPage + 1)}
+          className="px-3 py-1 rounded hover:bg-gray-100 transition-colors cursor-pointer"
+        >
+          Next →
+        </button>
+      )}
+    </div>
+  </div>
+                )}
           </>
         )}
       </div>
