@@ -72,7 +72,7 @@ function Navbar() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-[#0a1a2e] border-t border-gray-700">
+        <div className="md:hidden bg-[#0a1a2e] border-t border-gray-700 absolute top-full left-0 w-full">
           <nav className="flex flex-col px-6 py-4 gap-4">
             {navLinks.map((link) => (
               <Link
