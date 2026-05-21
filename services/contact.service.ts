@@ -1,5 +1,6 @@
+import axios from "axios";
 import api from "../lib/axios";
-import type { ContactFormData } from "../types/contact";
+import type { ContactFormData } from "@/types/types";
 
 export const sendContactForm = async (formData: ContactFormData) => {
   try {
@@ -14,11 +15,25 @@ export const sendContactForm = async (formData: ContactFormData) => {
     const response = await api.post("/contact", formData);
     return response.data;
   } catch (error) {
+    if (axios.isAxiosError(error) && error.response) {
+      if (!error.response) {
+        throw new Error(
+          "Network error. Please check your connection and try again.",
+        );
+      }
+      if (error.response.status >= 500) {
+        throw new Error("Server error. Please try again later.");
+      }
+      throw new Error(
+        "Something went wrong while sending your message. Please try again later.",
+      );
+    }
     if (error instanceof Error) {
       throw new Error(error.message || "Unable to send your message.");
     }
+
     throw new Error(
-      error instanceof Error ? error.message : "An unexpected error occurred. Please try again later.",
+      "Something went wrong while sending your message. Please try again later.",
     );
   }
 };
