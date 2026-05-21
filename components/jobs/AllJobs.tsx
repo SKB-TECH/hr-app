@@ -3,7 +3,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import SearchInput from "../static/SearchInput";
 import { JobCard } from "../ui/JobCard";
-import { Job } from "../../core/types";
+import { Job } from "@/types/types";
 import ReusableHero from "../shared/ReusableHero";
 
 interface PaginationInfo {
@@ -28,11 +28,11 @@ function AllJobs({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Simple function to change page
+  // function to change page
   const goToPage = (page: number) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("page", page.toString());
-    router.push(`?${params.toString()}`);
+    router.push(`${window.location.pathname}?${params.toString()}`);
   };
 
   // Generate simple page numbers (just 1,2,3,4,5...)
@@ -77,7 +77,7 @@ function AllJobs({
             <p className="text-gray-600 mb-6">{fetchError}</p>
             <button
               onClick={() => window.location.reload()}
-              className="px-6 py-2 bg-[#00c896] text-white rounded-lg hover:bg-[#00a87e] transition-colors"
+              className="px-6 py-2 bg-brand text-[#132745]rounded-lg hover:bg-[#00a87e] transition-colors"
             >
               {t("tryAgain")}
             </button>

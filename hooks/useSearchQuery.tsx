@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 
 function useSearchQuery(initialValue = "", delay = 500) {
@@ -14,6 +13,6 @@ function useSearchQuery(initialValue = "", delay = 500) {
     return () => clearTimeout(timer);
   }, [searchQuery, delay]);
 
-  return { debouncedSearchQuery, setSearchQuery };
+  return { searchQuery, debouncedSearchQuery, setSearchQuery };
 }
 export default useSearchQuery;
