@@ -1,8 +1,6 @@
-export interface Job {
-  id: string;
-  ref: string;
-  title: string;
-  location: string;
-  salary: string;
-  description: string;
-}
+export type {
+  Job,
+  PaginationParams,
+  PaginatedResponse,
+  ContactFormData,
+} from "@/types/types";

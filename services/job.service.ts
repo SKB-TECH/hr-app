@@ -1,20 +1,6 @@
-// services/job.service.ts
 import axios from "axios";
 import api from "../lib/axios";
-
-export interface PaginationParams {
-  page?: number;
-  limit?: number;
-  search?: string;
-}
-
-export interface PaginatedResponse<T> {
-  data: T[];
-  totalItems: number;
-  currentPage: number;
-  totalPages: number;
-  itemsPerPage: number;
-}
+import type { JobDetail, PaginationParams } from "@/types/types";
 
 export const fetchJob = async (jobQuery: string) => {
   try {
@@ -30,9 +16,7 @@ export const fetchJob = async (jobQuery: string) => {
   }
 };
 
-export const getAllJobs = async (
-  params: PaginationParams = {},
-): Promise<PaginatedResponse<any>> => {
+export const getAllJobs = async (params: PaginationParams = {}) => {
   try {
     const { page = 1, limit = 10, search = "" } = params;
 
@@ -46,7 +30,7 @@ export const getAllJobs = async (
     const totalItems = parseInt(response.headers["x-total-count"] || "0");
     const totalPages = Math.ceil(totalItems / limit);
 
-    const data = response.data.map((post: any) => ({
+    const data = response.data.map((post: { id: number; title: string }) => ({
       id: post.id.toString(),
       ref: `#FDMAN2038-${post.id}`,
       title:
@@ -83,5 +67,39 @@ export const getAllJobs = async (
         ? error.message
         : "An unexpected error occurred. Please try again later.",
     );
+  }
+};
+
+export const getJobById = async (id: string): Promise<JobDetail> => {
+  try {
+    const response = await api.get(`/posts/${id}`);
+    const job = response.data;
+    return {
+      id: job.id.toString(),
+      ref: `#FDMAN2038-${job.id}`,
+      title: job.title.split(" ")[0] + " Developer",
+      location: "Manchester, UK",
+      salary: "£40000 - £55000 per annum",
+      jobType: "Full-time",
+      companyLine: "Amazon",
+      descriptionParagraphs: [
+        "As a core member of our engineering team, you will play a pivotal role in shaping the technical direction of our customer-facing platforms. You will be responsible for developing high-performance, accessible, and scalable web applications using the latest industry standards and modern frameworks.",
+        "You will work in an agile environment, collaborating with product owners and UX designers to create seamless user journeys. Your contribution will span the entire development stack, from optimizing front-end performance to designing robust API integrations and ensuring high code coverage through automated testing.",
+        "The ideal candidate brings several years of experience in full-stack development, with a deep proficiency in TypeScript and React. We are looking for a problem-solver who enjoys tackling complex architectural puzzles and is eager to mentor others while continuously improving their own technical expertise.",
+        "Our office in Manchester provides a collaborative and creative space where innovation is encouraged. We offer a competitive benefits package, including flexible work arrangements, professional development budgets, and a focus on maintaining a healthy work-life balance.",
+      ],
+    };
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      if (!error.response) {
+        throw new Error(
+          "Network error. Please check your connection and try again.",
+        );
+      }
+      throw new Error(
+        error.response?.data.message || "Unable to get job details.",
+      );
+    }
+    throw new Error("An unexpected error occurred. Please try again later.");
   }
 };

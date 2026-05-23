@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
-import type { Job } from "@/core/types";
+import type { Job } from "@/types/types";
 
 interface JobCardProps {
   job: Job;

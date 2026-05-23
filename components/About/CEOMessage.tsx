@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function CEOMessage() {
   return (
-    <section className="w-full bg-white py-16 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
+    <section className="w-full bg-white py-16 ">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
         {/* freddy: remove px-12 and keep max-w-7xl for better alignment */}
         <div className="flex-1 min-w-0">
           <p className="text-lg font-semibold tracking-widest uppercase text-brand mb-4">
