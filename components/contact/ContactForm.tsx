@@ -6,7 +6,7 @@ import SubmitButton from "./SubmitButton";
 import { Textarea } from "../ui/textarea";
 import { Label } from "../ui/label";
 import useSubmitClientMessage from "../../hooks/useSubmitClientMessage";
-import { ContactFormData } from "../../types/contact";
+import { ContactFormData } from "@/types/types";
 import { useState } from "react";
 
 export default function ContactForm() {

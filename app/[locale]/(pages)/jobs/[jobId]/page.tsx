@@ -1,49 +1,23 @@
 import ReusableHero from "@/components/shared/ReusableHero";
 import { Link } from "@/i18n/routing";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-
-interface JobDetail {
-  id: string;
-  ref: string;
-  title: string;
-  location: string;
-  salary: string;
-  jobType: string;
-  companyLine: string;
-  descriptionParagraphs: string[];
-}
-
-const MOCK_JOBS: JobDetail[] = [
-  {
-    id: "FDMAN2038-234",
-    ref: "#FDMAN2038-234",
-    title: "Frontend Developer",
-    location: "Manchester, UK",
-    salary: "£45,000 - £55,000 per annum + Bonus + Pension + Benefits",
-    jobType: "Hybrid, Permanent",
-    companyLine: "UK Leading Ecommerce Firm - Manchester - Hybrid",
-    descriptionParagraphs: [
-      "Tech stack: Front End Developer, React, ReactJS 18, React Hooks, React.js, Shopify platform, JavaScript, TypeScript, HTML, CSS, UI, UX, User Interface, User Experience, Javascript Developer, Front End Engineer, Front End Developer",
-      "Our client is UK's leading Ecommerce clothing company. They are looking for a Front End Developer with experience in React and Shopify platform. You will be responsible for predominantly implementing new Figma designs and functionality to the Shopify store, through fluent, maintainable code. You will work alongside designers within the creative team, and other senior members on multiple technical projects.",
-      "My client is looking for Front End Developers who has current and relevant experience working with React and Shopify platform. You will be building new pages, features and functionality on the Ecommerce site. You will also discover and debug issues and ensure the consistent quality and UX across all devices and browsers.",
-      "Our client is looking for passionate Front End Developers with experience in some or all of the following (full training will be provided to fill any gaps in your skill set): React, ReactJS 18, React Hooks, React.js, Shopify platform, JavaScript, TypeScript, HTML, CSS, GIT, API's, UI, UX, User Interface, User Experience.",
-    ],
-  },
-];
-
-async function getJobById(jobId: string): Promise<JobDetail | null> {
-  return MOCK_JOBS.find((job) => job.id === jobId) ?? null;
-}
-
-export const dynamic = "force-dynamic";
+import type { JobDetail } from "../../../../../types/types";
+import { getJobById } from "../../../../../services/job.service";
 
 export default async function JobDetailsPage({
   params,
-}: Readonly<{
-  params: Promise<{ locale: string; jobId: string }>;
-}>) {
+}: {
+  params: Promise<{ jobId: string }>;
+}) {
   const { jobId } = await params;
-  const job = await getJobById(jobId);
+  console.log("job id params: " + jobId);
+  let job: JobDetail | null = null;
+  try {
+    const { jobId } = await params;
+    job = await getJobById(jobId);
+  } catch (error) {
+    console.error("Error fetching job details:", error);
+  }
 
   if (!job) {
     return (

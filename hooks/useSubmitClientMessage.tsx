@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ContactFormData } from "../types/contact";
+import { ContactFormData } from "@/types/types";
 import { sendContactForm } from "../services/contact.service";
 
 const useSubmitClientMessage = (data: ContactFormData) => {
