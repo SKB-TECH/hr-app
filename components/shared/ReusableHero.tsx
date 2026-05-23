@@ -3,8 +3,15 @@ function ReusableHero({ children }: { children: React.ReactNode }) {
     <section className="w-full relative flex-1 overflow-hidden bg-[#132745]">
       <div className="absolute inset-0">
         <div
-          className="absolute inset-0 bg-cover bg-center  opacity-35"
-          style={{ backgroundImage: "url('/heroImage.png')" }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/heroImage.jpg')",
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundAttachment: 'fixed',
+            opacity: 0.35,
+          }}
         />
         <div className="absolute inset-0 bg-[#132745]/70" />
       </div>
