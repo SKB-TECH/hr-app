@@ -28,7 +28,7 @@ function Navbar() {
   };
 
   return (
-    <header className="relative z-20 w-full bg-[#132745]">
+    <header className="sticky top-0 left-0 relative z-20 w-full bg-[#132745]">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-12">
         <Link
           href="/"

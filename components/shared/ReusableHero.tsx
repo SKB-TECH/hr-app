@@ -5,11 +5,11 @@ function ReusableHero({ children }: { children: React.ReactNode }) {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/heroImage.jpg')",
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundAttachment: 'fixed',
+            backgroundImage: "url('/heroImage.png')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
             opacity: 0.35,
           }}
         />
