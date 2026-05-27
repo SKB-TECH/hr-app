@@ -8,7 +8,8 @@ export default function JobDetailsPage({
     <main className='flex-1 p-8'>
       <h1 className='text-3xl font-bold mb-4'>Job Details for ID: {jobId}</h1>
       <p className='text-gray-600'>
-        Here you can display the details of the job with ID: {jobId}.
+        Here you can display the details of the job with ID: {jobId}. You can
+        implement the job application UI here too (The modal)
       </p>
     </main>
   );
