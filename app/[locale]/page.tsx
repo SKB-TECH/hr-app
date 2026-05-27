@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import ReusableButton from "@/components/ui/ReusableButton";
 import { ArrowRight } from "lucide-react";
 import { ReusableTittle } from "@/components/ui/ReusableTittle";
