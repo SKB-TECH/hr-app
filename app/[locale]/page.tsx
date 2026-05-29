@@ -6,7 +6,7 @@ const Page = () => {
     <main className='flex-1 space-y-8'>
       <Navbar />
       <ReusableHeroSection
-        title='Find your  '
+        title='Find your '
         highlight=' dream job'
         subtitle='Find your next career at companies like HubSpot, Nike, and Dropbox'
         searchEnabled={true}
