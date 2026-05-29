@@ -3,21 +3,7 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { AppProvider } from "@/context/AppContext";
-import Navbar from "../../components/shared/Navbar";
-import Footer from "../../components/shared/Footer";
-import { Manrope, Archivo_Black, Ubuntu, Ubuntu_Mono } from "next/font/google";
-
-const ubuntuSans = Ubuntu({
-  variable: "--font-ubuntu-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-});
-
-const ubuntuMono = Ubuntu_Mono({
-  variable: "--font-ubuntu-mono",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+import { epilogue, clashDisplay } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Hr",
@@ -35,18 +21,15 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${ubuntuSans.variable} ${ubuntuMono.variable} h-full antialiased`}
+      className={`${epilogue.variable} ${clashDisplay.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body
-        className='min-h-full flex flex-col font-sans'
+        className="min-h-full flex flex-col font-sans"
         suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>
-          <Navbar />
           <AppProvider>{children}</AppProvider>
-
-          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
