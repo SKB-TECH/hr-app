@@ -10,7 +10,6 @@ interface FilterTickProps {
 
 export function FilterTick({
   defaultChecked = false,
-  onChange,
 }: FilterTickProps) {
   const [checked, setChecked] = useState(defaultChecked);
 
