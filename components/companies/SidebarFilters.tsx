@@ -1,0 +1,57 @@
+import { FilterOption } from "@/types/types";
+import { FilterTick } from "@/components/ui/FilterTick";
+
+interface FilterSectionProps {
+  title: string;
+  options: FilterOption[];
+  defaultSelected?: string[];
+}
+
+function FilterSection({
+  title,
+  options,
+  defaultSelected = [],
+}: FilterSectionProps) {
+  return (
+    <div className="mb-8">
+      <h3 className="font-semibold text-slate-900 text-[18px] mb-4">{title}</h3>
+      <div className="space-y-4">
+        {options.map((option) => (
+          <div
+            key={option.name}
+            className="flex items-center text-[16px] justify-start gap-3 cursor-pointer group"
+          >
+            <FilterTick
+              defaultChecked={defaultSelected.includes(option.name)}
+            />
+            <div className="flex items-center gap-1 transition-colors group-hover:text-indigo-600">
+              <span className="text-slate-600">{option.name}</span>
+              <span className="text-slate-400">({option.count})</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+interface SidebarFiltersProps {
+  industries: FilterOption[];
+  companySizes: FilterOption[];
+}
+
+export function SidebarFilters({
+  industries,
+  companySizes,
+}: SidebarFiltersProps) {
+  return (
+    <aside className="lg:w-72 shrink-0">
+      <FilterSection title="Industry" options={industries} />
+      <FilterSection
+        title="Company Size"
+        options={companySizes}
+        defaultSelected={["251-500"]}
+      />
+    </aside>
+  );
+}
