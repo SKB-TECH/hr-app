@@ -2,6 +2,8 @@
 // import { JobCard } from "@/components/JobCard";
 // import { Search } from "lucide-react";
 
+import {Search} from "lucide-react";
+
 const cardcontent = {
   id: "FDMAN2038-234",
   ref: "#FDMAN2038-234",
