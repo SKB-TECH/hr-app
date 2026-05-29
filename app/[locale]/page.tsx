@@ -1,9 +1,12 @@
+
+import ReusableHeroSection from "@/components/ui/HeroSection/ReusableHeroSection";
 import { ReusableTittle } from "@/components/ui/ReusableTittle";
+
 
 const Page = () => {
   return (
     <main className="flex-1 space-y-8 p-6">
-      <ReusableTittle
+      {/* <ReusableTittle
         firstTittle="misson"
         secondTittle="We’ve managed over 2.5 million candidates"
         text="Our mission is to connect talented professionals with companies that value their skills and potential. We believe in building meaningful career relationships that benefit both employers and candidates. With years of experience in recruitment, we pride ourselves on finding the perfect match for every role."
@@ -47,7 +50,18 @@ const Page = () => {
           This paragraph uses the registered foreground primary color:{" "}
           <strong>#202430</strong>.
         </p>
-      </section>
+      </section> */}
+
+      <ReusableHeroSection
+        title="Find your  "
+        highlight=" dream job"
+        subtitle="Find your next career at companies like HubSpot, Nike, and Dropbox"
+        searchEnabled={true}
+        popularTags={[
+          "UI Designer", "UX Researcher", "Android", "Admin"
+          
+        ]}
+      />
     </main>
   );
 };
