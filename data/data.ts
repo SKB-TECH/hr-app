@@ -1,0 +1,1 @@
+// use this file for data that is used across the app, such as arrays of objects, constants, etc.

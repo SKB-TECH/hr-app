@@ -3,8 +3,7 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { AppProvider } from "@/context/AppContext";
-import Navbar from "../../components/shared/Navbar";
-import Footer from "../../components/shared/Footer";
+import { epilogue, clashDisplay } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Hr",
@@ -20,13 +19,17 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="h-full antialiased" suppressHydrationWarning>
-      <body className="min-h-full flex flex-col font-sans" suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={`${epilogue.variable} ${clashDisplay.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
+      <body
+        className="min-h-full flex flex-col font-sans"
+        suppressHydrationWarning
+      >
         <NextIntlClientProvider messages={messages}>
-          <Navbar />
           <AppProvider>{children}</AppProvider>
-
-          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
