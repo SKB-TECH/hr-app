@@ -1,5 +1,4 @@
 import ReusableHeroSection from "@/components/ui/HeroSection/ReusableHeroSection";
-import { ReusableTittle } from "@/components/ui/ReusableTittle";
 
 const Page = () => {
   return (
