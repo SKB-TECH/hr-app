@@ -27,7 +27,7 @@ export function SearchHeader({
       <div className="flex items-center gap-4 mt-4 sm:mt-0">
         <div className=" max-md:ml-auto flex items-center gap-2">
           <span className="text-[16px] text-slate-500">Sort by:</span>
-          <select className="text-[16px] font-medium text-neutral-100 bg-transparent border-none focus:ring-0 cursor-pointer pr-8 py-0">
+          <select className="text-[16px] font-medium text-neutral-100 bg-transparent outline-none border-none focus:ring-0 cursor-pointer pr-8 py-0">
             {sortOptions.map((option) => (
               <option key={option} value={option}>
                 {option}
