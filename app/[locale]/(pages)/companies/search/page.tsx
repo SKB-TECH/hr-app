@@ -1,8 +1,6 @@
 import { companySizes, industries } from "../../../../../data/companyPageData";
 import { SidebarFilters } from "@/components/companies/SidebarFilters";
-import { SearchHeader } from "@/components/companies/SearchHeader";
-import { CompanyCard } from "@/components/companies/CompanyCard";
-import CompaniesPage from "../page";
+
 import CompanyList from "@/components/companies/CompanyList";
 
 function SearchCompaniesPage() {
