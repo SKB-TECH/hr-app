@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { MagnifyingGlassIcon, MapPinIcon } from "@heroicons/react/24/outline";
+import {HeroSectionProps} from "../../../types/HeroSectionProps";
 
 const ReusableHeroSection = ({
   title,
