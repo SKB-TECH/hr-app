@@ -25,7 +25,7 @@ export function SearchHeader({
       </div>
 
       <div className="flex items-center gap-4 mt-4 sm:mt-0">
-        <div className="flex items-center gap-2">
+        <div className=" max-md:ml-auto flex items-center gap-2">
           <span className="text-[16px] text-slate-500">Sort by:</span>
           <select className="text-[16px] font-medium text-neutral-100 bg-transparent border-none focus:ring-0 cursor-pointer pr-8 py-0">
             {sortOptions.map((option) => (
@@ -38,7 +38,7 @@ export function SearchHeader({
 
         <div className="h-8 w-2px bg-slate-200 mx-1 hidden sm:block" />
 
-        <div className="flex items-center gap-1 p-1 rounded-lg">
+        <div className="hidden md:flex items-center gap-1 p-1 rounded-lg">
           <button
             className={`p-1.5 rounded-md transition ${
               viewGrid
