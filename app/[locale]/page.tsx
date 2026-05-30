@@ -1,11 +1,12 @@
 import ReusableHeroSection from "@/components/ui/HeroSection/ReusableHeroSection";
-import { ReusableTittle } from "@/components/ui/ReusableTittle";
+import Navbar from "@/components/common/navbar/Navbar";
 
 const Page = () => {
   return (
-    <main className='flex-1 space-y-8 p-6'>
+    <main className='flex-1 space-y-8'>
+      <Navbar />
       <ReusableHeroSection
-        title='Find your  '
+        title='Find your '
         highlight=' dream job'
         subtitle='Find your next career at companies like HubSpot, Nike, and Dropbox'
         searchEnabled={true}
