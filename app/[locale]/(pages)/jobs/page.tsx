@@ -1,6 +1,6 @@
 // import JobCard from "@/components/JobCard";
 // import { JobCard } from "@/components/JobCard";
-// import { Search } from "lucide-react";
+import { Search } from "lucide-react";
 
 import {Search} from "lucide-react";
 
@@ -36,10 +36,10 @@ export default function JobsPage() {
 
       <div className='space-y-6'>
         {/* Example job cards */}
-        <JobCard job={cardcontent} />
-        <JobCard job={cardcontent} />
-        <JobCard job={cardcontent} />
-        <JobCard job={cardcontent} />
+        {/*<JobCard job={cardcontent} />*/}
+        {/*<JobCard job={cardcontent} />*/}
+        {/*<JobCard job={cardcontent} />*/}
+        {/*<JobCard job={cardcontent} />*/}
       </div>
 
       {/* Pagination */}

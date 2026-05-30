@@ -1,5 +1,5 @@
 import { MagnifyingGlassIcon, MapPinIcon } from "@heroicons/react/24/outline";
-import HeroBg from "./HeroBg";
+// import HeroBg from "./HeroBg";
 
 interface HeroSectionProps {
   title?: string;
@@ -18,7 +18,7 @@ export default function HeroSection({
 }: HeroSectionProps) {
   return (
     <section className="relative bg-gradient-to-b from-white to-indigo-50 py-16 px-6 overflow-hidden">
-      <HeroBg />
+      {/*<HeroBg />*/}
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto text-center">
