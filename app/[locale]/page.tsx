@@ -7,7 +7,7 @@ const Page = () => {
       <>
         <HeroSection />
         {/*  Companies we helped grow  */}
-          <SectionComponent/>
+          <SectionComponent title="Explore by" highlight="category" showAllLink="#jobs"/>
       </>
   );
 };
