@@ -5,12 +5,13 @@ export type CompanyIndustry = {
   name: string;
   style: {
     bg: string;
-    color:string
+    color: string;
   };
 };
 export type Company = {
   id: number;
   src: string;
+  location: string;
   availableJobs: number;
   name: string;
   description: string;
@@ -18,7 +19,12 @@ export type Company = {
   size: number;
 };
 // company filter type definition
-export type FilterOption = {
+export type SidebarOptions = {
   name: string;
   count: number;
+  defaultSelected?: boolean;
+};
+export type SidebarFilterCompany = {
+  title: string;
+  options: SidebarOptions[];
 };
