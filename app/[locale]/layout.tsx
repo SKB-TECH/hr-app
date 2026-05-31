@@ -4,8 +4,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { AppProvider } from "@/context/AppContext";
 import { epilogue, clashDisplay } from "@/lib/fonts";
-import Navbar from "@/components/landing/navbar/Navbar";
-import Footer from "@/components/landing/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Hr",
@@ -32,9 +30,7 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <AppProvider>
-            <Navbar />
             {children}
-            <Footer />
           </AppProvider>
         </NextIntlClientProvider>
       </body>
