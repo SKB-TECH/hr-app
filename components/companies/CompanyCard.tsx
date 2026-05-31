@@ -1,13 +1,10 @@
 import Image from "next/image";
 import { Company } from "@/types/types";
+import SharedCard from "../common/navbar/SharedCard";
 
-interface CompanyCardProps {
-  company: Company;
-}
-
-export function CompanyCard({ company }: CompanyCardProps) {
+export function CompanyCard({ company }: { company: Company }) {
   return (
-    <div className="border border-brand-light-neutral rounded-sm space-y-1 p-5 hover:shadow-sm transition-shadow cursor-pointer bg-white">
+    <SharedCard>
       <div className="flex justify-between items-start ">
         <div className="flex flex-col gap-2">
           <Image
@@ -48,6 +45,6 @@ export function CompanyCard({ company }: CompanyCardProps) {
           </span>
         ))}
       </div>
-    </div>
+    </SharedCard>
   );
 }
