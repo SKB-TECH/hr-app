@@ -32,8 +32,8 @@ const ReusableHeroSection = ({
       />
 
       <div className="relative z-10 max-w-5xl mx-auto">
-        <div className="text-center mt-15">
-          <h1 className="text-4xl md:text-5xl font-clash text-neutral-100">
+        <div className="text-center pt-15">
+          <h1 className="text-4xl md:text-5xl font-clash font-semibold text-neutral-100">
             {title}{" "}
             <span className="relative inline-block text-accent-light-blue">
               {highlight}

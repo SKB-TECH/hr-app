@@ -1,17 +1,12 @@
-import PaginationWrapper from "@/components/ReusablePagination/PaginationWrapper";
-import ReusableHeroSection from "@/components/ui/HeroSection/ReusableHeroSection";
+import PaginationWrapper from "@/app/[locale]/(pages)/jobs/ReusablePagination/PaginationWrapper";
+import ReusableHeroSection from "@/app/[locale]/(pages)/jobs/HeroSection/ReusableHeroSection";
+import Navbar from "@/components/ui/Navbar";
+import JobsPage from "./(pages)/jobs/page";
 
 const Page = () => {
   return (
     <main className='flex-1 space-y-8 p-6'>
-      <ReusableHeroSection
-        title='Find your  '
-        highlight=' dream job'
-        subtitle='Find your next career at companies like HubSpot, Nike, and Dropbox'
-        searchEnabled={true}
-        popularTags={["UI Designer", "UX Researcher", "Android", "Admin"]}
-      />
-      <PaginationWrapper />
+     <JobsPage />
     </main>
   );
 };

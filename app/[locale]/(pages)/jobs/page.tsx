@@ -1,10 +1,19 @@
+import Navbar from "@/components/ui/Navbar";
+import ReusableHeroSection from "./HeroSection/ReusableHeroSection";
+import PaginationWrapper from "./ReusablePagination/PaginationWrapper";
+
 export default function JobsPage() {
   return (
-    <div className='container mx-auto'>
-      <h2 className='text-2xl font-bold mb-4'>Job Listings</h2>
-      <div className='bg-white p-6 mb-4'>
-        <h3 className='text-xl font-semibold mb-2'>Content here</h3>
-      </div>
+    <div>
+      <Navbar />
+      <ReusableHeroSection
+        title="Find your  "
+        highlight=" dream job"
+        subtitle="Find your next career at companies like HubSpot, Nike, and Dropbox"
+        searchEnabled={true}
+        popularTags={["UI Designer", "UX Researcher", "Android", "Admin"]}
+      />
+      <PaginationWrapper />
     </div>
   );
 }
