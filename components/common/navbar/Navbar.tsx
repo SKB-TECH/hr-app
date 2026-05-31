@@ -3,10 +3,10 @@ import {Button} from "@/components/ui/button";
 import {navigations} from "@/data/data";
 import {Briefcase} from "lucide-react";
 
-export default function Navbar() {
+export default function NavbarComponentLandingPage() {
   return (
-    <nav className='w-full bg-background/50 backdrop-blur-sm'>
-      <div className='container mx-auto px-4 py-4 flex items-center justify-between'>
+    <nav className='w-full sticky sticky-0 top-0 z-50 backdrop-blur-sm'>
+      <div className='max-w-6xl mx-auto px-4 py-4 flex items-center justify-between'>
         <div className="flex flex-col md:flex-row gap-x-8 items-center">
           <Link className='text-xl font-bold flex flex-row gap-3 items-center' href='/'>
             <span className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white">

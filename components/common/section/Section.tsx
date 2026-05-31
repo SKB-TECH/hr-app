@@ -1,26 +1,22 @@
 import Link from "next/link";
 import {ArrowRight, FolderArchive} from "lucide-react";
+import {SectionComponentProps} from "@/utilities/SectionComponentProps";
 
-interface SectionComponentProps{
-    title: string;
-    highlight: string;
-    showAllText: string;
-    showAllLink: string;
-}
-
-export default function SectionComponent({title, highlight, showAllLink }: SectionComponentProps){
+export default function SectionComponent({title = "", highlight = "", showAllLink = "", showAllText, isExpanded = false }: SectionComponentProps){
     return (
         <div className="bg-white px-8">
             <section className="max-w-6xl mx-auto py-8 px-4 md:px-0">
-                <div className="flex flex-col md:flex-row justify-between items-center">
+                <div className="flex flex-col md:flex-row justify-between items-end">
                     <h1 className="font-bold text-3xl flex flex-row gap-2">
                         <span className="text-black dark:text-white">{title}</span>
                         <span className="text-brand">{highlight}</span>
                     </h1>
-                    <Link href="#" className="flex flex-row text-brand text-xs font-bold items-center gap-1">
-                        <span className="">Show all jobs</span>
-                        <ArrowRight size={12}/>
-                    </Link>
+                    {isExpanded && (
+                        <Link href={showAllLink} className="flex flex-row text-brand text-xs font-bold items-center gap-1">
+                            <span className="">{showAllText}</span>
+                            <ArrowRight size={12}/>
+                        </Link>
+                    )}
                 </div>
 
                 {/*    Elements   */}

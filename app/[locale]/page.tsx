@@ -1,15 +1,9 @@
+import HomePage from "@/app/[locale]/(pages)/page";
 
-import HeroSection from "@/components/landing/hero/HeroSection";
-import SectionComponent from "@/components/common/section/Section";
-
-const Page = () => {
+export default function LandingPage() {
   return (
-      <>
-        <HeroSection />
-        {/*  Companies we helped grow  */}
-          <SectionComponent title="Explore by" highlight="category" showAllLink="#jobs"/>
-      </>
+    <>
+      <HomePage />
+    </>
   );
-};
-
-export default Page;
+}
