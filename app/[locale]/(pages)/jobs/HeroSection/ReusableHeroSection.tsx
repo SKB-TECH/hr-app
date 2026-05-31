@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Epilogue } from "next/font/google";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { ChevronDownIcon, MapPinIcon } from "lucide-react";
+import {  MapPinIcon } from "lucide-react";
 
 const epilogue = Epilogue({ subsets: ["latin"] });
 
@@ -22,7 +22,7 @@ const ReusableHeroSection = ({
   popularTags,
 }: HeroSectionProps) => {
   return (
-    <section className="relative h-auto w-full">
+    <section className="relative w-screen">
       {/* Background Image */}
       <Image
         fill
@@ -57,39 +57,36 @@ const ReusableHeroSection = ({
         {searchEnabled && (
           <>
             {/* Search bar */}
-           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4 md:gap-5 px-4 md:px-5 py-4 md:py-0 w-full max-w-[1192px] min-h-[104px] bg-white shadow-md mt-10 mx-auto">
-  {/* Search Input */}
-  <div className="flex items-center w-full md:w-1/2 md:ml-3">
-    <MagnifyingGlassIcon className="h-5 w-5 text-neutral-100 mr-3 shrink-0" />
+            <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4 md:gap-5 px-4 md:px-5 py-4 md:py-0 w-full max-w-[1192px] min-h-[104px] bg-white shadow-md mt-10 mx-auto">
+              {/* Search Input */}
+              <div className="flex items-center w-full md:w-1/2 md:ml-3">
+                <MagnifyingGlassIcon className="h-5 w-5 text-neutral-100 mr-3 shrink-0" />
 
-    <input
-      type="text"
-      placeholder="Job title or keyword"
-      className="w-full py-2 border-b-2 border-neutral-300 focus:outline-none"
-    />
-  </div>
+                <input
+                  type="text"
+                  placeholder="Job title or keyword"
+                  className="w-full py-2 border-b-2 border-brand-light-neutral focus:outline-none"
+                />
+              </div>
 
-  {/* Divider - Desktop Only */}
-  <div className="hidden md:block h-10 border-l border-neutral-300" />
+              {/* Divider - Desktop Only */}
+              <div className="hidden md:block h-10 border-l border-brand-light-neutral" />
 
-  {/* Location Input */}
-  <div className="relative flex items-center w-full md:w-1/2">
-    <MapPinIcon className="h-5 w-5 text-neutral-100 mr-3 shrink-0" />
+              {/* Location Input */}
+              <div className=" flex items-center w-full md:w-1/2">
+                <MapPinIcon className="h-5 w-5 text-neutral-100 mr-3 shrink-0" />
+                <select className="w-fullpy-2 pr-8 border-b-2 border-brand-light-neutral focus:outline-none">
+                  <option>Florence, Italy</option>
+                  <option>New York, USA</option>
+                  <option>London, UK</option>
+                </select>
+              </div>
 
-    <input
-      type="text"
-      placeholder="Florence, Italy"
-      className="w-full py-2 pr-8 border-b-2 border-neutral-300 focus:outline-none"
-    />
-
-    <ChevronDownIcon className="absolute right-0 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-80" />
-  </div>
-
-  {/* Search Button */}
-  <button className="w-full md:w-auto bg-brand text-white px-5 py-3 hover:bg-brand-dark transition">
-    Search
-  </button>
-</div>
+              {/* Search Button */}
+              <button className="w-full md:w-auto bg-brand text-white px-5 py-2 hover:bg-brand-dark transition">
+                Search
+              </button>
+            </div>
             {popularTags && popularTags.length > 0 && (
               <p className="mt-4 text-[16px] text-neutral-80 font-epilogue pb-10">
                 Popular:{" "}
@@ -103,8 +100,6 @@ const ReusableHeroSection = ({
           </>
         )}
       </div>
-
-     
     </section>
   );
 };
