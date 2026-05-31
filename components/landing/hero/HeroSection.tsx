@@ -83,7 +83,9 @@ function LocationSelector({
         <option>London, UK</option>
         <option>New York, US</option>
       </select>
-      <ChevronIcon className="w-4 h-4 text-gray-400 pointer-events-none" />
+      <div className="w-4 h-4 text-gray-400 pointer-events-none">
+        <ChevronIcon />
+      </div>
     </div>
   );
 }
