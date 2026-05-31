@@ -225,3 +225,230 @@ export const companies: Company[] = [
     size: 501,
   },
 ];
+
+// job data can be added here as well
+export const Alljobsfilter: SidebarFilterCompany[] = [
+  {
+    title: "Type of Employment",
+    options: [{ name: "Full-time", count: 3 }, { name: "Part-time", count: 5 },
+    { name: "Remote", count: 2 }, { name: "Internship", count: 24 },{ name: "Contract", count: 3 },],
+  },
+  {
+    title: "Categories",
+    options: [
+      { name: "Design", count: 24 },
+      { name: "Sales", count: 3 },
+      { name: "Marketing", count: 3 },
+      { name: "Business", count: 3, defaultSelected: true },
+      { name: "Human Resources", count: 6 },
+      { name: "Finance", count: 4 }, {
+        name: "Engineering", count: 4
+      },{ name: "technology", count: 5, defaultSelected: true },
+    ],
+  },
+  {
+    title: "Job Level",
+    options: [
+      { name: "Entry Level", count: 57 },
+      { name: "Mid Level", count: 3 },
+      { name: "Senior Level", count: 5 },
+      { name: "Director", count: 12, defaultSelected: true },
+      { name: "Vp or Above", count: 8 },
+    ],
+  },
+  {
+    title: "Salary Range",
+    options: [
+      { name: "$700 - $1000", count: 4 },
+      { name: "$1000 - $1500", count: 6 },
+      { name: "$1500 - $2000", count: 10 },
+      { name: "$3000 or above", count: 4, defaultSelected: true },
+    ],
+  }
+];
+
+
+export const availableJobs: Company[] = [
+  {
+    id: 1,
+    src: "/Nomad.png",
+    location: "San Francisco, CA",
+    availableJobs: 9,
+    name: "Social Media Assistant",
+    description:
+      "Nomad is a software platform for starting and running internet businesses. Millions of businesses rely on Nomad's software tools.",
+    industry: [
+      {
+        name: "Business",
+        style: {
+          color: "#56CDAD",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Blockchain",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+  },
+  {
+    id: 2,
+    src: "/Dropbox.png",
+    location: "San Francisco, CA",
+    availableJobs: 9,
+    name: "Brand Designer",
+    description:
+      "Dropbox is a file hosting service that offers cloud storage, file synchronization, and collaborative services.",
+    industry: [
+      {
+        name: "Business",
+        style: {
+          color: "#56CDAD",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Blockchain",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+  },
+  {
+    id: 3,
+    src: "/Terraform.png",
+    location: "San Francisco, CA",
+    availableJobs: 9,
+    name: "Email Marketing",
+    description:
+      "Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently.",
+    industry: [
+      {
+        name: "Business",
+        style: {
+          color: "#56CDAD",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Blockchain",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+  },
+  {
+    id: 4,
+    src: "/revolut.png",
+    location: "San Francisco, CA",
+    availableJobs: 9,
+    name: "Lead Engineer",
+    description:
+      "Revolut is a financial technology company that provides a digital banking service.",
+    industry: [
+      {
+        name: "Business",
+        style: {
+          color: "#56CDAD",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Blockchain",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+  },
+  {
+    id: 5,
+    src: "/Canva.png",
+    location: "San Francisco, CA",
+    availableJobs: 9,
+    name: "Product Designer",
+    description:
+      "Nomad is a software platform for starting and running internet businesses. Millions of businesses rely on Nomad's software tools.",
+    industry: [
+      {
+        name: "Business",
+        style: {
+          color: "#56CDAD",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Blockchain",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+  },
+  {
+    id: 6,
+    src: "/ClassPass.png",
+    location: "San Francisco, CA",
+    availableJobs: 9,
+    name: "Product Designer",
+    description:
+      "ClassPass is a fitness subscription service that provides access to various workout classes and facilities.",
+    industry: [
+      {
+        name: "Business",
+        style: {
+          color: "#56CDAD",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Blockchain",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+  },
+  {
+    id: 7,
+    src: "/Pitch.png",
+    location: "San Francisco, CA",
+    availableJobs: 9,
+    name: "Customer Manager",
+    description:
+      "Nomad is a software platform for starting and running internet businesses. Millions of businesses rely on Nomad's software tools.",
+    industry: [
+      {
+        name: "Business",
+        style: {
+          color: "#56CDAD",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Blockchain",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+  },
+];

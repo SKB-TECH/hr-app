@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="7ba5d673-94d8-4b40-85b2-32b8bb4daf6e" name="Changes" comment="Implementation of the Company search" />
+=======
+    <list default="true" id="7ba5d673-94d8-4b40-85b2-32b8bb4daf6e" name="Changes" comment="Theme changes" />
+>>>>>>> feature/job_page
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,18 +55,29 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "dart.analysis.tool.window.visible": "false",
+<<<<<<< HEAD
     "git-widget-placeholder": "develop",
+=======
+    "git-widget-placeholder": "main",
+>>>>>>> feature/job_page
     "javascript.preferred.runtime.type.id": "node",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/Users/macbookair/work/infinity/hr-app/core/types",
+<<<<<<< HEAD
     "list.type.of.created.stylesheet": "CSS",
+=======
+>>>>>>> feature/job_page
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "pnpm",
+<<<<<<< HEAD
     "ts.external.directory.path": "D:\\CODING\\WORK\\hr-app\\node_modules\\typescript\\lib",
+=======
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.3.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+>>>>>>> feature/job_page
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -240,6 +255,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+<<<<<<< HEAD
     <MESSAGE value="Changes" />
     <MESSAGE value="changes" />
     <MESSAGE value="Implementing the Section component with some dummy data" />
@@ -248,5 +264,9 @@
     <MESSAGE value="Landing page... The hero section!" />
     <MESSAGE value="Implementation of the Company search" />
     <option name="LAST_COMMIT_MESSAGE" value="Implementation of the Company search" />
+=======
+    <MESSAGE value="Theme changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Theme changes" />
+>>>>>>> feature/job_page
   </component>
 </project>
