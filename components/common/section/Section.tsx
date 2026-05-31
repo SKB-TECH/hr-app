@@ -9,7 +9,7 @@ export default function SectionComponent({title = "", highlight = "", showAllLin
                 <div className="flex flex-col md:flex-row justify-between items-end">
                     <h1 className="font-bold text-3xl flex flex-row gap-2">
                         <span className="text-black dark:text-white">{title}</span>
-                        <span className="text-brand">{highlight}</span>
+                        <span className="text-primary">{highlight}</span>
                     </h1>
                     {isExpanded && (
                         <Link href={showAllLink} className="flex flex-row text-brand text-xs font-bold items-center gap-1">

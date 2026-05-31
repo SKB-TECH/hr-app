@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ba5d673-94d8-4b40-85b2-32b8bb4daf6e" name="Changes" comment="Customize the navigation bar!" />
+    <list default="true" id="7ba5d673-94d8-4b40-85b2-32b8bb4daf6e" name="Changes" comment="Customize the navigation bar!">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/(pages)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/(pages)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/common/section/Section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/common/section/Section.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/landing/hero/HeroSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/landing/hero/HeroSection.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780233010390</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Customize the navigation bar!">
+      <option name="closed" value="true" />
+      <created>1780233046835</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1780233046835</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

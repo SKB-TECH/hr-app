@@ -3,23 +3,31 @@
 import { useState } from "react";
 import Image from "next/image";
 import { SearchIcon, PinIcon, ChevronIcon } from "@/components/landing/icons";
+import Link from "next/link";
 
 function HeroTitle() {
   return (
     <div className="max-w-2xl">
-      <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900">
+      <h1 className="text-5xl md:text-6xl font-semibold font-heading leading-tight text-gray-900">
         Discover<br />more than
       </h1>
       <div className="relative inline-block mt-2">
-        <h1 className="text-5xl md:text-6xl font-extrabold text-blue-500 leading-tight">5000+ Jobs</h1>
+        <h1 className="text-5xl md:text-6xl font-bold text-primary leading-tight">5000+ Jobs</h1>
         <svg viewBox="0 0 400 20" className="absolute -bottom-3 left-0 w-full" preserveAspectRatio="none">
           <path
             d="M4 12 Q100 2 200 12 Q300 22 396 10"
-            stroke="#3B82F6"
+            stroke="#26A4FF"
             strokeWidth="5"
             fill="none"
             strokeLinecap="round"
           />
+            <path
+                d="M4 12 Q100 2 200 12 Q300 22 396 10"
+                stroke="#26A4FF"
+                strokeWidth="4"
+                fill="none"
+                strokeLinecap="round"
+            />
         </svg>
       </div>
     </div>
@@ -35,7 +43,7 @@ function SearchInput({ value, onChange, placeholder = "Job title or keyword" }: 
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="flex-1 text-sm text-gray-700 placeholder-gray-500 outline-none bg-transparent"
+        className="flex-1 text-sm border-b-2 py-3 text-gray-700 placeholder-gray-500 outline-none bg-transparent"
       />
     </div>
   );
@@ -48,7 +56,7 @@ function LocationSelector({ value, onChange }: { value: string; onChange: (event
       <select
         value={value}
         onChange={onChange}
-        className="text-sm text-gray-700 outline-none bg-transparent pr-2 appearance-none cursor-pointer"
+        className="text-sm text-gray-700 border-b-2 py-3 outline-none bg-transparent pr-2 appearance-none cursor-pointer"
       >
         <option>Florence, Italy</option>
         <option>Rome, Italy</option>
@@ -79,9 +87,9 @@ function PopularTags({ tags = ["UI Designer", "UX Researcher", "Android", "Admin
       <span className="font-semibold text-gray-700">Popular :</span>{" "}
       {tags.map((t, i) => (
         <span key={t}>
-          <a href="#" className="text-gray-600 hover:text-indigo-600 hover:underline transition-colors">
+          <Link href="#" className="text-gray-600 hover:text-indigo-600 hover:underline transition-colors">
             {t}
-          </a>
+          </Link>
           {i < tags.length - 1 && ", "}
         </span>
       ))}
@@ -113,7 +121,7 @@ export default function HeroSection() {
           </p>
 
           {/* Search Bar */}
-          <div className="mt-10 flex flex-col sm:flex-row items-stretch   overflow-hidden bg-white max-w-2xl h-auto">
+          <div className="p-4 mt-10 flex flex-col sm:flex-row items-stretch   overflow-hidden bg-white max-w-2xl h-auto">
             <SearchInput
               value={jobQuery}
               onChange={(e) => setJobQuery(e.target.value)}
