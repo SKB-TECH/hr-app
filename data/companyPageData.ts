@@ -1,29 +1,36 @@
 // use this file for data that is used across the app, such as arrays of objects, constants, etc.
-import { Company, FilterOption } from "../types/types";
+import { Company, SidebarFilterCompany } from "../types/types";
 
 // mock data for search company sidebar filters
-export const industries: FilterOption[] = [
-  { name: "Advertising", count: 43 },
-  { name: "Business Service", count: 4 },
-  { name: "Blockchain", count: 5 },
-  { name: "Cloud", count: 15 },
-  { name: "Consumer Tech", count: 5 },
-  { name: "Education", count: 34 },
-  { name: "Fintech", count: 45 },
-  { name: "Gaming", count: 33 },
-  { name: "Food & Beverage", count: 5 },
-  { name: "Healthcare", count: 3 },
-  { name: "Hosting", count: 5 },
-  { name: "Media", count: 4 },
-];
-// mock data for search company sidebar filters
-export const companySizes: FilterOption[] = [
-  { name: "1-50", count: 25 },
-  { name: "51-150", count: 57 },
-  { name: "151-250", count: 45 },
-  { name: "251-500", count: 4 },
-  { name: "501-1000", count: 43 },
-  { name: "1000+ above", count: 23 },
+export const mockSidebarCompanyFilters: SidebarFilterCompany[] = [
+  {
+    title: "Industry",
+    options: [
+      { name: "Advertising", count: 43 },
+      { name: "Business Service", count: 4 },
+      { name: "Blockchain", count: 5 },
+      { name: "Cloud", count: 15 },
+      { name: "Consumer Tech", count: 5 },
+      { name: "Education", count: 34 },
+      { name: "Fintech", count: 45 },
+      { name: "Gaming", count: 33 },
+      { name: "Food & Beverage", count: 5, defaultSelected: true },
+      { name: "Healthcare", count: 3, defaultSelected: true },
+      { name: "Hosting", count: 5 },
+      { name: "Media", count: 4 },
+    ],
+  },
+  {
+    title: "Company Size",
+    options: [
+      { name: "1-50", count: 25 },
+      { name: "51-150", count: 57 },
+      { name: "151-250", count: 45 },
+      { name: "251-500", count: 4, defaultSelected: true },
+      { name: "501-1000", count: 43 },
+      { name: "1000+ above", count: 23 },
+    ],
+  },
 ];
 
 export const sortOptions = ["Most relevant", "Most recent"];
@@ -33,6 +40,7 @@ export const companies: Company[] = [
   {
     id: 1,
     src: "/stripe.png",
+    location: "San Francisco, CA",
     availableJobs: 12,
     name: "Stripe",
     description:
@@ -58,6 +66,7 @@ export const companies: Company[] = [
   {
     id: 2,
     src: "/square.png",
+    location: "San Francisco, CA",
     availableJobs: 8,
     name: "Square",
     description:
@@ -83,6 +92,7 @@ export const companies: Company[] = [
   {
     id: 3,
     src: "/robinhood.png",
+    location: "Menlo Park, CA",
     availableJobs: 5,
     name: "Robinhood",
     description:
@@ -101,6 +111,7 @@ export const companies: Company[] = [
   {
     id: 4,
     src: "/revolut.png",
+    location: "London, UK",
     availableJobs: 14,
     name: "Revolut",
     description:
@@ -119,6 +130,7 @@ export const companies: Company[] = [
   {
     id: 5,
     src: "/truebill.png",
+    location: "Washington, DC",
     availableJobs: 3,
     name: "Truebill",
     description:
@@ -137,6 +149,7 @@ export const companies: Company[] = [
   {
     id: 6,
     src: "/coinbase.png",
+    location: "San Francisco, CA",
     availableJobs: 21,
     name: "Coinbase",
     description:
@@ -162,6 +175,7 @@ export const companies: Company[] = [
   {
     id: 7,
     src: "/kraken.png",
+    location: "San Francisco, CA",
     availableJobs: 9,
     name: "Kraken",
     description:
@@ -187,6 +201,7 @@ export const companies: Company[] = [
   {
     id: 8,
     src: "/divvy.png",
+    location: "Lehi, UT",
     availableJobs: 4,
     name: "Divvy",
     description:
