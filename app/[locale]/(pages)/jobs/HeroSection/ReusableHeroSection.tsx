@@ -22,7 +22,7 @@ const ReusableHeroSection = ({
   popularTags,
 }: HeroSectionProps) => {
   return (
-    <section className="relative h-96 w-full">
+    <section className="relative h-auto w-full">
       {/* Background Image */}
       <Image
         fill
@@ -91,7 +91,7 @@ const ReusableHeroSection = ({
   </button>
 </div>
             {popularTags && popularTags.length > 0 && (
-              <p className="mt-4 text-[16px] text-neutral-80 font-epilogue">
+              <p className="mt-4 text-[16px] text-neutral-80 font-epilogue pb-10">
                 Popular:{" "}
                 {popularTags.map((tag, index) => (
                   <span key={index} className="inline-block mr-2">

@@ -16,14 +16,14 @@ export default function Pagination({
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center">
+    <div className="flex flex-col sm:flex-row items-center justify-center ">
       {/* Previous */}
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
         className="px-4 py-2"
       >
-        <ChevronLeft/>
+        <ChevronLeft />
       </button>
 
       {/* Page Numbers */}
@@ -39,11 +39,10 @@ export default function Pagination({
             }`}
           >
             {page}
-            
           </button>
         ))}
       </div>
-      <p>...           33</p>
+      <p>... 33</p>
 
       {/* Next */}
       <button
