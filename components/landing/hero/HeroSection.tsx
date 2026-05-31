@@ -68,7 +68,9 @@ function LocationSelector({
 }) {
   return (
     <div className="flex items-center gap-2 px-5 py-3 bg-white border-l border-gray-100 flex-shrink-0">
-      <PinIcon className="w-5 h-5 text-gray-400" />
+      <div className="w-5 h-5 text-gray-400">
+        <PinIcon />
+      </div>
       <select
         value={value}
         onChange={onChange}
