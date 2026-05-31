@@ -1,12 +1,11 @@
-
-import HeroSection from "@/components/landing/hero/HeroSection";
 import SectionComponent from "@/components/common/section/Section";
 import Link from "next/link";
+import HeroSectionComponent from "@/components/common/HeroSection/HeroSectionComponent";
 
 const HomePage = () => {
     return (
         <>
-            <HeroSection />
+            <HeroSectionComponent/>
             {/*  Companies we helped grow  */}
             <div className="w-full bg-white py-10">
                 <section className="max-w-6xl mx-auto flex flex-col gap-5">

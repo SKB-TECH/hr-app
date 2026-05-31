@@ -51,7 +51,7 @@ function SearchInput({ value, onChange, placeholder = "Job title or keyword" }: 
 
 function LocationSelector({ value, onChange }: { value: string; onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void; }) {
   return (
-    <div className="flex items-center gap-2 px-5 py-3 bg-white border-l border-gray-100 flex-shrink-0">
+    <div className="flex items-center gap-2 px-5 py-3 bg-white border-l border-gray-100">
       <PinIcon className="w-5 h-5 text-gray-400" />
       <select
         value={value}
@@ -74,7 +74,7 @@ function SearchButton({ onClick, children = "Search my job" }: { onClick: () => 
   return (
     <button
       onClick={onClick}
-      className="flex-shrink-0 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-semibold text-sm px-8 py-3  transition-colors whitespace-nowrap"
+      className=" bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-semibold text-sm px-8 py-3  transition-colors whitespace-nowrap"
     >
       {children}
     </button>
@@ -106,7 +106,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative bg-gradient-to-b from-[#F5F6FB] to-[#EDEEF7] overflow-hidden min-h-screen lg:min-h-[650px] flex items-center py-12 lg:py-0">
+    <section className="bg-pattern relative from-[#F5F6FB] to-[#EDEEF7] overflow-hidden min-h-screen lg:min-h-[650px] flex items-center py-12 lg:py-0">
       {/* Gradient Blobs */}
       <div className="absolute -right-40 -top-40 w-96 h-96 bg-gradient-to-br from-indigo-200 to-blue-100 rounded-full opacity-30 blur-3xl pointer-events-none hidden lg:block" />
       <div className="absolute -right-20 -bottom-32 w-80 h-80 bg-gradient-to-tl from-blue-100 to-indigo-100 rounded-full opacity-25 blur-3xl pointer-events-none hidden lg:block" />
@@ -121,7 +121,7 @@ export default function HeroSection() {
           </p>
 
           {/* Search Bar */}
-          <div className="p-4 mt-10 flex flex-col sm:flex-row items-stretch   overflow-hidden bg-white max-w-2xl h-auto">
+          <div className="p-4 mt-10 flex flex-col sm:flex-row items-stretch overflow-hidden shadow-md bg-white max-w-3xl h-auto">
             <SearchInput
               value={jobQuery}
               onChange={(e) => setJobQuery(e.target.value)}
@@ -159,7 +159,7 @@ export default function HeroSection() {
           <div className="absolute inset-0 " />
 
           {/* Image Container */}
-          <div className="relative z-20 flex flex-col items-center justify-center h-full">
+          <div className=" relative z-20 flex flex-col items-center justify-center h-full">
             <div className=" h-full  flex items-center justify-center overflow-hidden ">
               <Image
                 src="/images/landingImg.png"
