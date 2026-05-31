@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 export default function LayoutPages({ children }: { children: ReactNode }) {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       {children}
     </>
   );

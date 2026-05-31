@@ -1,7 +1,6 @@
 import React from "react";
 import { TeamCard } from "./TeamCard";
 import { ReusableTittle } from "../ui/ReusableTittle";
-import ContactSection from "../contact/ContactSection";
 
 const defaultUsers = [
   {
@@ -74,10 +73,6 @@ export const TeamSection = ({ users = defaultUsers }: TeamSectionProps) => {
           </div>
         ))}
       </div>
-      <div>
-        <ContactSection />
-      </div>
     </section>
   );
 };
-

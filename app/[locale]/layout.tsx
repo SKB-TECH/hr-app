@@ -32,7 +32,7 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <AppProvider>
-            {/* <Navbar /> */}
+            <Navbar />
             {children}
             <Footer />
           </AppProvider>

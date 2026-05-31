@@ -8,11 +8,19 @@ function HeroTitle() {
   return (
     <div className="max-w-2xl">
       <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900">
-        Discover<br />more than
+        Discover
+        <br />
+        more than
       </h1>
       <div className="relative inline-block mt-2">
-        <h1 className="text-5xl md:text-6xl font-extrabold text-blue-500 leading-tight">5000+ Jobs</h1>
-        <svg viewBox="0 0 400 20" className="absolute -bottom-3 left-0 w-full" preserveAspectRatio="none">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-blue-500 leading-tight">
+          5000+ Jobs
+        </h1>
+        <svg
+          viewBox="0 0 400 20"
+          className="absolute -bottom-3 left-0 w-full"
+          preserveAspectRatio="none"
+        >
           <path
             d="M4 12 Q100 2 200 12 Q300 22 396 10"
             stroke="#3B82F6"
@@ -26,10 +34,20 @@ function HeroTitle() {
   );
 }
 
-function SearchInput({ value, onChange, placeholder = "Job title or keyword" }: { value: string; onChange: (event: React.ChangeEvent<HTMLInputElement>) => void; placeholder?: string; }) {
+function SearchInput({
+  value,
+  onChange,
+  placeholder = "Job title or keyword",
+}: {
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+}) {
   return (
     <div className="flex items-center gap-3 px-5 py-3 bg-white flex-1 min-w-0">
-      <SearchIcon className="w-5 h-5 text-gray-400" />
+      <div className="w-5 h-5 text-gray-400">
+        <SearchIcon />
+      </div>
       <input
         type="text"
         value={value}
@@ -41,7 +59,13 @@ function SearchInput({ value, onChange, placeholder = "Job title or keyword" }: 
   );
 }
 
-function LocationSelector({ value, onChange }: { value: string; onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void; }) {
+function LocationSelector({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+}) {
   return (
     <div className="flex items-center gap-2 px-5 py-3 bg-white border-l border-gray-100 flex-shrink-0">
       <PinIcon className="w-5 h-5 text-gray-400" />
@@ -62,7 +86,13 @@ function LocationSelector({ value, onChange }: { value: string; onChange: (event
   );
 }
 
-function SearchButton({ onClick, children = "Search my job" }: { onClick: () => void; children?: React.ReactNode; }) {
+function SearchButton({
+  onClick,
+  children = "Search my job",
+}: {
+  onClick: () => void;
+  children?: React.ReactNode;
+}) {
   return (
     <button
       onClick={onClick}
@@ -73,13 +103,20 @@ function SearchButton({ onClick, children = "Search my job" }: { onClick: () => 
   );
 }
 
-function PopularTags({ tags = ["UI Designer", "UX Researcher", "Android", "Admin"] }: { tags?: string[] }) {
+function PopularTags({
+  tags = ["UI Designer", "UX Researcher", "Android", "Admin"],
+}: {
+  tags?: string[];
+}) {
   return (
     <p className="text-sm text-gray-600 mt-4">
       <span className="font-semibold text-gray-700">Popular :</span>{" "}
       {tags.map((t, i) => (
         <span key={t}>
-          <a href="#" className="text-gray-600 hover:text-indigo-600 hover:underline transition-colors">
+          <a
+            href="#"
+            className="text-gray-600 hover:text-indigo-600 hover:underline transition-colors"
+          >
             {t}
           </a>
           {i < tags.length - 1 && ", "}
@@ -107,9 +144,10 @@ export default function HeroSection() {
         {/* Left Content */}
         <div className="flex-1 w-full">
           <HeroTitle />
-          
+
           <p className="mt-6 text-base text-gray-600 leading-relaxed max-w-md">
-            Great platform for the job seeker that searching for new career heights and passionate about startups.
+            Great platform for the job seeker that searching for new career
+            heights and passionate about startups.
           </p>
 
           {/* Search Bar */}
@@ -118,12 +156,17 @@ export default function HeroSection() {
               value={jobQuery}
               onChange={(e) => setJobQuery(e.target.value)}
             />
-            <LocationSelector value={location} onChange={(e) => setLocation(e.target.value)} />
+            <LocationSelector
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
             <SearchButton onClick={handleSearch} />
           </div>
 
           {/* Popular Tags */}
-          <PopularTags tags={["UI Designer", "UX Researcher", "Android", "Admin"]} />
+          <PopularTags
+            tags={["UI Designer", "UX Researcher", "Android", "Admin"]}
+          />
         </div>
 
         {/* Right Side - Person Image with Decorative Elements */}
