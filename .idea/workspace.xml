@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ba5d673-94d8-4b40-85b2-32b8bb4daf6e" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="7ba5d673-94d8-4b40-85b2-32b8bb4daf6e" name="Changes" comment="Landing page... The hero section!">
+      <change beforePath="$PROJECT_DIR$/app/[locale]/(pages)/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/(pages)/companies/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/(pages)/jobs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/(pages)/jobs/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="CSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -26,6 +29,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -40,28 +46,29 @@
     <option name="showMembers" value="true" />
     <option name="sortKey" value="BY_TIME_ASCENDING" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
-    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/macbookair/work/infinity/hr-app/core/types&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\CODING\\WORK\\hr-app\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "feature/full-landing-page",
+    "javascript.preferred.runtime.type.id": "node",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "last_opened_file_path": "/Users/macbookair/work/infinity/hr-app/core/types",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "ts.external.directory.path": "D:\\CODING\\WORK\\hr-app\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -79,6 +86,7 @@
       <recent name="$PROJECT_DIR$/core/data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CODING\WORK\hr-app\app\[locale]" />
       <recent name="D:\CODING\WORK\hr-app" />
       <recent name="$PROJECT_DIR$/app/[locale]" />
       <recent name="$PROJECT_DIR$" />
@@ -124,7 +132,95 @@
       <option name="project" value="LOCAL" />
       <updated>1780214839996</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="changes">
+      <option name="closed" value="true" />
+      <created>1780218421307</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1780218421307</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Implementing the Section component with some dummy data">
+      <option name="closed" value="true" />
+      <created>1780222278766</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1780222278766</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Implementing the Section component with some dummy data">
+      <option name="closed" value="true" />
+      <created>1780225188552</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1780225188552</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Implementation of the landing with the layout for all page in /(pages)">
+      <option name="closed" value="true" />
+      <created>1780227526349</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1780227526349</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Implementation of the landing with the layout for all page in /(pages)">
+      <option name="closed" value="true" />
+      <created>1780231950888</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1780231950888</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Customize the navigation bar!">
+      <option name="closed" value="true" />
+      <created>1780233010390</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1780233010390</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Customize the navigation bar!">
+      <option name="closed" value="true" />
+      <created>1780233046835</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1780233046835</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Landing page... The hero section!">
+      <option name="closed" value="true" />
+      <created>1780253087065</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1780253087065</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Landing page... The hero section!">
+      <option name="closed" value="true" />
+      <created>1780255195521</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1780255195521</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Landing page... The hero section!">
+      <option name="closed" value="true" />
+      <created>1780255637894</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1780255637894</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Landing page... The hero section!">
+      <option name="closed" value="true" />
+      <created>1780255782492</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1780255782492</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +228,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes" />
+    <MESSAGE value="changes" />
+    <MESSAGE value="Implementing the Section component with some dummy data" />
+    <MESSAGE value="Implementation of the landing with the layout for all page in /(pages)" />
+    <MESSAGE value="Customize the navigation bar!" />
+    <MESSAGE value="Landing page... The hero section!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Landing page... The hero section!" />
   </component>
 </project>
