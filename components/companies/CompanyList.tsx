@@ -4,11 +4,13 @@ import { SearchHeader } from "./SearchHeader";
 import { CompanyCard } from "./CompanyCard";
 import { useState } from "react";
 
+
 function CompanyList() {
   const [viewGrid, setViewGrid] = useState(true);
 
   return (
     <main className="flex-1">
+     
       <SearchHeader
         totalResults={companies.length}
         sortOptions={sortOptions}
