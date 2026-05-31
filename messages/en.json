@@ -8,8 +8,23 @@
     "contactNumber": "Contact Number",
     "message": "Message",
     "submit": "Submit",
+    "submitting": "Submitting...",
     "title": "Contact",
     "heading": "Looking For A New Opportunity?",
     "description": "Join our growing team and take your career to the next level. We're committed to finding the right fit for your skills and aspirations. Reach out to us today and let's start a conversation about your future with our organization."
+  },
+  "mission": {
+    "title": "mission",
+    "heading": "We’ve managed over 2.5 million candidates",
+    "description": "Our mission is to connect talented professionals with companies that value their skills and potential. We believe in building meaningful career relationships that benefit both employers and candidates. With years of experience in recruitment, we pride ourselves on finding the perfect match for every role."
+  },
+  "jobs": {
+    "title": "Jobs",
+    "errorLoading": "Failed to load jobs. Please try again later.",
+    "noJobs": "No jobs available at the moment.",
+    "tryAgain": "Try Again",
+    "showing": "Showing",
+    "of": "of",
+    "entries": "entries"
   }
 }
