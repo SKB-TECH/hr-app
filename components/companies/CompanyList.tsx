@@ -1,21 +1,20 @@
 "use client";
 import { companies, sortOptions } from "@/data/companyPageData";
-import { SearchHeader } from "./SearchHeader";
+import { SharedListingHeader } from "./SharedListingHeader";
 import { CompanyCard } from "./CompanyCard";
 import { useState } from "react";
-
 
 function CompanyList() {
   const [viewGrid, setViewGrid] = useState(true);
 
   return (
     <main className="flex-1">
-     
-      <SearchHeader
+      <SharedListingHeader
         totalResults={companies.length}
         sortOptions={sortOptions}
         viewGrid={viewGrid}
         setViewGrid={setViewGrid}
+        header="All Companies"
       />
 
       <div
