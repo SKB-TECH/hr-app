@@ -2,15 +2,16 @@ import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {navigations} from "@/data/data";
 import {Briefcase} from "lucide-react";
+import {LogoIcon} from "@/components/landing/icons";
 
 export default function NavbarComponentLandingPage() {
   return (
     <nav className='w-full sticky sticky-0 top-0 z-50 backdrop-blur-sm'>
       <div className='max-w-6xl mx-auto px-4 py-4 flex items-center justify-between'>
         <div className="flex flex-col md:flex-row gap-x-8 items-center">
-          <Link className='text-xl font-bold flex flex-row gap-3 items-center' href='/'>
-            <span className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white">
-              <Briefcase/>
+          <Link className='text-xl font-bold flex flex-row gap-3 items-center text-brand' href='/'>
+            <span className="w-10 h-10 bg-brand rounded-full flex items-center justify-center text-white">
+              <LogoIcon />
             </span>
             JobHuntly
           </Link>
@@ -19,7 +20,7 @@ export default function NavbarComponentLandingPage() {
             {navigations.map((item, index) => <Link
                 key={index}
                 href={item.path}
-                className="text-sm font-normal">
+                className="text-sm font-medium hover:text-brand transition-colors duration-200">
               {item.name}
             </Link>)}
           </div>

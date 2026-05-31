@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ba5d673-94d8-4b40-85b2-32b8bb4daf6e" name="Changes" comment="Implementing the Section component with some dummy data">
-      <change afterPath="$PROJECT_DIR$/app/[locale]/(pages)/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilities/SectionComponentProps.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/(pages)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/(pages)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/layout.tsx" afterDir="false" />
+    <list default="true" id="7ba5d673-94d8-4b40-85b2-32b8bb4daf6e" name="Changes" comment="Implementation of the landing with the layout for all page in /(pages)">
       <change beforePath="$PROJECT_DIR$/app/[locale]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/common/navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/common/navbar/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/common/section/Section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/common/section/Section.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780225188552</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Implementation of the landing with the layout for all page in /(pages)">
+      <option name="closed" value="true" />
+      <created>1780227526349</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1780227526349</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +168,7 @@
     <MESSAGE value="Changes" />
     <MESSAGE value="changes" />
     <MESSAGE value="Implementing the Section component with some dummy data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementing the Section component with some dummy data" />
+    <MESSAGE value="Implementation of the landing with the layout for all page in /(pages)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementation of the landing with the layout for all page in /(pages)" />
   </component>
 </project>
