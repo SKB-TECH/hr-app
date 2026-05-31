@@ -1,5 +1,8 @@
-// use this file for data that is used across the app, such as arrays of objects, constants, etc.
-import { NavigationTypes } from "@/types/navigationTypes";
+interface NavigationTypes {
+  id: string;
+  name: string;
+  path: string;
+}
 
 export const navigations: NavigationTypes[] = [
   { id: "1", name: "Find Jobs", path: "/jobs" },
