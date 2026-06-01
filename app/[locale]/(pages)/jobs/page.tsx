@@ -6,7 +6,7 @@ import PaginationWrapper from "./ReusablePagination/PaginationWrapper";
 
 export default function JobsPage() {
   return (
-    <div>
+    <div className="">
       <ReusableHeroSection
         title="Find your  "
         highlight=" dream job"

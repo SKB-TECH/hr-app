@@ -22,7 +22,7 @@ const ReusableHeroSection = ({
   popularTags,
 }: HeroSectionProps) => {
   return (
-    <section className="relative w-screen">
+    <section className="relative w-full overflow-hidden">
       {/* Background Image */}
       <Image
         fill
@@ -31,9 +31,9 @@ const ReusableHeroSection = ({
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-0">
         <div className="text-center pt-15">
-          <h1 className="text-4xl md:text-5xl font-clash font-semibold text-neutral-100">
+          <h1 className="text-4xl md:text-5xl font-clash font-bold text-neutral-100">
             {title}{" "}
             <span className="relative inline-block text-accent-light-blue">
               {highlight}
@@ -57,7 +57,7 @@ const ReusableHeroSection = ({
         {searchEnabled && (
           <>
             {/* Search bar */}
-            <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4 md:gap-5 px-4 md:px-5 py-4 md:py-0 w-full max-w-[1192px] min-h-[104px] bg-white shadow-md mt-10 mx-auto">
+            <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4 md:gap-5 px-4 md:px-5 py-4 md:py-0 w-full min-h-[104px] bg-white shadow-md mt-10 mx-auto">
               {/* Search Input */}
               <div className="flex items-center w-full md:w-1/2 md:ml-3">
                 <MagnifyingGlassIcon className="h-5 w-5 text-neutral-100 mr-3 shrink-0" />
@@ -75,7 +75,7 @@ const ReusableHeroSection = ({
               {/* Location Input */}
               <div className=" flex items-center w-full md:w-1/2">
                 <MapPinIcon className="h-5 w-5 text-neutral-100 mr-3 shrink-0" />
-                <select className="w-fullpy-2 pr-8 border-b-2 border-brand-light-neutral focus:outline-none">
+                <select className="w-full py-2 pr-8 border-b-2 border-brand-light-neutral focus:outline-none">
                   <option>Florence, Italy</option>
                   <option>New York, USA</option>
                   <option>London, UK</option>

@@ -8,9 +8,9 @@ function AllJobs() {
   return (
     <section className="min-h-screen relative">
       <SharedDisplayMobileFilter DataToFilter={Alljobsfilter} />
-      <div className="px-4 py-16 pt-4 max-w-6xl mx-auto">
+      <div className="px-4 py-16 pt-4 max-w-6xl mx-auto m-10">
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="hidden md:block">
+          <div className="hidden md:block space-y-20 mt-5">
             <SidebarFilters sidebarFilterData={Alljobsfilter} />
           </div>
 

@@ -4,6 +4,7 @@ import { SharedListingHeader } from "@/components/companies/SharedListingHeader"
 import { availableJobs, sortOptions } from "@/data/companyPageData";
 
 import { useState } from "react";
+import { JobsCard } from "./JobsCard";
 
 function JobsList() {
   const [viewGrid, setViewGrid] = useState(false);
@@ -15,7 +16,7 @@ function JobsList() {
         sortOptions={sortOptions}
         viewGrid={viewGrid}
         setViewGrid={setViewGrid}
-        header="All Companies"
+        header="All Jobs"
       />
 
       <div
@@ -26,7 +27,7 @@ function JobsList() {
         }
       >
         {availableJobs.map((company) => (
-          <CompanyCard key={company.id} company={company} />
+          <JobsCard key={company.id} company={company} />
         ))}
       </div>
     </main>
