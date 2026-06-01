@@ -16,6 +16,7 @@ export default function JobDetailsPage({
   params: { jobId: string };
 }>) {
   const { jobId } = params;
+  console.log("Job ID:", jobId);
   return (
     <main className="w-full max-w-6xl mx-auto px-4 py-10">
       <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-14 ">
