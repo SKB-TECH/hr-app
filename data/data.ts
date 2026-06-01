@@ -8,3 +8,5 @@ export const navigations: (NavigationTypes)[] = [
     {id: "2", name: "Browser Companies", path: "/companies"},
 ]
 
+
+
