@@ -326,7 +326,7 @@ export const availableJobs: Company[] = [
     src: "/Terraform.png",
     location: "San Francisco, CA",
     availableJobs: 9,
-    name: "Email Marketing",
+    name: "Interactive Developer",
     description:
       "Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently.",
     industry: [
@@ -352,7 +352,7 @@ export const availableJobs: Company[] = [
     src: "/revolut.png",
     location: "San Francisco, CA",
     availableJobs: 9,
-    name: "Lead Engineer",
+    name: "Email Marketing",
     description:
       "Revolut is a financial technology company that provides a digital banking service.",
     industry: [
@@ -378,7 +378,7 @@ export const availableJobs: Company[] = [
     src: "/Canva.png",
     location: "San Francisco, CA",
     availableJobs: 9,
-    name: "Product Designer",
+    name: "Lead Engineer",
     description:
       "Nomad is a software platform for starting and running internet businesses. Millions of businesses rely on Nomad's software tools.",
     industry: [
