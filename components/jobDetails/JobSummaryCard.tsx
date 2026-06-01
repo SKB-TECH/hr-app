@@ -31,7 +31,7 @@ export default function JobSummaryCard({
       <h1 className=" text-[24px] md:text-[32px] text-neutral-100 font-bold font-clash">
         About this role
       </h1>
-      <div className="max-sm:w-full max-md:max-w-sm w-full mt-6 h-18.5 px-4 bg-[#F8F8FD] flex items-center justify-center">
+      <div className=" w-full mt-6 h-18.5 px-4 bg-[#F8F8FD] flex items-center justify-center">
         <ProgressWithLabel />
       </div>
       <div className="w-full mt-4 space-y-4 p-2">
