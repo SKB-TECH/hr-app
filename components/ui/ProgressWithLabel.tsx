@@ -3,7 +3,7 @@ import { Progress } from "@/components/ui/progress";
 
 export function ProgressWithLabel() {
   return (
-    <Field className="w-full max-w-sm">
+    <Field className="w-full ">
       <FieldLabel htmlFor="progress-upload">
         <span>5 Applied</span>
         <span className="font-normal text-neutral-80">of 10 capacity</span>
