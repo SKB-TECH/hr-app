@@ -22,12 +22,12 @@ function JobsList() {
       <div
         className={
           viewGrid === true
-            ? "grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300 ease-in-out"
+            ? "grid grid-cols-1 md:grid-cols-2 gap-6 items-start transition-all duration-300 ease-in-out"
             : "flex flex-col gap-6 transition-all duration-300 ease-in-out"
         }
       >
         {availableJobs.map((company) => (
-          <JobsCard key={company.id} company={company} />
+          <JobsCard key={company.id} company={company} viewGrid={viewGrid} />
         ))}
       </div>
     </main>

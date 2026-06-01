@@ -3,10 +3,17 @@ import { Company } from "@/types/types";
 import SharedCard from "@/components/common/navbar/SharedCard";
 
 
-export function JobsCard({ company }: { company: Company }) {
+export function JobsCard({ company, viewGrid }: { company: Company; viewGrid: boolean }) {
+    
   return (
     <SharedCard>
-      <div className="flex flex-col justify-between items-start md:flex-row gap-4 md:gap-5">
+      <div
+        className={
+          viewGrid
+            ? "flex flex-col gap-6"
+            : "flex flex-col justify-between items-start md:flex-row gap-4 md:gap-5"
+        }
+      >
         <div className="flex flex-col md:flex-row gap-6">
           <Image
             src={company.src}

@@ -16,7 +16,7 @@ export default function Pagination({
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center mb-16">
+    <div className="flex flex-row sm:flex-row items-center justify-center mb-16">
       {/* Previous */}
       <button
         onClick={() => onPageChange(currentPage - 1)}
@@ -27,7 +27,7 @@ export default function Pagination({
       </button>
 
       {/* Page Numbers */}
-      <div className="flex flex-wrap justify-center gap-1">
+      <div className=" justify-center gap-1">
         {pages.map((page) => (
           <button
             key={page}
