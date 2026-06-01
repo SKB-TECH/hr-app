@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const LogoIcon = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
     <circle cx="16" cy="16" r="16" fill="#4F46E5" />
@@ -60,3 +62,40 @@ export const TwitterIcon = () => (
     <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
   </svg>
 );
+
+
+export const VodafoneLogo = () => (
+  <div className="flex items-center gap-2">
+    <Image src="/vodafone.png" alt="Vodafone" width={80} height={80} />
+  </div>
+);
+
+export const IntelLogo = () => (
+  <div >
+    <Image src="/intel.png" alt="Intel" width={80} height={80} />
+  </div>
+);
+
+export const TeslaLogo = () => (
+  <div
+  >
+    <Image src="/tesla.png" alt="Tesla" width={80} height={80} />
+  </div>
+);
+
+
+
+// AMD with the custom arrow mark
+export const AmdLogoSvg = () => (
+  <div>
+    <Image src="/amd.png" alt="AMD" width={80} height={80} />
+  </div>
+);
+
+export const TalkitLogo = () => (
+<div>
+    <Image src="/talkit.png" alt="TALKIT" width={80} height={80} />
+</div>
+);
+
+

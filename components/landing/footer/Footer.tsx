@@ -9,13 +9,14 @@ import {
   TwitterIcon,
   LogoIcon,
 } from "@/components/landing/icons";
+import Image from "next/image";
 
 function FooterBrand() {
   return (
     <div className="max-w-xs">
-      <div className="flex items-center gap-2 mb-4">
-        <LogoIcon />
-        <span className="text-lg font-extrabold text-white tracking-tight">JobHuntly</span>
+      <div >
+
+      <Image src="/LogoWhite.png" alt="logo-white" width={100} height={100}/>
       </div>
       <p className="text-sm text-gray-400 leading-relaxed">
         Great platform for the job seeker that passionate about startups. Find your dream job easier.
@@ -102,8 +103,8 @@ function FooterBottom() {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 px-8 pt-14 pb-8">
-      <div className="max-w-6xl mx-auto">
+    <footer className="bg-gray-900 px-6  pt-14 pb-8">
+      <div className="">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <FooterBrand />
           <FooterLinkColumn title="About" links={["Companies", "Pricing", "Terms", "Advice", "Privacy Policy"]} />

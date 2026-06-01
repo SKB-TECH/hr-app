@@ -1,21 +1,21 @@
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {navigations} from "@/data/data";
-import {LogoIcon} from "@/components/landing/icons";
+import Image from "next/image";
 
 export default function NavbarComponentLandingPage() {
   return (
     <nav className='w-full sticky sticky-0 top-0 z-50 backdrop-blur-sm'>
-      <div className='max-w-6xl mx-auto px-4 py-4 flex items-stretch justify-between bg-red'>
+      <div className=' px-6 sm:px-18 py-4 flex items-stretch justify-between bg-red'>
 
-        <div className="flex flex-col md:flex-row gap-x-8 items-stretch">
-          <Link className='text-xl font-bold flex flex-row gap-3 items-center text-brand' href='/'>
-            <span className="w-10 h-10 bg-brand rounded-full flex items-center justify-center text-white">
-              <LogoIcon />
-            </span>
-            JobHuntly
-          </Link>
+        <div className="flex items-center flex-col md:flex-row gap-x-8 items-stretch">
+        
+        <div>
 
+       <Link  href='/'><Image src="/LogoBlack.png" alt="logo-black" width={100} height={100}/> </Link>
+
+        </div>
+         
           <div className="flex items-stretch">
             <div className="flex flex-col items-center md:flex-row gap-4">
               {navigations.map((item, index) => <Link
