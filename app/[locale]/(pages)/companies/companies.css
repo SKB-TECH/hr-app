@@ -1,0 +1,432 @@
+.companies-page {
+  width: 100%;
+  max-width: 75rem;
+  margin-inline: auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.companies-section {
+  margin-bottom: 3.5rem;
+}
+
+.companies-section__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.companies-section__title {
+  font-family: var(--font-clash);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--neutral-100);
+  line-height: 1.2;
+}
+
+.companies-section__subtitle {
+  margin-top: 0.5rem;
+  max-width: 36rem;
+  font-size: 0.9375rem;
+  color: var(--neutral-80);
+  line-height: 1.5;
+}
+
+.btn-outline {
+  border: 1px solid var(--brand-light-neutral);
+  background: transparent;
+  color: var(--brand);
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-outline:hover {
+  background: var(--accent-light-brand);
+}
+
+.companies-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .companies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .companies-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.company-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--brand-light-neutral);
+  background: var(--background);
+  min-height: 100%;
+}
+
+.company-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.company-card__jobs {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--brand);
+  white-space: nowrap;
+  border-radius: 800px;
+   background: var(--accent-light-brand);
+  padding: 0.15rem 0.5rem;
+
+}
+
+.company-card__name {
+  font-family: var(--font-clash);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--neutral-100);
+}
+
+.company-card__desc {
+  margin-top: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--neutral-80);
+}
+
+.company-card__tag {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+.company-card__tag--business {
+  background: #fcf6ee;   
+ color: #efa609fe;
+}
+
+.company-card__tag--tech {
+  background: var(--accent-light-green);
+  color: var(--accent-green);
+}
+
+.company-card__tag--design {
+  background: var(--accent-light-yellow);
+  color: var(--accent-yellow);
+}
+
+.company-card__tag--education {
+  background: var(--accent-light-red);
+  color: var(--accent-red);
+}
+
+/* CTA banner */
+.companies-cta {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  padding: 2.5rem 1.5rem;
+  background: var(--brand);
+  overflow: hidden;
+  clip-path: polygon(0 8%, 6% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+@media (min-width: 768px) {
+  .companies-cta {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 3rem 2.5rem;
+    clip-path: polygon(0 12%, 8% 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.companies-cta__content {
+  position: relative;
+  z-index: 1;
+}
+
+.companies-cta__title {
+  font-family: var(--font-clash);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  color: white;
+  line-height: 1.2;
+}
+
+.companies-cta__subtitle {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  color: rgb(255 255 255 / 0.85);
+}
+
+.companies-cta__btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.875rem 1.75rem;
+  background: white;
+  color: var(--brand);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.companies-cta__btn:hover {
+  opacity: 0.92;
+}
+
+.companies-cta__visual {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .companies-cta__visual {
+    justify-content: flex-end;
+  }
+}
+
+.companies-cta__mock {
+  width: 100%;
+  max-width: 20rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 40px rgb(0 0 0 / 0.15);
+}
+
+.companies-cta__mock-header {
+  display: flex;
+  gap: 0.375rem;
+  margin-bottom: 0.75rem;
+}
+
+.companies-cta__mock-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--brand-light-neutral);
+}
+
+.companies-cta__mock-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.companies-cta__mock-card {
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--brand-light-neutral);
+  font-size: 0.6875rem;
+  color: var(--neutral-80);
+}
+
+.companies-cta__mock-card--primary {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: white;
+  font-weight: 600;
+  text-align: center;
+}
+
+.companies-cta__mock-label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-weight: 600;
+  color: var(--neutral-100);
+}
+
+.companies-cta__mock-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.25rem;
+  height: 2rem;
+}
+
+.companies-cta__mock-chart span {
+  flex: 1;
+  background: var(--accent-light-brand);
+  border-radius: 2px 2px 0 0;
+}
+
+.companies-cta__mock-chart span:nth-child(1) { height: 40%; }
+.companies-cta__mock-chart span:nth-child(2) { height: 70%; }
+.companies-cta__mock-chart span:nth-child(3) { height: 55%; }
+.companies-cta__mock-chart span:nth-child(4) { height: 90%; }
+
+.companies-cta__mock-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.companies-cta__mock-list li {
+  height: 0.5rem;
+  background: var(--brand-light-neutral);
+  border-radius: 2px;
+}
+
+.companies-cta__mock-list li:nth-child(2) { width: 85%; }
+.companies-cta__mock-list li:nth-child(3) { width: 70%; }
+
+/* Category section */
+.companies-category__tabs-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.companies-category__tabs {
+  display: flex;
+  flex: 1;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 0.25rem;
+}
+
+.companies-category__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.companies-category__tab {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2.25rem 3.15rem;
+  border: 1px solid var(--brand-light-neutral);
+  background: white;
+  color: var(--neutral-100);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.companies-category__tab--active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: white;
+}
+
+.companies-category__tab-icon {
+  color: var(--brand);
+}
+
+.companies-category__tab-icon--active {
+  color: white;
+}
+
+.companies-category__scroll-btn {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background: var(--brand);
+  color: white;
+  cursor: pointer;
+}
+
+.companies-category__results {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--neutral-80);
+}
+
+.companies-category__results-icon {
+  color: var(--brand);
+}
+
+.companies-category__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .companies-category__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .companies-category__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.category-company-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  border: 1px solid var(--brand-light-neutral);
+  background: white;
+  text-align: center;
+}
+
+.category-company-card__logo {
+  margin-inline: auto;
+}
+
+.category-company-card__name {
+  font-family: var(--font-clash);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--neutral-100);
+}
+
+.category-company-card__jobs {
+  font-size: 0.875rem;
+  color: var(--neutral-80);
+}
+
+.companies-category__view-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.companies-category__view-more:hover {
+  text-decoration: underline;
+}
