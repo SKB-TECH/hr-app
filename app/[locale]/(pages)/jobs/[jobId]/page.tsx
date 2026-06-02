@@ -1,11 +1,9 @@
-import JobBulletList from "@/components/jobDetails/JobBulletList";
-import JobCategories from "@/components/jobDetails/JobCategories";
-import JobDetailsSection from "@/components/jobDetails/JobDetailsSection";
-import JobSummaryCard from "@/components/jobDetails/JobSummaryCard";
-import PerkCard from "@/components/jobDetails/PerkCard";
-import RequiredSkills from "@/components/jobDetails/RequiredSkills";
+import CompanyOverviewSection from "@/components/jobDetails/CompanyOverviewSection";
+import JobDescriptionSection from "@/components/jobDetails/JobDescriptionSection";
+import JobPerksSection from "@/components/jobDetails/JobPerksSection";
+import JobResponsibilitiesSection from "@/components/jobDetails/JobResponsibilitiesSection";
+import JobSidebarSection from "@/components/jobDetails/JobSidebarSection";
 import { jobsDetailsResponse, perks } from "@/data/jobDetailsData";
-import Image from "next/image";
 
 export default async function JobDetailsPage({
   params,
@@ -20,85 +18,35 @@ export default async function JobDetailsPage({
   }
 
   return (
-    <section className="w-full max-w-6xl mx-auto px-4   ">
-      {/* Job Details Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 md:gap-14 pb-16  ">
-        {/* LEFT */}
+    <section className="w-full max-w-6xl mx-auto px-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 md:gap-14 pb-16">
         <div className="col-span-2 space-y-10">
-          <JobDetailsSection title="Description">
-            <p className="text-neutral-80 text-[16px]">
-              {jobDetails.description}
-            </p>
-          </JobDetailsSection>
-
-          <JobBulletList
-            title="Responsibilities"
-            items={jobDetails.responsibilities}
+          <JobDescriptionSection description={jobDetails.description} />
+          <JobResponsibilitiesSection
+            responsibilities={jobDetails.responsibilities}
+            whoYouAre={jobDetails.whoYouAre}
+            niceToHaves={jobDetails.niceToHaves}
           />
-          <JobBulletList title="Who you are" items={jobDetails.whoYouAre} />
-          <JobBulletList title="Nice to Haves" items={jobDetails.niceToHaves} />
         </div>
 
-        {/* RIGHT */}
-        <div className="divide-y divide-brand-light-neutral">
-          <JobSummaryCard
-            applyBefore="June 30, 2024"
-            postedOn="June 1, 2024"
-            jobType="Full-Time"
-            salary="$100k - $120k"
-          />
-
-          <JobCategories labels={jobDetails.categories} />
-
-          <RequiredSkills skills={jobDetails.requiredSkills} />
-        </div>
+        <JobSidebarSection
+          className="divide-y divide-brand-light-neutral"
+          roleInfo={jobDetails.roleInfo}
+          categories={jobDetails.categories}
+          requiredSkills={jobDetails.requiredSkills}
+        />
       </div>
-      {/* perks & benefits */}
-      <div className="border-y border-gray-200 py-16 ">
-        {/* Heading */}
-        <div className="mb-8">
-          <h2 className="text-[32px] font-bold text-neutral-100">
-            Perks & Benefits
-          </h2>
 
-          <p className=" text-lg text-[16px] text-neutral-80">
-            This job comes with several perks and benefits
-          </p>
-        </div>
+      <JobPerksSection perks={perks} />
 
-        {/* Cards */}
-        <div className="grid gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-4">
-          {perks.map((perk) => (
-            <PerkCard
-              key={perk.title}
-              icon={perk.icon}
-              title={perk.title}
-              description={perk.description}
-            />
-          ))}
-        </div>
-      </div>
-      {/* company information */}
-      <div className="py-16 ">
-        <div className="flex items-center gap-4 ">
-          <Image
-            src="/stripe.png"
-            alt="Stripe icon"
-            width={48}
-            height={48}
-            quality={100}
-            className=""
-          />
-          <div>
-            <h3 className="text-[20px] font-bold text-neutral-100">Stripe</h3>
-            <p className="text-[14px] text-brand font-semibold">
-              Read, more about stripe
-            </p>
-          </div>
-        </div>
-      </div>
-      {/* similar jobs */}
-      <div></div>
+      <CompanyOverviewSection
+        company={jobDetails.company}
+        companyLogo="/stripe.png"
+        description={`${jobDetails.company} is a technology company that builds economic infrastructure for the internet. Businesses of every size—from new startups to public companies—use our software to accept payments and manage their businesses online.`}
+        mainImage="/img5.jpg"
+        topRightImage="/img6.jpg"
+        bottomRightImage="/img4.jpg"
+      />
     </section>
   );
 }
