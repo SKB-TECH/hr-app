@@ -1,0 +1,50 @@
+// components/FeaturedJobsSection.tsx
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { SectionTitle } from "@/components/ui/Title";
+import{ FeaturedJob} from "@/data/featuredJob";
+import { featuredJobsData } from "@/data/featuredJob";      
+import Image from "next/image";
+
+
+export default function FeaturedJobsSection() {
+  return (
+    <section className="bg-white px-6 md:px-18 pb-10 ">
+      <div className="max-w-7xl mx-auto">
+        <SectionTitle title="Featured" highlight="jobs" showAllText="Show all jobs" showAllLink="/jobs" isExpanded />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {featuredJobsData.map((job: FeaturedJob) => (
+            <div key={job.id} className="border border-gray-200  p-5 flex flex-col gap-3 hover:border-blue-500 transition-all cursor-pointer">
+              {/* logo + badge */}
+              <div className="flex justify-between items-start">
+                <div className="">
+                   <Image src={job.companyLogo} alt={job.companyLogo} width={28} height={28} />
+                </div>
+                <span className="text-xs font-semibold text-blue-800 border border-blue-800  px-2 py-1 ">
+                  Full Time
+                </span>
+              </div>
+              {/* info */}
+              <div>
+                <h4 className="font-bold text-base">{job.title}</h4>
+                <p className="text-xs text-gray-500 mt-1">{job.companyName} · {job.location}</p>
+              </div>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                {job.description} 
+              </p>
+              {/* tags */}
+              <div className="flex flex-wrap gap-2 mt-auto">
+                {job.tags.map((tag) => (
+                  <span key={tag} className="text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

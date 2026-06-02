@@ -14,7 +14,7 @@ import Image from "next/image";
 function FooterBrand() {
   return (
     <div className="max-w-xs">
-      <div >
+      <div className="mb-4">
 
       <Image src="/LogoWhite.png" alt="logo-white" width={100} height={100}/>
       </div>
@@ -57,7 +57,7 @@ function NewsletterSignup() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email Address"
-          className="flex-1 text-sm text-gray-800 bg-white px-4 py-2.5 outline-none placeholder-gray-400 min-w-0"
+          className="flex-1 text-sm  text-gray-800 bg-white px-4 py-2.5 outline-none placeholder-gray-400 min-w-0"
         />
         <button className="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2.5 transition-colors whitespace-nowrap">
           Subscribe
@@ -103,9 +103,9 @@ function FooterBottom() {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 px-6  pt-14 pb-8">
+    <footer className="bg-gray-900 px-6 sm:px-18  pt-14 pb-8">
       <div className="">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
           <FooterBrand />
           <FooterLinkColumn title="About" links={["Companies", "Pricing", "Terms", "Advice", "Privacy Policy"]} />
           <FooterLinkColumn title="Resources" links={["Help Docs", "Guide", "Updates", "Contact Us"]} />
