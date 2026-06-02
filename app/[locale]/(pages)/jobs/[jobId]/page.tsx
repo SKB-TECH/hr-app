@@ -80,14 +80,14 @@ export default async function JobDetailsPage({
       </div>
       {/* company information */}
       <div className="py-16 ">
-        <div className="flex gap-4 bg-red-500">
+        <div className="flex items-center gap-4 ">
           <Image
             src="/stripe.png"
             alt="Stripe icon"
-            width={40}
-            height={40}
+            width={48}
+            height={48}
             quality={100}
-            className=" shrink-0 "
+            className=""
           />
           <div>
             <h3 className="text-[20px] font-bold text-neutral-100">Stripe</h3>
