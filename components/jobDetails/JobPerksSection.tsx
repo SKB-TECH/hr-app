@@ -23,7 +23,7 @@ export default function JobPerksSection({ perks, className = "" }: Props) {
           your success.
         </p>
       </div>
-      <div className="grid gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-x-10 gap-y-14 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {perks.map((perk) => (
           <PerkCard
             key={perk.title}
