@@ -1,7 +1,16 @@
-export default function CompanyPage() {
+import Stripe from "./ProfileSection/Stripe";
+
+export default function CompanyPage({
+
+ 
+
+  params,
+}: {
+  params: { companyId: string };
+}) {
   return (
-    <main className='flex-1'>
-      <h1>Company Profile</h1>
+    <main className="flex">
+     <Stripe />
     </main>
   );
 }
