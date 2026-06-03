@@ -15,7 +15,11 @@ export default async function JobDetailsPage({
   const jobDetails = jobsDetailsResponse.find((job) => job.id === jobId);
 
   if (!jobDetails) {
-    return <div>Job not found</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center text-brand capitalize text-[24px] font-semibold">
+        Job not found
+      </div>
+    );
   }
 
   return (
