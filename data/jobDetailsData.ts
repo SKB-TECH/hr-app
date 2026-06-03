@@ -20,16 +20,16 @@ export const categoryStyles: Record<string, { bg: string; text: string }> = {
     text: "#56CDAD",
   },
   engineering: {
-    bg: "#D6E4FF1A",
+    bg: "#2F54EB1A",
     text: "#2F54EB",
   },
   product: {
-    bg: "#FFF1B8",
-    text: "#FA8C16",
+    bg: "#A855F71A",
+    text: "#A855F7",
   },
   development: {
-    bg: "#C8FACD",
-    text: "#52C41A",
+    bg: "#EF44441A",
+    text: "#EF4444",
   },
 };
 export const jobsDetailsResponse = [
@@ -240,7 +240,7 @@ export const jobsDetailsResponse = [
 
     categories: [
       { id: 1, name: "Engineering" },
-      { id: 2, name: "Backend" },
+      { id: 2, name: "Marketing" },
     ],
 
     skills: ["Node.js", "PostgreSQL", "Docker", "API Development"],
