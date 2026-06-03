@@ -7,16 +7,14 @@ import {
   DribbbleIcon,
   LinkedInIcon,
   TwitterIcon,
-  LogoIcon,
 } from "@/components/landing/icons";
 import Image from "next/image";
 
 function FooterBrand() {
   return (
-    <div className="max-w-xs">
+    <div className="col-span-2 md:col-span-1">
       <div className="mb-4">
-
-      <Image src="/LogoWhite.png" alt="logo-white" width={100} height={100}/>
+        <Image src="/LogoWhite.png" alt="logo-white" width={100} height={100} />
       </div>
       <p className="text-sm text-gray-400 leading-relaxed">
         Great platform for the job seeker that passionate about startups. Find your dream job easier.
@@ -45,21 +43,22 @@ function FooterLinkColumn({ title, links }: { title: string; links: string[] }) 
 function NewsletterSignup() {
   const [email, setEmail] = useState("");
 
-  return (
-    <div>
+  return (                                                                        
+    <div className="col-span-2 md:col-span-1">
       <h3 className="text-sm font-bold text-white mb-2">Get job notifications</h3>
       <p className="text-sm text-gray-400 mb-4 leading-relaxed">
         The latest job news, articles, sent to your inbox weekly.
       </p>
-      <div className="flex gap-2 flex-col sm:flex-row">
+      {/* On mobile: input full width, button full width below */}
+      <div className="flex flex-col gap-2">
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email Address"
-          className="flex-1 text-sm  text-gray-800 bg-white px-4 py-2.5 outline-none placeholder-gray-400 min-w-0"
+          className="w-full text-sm text-gray-800 bg-white px-4 py-3 outline-none placeholder-gray-400"
         />
-        <button className="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2.5 transition-colors whitespace-nowrap">
+        <button className="w-full sm:w-auto self-start bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-8 py-3 transition-colors whitespace-nowrap">
           Subscribe
         </button>
       </div>
@@ -77,7 +76,7 @@ function SocialIcons() {
   ];
 
   return (
-    <div className="flex items-center gap-3 flex-wrap">
+    <div className="flex items-center justify-center md:justify-end gap-3 flex-wrap">
       {socials.map(({ icon, label }) => (
         <a
           key={label}
@@ -94,8 +93,10 @@ function SocialIcons() {
 
 function FooterBottom() {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between pt-6 border-t border-gray-700 gap-4">
-      <p className="text-xs text-gray-500">2021 @ JobHuntly. All rights reserved.</p>
+    <div className="flex flex-col items-center gap-4 pt-6 border-t border-gray-700 md:flex-row md:justify-between">
+      <p className="text-xs text-gray-500 text-center md:text-left">
+        2021 @ JobHuntly. All rights reserved.
+      </p>
       <SocialIcons />
     </div>
   );
@@ -103,16 +104,25 @@ function FooterBottom() {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 px-6 sm:px-18  pt-14 pb-8">
-      <div className="">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
-          <FooterBrand />
-          <FooterLinkColumn title="About" links={["Companies", "Pricing", "Terms", "Advice", "Privacy Policy"]} />
-          <FooterLinkColumn title="Resources" links={["Help Docs", "Guide", "Updates", "Contact Us"]} />
-          <NewsletterSignup />
-        </div>
-        <FooterBottom />
+    <footer className="bg-gray-900 px-6 sm:px-18 pt-14 pb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 mb-12">
+        {/* Row 1 mobile: spans full 2 cols */}
+        <FooterBrand />
+
+        {/* Row 2 mobile: About (col 1) + Resources (col 2) */}
+        <FooterLinkColumn
+          title="About"
+          links={["Companies", "Pricing", "Terms", "Advice", "Privacy Policy"]}
+        />
+        <FooterLinkColumn
+          title="Resources"
+          links={["Help Docs", "Guide", "Updates", "Contact Us"]}
+        />
+
+        {/* Row 3 mobile: spans full 2 cols */}
+        <NewsletterSignup />
       </div>
+      <FooterBottom />
     </footer>
   );
 }

@@ -36,7 +36,7 @@ export default function CompaniesSection({
       </p>
 
       {/* Logos row */}
-      <div className="flex items-center justify-between">
+      <div className="grid sm:grid-cols-5 grid-cols-2 gap-6 items-center justify-items-center">
         {companies.map((company) => (
           <div
             key={company.name}

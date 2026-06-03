@@ -24,7 +24,8 @@ export default function LatestJobsSection() {
                 <h4 className="font-bold text-sm">{job.title}</h4>
                 <p className="text-xs text-gray-500 mb-2">{job.companyName} · {job.location}</p>
                 <div className="flex gap-2 flex-wrap">
-                  <span className="text-xs font-semibold text-teal-700 border border-teal-300 rounded-full px-3 py-0.5 bg-teal-50">Full-Time</span>
+                  <div> <span className="text-xs font-semibold text-teal-700 border border-teal-300 rounded-full px-3 py-0.5 bg-teal-50">Full-Time</span> </div>
+                  
                   {job.tags.map((tag) => (
                     <span key={tag} className="text-xs font-semibold px-3 py-0.5 rounded-full bg-yellow-100 text-yellow-800">{tag}</span>
                   ))}

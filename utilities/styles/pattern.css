@@ -1,9 +1,19 @@
 .bg-pattern {
-  background-image: url("/images/landingImg.png"), url("/Pattern.png");
-  background-position:
-    top right,
-    top right;
-  background-repeat: no-repeat, no-repeat;
-  background-size: auto, auto;
-  background-attachment: scroll, scroll;
+  /* Mobile: pattern only */
+  background-image: url("/Pattern.png");
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-attachment: scroll;
+}
+
+@media (min-width: 768px) {
+  /* Desktop: both images */
+  .bg-pattern {
+    background-image: url("/images/landingImg.png"), url("/Pattern.png");
+    background-position: top right, top right;
+    background-repeat: no-repeat, no-repeat;
+    background-size: auto, auto;
+    background-attachment: scroll, scroll;
+  }
 }
