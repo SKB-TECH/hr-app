@@ -27,8 +27,10 @@ export default async function JobDetailsPage({
       <div className="w-full max-w-6xl mx-auto md:px-6  px-4">
         {" "}
         <div className="grid grid-cols-1 lg:grid-cols-3 md:gap-14 py-8 md:py-20">
-          <div className="col-span-2  md:space-y-10 md:divide-y md:divide-brand-light-neutral ">
+          <div className="col-span-2  md:space-y-8  ">
             <JobDescriptionSection description={jobDetails.description} />
+            {/* separator for small devices */}
+            <hr className="block md:hidden border-t border-light-brand-neutral my-6" />
             <JobResponsibilitiesSection
               responsibilities={jobDetails.responsibilities}
               whoYouAre={jobDetails.whoYouAre}

@@ -22,7 +22,7 @@ export default function SimilarJobsSection({
         fill
         quality={100}
         priority
-        className="hidden md:block absolute max-md:inset-0 inset-0 object-fill bg-no-repeat pointer-events-none"
+        className="hidden h-auto w-auto md:block absolute max-md:inset-0 inset-0 object-fill bg-no-repeat pointer-events-none"
       />
       <div className="md:hidden absolute max-md:inset-0 inset-0 object-fill bg-no-repeat pointer-events-none bg-[#F8F8FD] " />
 
@@ -47,13 +47,14 @@ export default function SimilarJobsSection({
                 key={`${job.title}-${job.company}-${index}`}
                 className="flex max-sm:flex-col justify-between bg-white hover:shadow-sm transition-shadow p-5 border border-gray-100"
               >
-                <Image
-                  src={job.image}
-                  alt={job.title}
-                  width={64}
-                  height={64}
-                  className="object-contain max-md:w-[48px] max-md:h-[48px] mb-4"
-                />
+                <div className="relative w-[64px] h-[64px] max-md:w-[48px] max-md:h-[48px] mb-4">
+                  <Image
+                    src={job.image}
+                    alt={job.title}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
                 <div className="md:ml-4 flex-1">
                   <h4 className="text-[20px] font-bold text-neutral-100 mb-2">
                     {job.title}
