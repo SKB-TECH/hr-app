@@ -1,0 +1,328 @@
+/* Backdrop */
+.apply-overlay__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+/* Modal */
+.apply-overlay__modal {
+  background: #fff;
+  width: 100%;
+  max-width: 460px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Header ── */
+.apply-overlay__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--brand-light-neutral);
+  flex-shrink: 0;
+}
+
+.apply-overlay__job-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.apply-overlay__logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 0.375rem;
+  background: #e8f5e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2e7d32;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.apply-overlay__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apply-overlay__job-title {
+  font-family: var(--font-clash);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--neutral-100);
+  margin: 0;
+}
+
+.apply-overlay__job-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--neutral-80);
+  margin: 2px 0 0;
+}
+
+.apply-overlay__dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--neutral-80);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.apply-overlay__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--neutral-80);
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.apply-overlay__close:hover {
+  color: var(--neutral-100);
+}
+
+/* ── Body ── */
+.apply-overlay__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+ max-height: calc(90vh - 140px);
+}
+
+.apply-overlay__intro-title {
+  font-family: var(--font-clash);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--neutral-100);
+  margin: 0 0 4px;
+}
+
+.apply-overlay__intro-sub {
+  font-size: 0.8125rem;
+  color: var(--neutral-80);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Fields ── */
+.apply-overlay__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.apply-overlay__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.apply-overlay__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--neutral-100);
+}
+
+.apply-overlay__input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--brand-light-neutral);
+  background: #fff;
+  font-size: 0.875rem;
+  color: var(--neutral-100);
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+  font-family: inherit;
+  border-radius: 0;
+}
+
+.apply-overlay__input::placeholder {
+  color: var(--neutral-60, #bbb);
+}
+
+.apply-overlay__input:focus {
+  border-color: var(--brand);
+}
+
+/* ── Links section ── */
+.apply-overlay__section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-top: 1px solid var(--brand-light-neutral);
+  padding-top: 1rem;
+}
+
+.apply-overlay__section-title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--neutral-80);
+  margin: 0;
+}
+
+/* ── Textarea ── */
+.apply-overlay__textarea {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--brand-light-neutral);
+  border-bottom: none;
+  background: #fff;
+  font-size: 0.875rem;
+  color: var(--neutral-100);
+  outline: none;
+  resize: none;
+  min-height: 100px;
+  font-family: inherit;
+  box-sizing: border-box;
+  border-radius: 0;
+}
+
+.apply-overlay__textarea::placeholder {
+  color: var(--neutral-60, #bbb);
+}
+
+.apply-overlay__textarea:focus {
+  border-color: var(--brand);
+}
+
+.apply-overlay__textarea-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--brand-light-neutral);
+  border-top: 1px solid var(--brand-light-neutral);
+}
+
+.apply-overlay__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.apply-overlay__toolbar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--neutral-80);
+  padding: 2px 4px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.apply-overlay__toolbar button:hover {
+  color: var(--neutral-100);
+}
+
+.apply-overlay__char-count {
+  font-size: 0.75rem;
+  color: var(--neutral-80);
+}
+
+.apply-overlay__max-chars {
+  font-size: 0.75rem;
+  color: var(--neutral-60, #bbb);
+  margin: 4px 0 0;
+}
+
+/* ── Resume ── */
+.apply-overlay__resume {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1rem;
+  border: 1.5px dashed var(--brand-light-neutral);
+}
+
+.apply-overlay__resume-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--neutral-100);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.apply-overlay__resume-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.5rem 0.875rem;
+  border: 1.5px dashed var(--brand);
+  background: transparent;
+  color: var(--brand);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.apply-overlay__resume-btn:hover {
+  background: var(--accent-light-brand);
+}
+
+/* ── Footer ── */
+.apply-overlay__footer {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--brand-light-neutral);
+  flex-shrink: 0;
+}
+
+.apply-overlay__submit {
+  width: 100%;
+  padding: 0.875rem;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.2s;
+  border-radius: 0;
+}
+
+.apply-overlay__submit:hover {
+  opacity: 0.9;
+}
+
+.apply-overlay__terms {
+  font-size: 0.75rem;
+  color: var(--neutral-80);
+  text-align: center;
+  margin: 0.75rem 0 0;
+  line-height: 1.5;
+}
+
+.apply-overlay__terms a {
+  color: var(--brand);
+  text-decoration: underline;
+}
