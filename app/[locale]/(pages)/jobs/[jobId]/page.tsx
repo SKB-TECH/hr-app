@@ -42,7 +42,7 @@ export default async function JobDetailsPage({
         <JobPerksSection perks={perks} />
         <CompanyOverviewSection
           company={jobDetails.company}
-          companyLogo="/stripe.png"
+          companyLogo={jobDetails.image}
           description={`${jobDetails.company} is a technology company that builds economic infrastructure for the internet. Businesses of every size—from new startups to public companies—use our software to accept payments and manage their businesses online.`}
           mainImage="/img5.jpg"
           topRightImage="/img6.jpg"

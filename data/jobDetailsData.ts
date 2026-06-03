@@ -36,6 +36,7 @@ export const jobsDetailsResponse = [
   {
     id: "1",
     company: "Stripe",
+    image: "/stripe.png",
     title: "Social Media Marketing Specialist",
 
     description:
@@ -95,11 +96,11 @@ export const jobsDetailsResponse = [
 
   {
     id: "2",
-    company: "Spotify",
+    company: "Square",
+    image: "/square.png",
     title: "Frontend Developer",
-
     description:
-      "Spotify is looking for a Frontend Developer to build scalable and user-friendly web applications for millions of users worldwide.",
+      "Square is looking for a Frontend Developer to build scalable and user-friendly web applications for millions of users worldwide.",
 
     responsibilities: [
       "Build reusable UI components",
@@ -149,11 +150,12 @@ export const jobsDetailsResponse = [
 
   {
     id: "3",
-    company: "Airbnb",
+    company: "Nomad",
+    image: "/Nomad.png",
     title: "Product Designer",
 
     description:
-      "Airbnb is hiring a Product Designer to create intuitive and delightful user experiences for travelers and hosts.",
+      "Nomad is hiring a Product Designer to create intuitive and delightful user experiences for travelers and hosts.",
 
     responsibilities: [
       "Design user-centered interfaces",
@@ -203,11 +205,12 @@ export const jobsDetailsResponse = [
 
   {
     id: "4",
-    company: "Notion",
+    company: "Netlify",
+    image: "/Netlify.png",
     title: "Backend Engineer",
 
     description:
-      "Notion is seeking a Backend Engineer to help scale our infrastructure and improve system reliability.",
+      "Netlify is seeking a Backend Engineer to help scale our infrastructure and improve system reliability.",
 
     responsibilities: [
       "Build scalable backend services",
@@ -257,7 +260,7 @@ export const jobsDetailsResponse = [
 ];
 export const perks = [
   {
-    icon: "/icon.png",
+    icon: "/Icon.png",
     title: "Full Healthcare",
     description:
       "We believe in thriving communities and that starts with our team being happy and healthy.",
@@ -269,19 +272,19 @@ export const perks = [
       "We believe you should have a flexible schedule that makes space for family, wellness, and fun.",
   },
   {
-    icon: "/icon2.png",
+    icon: "/icon6.png",
     title: "Skill Development",
     description:
       "We believe in always learning and leveling up our skills. Whether it's a conference or online course.",
   },
   {
-    icon: "/icon3.png",
+    icon: "/icon2.png",
     title: "Team Summits",
     description:
       "Every 6 months we have a full team summit where we have fun, reflect, and plan for the upcoming quarter.",
   },
   {
-    icon: "/icon4.png",
+    icon: "/icon5.png",
     title: "Remote Working",
     description:
       "You know how you perform your best. Work from home, coffee shop or anywhere when you feel like it.",
@@ -293,7 +296,7 @@ export const perks = [
       "We’re grateful for all the time and energy each team member puts into getting to work every day.",
   },
   {
-    icon: "/icon5.png",
+    icon: "/icon3.png",
     title: "We give back.",
     description:
       "We anonymously match any donation our employees make (up to $/€ 600) so they can support the organizations they care about most-times two.",
