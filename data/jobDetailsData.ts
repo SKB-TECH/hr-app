@@ -1,3 +1,15 @@
+// these mock data being used in job[id] page, and can be used in other pages as well if needed
+
+export type Job = {
+  title: string;
+  image: string;
+  company: string;
+  location: string;
+  type: string;
+  category: string;
+  role: string;
+};
+
 export const categoryStyles: Record<string, { bg: string; text: string }> = {
   marketing: {
     bg: "#EB85331A",
@@ -285,5 +297,80 @@ export const perks = [
     title: "We give back.",
     description:
       "We anonymously match any donation our employees make (up to $/€ 600) so they can support the organizations they care about most-times two.",
+  },
+];
+
+export const similarJobs: Job[] = [
+  {
+    image: "/Nomad.png",
+    title: "Social Media Assistant",
+    company: "Nomad",
+    location: "Paris, France",
+    type: "Full-Time",
+    category: "Marketing",
+    role: "Design",
+  },
+  {
+    image: "/Dropbox.png",
+    title: "Brand Designer",
+    company: "Dropbox",
+    location: "San Fransisco, USA",
+    type: "Full-Time",
+    category: "Marketing",
+    role: "Design",
+  },
+  {
+    image: "/Terraform.png",
+    title: "Interactive Developer",
+    company: "Terraform",
+    location: "Hamburg, Germany",
+    type: "Full-Time",
+    category: "Marketing",
+    role: "Design",
+  },
+  {
+    image: "/Packer.png",
+    title: "HR Manager",
+    company: "Packer",
+    location: "Lucern, Switzerland",
+    type: "Full-Time",
+    category: "Marketing",
+    role: "Design",
+  },
+  {
+    image: "/Netlify.png",
+    title: "Social Media Assistant",
+    company: "Netlify",
+    location: "Paris, France",
+    type: "Full-Time",
+    category: "Marketing",
+    role: "Design",
+  },
+  {
+    image: "/Maze.png",
+    title: "Brand Designer",
+    company: "Maze",
+    location: "San Fransisco, USA",
+    type: "Full-Time",
+    category: "Marketing",
+    role: "Design",
+  },
+  {
+    image: "/Udacity.png",
+    title: "Interactive Developer",
+    company: "Udacity",
+    location: "Hamburg, Germany",
+    type: "Full-Time",
+    category: "Marketing",
+    role: "Design",
+  },
+  {
+    image: "/Webflow.png",
+    title: "HR Manager",
+    company: "Webflow",
+    location: "Lucern, Switzerland",
+    type: "Full-Time",
+    category: "Marketing",
+    role: "Design",
   },
 ];

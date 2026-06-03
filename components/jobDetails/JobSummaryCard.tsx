@@ -27,7 +27,7 @@ export default function JobSummaryCard({
   className = "",
 }: Props) {
   return (
-    <div className={`py-8 ${className}`}>
+    <div className={`pb-6 md:py-8 ${className}`}>
       <h1 className=" text-[24px] md:text-[32px] text-neutral-100 font-bold font-clash">
         About this role
       </h1>

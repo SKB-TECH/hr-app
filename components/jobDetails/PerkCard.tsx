@@ -16,12 +16,14 @@ export default function PerkCard({ icon, title, description }: PerkCardProps) {
         height={46}
         quality={100}
         loading="lazy"
-        className="mb-3 text-indigo-600 object-contain"
+        className="mb-3 text-brand object-contain"
       />
 
       <h3 className="text-[20px] font-semibold  text-neutral-100">{title}</h3>
 
-      <p className=" text-neutral-80 text-[16px]">{description}</p>
+      <p className=" text-neutral-80 text-[16px] leading-[1.6] tracking-normal">
+        {description}
+      </p>
     </div>
   );
 }

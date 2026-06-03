@@ -16,12 +16,22 @@ export default function JobResponsibilitiesSection({
   return (
     <div className={className}>
       <JobBulletList title="Responsibilities" items={responsibilities} />
-      <JobBulletList title="Who you are" items={whoYouAre} className="pt-10" />
+      {/* separator for small devices */}
+      <hr className="block md:hidden border-t border-light-brand-neutral my-6" />
       <JobBulletList
-        title="Nice to Haves"
-        items={niceToHaves}
-        className="pt-10"
+        title="Who you are"
+        items={whoYouAre}
+        className="md:pt-10 "
       />
+      {/* separator for small devices */}
+      <hr className="block md:hidden border-t border-light-brand-neutral my-6" />
+      <JobBulletList
+        title="Nice to Have"
+        items={niceToHaves}
+        className="md:pt-10"
+      />
+      {/* separator for small devices */}
+      <hr className="block md:hidden border-t border-light-brand-neutral my-6" />
     </div>
   );
 }

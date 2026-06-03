@@ -13,12 +13,12 @@ type Props = {
 
 export default function JobPerksSection({ perks, className = "" }: Props) {
   return (
-    <section className={`border-y border-gray-200 py-16 ${className}`}>
+    <section className={`border-y border-gray-200 py-8 md:py-20  ${className}`}>
       <div className="mb-8">
-        <h2 className="text-[32px] font-bold text-neutral-100">
+        <h2 className=" leading-[1.6] tracking-normal text-[32px] font-bold text-neutral-100">
           Perks & Benefits
         </h2>
-        <p className="text-[16px] text-neutral-80">
+        <p className="text-[16px] text-neutral-80 leading-[1.6] tracking-normal">
           This job comes with several perks and benefits designed to support
           your success.
         </p>
