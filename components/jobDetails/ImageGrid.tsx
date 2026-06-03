@@ -11,15 +11,15 @@ export default function ImageGrid({
   bottomRightImage,
 }: ImageGridProps) {
   return (
-    <div className=" flex gap-4 w-fit">
+    <div className="flex gap-4 items-start w-full max-w-[640px]">
       {/* Left Large Image */}
-      <div className="relative w-[260px] h-[220px] rounded-sm overflow-hidden">
+      <div className="relative w-[320px] max-w-full max-sm:w-full h-[270px] rounded-sm overflow-hidden flex-shrink">
         <Image src={mainImage} alt="Main" fill className="object-cover" />
       </div>
 
       {/* Right Side Images */}
       <div className="flex flex-col gap-4">
-        <div className="relative w-[140px] h-[102px] rounded-sm overflow-hidden">
+        <div className="relative w-[160px] max-w-full max-sm:w-[105px] h-[130px] rounded-sm overflow-hidden flex-shrink">
           <Image
             src={topRightImage}
             alt="Top Right"
@@ -28,7 +28,7 @@ export default function ImageGrid({
           />
         </div>
 
-        <div className="relative w-[140px] h-[102px] rounded-sm overflow-hidden">
+        <div className="relative w-[160px] max-w-full max-sm:w-[105px] h-[130px] rounded-sm overflow-hidden flex-shrink">
           <Image
             src={bottomRightImage}
             alt="Bottom Right"

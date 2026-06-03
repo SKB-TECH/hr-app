@@ -3,8 +3,8 @@ import JobDescriptionSection from "@/components/jobDetails/JobDescriptionSection
 import JobPerksSection from "@/components/jobDetails/JobPerksSection";
 import JobResponsibilitiesSection from "@/components/jobDetails/JobResponsibilitiesSection";
 import JobSidebarSection from "@/components/jobDetails/JobSidebarSection";
-import { jobsDetailsResponse, perks } from "@/data/jobDetailsData";
-import Image from "next/image";
+import SimilarJobsSection from "@/components/jobDetails/SimilarJobsSection";
+import { jobsDetailsResponse, perks, similarJobs } from "@/data/jobDetailsData";
 
 export default async function JobDetailsPage({
   params,
@@ -20,10 +20,10 @@ export default async function JobDetailsPage({
 
   return (
     <section className="w-full bg-white">
-      <div className="w-full max-w-6xl mx-auto px-4">
+      <div className="w-full max-w-6xl mx-auto md:px-6  px-4">
         {" "}
-        <div className="grid grid-cols-1 lg:grid-cols-3 md:gap-14 py-16">
-          <div className="col-span-2 space-y-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 md:gap-14 py-8 md:py-20">
+          <div className="col-span-2  md:space-y-10 md:divide-y md:divide-brand-light-neutral ">
             <JobDescriptionSection description={jobDetails.description} />
             <JobResponsibilitiesSection
               responsibilities={jobDetails.responsibilities}
@@ -49,22 +49,7 @@ export default async function JobDetailsPage({
           bottomRightImage="/img4.jpg"
         />
       </div>
-      <div className="relative w-full min-h-[500px] mt-16 overflow-hidden rounded-3xl">
-        <Image
-          src="/background.png"
-          alt="Background"
-          fill
-          quality={100}
-          priority
-          className="absolute inset-0 object-cover pointer-events-none"
-        />
-
-        {/* Optional overlay */}
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px]" />
-
-        {/* Content */}
-        <div className="relative z-10 px-6 py-12">{/* cards here */}</div>
-      </div>
+      <SimilarJobsSection jobs={similarJobs} />
     </section>
   );
 }
