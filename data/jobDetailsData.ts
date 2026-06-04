@@ -36,8 +36,10 @@ export const jobsDetailsResponse = [
   {
     id: "1",
     company: "Stripe",
+    location: "San Francisco, CA, USA",
     image: "/stripe.png",
     title: "Social Media Marketing Specialist",
+    jobType: "Full-Time",
 
     description:
       "Stripe is looking for Social Media Marketing expert to help manage our online networks. You will be responsible for monitoring our social media channels, creating content, finding effective ways to engage the community and incentivize others to engage on our channels.",
@@ -97,8 +99,10 @@ export const jobsDetailsResponse = [
   {
     id: "2",
     company: "Square",
+    location: "New York, NY, USA",
     image: "/square.png",
     title: "Frontend Developer",
+    jobType: "Remote",
     description:
       "Square is looking for a Frontend Developer to build scalable and user-friendly web applications for millions of users worldwide.",
 
@@ -151,8 +155,10 @@ export const jobsDetailsResponse = [
   {
     id: "3",
     company: "Nomad",
+    location: "Berlin, Germany",
     image: "/Nomad.png",
     title: "Product Designer",
+    jobType: "Full-Time",
 
     description:
       "Nomad is hiring a Product Designer to create intuitive and delightful user experiences for travelers and hosts.",
@@ -206,8 +212,10 @@ export const jobsDetailsResponse = [
   {
     id: "4",
     company: "Netlify",
+    location: "Remote",
     image: "/Netlify.png",
     title: "Backend Engineer",
+    jobType: "Remote",
 
     description:
       "Netlify is seeking a Backend Engineer to help scale our infrastructure and improve system reliability.",
