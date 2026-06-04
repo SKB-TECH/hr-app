@@ -8,13 +8,7 @@ const HomePage = () => {
         <>
             <HeroSectionComponent/>
             <CompaniesSection/>
-            <SectionComponent
-                title="Explore by"
-                highlight="category"
-                isExpanded={true}
-                showAllText="Show all jobs"
-                showAllLink="/jobs"
-            />
+            <SectionComponent/>
             <FeaturedJobsSection/>
             <LatestJobsSection/>
         </>
