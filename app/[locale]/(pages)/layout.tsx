@@ -11,3 +11,4 @@ export default function LayoutPages({ children }: { children: ReactNode }) {
     </>
   );
 }
+
