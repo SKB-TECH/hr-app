@@ -15,7 +15,7 @@ export default function SimilarJobsSection({
   title = "Similar Jobs",
 }: SimilarJobsSectionProps) {
   return (
-    <div className="relative w-full min-h-[500px] mt-16 overflow-hidden">
+    <div className="relative w-full min-h-[500px] mt-16 overflow-hidden ">
       <Image
         src="/background.png"
         alt="Background"
@@ -24,11 +24,16 @@ export default function SimilarJobsSection({
         priority
         className="hidden h-auto w-auto md:block absolute max-md:inset-0 inset-0 object-fill bg-no-repeat pointer-events-none"
       />
-      <div className="md:hidden absolute max-md:inset-0 inset-0 object-fill bg-no-repeat pointer-events-none bg-[#F8F8FD] " />
+      <div
+        style={{
+          clipPath: "polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 5%)",
+        }}
+        className="md:hidden py-30 absolute max-md:inset-0 inset-0 object-fill bg-no-repeat pointer-events-none bg-[#F8F8FD] "
+      />
 
       <div className="relative z-10 md:px-6 py-12 max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center gap-4">
-          <h1 className="text-[24px] md:text-[32px] text-neutral-100 font-bold font-clash">
+          <h1 className="text-[32px]  text-neutral-100 font-bold font-clash">
             {title}
           </h1>
           <Link
@@ -66,7 +71,7 @@ export default function SimilarJobsSection({
                     <span className="inline-flex items-center justify-center text-center text-[14px] bg-accent-light-green text-accent-green px-2 py-1 md:px-4 md:py-1.5 rounded-full font-medium">
                       {job.type}
                     </span>
-                    <div className="w-px h-4 bg-brand-light-neutral mx-1" />
+                    <div className="w-px h-[32px] bg-brand-light-neutral mx-1" />
                     <span className="inline-flex items-center justify-center text-center text-[14px] border border-accent-yellow bg-white text-accent-yellow px-2 py-1 md:px-4 md:py-1.5 rounded-full font-medium">
                       {job.category}
                     </span>
