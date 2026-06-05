@@ -1,11 +1,12 @@
 import HeroContent from "./HeroContent";
-
+import Image from "next/image";
 export default function HeroSectionComponent(){
     return (
       
         <div className="">
             <div className="  min-h-[550px] bg-pattern bg-[#F8F8FD] position-relative px-6 sm:px-18">
-               <HeroContent
+             <div className="flex">
+ <HeroContent
         heading={"Discover\nmore than"}
         headingHighlight="5000+ Jobs"
         subheading={
@@ -19,6 +20,11 @@ export default function HeroSectionComponent(){
           popularTags: ["UI Designer", "UX Researcher", "Android", "Admin"],
         }}
       />
+           <div className="h-[550px] lg:flex hidden">
+            <Image src="/images/landingImg.png" alt="landing-img" width={550} height={440}/>
+           </div>
+             </div>
+              
 
             </div>
         </div>

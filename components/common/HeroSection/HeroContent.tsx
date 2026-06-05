@@ -18,7 +18,7 @@ export default function HeroContent({
 }: HeroContentProps) {
   return (
     <>
-    <div className="relative z-10 flex-shrink-0 py-8 w-full max-w-[520px] overflow-visible">
+    <div className="relative z-10 flex-shrink-0 py-10 w-full max-w-[520px] overflow-visible">
 
       <h1 className="text-[40px] sm:text-[58px] font-extrabold leading-[1.08] tracking-[-1.5px] text-[#202430] m-0 whitespace-pre-line">
         {heading}

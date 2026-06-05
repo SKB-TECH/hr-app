@@ -9,7 +9,7 @@
 
 @media (min-width: 768px) {
   .bg-pattern {
-    background-image: url("/images/landingImg.png"), url("/Pattern.png");
+    background-image:  url("/Pattern.png");
     background-position: top right, top right;
     background-repeat: no-repeat, no-repeat;
     background-size: auto, auto;
@@ -23,3 +23,5 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+/* url("/images/landingImg.png"), */
