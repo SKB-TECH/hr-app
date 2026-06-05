@@ -1,5 +1,5 @@
+
 .bg-pattern {
-  /* Mobile: pattern only */
   background-image: url("/Pattern.png");
   background-position: top right;
   background-repeat: no-repeat;
@@ -8,7 +8,6 @@
 }
 
 @media (min-width: 768px) {
-  /* Desktop: both images */
   .bg-pattern {
     background-image: url("/images/landingImg.png"), url("/Pattern.png");
     background-position: top right, top right;
@@ -16,4 +15,11 @@
     background-size: auto, auto;
     background-attachment: scroll, scroll;
   }
+}
+
+.bg-patt {
+  background-image: url("/images/BG.png"), url("/Pattern.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

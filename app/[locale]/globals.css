@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 @import "../../utilities/styles/pattern.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -170,4 +169,3 @@
     @apply font-epilogue;
   }
 }
-
