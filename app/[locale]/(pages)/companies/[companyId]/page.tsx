@@ -1,4 +1,4 @@
-import { ArrowRightIcon, MoveRightIcon } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 import Stripe from "../../../../../components/CompanyProfile/StripeHeroSection";
 import { companyProfiles } from "@/data/companyDetails";
 import TeamSection from "@/components/CompanyProfile/teamSection";
@@ -6,6 +6,7 @@ import JobPerksSection from "@/components/jobDetails/JobPerksSection";
 import SimilarJobsSection from "@/components/jobDetails/SimilarJobsSection";
 import { similarJobs } from "@/data/jobDetailsData";
 import OpenJobsSection from "@/components/CompanyProfile/OpenJobsSection";
+import Link from "next/link";
 
 
 
@@ -84,7 +85,7 @@ export default async function CompanyPage({
             <div className="flex flex-wrap gap-3">
               <div className="flex gap-5 border border-brand/50 px-2 py-1">
                 <img
-                  src="/icon5.png"
+                  src="/twitter.png"
                   alt="icon"
                   className="h-4 w-4 items-center mt-1"
                 />
@@ -94,7 +95,7 @@ export default async function CompanyPage({
               </div>
               <div className="flex gap-5 border border-brand/50 px-2 py-1">
                 <img
-                  src="/icon6.png"
+                  src="/facebook.png"
                   alt="icon"
                   className="h-5 w-2 items-center mt-1"
                 />
@@ -157,13 +158,13 @@ export default async function CompanyPage({
             ))}
           </div>
           <div className="mt-10 ">
-            <a
-              href=""
-              className="text-base md:text-lg text-brand font-epilogue break-all"
+            <Link
+              href="/#"
+              className="text-base md:text-[16px] text-brand font-epilogue break-all"
             >
               View tech stack
               <ArrowRightIcon className="inline-block h-5 w-5 ml-5" />
-            </a>
+            </Link>
           </div>
           <div className="max-w-6xl h-0.5 bg-[#D6DDEB] mt-5" />
           <div className="mt-15">
@@ -182,18 +183,18 @@ export default async function CompanyPage({
                     alt={office.name}
                     className="h-7 w-7"
                   />
-                  <span className="text-neutral-100 font-epilogue">
+                  <span className="text-neutral-100 font-semibold font-epilogue">
                     {office.name}
                   </span>
                 </div>
               ))}
-              <a
-                className="text-base md:text-lg text-brand font-epilogue break-all mt-5 inline-flex items-center"
-                href="/"
+              <Link
+                href="/#"
+                className="text-base md:text-[16px] text-brand font-epilogue font-semibold break-all mt-5 inline-flex items-center"
               >
-                View tech stack
+                View Countries
                 <ArrowRightIcon className="inline-block h-5 w-5 ml-5" />
-              </a>
+              </Link>
             </div>
             <div className="w-[376px] h-0.5 bg-[#D6DDEB] mt-5 hidden md:block" />
           </div>
@@ -202,8 +203,8 @@ export default async function CompanyPage({
       <TeamSection teamMembers={companyDetails.teamMembers} />
       <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-15 ">
         <JobPerksSection perks={companyDetails.perks} />
-        <OpenJobsSection jobs={similarJobs} />
       </div>
+        <OpenJobsSection jobs={similarJobs} />
     </main>
   );
 }

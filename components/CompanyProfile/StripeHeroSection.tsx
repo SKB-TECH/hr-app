@@ -3,22 +3,22 @@ import Image from "next/image";
 const icons = [
   {
     name: "Founded",
-    src: "/icon1.png",
+    src: "/stripeIcon1.png",
     data: "July 31, 2011",
   },
   {
     name: "Employees",
-    src: "/icon2.png",
+    src: "/stripeIcon2.png",
     data: "4000+",
   },
   {
     name: "Location",
-    src: "/icon3.png",
+    src: "/stripeIcon3.png",
     data: "20 countries",
   },
   {
     name: "Industry",
-    src: "/icon4.png",
+    src: "/stripeIcon4.png",
     data: "Payment Gateway",
   },
 ];
@@ -50,7 +50,7 @@ const Stripe = () => {
             </div>
 
             <div className="flex flex-col text-left">
-              <div className="flex items-center md:flex-row md:items-center justify-between md:gap-4">
+              <div className="flex items-center md:flex-row md:items-center justify-between md:justify-start md:gap-4">
                 <h1 className="text-[48px] font-bold font-clash text-neutral-100">
                   Stripe
                 </h1>
@@ -60,14 +60,14 @@ const Stripe = () => {
                 </span>
               </div>
 
-              <span className="text-base md:text-lg text-brand font-epilogue break-all">
+              <span className="text-base text-brand font-medium md:text-[16px] font-epilogue break-all">
                 https://stripe.com
               </span>
               <div className="flex flex-col md:flex-row gap-4 md:gap-8 mt-6">
                 {icons.map((icon, index) => (
                   <div key={index} className="flex items-center gap-4">
                     <div className="bg-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
-                      <img src={icon.src} alt={icon.name} className="w-6 h-6" />
+                      <img src={icon.src} alt={icon.name} className="w-5 h-5" />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-sm text-neutral-80 font-epilogue">
