@@ -1,8 +1,4 @@
-// components/CompaniesSection.tsx
-
-import Image from "next/image";
-import { VodafoneLogo , IntelLogo , TeslaLogo , AmdLogoSvg , TalkitLogo } from "./icons";
-
+import { VodafoneLogo, IntelLogo, TeslaLogo, AmdLogoSvg, TalkitLogo } from "./icons";
 
 export interface Company {
   name: string;
@@ -13,7 +9,6 @@ export interface CompaniesSectionProps {
   label?: string;
   companies?: Company[];
 }
-
 
 const defaultCompanies: Company[] = [
   { name: "Vodafone", logo: <VodafoneLogo /> },
@@ -28,27 +23,24 @@ export default function CompaniesSection({
   companies = defaultCompanies,
 }: CompaniesSectionProps) {
   return (
-    <section className="bg-white  py-10">
-      <div className="px-6 sm:px-18">
-  {/* Label */}
-      <p className="text-[14px] text-[#C8C8C8] font-normal mb-8 tracking-normal">
+    <section className="bg-white py-10 px-6 sm:px-18">
+
+      
+      <p className="text-[13px] text-gray-300 font-normal mb-6">
         {label}
       </p>
 
-      {/* Logos row */}
-      <div className="grid sm:grid-cols-5 grid-cols-2 gap-6 items-center justify-items-center">
+      <div className="flex flex-wrap items-center justify-between gap-y-6">
         {companies.map((company) => (
           <div
             key={company.name}
-            className="flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+            className="flex items-center justify-center opacity-40 grayscale hover:opacity-60 transition-opacity"
           >
             {company.logo}
           </div>
         ))}
       </div>
 
-      </div>
-    
     </section>
   );
 }
