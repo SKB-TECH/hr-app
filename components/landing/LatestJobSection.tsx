@@ -1,39 +1,88 @@
-// components/LatestJobsSection.tsx
-import {SectionTitle }from "@/components/ui/Title";
+
+
+
+
+import { SectionTitle } from "@/components/ui/Title";
 import { latestJobs } from "@/data/latestJobs";
 import Image from "next/image";
+
+
+const tagStyles: Record<string, string> = {
+  "Full-Time":  "text-teal-600 border border-teal-300 bg-teal-50",
+  "Marketing":  "text-yellow-500 border border-yellow-400 bg-transparent",
+  "Design":     "text-indigo-600 border border-indigo-500 bg-transparent font-bold",
+};
+
 export default function LatestJobsSection() {
   return (
-    <section className="bg-[#f5f5fb] px-6 md:px-18 py-12">
-      <div className="">
-        <SectionTitle title="Latest" highlight="jobs open" showAllText="Show all jobs" showAllLink="/jobs" isExpanded />
+    <section className="bg-patt px-6 md:px-18 py-12">
+      <SectionTitle
+        title="Latest"
+        highlight="jobs open"
+        showAllText="Show all jobs"
+        showAllLink="/jobs"
+        isExpanded
+      />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border border-gray-200  overflow-hidden ">
-          {latestJobs.map((job, i) => (
-            <div
-              key={job.id}
-              className={`flex items-center gap-4 p-5 border-b bg-white border-gray-100 hover:border hover:border-indigo-600 transition-colors cursor-pointer
-                ${i % 2 === 0 ? "md:border-r border-gray-100" : ""}
-                ${i >= latestJobs.length - 2 ? "border-b-0" : ""}
-              `}
-            >
-              <div >
-                <Image src={job.companyLogo} alt={job.companyLogo} width={28} height={28} />
-              </div>
-              <div>
-                <h4 className="font-bold text-sm">{job.title}</h4>
-                <p className="text-xs text-gray-500 mb-2">{job.companyName} · {job.location}</p>
-                <div className="flex gap-2 flex-wrap">
-                  <div> <span className="text-xs font-semibold text-teal-700 border border-teal-300 rounded-full px-3 py-0.5 bg-teal-50">Full-Time</span> </div>
-                  
-                  {job.tags.map((tag) => (
-                    <span key={tag} className="text-xs font-semibold px-3 py-0.5 rounded-full bg-yellow-100 text-yellow-800">{tag}</span>
-                  ))}
-                </div>
+      <div className="grid grid-cols-1 md:grid-cols-2  gap-6  overflow-hidden">
+        {latestJobs.map((job, i) => (
+          <div
+            key={job.id + "-" + i}
+            className={`
+              flex items-center gap-5 px-8 py-6 bg-white
+              hover:shadow-[inset_0_0_0_1px_#4f46e5] transition-all cursor-pointer
+              border-b border-gray-100
+              ${i % 2 === 0 ? "md:border-r md:border-r-gray-100" : ""}
+              ${i >= latestJobs.length - 2 ? "md:border-b-0" : ""}
+              ${i === latestJobs.length - 1 ? "border-b-0" : ""}
+            `}
+          >
+            {/* Logo */}
+            <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center">
+              <Image
+                src={job.companyLogo}
+                alt={job.companyName}
+                width={56}
+                height={56}
+                className="object-contain"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="flex flex-col gap-1">
+              <h4 className="font-bold text-[16px] text-[#202430]">
+                {job.title}
+              </h4>
+              <p className="text-sm text-gray-400 flex items-center gap-1.5">
+                {job.companyName}
+                <span className="text-gray-300">•</span>
+                {job.location}
+              </p>
+
+              {/* Tags row */}
+              <div className="flex items-center gap-2 flex-wrap mt-1">
+                <span className="text-xs font-semibold px-3 py-1 rounded-full text-teal-600 border border-teal-300 bg-teal-50">
+                  Full-Time
+                </span>
+
+              
+                <span className="w-px h-4 bg-gray-200 inline-block" />
+
+                {/* Category tags */}
+                {job.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                      tagStyles[tag] ?? "text-gray-500 border border-gray-300 bg-transparent"
+                    }`}
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );
