@@ -21,39 +21,61 @@ export default function SectionComponent() {
           {categoriesData.map((category: CategoryProp) => (
             <div
               key={category.id}
-              className="border cursor-pointer group hover:bg-brand p-5 md:p-6 flex flex-col gap-3 justify-between"
+              className="border cursor-pointer group hover:bg-brand
+                         flex flex-row md:flex-col
+                         items-center md:items-start
+                         gap-4 md:gap-3
+                         p-4 md:p-6
+                         justify-between"
             >
-              <Image
-                src={category.logo}
-                alt={category.name}
-                width={28}
-                height={28}
-                className={`
-                  transition-all duration-200
-                  group-hover:brightness-0 group-hover:invert
-                  ${category.blackIcon
-                    ? "brightness-0"         
-                    : "brightness-0 saturate-100 [filter:invert(27%)_sepia(98%)_saturate(1234%)_hue-rotate(222deg)_brightness(89%)_contrast(97%)]"
-                  }
-                `}
-              />
-              <div className="flex flex-col gap-3">
-                <h2 className="font-bold text-black group-hover:text-white text-2xl">
+              {/* Icon */}
+              <div className="flex-shrink-0">
+                <Image
+                  src={category.logo}
+                  alt={category.name}
+                  width={28}
+                  height={28}
+                  className={`
+                    transition-all duration-200
+                    group-hover:brightness-0 group-hover:invert
+                    ${category.blackIcon
+                      ? "brightness-0"
+                      : "brightness-0 saturate-100 [filter:invert(27%)_sepia(98%)_saturate(1234%)_hue-rotate(222deg)_brightness(89%)_contrast(97%)]"
+                    }
+                  `}
+                />
+              </div>
+
+              <div className="flex-1 flex flex-col gap-0.5 md:gap-3">
+                <h2 className="font-bold text-black group-hover:text-white text-base md:text-2xl">
                   {category.name}
                 </h2>
-                <Link
-                  href="#"
-                  className="flex flex-row justify-between text-foreground group-hover:text-white items-center gap-2"
-                >
-                  <span className="text-sm text-gray-400 group-hover:text-white">
-                    {category.availableJobs} jobs available
-                  </span>
-                  <ArrowRight size={15} className="font-normal" />
-                </Link>
+                <span className="text-sm text-gray-400 group-hover:text-white">
+                  {category.availableJobs} jobs available
+                </span>
               </div>
+
+              <Link
+                href="#"
+                className="flex-shrink-0 text-foreground group-hover:text-white"
+              >
+                <ArrowRight size={15} />
+              </Link>
             </div>
           ))}
         </div>
+
+    
+        <div className="md:hidden mt-4">
+          <Link
+            href="/jobs"
+            className="flex flex-row text-brand text-sm font-semibold items-center gap-1"
+          >
+            <span>Show all jobs</span>
+            <ArrowRight size={14} />
+          </Link>
+        </div>
+
       </section>
     </div>
   );

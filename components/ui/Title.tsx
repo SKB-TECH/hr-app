@@ -1,4 +1,3 @@
-// components/SectionTitle.tsx
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -26,8 +25,8 @@ export function SectionTitle({
       {isExpanded && showAllLink && (
         <Link
           href={showAllLink}
-          className="flex flex-row text-indigo-700 text-sm font-semibold items-center gap-1"
-        >
+          className="hidden md:flex flex-row text-brand text-sm font-semibold items-center gap-1"
+        >                   {/* ↑ hidden on mobile, shows on md+ */}
           <span>{showAllText}</span>
           <ArrowRight size={14} />
         </Link>
