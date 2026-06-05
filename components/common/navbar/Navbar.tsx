@@ -26,7 +26,7 @@ export default function NavbarComponentLandingPage() {
               <Link
                 key={index}
                 href={item.path}
-                className="text-sm hover:border-indigo-600 font-medium hover:text-indigo-600 transition-colors duration-200"
+                className="text-sm hover:border-brand font-medium hover:text-brand "
               >
                 {item.name}
               </Link>
@@ -35,12 +35,12 @@ export default function NavbarComponentLandingPage() {
         </div>
 
         <div className="hidden md:flex flex-row items-center gap-2">
-          <Link href="/sign-in" className="text-gray-600 hover:text-indigo-600 pr-4 border-r">
+          <Link href="/sign-in" className="text-brand hover:text-indigo-600 pr-4 border-r">
             Login
           </Link>
           <Button
             variant="ghost"
-            className="bg-indigo-500 hover:bg-indigo-900 hover:text-white px-4 py-5 rounded-none outline-none cursor-pointer text-white"
+            className="bg-indigo-500 hover:bg-brand hover:text-white px-4 py-5 rounded-none outline-none cursor-pointer text-white"
             asChild
           >
             <Link href="/sign-up">Sign Up</Link>
