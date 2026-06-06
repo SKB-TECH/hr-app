@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { JobInfo } from "../../types/form-types";
 
 interface OverlayHeaderProps {
@@ -11,7 +12,7 @@ export default function OverlayHeader({ job, onClose }: OverlayHeaderProps) {
       <div className="apply-overlay__job-info">
         <div className="apply-overlay__logo">
           {job.logo ? (
-            <img src={job.logo} alt={job.company} width={42} height={42} />
+            <Image src={job.logo} alt={job.company} width={42} height={42} />
           ) : (
             <span>{job.company[0]}</span>
           )}
@@ -29,7 +30,11 @@ export default function OverlayHeader({ job, onClose }: OverlayHeaderProps) {
           </p>
         </div>
       </div>
-      <button className="apply-overlay__close" onClick={onClose} aria-label="Close">
+      <button
+        className="apply-overlay__close"
+        onClick={onClose}
+        aria-label="Close"
+      >
         ✕
       </button>
     </div>
