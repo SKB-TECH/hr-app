@@ -26,7 +26,6 @@ export default async function JobDetailsPage({
   return (
     <section className="w-full bg-white">
       <JobHeroSection jobDetails={jobDetails} />
-
       {/* main content */}
       <div className="w-full max-w-6xl mx-auto md:px-6  px-4">
         {" "}
