@@ -21,11 +21,6 @@ export default function RecommendedSection({
         id="recommended-heading"
         title={copy.title}
         subtitle={copy.subtitle}
-        action={
-          <button type="button" className="btn-outline">
-            {copy.showAllLabel}
-          </button>
-        }
       />
 
       <div className="companies-grid">

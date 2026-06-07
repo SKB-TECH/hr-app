@@ -1,11 +1,16 @@
 import Navbar from "@/components/common/navbar/Navbar";
-import {ReactNode} from "react";
+import { Epilogue } from "next/font/google";
 
-export default function LayoutPages({children}: {children: ReactNode}) {
-    return (
-        <>
-            <Navbar/>
-            {children}
-        </>
-    )
+const epilogue = Epilogue({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+});
+
+export default function LayoutPages({ children }: { children: React.ReactNode }) {
+  return (
+    <div className={epilogue.className}>
+      <Navbar />
+      {children}
+    </div>
+  );
 }
