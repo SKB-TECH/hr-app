@@ -29,7 +29,9 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>
-          <AppProvider>{children}</AppProvider>
+          <AppProvider>
+            {children}
+          </AppProvider>
         </NextIntlClientProvider>
       </body>
     </html>
