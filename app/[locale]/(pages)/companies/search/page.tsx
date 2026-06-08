@@ -12,7 +12,9 @@ function SearchCompaniesPage() {
       <div className="px-4 py-16 pt-4 max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="hidden md:block">
-            <SidebarFilters sidebarFilterData={mockSidebarCompanyFilters} />
+            <SidebarFilters
+                sidebarFilterData={mockSidebarCompanyFilters}
+            />
           </div>
 
           <CompanyList />
