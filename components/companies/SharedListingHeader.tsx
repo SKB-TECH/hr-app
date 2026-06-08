@@ -1,14 +1,4 @@
-"use client";
-
-import { ChevronDown, LayoutGrid, StretchHorizontal } from "lucide-react";
-import { useState } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { LayoutGrid, StretchHorizontal } from "lucide-react";
 
 interface SearchHeaderProps {
   totalResults: number;
@@ -25,8 +15,6 @@ export function SharedListingHeader({
   setViewGrid,
   header,
 }: SearchHeaderProps) {
-  const [selectedSort, setSelectedSort] = useState(sortOptions[0] ?? "Sort");
-
   return (
     <div className="flex flex-col  ">
       <h1 className="text-[32px] font-semibold font-clash text-neutral-100">
@@ -42,29 +30,13 @@ export function SharedListingHeader({
             <span className="text-[16px] text-slate-500 max-sm:hidden">
               Sort by:
             </span>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-1 text-[16px] font-medium text-neutral-100 bg-transparent outline-none border-none cursor-pointer py-0"
-                >
-                  {selectedSort}
-                  <ChevronDown size={16} className="text-slate-400" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-44">
-                <DropdownMenuRadioGroup
-                  value={selectedSort}
-                  onValueChange={setSelectedSort}
-                >
-                  {sortOptions.map((option) => (
-                    <DropdownMenuRadioItem key={option} value={option}>
-                      {option}
-                    </DropdownMenuRadioItem>
-                  ))}
-                </DropdownMenuRadioGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <select className="text-[16px] font-medium text-neutral-100 bg-transparent outline-none border-none focus:ring-0 cursor-pointer pr-8 py-0">
+              {sortOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="h-8 w-2px bg-slate-200 mx-1 hidden md:block" />

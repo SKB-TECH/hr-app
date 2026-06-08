@@ -62,8 +62,6 @@ export const companies: Company[] = [
       },
     ],
     size: 1000,
-    applied: 5,
-    capacity: 10,
   },
   {
     id: 2,
@@ -90,8 +88,6 @@ export const companies: Company[] = [
       },
     ],
     size: 1000,
-    applied: 5,
-    capacity: 10,
   },
   {
     id: 3,
@@ -111,8 +107,6 @@ export const companies: Company[] = [
       },
     ],
     size: 1000,
-    applied: 5,
-    capacity: 10,
   },
   {
     id: 4,
@@ -132,8 +126,6 @@ export const companies: Company[] = [
       },
     ],
     size: 1000,
-    applied: 5,
-    capacity: 10,
   },
   {
     id: 5,
@@ -153,8 +145,6 @@ export const companies: Company[] = [
       },
     ],
     size: 501,
-    applied: 5, 
-    capacity: 10,
   },
   {
     id: 6,
@@ -181,8 +171,6 @@ export const companies: Company[] = [
       },
     ],
     size: 1000,
-    applied: 5,
-    capacity: 10,
   },
   {
     id: 7,
@@ -209,10 +197,7 @@ export const companies: Company[] = [
       },
     ],
     size: 1000,
-    applied: 5, 
-    capacity: 10,
   },
-
   {
     id: 8,
     src: "/divvy.png",
@@ -238,248 +223,5 @@ export const companies: Company[] = [
       },
     ],
     size: 501,
-    applied: 5,
-    capacity: 10,
   },
 ];
-
-// job data can be added here as well
-export const Alljobsfilter: SidebarFilterCompany[] = [
-  {
-    title: "Type of Employment",
-    options: [{ name: "Full-time", count: 3 }, { name: "Part-time", count: 5 },
-    { name: "Remote", count: 2 }, { name: "Internship", count: 24 },{ name: "Contract", count: 3 },],
-  },
-  {
-    title: "Categories",
-    options: [
-      { name: "Design", count: 24 },
-      { name: "Sales", count: 3 },
-      { name: "Marketing", count: 3 },
-      { name: "Business", count: 3, defaultSelected: true },
-      { name: "Human Resources", count: 6 },
-      { name: "Finance", count: 4 }, {
-        name: "Engineering", count: 4
-      },{ name: "technology", count: 5, defaultSelected: true },
-    ],
-  },
-  {
-    title: "Job Level",
-    options: [
-      { name: "Entry Level", count: 57 },
-      { name: "Mid Level", count: 3 },
-      { name: "Senior Level", count: 5 },
-      { name: "Director", count: 12, defaultSelected: true },
-      { name: "Vp or Above", count: 8 },
-    ],
-  },
-  {
-    title: "Salary Range",
-    options: [
-      { name: "$700 - $1000", count: 4 },
-      { name: "$1000 - $1500", count: 6 },
-      { name: "$1500 - $2000", count: 10 },
-      { name: "$3000 or above", count: 4, defaultSelected: true },
-    ],
-  }
-];
-
-
-export const availableJobs: Company[] = [
-  {
-    id: 1,
-    src: "/Nomad.png",
-    location: "Full Time",
-    availableJobs: 9,
-    name: "Social Media Assistant",
-    description: "Nomad • Paris, France",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 5,
-    capacity: 10,
-  },
-  {
-    id: 2,
-    src: "/Dropbox.png",
-    location: "Full Time",
-    availableJobs: 9,
-    name: "Brand Designer",
-    description: "Dropbox •  San Fransisco, USA",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 2, 
-    capacity: 10,
-  },
-  {
-    id: 3,
-    src: "/Terraform.png",
-    location: "Full Time",
-    availableJobs: 9,
-    name: "Interactive Developer",
-    description: "Terraform • Hamburg, Germany",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 8,
-    capacity: 10,
-  },
-  {
-    id: 4,
-    src: "/revolut.png",
-    location: "Full Time",
-    availableJobs: 9,
-    name: "Email Marketing",
-    description: "Revolut • Madrid, Spain ",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 0,
-    capacity: 10,
-  },
-  {
-    id: 5,
-    src: "/Canva.png",
-    location: "Full Time",
-    availableJobs: 9,
-    name: "Lead Engineer",
-    description: "Canva • Ankara, Turkey",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 5,
-    capacity: 10,
-  },
-  {
-    id: 6,
-    src: "/ClassPass.png",
-    location: "Full Time",
-    availableJobs: 9,
-    name: "Product Designer",
-    description: "ClassPass • Berlin, Germany",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 5,
-    capacity: 10,
-  },
-  {
-    id: 7,
-    src: "/Pitch.png",
-    location: "Full Time",
-    availableJobs: 9,
-    name: "Customer Manager",
-    description: "Pitch • Berlin, Germany",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 5,
-    capacity: 10,
-  },
-  
-];
-  
-
-
-
-
-

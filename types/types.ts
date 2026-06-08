@@ -17,8 +17,6 @@ export type Company = {
   description: string;
   industry: CompanyIndustry[];
   size: number;
-  applied: number;
-  capacity: number;
 };
 // company filter type definition
 export type SidebarOptions = {
