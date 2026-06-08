@@ -91,7 +91,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Next.js: server-side">
+  <component name="RunManager">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -219,23 +219,7 @@
       <option name="project" value="LOCAL" />
       <updated>1780255782492</updated>
     </task>
-    <task id="LOCAL-00013" summary="Implementation of the Company search">
-      <option name="closed" value="true" />
-      <created>1780257109692</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1780257109692</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Implementation of the Company search">
-      <option name="closed" value="true" />
-      <created>1780257378213</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1780257378213</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,7 +232,6 @@
     <MESSAGE value="Implementation of the landing with the layout for all page in /(pages)" />
     <MESSAGE value="Customize the navigation bar!" />
     <MESSAGE value="Landing page... The hero section!" />
-    <MESSAGE value="Implementation of the Company search" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation of the Company search" />
+    <option name="LAST_COMMIT_MESSAGE" value="Landing page... The hero section!" />
   </component>
 </project>
