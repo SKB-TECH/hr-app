@@ -22,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/full-landing-page" />
+        <entry key="$PROJECT_DIR$" value="feature/job_page" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,7 +51,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "feature/landing-page",
     "javascript.preferred.runtime.type.id": "node",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
@@ -247,6 +247,7 @@
     <MESSAGE value="Customize the navigation bar!" />
     <MESSAGE value="Landing page... The hero section!" />
     <MESSAGE value="Implementation of the Company search" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation of the Company search" />
+    <MESSAGE value="Merge branch 'develop' into feature/job_page&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'develop' into feature/job_page&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
 </project>
