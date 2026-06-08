@@ -37,7 +37,7 @@ function HeroTitle() {
 function SearchInput({ value, onChange, placeholder = "Job title or keyword" }: { value: string; onChange: (event: React.ChangeEvent<HTMLInputElement>) => void; placeholder?: string; }) {
   return (
     <div className="flex items-center gap-3 px-5 py-3 bg-white flex-1 min-w-0">
-      <SearchIcon className="w-5 h-5 text-gray-400" />
+      <SearchIcon />
       <input
         type="text"
         value={value}
