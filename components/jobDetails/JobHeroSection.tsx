@@ -85,7 +85,7 @@ export default function JobHeroSection({ jobDetails }: JobHeroSectionProps) {
                   {jobDetails.title}
                 </h1>
 
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mt-4 text-[16px] md:text-[18px] text-[#515B6F]">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mt-4 text-[14px]  text-[#515B6F]">
                   <span>{jobDetails.company}</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#A8ADB7]" />
                   <span>{jobDetails.location}</span>
