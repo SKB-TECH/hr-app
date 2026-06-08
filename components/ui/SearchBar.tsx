@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { MagnifyingGlassIcon, MapPinIcon } from "@heroicons/react/24/outline";
+import { Button } from "@/components/ui/button";
 
 export interface SearchBarProps {
   placeholder?: string;
@@ -70,9 +71,9 @@ export default function SearchBar({
           </select>
         </div>
 
-        <button className="w-full sm:w-auto bg-[#4640DE] hover:bg-[#3730c4] text-white font-bold text-[15px] px-10 py-5 border-none cursor-pointer whitespace-nowrap transition-all">
+        <Button  variant="ghost" className="w-full sm:w-auto  text-white font-bold text-[15px] px-10 py-5 border-none cursor-pointer whitespace-nowrap transition-all">
           {searchLabel}
-        </button>
+        </Button>
       </div>
 
       {/* Popular tags */}
