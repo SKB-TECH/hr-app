@@ -1,4 +1,5 @@
-import Sidebar from "@/components/dashboard/Sidebar";
+import DashBoardHeaderWrapper from "@/components/dashboard/sidebar/DashBoardHeaderWrapper";
+import Sidebar from "@/components/dashboard/sidebar/Sidebar";
 
 export default function DashboardLayout({
   children,
@@ -10,7 +11,10 @@ export default function DashboardLayout({
       <div className="hidden lg:block w-1/6 ">
         <Sidebar />
       </div>
-      <div className="w-5/6 max-lg:w-full ">{children}</div>
+      <div className="w-5/6 max-lg:w-full  ">
+        <DashBoardHeaderWrapper />
+        {children}
+      </div>
     </div>
   );
 }
