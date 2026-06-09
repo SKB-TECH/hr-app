@@ -1,10 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { Epilogue } from "next/font/google";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import {  MapPinIcon } from "lucide-react";
 
-const epilogue = Epilogue({ subsets: ["latin"] });
+
 
 interface HeroSectionProps {
   title: string;
@@ -37,9 +36,11 @@ const ReusableHeroSection = ({
             {title}{" "}
             <span className="relative inline-block text-accent-light-blue">
               {highlight}
-              <img
+              <Image
                 src="/image.png"
                 alt="underline"
+                width={200}
+                height={30}
                 className="h-[11px] ml-4 mt-2"
               />
             </span>
