@@ -89,9 +89,12 @@ export default async function CompanyPage({
                   alt="icon"
                   className="h-4 w-4 items-center mt-1"
                 />
-                <h1 className="text-base md:text-lg text-brand font-epilogue break-all">
+                <Link
+                  href="/twitter.com/stripe"
+                  className="text-base md:text-lg text-brand font-epilogue break-all"
+                >
                   {companyDetails.socials.twitter}
-                </h1>
+                </Link>
               </div>
               <div className="flex gap-5 border border-brand/50 px-2 py-1">
                 <img
@@ -99,15 +102,21 @@ export default async function CompanyPage({
                   alt="icon"
                   className="h-5 w-2 items-center mt-1"
                 />
-                <h1 className="text-base md:text-lg text-brand font-epilogue break-all">
+                <Link
+                  href="/facebook.com/StripeHQ"
+                  className="text-base md:text-lg text-brand font-epilogue break-all"
+                >
                   {companyDetails.socials.facebook}
-                </h1>
+                </Link>
               </div>
               <div className="flex gap-5 border border-brand/50 px-2 py-1">
                 <img src="/icon7.png" alt="icon" className="h-5 w-5" />
-                <h1 className="text-base md:text-lg text-brand font-epilogue break-all">
+                <Link
+                  href="/linkedin.com/company/stripe"
+                  className="text-base md:text-lg text-brand font-epilogue break-all"
+                >
                   {companyDetails.socials.linkedin}
-                </h1>
+                </Link>
               </div>
             </div>
 
@@ -159,7 +168,7 @@ export default async function CompanyPage({
           </div>
           <div className="mt-10 ">
             <Link
-              href="/#"
+              href="/companies/1/#"
               className="text-base md:text-[16px] text-brand font-epilogue break-all"
             >
               View tech stack
@@ -189,7 +198,7 @@ export default async function CompanyPage({
                 </div>
               ))}
               <Link
-                href="/#"
+                href="/companies/1/#"
                 className="text-base md:text-[16px] text-brand font-epilogue font-semibold break-all mt-5 inline-flex items-center"
               >
                 View Countries
@@ -204,7 +213,7 @@ export default async function CompanyPage({
       <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-15 ">
         <JobPerksSection perks={companyDetails.perks} />
       </div>
-        <OpenJobsSection jobs={similarJobs} />
+      <OpenJobsSection jobs={similarJobs} />
     </main>
   );
 }
