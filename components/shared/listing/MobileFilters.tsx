@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { SharedFilterSection } from "./SharedFilterSection";
 import { X } from "lucide-react";
 import { SidebarFilterCompany } from "@/types/types";

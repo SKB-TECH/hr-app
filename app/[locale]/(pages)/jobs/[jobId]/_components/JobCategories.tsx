@@ -1,4 +1,4 @@
-import StatusLabel from "@/components/jobDetails/StatusLabel";
+import StatusLabel from "./StatusLabel";
 
 import { getStyleForCategory } from "@/lib/utils";
 

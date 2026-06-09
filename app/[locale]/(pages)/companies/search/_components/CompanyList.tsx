@@ -1,6 +1,6 @@
 "use client";
 import { companies, sortOptions } from "@/data/companyPageData";
-import { SharedListingHeader } from "./SharedListingHeader";
+import { SharedListingHeader } from "@/components/shared/listing/SharedListingHeader";
 import { CompanyCard } from "./CompanyCard";
 import { useState } from "react";
 

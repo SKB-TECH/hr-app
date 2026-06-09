@@ -1,7 +1,7 @@
 import { mockSidebarCompanyFilters } from "../../../../../data/companyPageData";
-import { SidebarFilters } from "@/components/companies/SidebarFilters";
-import CompanyList from "@/components/companies/CompanyList";
-import SharedDisplayMobileFilter from "@/components/companies/SharedDisplayMobileFilter";
+import { SidebarFilters } from "@/components/shared/listing/SidebarFilters";
+import CompanyList from "./_components/CompanyList";
+import SharedDisplayMobileFilter from "@/components/shared/listing/SharedDisplayMobileFilter";
 
 function SearchCompaniesPage() {
   return (

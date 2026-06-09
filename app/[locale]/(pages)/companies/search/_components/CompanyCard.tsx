@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Company } from "@/types/types";
-import SharedCard from "../common/navbar/SharedCard";
+import SharedCard from "@/components/common/navbar/SharedCard";
 
 export function CompanyCard({ company }: { company: Company }) {
   return (
