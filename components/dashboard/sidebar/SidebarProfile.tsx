@@ -8,11 +8,11 @@ export function SidebarProfile() {
       className="relative z-2 flex  justify-center items-center gap-3 p-2 rounded-lg hover:bg-[#e6e5fa] transition-colors duration-200"
     >
       <Image
-        src="/images/image2.png"
+        src="/profileImage.jpg"
         alt="User Profile"
         width={40}
         height={40}
-        className="rounded-full shrink-0 bg-red-500 w-[40px] h-[40px] bg-center object-cover"
+        className="rounded-full shrink-0  w-[40px] h-[40px] bg-center object-cover"
       />
       <div>
         <p className="font-medium text-[18px] text-[#202430]">Jake Gyll</p>
