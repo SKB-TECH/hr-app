@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import TriggerApplicationForm from "../jobs/TriggerApplicationForm";
 
 type JobHeroSectionProps = {
   jobDetails: {
@@ -102,9 +103,7 @@ export default function JobHeroSection({ jobDetails }: JobHeroSectionProps) {
 
               <div className="hidden md:block w-px h-14 bg-[#D6DDEB]" />
 
-              <button className="w-full md:w-auto bg-[#4640DE] hover:bg-[#352fc9] transition-colors text-white font-semibold text-lg px-12 py-3 cursor-pointer">
-                Apply
-              </button>
+              <TriggerApplicationForm />
             </div>
           </div>
         </div>
