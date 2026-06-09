@@ -7,14 +7,13 @@ export function CompanyCard({ company }: { company: Company }) {
     <SharedCard>
       <div className="flex justify-between items-start ">
         <div className="flex flex-col gap-2">
-          <div className="relative w-[80px] h-[80px] max-sm:w-[48px] max-sm:h-[48px]">
-            <Image
-              src={company.src}
-              alt={company.name}
-              fill
-              className="object-contain"
-            />
-          </div>
+          <Image
+            src={company.src}
+            alt={company.name}
+            width={80}
+            height={80}
+            className="max-sm:w-[48px] max-sm:h-[48px]"
+          />
           <div className="flex flex-col ">
             <h2 className="max-md:text-[20px] text-[24px] font-semibold md:font-bold text-neutral-100 md:my-2 block">
               {company.name}
