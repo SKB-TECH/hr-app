@@ -337,7 +337,7 @@ export const availableJobs: Company[] = [
       },
     ],
     size: 1000,
-    applied: 2, 
+    applied: 2,
     capacity: 10,
   },
   {
@@ -475,7 +475,197 @@ export const availableJobs: Company[] = [
     applied: 5,
     capacity: 10,
   },
-  
+
+  // second page
+  {
+    id: 8,
+    src: "/Nomad.png",
+    location: "Full Time",
+    availableJobs: 9,
+    name: "Social Media Assistant",
+    description: "Nomad • Paris, France",
+    industry: [
+      {
+        name: "Marketing",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Design",
+        style: {
+          color: "#4640DE",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+    applied: 5,
+    capacity: 10,
+  },
+  {
+    id: 9,
+    src: "/Dropbox.png",
+    location: "Full Time",
+    availableJobs: 9,
+    name: "Brand Designer",
+    description: "Dropbox •  San Fransisco, USA",
+    industry: [
+      {
+        name: "Marketing",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Design",
+        style: {
+          color: "#4640DE",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+    applied: 2,
+    capacity: 10,
+  },
+  {
+    id: 10,
+    src: "/Terraform.png",
+    location: "Full Time",
+    availableJobs: 9,
+    name: "Interactive Developer",
+    description: "Terraform • Hamburg, Germany",
+    industry: [
+      {
+        name: "Marketing",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Design",
+        style: {
+          color: "#4640DE",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+    applied: 8,
+    capacity: 10,
+  },
+  {
+    id: 11,
+    src: "/revolut.png",
+    location: "Full Time",
+    availableJobs: 9,
+    name: "Email Marketing",
+    description: "Revolut • Madrid, Spain ",
+    industry: [
+      {
+        name: "Marketing",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Design",
+        style: {
+          color: "#4640DE",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+    applied: 0,
+    capacity: 10,
+  },
+  {
+    id: 12,
+    src: "/Canva.png",
+    location: "Full Time",
+    availableJobs: 9,
+    name: "Lead Engineer",
+    description: "Canva • Ankara, Turkey",
+    industry: [
+      {
+        name: "Marketing",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Design",
+        style: {
+          color: "#4640DE",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+    applied: 5,
+    capacity: 10,
+  },
+  {
+    id: 13,
+    src: "/ClassPass.png",
+    location: "Full Time",
+    availableJobs: 9,
+    name: "Product Designer",
+    description: "ClassPass • Berlin, Germany",
+    industry: [
+      {
+        name: "Marketing",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Design",
+        style: {
+          color: "#4640DE",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+    applied: 5,
+    capacity: 10,
+  },
+  {
+    id: 14,
+    src: "/Pitch.png",
+    location: "Full Time",
+    availableJobs: 9,
+    name: "Customer Manager",
+    description: "Pitch • Berlin, Germany",
+    industry: [
+      {
+        name: "Marketing",
+        style: {
+          color: "#FFB836",
+          bg: "#FFFFFF",
+        },
+      },
+      {
+        name: "Design",
+        style: {
+          color: "#4640DE",
+          bg: "#FFFFFF",
+        },
+      },
+    ],
+    size: 1000,
+    applied: 5,
+    capacity: 10,
+  },
 ];
   
 

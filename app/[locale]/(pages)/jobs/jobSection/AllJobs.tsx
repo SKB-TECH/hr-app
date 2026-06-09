@@ -1,12 +1,16 @@
-import { Alljobsfilter, mockSidebarCompanyFilters } from "../../../../../data/companyPageData";
+import { Alljobsfilter } from "../../../../../data/companyPageData";
 import { SidebarFilters } from "@/components/companies/SidebarFilters";
-import CompanyList from "@/components/companies/CompanyList";
 import SharedDisplayMobileFilter from "@/components/companies/SharedDisplayMobileFilter";
 import JobsList from "./JobsList";
 
-function AllJobs() {
+interface AllJobsProps {
+  currentPage: number;
+  pageSize: number;
+}
+
+function AllJobs({ currentPage, pageSize }: AllJobsProps) {
   return (
-    <section className="min-h-screen relative">
+    <section className="relative">
       <SharedDisplayMobileFilter DataToFilter={Alljobsfilter} />
       <div className="px-4 py-16 pt-4 max-w-6xl mx-auto m-10">
         <div className="flex flex-col md:flex-row gap-8">
@@ -14,7 +18,8 @@ function AllJobs() {
             <SidebarFilters sidebarFilterData={Alljobsfilter} />
           </div>
 
-          <JobsList />
+          {/* JobsList only called once here */}
+          <JobsList currentPage={currentPage} pageSize={pageSize} />
         </div>
       </div>
     </section>
