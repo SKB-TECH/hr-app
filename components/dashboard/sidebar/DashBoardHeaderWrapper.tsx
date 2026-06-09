@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 import DashboardHeader from "./DashboardHeader";
 
 function DashBoardHeaderWrapper() {
-  const path = usePathname();
+  const pathname = usePathname();
   return (
     <>
-      <DashboardHeader path={path} />
+      <DashboardHeader pathname={pathname} />
     </>
   );
 }

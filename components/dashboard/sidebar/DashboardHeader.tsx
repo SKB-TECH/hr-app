@@ -1,19 +1,23 @@
+// components/dashboard/sidebar/DashboardHeader.tsx
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getPageName } from "@/lib/utils";
 
-function DashboardHeader({ path }: { path: string }) {
+function DashboardHeader({ pathname }: { pathname: string }) {
+  const pageName = getPageName(pathname);
+
   return (
-    <div className="w-full  p-4 px-6 flex justify-between items-center border-b border-brand-light-neutral ">
-      <h1 className="text-[32px] font-bold mb-4 text-neutral-100">{path}</h1>
+    <div className="w-full p-4 px-6 flex justify-between items-center border border-brand-light-neutral">
+      <h1 className="text-2xl font-bold text-neutral-100">{pageName}</h1>
       <div className="flex items-center gap-4">
-        <Link href="/dashboard">
-          <Button variant="custom-primary" className="py-2.5 px-4 hover:bg-">
+        <Link href="/">
+          <Button variant="custom-primary" className="py-2.5 px-4">
             Back to Homepage
           </Button>
         </Link>
-        <Button variant="link" className="">
-          View Profile
-        </Button>
+        <Link href="/dashboard/profile">
+          <Button variant="link">View Profile</Button>
+        </Link>
       </div>
     </div>
   );
