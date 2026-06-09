@@ -17,12 +17,12 @@ export default function JobHeroSection({ jobDetails }: JobHeroSectionProps) {
     <div
       className="w-full bg-light-brand-neutral py-8 md:py-12"
       style={{
-        backgroundImage: `url(/BG.png)`,
+        backgroundImage: `url(/BG.webp)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="w-full max-w-6xl mx-auto md:px-6 px-4">
+      <div className="w-full max-w-7xl mx-auto md:px-6 px-4">
         {/* Breadcrumbs */}
         <div className="flex items-center text-sm text-[#7C8493] mb-6 overflow-hidden">
           <Link
