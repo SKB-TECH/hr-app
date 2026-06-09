@@ -1,82 +1,40 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { categoriesData } from "@/data/category";
-import { CategoryProp } from "@/data/category";
-import { SectionTitle } from "@/components/ui/Title";
-import Image from "next/image";
+import {ArrowRight, FolderArchive} from "lucide-react";
+import {SectionComponentProps} from "@/utilities/SectionComponentProps";
 
-export default function SectionComponent() {
-  return (
-    <div className="bg-white sm:px-18 px-8">
-      <section className="py-8 md:px-0">
-        <SectionTitle
-          title="Explore by"
-          highlight="category"
-          showAllText="Show all jobs"
-          showAllLink="/jobs"
-          isExpanded
-        />
+export default function SectionComponent({title = "", highlight = "", showAllLink = "", showAllText, isExpanded = false }: SectionComponentProps){
+    return (
+        <div className="bg-white px-8">
+            <section className="max-w-6xl mx-auto py-8 px-4 md:px-0">
+                <div className="flex flex-col md:flex-row justify-between items-end">
+                    <h1 className="font-bold text-3xl flex flex-row gap-2">
+                        <span className="text-black dark:text-white">{title}</span>
+                        <span className="text-primary">{highlight}</span>
+                    </h1>
+                    {isExpanded && (
+                        <Link href={showAllLink} className="flex flex-row text-brand text-xs font-bold items-center gap-1">
+                            <span className="">{showAllText}</span>
+                            <ArrowRight size={12}/>
+                        </Link>
+                    )}
+                </div>
 
-        <div className="py-5 md:py-12 grid grid-cols-1 md:grid-cols-4 gap-5">
-          {categoriesData.map((category: CategoryProp) => (
-            <div
-              key={category.id}
-              className="border cursor-pointer group hover:bg-brand
-                         flex flex-row md:flex-col
-                         items-center md:items-start
-                         gap-4 md:gap-3
-                         p-4 md:p-6
-                         justify-between"
-            >
-              {/* Icon */}
-              <div className="flex-shrink-0">
-                <Image
-                  src={category.logo}
-                  alt={category.name}
-                  width={28}
-                  height={28}
-                  className={`
-                    transition-all duration-200
-                    group-hover:brightness-0 group-hover:invert
-                    ${category.blackIcon
-                      ? "brightness-0"
-                      : "brightness-0 saturate-100 [filter:invert(27%)_sepia(98%)_saturate(1234%)_hue-rotate(222deg)_brightness(89%)_contrast(97%)]"
-                    }
-                  `}
-                />
-              </div>
-
-              <div className="flex-1 flex flex-col gap-0.5 md:gap-3">
-                <h2 className="font-bold text-black group-hover:text-white text-base md:text-2xl">
-                  {category.name}
-                </h2>
-                <span className="text-sm text-gray-400 group-hover:text-white">
-                  {category.availableJobs} jobs available
-                </span>
-              </div>
-
-              <Link
-                href="#"
-                className="flex-shrink-0 text-foreground group-hover:text-white"
-              >
-                <ArrowRight size={15} />
-              </Link>
-            </div>
-          ))}
+                {/*    Elements   */}
+                <div className="py-5 md:py-12 grid grid-cols-1 md:grid-cols-4 gap-5">
+                    {[1,2,3,4,5, 6, 7, 8].map((item, i) => (
+                        <div key={i} className="border cursor-pointer group hover:bg-brand p-5 md:p-6 flex flex-col gap-3 justify-between">
+                            <FolderArchive size={32} className="mb-3 text-brand group-hover:text-white"/>
+                            <div className="flex flex-col gap-3">
+                                <h2 className="font-bold text-black group-hover:text-white text-2xl">Design</h2>
+                                <Link href="#" className="flex flex-row justify-between text-foreground group-hover:text-white items-center gap-2">
+                                    <span className=" text-sm">235 jobs available</span>
+                                    <ArrowRight size={15} className="font-normal"/>
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
         </div>
-
-    
-        <div className="md:hidden mt-4">
-          <Link
-            href="/jobs"
-            className="flex flex-row text-brand text-sm font-semibold items-center gap-1"
-          >
-            <span>Show all jobs</span>
-            <ArrowRight size={14} />
-          </Link>
-        </div>
-
-      </section>
-    </div>
-  );
+    )
 }

@@ -1,27 +1,9 @@
-
 .bg-pattern {
-  background-image: url("/Pattern.png");
-  background-position: top right;
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-attachment: scroll;
+  background-image: url("/images/landingImg.png"), url("/Pattern.png");
+  background-position:
+    top right,
+    top right;
+  background-repeat: no-repeat, no-repeat;
+  background-size: auto, auto;
+  background-attachment: scroll, scroll;
 }
-
-@media (min-width: 768px) {
-  .bg-pattern {
-    background-image:  url("/Pattern.png");
-    background-position: top right, top right;
-    background-repeat: no-repeat, no-repeat;
-    background-size: auto, auto;
-    background-attachment: scroll, scroll;
-  }
-}
-
-.bg-patt {
-  background-image: url("/images/BG.png"), url("/Pattern.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* url("/images/landingImg.png"), */

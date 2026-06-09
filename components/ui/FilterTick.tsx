@@ -10,11 +10,16 @@ interface FilterTickProps {
 
 export function FilterTick({
   defaultChecked = false,
+  onChange, // ✅ now destructured
 }: FilterTickProps) {
   const [checked, setChecked] = useState(defaultChecked);
 
   const toggle = () => {
-    setChecked((prev) => !prev);
+    setChecked((prev) => {
+      const next = !prev;
+      onChange?.(next); // ✅ parent is notified with new value
+      return next;
+    });
   };
 
   return (
@@ -29,7 +34,7 @@ export function FilterTick({
         }
       `}
     >
-      {checked && <Check size={16} className="text-white stroke-[3px]" />}
+      {checked && <Check size={16} className='text-white stroke-[3px]' />}
     </div>
   );
 }
