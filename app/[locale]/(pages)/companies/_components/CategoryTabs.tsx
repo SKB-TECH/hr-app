@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Category, CategoryConfig, CategoryIcon } from "@/data/companies";
 import type { LucideIcon } from "lucide-react";
@@ -22,8 +22,21 @@ export default function CategoryTabs({
   tabsRef,
   onScroll,
 }: CategoryTabsProps) {
+  const scrollLeft = () => {
+    tabsRef.current?.scrollBy({ left: -200, behavior: "smooth" });
+  };
+
   return (
     <div className="companies-category__tabs-wrap">
+      <button
+        type="button"
+        onClick={scrollLeft}
+        aria-label="Scroll categories left"
+        className="companies-category__scroll-btn"
+      >
+        <ChevronLeft size={18} />
+      </button>
+
       <div ref={tabsRef} className="companies-category__tabs">
         {categoryConfig.map(({ id, label, icon }) => {
           const Icon = categoryIconMap[icon];
@@ -52,10 +65,11 @@ export default function CategoryTabs({
           );
         })}
       </div>
+
       <button
         type="button"
         onClick={onScroll}
-        aria-label="Scroll categories"
+        aria-label="Scroll categories right"
         className="companies-category__scroll-btn"
       >
         <ChevronRight size={18} />
