@@ -17,7 +17,7 @@ export default function Sidebar() {
             height={32}
             className="object-cover"
           />
-          <span className="block font-bold text-2xl">JobHuntly</span>
+          <span className="block font-bold text-[24px]">JobHuntly</span>
         </Link>
 
         <div className="space-y-4 ">

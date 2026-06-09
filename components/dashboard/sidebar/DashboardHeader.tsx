@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function DashboardHeader({ path }: { path: string }) {
   return (
-    <div className="w-full  p-4 px-6 flex justify-between items-center border border-brand-light-neutral ">
+    <div className="w-full  p-4 px-6 flex justify-between items-center border-b border-brand-light-neutral ">
       <h1 className="text-[32px] font-bold mb-4 text-neutral-100">{path}</h1>
       <div className="flex items-center gap-4">
         <Link href="/dashboard">
