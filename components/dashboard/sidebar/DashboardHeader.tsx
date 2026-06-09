@@ -7,7 +7,7 @@ function DashboardHeader({ pathname }: { pathname: string }) {
   const pageName = getPageName(pathname);
 
   return (
-    <div className="w-full p-4 px-6 flex justify-between items-center border border-brand-light-neutral">
+    <div className="w-full p-4 px-6 flex justify-between items-center border-b border-brand-light-neutral">
       <h1 className="text-2xl font-bold text-neutral-100">{pageName}</h1>
       <div className="flex items-center gap-4">
         <Link href="/">
