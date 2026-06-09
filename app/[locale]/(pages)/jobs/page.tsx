@@ -1,12 +1,30 @@
+"use client";
+
+import { useState } from "react";
+import ReusableHeroSection from "./HeroSection/ReusableHeroSection";
+import AllJobs from "./jobSection/AllJobs";
+import Pagination from "./ReusablePagination/ReusablePagination";
+import { availableJobs } from "@/data/companyPageData";
+
 export default function JobsPage() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 5; // jobs per page
+  const totalPages = Math.ceil(availableJobs.length / pageSize);
   return (
-      <div className="pb-32">
-          <div className="max-w-6xl mx-auto flex flex-col gap-5">
-            <h1 className="text-md text-primary font-extrabold">Jobs here</h1>
-              <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae distinctio dolorum est excepturi facere fuga incidunt itaque magni, maxime nisi odit provident quasi qui quidem reprehenderit tempora unde voluptatum!
-              </p>
-          </div>
-      </div>
+    <div className="">
+      <ReusableHeroSection
+        title="Find your  "
+        highlight=" dream job"
+        subtitle="Find your next career at companies like HubSpot, Nike, and Dropbox"
+        searchEnabled={true}
+        popularTags={["UI Designer", "UX Researcher", "Android", "Admin"]}
+      />
+      <AllJobs currentPage={currentPage} pageSize={pageSize} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
+    </div>
   );
 }
