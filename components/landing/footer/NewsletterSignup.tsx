@@ -9,7 +9,7 @@ export function NewsletterSignup() {
       <p className="text-sm text-gray-400 mb-5 leading-relaxed">
         The latest job news, articles, sent to your inbox weekly.
       </p>
-      <div className="flex flex-col gap-2 md:flex-row md:gap-0">
+      <div className="flex flex-col gap-2 md:flex-row ">
         <input
           type="email"
           value={email}

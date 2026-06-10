@@ -1,18 +1,4 @@
-// data/companyPageData.ts
 
-// export const companyId = [
-//   {
-//     id: "1",
-//     name: "Google",
-//     description: "Technology company",
-//     src: "/google.png",
-//     location: "USA",
-//     applied: 12,
-//     capacity: 20,
-//   },
-// ];
-
-// data/companies.ts
 
 export const companyProfiles = [
   {

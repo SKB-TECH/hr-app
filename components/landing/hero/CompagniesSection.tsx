@@ -1,4 +1,4 @@
-import { VodafoneLogo, IntelLogo, TeslaLogo, AmdLogoSvg, TalkitLogo } from "./icons";
+import { VodafoneLogo, IntelLogo, TeslaLogo, AmdLogoSvg, TalkitLogo } from "../icons";
 
 export interface Company {
   name: string;

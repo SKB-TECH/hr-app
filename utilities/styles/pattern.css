@@ -1,9 +1,5 @@
 .bg-pattern {
-  background-image: url("/images/landingImg.png"), url("/Pattern.png");
-  background-position:
-    top right,
-    top right;
-  background-repeat: no-repeat, no-repeat;
-  background-size: auto, auto;
-  background-attachment: scroll, scroll;
+  background-image: url("/background.png");
+  background-position:cover;
+  background-repeat:no-repeat;
 }
