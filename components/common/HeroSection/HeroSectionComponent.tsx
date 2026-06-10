@@ -27,7 +27,7 @@ export default function HeroSectionComponent() {
                 />
             </div>
 
-            <div className="relative z-10 mx-auto grid min-h-[560px] max-w-6xl grid-cols-1 px-4  md:min-h-[760px] md:grid-cols-[620px_1fr] ">
+            <div className="relative z-10 mx-auto grid min-h-[560px] max-w-6xl grid-cols-1 px-6 sm:px-18  md:min-h-[760px] md:grid-cols-[620px_1fr] ">
                 <div className="z-20 flex flex-col justify-center pb-10 md:pb-16">
                     <h1 className="text-[42px] font-extrabold leading-[1.05] tracking-[-0.04em] text-[#25324B] sm:text-[52px] md:text-[68px] md:leading-[1.15]">
                         Discover <br />
@@ -44,8 +44,8 @@ export default function HeroSectionComponent() {
                         heights and passionate about startups.
                     </p>
 
-                    <div className="mt-6 flex w-full  flex-col bg-white p-4 shadow-[0_16px_40px_rgba(37,50,75,0.08)] md:mt-9 md:w-[850px] md:flex-row">
-                        <div className="flex w-full items-center gap-3   md:w-[310px]  md:px-4 md:py-0">
+                    <div className="mt-6 flex w-full  flex-col bg-white p-4 shadow-[0_16px_40px_rgba(37,50,75,0.08)] md:mt-14 md:w-[700px] md:flex-row">
+                        <div className="flex w-full items-center gap-3   md:w-[310px]-  md:px-4 md:py-0">
                             <Search size={20} className="shrink-0 text-[#25324B] md:size-[25px]" />
                             <Input
                                 placeholder="Job title or keyword"
@@ -53,7 +53,7 @@ export default function HeroSectionComponent() {
                             />
                         </div>
 
-                        <div className="flex w-full items-center gap-3   md:w-[270px]  md:px-4 md:py-0">
+                        <div className="flex w-full items-center gap-3   md:w-[270px]-  md:px-4 md:py-0">
                             <MapPin size={20} className="shrink-0 text-[#25324B] md:size-[25px]" />
                             <Input
                                 placeholder="Florence, Italy"
@@ -62,7 +62,7 @@ export default function HeroSectionComponent() {
                             <ChevronDown size={14} className="shrink-0 text-[#7C8493] md:size-4" />
                         </div>
 
-                        <Button className=" h-12  bg-[#4640DE] text-sm font-bold hover:bg-[#3730c9]  md:h-[72px] md:flex-1 md:text-lg">
+                        <Button className=" h-12  bg-[#4640DE] text-sm font-bold hover:bg-[#3730c9]  md:h-[58px] md:flex-1 md:text-lg">
                             Search my job
                         </Button>
                     </div>
@@ -87,7 +87,7 @@ export default function HeroSectionComponent() {
                 </div>
             </div>
 
-            <div className="absolute bottom-0 right-0 z-20 hidden h-[135px] w-[50%] bg-white [clip-path:polygon(100%_0,100%_100%,0_100%)] md:block" />
+            <div className="absolute bottom-0 right-0 z-20 hidden h-[135px] w-[25%] bg-white [clip-path:polygon(100%_0,100%_100%,0_100%)] md:block" />
         </section>
     );
 }

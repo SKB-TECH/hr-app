@@ -14,8 +14,8 @@ export default function NavbarComponentLandingPage() {
     <nav className='w-full sticky top-0 z-50 backdrop-blur-sm'>
 
       
-      <div className='px-6 max-w-6xl mx-auto py-4 flex items-center justify-between'>
-         <div className="flex items-center gap-5">
+      <div className='px-6 sm:px-18 py-4 flex items-center justify-between'>
+         <div className="flex items-center  gap-5">
            {/* Logo */}
         <Link href='/'>
           <Image src="/LogoBlack.png" alt="logo-black" width={100} height={100} />
@@ -41,8 +41,7 @@ export default function NavbarComponentLandingPage() {
             Login
           </Link>
           <Button
-            variant='ghost'
-            className="bg-indigo-500 hover:bg-indigo-900 hover:text-white px-4 py-5 rounded-none outline-none cursor-pointer text-white"
+            className="bg-[#4640DE] text-sm font-bold hover:bg-[#3730c9] hover:text-white px-4 py-5 cursor-pointer text-white"
             asChild
           >
             <Link href='/sign-up'>Sign Up</Link>

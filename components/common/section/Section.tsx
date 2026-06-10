@@ -66,6 +66,7 @@ export default function SectionComponent() {
           ))}
         </div>
 
+        {/* Show all jobs — mobile only, below the list */}
         <div className="md:hidden mt-4">
           <Link
             href="/jobs"

@@ -9,8 +9,8 @@ const HomePage = () => {
     return (
         <>
             <HeroSectionComponent/>
+             <CompagniesSection/>
             < SectionComponent/>
-            <CompagniesSection/>
             <FeaturedJobsSection/>
             <LatestJobsOpenSection/>
         </>

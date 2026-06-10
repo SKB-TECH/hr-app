@@ -34,7 +34,7 @@ export default function CompaniesSection({
         {companies.map((company) => (
           <div
             key={company.name}
-            className="flex items-center justify-center"
+            className="flex items-center justify-center "
           >
             {company.logo}
           </div>
