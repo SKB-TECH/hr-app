@@ -22,7 +22,7 @@ export default function JobHeroSection({ jobDetails }: JobHeroSectionProps) {
         backgroundPosition: "center",
       }}
     >
-      <div className="w-full max-w-7xl mx-auto md:px-6 px-4">
+      <div className="w-full max-w-6xl mx-auto md:px-6 px-4">
         {/* Breadcrumbs */}
         <div className="flex items-center text-sm text-[#7C8493] mb-6 overflow-hidden">
           <Link
@@ -44,10 +44,10 @@ export default function JobHeroSection({ jobDetails }: JobHeroSectionProps) {
           <span className="mx-2 shrink-0">/</span>
 
           <Link
-            href="/companies/nomad"
+            href={"/companies/1"}
             className="hover:text-[#4640DE] transition-colors truncate max-w-[80px] md:max-w-none"
           >
-            Nomad
+            {jobDetails.company}
           </Link>
 
           <span className="mx-2 shrink-0">/</span>
