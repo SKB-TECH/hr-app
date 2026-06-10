@@ -34,7 +34,7 @@ export default function CompaniesSection({
         {companies.map((company) => (
           <div
             key={company.name}
-            className="flex items-center justify-center opacity-40 grayscale hover:opacity-60 transition-opacity"
+            className="flex items-center justify-center"
           >
             {company.logo}
           </div>
