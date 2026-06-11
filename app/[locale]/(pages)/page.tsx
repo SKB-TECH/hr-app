@@ -4,17 +4,16 @@ import FeaturedJobsSection from "@/components/landing/hero/FeaturedJobsSection";
 import LatestJobsOpenSection from "@/components/landing/hero/LatestJobsOpenSection";
 import CompagniesSection from "@/components/landing/hero/CompagniesSection";
 
-
 const HomePage = () => {
-    return (
-        <>
-            <HeroSectionComponent/>
-             <CompagniesSection/>
-            < SectionComponent/>
-            <FeaturedJobsSection/>
-            <LatestJobsOpenSection/>
-        </>
-    );
+  return (
+    <>
+      <HeroSectionComponent />
+      <CompagniesSection />
+      <SectionComponent />
+      <FeaturedJobsSection />
+      <LatestJobsOpenSection />
+    </>
+  );
 };
 
 export default HomePage;

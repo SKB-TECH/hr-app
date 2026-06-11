@@ -14,7 +14,7 @@ const defaultTag = "bg-gray-50 text-gray-500 border border-gray-200";
 
 export default function FeaturedJobsSection() {
   return (
-    <section className="  w-full max-w-6xl mx-auto">
+    <section className=" pb-20 w-full max-w-6xl mx-auto">
       <div>
         <SectionTitle
           title="Featured"

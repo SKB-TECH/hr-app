@@ -18,8 +18,8 @@ export function SectionTitle({
 }: SectionTitleProps) {
   return (
     <div className="flex flex-row justify-between items-end mb-8 lg:px-0 w-full max-w-6xl mx-auto ">
-      <h2 className="font-bold text-3xl flex flex-row gap-2">
-        <span className="text-foreground">{title}</span>
+      <h2 className="font-bold text-[48px] flex flex-row gap-2">
+        <span className="text-neutral-100">{title}</span>
         <span className="text-primary">{highlight}</span>
       </h2>
       {isExpanded && showAllLink && (

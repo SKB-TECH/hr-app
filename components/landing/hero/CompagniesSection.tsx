@@ -34,7 +34,10 @@ export default function CompaniesSection({
 
       <div className="flex flex-wrap items-center justify-between gap-y-6">
         {companies.map((company) => (
-          <div key={company.name} className="flex items-center justify-center ">
+          <div
+            key={company.name}
+            className="flex items-center justify-center  "
+          >
             {company.logo}
           </div>
         ))}

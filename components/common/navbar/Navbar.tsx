@@ -12,7 +12,7 @@ export default function NavbarComponentLandingPage() {
 
   return (
     <nav className="w-full sticky top-0 z-50 backdrop-blur-sm">
-      <div className="px-6 sm:px-18 py-4 max-w-7xl mx-auto flex items-center justify-between">
+      <div className=" py-2 max-w-6xl mx-auto flex items-center justify-between">
         <div className="flex items-center  gap-5">
           {/* Logo */}
           <Link href="/">
@@ -29,7 +29,7 @@ export default function NavbarComponentLandingPage() {
               <Link
                 key={index}
                 href={item.path}
-                className="text-sm font-medium hover:text-indigo-600 transition-colors duration-200"
+                className="text-sm text-neutral-80 font-medium hover:text-brand transition-colors duration-200"
               >
                 {item.name}
               </Link>
@@ -46,7 +46,7 @@ export default function NavbarComponentLandingPage() {
             Login
           </Link>
           <Button
-            className="bg-[#4640DE] text-sm font-bold hover:bg-[#3730c9] hover:text-white px-4 py-5 cursor-pointer text-white"
+            className="bg-brand text-sm font-bold hover:bg-[#3730c9] hover:text-white px-4 py-5 cursor-pointer text-white"
             asChild
           >
             <Link href="/sign-up">Sign Up</Link>
