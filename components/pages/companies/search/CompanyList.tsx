@@ -1,9 +1,9 @@
 "use client";
 import { companies, sortOptions } from "@/data/companyPageData";
-import { SharedListingHeader } from "@/components/shared/listing/SharedListingHeader";
+import { SharedListingHeader } from "@/components/pages/companies/search/SharedListingHeader";
 import { CompanyCard } from "./CompanyCard";
 import { useRef, useState } from "react";
-import Pagination from "../../../jobs/ReusablePagination/ReusablePagination";
+import Pagination from "@/components/pages/jobs/ReusablePagination/ReusablePagination";
 
 function CompanyList() {
   const listRef = useRef<HTMLDivElement>(null);

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import ReusableHeroSection from "./HeroSection/ReusableHeroSection";
-import AllJobs from "./jobSection/AllJobs";
-import Pagination from "./ReusablePagination/ReusablePagination";
+import ReusableHeroSection from "@/components/pages/jobs/HeroSection/ReusableHeroSection";
+import AllJobs from "@/components/pages/jobs/jobSection/AllJobs";
+import Pagination from "@/components/pages/jobs/ReusablePagination/ReusablePagination";
 import { availableJobs } from "@/data/companyPageData";
 
 export default function JobsPage() {

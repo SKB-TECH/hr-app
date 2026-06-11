@@ -1,6 +1,6 @@
-import { Alljobsfilter } from "../../../../../data/companyPageData";
-import { SidebarFilters } from "@/components/shared/listing/SidebarFilters";
-import SharedDisplayMobileFilter from "@/components/shared/listing/SharedDisplayMobileFilter";
+import { Alljobsfilter } from "@/data/companyPageData";
+import { SidebarFilters } from "@/components/pages/companies/search/SidebarFilters";
+import SharedDisplayMobileFilter from "@/components/pages/companies/search/SharedDisplayMobileFilter";
 import JobsList from "./JobsList";
 
 interface AllJobsProps {

@@ -1,14 +1,12 @@
 import { ArrowRightIcon } from "lucide-react";
-import Stripe from "../../../../../components/CompanyProfile/StripeHeroSection";
+import Stripe from "../../../../../components/pages/companies/CompanyProfile/StripeHeroSection";
 import { companyProfiles } from "@/data/companyDetails";
-import TeamSection from "@/components/CompanyProfile/teamSection";
-import JobPerksSection from "@/components/shared/job/JobPerksSection";
-import SimilarJobsSection from "@/components/shared/job/SimilarJobsSection";
+import TeamSection from "@/components/pages/companies/CompanyProfile/teamSection";
+import JobPerksSection from "@/components/pages/jobs/job-details/JobPerksSection";
+import SimilarJobsSection from "@/components/pages/jobs/job-details/SimilarJobsSection";
 import { similarJobs } from "@/data/jobDetailsData";
-import OpenJobsSection from "@/components/CompanyProfile/OpenJobsSection";
+import OpenJobsSection from "@/components/pages/companies/CompanyProfile/OpenJobsSection";
 import Link from "next/link";
-
-
 
 interface Company {
   id: string;
@@ -37,26 +35,22 @@ interface Company {
     title: string;
     description: string;
   }[];
-  SimilarJobsSectionProps :{
-    jobs:[];
+  SimilarJobsSectionProps: {
+    jobs: [];
     showAllHref?: string;
     title?: string;
-  }
- 
+  };
 }
 
-
-
 export default async function CompanyPage({
-
- 
-
   params,
 }: Readonly<{
   params: Promise<{ companyId: string }>;
 }>) {
   const { companyId } = await params;
-  const companyDetails = companyProfiles.find((company) => company.id === companyId);
+  const companyDetails = companyProfiles.find(
+    (company) => company.id === companyId,
+  );
 
   if (!companyDetails) {
     return (
@@ -204,7 +198,7 @@ export default async function CompanyPage({
       <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-15 ">
         <JobPerksSection perks={companyDetails.perks} />
       </div>
-        <OpenJobsSection jobs={similarJobs} />
+      <OpenJobsSection jobs={similarJobs} />
     </main>
   );
 }

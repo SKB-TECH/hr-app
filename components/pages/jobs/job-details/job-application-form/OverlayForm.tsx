@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { BASIC_FIELDS, LINK_FIELDS } from "../../data/form-data";
-import { FormField } from "../../types/form-types";
+import { BASIC_FIELDS, LINK_FIELDS } from "../../../../../data/form-data";
+import { FormField } from "../../../../../types/form-types";
 
 interface OverlayFormProps {
   company: string;
@@ -20,7 +20,6 @@ export default function OverlayForm({ company }: OverlayFormProps) {
 
   return (
     <div className="apply-overlay__body">
-
       {/* Intro */}
       <div className="apply-overlay__intro">
         <h2 className="apply-overlay__intro-title">Submit your application</h2>
@@ -30,7 +29,6 @@ export default function OverlayForm({ company }: OverlayFormProps) {
       </div>
 
       <div className="apply-overlay__fields">
-
         {/* Basic fields */}
         {BASIC_FIELDS.map((field: FormField) => (
           <div key={field.label} className="apply-overlay__field">
@@ -69,11 +67,21 @@ export default function OverlayForm({ company }: OverlayFormProps) {
           />
           <div className="apply-overlay__textarea-footer">
             <div className="apply-overlay__toolbar">
-              <button type="button" title="Bold"><b>B</b></button>
-              <button type="button" title="Italic"><i>I</i></button>
-              <button type="button" title="Underline"><u>U</u></button>
-              <button type="button" title="Ordered list">≡</button>
-              <button type="button" title="Link">🔗</button>
+              <button type="button" title="Bold">
+                <b>B</b>
+              </button>
+              <button type="button" title="Italic">
+                <i>I</i>
+              </button>
+              <button type="button" title="Underline">
+                <u>U</u>
+              </button>
+              <button type="button" title="Ordered list">
+                ≡
+              </button>
+              <button type="button" title="Link">
+                🔗
+              </button>
             </div>
             <span className="apply-overlay__char-count">{charCount} / 500</span>
           </div>
@@ -90,7 +98,16 @@ export default function OverlayForm({ company }: OverlayFormProps) {
             className="apply-overlay__resume-btn"
             onClick={() => fileInputRef.current?.click()}
           >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" />
             </svg>
             Attach Resume/CV
@@ -103,7 +120,6 @@ export default function OverlayForm({ company }: OverlayFormProps) {
             onChange={handleFileChange}
           />
         </div>
-
       </div>
     </div>
   );

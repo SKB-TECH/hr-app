@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { JobInfo } from "../../types/form-types";
+import { JobInfo } from "../../../../../types/form-types";
 
 interface OverlayHeaderProps {
   job: JobInfo;

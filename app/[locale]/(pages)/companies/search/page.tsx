@@ -1,8 +1,8 @@
-import { mockSidebarCompanyFilters } from "../../../../../data/companyPageData";
-import { SidebarFilters } from "@/components/shared/listing/SidebarFilters";
-import CompanyList from "./_components/CompanyList";
-import SharedDisplayMobileFilter from "@/components/shared/listing/SharedDisplayMobileFilter";
-import ReusableHeroSection from "../../jobs/HeroSection/ReusableHeroSection";
+import { mockSidebarCompanyFilters } from "@/data/companyPageData";
+import { SidebarFilters } from "@/components/pages/companies/search/SidebarFilters";
+import CompanyList from "@/components/pages/companies/search/CompanyList";
+import SharedDisplayMobileFilter from "@/components/pages/companies/search/SharedDisplayMobileFilter";
+import ReusableHeroSection from "@/components/pages/jobs/HeroSection/ReusableHeroSection";
 
 function SearchCompaniesPage() {
   return (

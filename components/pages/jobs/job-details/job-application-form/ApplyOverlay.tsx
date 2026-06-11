@@ -1,8 +1,8 @@
 "use client";
 
 import "./ApplyOverlay.css";
-import { ApplyOverlayProps } from "../../types/form-types";
-import { DEFAULT_JOB } from "../../data/form-data";
+import { ApplyOverlayProps } from "../../../../../types/form-types";
+import { DEFAULT_JOB } from "../../../../../data/form-data";
 import OverlayHeader from "./OverlayHeader";
 import OverlayForm from "./OverlayForm";
 import OverlayFooter from "./OverlayFooter";

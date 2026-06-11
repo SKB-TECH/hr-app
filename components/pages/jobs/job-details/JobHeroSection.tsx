@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import TriggerApplicationForm from "@/components/jobs/TriggerApplicationForm";
+import TriggerApplicationForm from "@/components/pages/jobs/job-details/job-application-form/TriggerApplicationForm";
 
 type JobHeroSectionProps = {
   jobDetails: {

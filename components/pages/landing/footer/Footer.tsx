@@ -8,30 +8,42 @@ import {
   LinkedInIcon,
   TwitterIcon,
   LogoIcon,
-} from "@/components/landing/icons";
+} from "@/components/pages/landing/icons";
 
 function FooterBrand() {
   return (
     <div className="max-w-xs">
       <div className="flex items-center gap-2 mb-4">
         <LogoIcon />
-        <span className="text-lg font-extrabold text-white tracking-tight">JobHuntly</span>
+        <span className="text-lg font-extrabold text-white tracking-tight">
+          JobHuntly
+        </span>
       </div>
       <p className="text-sm text-gray-400 leading-relaxed">
-        Great platform for the job seeker that passionate about startups. Find your dream job easier.
+        Great platform for the job seeker that passionate about startups. Find
+        your dream job easier.
       </p>
     </div>
   );
 }
 
-function FooterLinkColumn({ title, links }: { title: string; links: string[] }) {
+function FooterLinkColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: string[];
+}) {
   return (
     <div>
       <h3 className="text-sm font-bold text-white mb-5">{title}</h3>
       <ul className="space-y-3">
         {links.map((link) => (
           <li key={link}>
-            <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
+            <a
+              href="#"
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
               {link}
             </a>
           </li>
@@ -46,7 +58,9 @@ function NewsletterSignup() {
 
   return (
     <div>
-      <h3 className="text-sm font-bold text-white mb-2">Get job notifications</h3>
+      <h3 className="text-sm font-bold text-white mb-2">
+        Get job notifications
+      </h3>
       <p className="text-sm text-gray-400 mb-4 leading-relaxed">
         The latest job news, articles, sent to your inbox weekly.
       </p>
@@ -94,7 +108,9 @@ function SocialIcons() {
 function FooterBottom() {
   return (
     <div className="flex flex-col md:flex-row items-center justify-between pt-6 border-t border-gray-700 gap-4">
-      <p className="text-xs text-gray-500">2021 @ JobHuntly. All rights reserved.</p>
+      <p className="text-xs text-gray-500">
+        2021 @ JobHuntly. All rights reserved.
+      </p>
       <SocialIcons />
     </div>
   );
@@ -106,8 +122,20 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <FooterBrand />
-          <FooterLinkColumn title="About" links={["Companies", "Pricing", "Terms", "Advice", "Privacy Policy"]} />
-          <FooterLinkColumn title="Resources" links={["Help Docs", "Guide", "Updates", "Contact Us"]} />
+          <FooterLinkColumn
+            title="About"
+            links={[
+              "Companies",
+              "Pricing",
+              "Terms",
+              "Advice",
+              "Privacy Policy",
+            ]}
+          />
+          <FooterLinkColumn
+            title="Resources"
+            links={["Help Docs", "Guide", "Updates", "Contact Us"]}
+          />
           <NewsletterSignup />
         </div>
         <FooterBottom />

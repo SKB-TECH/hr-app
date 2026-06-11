@@ -1,6 +1,6 @@
 "use client";
 
-import { SharedListingHeader } from "@/components/shared/listing/SharedListingHeader";
+import { SharedListingHeader } from "@/components/pages/companies/search/SharedListingHeader";
 import { availableJobs, sortOptions } from "@/data/companyPageData";
 import { useState } from "react";
 import { JobsCard } from "./JobsCard";

@@ -2,9 +2,9 @@ import {
   companiesPageCopy,
   recommendedCompanies,
 } from "@/data/companies";
-import RecommendedSection from "./_components/RecommendedSection";
-import PostJobsCta from "./_components/PostJobsCta";
-import CategorySection from "./_components/CategorySection";
+import RecommendedSection from "@/components/pages/companies/RecommendedSection";
+import PostJobsCta from "@/components/pages/companies/PostJobsCta";
+import CategorySection from "@/components/pages/companies/CategorySection";
 import "./companies.css";
 
 export default function CompaniesPage() {

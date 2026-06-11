@@ -1,4 +1,4 @@
-import { LogoIcon } from "@/components/landing/icons";
+import { LogoIcon } from "@/components/pages/landing/icons";
 
 export default function Navbar() {
   return (

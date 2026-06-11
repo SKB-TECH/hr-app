@@ -1,10 +1,10 @@
-import CompanyOverviewSection from "./_components/CompanyOverviewSection";
-import JobDescriptionSection from "./_components/JobDescriptionSection";
-import JobHeroSection from "./_components/JobHeroSection";
-import JobPerksSection from "@/components/shared/job/JobPerksSection";
-import JobResponsibilitiesSection from "./_components/JobResponsibilitiesSection";
-import JobSidebarSection from "./_components/JobSidebarSection";
-import SimilarJobsSection from "@/components/shared/job/SimilarJobsSection";
+import CompanyOverviewSection from "@/components/pages/jobs/job-details/CompanyOverviewSection";
+import JobDescriptionSection from "@/components/pages/jobs/job-details/JobDescriptionSection";
+import JobHeroSection from "@/components/pages/jobs/job-details/JobHeroSection";
+import JobPerksSection from "@/components/pages/jobs/job-details/JobPerksSection";
+import JobResponsibilitiesSection from "@/components/pages/jobs/job-details/JobResponsibilitiesSection";
+import JobSidebarSection from "@/components/pages/jobs/job-details/JobSidebarSection";
+import SimilarJobsSection from "@/components/pages/jobs/job-details/SimilarJobsSection";
 import { jobsDetailsResponse, perks, similarJobs } from "@/data/jobDetailsData";
 
 export default async function JobDetailsPage({
