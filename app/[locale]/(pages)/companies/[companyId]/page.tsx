@@ -169,9 +169,9 @@ export default async function CompanyPage({
           <div className="mt-10 ">
             <Link
               href="/companies/1/#"
-              className="text-base md:text-[16px] text-brand font-epilogue break-all"
+              className="text-base md:text-[16px] text-brand font-epilogue font-semibold break-all mt-5 inline-flex items-center"
             >
-              View tech stack
+              View Countries
               <ArrowRightIcon className="inline-block h-5 w-5 ml-5" />
             </Link>
           </div>
