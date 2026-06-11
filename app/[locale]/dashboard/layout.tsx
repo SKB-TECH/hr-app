@@ -8,7 +8,7 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="flex-1 flex ">
-      <div className="hidden lg:block w-1/6 ">
+      <div className="hidden lg:block w-[240px] ">
         <Sidebar />
       </div>
       <div className="w-5/6 max-lg:w-full   ">
