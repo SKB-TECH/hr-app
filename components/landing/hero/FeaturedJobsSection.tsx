@@ -4,17 +4,17 @@ import { featuredJobsData } from "@/data/featuredJob";
 import Image from "next/image";
 
 const tagStyles: Record<string, string> = {
-  "Marketing":  "bg-yellow-50  text-yellow-500  ",
-  "Design":     "bg-teal-50    text-teal-600  ",
-  "Business":   "bg-indigo-50  text-indigo-600 ",
-  "Technology": "bg-red-50     text-red-400 ",
+  Marketing: "bg-yellow-50  text-yellow-500  ",
+  Design: "bg-teal-50    text-teal-600  ",
+  Business: "bg-indigo-50  text-indigo-600 ",
+  Technology: "bg-red-50     text-red-400 ",
 };
 
 const defaultTag = "bg-gray-50 text-gray-500 border border-gray-200";
 
 export default function FeaturedJobsSection() {
   return (
-    <section className="bg-white px-6 md:px-18 pb-10">
+    <section className="  w-full max-w-6xl mx-auto">
       <div>
         <SectionTitle
           title="Featured"
@@ -49,7 +49,7 @@ export default function FeaturedJobsSection() {
                 <h4 className="font-bold text-[16px]">{job.title}</h4>
                 <p className="text-[14px] text-[#7C8493]  mt-1 flex items-center gap-1.5">
                   {job.companyName}
-                  <span >•</span>
+                  <span>•</span>
                   {job.location}
                 </p>
               </div>

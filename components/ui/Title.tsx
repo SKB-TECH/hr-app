@@ -17,7 +17,7 @@ export function SectionTitle({
   isExpanded = false,
 }: SectionTitleProps) {
   return (
-    <div className="flex flex-row justify-between items-end mb-8">
+    <div className="flex flex-row justify-between items-end mb-8 lg:px-0 w-full max-w-6xl mx-auto ">
       <h2 className="font-bold text-3xl flex flex-row gap-2">
         <span className="text-foreground">{title}</span>
         <span className="text-primary">{highlight}</span>
@@ -26,7 +26,9 @@ export function SectionTitle({
         <Link
           href={showAllLink}
           className="hidden md:flex flex-row text-brand text-sm font-semibold items-center gap-1"
-        >                   {/* ↑ hidden on mobile, shows on md+ */}
+        >
+          {" "}
+          {/* ↑ hidden on mobile, shows on md+ */}
           <span>{showAllText}</span>
           <ArrowRight size={14} />
         </Link>

@@ -1,16 +1,11 @@
-
-
-
-
 import { SectionTitle } from "@/components/ui/Title";
 import { latestJobs } from "@/data/latestJobs";
 import Image from "next/image";
 
-
 const tagStyles: Record<string, string> = {
-  "Full-Time":  "text-teal-600 border border-teal-300 bg-teal-50",
-  "Marketing":  "text-yellow-500 border border-yellow-400 bg-transparent",
-  "Design":     "text-indigo-600 border border-indigo-500 bg-transparent font-bold",
+  "Full-Time": "text-teal-600 border border-teal-300 bg-teal-50",
+  Marketing: "text-yellow-500 border border-yellow-400 bg-transparent",
+  Design: "text-indigo-600 border border-indigo-500 bg-transparent font-bold",
 };
 
 export default function LatestJobsOpenSection() {
@@ -24,7 +19,7 @@ export default function LatestJobsOpenSection() {
         isExpanded
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2  gap-6  overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-2  gap-6  overflow-hidden  w-full max-w-6xl mx-auto">
         {latestJobs.map((job, i) => (
           <div
             key={job.id + "-" + i}
@@ -63,7 +58,6 @@ export default function LatestJobsOpenSection() {
                   Full-Time
                 </span>
 
-              
                 <span className="w-px h-4 bg-gray-200 inline-block" />
 
                 {/* Category tags */}
@@ -71,7 +65,8 @@ export default function LatestJobsOpenSection() {
                   <span
                     key={tag}
                     className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                      tagStyles[tag] ?? "text-gray-500 border border-gray-300 bg-transparent"
+                      tagStyles[tag] ??
+                      "text-gray-500 border border-gray-300 bg-transparent"
                     }`}
                   >
                     {tag}

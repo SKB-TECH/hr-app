@@ -11,40 +11,45 @@ export default function NavbarComponentLandingPage() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className='w-full sticky top-0 z-50 backdrop-blur-sm'>
+    <nav className="w-full sticky top-0 z-50 backdrop-blur-sm">
+      <div className="px-6 sm:px-18 py-4 max-w-7xl mx-auto flex items-center justify-between">
+        <div className="flex items-center  gap-5">
+          {/* Logo */}
+          <Link href="/">
+            <Image
+              src="/LogoBlack.png"
+              alt="logo-black"
+              width={100}
+              height={100}
+            />
+          </Link>
 
-      
-      <div className='px-6 sm:px-18 py-4 flex items-center justify-between'>
-         <div className="flex items-center  gap-5">
-           {/* Logo */}
-        <Link href='/'>
-          <Image src="/LogoBlack.png" alt="logo-black" width={100} height={100} />
-        </Link>
-
-        <div className="hidden md:flex items-center gap-4">
-          {navigations.map((item, index) => (
-            <Link
-              key={index}
-              href={item.path}
-              className="text-sm font-medium hover:text-indigo-600 transition-colors duration-200"
-            >
-              {item.name}
-            </Link>
-          ))}
+          <div className="hidden md:flex items-center gap-4">
+            {navigations.map((item, index) => (
+              <Link
+                key={index}
+                href={item.path}
+                className="text-sm font-medium hover:text-indigo-600 transition-colors duration-200"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
         </div>
-         </div>
-       
 
         {/* Desktop: Login + Sign Up */}
-        <div className='hidden md:flex flex-row items-center gap-2'>
-          <Link href='/sign-in' className='text-gray-600 hover:text-indigo-600 pr-4 border-r'>
+        <div className="hidden md:flex flex-row items-center gap-2">
+          <Link
+            href="/sign-in"
+            className="text-gray-600 hover:text-indigo-600 pr-4 border-r"
+          >
             Login
           </Link>
           <Button
             className="bg-[#4640DE] text-sm font-bold hover:bg-[#3730c9] hover:text-white px-4 py-5 cursor-pointer text-white"
             asChild
           >
-            <Link href='/sign-up'>Sign Up</Link>
+            <Link href="/sign-up">Sign Up</Link>
           </Button>
         </div>
 
@@ -72,15 +77,18 @@ export default function NavbarComponentLandingPage() {
             </Link>
           ))}
           <div className="flex items-center gap-4 pt-4">
-            <Link href='/sign-in' className='text-sm text-gray-600 hover:text-indigo-600'>
+            <Link
+              href="/sign-in"
+              className="text-sm text-gray-600 hover:text-indigo-600"
+            >
               Login
             </Link>
             <Button
-              variant='ghost'
+              variant="ghost"
               className="bg-indigo-500 hover:bg-indigo-900 hover:text-white px-4 py-4 rounded-none text-white text-sm"
               asChild
             >
-              <Link href='/sign-up'>Sign Up</Link>
+              <Link href="/sign-up">Sign Up</Link>
             </Button>
           </div>
         </div>

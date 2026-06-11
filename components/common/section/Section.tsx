@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function SectionComponent() {
   return (
-    <div className="bg-white sm:px-18 px-8">
+    <div className="w-full max-w-6xl mx-auto ">
       <section className="py-8 md:px-0">
         <SectionTitle
           title="Explore by"
@@ -38,14 +38,14 @@ export default function SectionComponent() {
                   className={`
                     transition-all duration-200
                     group-hover:brightness-0 group-hover:invert
-                    ${category.blackIcon
-                      ? "brightness-0"
-                      : "brightness-0 saturate-100 [filter:invert(27%)_sepia(98%)_saturate(1234%)_hue-rotate(222deg)_brightness(89%)_contrast(97%)]"
+                    ${
+                      category.blackIcon
+                        ? "brightness-0"
+                        : "brightness-0 saturate-100 [filter:invert(27%)_sepia(98%)_saturate(1234%)_hue-rotate(222deg)_brightness(89%)_contrast(97%)]"
                     }
                   `}
                 />
               </div>
-
 
               <div className="flex-1 flex flex-col gap-0.5 md:gap-3">
                 <h2 className="font-bold text-black group-hover:text-white text-base md:text-2xl">
@@ -76,7 +76,6 @@ export default function SectionComponent() {
             <ArrowRight size={14} />
           </Link>
         </div>
-
       </section>
     </div>
   );
