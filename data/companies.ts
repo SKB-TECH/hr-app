@@ -20,6 +20,12 @@ export const categoryConfig: CategoryConfig[] = [
   { id: "Hosting", label: "Hosting", icon: "server" },
   { id: "Business Services", label: "Business Service", icon: "briefcase" },
   { id: "Dev", label: "Development", icon: "code" },
+  { id:"Education",label:"Education",icon:"book"},
+  { id:"Healthcare",label:"Healthcare",icon:"heart"} ,
+  { id:"Entertainment",label:"Entertainment",icon:"film"} ,
+  { id:"Travel",label:"Travel",icon:"map"} ,
+  { id:"Food & Beverage",label:"Food & Beverage",icon:"coffee"} ,
+
 ];
 
 export const recommendedCompanies: RecommendedCompany[] = [
@@ -137,6 +143,56 @@ export const companiesByCategory: Record<Category, CategoryCompany[]> = {
     { id: "mongodb", name: "MongoDB", logo: "", jobs: 5 },
     { id: "redis", name: "Redis", logo: "", jobs: 2 },
   ],
+  Education: [
+    { id: "coursera", name: "Coursera", logo: "", jobs: 4 },
+    { id: "udemy", name: "Udemy", logo: "", jobs: 5 },
+    { id: "khanacademy", name: "Khan Academy", logo: "", jobs: 3 },
+    { id: "edx", name: "edX", logo: "", jobs: 4 },
+    { id: "skillshare", name: "Skillshare", logo: "", jobs: 2 },
+    { id: "treehouse", name: "Treehouse", logo: "", jobs: 3 },
+    { id: "codecademy", name: "Codecademy", logo: "", jobs: 4 },
+    { id: "futurelearn", name: "FutureLearn", logo: "", jobs: 3 },
+  ],
+ Healthcare: [
+  { id: "medplum", name: "Medplum", logo: "", jobs: 3 },
+  { id: "apollohealth", name: "Apollo Health", logo: "", jobs: 3 },
+  { id: "healthifyme", name: "HealthifyMe", logo: "", jobs: 3 },
+  { id: "cvs-health", name: "CVS Health", logo: "", jobs: 5 },
+  { id: "johnson", name: "Johnson & Johnson", logo: "", jobs: 6 },
+  { id: "pfizer", name: "Pfizer", logo: "", jobs: 4 },
+  { id: "unitedhealth", name: "UnitedHealth", logo: "", jobs: 5 },
+  { id: "teladoc", name: "Teladoc", logo: "", jobs: 3 },
+],
+Entertainment: [
+  { id: "netflix", name: "Netflix", logo: "", jobs: 3 },
+  { id: "spotify", name: "Spotify", logo: "", jobs: 5 },
+  { id: "disney", name: "Disney+", logo: "", jobs: 4 },
+  { id: "hulu", name: "Hulu", logo: "", jobs: 3 },
+  { id: "twitch", name: "Twitch", logo: "", jobs: 4 },
+  { id: "youtube", name: "YouTube", logo: "", jobs: 6 },
+  { id: "hbo", name: "HBO Max", logo: "", jobs: 3 },
+  { id: "soundcloud", name: "SoundCloud", logo: "", jobs: 2 },
+],
+Travel: [
+  { id: "airbnb", name: "Airbnb", logo: "", jobs: 3 },
+  { id: "booking", name: "Booking.com", logo: "", jobs: 3 },
+  { id: "expedia", name: "Expedia", logo: "", jobs: 3 },
+  { id: "tripadvisor", name: "TripAdvisor", logo: "", jobs: 4 },
+  { id: "kayak", name: "Kayak", logo: "", jobs: 3 },
+  { id: "skyscanner", name: "Skyscanner", logo: "", jobs: 4 },
+  { id: "klook", name: "Klook", logo: "", jobs: 3 },
+  { id: "viator", name: "Viator", logo: "", jobs: 2 },
+],
+  "Food & Beverage": [
+    { id: "doordash", name: "DoorDash", logo: "", jobs: 3 },
+    { id: "uber-eats", name: "Uber Eats", logo: "", jobs: 3 },
+    { id: "starbucks", name: "Starbucks", logo: "", jobs: 3 },
+    { id: "amazon-fresh", name: "Amazon Fresh", logo: "", jobs: 3 },
+    { id: "instacart", name: "Instacart", logo: "", jobs: 3 },
+    { id: "wolt", name: "Wolt", logo: "", jobs: 3 },
+    { id: "grubhub", name: "Grubhub", logo: "", jobs: 3 },
+    { id: "postmates", name: "Postmates", logo: "", jobs: 3 },
+  ],
 };
 
 export const companiesPageCopy = {
@@ -165,4 +221,9 @@ export const categoryResultCounts: Record<Category, number> = {
   Hosting: 15,
   "Business Services": 32,
   Dev: 27,
+  Education: 0,
+  Healthcare: 0,
+  Entertainment: 0,
+  Travel: 0,
+  "Food & Beverage": 0,
 };

@@ -8,6 +8,11 @@ import {
   LayoutGrid,
   Palette,
   Server,
+  Book,
+  Heart,
+  Film,
+  Map,
+  Coffee,
 } from "lucide-react";
 import {
   categoryConfig,
@@ -26,6 +31,11 @@ const categoryIconMap: Record<CategoryIcon, typeof Palette> = {
   server: Server,
   briefcase: Briefcase,
   code: Code2,
+   book: Book,
+  heart: Heart,
+  film: Film,
+  map: Map,
+  coffee: Coffee,
 };
 
 type CategorySectionProps = {
