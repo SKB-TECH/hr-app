@@ -1,4 +1,5 @@
 import { categoryStyles, jobsDetailsResponse } from "@/data/jobDetailsData";
+import { navItems, settingsItems } from "@/data/SidebarNavigations";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -22,3 +23,14 @@ export const getStyleForCategory = (
     .filter(Boolean);
   return style;
 };
+
+export function getPageName(pathname: string): string {
+  const allItems = [...navItems, ...settingsItems];
+  // Remove locale prefix
+  const segments = pathname.split("/").filter(Boolean);
+  const pathWithoutLocale = "/" + segments.slice(1).join("/");
+  // Find matching from navItems and settingsItems
+  const match = allItems.find((item) => item.href === pathWithoutLocale);
+
+  return match?.name || "Dashboard";
+}
