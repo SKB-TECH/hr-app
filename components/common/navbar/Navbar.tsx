@@ -41,7 +41,7 @@ export default function NavbarComponentLandingPage() {
         <div className="hidden md:flex flex-row items-center gap-2">
           <Link
             href="/sign-in"
-            className="text-gray-600 hover:text-indigo-600 pr-4 border-r"
+            className="font-medium hover:text-indigo-800 text-brand pr-4 border-r"
           >
             Login
           </Link>

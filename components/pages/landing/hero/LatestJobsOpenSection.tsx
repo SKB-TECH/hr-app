@@ -10,8 +10,23 @@ const tagStyles: Record<string, string> = {
 
 export default function LatestJobsOpenSection() {
   return (
-    <section className="bg-pattern py-12 ">
-      <div className="px-4 md:px-12  w-full max-w-7xl mx-auto  ">
+    <section className="relative mt-16 min-h-[500px] w-full overflow-hidden py-10">
+      <Image
+        src="/background.png"
+        alt="Background"
+        fill
+        quality={100}
+        priority
+        className="pointer-events-none absolute inset-0 hidden object-fill bg-no-repeat md:block"
+      />
+      <div
+        style={{
+          clipPath: "polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 5%)",
+        }}
+        className="pointer-events-none absolute inset-0 bg-[#F8F8FD] md:hidden"
+      />
+
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 md:px-12">
         <SectionTitle
           title="Latest"
           highlight="jobs open"
@@ -54,12 +69,6 @@ export default function LatestJobsOpenSection() {
 
                 {/* Tags row */}
                 <div className="flex items-center gap-2 flex-wrap mt-1">
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full text-teal-600 border border-teal-300 bg-teal-50">
-                    Full-Time
-                  </span>
-
-                  <span className="w-px h-4 bg-gray-200 inline-block" />
-
                   {/* Category tags */}
                   {job.tags.map((tag) => (
                     <span

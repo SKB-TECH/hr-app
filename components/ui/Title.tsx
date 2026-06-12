@@ -18,7 +18,7 @@ export function SectionTitle({
 }: SectionTitleProps) {
   return (
     <div className="flex flex-row justify-between items-center mb-8 lg:px-0  ">
-      <h2 className="font-bold text-[48px] flex flex-row gap-2">
+      <h2 className="font-bold text-[32px] md:text-[48px] flex flex-row gap-2">
         <span className="text-neutral-100">{title}</span>
         <span className="text-primary">{highlight}</span>
       </h2>
