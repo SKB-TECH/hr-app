@@ -1,137 +1,98 @@
+import { SectionTitle } from "@/components/ui/Title";
+import { latestJobs } from "@/data/latestJobs";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-
-const latestJobs = [
-    {
-        title: "Social Media Assistant",
-        company: "Nomad",
-        location: "Paris, France",
-        logo: "/Property 1=Nomad.png",
-    },
-    {
-        title: "Social Media Assistant",
-        company: "Netlify",
-        location: "Paris, France",
-        logo: "/Property 1=Netlify.png",
-    },
-    {
-        title: "Brand Designer",
-        company: "Dropbox",
-        location: "San Fransisco, USA",
-        logo: "/Property 1=Dropbox.png",
-    },
-    {
-        title: "Brand Designer",
-        company: "Maze",
-        location: "San Fransisco, USA",
-        logo: "/Property 1=Maze.png",
-    },
-    {
-        title: "Interactive Developer",
-        company: "Terraform",
-        location: "Hamburg, Germany",
-        logo: "/Property 1=Terraform.png",
-    },
-    {
-        title: "Interactive Developer",
-        company: "Udacity",
-        location: "Hamburg, Germany",
-        logo: "/Property 1=Udacity.png",
-    },
-    {
-        title: "HR Manager",
-        company: "Packer",
-        location: "Lucern, Switzerland",
-        logo: "/Property 1=Packer.png",
-    },
-    {
-        title: "HR Manager",
-        company: "Webflow",
-        location: "Lucern, Switzerland",
-        logo: "/Property 1=Webflow.png",
-    },
-];
+const tagStyles: Record<string, string> = {
+  "Full-Time": "text-accent-green bg-accent-light-green  ",
+  Marketing: "text-yellow-500 border border-yellow-400 bg-transparent",
+  Design: "text-indigo-600 border border-indigo-500 bg-transparent font-bold",
+};
 
 export default function LatestJobsOpenSection() {
-    return (
-        <section className="relative overflow-hidden bg-[#F8F8FD] px-4 py-16 md:py-24">
-            <Image
-                src="/Pattern.png"
-                alt=""
-                fill
-                className="object-cover object-right opacity-70"
-            />
+  return (
+    <section className="relative mt-16 min-h-[500px] w-full overflow-hidden py-10">
+      <Image
+        src="/background.png"
+        alt="Background"
+        fill
+        quality={100}
+        priority
+        className="pointer-events-none absolute inset-0 hidden object-fill bg-no-repeat md:block"
+      />
+      <div
+        style={{
+          clipPath: "polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 5%)",
+        }}
+        className="pointer-events-none absolute inset-0 bg-[#F8F8FD] md:hidden"
+      />
 
-            <div className="relative z-10 mx-auto max-w-[1200px]">
-                <div className="flex items-center justify-between">
-                    <h2 className="text-[34px] font-extrabold tracking-[-0.04em] text-[#25324B] md:text-[48px]">
-                        Latest <span className="text-[#26A4FF]">jobs open</span>
-                    </h2>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 md:px-12">
+        <SectionTitle
+          title="Latest"
+          highlight="jobs open"
+          showAllText="Show all jobs"
+          showAllLink="/jobs"
+          isExpanded
+        />
+        <div className=" grid grid-cols-1 md:grid-cols-2  gap-6  overflow-hidden ">
+          {latestJobs.map((job, i) => (
+            <div
+              key={job.id + "-" + i}
+              className={`
+              flex items-center gap-5 px-8 py-6 bg-white
+              hover:shadow-sm transition-all cursor-pointer
+              border-[#D6DDEB] border
+          
+            `}
+            >
+              {/* Logo */}
+              <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center">
+                <Image
+                  src={job.companyLogo}
+                  alt={job.companyName}
+                  width={56}
+                  height={56}
+                  className="object-contain"
+                />
+              </div>
 
-                    <Link
-                        href="/jobs"
-                        className="hidden items-center gap-3 text-base font-bold text-[#4640DE] md:flex"
+              {/* Content */}
+              <div className="flex flex-col gap-1">
+                <Link
+                  href={`/jobs/${job.id}`}
+                  className="font-bold text-[16px] text-neutral-100 hover:text-brand/80"
+                >
+                  {job.title}
+                </Link>
+                <p className="text-sm text-gray-400 flex items-center gap-1.5">
+                  <Link href={`/companies/${job.id}`} className="truncate">
+                    {job.companyName}
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  {job.location}
+                </p>
+
+                {/* Tags row */}
+                <div className="flex items-center gap-2 flex-wrap mt-1">
+                  {/* Category tags */}
+                  {job.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                        (tag && tagStyles[tag]) ??
+                        "text-gray-500 border border-gray-300 bg-transparent"
+                      }`}
                     >
-                        Show all jobs <ArrowRight size={22} />
-                    </Link>
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-
-                <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
-                    {latestJobs.map((job) => (
-                        <Card
-                            key={`${job.title}-${job.company}`}
-                            className="rounded-none border-none bg-white shadow-none"
-                        >
-                            <CardContent className="flex gap-8 p-7">
-                                <div className="relative h-16 w-16 shrink-0">
-                                    <Image
-                                        src={job.logo}
-                                        alt={job.company}
-                                        fill
-                                        className="object-contain"
-                                    />
-                                </div>
-
-                                <div>
-                                    <h3 className="text-xl font-bold text-[#25324B]">
-                                        {job.title}
-                                    </h3>
-
-                                    <p className="mt-2 text-base text-[#515B6F]">
-                                        {job.company}
-                                        <span className="mx-2 text-[#A8ADB7]">•</span>
-                                        {job.location}
-                                    </p>
-
-                                    <div className="mt-4 flex flex-wrap gap-2">
-                                        <Badge className="rounded-full bg-emerald-50 px-4 py-1.5 text-sm text-emerald-500 hover:bg-emerald-50">
-                                            Full-Time
-                                        </Badge>
-
-                                        <Badge
-                                            variant="outline"
-                                            className="rounded-full border-orange-400 px-4 py-1.5 text-sm text-orange-500"
-                                        >
-                                            Marketing
-                                        </Badge>
-
-                                        <Badge
-                                            variant="outline"
-                                            className="rounded-full border-[#4640DE] px-4 py-1.5 text-sm text-[#4640DE]"
-                                        >
-                                            Design
-                                        </Badge>
-                                    </div>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </div>
+              </div>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
