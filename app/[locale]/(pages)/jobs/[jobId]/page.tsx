@@ -1,10 +1,10 @@
-import CompanyOverviewSection from "@/components/jobDetails/CompanyOverviewSection";
-import JobDescriptionSection from "@/components/jobDetails/JobDescriptionSection";
-import JobHeroSection from "@/components/jobDetails/JobHeroSection";
-import JobPerksSection from "@/components/jobDetails/JobPerksSection";
-import JobResponsibilitiesSection from "@/components/jobDetails/JobResponsibilitiesSection";
-import JobSidebarSection from "@/components/jobDetails/JobSidebarSection";
-import SimilarJobsSection from "@/components/jobDetails/SimilarJobsSection";
+import CompanyOverviewSection from "@/components/pages/jobs/job-details/CompanyOverviewSection";
+import JobDescriptionSection from "@/components/pages/jobs/job-details/JobDescriptionSection";
+import JobHeroSection from "@/components/pages/jobs/job-details/JobHeroSection";
+import JobPerksSection from "@/components/pages/jobs/job-details/JobPerksSection";
+import JobResponsibilitiesSection from "@/components/pages/jobs/job-details/JobResponsibilitiesSection";
+import JobSidebarSection from "@/components/pages/jobs/job-details/JobSidebarSection";
+import SimilarJobsSection from "@/components/pages/jobs/job-details/SimilarJobsSection";
 import { jobsDetailsResponse, perks, similarJobs } from "@/data/jobDetailsData";
 
 export default async function JobDetailsPage({
@@ -26,7 +26,6 @@ export default async function JobDetailsPage({
   return (
     <section className="w-full bg-white">
       <JobHeroSection jobDetails={jobDetails} />
-
       {/* main content */}
       <div className="w-full max-w-6xl mx-auto md:px-6  px-4">
         {" "}

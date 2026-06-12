@@ -7,8 +7,8 @@ import Image from "next/image";
 
 export default function SectionComponent() {
   return (
-    <div className="w-full max-w-6xl mx-auto ">
-      <section className="py-8 md:px-0">
+    <div className="px-4 w-full max-w-7xl mx-auto ">
+      <section className="py-8 ">
         <SectionTitle
           title="Explore by"
           highlight="category"

@@ -19,6 +19,8 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        "custom-primary":
+          "p-6 rounded-none font-semibold text-brand bg-white border border-light-neutral hover:bg-light-neutral/80",
       },
       size: {
         default:
@@ -55,7 +57,7 @@ function Button({
 
   return (
     <Comp
-      data-slot='button'
+      data-slot="button"
       data-variant={variant}
       data-size={size}
       className={cn(buttonVariants({ variant, size, className }))}

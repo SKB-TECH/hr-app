@@ -1,4 +1,18 @@
+// data/companyPageData.ts
 
+// export const companyId = [
+//   {
+//     id: "1",
+//     name: "Google",
+//     description: "Technology company",
+//     src: "/google.png",
+//     location: "USA",
+//     applied: 12,
+//     capacity: 20,
+//   },
+// ];
+
+// data/companies.ts
 
 export const companyProfiles = [
   {
@@ -89,50 +103,50 @@ export const companyProfiles = [
         role: "Managing Director",
       },
     ],
-    perks : [
-  {
-    icon: "/park1.png",
-    title: "Full Healthcare",
-    description:
-      "We believe in thriving communities and that starts with our team being happy and healthy.",
-  },
-  {
-    icon: "/park2.png",
-    title: "Unlimited Vacation",
-    description:
-      "We believe you should have a flexible schedule that makes space for family, wellness, and fun.",
-  },
-  {
-    icon: "/park3.png",
-    title: "Skill Development",
-    description:
-      "We believe in always learning and leveling up our skills. Whether it's a conference or online course.",
-  },
-  {
-    icon: "/park4.png",
-    title: "Team Summits",
-    description:
-      "Every 6 months we have a full team summit where we have fun, reflect, and plan for the upcoming quarter.",
-  },
-  {
-    icon: "/park5.png",
-    title: "Remote Working",
-    description:
-      "You know how you perform your best. Work from home, coffee shop or anywhere when you feel like it.",
-  },
-  {
-    icon: "/park6.png",
-    title: "Commuter Benefits",
-    description:
-      "We’re grateful for all the time and energy each team member puts into getting to work every day.",
-  },
-  {
-    icon: "/park7.png",
-    title: "We give back.",
-    description:
-      "We anonymously match any donation our employees make (up to $/€ 600) so they can support the organizations they care about most-times two.",
-  },
-]
+    perks: [
+      {
+        icon: "/park1.png",
+        title: "Full Healthcare",
+        description:
+          "We believe in thriving communities and that starts with our team being happy and healthy.",
+      },
+      {
+        icon: "/park2.png",
+        title: "Unlimited Vacation",
+        description:
+          "We believe you should have a flexible schedule that makes space for family, wellness, and fun.",
+      },
+      {
+        icon: "/park3.png",
+        title: "Skill Development",
+        description:
+          "We believe in always learning and leveling up our skills. Whether it's a conference or online course.",
+      },
+      {
+        icon: "/park4.png",
+        title: "Team Summits",
+        description:
+          "Every 6 months we have a full team summit where we have fun, reflect, and plan for the upcoming quarter.",
+      },
+      {
+        icon: "/park5.png",
+        title: "Remote Working",
+        description:
+          "You know how you perform your best. Work from home, coffee shop or anywhere when you feel like it.",
+      },
+      {
+        icon: "/park6.png",
+        title: "Commuter Benefits",
+        description:
+          "We’re grateful for all the time and energy each team member puts into getting to work every day.",
+      },
+      {
+        icon: "/park7.png",
+        title: "We give back.",
+        description:
+          "We anonymously match any donation our employees make (up to $/€ 600) so they can support the organizations they care about most-times two.",
+      },
+    ],
   },
 
   {
@@ -167,51 +181,49 @@ export const companyProfiles = [
         role: "CEO & Co-Founder",
       },
     ],
-    perks : [
-  {
-    icon: "/park1.png",
-    title: "Full Healthcare",
-    description:
-      "We believe in thriving communities and that starts with our team being happy and healthy.",
-  },
-  {
-    icon: "/park2.png",
-    title: "Unlimited Vacation",
-    description:
-      "We believe you should have a flexible schedule that makes space for family, wellness, and fun.",
-  },
-  {
-    icon: "/park3.png",
-    title: "Skill Development",
-    description:
-      "We believe in always learning and leveling up our skills. Whether it's a conference or online course.",
-  },
-  {
-    icon: "/park4.png",
-    title: "Team Summits",
-    description:
-      "Every 6 months we have a full team summit where we have fun, reflect, and plan for the upcoming quarter.",
-  },
-  {
-    icon: "/park5.png",
-    title: "Remote Working",
-    description:
-      "You know how you perform your best. Work from home, coffee shop or anywhere when you feel like it.",
-  },
-  {
-    icon: "/park6.png",
-    title: "Commuter Benefits",
-    description:
-      "We’re grateful for all the time and energy each team member puts into getting to work every day.",
-  },
-  {
-    icon: "/park7.png",
-    title: "We give back.",
-    description:
-      "We anonymously match any donation our employees make (up to $/€ 600) so they can support the organizations they care about most-times two.",
-  },
-]
+    perks: [
+      {
+        icon: "/park1.png",
+        title: "Full Healthcare",
+        description:
+          "We believe in thriving communities and that starts with our team being happy and healthy.",
+      },
+      {
+        icon: "/park2.png",
+        title: "Unlimited Vacation",
+        description:
+          "We believe you should have a flexible schedule that makes space for family, wellness, and fun.",
+      },
+      {
+        icon: "/park3.png",
+        title: "Skill Development",
+        description:
+          "We believe in always learning and leveling up our skills. Whether it's a conference or online course.",
+      },
+      {
+        icon: "/park4.png",
+        title: "Team Summits",
+        description:
+          "Every 6 months we have a full team summit where we have fun, reflect, and plan for the upcoming quarter.",
+      },
+      {
+        icon: "/park5.png",
+        title: "Remote Working",
+        description:
+          "You know how you perform your best. Work from home, coffee shop or anywhere when you feel like it.",
+      },
+      {
+        icon: "/park6.png",
+        title: "Commuter Benefits",
+        description:
+          "We’re grateful for all the time and energy each team member puts into getting to work every day.",
+      },
+      {
+        icon: "/park7.png",
+        title: "We give back.",
+        description:
+          "We anonymously match any donation our employees make (up to $/€ 600) so they can support the organizations they care about most-times two.",
+      },
+    ],
   },
 ];
-
-

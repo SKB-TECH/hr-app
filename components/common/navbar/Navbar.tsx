@@ -12,15 +12,15 @@ export default function NavbarComponentLandingPage() {
 
   return (
     <nav className="w-full sticky top-0 z-50 backdrop-blur-sm">
-      <div className=" py-2 max-w-6xl mx-auto flex items-center justify-between">
+      <div className=" py-2  px-4 w-full max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center  gap-5">
           {/* Logo */}
           <Link href="/">
             <Image
               src="/LogoBlack.png"
               alt="logo-black"
-              width={100}
-              height={100}
+              width={120}
+              height={120}
             />
           </Link>
 
