@@ -53,12 +53,9 @@ export default function SectionComponent() {
                   <span className="text-[16px] text-neutral-60 group-hover:text-white">
                     {category.availableJobs} jobs available
                   </span>
-                  <Link
-                    href="#"
-                    className="flex-shrink-0 text-neutral-100  group-hover:text-white"
-                  >
+                  <span className="flex-shrink-0 text-neutral-100  group-hover:text-white">
                     <ArrowRight size={24} />
-                  </Link>
+                  </span>
                 </div>
               </div>
             </Link>
