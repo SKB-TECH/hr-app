@@ -5,13 +5,14 @@ import { Button } from "@/components/ui/button";
 import { navigations } from "@/data/data";
 import Image from "next/image";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { X } from "lucide-react";
+import { HiOutlineMenuAlt2 } from "react-icons/hi";
 
 export default function NavbarComponentLandingPage() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="w-full sticky top-0 z-50 backdrop-blur-sm">
+    <nav className="w-full sticky top-0 z-50 backdrop-blur-sm h-[58px] ">
       <div className=" py-2  px-4 md:px-12   w-full max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center  gap-5">
           {/* Logo */}
@@ -59,7 +60,13 @@ export default function NavbarComponentLandingPage() {
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
+          {isOpen ? (
+            <X size={22} />
+          ) : (
+            <div className="relative w-8 h-8 flex items-center justify-center rounded-full bg-white border border-[#D6DDEB]">
+              <HiOutlineMenuAlt2 size={20} className="text-gray-800" />
+            </div>
+          )}
         </button>
       </div>
 

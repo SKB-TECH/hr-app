@@ -16,7 +16,7 @@ export default function SectionComponent() {
           isExpanded
         />
 
-        <div className="py-5  md:py-12 grid grid-cols-1 md:grid-cols-4 gap-5">
+        <div className="pb-5  md:pb-12  grid grid-cols-1 md:grid-cols-4 gap-5">
           {categoriesData.map((category: CategoryProp) => (
             <Link
               href={`/jobs?category=${category.name.toLowerCase()}`}
@@ -66,7 +66,7 @@ export default function SectionComponent() {
         <div className="md:hidden mt-4">
           <Link
             href="/jobs"
-            className="flex flex-row text-brand text-sm font-semibold items-center gap-1"
+            className="flex flex-row text-brand text-[16px] font-semibold items-center gap-1"
           >
             <span>Show all jobs</span>
             <ArrowRight size={14} />

@@ -1,6 +1,7 @@
 import { SectionTitle } from "@/components/ui/Title";
 import { FeaturedJob } from "@/data/featuredJob";
 import { featuredJobsData } from "@/data/featuredJob";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -80,7 +81,7 @@ function FeaturedJobCard({
 
 export default function FeaturedJobsSection() {
   return (
-    <section className=" pb-20 px-4 md:px-12  w-full max-w-7xl mx-auto">
+    <section className="pb-8  px-4 md:px-12  w-full max-w-7xl mx-auto">
       <div>
         <SectionTitle
           title="Featured"
@@ -91,7 +92,7 @@ export default function FeaturedJobsSection() {
         />
 
         <div className="mt-6 overflow-hidden md:mt-1 max-md:-mx-4 max-md:px-4">
-          <div className="flex w-max gap-4 max-md:animate-[featured-jobs-marquee_100s_linear_infinite] max-md:hover:[animation-play-state:paused] max-md:focus-within:[animation-play-state:paused] motion-reduce:animate-none md:w-auto md:flex-wrap md:items-stretch md:justify-between">
+          <div className="max-md:flex md:grid md:grid-cols-3 lg:grid-cols-4 w-max gap-4 max-md:animate-[featured-jobs-marquee_100s_linear_infinite] max-md:hover:[animation-play-state:paused] max-md:focus-within:[animation-play-state:paused] motion-reduce:animate-none md:w-auto md:flex-wrap md:items-stretch md:justify-between">
             {marqueeJobs.map((job: FeaturedJob, index) => (
               <FeaturedJobCard
                 key={`${job.id}-${index}`}
@@ -100,6 +101,16 @@ export default function FeaturedJobsSection() {
               />
             ))}
           </div>
+        </div>
+        {/* Show all jobs — mobile only, below the list */}
+        <div className="md:hidden mt-4">
+          <Link
+            href="/jobs"
+            className="flex flex-row text-brand text-[16px] font-semibold items-center gap-1"
+          >
+            <span>Show all jobs</span>
+            <ArrowRight size={14} />
+          </Link>
         </div>
       </div>
     </section>
