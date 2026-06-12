@@ -3,15 +3,15 @@ import { latestJobs } from "@/data/latestJobs";
 import Image from "next/image";
 
 const tagStyles: Record<string, string> = {
-  "Full-Time": "text-teal-600 border border-teal-300 bg-teal-50",
+  "Full-Time": "text-accent-green bg-accent-light-green  ",
   Marketing: "text-yellow-500 border border-yellow-400 bg-transparent",
   Design: "text-indigo-600 border border-indigo-500 bg-transparent font-bold",
 };
 
 export default function LatestJobsOpenSection() {
   return (
-    <section className="bg-pattern ">
-      <div className="px-4 w-full max-w-7xl mx-auto  ">
+    <section className="bg-pattern py-12 ">
+      <div className="px-4 md:px-12  w-full max-w-7xl mx-auto  ">
         <SectionTitle
           title="Latest"
           highlight="jobs open"
@@ -25,7 +25,7 @@ export default function LatestJobsOpenSection() {
               key={job.id + "-" + i}
               className={`
               flex items-center gap-5 px-8 py-6 bg-white
-              hover:shadow-[inset_0_0_0_1px_#4f46e5] transition-all cursor-pointer
+              hover:shadow-sm transition-all cursor-pointer
               border-[#D6DDEB] border
           
             `}

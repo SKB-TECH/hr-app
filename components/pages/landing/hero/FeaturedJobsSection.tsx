@@ -4,18 +4,18 @@ import { featuredJobsData } from "@/data/featuredJob";
 import Image from "next/image";
 
 const tagStyles: Record<string, string> = {
-  Marketing: "bg-yellow-50  text-yellow-500  ",
-  Design: "bg-teal-50    text-teal-600  ",
-  Business: "bg-indigo-50  text-indigo-600 ",
-  Technology: "bg-red-50     text-red-400 ",
+  Marketing: "bg-accent-light-yellow  text-accent-yellow  ",
+  Design: "bg-accent-light-green  text-accent-green  ",
+  Business: "bg-accent-light-brand   text-brand ",
+  Technology: "bg-accent-light-red     text-accent-red  ",
 };
 
-const defaultTag = "bg-gray-50 text-gray-500 border border-gray-200";
+const defaultTag = "bg-gray-50 text-gray-500  border border-gray-200";
 
 export default function FeaturedJobsSection() {
   return (
-    <section className=" pb-20 px-4 w-full max-w-7xl mx-auto">
-      <div className="px-4 w-full max-w-7xl mx-auto  ">
+    <section className=" pb-20 px-4 md:px-12  w-full max-w-7xl mx-auto">
+      <div>
         <SectionTitle
           title="Featured"
           highlight="jobs"
@@ -28,7 +28,7 @@ export default function FeaturedJobsSection() {
           {featuredJobsData.map((job: FeaturedJob) => (
             <div
               key={job.id}
-              className="border border-gray-200 p-5 flex flex-col gap-3 hover:border-brand transition-all cursor-pointer"
+              className="border border-gray-200 p-5 flex flex-col gap-3 hover:border-[#1C222D] transition-all cursor-pointer"
             >
               {/* Logo + badge */}
               <div className="flex justify-between items-start">
@@ -47,14 +47,14 @@ export default function FeaturedJobsSection() {
               {/* Info */}
               <div className="text-black">
                 <h4 className="font-bold text-[16px]">{job.title}</h4>
-                <p className="text-[14px] text-[#7C8493]  mt-1 flex items-center gap-1.5">
+                <p className="text-[14px]  font-epilogue text-neutral-100  mt-1 flex items-center gap-1.5">
                   {job.companyName}
-                  <span>•</span>
+                  <span className="text-gray-400">•</span>
                   {job.location}
                 </p>
               </div>
 
-              <p className="text-xs text-[#7C8493] leading-relaxed">
+              <p className="text-[14px] text-neutral-60 leading-relaxed">
                 {job.description}
               </p>
 
@@ -63,7 +63,7 @@ export default function FeaturedJobsSection() {
                 {job.tags.map((tag) => (
                   <span
                     key={tag}
-                    className={`text-xs font-semibold px-3 py-1 rounded-full ${tagStyles[tag] ?? defaultTag}`}
+                    className={`inline-flex items-center justify-center text-center text-[14px]  px-2 py-1 md:px-4 md:py-1.5 rounded-full font-medium ${tagStyles[tag] ?? defaultTag}`}
                   >
                     {tag}
                   </span>

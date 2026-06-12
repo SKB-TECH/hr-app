@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 const locations = [
+  "select location",
   "Florence, Italy",
   "Cairo, Egypt",
   "London, UK",
@@ -27,7 +28,7 @@ export default function HeroSectionComponent() {
   return (
     <section className="relative overflow-hidden bg-[#F8F8FD]">
       {/* Desktop Pattern */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[62%] md:block">
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[62%] lg:block">
         <Image
           src="/img_design/Pattern.png"
           alt=""
@@ -38,7 +39,7 @@ export default function HeroSectionComponent() {
       </div>
 
       {/* Mobile Pattern */}
-      <div className="pointer-events-none absolute inset-0 z-0 block md:hidden">
+      <div className="pointer-events-none absolute inset-0 z-0 block lg:hidden">
         <Image
           src="/img_design/Pattern.png"
           alt=""
@@ -48,10 +49,11 @@ export default function HeroSectionComponent() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto  grid min-h-[560px] grid-cols-1 px-4 pt-10 sm:px-6 md:min-h-[760px] md:px-[128px] md:pt-[90px]">
-        <div className="absolute  inset-x-0 top-24 z-20 mx-auto w-full max-w-7xl px-4  md:top-32">
-          <div className="flex  flex-col justify-center pb-10 md:pb-16 ">
-            <h1 className="text-[42px] font-clash font-bold leading-[1.05] tracking-[-0.04em] text-[#25324B] sm:text-[56px] lg:text-[72px] lg:leading-[1.1]">
+      <div className="relative  z-10 mx-auto grid min-h-[560px] grid-cols-1 px-4 py-10 sm:px-6 md:min-h-[620px] md:px-10 md:py-14 lg:min-h-[760px] lg:px-[128px] lg:py-0 lg:pt-[90px]  2xl:min-h-[800px]">
+        {/* Hero content */}
+        <div className="relative  z-20 mx-auto w-full max-w-7xl px-0 md:px-6 lg:absolute lg:inset-x-0 lg:top-16 lg:px-12">
+          <div className="flex flex-col justify-center pb-6 md:pb-10 lg:pb-16">
+            <h1 className="text-[42px] font-clash font-bold leading-[1.05] tracking-[-0.04em] text-neutral-100 sm:text-[56px] lg:text-[72px] lg:leading-[1.1]">
               Discover <br />
               more than <br />
               <div className="relative w-fit">
@@ -63,27 +65,27 @@ export default function HeroSectionComponent() {
                   alt="Vector patterns"
                   width={100}
                   height={20}
-                  className="object-cover w-full"
+                  className="object-cover  w-full"
                 />
               </div>
             </h1>
 
-            <p className="mt-6 max-w-[540px] text-sm leading-6 text-neutral-80 md:mt-10 md:text-[21px] md:leading-8">
+            <p className="relative z-20 mt-6 max-w-[540px] text-[18px] font-epilogue leading-6 text-neutral-80 md:mt-10 md:text-[21px] md:leading-8">
               Great platform for the job seeker that searching for new career
               heights and passionate about startups.
             </p>
 
             {/* Search Form */}
-            <div className="relative z-30 mt-6 flex w-full flex-col border border-[#D6DDEB] bg-white p-4 shadow-[0_16px_40px_rgba(37,50,75,0.08)] md:mt-9 md:h-[72px] md:max-w-[850px] md:flex-row md:py-0 md:px-4">
+            <div className="relative z-30 mt-6 flex w-full flex-col bg-white p-4 shadow-[0_16px_40px_rgba(37,50,75,0.08)] max-md:self-center md:mt-9 lg:h-[72px] md:max-w-[850px] lg:flex-row lg:items-center lg:gap-0 lg:px-2 lg:py-2">
               {/* Keyword Search */}
-              <div className="flex w-full items-center gap-3 border-b border-[#D6DDEB] px-2 py-2 md:w-[310px] md:border-b-0 md:border-r md:px-4 md:py-0">
+              <div className="flex w-full items-center gap-3 px-2 py-2 lg:w-[310px] lg:px-4 lg:py-0">
                 <Search
                   size={20}
                   className="shrink-0 text-[#25324B] md:size-[25px]"
                 />
                 <Input
                   placeholder="Job title or keyword"
-                  className="h-10 border-0 px-0 text-sm shadow-none placeholder:text-[#B8C0CC] focus-visible:ring-0 md:h-full md:text-base"
+                  className="h-10 border-b placeholder:text-[18px] border-[#D6DDEB] px-0 text-sm shadow-none placeholder:text-[#B8C0CC] focus-visible:ring-0 lg:h-full lg:text-base"
                 />
               </div>
 
@@ -92,22 +94,22 @@ export default function HeroSectionComponent() {
                 <DropdownMenuTrigger asChild>
                   <button
                     type="button"
-                    className="flex w-full items-center gap-3 border-b border-[#D6DDEB] px-2 py-2 text-left outline-none md:w-[270px] md:border-b-0 md:border-r md:px-4 md:py-0"
+                    className="flex w-full items-center gap-3 px-2 py-2 text-left outline-none lg:w-[270px] lg:px-4 lg:py-0"
                   >
                     <MapPin
                       size={20}
                       className="shrink-0 text-[#25324B] md:size-[25px]"
                     />
-                    <span className="h-10 flex-1 truncate px-0 py-2 text-sm text-[#25324B] md:h-full md:py-[24px] md:text-base">
-                      {selectedLocation}
-                    </span>
+                    <div className="flex-1 truncate border-b border-[#D6DDEB] py-2 text-[18px] text-[#25324B] lg:py-0 lg:text-base">
+                      <p className="mb-3">{selectedLocation}</p>
+                    </div>
                     <ChevronDown
                       size={14}
                       className="shrink-0 text-[#7C8493] md:size-4"
                     />
                   </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="rounded-none border-[#D6DDEB] bg-white p-1 shadow-[0_16px_40px_rgba(37,50,75,0.08)]">
+                <DropdownMenuContent className="rounded-none bg-white p-1 shadow-[0_16px_40px_rgba(37,50,75,0.08)]">
                   {locations.map((location) => (
                     <DropdownMenuItem
                       key={location}
@@ -121,7 +123,7 @@ export default function HeroSectionComponent() {
               </DropdownMenu>
 
               {/* CTA */}
-              <Button className="cursor-pointer h-12 rounded-none bg-[#4640DE] text-sm font-bold hover:bg-[#3730c9] m-2  my-auto   md:flex-1 md:text-lg">
+              <Button className="mt-4 h-12 cursor-pointer rounded-none bg-[#4640DE] text-sm font-bold hover:bg-[#3730c9] lg:ml-auto lg:mt-0 lg:h-full lg:flex-1 lg:text-lg">
                 Search my job
               </Button>
             </div>
@@ -133,23 +135,23 @@ export default function HeroSectionComponent() {
               <span className="font-semibold">Admin</span>
             </p>
           </div>
+        </div>
 
-          {/* Hero Image */}
-          <div className="relative hidden lg:block">
-            <Image
-              src="/img_design/home.png"
-              alt="Job seeker"
-              width={500}
-              height={700}
-              priority
-              className="pointer-events-none absolute bottom-0 right-[-5px] z-10 object-contain"
-            />
-          </div>
+        {/* Hero image of person smilling */}
+        <div className="pointer-events-none absolute bottom-0 right-0 z-10 hidden h-full w-[52%] lg:block">
+          <Image
+            src="/img_design/home.png"
+            alt="Job seeker"
+            width={500}
+            height={700}
+            priority
+            className="absolute bottom-0 right-8 h-auto max-h-[calc(100%-120px)] w-[min(34vw,500px)] object-contain object-bottom xl:right-20 2xl:right-[calc((100vw-1280px)/2+48px)]"
+          />
         </div>
       </div>
 
       {/* Bottom White Shape */}
-      <div className="absolute bottom-0 right-0 z-20 hidden h-[135px] w-[50%] bg-white [clip-path:polygon(100%_0,100%_100%,0_100%)] md:block" />
+      <div className="absolute bottom-0 right-0 z-20 hidden h-[135px] w-[50%] bg-white [clip-path:polygon(100%_0,100%_100%,0_100%)] lg:block" />
     </section>
   );
 }

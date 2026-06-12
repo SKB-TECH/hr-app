@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function SectionComponent() {
   return (
-    <div className="px-4 w-full max-w-7xl mx-auto ">
+    <div className="px-4 md:px-12   w-full max-w-7xl mx-auto ">
       <section className="py-8 ">
         <SectionTitle
           title="Explore by"
@@ -21,7 +21,7 @@ export default function SectionComponent() {
           {categoriesData.map((category: CategoryProp) => (
             <div
               key={category.id}
-              className="border cursor-pointer group hover:bg-brand
+              className="border  cursor-pointer group hover:bg-brand
                          flex flex-row md:flex-col
                          items-center md:items-start
                          gap-4 md:gap-3
@@ -35,6 +35,7 @@ export default function SectionComponent() {
                   alt={category.name}
                   width={28}
                   height={28}
+                  quality={100}
                   className={`
                     transition-all duration-200
                     group-hover:brightness-0 group-hover:invert
@@ -47,21 +48,22 @@ export default function SectionComponent() {
                 />
               </div>
 
-              <div className="flex-1 flex flex-col gap-0.5 md:gap-3">
+              <div className="flex-1 flex flex-col gap-0.5 md:gap-3 w-full  ">
                 <h2 className="font-bold text-black group-hover:text-white text-base md:text-2xl">
                   {category.name}
                 </h2>
-                <span className="text-sm text-gray-400 group-hover:text-white">
-                  {category.availableJobs} jobs available
-                </span>
+                <div className="flex flex-row items-center justify-between ">
+                  <span className="text-[16px] text-neutral-60 group-hover:text-white">
+                    {category.availableJobs} jobs available
+                  </span>
+                  <Link
+                    href="#"
+                    className="flex-shrink-0 text-foreground group-hover:text-white"
+                  >
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
               </div>
-
-              <Link
-                href="#"
-                className="flex-shrink-0 text-foreground group-hover:text-white"
-              >
-                <ArrowRight size={15} />
-              </Link>
             </div>
           ))}
         </div>

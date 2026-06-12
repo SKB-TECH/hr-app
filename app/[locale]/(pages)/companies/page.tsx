@@ -1,7 +1,4 @@
-import {
-  companiesPageCopy,
-  recommendedCompanies,
-} from "@/data/companies";
+import { companiesPageCopy, recommendedCompanies } from "@/data/companies";
 import RecommendedSection from "@/components/pages/companies/RecommendedSection";
 import PostJobsCta from "@/components/pages/companies/PostJobsCta";
 import CategorySection from "@/components/pages/companies/CategorySection";

@@ -6,8 +6,8 @@ import FooterBottom from "@/components/pages/landing/footer/FooterBottom";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 px-6 sm:px-18 pt-16 pb-8">
-      <div className="px-4 w-full max-w-7xl mx-auto">
+    <footer className="bg-gray-900  pt-16 pb-8">
+      <div className=" w-full max-w-7xl mx-auto px-4  md:px-12">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-x-10 gap-y-10 mb-14">
           <FooterBrand />
           <FooterLinkColum
