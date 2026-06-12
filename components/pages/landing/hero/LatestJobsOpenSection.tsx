@@ -1,6 +1,7 @@
 import { SectionTitle } from "@/components/ui/Title";
 import { latestJobs } from "@/data/latestJobs";
 import Image from "next/image";
+import Link from "next/link";
 
 const tagStyles: Record<string, string> = {
   "Full-Time": "text-accent-green bg-accent-light-green  ",
@@ -58,11 +59,16 @@ export default function LatestJobsOpenSection() {
 
               {/* Content */}
               <div className="flex flex-col gap-1">
-                <h4 className="font-bold text-[16px] text-[#202430]">
+                <Link
+                  href={`/jobs/${job.id}`}
+                  className="font-bold text-[16px] text-neutral-100 hover:text-brand/80"
+                >
                   {job.title}
-                </h4>
+                </Link>
                 <p className="text-sm text-gray-400 flex items-center gap-1.5">
-                  {job.companyName}
+                  <Link href={`/companies/${job.id}`} className="truncate">
+                    {job.companyName}
+                  </Link>
                   <span className="text-gray-300">•</span>
                   {job.location}
                 </p>
@@ -74,7 +80,7 @@ export default function LatestJobsOpenSection() {
                     <span
                       key={tag}
                       className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                        tagStyles[tag] ??
+                        (tag && tagStyles[tag]) ??
                         "text-gray-500 border border-gray-300 bg-transparent"
                       }`}
                     >

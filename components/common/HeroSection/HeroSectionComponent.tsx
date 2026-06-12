@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ChevronDown, MapPin, Search } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +25,9 @@ const locations = [
 
 export default function HeroSectionComponent() {
   const [selectedLocation, setSelectedLocation] = useState(locations[0]);
+  const router = useRouter();
+
+  const navigateTosearchResults = () => router.push("/companies/search");
 
   return (
     <section className="relative overflow-hidden bg-[#F8F8FD]">
@@ -123,7 +127,10 @@ export default function HeroSectionComponent() {
               </DropdownMenu>
 
               {/* CTA */}
-              <Button className="mt-4 h-12 cursor-pointer rounded-none bg-[#4640DE] text-sm font-bold hover:bg-[#3730c9] lg:ml-auto lg:mt-0 lg:h-full lg:flex-1 lg:text-lg">
+              <Button
+                onClick={navigateTosearchResults}
+                className="mt-4 h-12 cursor-pointer rounded-none bg-[#4640DE] text-sm font-medium  hover:bg-[#3730c9] lg:ml-auto lg:mt-0 lg:h-full lg:flex-1 lg:text-lg"
+              >
                 Search my job
               </Button>
             </div>

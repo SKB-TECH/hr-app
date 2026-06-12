@@ -29,16 +29,16 @@ export default function CompaniesSection({
   companies = defaultCompanies,
 }: CompaniesSectionProps) {
   return (
-    <section className="  px-4 py-10  md:px-12   w-full max-w-7xl mx-auto  ">
-      <p className="text-[18px] font-epilogue text-neutral-60 font-normal mb-4">
+    <section className="  px-4 py-10 lg:py-16  md:px-12   w-full max-w-7xl mx-auto  ">
+      <p className="text-[14px] font-epilogue text-neutral-60 font-normal mb-4">
         {label}
       </p>
 
-      <div className="flex flex-wrap items-center justify-between gap-y-6">
+      <div className="flex flex-wrap items-center  justify-between gap-6">
         {companies.map((company) => (
           <div
             key={company.name}
-            className="flex items-center justify-center  "
+            className="flex  items-center justify-center  "
           >
             {company.logo}
           </div>

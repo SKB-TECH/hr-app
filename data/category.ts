@@ -1,18 +1,38 @@
+import { LaptopMinimal, CodeXml, BriefcaseBusiness, Users } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
 export type CategoryProp = {
   id: number;
   name: string;
   availableJobs: number;
-  logo: string;
+  logo: LucideIcon;
   blackIcon?: boolean;
 };
 
 export const categoriesData: CategoryProp[] = [
-  { id: 1, name: "Design",           availableJobs: 235, logo: "/images/Design-ico.png" },
-  { id: 2, name: "Sales",            availableJobs: 756, logo: "/images/sales-icon.png" },
-  { id: 3, name: "Marketing",        availableJobs: 140, logo: "/images/marketing-ico.png" },
-  { id: 4, name: "Finance",          availableJobs: 325, logo: "/images/Finance-icon.png" },
-  { id: 5, name: "Technology",       availableJobs: 336, logo: "/images/Tecknology-icon.png" },
-  { id: 6, name: "Engineering",      availableJobs: 542, logo: "/images/Bussiness.png" },
-  { id: 7, name: "Business",         availableJobs: 211, logo: "/images/Bussiness-ico.png" },
-  { id: 8, name: "Human Resources",  availableJobs: 346, logo: "/images/human-resouces.png", blackIcon: true },
+  {
+    id: 1,
+    name: "Technology",
+    availableJobs: 235,
+    logo: LaptopMinimal,
+  },
+  {
+    id: 2,
+    name: "Engineering",
+    availableJobs: 756,
+    logo: CodeXml,
+  },
+  {
+    id: 3,
+    name: "Business",
+    availableJobs: 140,
+    logo: BriefcaseBusiness,
+  },
+  {
+    id: 4,
+    name: "Human Resources",
+    availableJobs: 325,
+    logo: Users,
+    blackIcon: true,
+  },
 ];
