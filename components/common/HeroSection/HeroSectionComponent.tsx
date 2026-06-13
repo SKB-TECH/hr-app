@@ -145,7 +145,7 @@ export default function HeroSectionComponent() {
         </div>
 
         {/* Hero image of person smilling */}
-        <div className="pointer-events-none absolute bottom-0 right-0 z-10 hidden h-full w-[52%] lg:block">
+        <div className="pointer-events-none -translate-y-1 absolute bottom-0 right-0 z-10 hidden h-full w-[52%] lg:block">
           <Image
             src="/img_design/home.png"
             alt="Job seeker"
@@ -158,7 +158,7 @@ export default function HeroSectionComponent() {
       </div>
 
       {/* Bottom White Shape */}
-      <div className="absolute bottom-0 right-0 z-20 hidden h-[135px] w-[50%] bg-white [clip-path:polygon(100%_0,100%_100%,0_100%)] lg:block" />
+      <div className="absolute bottom-0 right-0 z-20 hidden  h-[135px] w-[50%] bg-white [clip-path:polygon(100%_0,100%_100%,0_100%)] lg:block" />
     </section>
   );
 }
