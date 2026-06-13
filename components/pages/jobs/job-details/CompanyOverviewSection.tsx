@@ -24,7 +24,7 @@ export default function CompanyOverviewSection({
 }: Props) {
   return (
     <section
-      className={`py-8 md:py-20 flex flex-col lg:flex-row justify-between gap-20 ${className}`}
+      className={`py-8 md:py-20 flex flex-col lg:flex-row justify-between gap-20   ${className}`}
     >
       <div className="w-full lg:max-w-2xl">
         <div className="flex items-center gap-4">
