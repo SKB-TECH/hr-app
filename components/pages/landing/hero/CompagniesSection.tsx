@@ -29,7 +29,7 @@ export default function CompaniesSection({
   companies = defaultCompanies,
 }: CompaniesSectionProps) {
   return (
-    <section className="  px-4 py-10 lg:py-16  md:px-12   w-full max-w-7xl mx-auto  ">
+    <section className="  px-4 py-10 lg:py-22  md:px-12   w-full max-w-7xl mx-auto  ">
       <p className="text-[14px] font-epilogue text-neutral-60 font-normal mb-4">
         {label}
       </p>
