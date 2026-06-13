@@ -1,11 +1,11 @@
 import { ArrowRightIcon } from "lucide-react";
-import Stripe from "../../../../../components/pages/companies/CompanyProfile/StripeHeroSection";
+import Stripe from "../../../../../components/CompanyProfile/StripeHeroSection";
 import { companyProfiles } from "@/data/companyDetails";
-import TeamSection from "@/components/pages/companies/CompanyProfile/teamSection";
-import JobPerksSection from "@/components/pages/jobs/job-details/JobPerksSection";
+import TeamSection from "@/components/CompanyProfile/teamSection";
 import { similarJobs } from "@/data/jobDetailsData";
-import OpenJobsSection from "@/components/pages/companies/CompanyProfile/OpenJobsSection";
+import OpenJobsSection from "@/components/CompanyProfile/OpenJobsSection";
 import Link from "next/link";
+import JobPerksSection from "@/components/pages/jobs/job-details/JobPerksSection";
 
 interface Company {
   id: string;
@@ -82,9 +82,12 @@ export default async function CompanyPage({
                   alt="icon"
                   className="h-4 w-4 items-center mt-1"
                 />
-                <h1 className="text-base md:text-lg text-brand font-epilogue break-all">
+                <Link
+                  href="/twitter.com/stripe"
+                  className="text-base md:text-lg text-brand font-epilogue break-all"
+                >
                   {companyDetails.socials.twitter}
-                </h1>
+                </Link>
               </div>
               <div className="flex gap-5 border border-brand/50 px-2 py-1">
                 <img
@@ -92,15 +95,21 @@ export default async function CompanyPage({
                   alt="icon"
                   className="h-5 w-2 items-center mt-1"
                 />
-                <h1 className="text-base md:text-lg text-brand font-epilogue break-all">
+                <Link
+                  href="/facebook.com/StripeHQ"
+                  className="text-base md:text-lg text-brand font-epilogue break-all"
+                >
                   {companyDetails.socials.facebook}
-                </h1>
+                </Link>
               </div>
               <div className="flex gap-5 border border-brand/50 px-2 py-1">
                 <img src="/icon7.png" alt="icon" className="h-5 w-5" />
-                <h1 className="text-base md:text-lg text-brand font-epilogue break-all">
+                <Link
+                  href="/linkedin.com/company/stripe"
+                  className="text-base md:text-lg text-brand font-epilogue break-all"
+                >
                   {companyDetails.socials.linkedin}
-                </h1>
+                </Link>
               </div>
             </div>
 
@@ -152,10 +161,10 @@ export default async function CompanyPage({
           </div>
           <div className="mt-10 ">
             <Link
-              href="/#"
-              className="text-base md:text-[16px] text-brand font-epilogue break-all"
+              href="/companies/1/#"
+              className="text-base md:text-[16px] text-brand font-epilogue font-semibold break-all mt-5 inline-flex items-center"
             >
-              View tech stack
+              View Countries
               <ArrowRightIcon className="inline-block h-5 w-5 ml-5" />
             </Link>
           </div>
@@ -182,7 +191,7 @@ export default async function CompanyPage({
                 </div>
               ))}
               <Link
-                href="/#"
+                href="/companies/1/#"
                 className="text-base md:text-[16px] text-brand font-epilogue font-semibold break-all mt-5 inline-flex items-center"
               >
                 View Countries
