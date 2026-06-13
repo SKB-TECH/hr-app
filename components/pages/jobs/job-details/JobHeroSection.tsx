@@ -22,7 +22,7 @@ export default function JobHeroSection({ jobDetails }: JobHeroSectionProps) {
         backgroundPosition: "center",
       }}
     >
-      <div className="w-full max-w-6xl mx-auto md:px-6 px-4">
+      <div className=" px-4 md:px-12   w-full max-w-7xl mx-auto">
         {/* Breadcrumbs */}
         <div className="flex items-center text-sm text-[#7C8493] mb-6 overflow-hidden">
           <Link

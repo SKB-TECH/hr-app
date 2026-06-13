@@ -1,6 +1,5 @@
-import React from 'react'
+import React from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
-
 
 interface TeamSectionProps {
   teamMembers: {
@@ -10,15 +9,17 @@ interface TeamSectionProps {
   }[];
 }
 
-const TeamSection = ({ teamMembers } : TeamSectionProps) => {
+const TeamSection = ({ teamMembers }: TeamSectionProps) => {
   return (
-    <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-10">
+    <div className="px-4 md:px-12   w-full max-w-7xl mx-auto py-6 md:py-10">
       <div className="w-full h-0.5 bg-[#D6DDEB]" />
       <div className="flex mb-5 mt-15 justify-between">
         <h1 className="text-neutral-100 text-3xl font-clash font-bold ">
           Team
         </h1>
-        <h1 className="text-brand text-lg font-epilogue font-semibold">See all (47)</h1>
+        <h1 className="text-brand text-lg font-epilogue font-semibold">
+          See all (47)
+        </h1>
       </div>
       <div className="flex gap-4 overflow-x-auto no-scrollbar md:grid md:grid-cols-3 lg:grid-cols-5">
         {teamMembers.map((member, index) => (
@@ -40,13 +41,13 @@ const TeamSection = ({ teamMembers } : TeamSectionProps) => {
 
             <div className="flex items-center gap-4 mt-5 text-neutral-60">
               <FaInstagram />
-              <FaLinkedin/>
+              <FaLinkedin />
             </div>
           </div>
         ))}
       </div>
     </div>
   );
-}
+};
 
-export default TeamSection
+export default TeamSection;

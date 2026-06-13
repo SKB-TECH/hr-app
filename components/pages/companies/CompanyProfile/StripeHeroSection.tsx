@@ -34,7 +34,7 @@ const Stripe = () => {
           className="object-cover absolute inset-0"
         />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-10">
+        <div className="relative z-10 px-4 md:px-12   w-full max-w-7xl mx-auto py-6 md:py-10">
           <div className="font-epilogue text-sm text-neutral-80 mb-8">
             <h1 className="">
               Home / Companies / <span className="font-medium">Nomad</span>

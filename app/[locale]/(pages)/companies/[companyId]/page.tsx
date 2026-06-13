@@ -62,7 +62,7 @@ export default async function CompanyPage({
   return (
     <main className="w-full ">
       <Stripe />
-      <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-15">
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 px-4 md:px-12   w-full max-w-7xl mx-auto py-6 md:py-15">
         <div className="w-full lg:w-2/3 ">
           <h1 className="text-neutral-100 text-3xl font-clash font-bold mb-5">
             {companyDetails.name}
@@ -195,7 +195,7 @@ export default async function CompanyPage({
         </div>
       </div>
       <TeamSection teamMembers={companyDetails.teamMembers} />
-      <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-15 ">
+      <div className="px-4 md:px-12   w-full max-w-7xl mx-auto py-6 md:py-15 ">
         <JobPerksSection perks={companyDetails.perks} />
       </div>
       <OpenJobsSection jobs={similarJobs} />

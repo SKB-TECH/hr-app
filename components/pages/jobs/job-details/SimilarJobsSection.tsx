@@ -31,7 +31,7 @@ export default function SimilarJobsSection({
         className="md:hidden py-30 absolute max-md:inset-0 inset-0 object-fill bg-no-repeat pointer-events-none bg-[#F8F8FD] "
       />
 
-      <div className="relative z-10 md:px-6 py-12 max-w-6xl mx-auto px-4">
+      <div className="relative z-10 px-4 md:px-12   w-full max-w-7xl mx-auto py-12">
         <div className="flex justify-between items-center gap-4">
           <h1 className="text-[32px]  text-neutral-100 font-bold font-clash">
             {title}
