@@ -23,10 +23,10 @@ export default async function JobDetailsPage({
   }
 
   return (
-    <section className="w-full bg-white md:p-6 ">
+    <section className="w-full bg-white  lg:px-6 ">
       <JobHeroSection jobDetails={jobDetails} />
       {/* main content */}
-      <div className="p-4">
+      <div className="px-4 ">
         {" "}
         <div className=" grid grid-cols-1 lg:grid-cols-3 md:gap-14 py-8 md:py-20">
           <div className="col-span-2  md:space-y-8  ">
