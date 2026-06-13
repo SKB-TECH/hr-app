@@ -3,7 +3,6 @@ import Stripe from "../../../../../components/pages/companies/CompanyProfile/Str
 import { companyProfiles } from "@/data/companyDetails";
 import TeamSection from "@/components/pages/companies/CompanyProfile/teamSection";
 import JobPerksSection from "@/components/pages/jobs/job-details/JobPerksSection";
-import SimilarJobsSection from "@/components/pages/jobs/job-details/SimilarJobsSection";
 import { similarJobs } from "@/data/jobDetailsData";
 import OpenJobsSection from "@/components/pages/companies/CompanyProfile/OpenJobsSection";
 import Link from "next/link";

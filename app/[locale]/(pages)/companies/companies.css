@@ -1,8 +1,15 @@
 .companies-page {
-  /* width: 100%; */
-  /* max-width: 80rem; */
-  /* margin-inline: auto;
-  padding: 2rem 1rem 4rem; */
+  width: 100%;
+  margin-inline: auto;
+  padding: 0;
+}
+
+.companies-page > *:not(:first-child) {
+  max-width: 75rem;
+  margin-inline: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 3rem;
 }
 
 .companies-section {
@@ -166,11 +173,13 @@
   padding: 3.5rem 3rem 0;
   gap: 2rem;
 }
+
 .companies-cta__subtitle {
   margin-top: 0.75rem;
   font-size: 1.125rem;
   color: white;
 }
+
 .companies-cta__content {
   flex: 1;
   max-width: 480px;
@@ -178,14 +187,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.companies-cta__title {
-  font-family: var(--font-clash);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
-  color: white;
-  line-height: 1.2;
 }
 
 .companies-cta__title {
@@ -243,6 +244,7 @@
   background: #f5f5f5;
   border-bottom: 1px solid #e5e5e5;
 }
+
 .companies-cta__mock-dot {
   width: 0.5rem;
   height: 0.5rem;
@@ -255,6 +257,7 @@
   display: block;
   line-height: 0;
 }
+
 .companies-cta__mock-body {
   display: flex;
   flex-direction: column;
