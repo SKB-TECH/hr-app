@@ -13,7 +13,9 @@ type Props = {
 
 export default function JobPerksSection({ perks, className = "" }: Props) {
   return (
-    <section className={`border-y border-gray-200 py-8 md:py-20  ${className}`}>
+    <section
+      className={`border-y border-gray-200 py-8 md:py-20   ${className}`}
+    >
       <div className="mb-8">
         <h2 className=" leading-[1.6] tracking-normal text-[32px] font-bold text-neutral-100">
           Perks & Benefits
