@@ -30,7 +30,7 @@ const Stripe = () => {
       <div className="relative w-full overflow-hidden">
         <Image
           fill
-          src="/BG.png"
+          src="/BG.webp"
           alt="Hero background"
           className="object-cover absolute inset-0"
         />

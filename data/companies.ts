@@ -5,7 +5,13 @@ import type {
   RecommendedCompany,
 } from "@/data/type";
 
-export type { Category, CategoryCompany, CategoryIcon, RecommendedCompany, TagVariant } from "@/data/type";
+export type {
+  Category,
+  CategoryCompany,
+  CategoryIcon,
+  RecommendedCompany,
+  TagVariant,
+} from "@/data/type";
 export { categories } from "@/data/type";
 
 export type CategoryConfig = {
@@ -20,19 +26,18 @@ export const categoryConfig: CategoryConfig[] = [
   { id: "Hosting", label: "Hosting", icon: "server" },
   { id: "Business Services", label: "Business Service", icon: "briefcase" },
   { id: "Dev", label: "Development", icon: "code" },
-  { id:"Education",label:"Education",icon:"book"},
-  { id:"Healthcare",label:"Healthcare",icon:"heart"} ,
-  { id:"Entertainment",label:"Entertainment",icon:"film"} ,
-  { id:"Travel",label:"Travel",icon:"map"} ,
-  { id:"Food & Beverage",label:"Food & Beverage",icon:"coffee"} ,
-
+  { id: "Education", label: "Education", icon: "book" },
+  { id: "Healthcare", label: "Healthcare", icon: "heart" },
+  { id: "Entertainment", label: "Entertainment", icon: "film" },
+  { id: "Travel", label: "Travel", icon: "map" },
+  { id: "Food & Beverage", label: "Food & Beverage", icon: "coffee" },
 ];
 
 export const recommendedCompanies: RecommendedCompany[] = [
   {
     id: "nomad",
     name: "Nomad",
-    logo: "/Logo/Nomad.png",
+    logo: "/logo/Nomad.png",
     jobs: 3,
     description:
       "Nomad is located in Paris. Nomad has generated 12M in revenue and has raised 2M in funding.",
@@ -42,18 +47,17 @@ export const recommendedCompanies: RecommendedCompany[] = [
   {
     id: "discord",
     name: "Discord",
-    logo: "/Logo/discord.png",
+    logo: "/logo/discord.png",
     jobs: 3,
     description:
       "Discord is a voice, video, and text communication platform used by hundreds of millions of people.",
     tag: "Business Service",
     tagVariant: "business",
-    
   },
   {
     id: "maze",
     name: "Maze",
-    logo: "/Logo/maze.png",
+    logo: "/logo/maze.png",
     jobs: 3,
     description:
       "Maze helps product teams run rapid tests and get actionable insights to build better products faster.",
@@ -63,7 +67,7 @@ export const recommendedCompanies: RecommendedCompany[] = [
   {
     id: "udacity",
     name: "Udacity",
-    logo: "/Logo/udacity.png",
+    logo: "/logo/udacity.png",
     jobs: 3,
     description:
       "Udacity is an online learning platform offering nanodegree programs in tech and business.",
@@ -73,7 +77,7 @@ export const recommendedCompanies: RecommendedCompany[] = [
   {
     id: "webflow",
     name: "Webflow",
-    logo: "/Logo/webflowpng.png",
+    logo: "/logo/webflowpng.png",
     jobs: 3,
     description:
       "Webflow is a design and hosting platform that lets teams build responsive websites visually.",
@@ -83,7 +87,7 @@ export const recommendedCompanies: RecommendedCompany[] = [
   {
     id: "foundation",
     name: "Foundation",
-    logo: "/Logo/foundation.png",
+    logo: "/logo/foundation.png",
     jobs: 3,
     description:
       "Foundation is a creative platform for building and selling digital art and collectibles.",
@@ -94,14 +98,34 @@ export const recommendedCompanies: RecommendedCompany[] = [
 
 export const companiesByCategory: Record<Category, CategoryCompany[]> = {
   Design: [
-    { id: "pentagram", name: "Pentagram", logo: "/Logo/pentegram.png", jobs: 3 },
-    { id: "wolff-olins", name: "Wolff Olins", logo: "/Logo/wolfolins.png", jobs: 3 },
-    { id: "clay", name: "Clay", logo: "/Logo/clay.png", jobs: 3 },
-    { id: "mediamonks", name: "MediaMonks", logo: "", jobs: 3 },
-    { id: "packer", name: "Packer", logo: "/Logo/packer.png", jobs: 3 },
-    { id: "square", name: "Square", logo: "/Logo/squre.png", jobs: 3 },
-    { id: "divy", name: "Divy", logo: "/Logo/divy.png", jobs: 3 },
-    { id: "webflow-cat", name: "Webflow", logo: "/Logo/webflowpng.png", jobs: 3 },
+    {
+      id: "pentagram",
+      name: "Pentagram",
+      logo: "/logo/pentegram.png",
+      jobs: 3,
+    },
+    {
+      id: "wolff-olins",
+      name: "Wolff Olins",
+      logo: "/logo/wolfolins.png",
+      jobs: 3,
+    },
+    { id: "clay", name: "Clay", logo: "/logo/clay.png", jobs: 3 },
+    {
+      id: "mediamonks",
+      name: "MediaMonks",
+      logo: "/logo/media.png",
+      jobs: 3,
+    },
+    { id: "packer", name: "Packer", logo: "/logo/packer.png", jobs: 3 },
+    { id: "square", name: "Square", logo: "/logo/squre.png", jobs: 3 },
+    { id: "divy", name: "Divy", logo: "/logo/divy.png", jobs: 3 },
+    {
+      id: "webflow-cat",
+      name: "Webflow",
+      logo: "/logo/webflowpng.png",
+      jobs: 3,
+    },
   ],
   Fintech: [
     { id: "stripe", name: "Stripe", logo: "", jobs: 5 },
@@ -153,36 +177,36 @@ export const companiesByCategory: Record<Category, CategoryCompany[]> = {
     { id: "codecademy", name: "Codecademy", logo: "", jobs: 4 },
     { id: "futurelearn", name: "FutureLearn", logo: "", jobs: 3 },
   ],
- Healthcare: [
-  { id: "medplum", name: "Medplum", logo: "", jobs: 3 },
-  { id: "apollohealth", name: "Apollo Health", logo: "", jobs: 3 },
-  { id: "healthifyme", name: "HealthifyMe", logo: "", jobs: 3 },
-  { id: "cvs-health", name: "CVS Health", logo: "", jobs: 5 },
-  { id: "johnson", name: "Johnson & Johnson", logo: "", jobs: 6 },
-  { id: "pfizer", name: "Pfizer", logo: "", jobs: 4 },
-  { id: "unitedhealth", name: "UnitedHealth", logo: "", jobs: 5 },
-  { id: "teladoc", name: "Teladoc", logo: "", jobs: 3 },
-],
-Entertainment: [
-  { id: "netflix", name: "Netflix", logo: "", jobs: 3 },
-  { id: "spotify", name: "Spotify", logo: "", jobs: 5 },
-  { id: "disney", name: "Disney+", logo: "", jobs: 4 },
-  { id: "hulu", name: "Hulu", logo: "", jobs: 3 },
-  { id: "twitch", name: "Twitch", logo: "", jobs: 4 },
-  { id: "youtube", name: "YouTube", logo: "", jobs: 6 },
-  { id: "hbo", name: "HBO Max", logo: "", jobs: 3 },
-  { id: "soundcloud", name: "SoundCloud", logo: "", jobs: 2 },
-],
-Travel: [
-  { id: "airbnb", name: "Airbnb", logo: "", jobs: 3 },
-  { id: "booking", name: "Booking.com", logo: "", jobs: 3 },
-  { id: "expedia", name: "Expedia", logo: "", jobs: 3 },
-  { id: "tripadvisor", name: "TripAdvisor", logo: "", jobs: 4 },
-  { id: "kayak", name: "Kayak", logo: "", jobs: 3 },
-  { id: "skyscanner", name: "Skyscanner", logo: "", jobs: 4 },
-  { id: "klook", name: "Klook", logo: "", jobs: 3 },
-  { id: "viator", name: "Viator", logo: "", jobs: 2 },
-],
+  Healthcare: [
+    { id: "medplum", name: "Medplum", logo: "", jobs: 3 },
+    { id: "apollohealth", name: "Apollo Health", logo: "", jobs: 3 },
+    { id: "healthifyme", name: "HealthifyMe", logo: "", jobs: 3 },
+    { id: "cvs-health", name: "CVS Health", logo: "", jobs: 5 },
+    { id: "johnson", name: "Johnson & Johnson", logo: "", jobs: 6 },
+    { id: "pfizer", name: "Pfizer", logo: "", jobs: 4 },
+    { id: "unitedhealth", name: "UnitedHealth", logo: "", jobs: 5 },
+    { id: "teladoc", name: "Teladoc", logo: "", jobs: 3 },
+  ],
+  Entertainment: [
+    { id: "netflix", name: "Netflix", logo: "", jobs: 3 },
+    { id: "spotify", name: "Spotify", logo: "", jobs: 5 },
+    { id: "disney", name: "Disney+", logo: "", jobs: 4 },
+    { id: "hulu", name: "Hulu", logo: "", jobs: 3 },
+    { id: "twitch", name: "Twitch", logo: "", jobs: 4 },
+    { id: "youtube", name: "YouTube", logo: "", jobs: 6 },
+    { id: "hbo", name: "HBO Max", logo: "", jobs: 3 },
+    { id: "soundcloud", name: "SoundCloud", logo: "", jobs: 2 },
+  ],
+  Travel: [
+    { id: "airbnb", name: "Airbnb", logo: "", jobs: 3 },
+    { id: "booking", name: "Booking.com", logo: "", jobs: 3 },
+    { id: "expedia", name: "Expedia", logo: "", jobs: 3 },
+    { id: "tripadvisor", name: "TripAdvisor", logo: "", jobs: 4 },
+    { id: "kayak", name: "Kayak", logo: "", jobs: 3 },
+    { id: "skyscanner", name: "Skyscanner", logo: "", jobs: 4 },
+    { id: "klook", name: "Klook", logo: "", jobs: 3 },
+    { id: "viator", name: "Viator", logo: "", jobs: 2 },
+  ],
   "Food & Beverage": [
     { id: "doordash", name: "DoorDash", logo: "", jobs: 3 },
     { id: "uber-eats", name: "Uber Eats", logo: "", jobs: 3 },

@@ -54,7 +54,7 @@ export default function CompanyLogo({
       className={cn(
         "flex shrink-0 items-center justify-center rounded-lg font-semibold",
         logoColors[name] ?? "bg-brand-light-neutral text-brand",
-        className
+        className,
       )}
       style={{ width: size, height: size, fontSize: size * 0.32 }}
       aria-hidden

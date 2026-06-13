@@ -16,7 +16,10 @@ export default function RecommendedSection({
   companies,
 }: RecommendedSectionProps) {
   return (
-    <section aria-labelledby="recommended-heading" className="companies-section">
+    <section
+      aria-labelledby="recommended-heading"
+      className="companies-section"
+    >
       <SectionHeader
         id="recommended-heading"
         title={copy.title}
