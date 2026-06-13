@@ -6,25 +6,28 @@ interface NotificationBellProps {
   notificationCount: number;
 }
 
-export function NotificationBell({ hasNotifications }: NotificationBellProps) {
+export function NotificationBell({
+  hasNotifications,
+  notificationCount,
+}: NotificationBellProps) {
   return (
     <Link
       href="/dashboard/notifications"
-      className="relative p-2 rounded-full hover:bg-brand-light-neutral/20 transition-colors duration-200 group"
+      aria-label={`Notifications${
+        hasNotifications ? `, ${notificationCount} new` : ""
+      }`}
+      className="relative rounded-full p-2 transition-colors duration-200 hover:bg-brand-light-neutral/20 group"
     >
       <Image
         src="/notificationIcon.png"
-        alt="notification icon"
+        alt="Notifications"
         width={16}
         height={16}
-        className="group-hover:scale-110 transition-transform duration-200"
+        className="transition-transform duration-200 group-hover:scale-110"
       />
 
       {hasNotifications && (
-        <>
-          {/* Notification badge */}
-          <span className="absolute top-1 right-1 w-2 h-2 bg-orange-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-white"></span>
-        </>
+        <span className="absolute right-1 top-1 flex h-2 w-2 items-center justify-center rounded-full bg-orange-500 border border-white" />
       )}
     </Link>
   );
