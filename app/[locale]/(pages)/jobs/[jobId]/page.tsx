@@ -27,7 +27,7 @@ export default async function JobDetailsPage({
     <section className="w-full bg-white">
       <JobHeroSection jobDetails={jobDetails} />
       {/* main content */}
-      <div className="w-full max-w-6xl mx-auto md:px-6  px-4">
+      <div className="px-4 md:px-12   w-full max-w-7xl mx-auto">
         {" "}
         <div className="grid grid-cols-1 lg:grid-cols-3 md:gap-14 py-8 md:py-20">
           <div className="col-span-2  md:space-y-8  ">

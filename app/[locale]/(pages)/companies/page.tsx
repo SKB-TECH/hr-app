@@ -6,7 +6,7 @@ import "./companies.css";
 
 export default function CompaniesPage() {
   return (
-    <main className="companies-page">
+    <main className="companies-page px-4 md:px-12   w-full max-w-7xl mx-auto">
       <RecommendedSection
         copy={companiesPageCopy.recommended}
         companies={recommendedCompanies}
