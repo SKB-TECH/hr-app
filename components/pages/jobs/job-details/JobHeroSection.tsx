@@ -2,17 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import TriggerApplicationForm from "@/components/pages/jobs/job-details/job-application-form/TriggerApplicationForm";
 
-type JobHeroSectionProps = {
-  jobDetails: {
-    title: string;
-    image: string;
-    company: string;
-    location: string;
-    jobType: string;
-  };
-};
+interface JobDetails {
+  title: string;
+  image: string;
+  company: string;
+  location: string;
+  jobType: string;
+}
+interface JobHeroSectionProps {
+  jobDetails: JobDetails;
+  showLinks?: boolean;
+}
 
-export default function JobHeroSection({ jobDetails }: JobHeroSectionProps) {
+export default function JobHeroSection({
+  jobDetails,
+  showLinks = false,
+}: JobHeroSectionProps) {
   return (
     <div
       className="w-full bg-light-brand-neutral py-8 md:py-12"
@@ -24,38 +29,40 @@ export default function JobHeroSection({ jobDetails }: JobHeroSectionProps) {
     >
       <div className=" px-4 md:px-12   w-full max-w-7xl mx-auto">
         {/* Breadcrumbs */}
-        <div className="flex items-center text-sm text-[#7C8493] mb-6 overflow-hidden">
-          <Link
-            href="/"
-            className="hover:text-[#4640DE] transition-colors truncate max-w-[60px] md:max-w-none"
-          >
-            Home
-          </Link>
+        {showLinks && (
+          <div className="flex items-center text-sm text-[#7C8493] mb-6 overflow-hidden">
+            <Link
+              href="/"
+              className="hover:text-[#4640DE] transition-colors truncate max-w-[60px] md:max-w-none"
+            >
+              Home
+            </Link>
 
-          <span className="mx-2 shrink-0">/</span>
+            <span className="mx-2 shrink-0">/</span>
 
-          <Link
-            href="/companies"
-            className="hover:text-[#4640DE] transition-colors truncate max-w-[90px] md:max-w-none"
-          >
-            Companies
-          </Link>
+            <Link
+              href="/companies"
+              className="hover:text-[#4640DE] transition-colors truncate max-w-[90px] md:max-w-none"
+            >
+              Companies
+            </Link>
 
-          <span className="mx-2 shrink-0">/</span>
+            <span className="mx-2 shrink-0">/</span>
 
-          <Link
-            href={"/companies/1"}
-            className="hover:text-[#4640DE] transition-colors truncate max-w-[80px] md:max-w-none"
-          >
-            {jobDetails.company}
-          </Link>
+            <Link
+              href={"/companies/1"}
+              className="hover:text-[#4640DE] transition-colors truncate max-w-[80px] md:max-w-none"
+            >
+              {jobDetails.company}
+            </Link>
 
-          <span className="mx-2 shrink-0">/</span>
+            <span className="mx-2 shrink-0">/</span>
 
-          <span className="text-[#25324B] font-medium text-nowrap">
-            {jobDetails.title}
-          </span>
-        </div>
+            <span className="text-[#25324B] font-medium text-nowrap">
+              {jobDetails.title}
+            </span>
+          </div>
+        )}
 
         {/* Hero Card */}
         <div className="w-full bg-white border border-[#D6DDEB] p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
