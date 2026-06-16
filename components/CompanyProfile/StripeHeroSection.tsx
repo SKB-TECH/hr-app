@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const icons = [
   {
@@ -29,20 +30,33 @@ const Stripe = () => {
       <div className="relative w-full overflow-hidden">
         <Image
           fill
-          src="/BG.png"
+          src="/BG.webp"
           alt="Hero background"
           className="object-cover absolute inset-0"
         />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-10">
+        <div className="relative z-10 px-4 md:px-12   w-full max-w-7xl mx-auto py-6 md:py-10">
           <div className="font-epilogue text-sm text-neutral-80 mb-8">
             <h1 className="">
-              Home / Companies / <span className="font-medium">Nomad</span>
+              <Link href="/" className="hover:text-brand duration-300">
+                {" "}
+                Home{" "}
+              </Link>
+              /
+              <Link href="/companies" className="hover:text-brand duration-300">
+                Companies{" "}
+              </Link>
+              /
+              <Link href="" className="font-medium">
+                Nomad
+              </Link>
             </h1>
           </div>
           <div className="flex flex-col md:flex-row gap-6 md:gap-8">
             <div>
               <img
+                width={0}
+                height={0}
                 src="/stripe.png"
                 alt="stripe"
                 className="w-16 h-16 md:w-42 md:h-42"
@@ -60,9 +74,12 @@ const Stripe = () => {
                 </span>
               </div>
 
-              <span className="text-base text-brand font-medium md:text-[16px] font-epilogue break-all">
+              <Link
+                href="https://stripe.com"
+                className="text-base text-brand font-medium md:text-[16px] font-epilogue break-all hover:text-brand"
+              >
                 https://stripe.com
-              </span>
+              </Link>
               <div className="flex flex-col md:flex-row gap-4 md:gap-8 mt-6">
                 {icons.map((icon, index) => (
                   <div key={index} className="flex items-center gap-4">

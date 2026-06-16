@@ -1,8 +1,15 @@
 .companies-page {
   width: 100%;
+  margin-inline: auto;
+  padding: 0;
+}
+
+.companies-page > *:not(:first-child) {
   max-width: 75rem;
   margin-inline: auto;
-  padding: 2rem 1rem 4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 3rem;
 }
 
 .companies-section {
@@ -42,7 +49,9 @@
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 .btn-outline:hover {
@@ -164,11 +173,13 @@
   padding: 3.5rem 3rem 0;
   gap: 2rem;
 }
+
 .companies-cta__subtitle {
   margin-top: 0.75rem;
   font-size: 1.125rem;
   color: white;
 }
+
 .companies-cta__content {
   flex: 1;
   max-width: 480px;
@@ -176,14 +187,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.companies-cta__title {
-  font-family: var(--font-clash);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
-  color: white;
-  line-height: 1.2;
 }
 
 .companies-cta__title {
@@ -205,7 +208,9 @@
   font-weight: 700;
   text-decoration: none;
   border: 2px solid white;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
   align-self: flex-start;
   width: auto;
 }
@@ -215,14 +220,13 @@
   color: white;
 }
 
-  .companies-cta__visual {
+.companies-cta__visual {
   flex-shrink: 0;
   width: 560px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
 }
-
 
 .companies-cta__mock {
   width: 100%;
@@ -240,6 +244,7 @@
   background: #f5f5f5;
   border-bottom: 1px solid #e5e5e5;
 }
+
 .companies-cta__mock-dot {
   width: 0.5rem;
   height: 0.5rem;
@@ -247,12 +252,12 @@
   background: #d9d9d9;
 }
 
-
 .companies-cta__mock-screen {
   width: 100%;
   display: block;
   line-height: 0;
 }
+
 .companies-cta__mock-body {
   display: flex;
   flex-direction: column;
@@ -294,10 +299,18 @@
   border-radius: 2px 2px 0 0;
 }
 
-.companies-cta__mock-chart span:nth-child(1) { height: 40%; }
-.companies-cta__mock-chart span:nth-child(2) { height: 70%; }
-.companies-cta__mock-chart span:nth-child(3) { height: 55%; }
-.companies-cta__mock-chart span:nth-child(4) { height: 90%; }
+.companies-cta__mock-chart span:nth-child(1) {
+  height: 40%;
+}
+.companies-cta__mock-chart span:nth-child(2) {
+  height: 70%;
+}
+.companies-cta__mock-chart span:nth-child(3) {
+  height: 55%;
+}
+.companies-cta__mock-chart span:nth-child(4) {
+  height: 90%;
+}
 
 .companies-cta__mock-list {
   list-style: none;
@@ -312,8 +325,12 @@
   border-radius: 2px;
 }
 
-.companies-cta__mock-list li:nth-child(2) { width: 85%; }
-.companies-cta__mock-list li:nth-child(3) { width: 70%; }
+.companies-cta__mock-list li:nth-child(2) {
+  width: 85%;
+}
+.companies-cta__mock-list li:nth-child(3) {
+  width: 70%;
+}
 
 @media (max-width: 768px) {
   .companies-cta__inner {
@@ -364,7 +381,10 @@
   font-weight: 600;
   cursor: pointer;
   scroll-snap-align: start;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
 }
 
 .companies-category__tab--active {

@@ -1,19 +1,25 @@
 import SectionComponent from "@/components/common/section/Section";
-import Link from "next/link";
 import HeroSectionComponent from "@/components/common/HeroSection/HeroSectionComponent";
-import CompaniesCategoryHeader from "@/components/landing/hero/CompaniesCategoryHeader";
-import FeaturedJobsSection from "@/components/landing/hero/FeaturedJobsSection";
-import LatestJobsOpenSection from "@/components/landing/hero/LatestJobsOpenSection";
+import FeaturedJobsSection from "@/components/pages/landing/hero/FeaturedJobsSection";
+import LatestJobsOpenSection from "@/components/pages/landing/hero/LatestJobsOpenSection";
+import CompagniesSection from "@/components/pages/landing/hero/CompagniesSection";
+import { companiesPageCopy } from "@/data/companies";
+import PostJobsCta from "@/components/pages/companies/PostJobsCta";
+import "./companies/companies.css";
 
 const HomePage = () => {
-    return (
-        <>
-            <HeroSectionComponent/>
-            <CompaniesCategoryHeader/>
-            <FeaturedJobsSection/>
-            <LatestJobsOpenSection/>
-        </>
-    );
+  return (
+    <main className="w-full  ">
+      <HeroSectionComponent />
+      <CompagniesSection />
+      <SectionComponent />
+      <div className="px-4 md:px-12   w-full max-w-7xl mx-auto">
+        <PostJobsCta copy={companiesPageCopy.cta} />
+      </div>
+      <FeaturedJobsSection />
+      <LatestJobsOpenSection />
+    </main>
+  );
 };
 
 export default HomePage;
