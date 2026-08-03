@@ -30,3 +30,22 @@ export type SidebarFilterCompany = {
   title: string;
   options: SidebarOptions[];
 };
+
+export type NotificationKey = "applications" | "jobs" | "recommendations";
+
+export interface NotificationsState {
+  applications: boolean;
+  jobs: boolean;
+  recommendations: boolean;
+}
+
+export interface NotificationItem {
+  key: NotificationKey;
+  label: string;
+  description: string;
+}
+export interface NotificationsFormValues {
+  applications: boolean;
+  jobs: boolean;
+  recommendations: boolean;
+}

@@ -3,7 +3,7 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { AppProvider } from "@/context/AppContext";
-import { epilogue, clashDisplay } from "@/lib/fonts";
+import { epilogue, clashDisplay, redHat, inter } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Hr",
@@ -21,7 +21,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${epilogue.variable} ${clashDisplay.variable} h-full antialiased`}
+      className={`${epilogue.variable} ${clashDisplay.variable} ${redHat.variable} ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body
@@ -29,9 +29,7 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>
-          <AppProvider>
-            {children}
-          </AppProvider>
+          <AppProvider>{children}</AppProvider>
         </NextIntlClientProvider>
       </body>
     </html>

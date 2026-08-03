@@ -10,10 +10,11 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-foreground-2: var(--foreground-2);
+
   --font-epilogue: var(--font-epilogue);
-  /*--font-clash: var(--font-clash-display);*/
-  /*--font-mono: var(--font-geist-mono);*/
-  /*--font-heading: var(--font-clash-display);*/
+  --font-clash-display: var(--font-clash-display);
+  --font-sans: var(--font-epilogue);
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -78,7 +79,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #26A4FF;
+  --primary: #26a4ff;
   /*--primary: oklch(0.205 0 0);*/
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
@@ -107,21 +108,21 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   /* Custom Colors */
-  --brand: #4640DE;
-  --neutral-50: #4640DE;
-  --neutral-60: #7C8493;
-  --neutral-80: #515B6F;
-  --neutral-100: #25324B;
-  --brand-light-neutral: #D6DDEB;
-  --accent-light-blue: #26A4FF;
-  --accent-yellow: #FFB836;
-  --accent-light-yellow: #EB85331A;
-  --accent-green: #56CDAD;
-  --accent-light-green: #56CDAD1A;
-  --accent-brand: #56CDAD1A;
-  --accent-light-brand: #4640DE1A;
-  --accent-red: #FF6550;
-  --accent-light-red: #FF65501A;
+  --brand: #4640de;
+  --neutral-50: #4640de;
+  --neutral-60: #7c8493;
+  --neutral-80: #515b6f;
+  --neutral-100: #25324b;
+  --brand-light-neutral: #d6ddeb;
+  --accent-light-blue: #26a4ff;
+  --accent-yellow: #ffb836;
+  --accent-light-yellow: #eb85331a;
+  --accent-green: #56cdad;
+  --accent-light-green: #56cdad1a;
+  --accent-brand: #56cdad1a;
+  --accent-light-brand: #4640de1a;
+  --accent-red: #ff6550;
+  --accent-light-red: #ff65501a;
   --foreground-primary: #202430;
 }
 
@@ -164,9 +165,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-epilogue;
   }
@@ -176,7 +179,85 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(32%) sepia(80%) saturate(2000%) hue-rotate(230deg);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-brand);
+  width: 2px;
+}
+
+/* apply custom scrollbar from medium devices */
+
+@media (max-width: 768px) {
+  .custom-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .custom-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Scope h1 size to 24px inside the Job Details dashboard tab only */
+.job-details-tab h1,
+.job-details-tab h2 {
+  font-size: 22px !important;
+}
+
+.recharts-responsive-container {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* custom styles for country visitors statistics in company dashboard */
+
+.country-visitors-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.country-visitors-scroll::-webkit-scrollbar-track {
+  background: #66d6da66;
+  width: 1px;
+}
+
+.country-visitors-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-accent-green);
+  height: 2px;
+  width: 2px;
+  border-radius: 10px;
+}
+
+
+
+/* Hide scrollbar but keep scrolling */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }

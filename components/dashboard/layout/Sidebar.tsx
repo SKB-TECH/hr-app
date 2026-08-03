@@ -1,14 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { NavItem } from "./NavItem";
-import { navItems } from "@/data/SidebarNavigations";
-import { settingsItems } from "@/data/SidebarNavigations";
+
 import { SidebarProfile } from "./SidebarProfile";
+import SidebarNavigation from "./SidebarNavigation";
 
 export default function Sidebar() {
   return (
-    <aside className="font-epilogue relative bg-[#f9f8fd] overflow-y-hidden h-screen flex flex-col justify-between ">
-      <div className="z-2  overflow-y-auto">
+    <aside className="font-epilogue relative bg-[#f9f8fd] h-full flex flex-col justify-between overflow-hidden">
+      <div className="z-2 flex-1 overflow-y-auto mt-2">
         <Link href="/" className="flex items-center gap-2  p-4">
           <Image
             src="/logoIcon.png"
@@ -17,29 +16,12 @@ export default function Sidebar() {
             height={32}
             className="object-cover"
           />
-          <span className="block font-bold text-[24px]">JobHuntly</span>
+          <span className="block font-medium text-[24px] font-red-hat">
+            JobHuntly
+          </span>
         </Link>
 
-        <div className="space-y-4 ">
-          <nav className="flex flex-col gap-1 p-4">
-            {navItems.map((item) => (
-              <NavItem key={item.id} {...item} />
-            ))}
-          </nav>
-
-          <hr className="h-[1px]  w-full bg-[#CCCCF5]" />
-
-          <div className="p-4">
-            <h6 className="text-gray-400 uppercase text-xs font-semibold tracking-wider mb-3 ">
-              Settings
-            </h6>
-            <div className="flex flex-col gap-1  ">
-              {settingsItems.map((item) => (
-                <NavItem key={item.id} {...item} />
-              ))}
-            </div>
-          </div>
-        </div>
+        <SidebarNavigation />
       </div>
 
       <SidebarProfile />

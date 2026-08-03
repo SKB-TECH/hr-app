@@ -1,10 +1,10 @@
-import CompanyOverviewSection from "@/components/pages/jobs/job-details/CompanyOverviewSection";
-import JobDescriptionSection from "@/components/pages/jobs/job-details/JobDescriptionSection";
-import JobHeroSection from "@/components/pages/jobs/job-details/JobHeroSection";
-import JobPerksSection from "@/components/pages/jobs/job-details/JobPerksSection";
-import JobResponsibilitiesSection from "@/components/pages/jobs/job-details/JobResponsibilitiesSection";
-import JobSidebarSection from "@/components/pages/jobs/job-details/JobSidebarSection";
-import SimilarJobsSection from "@/components/pages/jobs/job-details/SimilarJobsSection";
+import CompanyOverviewSection from "@/components/platform/jobs/job-details/CompanyOverviewSection";
+import JobDescriptionSection from "@/components/platform/jobs/job-details/JobDescriptionSection";
+import JobHeroSection from "@/components/platform/jobs/job-details/JobHeroSection";
+import JobPerksSection from "@/components/platform/jobs/job-details/JobPerksSection";
+import JobResponsibilitiesSection from "@/components/platform/jobs/job-details/JobResponsibilitiesSection";
+import JobSidebarSection from "@/components/platform/jobs/job-details/JobSidebarSection";
+import SimilarJobsSection from "@/components/platform/jobs/job-details/SimilarJobsSection";
 import { jobsDetailsResponse, perks, similarJobs } from "@/data/jobDetailsData";
 
 export default async function JobDetailsPage({
@@ -25,7 +25,11 @@ export default async function JobDetailsPage({
 
   return (
     <section className="w-full bg-white">
-      <JobHeroSection showLinks={true} jobDetails={jobDetails} />
+      <JobHeroSection
+        className="mt-0!"
+        showLinks={true}
+        jobDetails={jobDetails}
+      />
       {/* main content */}
       <div className="px-4 md:px-12   w-full max-w-7xl mx-auto">
         {" "}
@@ -56,9 +60,10 @@ export default async function JobDetailsPage({
           mainImage="/img5.jpg"
           topRightImage="/img6.jpg"
           bottomRightImage="/img4.jpg"
+          companyId={jobDetails.id}
         />
       </div>
-      <SimilarJobsSection jobs={similarJobs} />
+      <SimilarJobsSection jobs={similarJobs} jobId={jobDetails.id} />
     </section>
   );
 }

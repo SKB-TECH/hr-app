@@ -1,6 +1,5 @@
 import Separator from "@/components/common/auth/Separetor";
 import TabsUserLevel from "@/components/common/auth/TabsUserLevel";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";

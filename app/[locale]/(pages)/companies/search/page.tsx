@@ -1,8 +1,8 @@
+import CompanyList from "@/components/platform/companies/search/CompanyList";
+import SharedDisplayMobileFilter from "@/components/platform/companies/search/SharedDisplayMobileFilter";
+import { SidebarFilters } from "@/components/platform/companies/search/SidebarFilters";
+import ReusableHeroSection from "@/components/platform/jobs/HeroSection/ReusableHeroSection";
 import { mockSidebarCompanyFilters } from "@/data/companyPageData";
-import { SidebarFilters } from "@/components/pages/companies/search/SidebarFilters";
-import CompanyList from "@/components/pages/companies/search/CompanyList";
-import SharedDisplayMobileFilter from "@/components/pages/companies/search/SharedDisplayMobileFilter";
-import ReusableHeroSection from "@/components/pages/jobs/HeroSection/ReusableHeroSection";
 
 function SearchCompaniesPage() {
   return (
@@ -13,12 +13,16 @@ function SearchCompaniesPage() {
         subtitle="Find the dream companies you dream work for"
         searchEnabled={true}
         popularTags={["Twitter, Microsoft, Apple, Facebook"]}
+        underlineSize="lg"
       />
       <SharedDisplayMobileFilter DataToFilter={mockSidebarCompanyFilters} />
       <div className="py-16 pt-4 px-4 md:px-12   w-full max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="hidden md:block">
-            <SidebarFilters sidebarFilterData={mockSidebarCompanyFilters} />
+            <SidebarFilters
+              isCollapsible={false}
+              sidebarFilterData={mockSidebarCompanyFilters}
+            />
           </div>
 
           <CompanyList />

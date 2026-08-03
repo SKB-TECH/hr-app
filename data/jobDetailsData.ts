@@ -38,11 +38,11 @@ export const jobsDetailsResponse = [
     company: "Stripe",
     location: "San Francisco, CA, USA",
     image: "/stripe.png",
-    title: "Social Media Marketing Specialist",
+    title: "Social Media Assistant",
     jobType: "Full-Time",
 
     description:
-      "Stripe is looking for Social Media Marketing expert to help manage our online networks. You will be responsible for monitoring our social media channels, creating content, finding effective ways to engage the community and incentivize others to engage on our channels.",
+      "Stripe is looking for a Social Media Assistant to help manage our online networks. You will be responsible for monitoring our social media channels, creating content, finding effective ways to engage the community and incentivize others to engage on our channels.",
 
     responsibilities: [
       "Community engagement to ensure that is supported and actively represented online",
@@ -101,22 +101,22 @@ export const jobsDetailsResponse = [
     company: "Square",
     location: "New York, NY, USA",
     image: "/square.png",
-    title: "Frontend Developer",
-    jobType: "Remote",
+    title: "Senior Designer",
+    jobType: "Full Time",
     description:
-      "Square is looking for a Frontend Developer to build scalable and user-friendly web applications for millions of users worldwide.",
+      "Square is looking for a Senior Designer to lead our design initiatives, establish visual standards, and create stellar digital experiences.",
 
     responsibilities: [
-      "Build reusable UI components",
-      "Collaborate with designers and backend developers",
-      "Optimize applications for performance",
-      "Maintain clean and scalable code",
+      "Define brand design guidelines",
+      "Lead cross-functional design sprints",
+      "Mentor junior and mid-level designers",
+      "Translate business goals into clean visuals",
     ],
 
     whoYouAre: [
-      "You enjoy solving UI challenges",
-      "You understand responsive design",
-      "You write clean TypeScript code",
+      "You have a strong visual design portfolio",
+      "You understand UX/UI concepts thoroughly",
+      "You write and communicate visual ideas cleanly",
     ],
 
     niceToHaves: [
@@ -128,16 +128,16 @@ export const jobsDetailsResponse = [
     roleInfo: {
       applyBefore: "August 20, 2021",
       jobPostedOn: "August 2, 2021",
-      jobType: "Remote",
+      jobType: "Full Time",
       salary: "$90k–$110k USD",
     },
 
     categories: [
-      { id: 1, name: "Development" },
-      { id: 2, name: "Engineering" },
+      { id: 1, name: "Design" },
+      { id: 2, name: "Product" },
     ],
 
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    skills: ["Figma", "UI Design", "Visual Design", "Branding"],
 
     applicants: {
       applied: 18,
@@ -146,9 +146,9 @@ export const jobsDetailsResponse = [
     },
 
     requiredSkills: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Next.js" },
-      { id: 3, name: "TypeScript" },
+      { id: 1, name: "Figma" },
+      { id: 2, name: "UI Design" },
+      { id: 3, name: "Branding" },
     ],
   },
 
@@ -157,11 +157,11 @@ export const jobsDetailsResponse = [
     company: "Nomad",
     location: "Berlin, Germany",
     image: "/Nomad.png",
-    title: "Product Designer",
+    title: "Frontend Developer",
     jobType: "Full-Time",
 
     description:
-      "Nomad is hiring a Product Designer to create intuitive and delightful user experiences for travelers and hosts.",
+      "Nomad is hiring a Frontend Developer to build clean, intuitive, and modern user interfaces for travelers and hosts.",
 
     responsibilities: [
       "Design user-centered interfaces",
@@ -171,8 +171,8 @@ export const jobsDetailsResponse = [
     ],
 
     whoYouAre: [
-      "You have a strong design portfolio",
-      "You understand UX principles",
+      "You have a strong frontend developer portfolio",
+      "You understand React and Next.js principles",
       "You enjoy collaborative environments",
     ],
 
@@ -194,7 +194,7 @@ export const jobsDetailsResponse = [
       { id: 2, name: "Product" },
     ],
 
-    skills: ["Figma", "UX Research", "Wireframing", "Prototyping"],
+    skills: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
 
     applicants: {
       applied: 12,
@@ -203,9 +203,9 @@ export const jobsDetailsResponse = [
     },
 
     requiredSkills: [
-      { id: 1, name: "Figma" },
-      { id: 2, name: "UX Research" },
-      { id: 3, name: "Prototyping" },
+      { id: 1, name: "React" },
+      { id: 2, name: "Next.js" },
+      { id: 3, name: "TypeScript" },
     ],
   },
 
@@ -214,11 +214,11 @@ export const jobsDetailsResponse = [
     company: "Netlify",
     location: "Remote",
     image: "/Netlify.png",
-    title: "Backend Engineer",
-    jobType: "Remote",
+    title: "Backend Developer",
+    jobType: "Full Time",
 
     description:
-      "Netlify is seeking a Backend Engineer to help scale our infrastructure and improve system reliability.",
+      "Netlify is seeking a Backend Developer to help scale our infrastructure, APIs, database logic, and improve system reliability.",
 
     responsibilities: [
       "Build scalable backend services",
@@ -228,8 +228,8 @@ export const jobsDetailsResponse = [
     ],
 
     whoYouAre: [
-      "You enjoy system design",
-      "You write efficient backend code",
+      "You enjoy backend system design",
+      "You write efficient database code",
       "You are comfortable with databases",
     ],
 
@@ -242,7 +242,7 @@ export const jobsDetailsResponse = [
     roleInfo: {
       applyBefore: "October 1, 2021",
       jobPostedOn: "September 1, 2021",
-      jobType: "Hybrid",
+      jobType: "Full Time",
       salary: "$110k–$130k USD",
     },
 

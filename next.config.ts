@@ -1,15 +1,19 @@
-import createNextIntlPlugin from 'next-intl/plugin';
-import type { Configuration } from 'webpack';
+import createNextIntlPlugin from "next-intl/plugin";
+import type { Configuration } from "webpack";
 
-const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const nextConfig = {
+  images: {
+    domains: ["i.pravatar.cc", "flagcdn.com"],
+  },
+
   webpack: (config: Configuration) => {
     config.watchOptions = {
       poll: 1000,
       aggregateTimeout: 300,
-    }
-    return config
+    };
+    return config;
   },
 };
 

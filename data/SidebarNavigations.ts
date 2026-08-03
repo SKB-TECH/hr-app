@@ -7,59 +7,121 @@ import {
   UserRound,
   Settings,
   BadgeQuestionMark,
+  LucideIcon,
+  Calendar,
 } from "lucide-react";
 
-export const navItems = [
+export type NavItem = {
+  id: number;
+  name: string;
+  path: string;
+  icon: LucideIcon;
+  badge?: string | null;
+  roles: UserRoles[];
+};
+
+export type UserRoles = "candidate" | "company" | "admin";
+
+export const navItems: NavItem[] = [
   {
     id: 1,
     name: "Dashboard",
-    href: "/dashboard",
+    path: "/",
     icon: House,
     badge: null,
+    roles: ["candidate", "company"],
   },
   {
     id: 2,
     name: "Messages",
-    href: "/dashboard/messages",
+    path: "/messages",
     icon: MessageSquareText,
     badge: "1",
+    roles: ["candidate", "company"],
   },
   {
     id: 3,
     name: "My Applications",
-    href: "/dashboard/applications",
+    path: "/applications",
     icon: FileText,
     badge: null,
+    roles: ["candidate"],
   },
   {
     id: 4,
     name: "Find Jobs",
-    href: "/dashboard/find-jobs",
+    path: "/find-jobs",
     icon: Search,
     badge: null,
+    roles: ["candidate"],
   },
   {
     id: 5,
     name: "Browse Companies",
-    href: "/dashboard/companies",
+    path: "/companies",
     icon: Building,
     badge: null,
+    roles: ["candidate"],
   },
   {
     id: 6,
     name: "My Public Profile",
-    href: "/dashboard/profile",
+    path: "/profile",
     icon: UserRound,
     badge: null,
+    roles: ["candidate"],
+  },
+
+  // company only
+  {
+    id: 7,
+    name: "Company Profile",
+    path: "/profile",
+    icon: Building,
+    badge: null,
+    roles: ["company"],
+  },
+  {
+    id: 8,
+    name: "All Applicants",
+    path: "/applicants",
+    icon: UserRound,
+    badge: null,
+    roles: ["company"],
+  },
+  {
+    id: 9,
+    name: "Job Listing",
+    path: "/job-listing",
+    icon: FileText,
+    badge: null,
+    roles: ["company"],
+  },
+  {
+    id: 10,
+    name: "Schedule",
+    path: "/schedule",
+    icon: Calendar,
+    badge: null,
+    roles: ["company"],
   },
 ];
 
-export const settingsItems = [
-  { id: 1, name: "Settings", href: "/dashboard/settings", icon: Settings },
+export const settingsItems: NavItem[] = [
+  {
+    id: 1,
+    name: "Settings",
+    path: "/settings",
+    icon: Settings,
+    badge: null,
+    roles: ["candidate", "company"],
+  },
   {
     id: 2,
     name: "Help Center",
-    href: "/dashboard/help",
+    path: "/help",
     icon: BadgeQuestionMark,
+    badge: null,
+    roles: ["candidate", "company"],
   },
 ];

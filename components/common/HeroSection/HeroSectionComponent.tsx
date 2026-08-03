@@ -30,7 +30,7 @@ export default function HeroSectionComponent() {
   const navigateTosearchResults = () => router.push("/companies/search");
 
   return (
-    <section className="relative overflow-hidden bg-[#F8F8FD]">
+    <section className="relative  overflow-hidden bg-[#F8F8FD]">
       {/* Desktop Pattern */}
       <div className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[62%] lg:block">
         <Image

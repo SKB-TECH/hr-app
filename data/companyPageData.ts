@@ -289,7 +289,7 @@ export const availableJobs: Company[] = [
   {
     id: 1,
     src: "/Nomad.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Social Media Assistant",
     description: "Nomad • Paris, France",
@@ -316,7 +316,7 @@ export const availableJobs: Company[] = [
   {
     id: 2,
     src: "/Dropbox.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Brand Designer",
     description: "Dropbox •  San Fransisco, USA",
@@ -343,7 +343,7 @@ export const availableJobs: Company[] = [
   {
     id: 3,
     src: "/Terraform.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Interactive Developer",
     description: "Terraform • Hamburg, Germany",
@@ -370,7 +370,7 @@ export const availableJobs: Company[] = [
   {
     id: 4,
     src: "/revolut.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Email Marketing",
     description: "Revolut • Madrid, Spain ",
@@ -397,7 +397,7 @@ export const availableJobs: Company[] = [
   {
     id: 5,
     src: "/Canva.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Lead Engineer",
     description: "Canva • Ankara, Turkey",
@@ -424,7 +424,7 @@ export const availableJobs: Company[] = [
   {
     id: 6,
     src: "/ClassPass.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Product Designer",
     description: "ClassPass • Berlin, Germany",
@@ -451,7 +451,7 @@ export const availableJobs: Company[] = [
   {
     id: 7,
     src: "/Pitch.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Customer Manager",
     description: "Pitch • Berlin, Germany",
@@ -480,7 +480,7 @@ export const availableJobs: Company[] = [
   {
     id: 8,
     src: "/Nomad.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Social Media Assistant",
     description: "Nomad • Paris, France",
@@ -507,7 +507,7 @@ export const availableJobs: Company[] = [
   {
     id: 9,
     src: "/Dropbox.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Brand Designer",
     description: "Dropbox •  San Fransisco, USA",
@@ -534,7 +534,7 @@ export const availableJobs: Company[] = [
   {
     id: 10,
     src: "/Terraform.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Interactive Developer",
     description: "Terraform • Hamburg, Germany",
@@ -561,7 +561,7 @@ export const availableJobs: Company[] = [
   {
     id: 11,
     src: "/revolut.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Email Marketing",
     description: "Revolut • Madrid, Spain ",
@@ -588,7 +588,7 @@ export const availableJobs: Company[] = [
   {
     id: 12,
     src: "/Canva.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Lead Engineer",
     description: "Canva • Ankara, Turkey",
@@ -615,7 +615,7 @@ export const availableJobs: Company[] = [
   {
     id: 13,
     src: "/ClassPass.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Product Designer",
     description: "ClassPass • Berlin, Germany",
@@ -642,7 +642,7 @@ export const availableJobs: Company[] = [
   {
     id: 14,
     src: "/Pitch.png",
-    location: "Full Time",
+    location: "Full-Time",
     availableJobs: 9,
     name: "Customer Manager",
     description: "Pitch • Berlin, Germany",

@@ -1,4 +1,4 @@
-import { LogoIcon } from "@/components/pages/landing/icons";
+import { LogoIcon } from "@/components/platform/landing/icons";
 import Link from "next/link";
 import React from "react";
 
