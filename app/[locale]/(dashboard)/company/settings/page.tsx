@@ -1,14 +1,9 @@
-import SettingsWrapper from "@/components/dashboard/company/settings/SettingsWrapper";
+import CompanySettingsConsole from "@/components/dashboard/Company/settings-console/CompanySettingsConsole";
 
-function page() {
+export default function SettingsPage() {
   return (
-    <div className="flex h-full min-h-0 flex-col px-4 pb-10 lg:px-6">
-      <h1 className="mt-4 shrink-0 text-2xl font-bold text-neutral-100 md:mt-6">
-        Settings
-      </h1>
-      <SettingsWrapper />
-    </div>
+    <main className="h-full overflow-y-auto bg-[#f8f8fc] pb-6 pr-4 pt-2 lg:pr-6 lg:pt-2">
+      <CompanySettingsConsole />
+    </main>
   );
 }
-
-export default page;

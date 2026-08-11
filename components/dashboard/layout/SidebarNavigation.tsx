@@ -2,7 +2,7 @@
 
 import { UserRoles } from "@/data/SidebarNavigations";
 import { NavItem } from "./candidate/NavItem";
-import { usePathname } from "next/dist/client/components/navigation";
+import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 import {
   getActivePathname,
@@ -12,8 +12,11 @@ import {
 } from "@/lib/utils";
 
 function SidebarNavigation() {
-  const role: UserRoles = "candidate"; //role will come from the user context
-  const pathname = getActivePathname(usePathname());
+  const fullPathname = usePathname();
+  const role: UserRoles = fullPathname.split("/").filter(Boolean)[1] === "company"
+    ? "company"
+    : "candidate";
+  const pathname = getActivePathname(fullPathname);
   const [navItems, settingItems] = useMemo(() => getNavItems(role), [role]);
 
   return (
@@ -44,7 +47,7 @@ function SidebarNavigation() {
         <div className="flex flex-col gap-1  ">
           {settingItems.map((item) => (
             <NavItem
-              isActive={pathname.startsWith(item.path)}
+              isActive={isNavItemActive(pathname, item.path)}
               key={item.id}
               path={getRolePath(role, item.path)}
               name={item.name}

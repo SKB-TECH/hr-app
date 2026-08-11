@@ -9,6 +9,7 @@ import {
   BadgeQuestionMark,
   LucideIcon,
   Calendar,
+  UsersRound,
 } from "lucide-react";
 
 export type NavItem = {
@@ -83,17 +84,17 @@ export const navItems: NavItem[] = [
   },
   {
     id: 8,
-    name: "All Applicants",
-    path: "/applicants",
-    icon: UserRound,
+    name: "Job Listing",
+    path: "/job-listing",
+    icon: FileText,
     badge: null,
     roles: ["company"],
   },
   {
     id: 9,
-    name: "Job Listing",
-    path: "/job-listing",
-    icon: FileText,
+    name: "All Applicants",
+    path: "/applicants",
+    icon: UserRound,
     badge: null,
     roles: ["company"],
   },
@@ -102,6 +103,14 @@ export const navItems: NavItem[] = [
     name: "Schedule",
     path: "/schedule",
     icon: Calendar,
+    badge: null,
+    roles: ["company"],
+  },
+  {
+    id: 11,
+    name: "Company Members",
+    path: "/members",
+    icon: UsersRound,
     badge: null,
     roles: ["company"],
   },
@@ -122,6 +131,14 @@ export const settingsItems: NavItem[] = [
     path: "/help",
     icon: BadgeQuestionMark,
     badge: null,
-    roles: ["candidate", "company"],
+    roles: ["candidate"],
+  },
+  {
+    id: 3,
+    name: "Help Center",
+    path: "/help-center",
+    icon: BadgeQuestionMark,
+    badge: null,
+    roles: ["company"],
   },
 ];

@@ -5,6 +5,7 @@ import {
   JobListingTypes,
   TableDataTypes,
 } from "@/data/company-job-listing";
+import Link from "next/link";
 
 function JobCard({ job }: { job: TableDataTypes }) {
   const readableDate = new Date(job.date_posted).toLocaleDateString("en-US", {
@@ -14,15 +15,15 @@ function JobCard({ job }: { job: TableDataTypes }) {
   });
 
   return (
-    <div className="max-sm:mx-2 p-4 border border-[#D6DDEB]">
+    <Link href={`/company/job-listing/${job.id}`} className="group block max-sm:mx-2 border border-[#D6DDEB] p-4 transition-colors hover:border-brand">
       {/* Top row: role + menu */}
       <div className="flex items-start justify-between mb-3">
-        <h2 className="text-[15px] font-bold text-[#25324B] leading-snug pr-2">
+        <h2 className="pr-2 text-[15px] font-bold leading-snug text-[#25324B] group-hover:text-brand">
           {job.role}
         </h2>
-        <button className="text-[#7C8493] hover:text-neutral-80 transition-colors shrink-0 mt-0.5">
+        <span title="Open ATS" className="mt-0.5 shrink-0 text-[#7C8493] transition-colors group-hover:text-brand">
           <MoreHorizontal size={18} />
-        </button>
+        </span>
       </div>
 
       {/* Stats: Date Posted | Applicants | Needs */}
@@ -67,7 +68,8 @@ function JobCard({ job }: { job: TableDataTypes }) {
           {job.job_type}
         </span>
       </div>
-    </div>
+      <p className="mt-3 text-right text-xs font-bold text-brand">Open ATS →</p>
+    </Link>
   );
 }
 

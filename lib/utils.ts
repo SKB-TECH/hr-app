@@ -63,6 +63,12 @@ export function getRolePath(role: UserRoles, path: string) {
 
 export function getNavItems(viewerRole: UserRoles) {
   const mainItems = navItems.filter((item) => item.roles.includes(viewerRole));
+  if (viewerRole === "company") {
+    const companyOrder = ["/", "/profile", "/job-listing", "/applicants", "/schedule", "/members", "/messages"];
+    mainItems.sort(
+      (a, b) => companyOrder.indexOf(a.path) - companyOrder.indexOf(b.path),
+    );
+  }
   const settingItems = settingsItems.filter((item) =>
     item.roles.includes(viewerRole),
   );

@@ -7,7 +7,7 @@ import {
   jobTypeStyles,
 } from "@/data/company-job-listing";
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export const columns: ColumnDef<TableDataTypes>[] = [
@@ -18,9 +18,11 @@ export const columns: ColumnDef<TableDataTypes>[] = [
       return (
         <Link
           href={`/company/job-listing/${row.original.id}`}
-          className="text-neutral-100 text-md"
+          className="group inline-flex flex-col text-neutral-100 text-md"
+          onClick={(event) => event.stopPropagation()}
         >
-          {row.original.role}
+          <span className="font-medium group-hover:text-brand">{row.original.role}</span>
+          <span className="mt-1 text-[11px] font-semibold text-brand opacity-0 transition-opacity group-hover:opacity-100">Open ATS</span>
         </Link>
       );
     },
@@ -96,11 +98,15 @@ export const columns: ColumnDef<TableDataTypes>[] = [
   {
     accessorKey: "action",
     header: "",
-    cell: () => {
+    cell: ({ row }) => {
       return (
-        <span className="flex justify-end items-center text-[#25324B] pr-2 hover:text-neutral-10 ">
-          <MoreHorizontal />
-        </span>
+        <Link
+          href={`/company/job-listing/${row.original.id}`}
+          onClick={(event) => event.stopPropagation()}
+          className="ml-auto flex w-fit items-center gap-2 pr-2 text-xs font-bold text-brand hover:underline"
+        >
+          View ATS <ArrowRight size={15} />
+        </Link>
       );
     },
   },

@@ -5,6 +5,7 @@ import { DataTable } from "./data-table";
 import TableHeader from "./table-header";
 import Pagination from "./pagination";
 import { useState, useMemo } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export interface JobListingTable {
   jobsPerPage: number;
@@ -15,6 +16,8 @@ export interface JobListingTable {
 }
 
 function DataTableClient() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [jobsPerPage, setJobsPerPage] = useState<number>(7);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [statusFilters, setStatusFilters] = useState<string[]>([]);
@@ -88,6 +91,10 @@ function DataTableClient() {
         }
         jobsPerPage={jobsPerPage}
         currentPage={currentPage}
+        onRowClick={(row) => {
+          const locale = pathname.split("/").filter(Boolean)[0] || "fr";
+          router.push(`/${locale}/company/job-listing/${row.original.id}`);
+        }}
       />
     </div>
   );

@@ -32,6 +32,7 @@ interface DataTableProps<TData, TValue> {
   pagination?: React.ReactNode;
   jobsPerPage: number;
   currentPage?: number;
+  onRowClick?: (row: Row<TData>) => void;
 }
 
 export function DataTable<TData, TValue>({
@@ -48,6 +49,7 @@ export function DataTable<TData, TValue>({
   tableHeader,
   jobsPerPage,
   currentPage = 1,
+  onRowClick,
 }: DataTableProps<TData, TValue>) {
   // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
@@ -91,6 +93,14 @@ export function DataTable<TData, TValue>({
                 key={row.id}
                 className={rowClassName?.(row)}
                 data-state={row.getIsSelected() && "selected"}
+                onClick={() => onRowClick?.(row)}
+                tabIndex={onRowClick ? 0 : undefined}
+                onKeyDown={(event) => {
+                  if (onRowClick && (event.key === "Enter" || event.key === " ")) {
+                    event.preventDefault();
+                    onRowClick(row);
+                  }
+                }}
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell className={cellClassName} key={cell.id}>
