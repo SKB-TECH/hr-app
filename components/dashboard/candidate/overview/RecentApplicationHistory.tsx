@@ -143,9 +143,11 @@ export default function RecentApplicationsHistory() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[18px] font-bold text-[#25324B]">
-                    {app.title}
-                  </p>
+                  <Link href="/candidate/find-jobs/1">
+                    <p className="text-[18px] font-bold hover:text-brand text-[#25324B]">
+                      {app.title}
+                    </p>
+                  </Link>
                   <p className="text-[16px] text-gray-400 mt-0.5 flex items-center gap-1.5 flex-wrap">
                     <span>{app.company}</span>
                     <span className="text-gray-300">•</span>

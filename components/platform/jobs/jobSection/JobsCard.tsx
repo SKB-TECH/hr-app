@@ -31,10 +31,11 @@ export function JobsCard({
             </span>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-neutral-100">
-              {company.name}
-            </h2>
-
+            <Link href={applyLink}>
+              <h2 className="text-xl hover:text-brand font-semibold text-neutral-100">
+                {company.name}
+              </h2>
+            </Link>
             <p className="text-neutral-60 font-epilogue text-sm mb-3 line-clamp-2">
               {company.description}
             </p>
@@ -122,7 +123,7 @@ export function JobsCard({
         <div className="flex flex-col gap-4 w-full md:w-auto">
           <Link
             href={applyLink}
-            className="bg-brand text-white font-epilogue px-15 py-3  text-center"
+            className="bg-brand hover:bg-indigo-800 duration-300 text-white font-epilogue px-15 py-3  text-center"
           >
             Apply
           </Link>
