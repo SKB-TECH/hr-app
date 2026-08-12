@@ -89,7 +89,7 @@ export function JobsCard({
             className="max-sm:w-[48px] max-sm:h-[48px] w-20 h-20 object-cover"
           />
           <div className="flex flex-col ">
-            <Link href={`/jobs/1`}>
+            <Link href={`/candidate/find-jobs/1`}>
               <h2 className="text-[20px] hover:text-brand  font-semibold md:font-bold text-neutral-100 md:my-2 block">
                 {company.name}
               </h2>

@@ -27,7 +27,7 @@ export const FindJobs = () => {
           pageSize={pageSize}
           viewGrid={viewGrid}
           setViewGrid={setViewGrid}
-          getApplyLink={(id) => `/en/dashboard/find-jobs/${id}`}
+          getApplyLink={(id) => `/en/candidate/find-jobs/${id}`}
         />
         <Pagination
           currentPage={currentPage}
