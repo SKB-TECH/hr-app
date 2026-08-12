@@ -1,7 +1,30 @@
+"use client";
+
+import { useState } from "react";
 import UpdateEmail from "./UpdateEmail";
 import UpdatePassword from "./UpdatePassword";
+import { useDeleteAccount } from "@/hooks/use-account";
+import toast from "react-hot-toast";
+import DeleteAccountConfirmation from "./DeleteAccountConfirmation";
 
 function SettingsLoginDetails() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { deleteAccount, isPending } = useDeleteAccount({
+    onSuccess: () => {
+      toast.success("Account deleted successfully");
+      setIsModalOpen(false);
+    },
+    onError: () => {
+      toast.error("Failed to delete account");
+      setIsModalOpen(false);
+    },
+  });
+
+  const handleDelete = () => {
+    deleteAccount();
+  };
+
   return (
     <div>
       <div className="mb-8">
@@ -23,7 +46,11 @@ function SettingsLoginDetails() {
       <hr className="border-gray-200 mb-8" />
       {/* Close Account */}
       <div className="flex justify-start md:justify-end ">
-        <button className="flex items-center gap-2 text-sm font-semibold text-[#FF6550] hover:text-[#e0503c] transition-colors">
+        <button
+          type="button"
+          onClick={() => setIsModalOpen(true)}
+          className="flex items-center gap-2 text-sm font-semibold text-[#FF6550] hover:text-[#e0503c] transition-colors cursor-pointer"
+        >
           Close Account
           <svg
             width="20"
@@ -43,6 +70,14 @@ function SettingsLoginDetails() {
           </svg>
         </button>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      <DeleteAccountConfirmation
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        isPending={isPending}
+        handleDelete={handleDelete}
+      />
     </div>
   );
 }
