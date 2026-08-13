@@ -1,9 +1,9 @@
-import GreetingFilter from "@/components/dashboard/company/overview/GreetingFilter";
-import QuickStatsBanner from "@/components/dashboard/company/overview/QuickStatsBanner";
-import JobStatisticsSection from "@/components/dashboard/company/overview/JobStatisticsSection";
-import JobOpenCard from "@/components/dashboard/company/overview/JobOpenCard";
-import ApplicantsSummary from "@/components/dashboard/company/overview/ApplicantsSummary";
-import JobUpdatesSection from "@/components/dashboard/company/overview/JobUpdatesSection";
+import GreetingFilter from "@/components/dashboard/Company/overview/GreetingFilter";
+import QuickStatsBanner from "@/components/dashboard/Company/overview/QuickStatsBanner";
+import JobStatisticsSection from "@/components/dashboard/Company/overview/JobStatisticsSection";
+import JobOpenCard from "@/components/dashboard/Company/overview/JobOpenCard";
+import ApplicantsSummary from "@/components/dashboard/Company/overview/ApplicantsSummary";
+import JobUpdatesSection from "@/components/dashboard/Company/overview/JobUpdatesSection";
 
 function Page() {
   return (

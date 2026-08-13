@@ -1,4 +1,4 @@
-import MessagesClient from "@/components/dashboard/company/Messages/MessagesClient";
+import MessagesClient from "@/components/dashboard/Company/Messages/MessagesClient";
 
 export default function CompanyMessagesPage() {
   return (

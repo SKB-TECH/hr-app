@@ -1,5 +1,5 @@
-import JobListHeader from "@/components/dashboard/company/job-listing/job-list-header";
-import ListJobs from "@/components/dashboard/company/job-listing/list-jobs";
+import JobListHeader from "@/components/dashboard/Company/job-listing/job-list-header";
+import ListJobs from "@/components/dashboard/Company/job-listing/list-jobs";
 
 function page() {
   return (
