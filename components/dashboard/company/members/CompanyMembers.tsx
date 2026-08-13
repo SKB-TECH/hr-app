@@ -18,7 +18,7 @@ const roles: { name: MemberRole; description: string }[] = [
 ];
 
 const initialMembers: Member[] = [
-  { id: 1, name: "Maria Kelly", email: "maria@nomad.com", title: "Company Director", role: "Owner", status: "Active", avatar: "/team/person3.png" },
+  { id: 1, name: "Maria Kelly", email: "maria@nomad.com", title: "company Director", role: "Owner", status: "Active", avatar: "/team/person3.png" },
   { id: 2, name: "Célestin Gardinier", email: "celestin@nomad.com", title: "Operations Lead", role: "Admin", status: "Active", avatar: "/profile1.jpg" },
   { id: 3, name: "Reynaud Colbert", email: "reynaud@nomad.com", title: "Talent Acquisition", role: "Recruiter", status: "Active", avatar: "/profile2.jpg" },
   { id: 4, name: "Arienne Lyon", email: "arienne@nomad.com", title: "Engineering Director", role: "Hiring Manager", status: "Active", avatar: "/profile3.jpg" },

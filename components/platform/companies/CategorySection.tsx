@@ -94,7 +94,7 @@ export default function CategorySection({ copy }: CategorySectionProps) {
         </span>
       </div>
 
-      {/* Company grid */}
+      {/* company grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {visibleCompanies.map((company) => (
           <CategoryCompanyCard key={company.id} company={company} />

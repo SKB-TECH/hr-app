@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ba5d673-94d8-4b40-85b2-32b8bb4daf6e" name="Changes" comment="Landing page... The hero section!">
-      <change afterPath="$PROJECT_DIR$/app/api/proxy/[...path]/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/constants/env.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/constants/.gitkeep" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +159,7 @@
       <workItem from="1786562730223" duration="2567000" />
       <workItem from="1786610944983" duration="489000" />
       <workItem from="1786625725169" duration="2552000" />
-      <workItem from="1786631493918" duration="354000" />
+      <workItem from="1786631493918" duration="1407000" />
     </task>
     <task id="LOCAL-00001" summary="Changes">
       <option name="closed" value="true" />

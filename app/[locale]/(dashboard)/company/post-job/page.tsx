@@ -1,4 +1,4 @@
-import PostJob from "@/components/dashboard/Company/post-job/PostJob";
+import PostJob from "@/components/dashboard/company/post-job/PostJob";
 
 
 export default function Page() {

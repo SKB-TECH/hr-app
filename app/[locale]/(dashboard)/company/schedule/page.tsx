@@ -1,4 +1,4 @@
-import MySchedulePage from "@/components/dashboard/Company/schedule/MySchedulePage";
+import MySchedulePage from "@/components/dashboard/company/schedule/MySchedulePage";
 
 function page() {
   return <div>

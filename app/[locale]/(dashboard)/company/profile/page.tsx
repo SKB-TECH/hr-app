@@ -1,4 +1,4 @@
-import CompanyProfile from "@/components/dashboard/Company/profile/companyProfile";
+import CompanyProfile from "@/components/dashboard/company/profile/companyProfile";
 
 function page() {
   return <div>

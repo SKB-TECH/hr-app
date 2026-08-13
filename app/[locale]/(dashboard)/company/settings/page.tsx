@@ -1,4 +1,4 @@
-import CompanySettingsConsole from "@/components/dashboard/Company/settings-console/CompanySettingsConsole";
+import CompanySettingsConsole from "@/components/dashboard/company/settings-console/CompanySettingsConsole";
 
 export default function SettingsPage() {
   return (

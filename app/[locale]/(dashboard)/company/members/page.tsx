@@ -1,4 +1,4 @@
-import CompanyMembers from "@/components/dashboard/Company/members/CompanyMembers";
+import CompanyMembers from "@/components/dashboard/company/members/CompanyMembers";
 
 export default function MembersPage() {
   return (

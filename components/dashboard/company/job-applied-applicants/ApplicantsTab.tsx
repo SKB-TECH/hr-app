@@ -1,11 +1,11 @@
 "use client";
-import ApplicantHeader from "@/components/dashboard/Company/all-applicants/applicantHeader";
-import ApplicantTable from "@/components/dashboard/Company/all-applicants/ApplicantTable";
-import Pagination from "@/components/dashboard/Company/all-applicants/pagination";
+import ApplicantHeader from "@/components/dashboard/company/all-applicants/applicantHeader";
+import ApplicantTable from "@/components/dashboard/company/all-applicants/ApplicantTable";
+import Pagination from "@/components/dashboard/company/all-applicants/pagination";
 import { getCandidatesAppliedJob } from "@/lib/company_applicant";
 import { useMemo, useState } from "react";
-import ApplicantPipeline from "@/components/dashboard/Company/all-applicants/ApplicantPipeline";
-import { ViewMode } from "@/components/dashboard/Company/all-applicants/viewSwitcher";
+import ApplicantPipeline from "@/components/dashboard/company/all-applicants/ApplicantPipeline";
+import { ViewMode } from "@/components/dashboard/company/all-applicants/viewSwitcher";
 
 const tableHeaders = [
   "",
