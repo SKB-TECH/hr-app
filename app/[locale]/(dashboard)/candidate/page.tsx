@@ -1,3 +1,5 @@
+"use client"
+
 import DashboardHeader from "@/components/dashboard/candidate/overview/GreetingSection";
 import StatsContent from "@/components/dashboard/candidate/overview/StatsContentSection";
 import RecentApplicationsHistory from "@/components/dashboard/candidate/overview/RecentApplicationHistory";
