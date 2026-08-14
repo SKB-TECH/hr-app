@@ -52,9 +52,11 @@ function GridJobCard({ company, applyLink, atsProps }: JobsCardProps) {
           ))}
         </div>
 
-        <div className="mt-auto pt-3 border-t border-gray-100 flex flex-col gap-2">
+        <div className="mt-auto  pt-3 border-t border-gray-100 flex flex-col gap-2">
           {/* ATS Score */}
-          <AtsScore score={score} atsInfo={atsInfo} />
+          <div className="self-start">
+            <AtsScore score={score} atsInfo={atsInfo} />
+          </div>
 
           {/* Capacity Bar */}
           <div>
