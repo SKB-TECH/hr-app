@@ -31,7 +31,6 @@ function AllJobs({
           />
         </div>
 
-        {/* JobsList only called once here */}
         <JobsList
           currentPage={currentPage}
           pageSize={pageSize}

@@ -19,6 +19,7 @@ export type Company = {
   size: number;
   applied: number;
   capacity: number;
+  atsScore?: number;
 };
 // company filter type definition
 export type SidebarOptions = {

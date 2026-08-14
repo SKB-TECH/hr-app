@@ -312,6 +312,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 5,
     capacity: 10,
+    atsScore: 88,
   },
   {
     id: 2,
@@ -339,6 +340,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 2,
     capacity: 10,
+    atsScore: 72,
   },
   {
     id: 3,
@@ -366,6 +368,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 8,
     capacity: 10,
+    atsScore: 94,
   },
   {
     id: 4,
@@ -393,6 +396,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 0,
     capacity: 10,
+    atsScore: 55,
   },
   {
     id: 5,
@@ -420,6 +424,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 5,
     capacity: 10,
+    atsScore: 82,
   },
   {
     id: 6,
@@ -447,6 +452,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 5,
     capacity: 10,
+    atsScore: 68,
   },
   {
     id: 7,
@@ -474,6 +480,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 5,
     capacity: 10,
+    atsScore: 91,
   },
 
   // second page
@@ -503,6 +510,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 5,
     capacity: 10,
+    atsScore: 85,
   },
   {
     id: 9,
@@ -530,6 +538,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 2,
     capacity: 10,
+    atsScore: 76,
   },
   {
     id: 10,
@@ -557,6 +566,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 8,
     capacity: 10,
+    atsScore: 92,
   },
   {
     id: 11,
@@ -584,6 +594,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 0,
     capacity: 10,
+    atsScore: 58,
   },
   {
     id: 12,
@@ -611,6 +622,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 5,
     capacity: 10,
+    atsScore: 84,
   },
   {
     id: 13,
@@ -638,6 +650,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 5,
     capacity: 10,
+    atsScore: 65,
   },
   {
     id: 14,
@@ -665,6 +678,7 @@ export const availableJobs: Company[] = [
     size: 1000,
     applied: 5,
     capacity: 10,
+    atsScore: 90,
   },
 ];
   
