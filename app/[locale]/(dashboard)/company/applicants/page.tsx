@@ -1,4 +1,4 @@
-import CandidatesWorkspace from "@/components/dashboard/Company/candidates/CandidatesWorkspace";
+import CandidatesWorkspace from "@/components/dashboard/company/candidates/CandidatesWorkspace";
 
 export default function ApplicantsPage() {
   return (

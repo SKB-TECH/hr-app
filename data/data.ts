@@ -32,7 +32,7 @@ export const dynamicPageTitles = [
   },
   {
     path: "/companies",
-    title: "Company Profile",
+    title: "company Profile",
   },
   {
     path: "/applications",

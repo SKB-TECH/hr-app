@@ -21,7 +21,7 @@ export const mockSidebarCompanyFilters: SidebarFilterCompany[] = [
     ],
   },
   {
-    title: "Company Size",
+    title: "company Size",
     options: [
       { name: "1-50", count: 25 },
       { name: "51-150", count: 57 },
