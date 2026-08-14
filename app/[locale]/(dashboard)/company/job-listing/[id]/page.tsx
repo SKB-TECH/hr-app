@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, BriefcaseBusiness, CalendarDays, MapPin, Users } from "lucide-react";
 import { getJobById, getJobDetailsById } from "@/lib/company_applicant";
-import RecruitmentWorkspace from "@/components/dashboard/Company/recruitment/RecruitmentWorkspace";
+import RecruitmentWorkspace from "@/components/dashboard/company/recruitment/RecruitmentWorkspace";
 
 export default async function JobPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

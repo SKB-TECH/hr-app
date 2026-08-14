@@ -103,11 +103,11 @@ function CompanyDetails({
       </div>
 
       <div className="space-y-5">
-        {/* Company Name */}
+        {/* company Name */}
         <div>
           <InputField
             {...register("companyName", {
-              required: "Company name is required",
+              required: "company name is required",
             })}
             label="Company Name"
             placeholder="Name of your company"

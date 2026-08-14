@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { getApplicantDetails } from "@/lib/company_applicant";
 import ActionDropDown from "@/components/dashboard/company/applicant-profile/ActionDropDown";
-import PersonalProfileInfo from "@/components/dashboard/Company/applicant-profile/PersonalProfileInfo";
+import PersonalProfileInfo from "@/components/dashboard/company/applicant-profile/PersonalProfileInfo";
 import ApplicantDetailsWrapper from "@/components/dashboard/company/applicant-profile/ApplicantDetailsWrapper";
 
 async function ApplicantProfile({
