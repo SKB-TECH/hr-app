@@ -27,85 +27,140 @@ export default function SignInPage() {
       placeholder: "Enter your password",
     },
   ];
+
   return (
-    <main className='flex flex-col flex-1 p-8'>
-      <div className='w-full md:w-1/2 flex flex-col justify-center items-center gap-5 mx-auto'>
-        <TabsUserLevel />
+      <main className="flex w-full flex-1 items-center justify-center">
+        <div className="w-full max-w-xl">
+          <div className="flex w-full flex-col gap-5">
+            <TabsUserLevel />
 
-        <h1 className='text-3xl font-epilogue font-extrabold font-heading font-3xl text-center'>
-          Welcome Back, Dude
-        </h1>
+            <div className="space-y-2 text-center">
+              <h1 className="font-epilogue text-2xl font-extrabold text-slate-900 sm:text-3xl">
+                Welcome Back
+              </h1>
 
-        <Separator text='Or login with email' />
-
-        <div className='w-full'>
-          <button className='font-epilogue font-semibold w-full bg-none border rounded-none p-4 py-4 text-indigo-500 cursor-pointer flex flex-row items-center justify-center gap-2 border-gray-300 hover:bg-gray-100 transition duration-300'>
-            <Image
-              width={20}
-              height={20}
-              src='/images/google.svg'
-              alt='Google'
-              className='w-6 h-6'
-            />
-            Sign in with Google
-          </button>
-        </div>
-
-        <div className='w-full flex flex-col gap-5 mt-3'>
-          {inputs?.map((input: FormGroup) => (
-            <div className='form-group' key={input.id}>
-              <Label
-                htmlFor={input.id}
-                className='block font-epilogue text-xl font-medium text-gray-700'
-              >
-                {input.name}
-              </Label>
-              <Input
-                type={input.type}
-                id={input.id}
-                className='font-normal font-epilogue text-md mt-1 block w-full px-3 py-4 border border-gray-300 rounded-none p-8 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xl'
-                placeholder={input.placeholder}
-              />
+              <p className="font-epilogue text-sm text-slate-500 sm:text-base">
+                Sign in to continue to your Fast2Hire account.
+              </p>
             </div>
-          ))}
 
-          <div className=''>
-            <div className='flex items-center text-[14px] lg:text-[16px] justify-start gap-3 cursor-pointer group'>
-              <FilterTick
-                key={String(check)}
-                defaultChecked={check}
-                onChange={setCheck}
-              />
-              <div className='flex items-center gap-1 transition-colors group-hover:text-indigo-600'>
-                <span
-                  className='text-slate-600'
-                  onClick={() => {
-                    setCheck(!check);
-                  }}
+            <div className="w-full">
+              <button
+                  type="button"
+                  className="flex h-14 w-full cursor-pointer items-center justify-center gap-3 border border-gray-300 bg-white px-4 font-epilogue font-semibold text-indigo-600 transition duration-300 hover:bg-gray-50"
+              >
+                <Image
+                    width={24}
+                    height={24}
+                    src="/images/google.svg"
+                    alt="Google"
+                    className="h-6 w-6"
+                />
+
+                <span>Sign in with Google</span>
+              </button>
+            </div>
+
+            <Separator text="Or login with email" />
+
+            <div className="flex w-full flex-col gap-5">
+              {inputs.map((input: FormGroup) => (
+                  <div
+                      className="w-full min-w-0"
+                      key={input.id}
+                  >
+                    <Label
+                        htmlFor={input.id}
+                        className="mb-2 block font-epilogue text-sm font-medium text-gray-700 sm:text-base"
+                    >
+                      {input.name}
+                    </Label>
+
+                    <Input
+                        type={input.type}
+                        id={input.id}
+                        name={input.id}
+                        className="
+                    h-14
+                    w-full
+                    rounded-none
+                    border
+                    border-gray-300
+                    px-4
+                    font-epilogue
+                    text-sm
+                    font-normal
+                    placeholder:text-gray-400
+                    focus:border-indigo-500
+                    focus:outline-none
+                    focus:ring-1
+                    focus:ring-indigo-500
+                    sm:text-base
+                  "
+                        placeholder={input.placeholder}
+                    />
+                  </div>
+              ))}
+
+              <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex cursor-pointer items-center gap-3 text-sm group sm:text-base">
+                  <FilterTick
+                      key={String(check)}
+                      defaultChecked={check}
+                      onChange={setCheck}
+                  />
+
+                  <button
+                      type="button"
+                      onClick={() => setCheck(!check)}
+                      className="font-epilogue text-slate-600 transition-colors group-hover:text-indigo-600"
+                  >
+                    Remember me
+                  </button>
+                </div>
+
+                <Link
+                    href="/forgot-password"
+                    className="font-epilogue text-sm font-semibold text-indigo-600 hover:text-indigo-700 sm:text-base"
                 >
-                  Remember me
-                </span>
+                  Forgot password?
+                </Link>
+              </div>
+
+              <button
+                  type="submit"
+                  className="
+                mt-1
+                h-14
+                w-full
+                cursor-pointer
+                bg-indigo-600
+                px-4
+                font-epilogue
+                font-semibold
+                text-white
+                transition
+                duration-300
+                hover:bg-indigo-700
+              "
+              >
+                Sign In
+              </button>
+
+              <div className="pt-2 text-center sm:text-left">
+                <p className="font-epilogue text-sm text-gray-600 sm:text-base">
+                  Don&apos;t have an account?{" "}
+                  <Link
+                      href="/sign-up"
+                      className="font-semibold text-indigo-600 hover:text-indigo-700"
+                  >
+                    Sign Up
+                  </Link>
+                </p>
               </div>
             </div>
           </div>
-
-          <button className='w-full mt-2 cursor-pointer py-4 bg-indigo-600 text-white font-epilogue font-medium rounded-none hover:bg-indigo-700 transition duration-300'>
-            Sign In
-          </button>
-
-          <div className='mt-4'>
-            <p className='text-left font-epilogue text-md text-gray-600'>
-              Don&apos;t have an account?{" "}
-              <Link
-                href='/sign-up'
-                className='text-indigo-600 font-semibold hover:text-indigo-700'
-              >
-                Sign Up
-              </Link>
-            </p>
-          </div>
         </div>
-      </div>
-    </main>
+      </main>
   );
 }

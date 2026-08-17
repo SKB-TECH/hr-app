@@ -147,10 +147,10 @@ export default function HeroSectionComponent() {
         {/* Hero image of person smilling */}
         <div className="pointer-events-none -translate-y-1 absolute bottom-0 right-0 z-10 hidden h-full w-[52%] lg:block">
           <Image
-            src="/img_design/home.png"
+            src="/images/hero.png"
             alt="Job seeker"
             width={500}
-            height={700}
+            height={900}
             priority
             className="absolute bottom-0 right-8 h-auto max-h-[calc(100%-120px)] w-[min(34vw,500px)] object-contain object-bottom xl:right-20 2xl:right-[calc((100vw-1280px)/2+48px)]"
           />

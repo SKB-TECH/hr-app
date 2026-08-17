@@ -1,30 +1,37 @@
-import { LogoIcon } from "@/components/platform/landing/icons";
-import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 export default function LayoutAuth({
-  children,
-}: {
-  children?: React.ReactNode;
+                                       children,
+                                   }: {
+    children?: React.ReactNode;
 }) {
-  return (
-    <div className="flex flex-col md:flex-row min-h-screen">
-      <div className="AuthLogin hidden md:block md:w-2/5 bg-indigo-200 md:min-h-screen bg-cover bg-center">
-        <div className="flex flex-col p-8 pl-12">
-          <Link
-            className="text-xl font-bold flex flex-row gap-3 items-center text-brand"
-            href="/"
-          >
-            <span className="w-10 h-10 bg-brand rounded-full flex items-center justify-center text-white">
-              <LogoIcon />
-            </span>
-            JobHuntly
-          </Link>
+    return (
+        <div className="min-h-screen w-full bg-white">
+            <div className="grid min-h-screen w-full grid-cols-1 md:grid-cols-5">
+                {/* Partie gauche */}
+                <div className="AuthLogin relative hidden md:col-span-2 md:block">
+                    <div className="AuthLoginContent flex min-h-screen flex-col p-6 lg:p-10">
+                        <div className="flex items-center">
+                            <Image
+                                src="/logo/lgo.png"
+                                alt="Fast2Hire"
+                                width={180}
+                                height={60}
+                                className="h-auto w-[140px] object-contain lg:w-[180px]"
+                                priority
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Partie droite */}
+                <div className="flex min-h-screen items-center justify-center bg-white px-4 py-8 sm:px-6 md:col-span-3 md:px-8 lg:px-12 xl:px-16">
+                    <div className="w-full max-w-xl">
+                        {children}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div className="bg-white md:w-3/5 p-5 flex flex-col justify-center md:min-h-screen px-10">
-        {children}
-      </div>
-    </div>
-  );
+    );
 }

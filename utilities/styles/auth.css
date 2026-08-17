@@ -1,25 +1,44 @@
 .AuthLogin {
-  height: 100vh;
   position: relative;
-  background-image: url("/images/Auth-bg.jpg");
+  min-height: 100vh;
+  background-image: url("/images/hero2.png");
   background-repeat: no-repeat;
-  background-color: white !important;
+  background-position: center;
+  background-size: cover;
+  background-color: #f8fafc;
+  overflow: hidden;
+}
+
+.AuthLogin::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+          180deg,
+          rgba(15, 23, 42, 0.08) 0%,
+          rgba(15, 23, 42, 0.2) 100%
+  );
+  pointer-events: none;
+}
+
+.AuthLoginContent {
+  position: relative;
+  z-index: 2;
+  height: 100%;
 }
 
 .CustomBorder {
   position: relative;
-  height: 100% !important;
-  width: 100% !important;
+  width: 100%;
 }
 
 .CustomBorder::before {
   content: "";
   position: absolute;
-  width: 100% !important;
-  z-index: 2;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  width: 100%;
   border-top: 1px solid #e5e7eb;
+  transform: translateY(-50%);
   pointer-events: none;
 }

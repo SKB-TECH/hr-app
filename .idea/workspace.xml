@@ -5,7 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ba5d673-94d8-4b40-85b2-32b8bb4daf6e" name="Changes" comment="Landing page... The hero section!">
+      <change afterPath="$PROJECT_DIR$/app/[locale]/favicon.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/hero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/hero2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo/favicon.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo/lgo.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo/lgo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/(auth)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/(auth)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/common/HeroSection/HeroSectionComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/common/HeroSection/HeroSectionComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/common/navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/common/navbar/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/layout/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/layout/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/platform/landing/footer/FooterBrand.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/platform/landing/footer/FooterBrand.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr-app" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/styles/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/utilities/styles/auth.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +27,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="613" />
+    <option name="cachedIndexableFilesCount" value="620" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -49,6 +63,65 @@
     <commands />
     <urls />
   </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000000000000167" />
+      <entry key="S10" value="1.000000181689981" />
+      <entry key="S30" value="1.0089870594118677" />
+      <entry key="S60" value="1.1340664944227918" />
+      <entry key="M2" value="1.5226628717316517" />
+      <entry key="M5" value="2.5187025233045883" />
+      <entry key="M10" value="4.814293482791218" />
+      <entry key="M15" value="7.838561148059124" />
+      <entry key="M30" value="16.35414506954807" />
+      <entry key="H1" value="26.064170727663058" />
+      <entry key="H2" value="33.64243421795542" />
+      <entry key="H4" value="38.41413141149176" />
+      <entry key="D1" value="43.00654680199389" />
+      <entry key="W1" value="43.85646402461088" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="3.7501806297291607E-199" />
+      <entry key="S10" value="8.563750972250928E-100" />
+      <entry key="S30" value="1.7632135178601192E-33" />
+      <entry key="S60" value="7.116288835219833E-17" />
+      <entry key="M2" value="1.4523031337879494E-8" />
+      <entry key="M5" value="0.0014139480504856165" />
+      <entry key="M10" value="0.06511253499176904" />
+      <entry key="M15" value="0.23341294087745237" />
+      <entry key="M30" value="0.8367783587694748" />
+      <entry key="H1" value="1.5843921294399224" />
+      <entry key="H2" value="2.180174079239223" />
+      <entry key="H4" value="2.557443304918658" />
+      <entry key="D1" value="2.9212497426679542" />
+      <entry key="W1" value="2.988621299240417" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.8179020585577811" />
+      <entry key="MS500" value="0.9605948639534766" />
+      <entry key="S2" value="0.9899997047180724" />
+      <entry key="S5" value="0.9959878167538209" />
+      <entry key="S10" value="0.9979920733908418" />
+      <entry key="S30" value="1.008310116687617" />
+      <entry key="S60" value="1.1336782255203874" />
+      <entry key="M2" value="1.5223856469474337" />
+      <entry key="M5" value="2.519761938519886" />
+      <entry key="M10" value="4.878634176013633" />
+      <entry key="M15" value="8.070873627206087" />
+      <entry key="M30" value="17.18956097446903" />
+      <entry key="H1" value="27.64743691483451" />
+      <entry key="H2" value="35.82187677665566" />
+      <entry key="H4" value="40.97115676655131" />
+      <entry key="D1" value="45.927718605402475" />
+      <entry key="W1" value="46.84507397200903" />
+    </decayedShown>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -65,35 +138,37 @@
     <option name="showMembers" value="true" />
     <option name="sortKey" value="BY_TIME_ASCENDING" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;git.auto.fetch.suggestion.counter&quot;: &quot;2&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
-    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/user/infinity/hr-app&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/user/infinity/hr-app/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "git.auto.fetch.suggestion.counter": "3",
+    "javascript.preferred.runtime.type.id": "node",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/user/infinity/hr-app/public/images",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/Users/user/infinity/hr-app/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -104,13 +179,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/app/[locale]" />
+      <recent name="$PROJECT_DIR$/public/logo" />
       <recent name="$PROJECT_DIR$/core/types" />
       <recent name="$PROJECT_DIR$/core/services" />
-      <recent name="$PROJECT_DIR$/core/lib" />
-      <recent name="$PROJECT_DIR$/core/hooks" />
-      <recent name="$PROJECT_DIR$/core/data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/logo" />
       <recent name="D:\CODING\WORK\hr-app\app\[locale]" />
       <recent name="D:\CODING\WORK\hr-app" />
       <recent name="$PROJECT_DIR$/app/[locale]" />
@@ -159,7 +235,14 @@
       <workItem from="1786562730223" duration="2567000" />
       <workItem from="1786610944983" duration="489000" />
       <workItem from="1786625725169" duration="2552000" />
-      <workItem from="1786631493918" duration="1407000" />
+      <workItem from="1786631493918" duration="2311000" />
+      <workItem from="1786697608129" duration="2000" />
+      <workItem from="1786706848597" duration="616000" />
+      <workItem from="1786711230060" duration="727000" />
+      <workItem from="1786713685063" duration="2145000" />
+      <workItem from="1786956010640" duration="3000" />
+      <workItem from="1786956082948" duration="2000" />
+      <workItem from="1786958645615" duration="3983000" />
     </task>
     <task id="LOCAL-00001" summary="Changes">
       <option name="closed" value="true" />

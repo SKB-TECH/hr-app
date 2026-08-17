@@ -12,25 +12,25 @@ export default function NavbarComponentLandingPage() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="w-full sticky top-0 z-50 backdrop-blur-sm h-[58px] ">
+    <nav className="w-full sticky top-0 z-50 backdrop-blur-sm h-[70px] ">
       <div className=" py-2  px-4 md:px-12   w-full max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center  gap-5">
           {/* Logo */}
           <Link href="/">
             <Image
-              src="/LogoBlack.png"
+              src="/logo/lgo.png"
               alt="logo-black"
-              width={120}
-              height={120}
+              width={180}
+              height={180}
             />
           </Link>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-4 2xl:gap-6 md:px-2">
             {navigations.map((item, index) => (
               <Link
                 key={index}
                 href={item.path}
-                className="text-sm text-neutral-80 font-medium hover:text-brand transition-colors duration-200"
+                className="text-sm text-black font-medium hover:text-brand transition-colors duration-200"
               >
                 {item.name}
               </Link>
