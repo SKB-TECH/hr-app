@@ -1,7 +1,9 @@
 "use client";
 
 import Separator from "@/components/common/auth/Separetor";
-import TabsUserLevel from "@/components/common/auth/TabsUserLevel";
+import TabsUserLevel, {
+  type UserLevel,
+} from "@/components/common/auth/TabsUserLevel";
 import { FilterTick } from "@/components/ui/FilterTick";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,6 +14,9 @@ import { useState } from "react";
 
 export default function SignInPage() {
   const [check, setCheck] = useState(false);
+
+  const [userLevel, setUserLevel] =
+      useState<UserLevel>("job-seeker");
 
   const inputs: FormGroup[] = [
     {
@@ -32,7 +37,10 @@ export default function SignInPage() {
       <main className="flex w-full flex-1 items-center justify-center">
         <div className="w-full max-w-xl">
           <div className="flex w-full flex-col gap-5">
-            <TabsUserLevel />
+            <TabsUserLevel
+                value={userLevel}
+                onChange={setUserLevel}
+            />
 
             <div className="space-y-2 text-center">
               <h1 className="font-epilogue text-2xl font-extrabold text-slate-900 sm:text-3xl">
@@ -40,7 +48,9 @@ export default function SignInPage() {
               </h1>
 
               <p className="font-epilogue text-sm text-slate-500 sm:text-base">
-                Sign in to continue to your Fast2Hire account.
+                {userLevel === "job-seeker"
+                    ? "Sign in to continue your job search and manage your applications."
+                    : "Sign in to manage your jobs, candidates and recruitment process."}
               </p>
             </div>
 
@@ -103,7 +113,7 @@ export default function SignInPage() {
               ))}
 
               <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex cursor-pointer items-center gap-3 text-sm group sm:text-base">
+                <div className="group flex cursor-pointer items-center gap-3 text-sm sm:text-base">
                   <FilterTick
                       key={String(check)}
                       defaultChecked={check}

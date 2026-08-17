@@ -1,38 +1,29 @@
 "use client";
 
 import Separator from "@/components/common/auth/Separetor";
-import TabsUserLevel from "@/components/common/auth/TabsUserLevel";
+import TabsUserLevel, {
+  type UserLevel,
+} from "@/components/common/auth/TabsUserLevel";
+import { FilterTick } from "@/components/ui/FilterTick";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { FormGroup } from "@/types/FormGroupType";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-interface FormGroup {
-  id: string;
-  type: string;
-  name: string;
-  placeholder: string;
-}
+export default function SignInPage() {
+  const [check, setCheck] = useState(false);
 
-type UserLevel = "job-seeker" | "company";
-
-export default function SignUpPage() {
   const [userLevel, setUserLevel] =
       useState<UserLevel>("job-seeker");
 
   const inputs: FormGroup[] = [
     {
-      id: "FullName",
-      type: "text",
-      name: "Full name",
-      placeholder: "Enter your full name",
-    },
-    {
       id: "email",
       type: "email",
-      name: "Email",
-      placeholder: "Enter your email",
+      name: "Email Address",
+      placeholder: "Enter email address",
     },
     {
       id: "password",
@@ -53,20 +44,38 @@ export default function SignUpPage() {
 
             <div className="space-y-2 text-center">
               <h1 className="font-epilogue text-2xl font-extrabold text-slate-900 sm:text-3xl">
-                Get more opportunities
+                Welcome Back
               </h1>
 
               <p className="font-epilogue text-sm text-slate-500 sm:text-base">
                 {userLevel === "job-seeker"
-                    ? "Create your candidate account and discover new opportunities."
-                    : "Create your company account and start hiring great talent."}
+                    ? "Sign in to continue your job search and manage your applications."
+                    : "Sign in to manage your jobs, candidates and recruitment process."}
               </p>
             </div>
 
             <div className="w-full">
               <button
                   type="button"
-                  className="flex h-14 w-full cursor-pointer items-center justify-center gap-3 border border-gray-300 bg-white px-4 font-epilogue font-semibold text-indigo-600 transition duration-300 hover:bg-gray-50"
+                  className="
+                flex
+                h-14
+                w-full
+                cursor-pointer
+                items-center
+                justify-center
+                gap-3
+                border
+                border-gray-300
+                bg-white
+                px-4
+                font-epilogue
+                font-semibold
+                text-indigo-600
+                transition
+                duration-300
+                hover:bg-gray-50
+              "
               >
                 <Image
                     width={24}
@@ -76,21 +85,31 @@ export default function SignUpPage() {
                     className="h-6 w-6"
                 />
 
-                <span>Sign up with Google</span>
+                <span>
+                Sign in with Google
+              </span>
               </button>
             </div>
 
-            <Separator text="Or sign up with email" />
+            <Separator text="Or login with email" />
 
             <div className="flex w-full flex-col gap-5">
-              {inputs.map((input) => (
+              {inputs.map((input: FormGroup) => (
                   <div
                       key={input.id}
                       className="w-full min-w-0"
                   >
                     <Label
                         htmlFor={input.id}
-                        className="mb-2 block font-epilogue text-sm font-medium text-gray-700 sm:text-base"
+                        className="
+                    mb-2
+                    block
+                    font-epilogue
+                    text-sm
+                    font-medium
+                    text-gray-700
+                    sm:text-base
+                  "
                     >
                       {input.name}
                     </Label>
@@ -121,6 +140,46 @@ export default function SignUpPage() {
                   </div>
               ))}
 
+              <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-3">
+                  <FilterTick
+                      key={String(check)}
+                      defaultChecked={check}
+                      onChange={setCheck}
+                  />
+
+                  <button
+                      type="button"
+                      onClick={() => setCheck(!check)}
+                      className="
+                    font-epilogue
+                    text-sm
+                    text-slate-600
+                    transition-colors
+                    hover:text-indigo-600
+                    sm:text-base
+                  "
+                  >
+                    Remember me
+                  </button>
+                </div>
+
+                <Link
+                    href="/forgot-password"
+                    className="
+                  font-epilogue
+                  text-sm
+                  font-semibold
+                  text-indigo-600
+                  transition-colors
+                  hover:text-indigo-700
+                  sm:text-base
+                "
+                >
+                  Forgot password?
+                </Link>
+              </div>
+
               <button
                   type="button"
                   className="
@@ -138,39 +197,23 @@ export default function SignUpPage() {
                 hover:bg-indigo-700
               "
               >
-                Continue
+                Sign In
               </button>
 
               <div className="pt-1">
                 <p className="text-center font-epilogue text-sm text-gray-600 sm:text-left sm:text-base">
-                  Already have an account?{" "}
+                  Don&apos;t have an account?{" "}
                   <Link
-                      href="/sign-in"
-                      className="font-semibold text-indigo-600 hover:text-indigo-700"
+                      href="/sign-up"
+                      className="
+                    font-semibold
+                    text-indigo-600
+                    transition-colors
+                    hover:text-indigo-700
+                  "
                   >
-                    Login
+                    Sign Up
                   </Link>
-                </p>
-              </div>
-
-              <div>
-                <p className="text-center font-epilogue text-xs leading-5 text-gray-500 sm:text-left sm:text-sm">
-                  By clicking &apos;Continue&apos;, you acknowledge that you have
-                  read and accept the{" "}
-                  <Link
-                      href="/terms"
-                      className="font-medium text-indigo-600 hover:text-indigo-700"
-                  >
-                    Terms of Service
-                  </Link>{" "}
-                  and{" "}
-                  <Link
-                      href="/privacy"
-                      className="font-medium text-indigo-600 hover:text-indigo-700"
-                  >
-                    Privacy Policy
-                  </Link>
-                  .
                 </p>
               </div>
             </div>
