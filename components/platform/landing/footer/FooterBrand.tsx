@@ -5,7 +5,7 @@ export function FooterBrand() {
     <div className="col-span-2 md:col-span-2">
       <div className="mb-5">
           <Image
-              src="/logo/lgo.png"
+              src="/logo/logow.png"
               alt="JobHuntly Logo"
               width={180}
               height={180}
