@@ -10,7 +10,10 @@ type ProxyCtx = {
 };
 
 function buildUpstreamUrl(path: string[] | undefined, search: string): string {
-    const base = ENV.API_BASE_URL.replace(/\/+$/, '');
+    const configuredBase = ENV.API_BASE_URL.replace(/\/+$/, '');
+    const base = /\/api\/v\d+$/i.test(configuredBase)
+        ? configuredBase
+        : `${configuredBase}/api/v1`;
     const pathString = path?.length ? path.join('/') : '';
     if (!pathString) {
         return `${base}${search || ''}`;
@@ -28,6 +31,7 @@ function buildHeaders(req: NextRequest): Headers {
         'cookie',
         'origin',
         'referer',
+        'x-client-type',
     ] as const;
 
     forward.forEach((key) => {
