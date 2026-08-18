@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { ArrowLeft, BriefcaseBusiness, CalendarDays, MapPin, Users } from "lucide-react";
 import { useMyCompany } from "@/core/hooks/company/use-my-company";
 import { useCompanyJob } from "@/core/hooks/jobs/use-company-job";

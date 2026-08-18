@@ -1,7 +1,6 @@
 "use client";
-
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight, BriefcaseBusiness, FileClock, UsersRound } from "lucide-react";
 import { useSession } from "@/core/hooks/auth/use-session";
 import { useMyCompany } from "@/core/hooks/company/use-my-company";

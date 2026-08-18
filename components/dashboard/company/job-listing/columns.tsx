@@ -8,7 +8,7 @@ import {
 } from "@/data/company-job-listing";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 export const columns: ColumnDef<TableDataTypes>[] = [
   {

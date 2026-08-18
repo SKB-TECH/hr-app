@@ -5,7 +5,7 @@ import {
   JobListingTypes,
   TableDataTypes,
 } from "@/data/company-job-listing";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 function JobCard({ job }: { job: TableDataTypes }) {
   const readableDate = new Date(job.date_posted).toLocaleDateString("en-US", {

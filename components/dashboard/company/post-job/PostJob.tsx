@@ -1,23 +1,24 @@
 "use client";
 
 import { useState } from "react";
+import { ArrowLeft } from "lucide-react";
+import toast from "react-hot-toast";
 
 import Stepper from "./Stepper";
 import JobInformation from "./JobInformation";
 import JobDescription from "./JobDescription";
 import PerksBenefits from "./PerksBenefits";
 import { JobData } from "./types";
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
+
+import { Link, useRouter } from "@/i18n/routing";
 import { useMyCompany } from "@/core/hooks/company/use-my-company";
 import { useCreateCompanyJob } from "@/core/hooks/jobs/use-create-company-job";
-import { useRouter } from "@/i18n/routing";
-import toast from "react-hot-toast";
 
 export default function PostJob() {
   const router = useRouter();
   const company = useMyCompany();
   const createJob = useCreateCompanyJob(company.data?.id || "");
+
   const [currentStep, setCurrentStep] = useState(1);
 
   const [jobData, setJobData] = useState<JobData>({
@@ -37,27 +38,26 @@ export default function PostJob() {
         id: 1,
         title: "Full Healthcare",
         description:
-          "We believe in thriving communities and that starts with our team being happy and healthy.",
+            "We believe in thriving communities and that starts with our team being happy and healthy.",
         icon: "Healthcare",
       },
       {
         id: 2,
         title: "Unlimited Vacation",
         description:
-          "We believe you should have a flexible schedule that makes space for family, wellness, and fun.",
+            "We believe you should have a flexible schedule that makes space for family, wellness, and fun.",
         icon: "Remote",
       },
       {
         id: 3,
         title: "Skill Development",
         description:
-          "We believe in always learning and leveling up our skills. Whether it's a conference or online course.",
+            "We believe in always learning and leveling up our skills. Whether it's a conference or online course.",
         icon: "Vacation",
       },
     ],
   });
 
-  // Update any field in the form
   const updateData = (values: Partial<JobData>) => {
     setJobData((prev) => ({
       ...prev,
@@ -78,11 +78,16 @@ export default function PostJob() {
   };
 
   const handleSubmit = async () => {
-    if (!company.data) { toast.error("Create your company profile first"); return; }
+    if (!company.data) {
+      toast.error("Create your company profile first");
+      return;
+    }
+
     try {
       await createJob.mutateAsync({
         title: jobData.jobTitle,
-        location: jobData.location || company.data.location || "Central Africa",
+        location:
+            jobData.location || company.data.location || "Central Africa",
         employmentTypes: jobData.employmentTypes,
         minSalary: jobData.minSalary,
         maxSalary: jobData.maxSalary,
@@ -95,7 +100,10 @@ export default function PostJob() {
         benefits: jobData.benefits,
         status: "LIVE",
       });
+
       toast.success("Job published successfully");
+
+      // next-intl ajoutera automatiquement /fr ou /en
       router.push("/company/job-listing");
     } catch {
       toast.error("Unable to publish this job");
@@ -103,67 +111,64 @@ export default function PostJob() {
   };
 
   return (
-    <section className="mx-auto space-y-8 px-4 py-8 lg:px-8">
-      {/* Title */}
-      <div>
-        <Link
-          href="/company"
-          className="text-[24px] font-bold text-gray-900 flex items-center gap-2"
-        >
-          <ArrowLeft width={25} height={25} /> Post a Job
-        </Link>
-      </div>
-
-      {/* Stepper */}
-      <Stepper currentStep={currentStep} />
-
-      {/* Step Content */}
-      {currentStep === 1 && (
-        <JobInformation data={jobData} updateData={updateData} />
-      )}
-
-      {currentStep === 2 && (
-        <JobDescription data={jobData} updateData={updateData} />
-      )}
-
-      {currentStep === 3 && (
-        <PerksBenefits data={jobData} updateData={updateData} />
-      )}
-
-      {/* Navigation */}
-      <div className="flex items-center justify-between">
-        <button
-          type="button"
-          disabled={currentStep === 1}
-          onClick={previousStep}
-          className={` border px-6 py-3 font-medium transition ${
-            currentStep === 1
-              ? "cursor-not-allowed border-gray-200 text-gray-400"
-              : "border-gray-300 hover:bg-gray-100"
-          }`}
-        >
-          Previous
-        </button>
-
-        {currentStep < 3 ? (
-          <button
-            type="button"
-            onClick={nextStep}
-            className=" bg-brand px-6 py-3 font-medium text-white hover:bg-indigo-700"
+      <section className="mx-auto space-y-8 px-4 py-8 lg:px-8">
+        <div>
+          <Link
+              href="/company"
+              className="flex items-center gap-2 text-[24px] font-bold text-gray-900"
           >
-            Next Step
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={handleSubmit}
-            disabled={createJob.isPending}
-            className="bg-brand px-6 py-3 font-medium text-white hover:bg-indigo-700"
-          >
-            {createJob.isPending ? "Publishing…" : "Publish job"}
-          </button>
+            <ArrowLeft width={25} height={25} />
+            Post a Job
+          </Link>
+        </div>
+
+        <Stepper currentStep={currentStep} />
+
+        {currentStep === 1 && (
+            <JobInformation data={jobData} updateData={updateData} />
         )}
-      </div>
-    </section>
+
+        {currentStep === 2 && (
+            <JobDescription data={jobData} updateData={updateData} />
+        )}
+
+        {currentStep === 3 && (
+            <PerksBenefits data={jobData} updateData={updateData} />
+        )}
+
+        <div className="flex items-center justify-between">
+          <button
+              type="button"
+              disabled={currentStep === 1}
+              onClick={previousStep}
+              className={`border px-6 py-3 font-medium transition ${
+                  currentStep === 1
+                      ? "cursor-not-allowed border-gray-200 text-gray-400"
+                      : "border-gray-300 hover:bg-gray-100"
+              }`}
+          >
+            Previous
+          </button>
+
+          {currentStep < 3 ? (
+              <button
+                  type="button"
+                  onClick={nextStep}
+                  className="bg-brand px-6 py-3 font-medium text-white hover:bg-indigo-700"
+              >
+                Next Step
+              </button>
+          ) : (
+              <button
+                  type="button"
+                  onClick={handleSubmit}
+                  disabled={createJob.isPending}
+                  className="bg-brand px-6 py-3 font-medium text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {createJob.isPending ? "Publishing…" : "Publish job"}
+              </button>
+          )}
+        </div>
+      </section>
   );
 }

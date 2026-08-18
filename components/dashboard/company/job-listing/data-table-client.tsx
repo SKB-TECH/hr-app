@@ -1,11 +1,12 @@
 "use client";
+
 import { columns } from "./columns";
 import { TableDataTypes } from "@/data/company-job-listing";
 import { DataTable } from "./data-table";
 import TableHeader from "./table-header";
 import Pagination from "./pagination";
 import { useState, useMemo } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 
 export interface JobListingTable {
   jobsPerPage: number;
@@ -17,7 +18,7 @@ export interface JobListingTable {
 
 function DataTableClient({ jobs }: { jobs: TableDataTypes[] }) {
   const router = useRouter();
-  const pathname = usePathname();
+
   const [jobsPerPage, setJobsPerPage] = useState<number>(7);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [statusFilters, setStatusFilters] = useState<string[]>([]);
@@ -25,7 +26,7 @@ function DataTableClient({ jobs }: { jobs: TableDataTypes[] }) {
 
   const handlePerPageChange = (value: number) => {
     setJobsPerPage(value);
-    setCurrentPage(1); // reset to first page
+    setCurrentPage(1);
   };
 
   const handlePageChange = (page: number) => {
@@ -34,13 +35,13 @@ function DataTableClient({ jobs }: { jobs: TableDataTypes[] }) {
 
   const handleStatusChange = (value: string, checked: boolean) => {
     setStatusFilters((prev) =>
-      checked ? [...prev, value] : prev.filter((s) => s !== value),
+        checked ? [...prev, value] : prev.filter((s) => s !== value),
     );
   };
 
   const handleJobTypeChange = (value: string, checked: boolean) => {
     setJobTypeFilters((prev) =>
-      checked ? [...prev, value] : prev.filter((t) => t !== value),
+        checked ? [...prev, value] : prev.filter((t) => t !== value),
     );
   };
 
@@ -52,9 +53,12 @@ function DataTableClient({ jobs }: { jobs: TableDataTypes[] }) {
   const filteredData = useMemo(() => {
     return jobs.filter((job) => {
       const statusMatch =
-        statusFilters.length === 0 || statusFilters.includes(job.status);
+          statusFilters.length === 0 || statusFilters.includes(job.status);
+
       const typeMatch =
-        jobTypeFilters.length === 0 || jobTypeFilters.includes(job.job_type);
+          jobTypeFilters.length === 0 ||
+          jobTypeFilters.includes(job.job_type);
+
       return statusMatch && typeMatch;
     });
   }, [jobs, statusFilters, jobTypeFilters]);
@@ -62,41 +66,40 @@ function DataTableClient({ jobs }: { jobs: TableDataTypes[] }) {
   const totalPages = Math.ceil(filteredData.length / jobsPerPage);
 
   return (
-    <div className="w-full">
-      <DataTable<TableDataTypes, unknown>
-        headerCellClassName="py-6 text-neutral-60 tex-sm font-medium tracking-wide px-4! "
-        cellClassName="py-6  md:py-8 text-neutral-100 tracking-wide px-4! text-neutral-100"
-        rowClassName={() =>
-          "odd:bg-white cursor-pointer  even:bg-[#F8F8FD] text-[15px] "
-        }
-        columns={columns}
-        data={filteredData}
-        tableHeader={
-          <TableHeader
-            statusFilters={statusFilters}
-            jobTypeFilters={jobTypeFilters}
-            onStatusChange={handleStatusChange}
-            onJobTypeChange={handleJobTypeChange}
-            onClearFilters={handleClearFilters}
-          />
-        }
-        pagination={
-          <Pagination
+      <div className="w-full">
+        <DataTable<TableDataTypes, unknown>
+            headerCellClassName="py-6 text-neutral-60 tex-sm font-medium tracking-wide px-4!"
+            cellClassName="py-6 md:py-8 text-neutral-100 tracking-wide px-4! text-neutral-100"
+            rowClassName={() =>
+                "odd:bg-white cursor-pointer even:bg-[#F8F8FD] text-[15px]"
+            }
+            columns={columns}
+            data={filteredData}
+            tableHeader={
+              <TableHeader
+                  statusFilters={statusFilters}
+                  jobTypeFilters={jobTypeFilters}
+                  onStatusChange={handleStatusChange}
+                  onJobTypeChange={handleJobTypeChange}
+                  onClearFilters={handleClearFilters}
+              />
+            }
+            pagination={
+              <Pagination
+                  jobsPerPage={jobsPerPage}
+                  onPerPageChange={handlePerPageChange}
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+              />
+            }
             jobsPerPage={jobsPerPage}
-            onPerPageChange={handlePerPageChange}
             currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
-        }
-        jobsPerPage={jobsPerPage}
-        currentPage={currentPage}
-        onRowClick={(row) => {
-          const locale = pathname.split("/").filter(Boolean)[0] || "fr";
-          router.push(`/${locale}/company/job-listing/${row.original.id}`);
-        }}
-      />
-    </div>
+            onRowClick={(row) => {
+              router.push(`/company/job-listing/${row.original.id}`);
+            }}
+        />
+      </div>
   );
 }
 
