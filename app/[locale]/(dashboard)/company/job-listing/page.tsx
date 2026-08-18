@@ -3,7 +3,7 @@ import ListJobs from "@/components/dashboard/company/job-listing/list-jobs";
 
 function page() {
   return (
-    <div className="flex-1  sm:px-4  lg:px-6 pb-10">
+    <div className="min-w-0 flex-1 px-4 pb-10 sm:px-6 lg:px-8">
       {/*  header*/}
       <JobListHeader />
       <ListJobs />

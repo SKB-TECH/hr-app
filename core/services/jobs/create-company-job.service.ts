@@ -1,6 +1,19 @@
 import { apiRequest } from "@/core/lib/api-client";
 import type { CompanyJob, CompanyJobInput } from "@/core/types/job";
+import { normalizeCompanyJob } from "./normalize-company-job";
 
-export const createCompanyJob = (companyId: string, input: CompanyJobInput) =>
-  apiRequest<CompanyJob>(`companies/${companyId}/jobs`, { method: "POST", body: JSON.stringify(input) })
-    .then((response) => response.data);
+type NestedJob = { data: Record<string, unknown> };
+
+export const createCompanyJob = async (_companyId: string, input: CompanyJobInput): Promise<CompanyJob> => {
+  const { status, requirements, ...fields } = input;
+  const created = await apiRequest<NestedJob>("jobs", {
+    method: "POST",
+    body: JSON.stringify({ ...fields, whoYouAre: requirements }),
+  });
+  const job = normalizeCompanyJob(created.data.data);
+  if (status === "LIVE") {
+    await apiRequest(`jobs/${job.id}/publish`, { method: "POST" });
+    return { ...job, status: "LIVE", publishedAt: new Date().toISOString() };
+  }
+  return job;
+};

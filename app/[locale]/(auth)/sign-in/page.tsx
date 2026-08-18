@@ -10,11 +10,13 @@ import { getGoogleAuthUrl } from "@/core/services/auth/get-google-auth-url.servi
 import { ApiError } from "@/core/types/api";
 import { Link, useRouter } from "@/i18n/routing";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function SignInPage() {
   const router = useRouter();
+  const locale = useLocale();
   const login = useLogin();
   const [rememberMe, setRememberMe] = useState(false);
   const [userLevel, setUserLevel] = useState<UserLevel>("job-seeker");
@@ -24,11 +26,38 @@ export default function SignInPage() {
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
-      const user = await login.mutateAsync({ email: email.trim(), password, rememberMe });
+      const user = await login.mutateAsync({
+        email: email.trim(),
+        password,
+        rememberMe,
+        portal: userLevel === "company" ? "COMPANY" : "CANDIDATE",
+      });
       const companyRoles = ["COMPANY_OWNER", "HR_MANAGER", "RECRUITER", "ADMIN", "SUPER_ADMIN"];
       toast.success("Connexion réussie");
       router.replace(companyRoles.includes(user.role) ? "/company" : "/candidate");
     } catch (error) {
+      if (error instanceof ApiError && error.status === 401) {
+        toast.error(
+          locale === "fr"
+            ? "Adresse e-mail ou mot de passe incorrect."
+            : "Incorrect email address or password.",
+        );
+        return;
+      }
+      if (error instanceof ApiError && error.status === 403) {
+        toast.error(
+          error.message.toLowerCase().includes("portal")
+            ? locale === "fr"
+              ? userLevel === "company"
+                ? "Ce compte candidat ne peut pas accéder à l’espace entreprise."
+                : "Ce compte entreprise ne peut pas accéder à l’espace candidat."
+              : userLevel === "company"
+                ? "This candidate account cannot access the company portal."
+                : "This company account cannot access the candidate portal."
+            : error.message,
+        );
+        return;
+      }
       toast.error(error instanceof ApiError ? error.message : "Connexion impossible.");
     }
   }

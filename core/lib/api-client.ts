@@ -3,6 +3,14 @@ import { ApiError, type ApiEnvelope } from "@/core/types/api";
 
 let refreshPromise: Promise<boolean> | null = null;
 
+const PUBLIC_AUTH_PATHS = new Set([
+  "auth/login",
+  "auth/registration/register",
+  "auth/registration/verify-otp",
+  "auth/registration/resend-otp",
+  "auth/registration/setup-password",
+]);
+
 function url(path: string) {
   return `${ENV.API_URL.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
 }
@@ -52,7 +60,12 @@ export async function apiRequest<T>(
     credentials: "include",
     cache: "no-store",
   });
-  if (response.status === 401 && retry && path !== "auth/refresh") {
+  if (
+    response.status === 401 &&
+    retry &&
+    path !== "auth/refresh" &&
+    !PUBLIC_AUTH_PATHS.has(path)
+  ) {
     if (await refreshSession()) return apiRequest<T>(path, init, false);
   }
   return parseResponse<T>(response);

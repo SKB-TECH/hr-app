@@ -8,6 +8,8 @@ export interface Benefit {
 export interface JobData {
   jobTitle: string;
 
+  location: string;
+
   employmentTypes: string[];
 
   minSalary: number;

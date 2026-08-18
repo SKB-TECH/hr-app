@@ -12,10 +12,10 @@ export const ENV = {
     API_BASE_URL:process.env.API_BASE_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL ?? "",
 
     /** Clé secrète transmise au backend */
-    API_KEY: process.env.NEXT_PUBLIC_API_KEY ?? "",
+    API_KEY: process.env.API_KEY ?? process.env.NEXT_PUBLIC_API_KEY ?? "",
 
     /** Identifiant du canal applicatif */
-    API_CHANNEL: process.env.NEXT_PUBLIC_API_CHANNEL ?? "",
+    API_CHANNEL: process.env.API_CHANNEL ?? process.env.NEXT_PUBLIC_API_CHANNEL ?? "",
 
     /** Base URL pour les fichiers/images du backend */
     FILES_BASE_URL: process.env.NEXT_PUBLIC_FILES_BASE_URL ?? "",

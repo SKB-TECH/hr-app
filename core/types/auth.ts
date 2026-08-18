@@ -17,7 +17,12 @@ export type AuthUser = {
   emailVerified?: boolean;
 };
 
-export type LoginInput = { email: string; password: string; rememberMe?: boolean };
+export type LoginInput = {
+  email: string;
+  password: string;
+  rememberMe?: boolean;
+  portal?: "CANDIDATE" | "COMPANY";
+};
 export type RegisterInput = {
   fullName: string;
   email: string;

@@ -1,5 +1,6 @@
 import { apiRequest } from "@/core/lib/api-client";
-import type { CompanyJob } from "@/core/types/job";
+import { normalizeCompanyJob } from "./normalize-company-job";
 
-export const getCompanyJob = (companyId: string, jobId: string) =>
-  apiRequest<CompanyJob>(`companies/${companyId}/jobs/${jobId}`).then((response) => response.data);
+export const getCompanyJob = (_companyId: string, jobId: string) =>
+  apiRequest<Record<string, unknown>>(`jobs/company/me/${jobId}`)
+    .then((response) => normalizeCompanyJob(response.data));

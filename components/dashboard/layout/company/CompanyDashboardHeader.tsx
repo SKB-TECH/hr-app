@@ -8,6 +8,7 @@ import { ChevronDown, Plus } from "lucide-react";
 import { CandidateMobileSidebarProps } from "../candidate/DashBoardHeaderWrapper";
 import { useMyCompany } from "@/core/hooks/company/use-my-company";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
+import { mediaUrl } from "@/core/lib/media-url";
 
 const HAS_NOTIFICATIONS = true;
 const NOTIFICATION_COUNT = 4;
@@ -28,17 +29,17 @@ export default function CompanyDashboardHeader({
         <div className="flex  cursor-pointer items-center gap-2 rounded-md  py-1 transition-colors hover:bg-gray-50">
           <Image
             className="h-10 w-10 shrink-0 object-cover"
-            src={company?.logo || "/logo/lgo.png"}
+            src={mediaUrl(company?.logo)}
             alt={company?.name || "Company logo"}
             width={40}
             height={40}
           />
 
-          <div className="font-epilogue">
+          <div className="hidden min-w-0 font-epilogue sm:block">
             <p className="text-xs text-neutral-80">Company</p>
 
             <div className="flex items-center gap-1 font-medium text-neutral-100">
-              <p>{company?.name || "My company"}</p>
+              <p className="max-w-40 truncate">{company?.name || "My company"}</p>
               <ChevronDown size={22} />
             </div>
           </div>
@@ -46,7 +47,7 @@ export default function CompanyDashboardHeader({
       </div>
 
       {/* Right section */}
-      <div className="flex items-center gap-4">
+      <div className="flex shrink-0 items-center gap-2 sm:gap-4">
         <LanguageSwitcher />
 
         {/* Notifications */}

@@ -22,6 +22,7 @@ export default function PostJob() {
 
   const [jobData, setJobData] = useState<JobData>({
     jobTitle: "",
+    location: "",
     employmentTypes: [],
     minSalary: 5000,
     maxSalary: 22000,
@@ -81,6 +82,7 @@ export default function PostJob() {
     try {
       await createJob.mutateAsync({
         title: jobData.jobTitle,
+        location: jobData.location || company.data.location || "Central Africa",
         employmentTypes: jobData.employmentTypes,
         minSalary: jobData.minSalary,
         maxSalary: jobData.maxSalary,
@@ -90,6 +92,7 @@ export default function PostJob() {
         responsibilities: jobData.responsibilities,
         requirements: jobData.whoYouAre,
         niceToHave: jobData.niceToHave,
+        benefits: jobData.benefits,
         status: "LIVE",
       });
       toast.success("Job published successfully");

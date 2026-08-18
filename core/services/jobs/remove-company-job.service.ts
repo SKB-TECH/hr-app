@@ -1,5 +1,5 @@
 import { apiRequest } from "@/core/lib/api-client";
 
-export const removeCompanyJob = (companyId: string, jobId: string) =>
-  apiRequest<{ removed: boolean }>(`companies/${companyId}/jobs/${jobId}`, { method: "DELETE" })
+export const removeCompanyJob = (_companyId: string, jobId: string) =>
+  apiRequest<{ jobId: string; status: "CLOSED" }>(`jobs/${jobId}`, { method: "DELETE" })
     .then((response) => response.data);

@@ -26,6 +26,7 @@ export type CompanyJob = {
 
 export type CompanyJobInput = {
   title: string;
+  location?: string;
   employmentTypes: string[];
   minSalary?: number;
   maxSalary?: number;
@@ -35,7 +36,14 @@ export type CompanyJobInput = {
   responsibilities?: string;
   requirements?: string;
   niceToHave?: string;
+  benefits?: Array<{ id?: number; title: string; description: string; icon?: string }>;
   status?: JobStatus;
 };
 
 export type CompanyJobQuery = { status?: JobStatus; search?: string; page?: number; limit?: number };
+
+export type CompanyJobStats = {
+  total: number;
+  statuses: Record<JobStatus, number>;
+  applications: number;
+};

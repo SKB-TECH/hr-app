@@ -82,6 +82,18 @@ export default function JobInformation({
         </div>
       </FormSection>
 
+      <FormSection
+        title="Location"
+        description="Use a city and country in Central Africa, or Remote."
+      >
+        <input
+          value={data.location}
+          onChange={(e) => updateData({ location: e.target.value })}
+          placeholder="e.g. Kinshasa, DRC"
+          className="w-full border border-neutral-20 px-4 py-3 outline-none focus:border-indigo-600"
+        />
+      </FormSection>
+
       {/* Employment */}
       <FormSection
         title="Type of Employment"
@@ -155,7 +167,8 @@ export default function JobInformation({
         description="Add required skills for the job"
       >
         <SkillInput
-          defaultSkills={["Graphic Design", "Communication", "Illustrator"]}
+          defaultSkills={data.skills}
+          onChange={(skills) => updateData({ skills })}
         />
       </FormSection>
     </div>

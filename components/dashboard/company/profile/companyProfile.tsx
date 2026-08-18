@@ -4,6 +4,7 @@ import { useMyCompany } from "@/core/hooks/company/use-my-company";
 import { Building2, CalendarDays, Globe2, MapPin, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { mediaUrl } from "@/core/lib/media-url";
 
 export default function CompanyProfile() {
   const company = useMyCompany();
@@ -12,10 +13,10 @@ export default function CompanyProfile() {
   if (!company.data) return <State text="No company profile found. Complete it from Company Settings." />;
   const item = company.data;
   return <main className="pb-12">
-    <div className="relative h-44 bg-gradient-to-r from-slate-900 to-cyan-800">{item.coverImage && <Image src={item.coverImage} alt="" fill className="object-cover" />}</div>
+    <div className="relative h-44 bg-gradient-to-r from-slate-900 to-cyan-800">{item.coverImage && <Image src={mediaUrl(item.coverImage)} alt="" fill className="object-cover" />}</div>
     <section className="px-5 md:px-8">
       <div className="relative -mt-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div className="flex items-end gap-4"><div className="grid size-28 place-items-center border-4 border-white bg-white shadow-sm">{item.logo ? <Image src={item.logo} alt={item.name} width={104} height={104} className="size-24 object-contain" /> : <Building2 size={42} className="text-brand" />}</div><div className="pb-2"><h1 className="text-3xl font-bold text-neutral-100">{item.name}</h1>{item.website && <a href={item.website} target="_blank" rel="noreferrer" className="text-sm text-brand">{item.website}</a>}</div></div>
+        <div className="flex min-w-0 items-end gap-4"><div className="grid size-28 shrink-0 place-items-center border-4 border-white bg-white shadow-sm">{item.logo ? <Image src={mediaUrl(item.logo)} alt={item.name} width={104} height={104} className="size-24 object-contain" /> : <Building2 size={42} className="text-brand" />}</div><div className="min-w-0 pb-2"><h1 className="truncate text-2xl font-bold text-neutral-100 sm:text-3xl">{item.name}</h1>{item.website && <a href={item.website} target="_blank" rel="noreferrer" className="block truncate text-sm text-brand">{item.website}</a>}</div></div>
         <Link href="/company/settings" className="mb-2 bg-brand px-5 py-3 text-sm font-bold text-white">Edit company profile</Link>
       </div>
       <div className="mt-7 grid gap-4 border-y border-brand-light-neutral py-5 sm:grid-cols-2 lg:grid-cols-4">
