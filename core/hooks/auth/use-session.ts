@@ -1,7 +1,7 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import { authService } from "@/core/services/auth.service";
+import { getSession } from "@/core/services/auth/get-session.service";
 export const sessionKey = ["auth", "session"] as const;
 export function useSession() {
-  return useQuery({ queryKey: sessionKey, queryFn: authService.me, retry: false });
+  return useQuery({ queryKey: sessionKey, queryFn: getSession, retry: false });
 }
