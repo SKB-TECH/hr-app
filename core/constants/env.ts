@@ -9,7 +9,7 @@ export const ENV = {
     API_URL: process.env.NEXT_PUBLIC_API_URL ?? "/api/proxy",
     NEXT_PUBLIC_FILES_BASE_URL: process.env.NEXT_PUBLIC_FILES_BASE_URL,
     /** URL upstream réelle du backend (utilisée côté serveur dans le proxy) */
-    API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL ?? "",
+    API_BASE_URL:process.env.API_BASE_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL ?? "",
 
     /** Clé secrète transmise au backend */
     API_KEY: process.env.NEXT_PUBLIC_API_KEY ?? "",

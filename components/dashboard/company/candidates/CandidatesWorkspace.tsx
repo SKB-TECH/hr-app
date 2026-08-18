@@ -9,7 +9,7 @@ import { jobListingData } from "@/data/company-job-listing";
 
 type Candidate = (typeof applicants)[number];
 type ProposalStatus = "Pending" | "Applied" | "Rejected" | "On-going" | "Hired";
-type Proposal = { jobId: number; status: ProposalStatus; recruiter: string; note?: string };
+type Proposal = { jobId: number | string; status: ProposalStatus; recruiter: string; note?: string };
 
 const initialProposals: Record<number, Proposal[]> = {
   1: [
@@ -45,7 +45,7 @@ export default function CandidatesWorkspace() {
   </div>;
 }
 
-function ProposeJobModal({ candidate, proposals, onClose, onPropose }: { candidate: Candidate; proposals: Proposal[]; onClose: () => void; onPropose: (jobId: number) => void }) {
+function ProposeJobModal({ candidate, proposals, onClose, onPropose }: { candidate: Candidate; proposals: Proposal[]; onClose: () => void; onPropose: (jobId: number | string) => void }) {
   const [tab, setTab] = useState<"Jobs" | "Proposed" | "History">("Jobs");
   const [query, setQuery] = useState("");
   const [recruiter, setRecruiter] = useState("All recruiters");
@@ -62,12 +62,12 @@ function ProposeJobModal({ candidate, proposals, onClose, onPropose }: { candida
     {tab !== "History" && <label className="mt-4 flex h-10 items-center gap-2 bg-[#f5f5f7] px-3 text-neutral-60"><Search size={15}/><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search for job" className="w-full bg-transparent text-xs outline-none"/></label>}
     {tab === "History" && <div className="mt-4 grid grid-cols-2 gap-3"><label className="text-xs font-bold text-neutral-80">Recruiter<select value={recruiter} onChange={e => setRecruiter(e.target.value)} className="mt-2 h-10 w-full border border-brand-light-neutral bg-white px-3 font-normal"><option>All recruiters</option><option>Maria Kelly</option><option>Célestin Gardinier</option><option>Reynaud Colbert</option></select></label><label className="text-xs font-bold text-neutral-80">Status<select value={status} onChange={e => setStatus(e.target.value)} className="mt-2 h-10 w-full border border-brand-light-neutral bg-white px-3 font-normal"><option>All statuses</option><option>Pending</option><option>Applied</option><option>Rejected</option><option>On-going</option><option>Hired</option></select></label></div>}
 
-    <div className="mt-3 divide-y divide-[#edf0f6]">{tab === "Jobs" && jobs.map(job => <JobRow key={job.id} jobId={job.id} status={proposedIds.includes(job.id) ? "Pending" : undefined} action={proposedIds.includes(job.id) ? undefined : () => onPropose(job.id)}/>)}{tab === "Proposed" && proposalRows.filter(item => jobListingData.find(job => job.id === item.jobId)?.role.toLowerCase().includes(query.toLowerCase())).map((item, index) => <JobRow key={`${item.jobId}-${index}`} jobId={item.jobId} status={item.status}/>)}{tab === "History" && visibleHistory.map((item, index) => <JobRow key={`${item.jobId}-${index}`} jobId={item.jobId} status={item.status} note={item.note}/>)}</div>
+    <div className="mt-3 divide-y divide-[#edf0f6]">{tab === "Jobs" && jobs.map(job => <JobRow key={job.id} jobId={job.id} status={proposedIds.some(id => String(id) === String(job.id)) ? "Pending" : undefined} action={proposedIds.some(id => String(id) === String(job.id)) ? undefined : () => onPropose(job.id)}/>)}{tab === "Proposed" && proposalRows.filter(item => jobListingData.find(job => String(job.id) === String(item.jobId))?.role.toLowerCase().includes(query.toLowerCase())).map((item, index) => <JobRow key={`${item.jobId}-${index}`} jobId={item.jobId} status={item.status}/>)}{tab === "History" && visibleHistory.map((item, index) => <JobRow key={`${item.jobId}-${index}`} jobId={item.jobId} status={item.status} note={item.note}/>)}</div>
   </div></div>;
 }
 
-function JobRow({ jobId, status, action, note }: { jobId: number; status?: ProposalStatus; action?: () => void; note?: string }) {
-  const job = jobListingData.find(item => item.id === jobId); if (!job) return null;
+function JobRow({ jobId, status, action, note }: { jobId: number | string; status?: ProposalStatus; action?: () => void; note?: string }) {
+  const job = jobListingData.find(item => String(item.id) === String(jobId)); if (!job) return null;
   const colors: Record<ProposalStatus, string> = { Pending: "border-brand text-brand", Applied: "border-accent-green text-[#27886d]", Rejected: "border-accent-red text-accent-red", "On-going": "border-accent-light-blue text-accent-light-blue", Hired: "border-accent-green text-[#27886d]" };
   return <article className="flex items-center gap-3 py-3"><div className="min-w-0 flex-1"><h3 className="text-sm font-bold text-brand">{job.role}</h3><div className="mt-1 flex flex-wrap gap-3 text-[10px] text-neutral-60"><span className="flex items-center gap-1"><BriefcaseBusiness size={11}/>Nomad</span><span className="flex items-center gap-1"><MapPin size={11}/>Kinshasa</span></div><p className="mt-1 text-[10px] text-neutral-60">$10 – $60 / hour · 12 months contract · {job.job_type}</p></div><div className="text-right">{action ? <button onClick={action} className="flex h-9 items-center gap-1.5 bg-brand px-3 text-xs font-bold text-white"><Send size={13}/>Send proposal</button> : status && <span className={`inline-flex border px-3 py-1.5 text-[10px] font-bold ${colors[status]}`}>{status}</span>}{note && <p className="mt-1 max-w-44 text-[9px] text-neutral-60">{note}</p>} {status && <Link href={`/company/job-listing/${jobId}`} className="mt-1 flex items-center justify-end gap-1 text-[9px] font-semibold text-brand underline"><Eye size={10}/>View on ATS</Link>}</div></article>;
 }

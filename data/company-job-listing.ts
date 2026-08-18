@@ -1,5 +1,5 @@
 export interface TableDataTypes {
-  id: number;
+  id: number | string;
   role: string;
   status: string;
   date_posted: Date;

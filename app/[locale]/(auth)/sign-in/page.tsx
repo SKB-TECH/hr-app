@@ -1,176 +1,59 @@
 "use client";
 
 import Separator from "@/components/common/auth/Separetor";
-import TabsUserLevel, {
-  type UserLevel,
-} from "@/components/common/auth/TabsUserLevel";
+import TabsUserLevel, { type UserLevel } from "@/components/common/auth/TabsUserLevel";
 import { FilterTick } from "@/components/ui/FilterTick";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { FormGroup } from "@/types/FormGroupType";
+import { useLogin } from "@/core/hooks/auth/use-login";
+import { authService } from "@/core/services/auth.service";
+import { ApiError } from "@/core/types/api";
+import { Link, useRouter } from "@/i18n/routing";
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 
 export default function SignInPage() {
-  const [check, setCheck] = useState(false);
+  const router = useRouter();
+  const login = useLogin();
+  const [rememberMe, setRememberMe] = useState(false);
+  const [userLevel, setUserLevel] = useState<UserLevel>("job-seeker");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [userLevel, setUserLevel] =
-      useState<UserLevel>("job-seeker");
-
-  const inputs: FormGroup[] = [
-    {
-      id: "email",
-      type: "email",
-      name: "Email Address",
-      placeholder: "Enter email address",
-    },
-    {
-      id: "password",
-      type: "password",
-      name: "Password",
-      placeholder: "Enter your password",
-    },
-  ];
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    try {
+      const user = await login.mutateAsync({ email: email.trim(), password, rememberMe });
+      const companyRoles = ["COMPANY_OWNER", "HR_MANAGER", "RECRUITER", "ADMIN", "SUPER_ADMIN"];
+      toast.success("Connexion réussie");
+      router.replace(companyRoles.includes(user.role) ? "/company" : "/candidate");
+    } catch (error) {
+      toast.error(error instanceof ApiError ? error.message : "Connexion impossible.");
+    }
+  }
 
   return (
-      <main className="flex w-full flex-1 items-center justify-center">
-        <div className="w-full max-w-xl">
-          <div className="flex w-full flex-col gap-5">
-            <TabsUserLevel
-                value={userLevel}
-                onChange={setUserLevel}
-            />
-
-            <div className="space-y-2 text-center">
-              <h1 className="font-epilogue text-2xl font-extrabold text-slate-900 sm:text-3xl">
-                Welcome Back
-              </h1>
-
-              <p className="font-epilogue text-sm text-slate-500 sm:text-base">
-                {userLevel === "job-seeker"
-                    ? "Sign in to continue your job search and manage your applications."
-                    : "Sign in to manage your jobs, candidates and recruitment process."}
-              </p>
-            </div>
-
-            <div className="w-full">
-              <button
-                  type="button"
-                  className="flex h-14 w-full cursor-pointer items-center justify-center gap-3 border border-gray-300 bg-white px-4 font-epilogue font-semibold text-indigo-600 transition duration-300 hover:bg-gray-50"
-              >
-                <Image
-                    width={24}
-                    height={24}
-                    src="/images/google.svg"
-                    alt="Google"
-                    className="h-6 w-6"
-                />
-
-                <span>Sign in with Google</span>
-              </button>
-            </div>
-
-            <Separator text="Or login with email" />
-
-            <div className="flex w-full flex-col gap-5">
-              {inputs.map((input: FormGroup) => (
-                  <div
-                      className="w-full min-w-0"
-                      key={input.id}
-                  >
-                    <Label
-                        htmlFor={input.id}
-                        className="mb-2 block font-epilogue text-sm font-medium text-gray-700 sm:text-base"
-                    >
-                      {input.name}
-                    </Label>
-
-                    <Input
-                        type={input.type}
-                        id={input.id}
-                        name={input.id}
-                        className="
-                    h-14
-                    w-full
-                    rounded-none
-                    border
-                    border-gray-300
-                    px-4
-                    font-epilogue
-                    text-sm
-                    font-normal
-                    placeholder:text-gray-400
-                    focus:border-indigo-500
-                    focus:outline-none
-                    focus:ring-1
-                    focus:ring-indigo-500
-                    sm:text-base
-                  "
-                        placeholder={input.placeholder}
-                    />
-                  </div>
-              ))}
-
-              <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="group flex cursor-pointer items-center gap-3 text-sm sm:text-base">
-                  <FilterTick
-                      key={String(check)}
-                      defaultChecked={check}
-                      onChange={setCheck}
-                  />
-
-                  <button
-                      type="button"
-                      onClick={() => setCheck(!check)}
-                      className="font-epilogue text-slate-600 transition-colors group-hover:text-indigo-600"
-                  >
-                    Remember me
-                  </button>
-                </div>
-
-                <Link
-                    href="/forgot-password"
-                    className="font-epilogue text-sm font-semibold text-indigo-600 hover:text-indigo-700 sm:text-base"
-                >
-                  Forgot password?
-                </Link>
-              </div>
-
-              <button
-                  type="submit"
-                  className="
-                mt-1
-                h-14
-                w-full
-                cursor-pointer
-                bg-indigo-600
-                px-4
-                font-epilogue
-                font-semibold
-                text-white
-                transition
-                duration-300
-                hover:bg-indigo-700
-              "
-              >
-                Sign In
-              </button>
-
-              <div className="pt-2 text-center sm:text-left">
-                <p className="font-epilogue text-sm text-gray-600 sm:text-base">
-                  Don&apos;t have an account?{" "}
-                  <Link
-                      href="/sign-up"
-                      className="font-semibold text-indigo-600 hover:text-indigo-700"
-                  >
-                    Sign Up
-                  </Link>
-                </p>
-              </div>
-            </div>
-          </div>
+    <main className="flex w-full flex-1 items-center justify-center">
+      <form onSubmit={submit} className="w-full max-w-xl space-y-5">
+        <TabsUserLevel value={userLevel} onChange={setUserLevel} />
+        <div className="space-y-2 text-center">
+          <h1 className="font-epilogue text-3xl font-extrabold text-slate-900">Welcome Back</h1>
+          <p className="text-sm text-slate-500">{userLevel === "job-seeker" ? "Sign in to continue your job search and manage your applications." : "Sign in to manage your jobs, candidates and recruitment process."}</p>
         </div>
-      </main>
+        <button type="button" onClick={() => window.location.assign(authService.googleUrl())} className="flex h-14 w-full items-center justify-center gap-3 border border-gray-300 bg-white font-semibold text-indigo-600 hover:bg-gray-50">
+          <Image width={24} height={24} src="/images/google.svg" alt="Google" /> Sign in with Google
+        </button>
+        <Separator text="Or login with email" />
+        <div><Label htmlFor="email" className="mb-2 block">Email Address</Label><Input id="email" type="email" autoComplete="email" required value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Enter email address" className="h-14 rounded-none" /></div>
+        <div><Label htmlFor="password" className="mb-2 block">Password</Label><Input id="password" type="password" autoComplete="current-password" required minLength={6} value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Enter your password" className="h-14 rounded-none" /></div>
+        <div className="flex items-center justify-between gap-3 text-sm">
+          <button type="button" onClick={() => setRememberMe((value) => !value)} className="flex items-center gap-3 text-slate-600"><FilterTick key={String(rememberMe)} defaultChecked={rememberMe} onChange={setRememberMe} /> Remember me</button>
+          <span className="text-indigo-600">Forgot password?</span>
+        </div>
+        <button disabled={login.isPending} type="submit" className="h-14 w-full bg-indigo-600 font-semibold text-white disabled:opacity-60">{login.isPending ? "Signing in…" : "Sign In"}</button>
+        <p className="text-sm text-gray-600">Don&apos;t have an account? <Link href="/sign-up" className="font-semibold text-indigo-600">Sign Up</Link></p>
+      </form>
+    </main>
   );
 }

@@ -1,7 +1,4 @@
-import { companiesPageCopy, recommendedCompanies } from "@/data/companies";
-import CategorySection from "@/components/platform/companies/CategorySection";
-import PostJobsCta from "@/components/platform/companies/PostJobsCta";
-import RecommendedSection from "@/components/platform/companies/RecommendedSection";
+import { CompaniesDirectory } from "@/components/platform/companies/CompaniesDirectory";
 import ReusableHeroSection from "@/components/platform/jobs/HeroSection/ReusableHeroSection";
 
 export default function CompaniesPage() {
@@ -17,21 +14,7 @@ export default function CompaniesPage() {
         underlineSize="md"
       />
 
-      {/* Constrained content sections */}
-      <div className=" w-full max-w-7xl mx-auto px-4 md:px-12 pt-12">
-        <RecommendedSection
-          copy={companiesPageCopy.recommended}
-          companies={recommendedCompanies}
-        />
-      </div>
-
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-12  pt-12">
-        <PostJobsCta copy={companiesPageCopy.cta} />
-      </div>
-
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-12  pt-12">
-        <CategorySection copy={companiesPageCopy.category} />
-      </div>
+      <CompaniesDirectory />
     </main>
   );
 }

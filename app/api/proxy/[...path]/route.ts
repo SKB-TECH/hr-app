@@ -35,9 +35,7 @@ function buildHeaders(req: NextRequest): Headers {
         if (val) headers.set(key, val);
     });
 
-    const token =
-        req.cookies.get('auth_token')?.value ||
-        req.cookies.get('accessToken')?.value;
+    const token = req.cookies.get('access_token')?.value;
 
     if (token && !headers.has('authorization')) {
         headers.set('authorization', `Bearer ${token}`);
@@ -89,20 +87,23 @@ async function proxy(
         }
     }
     try {
-        const upstream = await fetch(url, init);
+        const upstream = await fetch(url, { ...init, redirect: 'manual' });
         const body = await upstream.arrayBuffer();
-        const res = new NextResponse(body, {
-            status: getResponseStatus(upstream, body),
+        const isGoogleCallback = path.join('/') === 'auth/google/callback' && upstream.ok;
+        const res = new NextResponse(isGoogleCallback ? null : body, {
+            status: isGoogleCallback ? 302 : getResponseStatus(upstream, body),
             headers: { 'cache-control': 'no-store' },
         });
         const contentType = upstream.headers.get('content-type');
         if (contentType) res.headers.set('content-type', contentType);
-        const setCookie = upstream.headers.get('set-cookie');
-        if (setCookie) {
-            setCookie
-                .split(/,(?=\s*[^;]+?=)/)
-                .forEach((c) => res.headers.append('set-cookie', c.trim()));
-        }
+        const location = isGoogleCallback ? new URL('/fr/candidate', req.url).toString() : upstream.headers.get('location');
+        if (location) res.headers.set('location', location);
+        const responseHeaders = upstream.headers as Headers & { getSetCookie?: () => string[] };
+        const cookies = responseHeaders.getSetCookie?.() ?? (upstream.headers.get('set-cookie') ? [upstream.headers.get('set-cookie')!] : []);
+        cookies.forEach((cookie) => {
+            const rewritten = cookie.replace(/Path=\/api\/v1\/auth\/refresh/gi, 'Path=/api/proxy/auth/refresh');
+            res.headers.append('set-cookie', rewritten);
+        });
         return res;
     } catch (e: unknown) {
         const message = e instanceof Error ? e.message : String(e);
@@ -132,6 +133,9 @@ export async function POST(req: NextRequest, ctx: ProxyCtx) {
 }
 export async function PUT(req: NextRequest, ctx: ProxyCtx) {
     return proxy('PUT', req, ctx);
+}
+export async function PATCH(req: NextRequest, ctx: ProxyCtx) {
+    return proxy('PATCH', req, ctx);
 }
 export async function DELETE(req: NextRequest, ctx: ProxyCtx) {
     return proxy('DELETE', req, ctx);

@@ -13,8 +13,8 @@ const avatars = ["/team/person1.png", "/team/person2.png", "/team/person3.png", 
 const scores = [96, 88, 74, 69, 61, 93, 84, 78, 91, 66];
 const stages: Stage[] = ["Screening", "Interview", "Evaluation", "Offer", "Hired"];
 
-function initialCandidates(jobId: number, role: string): Candidate[] {
-  const source = getCandidatesAppliedJob(jobId);
+function initialCandidates(jobId: number | string, role: string): Candidate[] {
+  const source = getCandidatesAppliedJob(Number(jobId));
   return fallbackNames.map((name, index) => {
     const original = source[index];
     return {
@@ -35,7 +35,7 @@ function Score({ value }: { value: number }) {
   return <span className={`inline-flex min-w-16 justify-center px-2.5 py-1 text-xs font-bold ${tone}`}>{value}%</span>;
 }
 
-export default function RecruitmentWorkspace({ jobId, role }: { jobId: number; role: string }) {
+export default function RecruitmentWorkspace({ jobId, role }: { jobId: number | string; role: string }) {
   const [tab, setTab] = useState<"applications" | "pipeline" | "rejected">("applications");
   const [candidates, setCandidates] = useState(() => initialCandidates(jobId, role));
   const [rejected, setRejected] = useState<Candidate[]>([]);

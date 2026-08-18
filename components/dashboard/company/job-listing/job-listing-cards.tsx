@@ -1,11 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { jobListingData } from "@/data/company-job-listing";
+import { TableDataTypes } from "@/data/company-job-listing";
 import TableHeader, { TableHeaderFilters } from "./table-header";
 import JobCard from "./job-card";
 
-function JobListingCards() {
+function JobListingCards({ jobs }: { jobs: TableDataTypes[] }) {
   const [statusFilters, setStatusFilters] = useState<string[]>([]);
   const [jobTypeFilters, setJobTypeFilters] = useState<string[]>([]);
 
@@ -27,14 +27,14 @@ function JobListingCards() {
   };
 
   const filteredData = useMemo(() => {
-    return jobListingData.filter((job) => {
+    return jobs.filter((job) => {
       const statusMatch =
         statusFilters.length === 0 || statusFilters.includes(job.status);
       const typeMatch =
         jobTypeFilters.length === 0 || jobTypeFilters.includes(job.job_type);
       return statusMatch && typeMatch;
     });
-  }, [statusFilters, jobTypeFilters]);
+  }, [jobs, statusFilters, jobTypeFilters]);
 
   const filterProps: TableHeaderFilters = {
     statusFilters,

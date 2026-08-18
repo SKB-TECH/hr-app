@@ -5,6 +5,7 @@ import { getLocale, getMessages } from "next-intl/server";
 import { AppProvider } from "@/context/AppContext";
 import { epilogue, clashDisplay, redHat, inter } from "@/lib/fonts";
 import { Toaster } from "react-hot-toast";
+import { QueryProvider } from "@/core/providers/query-provider";
 
 
 export const metadata: Metadata = {
@@ -36,10 +37,12 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>
-          <AppProvider>
-            {children}
-            <Toaster position="top-center" />
-          </AppProvider>
+          <QueryProvider>
+            <AppProvider>
+              {children}
+              <Toaster position="top-center" />
+            </AppProvider>
+          </QueryProvider>
         </NextIntlClientProvider>
       </body>
     </html>

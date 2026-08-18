@@ -9,8 +9,15 @@ import PerksBenefits from "./PerksBenefits";
 import { JobData } from "./types";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { useMyCompany } from "@/core/hooks/company/use-my-company";
+import { useCreateCompanyJob } from "@/core/hooks/jobs/use-create-company-job";
+import { useRouter } from "@/i18n/routing";
+import toast from "react-hot-toast";
 
 export default function PostJob() {
+  const router = useRouter();
+  const company = useMyCompany();
+  const createJob = useCreateCompanyJob(company.data?.id || "");
   const [currentStep, setCurrentStep] = useState(1);
 
   const [jobData, setJobData] = useState<JobData>({
@@ -69,10 +76,27 @@ export default function PostJob() {
     }
   };
 
-  const handleSubmit = () => {
-
-    // Later you will replace this with your API call
-    alert("Job submitted successfully!");
+  const handleSubmit = async () => {
+    if (!company.data) { toast.error("Create your company profile first"); return; }
+    try {
+      await createJob.mutateAsync({
+        title: jobData.jobTitle,
+        employmentTypes: jobData.employmentTypes,
+        minSalary: jobData.minSalary,
+        maxSalary: jobData.maxSalary,
+        category: jobData.category,
+        skills: jobData.skills,
+        description: jobData.jobDescription,
+        responsibilities: jobData.responsibilities,
+        requirements: jobData.whoYouAre,
+        niceToHave: jobData.niceToHave,
+        status: "LIVE",
+      });
+      toast.success("Job published successfully");
+      router.push("/company/job-listing");
+    } catch {
+      toast.error("Unable to publish this job");
+    }
   };
 
   return (
@@ -130,9 +154,10 @@ export default function PostJob() {
           <button
             type="button"
             onClick={handleSubmit}
+            disabled={createJob.isPending}
             className="bg-brand px-6 py-3 font-medium text-white hover:bg-indigo-700"
           >
-            Do a Review
+            {createJob.isPending ? "Publishing…" : "Publish job"}
           </button>
         )}
       </div>

@@ -1,11 +1,21 @@
 import createNextIntlPlugin from "next-intl/plugin";
+import type { NextConfig } from "next";
 import type { Configuration } from "webpack";
 
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   images: {
-    domains: ["i.pravatar.cc", "flagcdn.com"],
+    remotePatterns: [
+      { protocol: "https", hostname: "i.pravatar.cc" },
+      { protocol: "https", hostname: "flagcdn.com" },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3000",
+        pathname: "/files/**",
+      },
+    ],
   },
 
   webpack: (config: Configuration) => {

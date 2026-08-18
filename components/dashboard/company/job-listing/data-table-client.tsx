@@ -1,6 +1,6 @@
 "use client";
 import { columns } from "./columns";
-import { jobListingData, TableDataTypes } from "@/data/company-job-listing";
+import { TableDataTypes } from "@/data/company-job-listing";
 import { DataTable } from "./data-table";
 import TableHeader from "./table-header";
 import Pagination from "./pagination";
@@ -15,7 +15,7 @@ export interface JobListingTable {
   onPageChange?: (page: number) => void;
 }
 
-function DataTableClient() {
+function DataTableClient({ jobs }: { jobs: TableDataTypes[] }) {
   const router = useRouter();
   const pathname = usePathname();
   const [jobsPerPage, setJobsPerPage] = useState<number>(7);
@@ -50,14 +50,14 @@ function DataTableClient() {
   };
 
   const filteredData = useMemo(() => {
-    return jobListingData.filter((job) => {
+    return jobs.filter((job) => {
       const statusMatch =
         statusFilters.length === 0 || statusFilters.includes(job.status);
       const typeMatch =
         jobTypeFilters.length === 0 || jobTypeFilters.includes(job.job_type);
       return statusMatch && typeMatch;
     });
-  }, [statusFilters, jobTypeFilters]);
+  }, [jobs, statusFilters, jobTypeFilters]);
 
   const totalPages = Math.ceil(filteredData.length / jobsPerPage);
 
