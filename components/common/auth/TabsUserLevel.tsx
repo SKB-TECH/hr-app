@@ -12,14 +12,14 @@ export default function TabsUserLevel({
                                           onChange,
                                       }: Props) {
     return (
-        <div className="flex w-full items-center justify-center">
+        <div className="mx-auto flex w-fit items-center justify-center border border-brand-light-neutral bg-white p-1">
             <button
                 type="button"
                 onClick={() => onChange("job-seeker")}
-                className={`px-5 py-2.5 font-epilogue font-medium transition-all ${
+                className={`border px-5 py-2.5 font-epilogue font-medium transition-all ${
                     value === "job-seeker"
-                        ? "bg-purple-100 text-indigo-600"
-                        : "bg-transparent text-slate-500 hover:bg-slate-50 hover:text-indigo-600"
+                        ? "border-brand bg-purple-100 text-indigo-600"
+                        : "border-transparent bg-transparent text-slate-500 hover:bg-slate-50 hover:text-indigo-600"
                 }`}
             >
                 Job Seeker
@@ -28,10 +28,10 @@ export default function TabsUserLevel({
             <button
                 type="button"
                 onClick={() => onChange("company")}
-                className={`px-5 py-2.5 font-epilogue font-medium transition-all ${
+                className={`border px-5 py-2.5 font-epilogue font-medium transition-all ${
                     value === "company"
-                        ? "bg-purple-100 text-indigo-600"
-                        : "bg-transparent text-slate-500 hover:bg-slate-50 hover:text-indigo-600"
+                        ? "border-brand bg-purple-100 text-indigo-600"
+                        : "border-transparent bg-transparent text-slate-500 hover:bg-slate-50 hover:text-indigo-600"
                 }`}
             >
                 Company

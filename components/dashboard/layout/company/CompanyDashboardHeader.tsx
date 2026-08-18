@@ -7,6 +7,7 @@ import { NotificationBell } from "../candidate/NotificationBell";
 import { ChevronDown, Plus } from "lucide-react";
 import { CandidateMobileSidebarProps } from "../candidate/DashBoardHeaderWrapper";
 import { useMyCompany } from "@/core/hooks/company/use-my-company";
+import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 
 const HAS_NOTIFICATIONS = true;
 const NOTIFICATION_COUNT = 4;
@@ -46,6 +47,8 @@ export default function CompanyDashboardHeader({
 
       {/* Right section */}
       <div className="flex items-center gap-4">
+        <LanguageSwitcher />
+
         {/* Notifications */}
         <NotificationBell
           hasNotifications={HAS_NOTIFICATIONS}

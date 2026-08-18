@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { getPageName, getParentPath, shouldShowBackButton } from "@/lib/utils";
 import { NotificationBell } from "./NotificationBell";
 import { CandidateMobileSidebarProps } from "./DashBoardHeaderWrapper";
+import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 
 interface DashboardHeaderProps {
   pathname: string;
@@ -33,6 +34,8 @@ export default function DashboardHeader({
 
       {/* Right section */}
       <div className="flex items-center gap-4">
+        <LanguageSwitcher />
+
         {/* Desktop button */}
         <Button
           asChild

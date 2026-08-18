@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { X } from "lucide-react";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
+import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 
 export default function NavbarComponentLandingPage() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +41,7 @@ export default function NavbarComponentLandingPage() {
 
         {/* Desktop: Login + Sign Up */}
         <div className="hidden md:flex flex-row items-center gap-2">
+          <LanguageSwitcher className="mr-2" />
           <Link
             href="/sign-in"
             className="font-medium hover:text-indigo-800 text-brand pr-4 border-r"
@@ -84,6 +86,7 @@ export default function NavbarComponentLandingPage() {
             </Link>
           ))}
           <div className="flex items-center gap-4 pt-4">
+            <LanguageSwitcher />
             <Link
               href="/sign-in"
               className="text-sm text-gray-600 hover:text-indigo-600"

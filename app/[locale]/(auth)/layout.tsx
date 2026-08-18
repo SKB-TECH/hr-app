@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 
 export default function LayoutAuth({
                                        children,
@@ -7,7 +8,8 @@ export default function LayoutAuth({
     children?: React.ReactNode;
 }) {
     return (
-        <div className="min-h-screen w-full bg-white">
+        <div className="relative min-h-screen w-full bg-white">
+            <LanguageSwitcher className="absolute right-4 top-4 z-20 sm:right-6 sm:top-6" />
             <div className="grid min-h-screen w-full grid-cols-1 md:grid-cols-5">
                 {/* Partie gauche */}
                 <div className="AuthLogin relative hidden md:col-span-2 md:block">
