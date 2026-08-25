@@ -55,3 +55,4 @@ export type CompanyInvitation = {
 export type AddCompanyMemberInput = { email: string; fullName?: string; title?: string; role: CompanyMemberRole };
 export type CompanyTeamMemberInput = { name: string; role: string; avatar?: string; instagram?: string; linkedin?: string; displayOrder?: number };
 export type CompanyTeamMember = CompanyTeamMemberInput & { id: string; companyId: string; createdAt: string; updatedAt: string };
+export type CompanyNotificationPreferences = { id: string; companyId: string; userId: string; recruiterRelated: boolean; subscriptionNotifications: boolean; billingAlerts: boolean; securityUpdates: boolean; updatedAt: string };

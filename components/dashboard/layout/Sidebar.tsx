@@ -30,6 +30,7 @@ export default function Sidebar() {
         alt=""
         quality={100}
         className="w-full bottom-0 absolute translate-y-12 inset-x-0 pointer-events-none"
+        style={{ height: "auto" }}
         aria-hidden="true"
       />
     </aside>

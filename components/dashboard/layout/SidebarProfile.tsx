@@ -16,7 +16,7 @@ export function SidebarProfile() {
         className="relative z-2 flex  justify-center items-center gap-3 p-2 rounded-lg hover:bg-[#e6e5fa] transition-colors duration-200"
       >
         <Image
-          src={mediaUrl(user?.avatar, "/team/person3.png")}
+          src={mediaUrl(user?.avatar, "/team/person2.png")}
           alt="User Profile"
           width={40}
           height={40}

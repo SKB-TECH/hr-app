@@ -48,6 +48,7 @@ export function NotificationBell({
           width={16}
           height={16}
           className="transition-transform duration-200 group-hover:scale-110"
+          style={{ width: "auto" }}
         />
         {hasNotifications && (
           <span className="absolute right-1 top-1 flex h-2 w-2 items-center justify-center rounded-full border border-white bg-orange-500" />

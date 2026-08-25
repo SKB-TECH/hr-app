@@ -117,19 +117,19 @@ export const IntelLogo = () => (
 
 export const TeslaLogo = () => (
   <div>
-    <Image src="/tesla.png" alt="Tesla" width={160} height={160} />
+    <Image src="/tesla.png" alt="Tesla" width={160} height={160} style={{ height: "auto" }} />
   </div>
 );
 
 // AMD with the custom arrow mark
 export const AmdLogoSvg = () => (
   <div>
-    <Image src="/amd.png" alt="AMD" width={100} height={100} />
+    <Image src="/amd.png" alt="AMD" width={100} height={100} style={{ height: "auto" }} />
   </div>
 );
 
 export const TalkitLogo = () => (
   <div>
-    <Image src="/talkit.png" alt="TALKIT" width={100} height={100} />
+    <Image src="/talkit.png" alt="TALKIT" width={100} height={100} style={{ height: "auto" }} />
   </div>
 );

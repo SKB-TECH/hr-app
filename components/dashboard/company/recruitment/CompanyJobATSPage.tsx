@@ -17,8 +17,9 @@ export default function CompanyJobATSPage({ jobId }: { jobId: string }) {
   const router = useRouter();
   const reopen = useReopenCompanyJob(company.data?.id || "");
   const duplicate = useDuplicateCompanyJob(company.data?.id || "");
-  if (company.isError || job.isError || !company.data || !job.data) return <div className="grid h-full place-items-center text-center"><div><p className="font-bold text-neutral-100">Unable to load this job ATS.</p><button onClick={() => { void company.refetch(); void job.refetch(); }} className="mt-4 bg-brand px-5 py-3 text-sm font-bold text-white">Try again</button></div></div>;
+  if (company.isError || job.isError) return <div className="grid h-full place-items-center text-center"><div><p className="font-bold text-neutral-100">Unable to load this job ATS.</p><button onClick={() => { void company.refetch(); void job.refetch(); }} className="mt-4 bg-brand px-5 py-3 text-sm font-bold text-white">Try again</button></div></div>;
   if (company.isPending || job.isPending) return <div className="grid h-full place-items-center text-neutral-60">Loading ATS…</div>;
+  if (!company.data || !job.data) return <div className="grid h-full place-items-center text-neutral-60">No company job found.</div>;
   const item = job.data;
   const progress = Math.min(100, Math.round((item.hiredCount / Math.max(1, item.hiringTarget)) * 100));
   async function duplicateJob() { try { const copy = await duplicate.mutateAsync(jobId); toast.success("Offre dupliquée en brouillon."); router.push(`/company/job-listing/${copy.id}`); } catch { toast.error("Impossible de dupliquer cette offre."); } }

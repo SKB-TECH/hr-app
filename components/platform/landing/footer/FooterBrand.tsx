@@ -10,6 +10,7 @@ export function FooterBrand() {
               width={180}
               height={180}
               className="object-cover"
+              style={{ height: "auto" }}
           />
       </div>
       <p className="text-sm text-gray-400 leading-relaxed max-w-[300px]">

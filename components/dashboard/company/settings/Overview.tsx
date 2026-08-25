@@ -35,6 +35,9 @@ export interface PersonalFormProps {
   isSubmitting?: boolean;
   register: UseFormRegister<ProfileFormValues>;
   setValue?: UseFormSetValue<ProfileFormValues>;
+  initialLocations?: string[];
+  initialTechStack?: string[];
+  initialDescription?: string;
 }
 
 function Overview({
@@ -44,20 +47,19 @@ function Overview({
   isSubmitting,
   register,
   setValue,
+  initialLocations = [],
+  initialTechStack = [],
+  initialDescription = "",
 }: PersonalFormProps) {
-  const [locationTags, setLocationTags] = useState<string[]>([
-    "England",
-    "Japan",
-    "Australia",
-  ]);
-  const [techStackTags, setTechStackTags] = useState<string[]>([
-    "HTML 5",
-    "CSS 3",
-    "Javascript",
-  ]);
-  const [description, setDescription] = useState(
-    "Nomad is part of the Information Technology Industry. We believe travellers want to experience all life and need their local people. Nomad has 30 total employees across all of its locations and generates $1.50 million in sales.",
-  );
+  const [locationTags, setLocationTags] = useState<string[]>(initialLocations);
+  const [techStackTags, setTechStackTags] = useState<string[]>(initialTechStack);
+  const [description, setDescription] = useState(initialDescription);
+
+  const submit: SubmitHandler<ProfileFormValues> = (values, event) =>
+    onSubmit(
+      { ...values, location: locationTags, tech_stack: techStackTags, description },
+      event,
+    );
 
   return (
     <div className="mt-6 pb-10">
@@ -67,7 +69,7 @@ function Overview({
       />
       <hr className="mb-8" />
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(submit)}>
         <ProfilePhoto
           heading="Company Logo"
           paragraph="This image will be shown publicly as company logo."
