@@ -15,7 +15,7 @@ export default function CompanyOverviewDashboard() {
   const stats = useCompanyJobStats(Boolean(company.data));
 
   if (session.isPending || company.isPending || jobs.isPending || stats.isPending) {
-    return <State message="Loading company dashboard…" />;
+    return <CompanyDashboardSkeleton />;
   }
 
   if (company.isError || jobs.isError || stats.isError) {
@@ -108,3 +108,67 @@ function Fact({ label, value }: { label: string; value: string }) { return <div 
 function Status({ value }: { value: string }) { const style = value === "LIVE" ? "border-[#56CDAD] text-[#299676]" : value === "CLOSED" ? "border-accent-red text-accent-red" : "border-accent-yellow text-[#b87500]"; return <span className={`shrink-0 border px-2 py-1 text-[10px] font-bold ${style}`}>{value}</span>; }
 function Empty({ text }: { text: string }) { return <p className="p-8 text-center text-sm text-neutral-60">{text}</p>; }
 function State({ message, action }: { message: string; action?: () => void }) { return <div className="grid h-full min-h-80 place-items-center p-8 text-center"><div><p className="font-semibold text-neutral-100">{message}</p>{action && <button onClick={action} className="mt-4 bg-brand px-5 py-2.5 text-sm font-bold text-white">Try again</button>}</div></div>; }
+
+function CompanyDashboardSkeleton() {
+  return (
+    <main
+      className="h-full overflow-hidden bg-[#fafaff] px-4 pb-10 sm:px-6 lg:px-8"
+      aria-busy="true"
+      aria-label="Loading company dashboard"
+    >
+      <div className="animate-pulse">
+        <header className="flex flex-col gap-4 py-6 sm:flex-row sm:items-end sm:justify-between">
+          <div className="space-y-3">
+            <Skeleton className="h-3 w-28" />
+            <Skeleton className="h-8 w-64 max-w-[70vw]" />
+            <Skeleton className="h-3 w-80 max-w-[80vw]" />
+          </div>
+          <Skeleton className="h-10 w-36" />
+        </header>
+
+        <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {[0, 1, 2, 3].map((item) => (
+            <div key={item} className="flex h-[104px] items-center justify-between bg-white p-5 ring-1 ring-brand-light-neutral">
+              <div className="space-y-3"><Skeleton className="h-9 w-16" /><Skeleton className="h-3 w-28" /></div>
+              <Skeleton className="size-11" />
+            </div>
+          ))}
+        </section>
+
+        <section className="mt-5 grid gap-5 xl:grid-cols-[minmax(0,1.6fr)_minmax(280px,.7fr)]">
+          <div className="border border-brand-light-neutral bg-white p-5 sm:p-6">
+            <div className="flex justify-between gap-4"><div className="space-y-3"><Skeleton className="h-5 w-44" /><Skeleton className="h-3 w-56" /></div><Skeleton className="h-4 w-20" /></div>
+            <div className="mt-8 space-y-6">
+              {[72, 48, 84, 60, 38].map((width, item) => (
+                <div key={item} className="grid gap-3 sm:grid-cols-[minmax(140px,220px)_1fr_36px] sm:items-center">
+                  <Skeleton className="h-4 w-32" /><div className="h-2 bg-[#edf0f7]"><div className="h-full bg-[#dddafc]" style={{ width: `${width}%` }} /></div><Skeleton className="h-4 w-7" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <aside className="border border-brand-light-neutral bg-white p-5 sm:p-6">
+            <Skeleton className="h-5 w-36" />
+            <div className="mt-5 flex items-center gap-4"><Skeleton className="size-16" /><div className="space-y-3"><Skeleton className="h-4 w-32" /><Skeleton className="h-3 w-24" /></div></div>
+            <div className="mt-6 space-y-px bg-brand-light-neutral py-px">
+              {[0, 1, 2].map((item) => <div key={item} className="flex justify-between bg-white py-3"><Skeleton className="h-3 w-20" /><Skeleton className="h-3 w-24" /></div>)}
+            </div>
+            <Skeleton className="mt-5 h-11 w-full" />
+          </aside>
+        </section>
+
+        <section className="mt-5 border border-brand-light-neutral bg-white">
+          <div className="flex justify-between border-b border-brand-light-neutral px-5 py-4 sm:px-6"><Skeleton className="h-5 w-40" /><Skeleton className="h-4 w-16" /></div>
+          <div className="grid sm:grid-cols-2 xl:grid-cols-3">
+            {[0, 1, 2].map((item) => <div key={item} className="space-y-4 border-brand-light-neutral p-5 sm:border-r"><Skeleton className="h-4 w-40" /><Skeleton className="h-3 w-52 max-w-full" /><Skeleton className="h-3 w-32" /></div>)}
+          </div>
+        </section>
+      </div>
+      <span className="sr-only">Loading recruitment data…</span>
+    </main>
+  );
+}
+
+function Skeleton({ className }: { className: string }) {
+  return <div className={`bg-[#ebeaf4] ${className}`} />;
+}
