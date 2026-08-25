@@ -22,8 +22,8 @@ export default function CompanyMembers() {
   const update = useUpdateCompanyMember(id);
   const revoke = useRevokeCompanyInvitation(id);
   const [inviteOpen, setInviteOpen] = useState(false);
-  if (mine.isPending || members.isPending) return <p className="py-20 text-center text-neutral-60">Loading members…</p>;
   if (mine.isError || members.isError || invitations.isError) return <div className="py-20 text-center"><p className="font-bold text-neutral-100">Unable to load company members.</p><p className="mt-2 text-sm text-neutral-60">Check your connection and try again.</p><button onClick={() => { void mine.refetch(); void members.refetch(); void invitations.refetch(); }} className="mt-5 bg-brand px-5 py-3 text-sm font-bold text-white">Try again</button></div>;
+  if (mine.isPending || members.isPending || invitations.isPending) return <p className="py-20 text-center text-neutral-60">Loading members…</p>;
   if (!mine.data) return <p className="py-20 text-center text-neutral-60">Create your company profile first.</p>;
   return <div className="w-full">
     <header className="flex items-center justify-between gap-4"><div><h1 className="text-2xl font-bold">Company Members</h1><p className="text-sm text-neutral-60">Manage access roles and pending invitations.</p></div><button onClick={() => setInviteOpen(true)} className="flex h-11 items-center gap-2 bg-brand px-5 text-sm font-bold text-white"><Plus size={17}/>Add member</button></header>

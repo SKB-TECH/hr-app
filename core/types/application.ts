@@ -29,6 +29,16 @@ export type CompanyApplication = {
 
 export type ApplicationQuery = { stageId?: string; search?: string; page?: number; limit?: number };
 
+export type ApplicationStageHistory = {
+  id: string;
+  applicationId: string;
+  oldStageName: string;
+  newStageName: string;
+  note: string | null;
+  createdAt: string;
+  changedBy?: { id: string; fullName?: string | null; email?: string | null };
+};
+
 export type Interview = {
   id: string;
   applicationId: string;
