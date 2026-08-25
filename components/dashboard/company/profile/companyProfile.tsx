@@ -3,7 +3,7 @@
 import { useMyCompany } from "@/core/hooks/company/use-my-company";
 import { Building2, CalendarDays, Globe2, MapPin, Users } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { mediaUrl } from "@/core/lib/media-url";
 
 export default function CompanyProfile() {

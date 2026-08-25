@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 type ApplicationStatus = "In Review" | "Shortlisted" | "Declined";

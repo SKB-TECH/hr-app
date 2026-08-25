@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import TriggerApplicationForm from "./job-application-form/TriggerApplicationForm";
 
 interface JobDetails {

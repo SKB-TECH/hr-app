@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from "@/i18n/routing";
 import { companyProfiles } from "@/data/companyDetails";
 import { MdOutlineEmail } from 'react-icons/md';
 import { PlusIcon } from 'lucide-react';

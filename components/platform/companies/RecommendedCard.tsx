@@ -1,6 +1,6 @@
 import type { RecommendedCompany } from "@/data/companies";
 import CompanyLogo from "./CompanyLogo";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 type RecommendedCardProps = {
   company: RecommendedCompany;

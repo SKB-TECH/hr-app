@@ -1,7 +1,7 @@
 "use client";
 import {Button} from "@/components/ui/button";
 import {navigations} from "@/data/data";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import {Briefcase} from "lucide-react";
 
 export default function Navbar() {

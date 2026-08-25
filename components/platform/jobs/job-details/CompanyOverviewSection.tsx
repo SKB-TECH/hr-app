@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import ImageGrid from "./ImageGrid";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 type Props = {
   company: string;

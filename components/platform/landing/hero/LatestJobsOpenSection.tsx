@@ -1,7 +1,7 @@
 import { SectionTitle } from "@/components/ui/Title";
 import { latestJobs } from "@/data/latestJobs";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 const tagStyles: Record<string, string> = {
   "Full-Time": "text-accent-green bg-accent-light-green  ",

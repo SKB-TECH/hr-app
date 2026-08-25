@@ -1,6 +1,6 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 export function DonutChart({
   unsuitable = 60,

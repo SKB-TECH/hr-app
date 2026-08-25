@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Company } from "@/types/types";
 import SharedCard from "@/components/common/navbar/SharedCard";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 export function CompanyCard({ company }: { company: Company }) {
   return (

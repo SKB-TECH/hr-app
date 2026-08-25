@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { MdOutlineRemoveRedEye, MdOutlineSettings } from "react-icons/md";
 
 const icons = [

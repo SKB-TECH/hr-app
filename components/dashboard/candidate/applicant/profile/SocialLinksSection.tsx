@@ -1,7 +1,7 @@
 'use client';
 
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 interface SocialLink {
   platform: string;

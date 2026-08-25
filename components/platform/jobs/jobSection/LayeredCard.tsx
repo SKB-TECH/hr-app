@@ -1,6 +1,6 @@
 import SharedCard from "@/components/common/navbar/SharedCard";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import AtsScore from "./AtsScore";
 import { JobsCardProps } from "./JobsCard";
 import { getAtsDetails } from "@/lib/candidate";

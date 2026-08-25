@@ -1,7 +1,7 @@
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import { ArrowRightIcon, PlusIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
 interface TeamSectionProps {

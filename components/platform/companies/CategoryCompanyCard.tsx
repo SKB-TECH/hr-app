@@ -1,6 +1,6 @@
 import type { CategoryCompany } from "@/data/companies";
 import CompanyLogo from "./CompanyLogo";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 type CategoryCompanyCardProps = {
   company: CategoryCompany;

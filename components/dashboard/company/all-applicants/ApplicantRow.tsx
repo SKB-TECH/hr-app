@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Star, MoreHorizontal } from "lucide-react";
 import StatusBadge from "./StatusBadge";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 interface Props {
   applicant: {
