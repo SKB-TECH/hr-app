@@ -14,16 +14,16 @@ export default function CompanyOverviewDashboard() {
   const jobs = useCompanyJobs(company.data?.id, { limit: 100 });
   const stats = useCompanyJobStats(Boolean(company.data));
 
-  if (session.isPending || company.isPending || jobs.isPending || stats.isPending) {
-    return <CompanyDashboardSkeleton />;
-  }
-
   if (company.isError || jobs.isError || stats.isError) {
     return <State message="Unable to load the company dashboard." action={() => {
       void company.refetch();
       void jobs.refetch();
       void stats.refetch();
     }} />;
+  }
+
+  if (session.isPending || company.isPending || jobs.isPending || stats.isPending) {
+    return <CompanyDashboardSkeleton />;
   }
 
   const companyJobs = jobs.data?.data || [];
