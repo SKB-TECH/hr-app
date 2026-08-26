@@ -41,7 +41,7 @@ export type CompanyMember = {
   title: string | null;
   joinedAt: string;
   isActive: boolean;
-  company?: Company;
+  company: Company;
   user: { id: string; fullName: string; email: string; avatar: string | null };
 };
 export type CompanyInvitation = {
