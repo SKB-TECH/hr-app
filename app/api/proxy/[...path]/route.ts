@@ -100,7 +100,10 @@ async function proxy(
         });
         const contentType = upstream.headers.get('content-type');
         if (contentType) res.headers.set('content-type', contentType);
-        const location = isGoogleCallback ? new URL('/fr/candidate', req.url).toString() : upstream.headers.get('location');
+        const googleProfile = req.nextUrl.searchParams.get('state');
+        const location = isGoogleCallback
+            ? new URL(googleProfile === 'COMPANY' ? '/fr/company' : '/fr/candidate', req.url).toString()
+            : upstream.headers.get('location');
         if (location) res.headers.set('location', location);
         const responseHeaders = upstream.headers as Headers & { getSetCookie?: () => string[] };
         const cookies = responseHeaders.getSetCookie?.() ?? (upstream.headers.get('set-cookie') ? [upstream.headers.get('set-cookie')!] : []);

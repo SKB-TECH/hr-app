@@ -26,15 +26,14 @@ export default function SignInPage() {
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
-      const user = await login.mutateAsync({
+      await login.mutateAsync({
         email: email.trim(),
         password,
         rememberMe,
         portal: userLevel === "company" ? "COMPANY" : "CANDIDATE",
       });
-      const companyRoles = ["COMPANY_OWNER", "HR_MANAGER", "RECRUITER", "ADMIN", "SUPER_ADMIN"];
       toast.success("Connexion réussie");
-      router.replace(companyRoles.includes(user.role) ? "/company" : "/candidate");
+      router.replace(userLevel === "company" ? "/company" : "/candidate");
     } catch (error) {
       if (error instanceof ApiError && error.status === 401) {
         toast.error(
@@ -70,7 +69,7 @@ export default function SignInPage() {
           <h1 className="font-epilogue text-3xl font-extrabold text-slate-900">Welcome Back</h1>
           <p className="text-sm text-slate-500">{userLevel === "job-seeker" ? "Sign in to continue your job search and manage your applications." : "Sign in to manage your jobs, candidates and recruitment process."}</p>
         </div>
-        <button type="button" onClick={() => window.location.assign(getGoogleAuthUrl())} className="flex h-14 w-full items-center justify-center gap-3 border border-gray-300 bg-white font-semibold text-indigo-600 hover:bg-gray-50">
+        <button type="button" onClick={() => window.location.assign(getGoogleAuthUrl(userLevel === "company" ? "COMPANY" : "CANDIDATE"))} className="flex h-14 w-full items-center justify-center gap-3 border border-gray-300 bg-white font-semibold text-indigo-600 hover:bg-gray-50">
           <Image width={24} height={24} src="/images/google.svg" alt="Google" /> Sign in with Google
         </button>
         <Separator text="Or login with email" />

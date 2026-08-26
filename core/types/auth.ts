@@ -13,6 +13,8 @@ export type AuthUser = {
   fullName?: string;
   avatar?: string | null;
   role: UserRole;
+  profiles: Array<"CANDIDATE" | "COMPANY">;
+  activeProfile: "CANDIDATE" | "COMPANY";
   status?: string;
   emailVerified?: boolean;
 };
