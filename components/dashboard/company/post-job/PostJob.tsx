@@ -13,6 +13,7 @@ import { JobData } from "./types";
 import { Link, useRouter } from "@/i18n/routing";
 import { useMyCompany } from "@/core/hooks/company/use-my-company";
 import { useCreateCompanyJob } from "@/core/hooks/jobs/use-create-company-job";
+import AiJobGenerator from "./AiJobGenerator";
 
 export default function PostJob() {
   const router = useRouter();
@@ -77,7 +78,7 @@ export default function PostJob() {
     }
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (status: "DRAFT" | "LIVE") => {
     if (!company.data) {
       toast.error("Create your company profile first");
       return;
@@ -98,10 +99,10 @@ export default function PostJob() {
         requirements: jobData.whoYouAre,
         niceToHave: jobData.niceToHave,
         benefits: jobData.benefits,
-        status: "LIVE",
+        status,
       });
 
-      toast.success("Job published successfully");
+      toast.success(status === "LIVE" ? "Job published successfully" : "Draft saved successfully");
 
       // next-intl ajoutera automatiquement /fr ou /en
       router.push("/company/job-listing");
@@ -123,6 +124,8 @@ export default function PostJob() {
         </div>
 
         <Stepper currentStep={currentStep} />
+
+        <AiJobGenerator data={jobData} updateData={updateData} companyName={company.data?.name || "Company"} industry={company.data?.industry}/>
 
         {currentStep === 1 && (
             <JobInformation data={jobData} updateData={updateData} />
@@ -159,14 +162,19 @@ export default function PostJob() {
                 Next Step
               </button>
           ) : (
-              <button
+              <div className="flex gap-3"><button
                   type="button"
-                  onClick={handleSubmit}
+                  onClick={() => handleSubmit("DRAFT")}
+                  disabled={createJob.isPending}
+                  className="border border-brand px-6 py-3 font-medium text-brand disabled:opacity-60"
+              >Save draft</button><button
+                  type="button"
+                  onClick={() => handleSubmit("LIVE")}
                   disabled={createJob.isPending}
                   className="bg-brand px-6 py-3 font-medium text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {createJob.isPending ? "Publishing…" : "Publish job"}
-              </button>
+              </button></div>
           )}
         </div>
       </section>
