@@ -9,12 +9,14 @@ import SettingsMobileaNav from "./SettingsMobileaNav";
 import FooterMobilesSidebar from "./FooterMobilesSidebar";
 import MobileSidebarHeader from "./MobileSidebarHeader";
 import { CandidateMobileSidebarProps } from "../DashBoardHeaderWrapper";
+import { useSession } from "@/core/hooks/auth/use-session";
 
 export default function MobileSidebar({
   toggleMobileMenu,
   isMobileMenuOpen,
 }: CandidateMobileSidebarProps) {
-  const role: UserRoles = "company"; // later from context
+  const { data: user } = useSession();
+  const role: UserRoles = user?.activeProfile === "COMPANY" ? "company" : "candidate";
   const pathname = getActivePathname(usePathname());
 
   const [navItems, settingItems] = getNavItems(role);

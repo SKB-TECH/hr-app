@@ -27,8 +27,13 @@ export const getStyleForCategory = (
 };
 
 export function getActivePathname(pathnameWithLocale: string) {
-  // Remove locale prefix & 1st path
-  return "/" + pathnameWithLocale.split("/").filter(Boolean).slice(2).join("/");
+  const segments = pathnameWithLocale.split("/").filter(Boolean);
+  const dashboardIndex = segments.findIndex(
+    (segment) => segment === "company" || segment === "candidate",
+  );
+  return dashboardIndex === -1
+    ? "/"
+    : "/" + segments.slice(dashboardIndex + 1).join("/");
 }
 
 export function shouldShowBackButton(pathname: string) {

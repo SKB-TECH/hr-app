@@ -4,6 +4,7 @@ import { UserRoles } from "@/data/SidebarNavigations";
 import { NavItem } from "./candidate/NavItem";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
+import { useSession } from "@/core/hooks/auth/use-session";
 import {
   getActivePathname,
   getNavItems,
@@ -13,9 +14,8 @@ import {
 
 function SidebarNavigation() {
   const fullPathname = usePathname();
-  const role: UserRoles = fullPathname.split("/").filter(Boolean)[1] === "company"
-    ? "company"
-    : "candidate";
+  const { data: user } = useSession();
+  const role: UserRoles = user?.activeProfile === "COMPANY" ? "company" : "candidate";
   const pathname = getActivePathname(fullPathname);
   const [navItems, settingItems] = useMemo(() => getNavItems(role), [role]);
 
