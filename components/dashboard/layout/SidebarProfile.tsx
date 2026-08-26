@@ -25,7 +25,7 @@ export function SidebarProfile() {
   const changeProfile = (target: "CANDIDATE" | "COMPANY") => {
     if (target === user?.activeProfile) return;
     profile.mutate(
-      { profile: target, enable: !user?.profiles?.includes(target) },
+      { profile: target },
       {
         onSuccess: () => {
           setShowLogOut(false);
@@ -40,8 +40,12 @@ export function SidebarProfile() {
     <div ref={containerRef} className="relative z-20 px-3 pb-3">
       {showLogOut && <div className="absolute bottom-full left-3 right-3 mb-2 overflow-hidden border border-[#e8e7f2] bg-white shadow-[0_16px_40px_rgba(37,50,75,0.16)]">
         <p className="px-4 pb-2 pt-3 text-[10px] font-bold uppercase tracking-[0.12em] text-neutral-60">Changer de profil</p>
-        <ProfileChoice label={user?.profiles?.includes("COMPANY") ? "Entreprise" : "Ajouter un profil entreprise"} active={user?.activeProfile === "COMPANY"} pending={profile.isPending} onClick={() => changeProfile("COMPANY")}/>
-        <ProfileChoice label={user?.profiles?.includes("CANDIDATE") ? "Candidat" : "Ajouter un profil candidat"} active={user?.activeProfile === "CANDIDATE"} pending={profile.isPending} onClick={() => changeProfile("CANDIDATE")}/>
+        {user?.profiles?.includes("COMPANY") && (
+          <ProfileChoice label="Entreprise" active={user.activeProfile === "COMPANY"} pending={profile.isPending} onClick={() => changeProfile("COMPANY")}/>
+        )}
+        {user?.profiles?.includes("CANDIDATE") && (
+          <ProfileChoice label="Candidat" active={user.activeProfile === "CANDIDATE"} pending={profile.isPending} onClick={() => changeProfile("CANDIDATE")}/>
+        )}
         <LogoutButton />
       </div>}
       <button
