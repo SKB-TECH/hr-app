@@ -1,137 +1,98 @@
 "use client";
 
-import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
 import { useState } from "react";
+import { PlusIcon, BookOpenIcon } from "@heroicons/react/24/outline";
 
-interface Education {
-  id: number;
-  school: string;
-  degree: string;
-  startYear: string;
-  endYear: string;
-  description: string;
-  logo: string;
-}
-
-const allEducations: Education[] = [
-  {
-    id: 1,
-    school: "Harvard University",
-    degree: "Postgraduate degree, Applied Psychology",
-    startYear: "2010",
-    endYear: "2012",
-    description:
-      "As an Applied Psychologist in the field of Consumer and Society, I am specialized in creating business opportunities by observing, analysing, researching and changing behaviour.",
-    logo: "/Harvard.png",
-  },
-  {
-    id: 2,
-    school: "University of Toronto",
-    degree: "Bachelor of Arts, Visual Communication",
-    startYear: "2005",
-    endYear: "2009",
-    description: "",
-    logo: "/Toronto.png",
-  },
-  {
-    id: 3,
-    school: "Manchester High School",
-    degree: "High School Diploma",
-    startYear: "2001",
-    endYear: "2005",
-    description: "",
-    logo: "/Manchester.png",
-  },
-  {
-    id: 4,
-    school: "London Academy of Arts",
-    degree: "Certificate, Graphic Design",
-    startYear: "1999",
-    endYear: "2001",
-    description: "",
-    logo: "/London.png",
-  },
-];
-
-function EducationItem({ edu, isLast }: { edu: Education; isLast: boolean }) {
-  return (
-    <div
-      className={`sm:flex gap-4 ${!isLast ? "pb-6 mb-6 border-b border-gray-100" : ""}`}
-    >
-      {/* Logo */}
-      <div className='w-12 h-12 rounded-md overflow-hidden bg-gray-100 flex-shrink-0 flex items-center justify-center'>
-        <Image
-          src={edu.logo}
-          alt={edu.school}
-          width={80}
-          height={80}
-          className='object-contain w-full h-full'
-          onError={(e) => {
-            (e.target as HTMLImageElement).style.display = "none";
-          }}
-        />
-      </div>
-
-      {/* Content */}
-      <div className='flex-1 min-w-0'>
-        <div className='flex items-start justify-between gap-2'>
-          <h3 className='text-[18px] font-bold text-[#202430]'>{edu.school}</h3>
-          <button className='border border-gray-200 p-1.5   flex-shrink-0'>
-            <PencilSquareIcon className='w-4 h-4 text-brand' />
-          </button>
-        </div>
-
-        <p className='text-[16px] text-gray-500 mt-1'>{edu.degree}</p>
-        <p className='text-[16px] text-gray-400 mt-1'>
-          {edu.startYear} - {edu.endYear}
-        </p>
-
-        {edu.description && (
-          <p className='text-[16px] text-gray-500 leading-relaxed mt-3'>
-            {edu.description}
-          </p>
-        )}
-      </div>
-    </div>
-  );
-}
+import { useCandidateEducations } from "@/core/hooks/candidate/use-candidate-educations";
+import EducationItem from "./Education/EducationItem";
+import EducationModal from "./Education/EducationModal";
+import DeleteEducationDialog from "./Education/DeleteEducationDialog";
+import type { CandidateEducation } from "@/core/types/candidate-education";
 
 export default function EducationsSection() {
-  const [showAll, setShowAll] = useState(false);
-  const visibleCount = 2;
-  const visibleEducations = showAll
-    ? allEducations
-    : allEducations.slice(0, visibleCount);
-  const remaining = allEducations.length - visibleCount;
+  const { data: educations = [], isLoading, isError } = useCandidateEducations();
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editingEducation, setEditingEducation] = useState<CandidateEducation | null>(null);
+  const [deletingEducation, setDeletingEducation] = useState<CandidateEducation | null>(null);
+
+  const openAddModal = () => {
+    setEditingEducation(null);
+    setModalOpen(true);
+  };
+
+  const openEditModal = (education: CandidateEducation) => {
+    setEditingEducation(education);
+    setModalOpen(true);
+  };
 
   return (
-    <div className='bg-white border border-gray-200 p-6'>
-      <div className='flex items-center justify-between mb-6'>
-        <h2 className='text-[20px] font-bold text-[#25324B]'>Educations</h2>
-        <button className='border border-gray-200 p-1.5  '>
-          <PlusIcon className='w-4 h-4 text-brand' />
-        </button>
-      </div>
-
-      <div>
-        {visibleEducations.map((edu, i) => (
-          <EducationItem
-            key={edu.id}
-            edu={edu}
-            isLast={i === visibleEducations.length - 1}
-          />
-        ))}
-      </div>
-
-      {!showAll && remaining > 0 && (
+    <div className="bg-white border border-gray-200 p-6">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-[20px] font-bold text-[#25324B]">Educations</h2>
         <button
-          onClick={() => setShowAll(true)}
-          className='w-full text-center text-[14px] font-semibold text-brand hover:text-indigo-800 transition-colors mt-2'
+          type="button"
+          onClick={openAddModal}
+          aria-label="Add education"
+          className="cursor-pointer border border-gray-200 p-1.5 hover:border-brand"
         >
-          Show {remaining} more educations
+          <PlusIcon className="w-4 h-4 text-brand" />
         </button>
+      </div>
+
+      {isLoading && (
+        <div className="space-y-4" aria-live="polite" aria-busy="true">
+          {[0, 1].map((key) => (
+            <div key={key} className="animate-pulse">
+              <div className="h-4 w-1/3 rounded bg-gray-100" />
+              <div className="mt-2 h-3 w-1/4 rounded bg-gray-100" />
+              <div className="mt-2 h-3 w-1/5 rounded bg-gray-100" />
+            </div>
+          ))}
+        </div>
       )}
+
+      {!isLoading && isError && (
+        <p className="text-[14px] text-gray-500">
+          We couldn&apos;t load your education history right now. Please refresh the page to try again.
+        </p>
+      )}
+
+      {!isLoading && !isError && educations.length === 0 && (
+        <div className="flex flex-col items-center justify-center gap-2 py-8 text-center">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 text-brand">
+            <BookOpenIcon className="h-5 w-5" />
+          </span>
+          <p className="text-[15px] font-medium text-[#202430]">Add your education</p>
+          <p className="text-[14px] text-gray-500">
+            Show employers your academic background and qualifications by adding your education history.
+          </p>
+          <button
+            type="button"
+            onClick={openAddModal}
+            className="mt-2 cursor-pointer text-[14px] font-semibold text-brand hover:text-indigo-800 transition-colors"
+          >
+            + Add Education
+          </button>
+        </div>
+      )}
+
+      {!isLoading && !isError && educations.length > 0 && (
+        <div>
+          {educations.map((education, index) => (
+            <EducationItem
+              key={education.id}
+              education={education}
+              isLast={index === educations.length - 1}
+              onEdit={openEditModal}
+              onDelete={setDeletingEducation}
+            />
+          ))}
+        </div>
+      )}
+
+      <EducationModal open={modalOpen} onOpenChange={setModalOpen} education={editingEducation} />
+      <DeleteEducationDialog education={deletingEducation} onOpenChange={(open) => !open && setDeletingEducation(null)} />
     </div>
   );
 }

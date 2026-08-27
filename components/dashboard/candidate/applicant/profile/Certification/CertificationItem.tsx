@@ -30,7 +30,7 @@ export default function CertificationItem({ certification, isLast, onEdit, onDel
               type="button"
               onClick={() => onEdit(certification)}
               aria-label={`Edit ${certification.name}`}
-              className="border border-gray-200 p-1.5 hover:border-brand"
+              className="cursor-pointer border border-gray-200 p-1.5 hover:border-brand"
             >
               <PencilSquareIcon className="w-4 h-4 text-brand" />
             </button>
@@ -38,7 +38,7 @@ export default function CertificationItem({ certification, isLast, onEdit, onDel
               type="button"
               onClick={() => onDelete(certification)}
               aria-label={`Delete ${certification.name}`}
-              className="border border-gray-200 p-1.5 hover:border-red-300"
+              className="cursor-pointer border border-gray-200 p-1.5 hover:border-red-300"
             >
               <TrashIcon className="w-4 h-4 text-[#FF6550]" />
             </button>

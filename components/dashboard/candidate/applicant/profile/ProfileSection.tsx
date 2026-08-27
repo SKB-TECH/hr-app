@@ -29,7 +29,7 @@ export default function ProfileSection({
           }}
         />
         <div className="absolute inset-0 bg-black/20" />
-        <button className="absolute top-4 right-4 sm:top-5 sm:right-5 bg-white/90 bg-white p-2 transition-colors z-10">
+        <button className="absolute top-4 right-4 sm:top-5 sm:right-5 bg-white/90 bg-white p-2 transition-colors z-10 cursor-pointer">
           <PencilSquareIcon className="w-4 h-4 text-brand" />
         </button>
       </div>                        
@@ -75,7 +75,7 @@ export default function ProfileSection({
             )}
           </div>
 
-          <button className="mt-4 w-full sm:mt-0 sm:w-auto border border-gray-200 text-brand font-bold font-epilogue text-[14px] px-5 py-2.5  whitespace-nowrap self-stretch sm:self-start">
+          <button className="mt-4 w-full sm:mt-0 sm:w-auto border border-gray-200 text-brand font-bold font-epilogue text-[14px] px-5 py-2.5  whitespace-nowrap self-stretch sm:self-start cursor-pointer">
             Edit Profile
           </button>
         </div>

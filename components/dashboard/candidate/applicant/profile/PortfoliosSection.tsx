@@ -95,7 +95,7 @@ export default function PortfoliosSection({ portfolios = defaultPortfolios }: Po
     <div className="bg-white border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-5">
         <h2 className="text-[18px] font-bold text-[#202430]">Portfolios</h2>
-        <button className="border border-gray-200 p-1.5  ">
+        <button className="cursor-pointer border border-gray-200 p-1.5  ">
           <PlusIcon className="w-4 h-4 text-brand" />
         </button>
       </div>

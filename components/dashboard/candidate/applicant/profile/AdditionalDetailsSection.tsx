@@ -16,7 +16,7 @@ export default function AdditionalDetailsSection({
     <div className="bg-white border border-gray-200 p-6 font-epilogue">
       <div className="flex items-center justify-between mb-5">
         <h2 className="text-[18px] font-bold text-[#25324B]">Additional Details</h2>
-        <button className="border border-gray-200 p-1.5  ">
+        <button className="cursor-pointer border border-gray-200 p-1.5  ">
           <PencilSquareIcon className="w-4 h-4 text-brand" />
         </button>
       </div>

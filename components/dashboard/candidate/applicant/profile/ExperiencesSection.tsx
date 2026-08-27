@@ -103,7 +103,7 @@ function ExperienceItem({ exp, isLast }: { exp: Experience; isLast: boolean }) {
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-2">
           <h3 className="text-[18px] font-bold text-[#202430]">{exp.role}</h3>
-          <button className="border border-gray-200 p-1.5   flex-shrink-0">
+          <button className="cursor-pointer border border-gray-200 p-1.5   flex-shrink-0">
             <PencilSquareIcon className="w-4 h-4 text-brand" />
           </button>
         </div>
@@ -136,7 +136,7 @@ export default function ExperiencesSection() {
     <div className="bg-white border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-[20px] font-bold text-[#25324B]">Experiences</h2>
-        <button className="border border-gray-200 p-1.5  s">
+        <button className="cursor-pointer border border-gray-200 p-1.5">
           <PlusIcon className="w-4 h-4 text-brand" />
         </button>
       </div>
@@ -150,7 +150,7 @@ export default function ExperiencesSection() {
       {!showAll && remaining > 0 && (
         <button
           onClick={() => setShowAll(true)}
-          className="w-full text-center text-[14px] font-semibold text-brand hover:text-indigo-800 transition-colors mt-2"
+          className="w-full cursor-pointer text-center text-[14px] font-semibold text-brand hover:text-indigo-800 transition-colors mt-2"
         >
           Show {remaining} more experiences
         </button>

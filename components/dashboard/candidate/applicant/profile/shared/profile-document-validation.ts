@@ -1,14 +1,14 @@
-export const MAX_CERTIFICATE_FILE_SIZE = 5 * 1024 * 1024;
+export const MAX_DOCUMENT_FILE_SIZE = 5 * 1024 * 1024;
 
-export const ACCEPTED_CERTIFICATE_TYPES = {
+export const ACCEPTED_DOCUMENT_TYPES = {
   "application/pdf": [".pdf"],
   "image/jpeg": [".jpg", ".jpeg"],
   "image/png": [".png"],
 };
 
-export const CERTIFICATE_FILE_HINT = "PDF, JPG, JPEG or PNG — Max 5 MB";
+export const DOCUMENT_FILE_HINT = "PDF, JPG, JPEG or PNG — Max 5 MB";
 
-export function isValidCertificateUrl(value: string): boolean {
+export function isValidUrl(value: string): boolean {
   if (!value.trim()) return true;
   try {
     const url = new URL(value.trim());
@@ -18,7 +18,7 @@ export function isValidCertificateUrl(value: string): boolean {
   }
 }
 
-export function isFutureIssueDate(value: string): boolean {
+export function isFutureDate(value: string): boolean {
   if (!value) return false;
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return false;

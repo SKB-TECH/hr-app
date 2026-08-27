@@ -19,10 +19,10 @@ export default function SkillsSection({ skills = defaultSkills }: SkillsSectionP
       <div className="flex items-center justify-between mb-5">
         <h2 className="text-[18px] font-bold text-[#202430]">Skills</h2>
         <div className="flex items-center gap-2">
-          <button className="border border-gray-200 p-1.5  ">
+          <button className="cursor-pointer border border-gray-200 p-1.5  ">
             <PlusIcon className="w-4 h-4 text-brand" />
           </button>
-          <button className="border border-gray-200 p-1.5   ">
+          <button className="cursor-pointer border border-gray-200 p-1.5   ">
             <PencilSquareIcon className="w-4 h-4 text-brand" />
           </button>
         </div>

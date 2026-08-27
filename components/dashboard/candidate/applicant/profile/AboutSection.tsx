@@ -16,7 +16,7 @@ export default function AboutSection({ paragraphs = defaultParagraphs }: AboutSe
     <div className="bg-white border border-gray-200 p-6 font-epilogue">
       <div className="flex items-center justify-between mb-5">
         <h2 className="text-[20px] font-bold  text-[#202430]">About Me</h2>
-        <button className="border border-gray-200 p-1.5   transition-colors">
+        <button className="cursor-pointer border border-gray-200 p-1.5   transition-colors">
           <PencilSquareIcon className="w-4 h-4 text-brand" />
         </button>
       </div>

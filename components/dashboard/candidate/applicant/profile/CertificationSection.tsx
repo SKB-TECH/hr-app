@@ -34,7 +34,7 @@ export default function CertificationSection() {
           type="button"
           onClick={openAddModal}
           aria-label="Add certification"
-          className="border border-gray-200 p-1.5 hover:border-brand"
+          className="cursor-pointer border border-gray-200 p-1.5 hover:border-brand"
         >
           <PlusIcon className="w-4 h-4 text-brand" />
         </button>
@@ -68,7 +68,7 @@ export default function CertificationSection() {
           <button
             type="button"
             onClick={openAddModal}
-            className="mt-2 text-[14px] font-semibold text-brand hover:text-indigo-800 transition-colors"
+            className="mt-2 cursor-pointer text-[14px] font-semibold text-brand hover:text-indigo-800 transition-colors"
           >
             Add Certification
           </button>

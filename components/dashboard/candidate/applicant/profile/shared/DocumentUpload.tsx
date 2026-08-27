@@ -4,13 +4,15 @@ import { useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 import { DocumentIcon, PhotoIcon, XMarkIcon, ArrowUpTrayIcon } from "@heroicons/react/24/outline";
 import {
-  ACCEPTED_CERTIFICATE_TYPES,
-  CERTIFICATE_FILE_HINT,
-  MAX_CERTIFICATE_FILE_SIZE,
+  ACCEPTED_DOCUMENT_TYPES,
+  DOCUMENT_FILE_HINT,
+  MAX_DOCUMENT_FILE_SIZE,
   formatFileSize,
-} from "./certification-validation";
+} from "./profile-document-validation";
 
-interface CertificateUploadProps {
+interface DocumentUploadProps {
+  label?: string;
+  title?: string;
   file: File | null;
   existingFileUrl?: string | null;
   existingFileName?: string | null;
@@ -19,22 +21,24 @@ interface CertificateUploadProps {
   error?: string;
 }
 
-export default function CertificateUpload({
+export default function DocumentUpload({
+  label = "Upload Document",
+  title = "Upload your document",
   file,
   existingFileUrl,
   existingFileName,
   onSelect,
   onRemove,
   error,
-}: CertificateUploadProps) {
+}: DocumentUploadProps) {
   const preview = useMemo(() => {
     if (file && file.type.startsWith("image/")) return URL.createObjectURL(file);
     return null;
   }, [file]);
 
   const { getRootProps, getInputProps, isDragActive, fileRejections } = useDropzone({
-    accept: ACCEPTED_CERTIFICATE_TYPES,
-    maxSize: MAX_CERTIFICATE_FILE_SIZE,
+    accept: ACCEPTED_DOCUMENT_TYPES,
+    maxSize: MAX_DOCUMENT_FILE_SIZE,
     maxFiles: 1,
     multiple: false,
     onDrop: (acceptedFiles) => {
@@ -64,7 +68,7 @@ export default function CertificateUpload({
 
   return (
     <div>
-      <label className="mb-2 block text-sm font-medium text-[#25324B]">Upload Certificate</label>
+      <label className="mb-2 block text-sm font-medium text-[#25324B]">{label}</label>
 
       {!hasFile && (
         <div
@@ -73,16 +77,16 @@ export default function CertificateUpload({
             isDragActive ? "border-brand bg-indigo-50" : showError ? "border-red-300 bg-red-50/40" : "border-gray-300 hover:border-brand hover:bg-indigo-50/40"
           }`}
         >
-          <input {...getInputProps()} aria-label="Upload certificate file" />
+          <input {...getInputProps()} aria-label={label} />
           <div className="flex flex-col items-center gap-2">
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 text-brand">
               <ArrowUpTrayIcon className="h-5 w-5" />
             </span>
-            <p className="text-[14px] font-medium text-[#202430]">Upload your certificate</p>
+            <p className="text-[14px] font-medium text-[#202430]">{title}</p>
             <p className="text-[13px] text-gray-500">
               {isDragActive ? "Drop the file here" : "Drag & drop your file here or browse"}
             </p>
-            <p className="text-[12px] text-gray-400">{CERTIFICATE_FILE_HINT}</p>
+            <p className="text-[12px] text-gray-400">{DOCUMENT_FILE_HINT}</p>
           </div>
         </div>
       )}
@@ -92,14 +96,14 @@ export default function CertificateUpload({
           <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-md bg-gray-100">
             {preview ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={preview} alt="Certificate preview" className="h-full w-full object-cover" />
+              <img src={preview} alt="Document preview" className="h-full w-full object-cover" />
             ) : (
               <DocumentIcon className="h-5 w-5 text-brand" />
             )}
           </div>
 
           <div className="min-w-0 flex-1">
-            <p className="truncate text-[14px] font-medium text-[#202430]">{displayName || "Certificate file"}</p>
+            <p className="truncate text-[14px] font-medium text-[#202430]">{displayName || "Document file"}</p>
             <p className="text-[12px] text-gray-400">
               {displaySize || (existingFileUrl && !file ? "Previously uploaded" : "")}
             </p>
@@ -108,13 +112,13 @@ export default function CertificateUpload({
           <div className="flex shrink-0 items-center gap-2">
             <label className="cursor-pointer border border-gray-200 px-2.5 py-1.5 text-[12px] font-medium text-brand hover:bg-indigo-50">
               Replace
-              <input {...getInputProps()} className="hidden" aria-label="Replace certificate file" />
+              <input {...getInputProps()} className="hidden" aria-label={`Replace ${label.toLowerCase()}`} />
             </label>
             <button
               type="button"
               onClick={onRemove}
-              aria-label="Remove certificate file"
-              className="border border-gray-200 p-1.5 text-gray-500 hover:border-red-300 hover:text-red-500"
+              aria-label={`Remove ${label.toLowerCase()}`}
+              className="cursor-pointer border border-gray-200 p-1.5 text-gray-500 hover:border-red-300 hover:text-red-500"
             >
               <XMarkIcon className="h-4 w-4" />
             </button>
@@ -130,7 +134,7 @@ export default function CertificateUpload({
           className="mt-2 inline-flex items-center gap-1 text-[12px] font-medium text-brand hover:underline"
         >
           <PhotoIcon className="h-3.5 w-3.5" />
-          View current certificate
+          View current document
         </a>
       )}
 
