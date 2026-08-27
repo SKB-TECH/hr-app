@@ -8,6 +8,16 @@ export const ACCEPTED_DOCUMENT_TYPES = {
 
 export const DOCUMENT_FILE_HINT = "PDF, JPG, JPEG or PNG — Max 5 MB";
 
+export const MAX_IMAGE_FILE_SIZE = 5 * 1024 * 1024;
+
+export const ACCEPTED_IMAGE_TYPES = {
+  "image/jpeg": [".jpg", ".jpeg"],
+  "image/png": [".png"],
+  "image/webp": [".webp"],
+};
+
+export const IMAGE_FILE_HINT = "JPG, PNG or WEBP — Max 5 MB";
+
 export function isValidUrl(value: string): boolean {
   if (!value.trim()) return true;
   try {
