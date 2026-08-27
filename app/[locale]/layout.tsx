@@ -7,7 +7,6 @@ import { epilogue, clashDisplay, redHat, inter } from "@/lib/fonts";
 import { Toaster } from "react-hot-toast";
 import { QueryProvider } from "@/core/providers/query-provider";
 
-
 export const metadata: Metadata = {
   title: "Fast2Hire",
   description: "Recrutez plus vite. Trouvez mieux.",
@@ -33,14 +32,14 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-full flex flex-col font-sans"
-        suppressHydrationWarning
+        className='min-h-full flex flex-col font-sans'
+        // suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>
             <AppProvider>
               {children}
-              <Toaster position="top-center" />
+              <Toaster position='top-center' />
             </AppProvider>
           </QueryProvider>
         </NextIntlClientProvider>
