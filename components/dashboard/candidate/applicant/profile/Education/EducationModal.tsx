@@ -9,9 +9,8 @@ import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 
 import ProfileEntryModal from "../shared/ProfileEntryModal";
-import DocumentUpload from "../shared/DocumentUpload";
 import DateField from "../shared/DateField";
-import { isFutureDate, isValidUrl } from "../shared/profile-document-validation";
+import { isFutureDate } from "../shared/profile-document-validation";
 import { DEGREE_SUGGESTIONS, isEndBeforeStart } from "./education-validation";
 import { useCreateCandidateEducation } from "@/core/hooks/candidate/use-create-candidate-education";
 import { useUpdateCandidateEducation } from "@/core/hooks/candidate/use-update-candidate-education";
@@ -21,14 +20,12 @@ import { ApiError } from "@/core/types/api";
 const DESCRIPTION_MAX_LENGTH = 500;
 
 type EducationFormValues = {
-  institution: string;
+  schoolName: string;
   degree: string;
   fieldOfStudy: string;
   startDate: string;
   endDate: string;
-  isCurrent: boolean;
   grade: string;
-  educationUrl: string;
   description: string;
 };
 
@@ -45,8 +42,10 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
   const isPending = createEducation.isPending || updateEducation.isPending;
   const submittingRef = useRef(false);
 
-  const [documentFile, setDocumentFile] = useState<File | null>(null);
-  const [removeExistingFile, setRemoveExistingFile] = useState(false);
+  // "Currently studying" is not a backend field — it's a UI affordance that just
+  // decides whether endDate is sent as null. Presence/absence of endDate is the
+  // only signal the backend stores for "currently studying" vs "completed".
+  const [isCurrent, setIsCurrent] = useState(false);
 
   const {
     register,
@@ -59,14 +58,12 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
     formState: { errors },
   } = useForm<EducationFormValues>({
     defaultValues: {
-      institution: "",
+      schoolName: "",
       degree: "",
       fieldOfStudy: "",
       startDate: "",
       endDate: "",
-      isCurrent: false,
       grade: "",
-      educationUrl: "",
       description: "",
     },
   });
@@ -74,23 +71,19 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
   useEffect(() => {
     if (!open) return;
     reset({
-      institution: education?.institution || "",
+      schoolName: education?.schoolName || "",
       degree: education?.degree || "",
       fieldOfStudy: education?.fieldOfStudy || "",
       startDate: education?.startDate ? education.startDate.slice(0, 10) : "",
       endDate: education?.endDate ? education.endDate.slice(0, 10) : "",
-      isCurrent: education?.isCurrent || false,
       grade: education?.grade || "",
-      educationUrl: education?.educationUrl || "",
       description: education?.description || "",
     });
-    setDocumentFile(null);
-    setRemoveExistingFile(false);
+    setIsCurrent(Boolean(education) && !education?.endDate);
   }, [open, education, reset]);
 
   const startDateValue = watch("startDate");
   const endDateValue = watch("endDate");
-  const isCurrentValue = watch("isCurrent");
   const descriptionValue = watch("description");
 
   const handleClose = () => {
@@ -104,17 +97,13 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
 
     try {
       const input = {
-        institution: values.institution.trim(),
+        schoolName: values.schoolName.trim(),
         degree: values.degree.trim(),
         fieldOfStudy: values.fieldOfStudy.trim() || null,
         startDate: values.startDate,
-        endDate: values.isCurrent ? null : values.endDate || null,
-        isCurrent: values.isCurrent,
+        endDate: isCurrent ? null : values.endDate || null,
         grade: values.grade.trim() || null,
-        educationUrl: values.educationUrl.trim() || null,
         description: values.description.trim() || null,
-        documentFile: documentFile || undefined,
-        removeDocumentFile: removeExistingFile && !documentFile,
       };
 
       if (isEditing && education) {
@@ -151,24 +140,24 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
         className="mt-5 space-y-5"
       >
         <div>
-          <label htmlFor="education-institution" className="mb-2 block text-sm font-medium text-[#25324B]">
+          <label htmlFor="education-school-name" className="mb-2 block text-sm font-medium text-[#25324B]">
             School or Institution
           </label>
           <input
-            id="education-institution"
+            id="education-school-name"
             type="text"
             placeholder="e.g. University of Rwanda"
-            aria-invalid={Boolean(errors.institution)}
-            aria-describedby={errors.institution ? "education-institution-error" : undefined}
+            aria-invalid={Boolean(errors.schoolName)}
+            aria-describedby={errors.schoolName ? "education-school-name-error" : undefined}
             className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
-            {...register("institution", {
+            {...register("schoolName", {
               required: "School or institution is required.",
               validate: (value) => value.trim().length > 0 || "School or institution is required.",
             })}
           />
-          {errors.institution && (
-            <p id="education-institution-error" className="mt-1.5 text-[13px] text-red-500">
-              {errors.institution.message}
+          {errors.schoolName && (
+            <p id="education-school-name-error" className="mt-1.5 text-[13px] text-red-500">
+              {errors.schoolName.message}
             </p>
           )}
         </div>
@@ -258,16 +247,18 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
               <label className="flex cursor-pointer items-center gap-1.5 text-[13px] font-medium text-gray-500">
                 <input
                   type="checkbox"
+                  checked={isCurrent}
+                  onChange={(event) => {
+                    setIsCurrent(event.target.checked);
+                    trigger("endDate");
+                  }}
                   className="h-3.5 w-3.5 cursor-pointer accent-brand"
-                  {...register("isCurrent", {
-                    onChange: () => trigger("endDate"),
-                  })}
                 />
                 Currently studying here
               </label>
             </div>
 
-            {isCurrentValue ? (
+            {isCurrent ? (
               <div className="flex h-[50px] items-center rounded-lg border border-gray-200 bg-gray-50 px-4 text-[14px] text-gray-500">
                 Currently studying — no end date
               </div>
@@ -278,7 +269,7 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
                   id="education-end-date"
                   {...register("endDate", {
                     validate: (value) => {
-                      if (getValues("isCurrent")) return true;
+                      if (isCurrent) return true;
                       if (!value) return "End date is required.";
                       if (isFutureDate(value)) return "End date cannot be in the future.";
                       if (isEndBeforeStart(getValues("startDate"), value)) {
@@ -298,59 +289,22 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
                 />
               </>
             )}
-            {!isCurrentValue && errors.endDate && (
-              <p className="mt-1.5 text-[13px] text-red-500">{errors.endDate.message}</p>
-            )}
+            {!isCurrent && errors.endDate && <p className="mt-1.5 text-[13px] text-red-500">{errors.endDate.message}</p>}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div>
-            <label htmlFor="education-grade" className="mb-2 block text-sm font-medium text-[#25324B]">
-              Grade or Score
-            </label>
-            <input
-              id="education-grade"
-              type="text"
-              placeholder="e.g. 3.8 GPA, Distinction"
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
-              {...register("grade")}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="education-url" className="mb-2 block text-sm font-medium text-[#25324B]">
-              Institution or Education Link
-            </label>
-            <input
-              id="education-url"
-              type="url"
-              placeholder="https://university.example.com"
-              aria-invalid={Boolean(errors.educationUrl)}
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
-              {...register("educationUrl", {
-                validate: (value) => isValidUrl(value) || "Please enter a valid URL.",
-              })}
-            />
-            {errors.educationUrl && <p className="mt-1.5 text-[13px] text-red-500">{errors.educationUrl.message}</p>}
-          </div>
+        <div>
+          <label htmlFor="education-grade" className="mb-2 block text-sm font-medium text-[#25324B]">
+            Grade or Score
+          </label>
+          <input
+            id="education-grade"
+            type="text"
+            placeholder="e.g. 3.8 GPA, Distinction"
+            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            {...register("grade")}
+          />
         </div>
-
-        <DocumentUpload
-          label="Upload Supporting Document"
-          title="Upload supporting document"
-          file={documentFile}
-          existingFileUrl={removeExistingFile ? null : education?.documentFileUrl}
-          existingFileName={removeExistingFile ? null : education?.documentFileName}
-          onSelect={(file) => {
-            setDocumentFile(file);
-            setRemoveExistingFile(false);
-          }}
-          onRemove={() => {
-            setDocumentFile(null);
-            setRemoveExistingFile(true);
-          }}
-        />
 
         <div>
           <label htmlFor="education-description" className="mb-2 block text-sm font-medium text-[#25324B]">

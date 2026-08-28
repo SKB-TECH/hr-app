@@ -36,7 +36,7 @@ export default function DeleteEducationDialog({ education, onOpenChange }: Delet
       description={
         <>
           Are you sure you want to remove
-          {education ? <span className="font-medium text-[#202430]"> &ldquo;{education.institution}&rdquo;</span> : " this education record"}?
+          {education ? <span className="font-medium text-[#202430]"> &ldquo;{education.schoolName}&rdquo;</span> : " this education record"}?
           This action cannot be undone.
         </>
       }

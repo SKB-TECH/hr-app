@@ -36,7 +36,7 @@ export default function DeleteCertificationDialog({ certification, onOpenChange 
       description={
         <>
           Are you sure you want to delete
-          {certification ? <span className="font-medium text-[#202430]"> &ldquo;{certification.name}&rdquo;</span> : " this certification"}? This
+          {certification ? <span className="font-medium text-[#202430]"> &ldquo;{certification.title}&rdquo;</span> : " this certification"}? This
           action cannot be undone.
         </>
       }

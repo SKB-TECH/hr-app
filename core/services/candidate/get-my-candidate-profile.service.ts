@@ -3,6 +3,6 @@ import type { CandidateProfile } from "@/core/types/candidate-profile";
 import { normalizeCandidateProfile } from "./normalize-candidate-profile";
 
 export const getMyCandidateProfile = () =>
-  apiRequest<CandidateProfile>("candidates/profile/me").then((response) =>
+  apiRequest<CandidateProfile>("candidate/profile/info").then((response) =>
     normalizeCandidateProfile(response.data),
   );

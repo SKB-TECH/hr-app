@@ -1,22 +1,20 @@
 export type CandidateCertification = {
   id: string;
-  name: string;
-  institution: string;
+  title: string;
+  organization: string;
   issueDate: string;
-  certificateUrl: string | null;
-  certificateFileUrl: string | null;
-  certificateFileName: string | null;
-  description: string | null;
+  expirationDate: string | null;
+  credentialId: string | null;
+  credentialUrl: string | null;
   createdAt: string;
   updatedAt: string;
 };
 
 export type CandidateCertificationInput = {
-  name: string;
-  institution: string;
+  title: string;
+  organization: string;
   issueDate: string;
-  certificateUrl?: string | null;
-  description?: string | null;
-  certificateFile?: File;
-  removeCertificateFile?: boolean;
+  expirationDate?: string | null;
+  credentialId?: string | null;
+  credentialUrl?: string | null;
 };
