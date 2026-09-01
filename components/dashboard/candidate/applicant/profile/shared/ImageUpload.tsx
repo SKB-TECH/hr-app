@@ -11,9 +11,10 @@ interface ImageUploadProps {
   file: File | null;
   currentImageUrl?: string | null;
   onSelect: (file: File) => void;
+  error?: string;
 }
 
-export default function ImageUpload({ label, shape = "rectangle", file, currentImageUrl, onSelect }: ImageUploadProps) {
+export default function ImageUpload({ label, shape = "rectangle", file, currentImageUrl, onSelect, error }: ImageUploadProps) {
   const preview = useMemo(() => (file ? URL.createObjectURL(file) : null), [file]);
   const imageSrc = preview || currentImageUrl;
 
@@ -46,7 +47,11 @@ export default function ImageUpload({ label, shape = "rectangle", file, currentI
       <div
         {...getRootProps()}
         className={`flex cursor-pointer items-center gap-4 rounded-lg border-2 border-dashed p-3 transition-colors ${
-          isDragActive ? "border-brand bg-indigo-50" : rejectionMessage ? "border-red-300" : "border-gray-300 hover:border-brand hover:bg-indigo-50/40"
+          isDragActive
+            ? "border-brand bg-indigo-50"
+            : rejectionMessage || error
+              ? "border-red-300"
+              : "border-gray-300 hover:border-brand hover:bg-indigo-50/40"
         }`}
       >
         <input {...getInputProps()} aria-label={label} />
@@ -67,7 +72,7 @@ export default function ImageUpload({ label, shape = "rectangle", file, currentI
           <p className="mt-0.5 text-[12px] text-gray-400">{IMAGE_FILE_HINT}</p>
         </div>
       </div>
-      {rejectionMessage && <p className="mt-2 text-[13px] text-red-500">{rejectionMessage}</p>}
+      {(rejectionMessage || error) && <p className="mt-2 text-[13px] text-red-500">{rejectionMessage || error}</p>}
     </div>
   );
 }

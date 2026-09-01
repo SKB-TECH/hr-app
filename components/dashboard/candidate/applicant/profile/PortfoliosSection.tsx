@@ -1,146 +1,84 @@
-
-
-
 "use client";
 
-import { PlusIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
+import { PlusIcon, FolderPlusIcon } from "@heroicons/react/24/outline";
 
-interface Portfolio {
-  id: number;
-  title: string;
-  image: string;
-  accentColor: string;
-}
+import { useCandidatePortfolios } from "@/core/hooks/candidate/use-candidate-portfolios";
+import { SectionSkeleton } from "./shared/Skeleton";
+import PortfolioItem from "./Portfolio/PortfolioItem";
+import PortfolioModal from "./Portfolio/PortfolioModal";
+import DeletePortfolioDialog from "./Portfolio/DeletePortfolioDialog";
+import type { CandidatePortfolio } from "@/core/types/candidate-portfolio";
 
-interface PortfoliosSectionProps {
-  portfolios?: Portfolio[];
-}
+export default function PortfoliosSection() {
+  const { data: portfolios = [], isLoading, isError } = useCandidatePortfolios();
 
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editingPortfolio, setEditingPortfolio] = useState<CandidatePortfolio | null>(null);
+  const [deletingPortfolio, setDeletingPortfolio] = useState<CandidatePortfolio | null>(null);
 
-const defaultPortfolios: Portfolio[] = [
-  {
-    id: 1,
-    title: "Clinically - clinic & health care website",
-    image: "/img_design/Clinically.png",
-    accentColor: "#4640DE",
-  },
-  {
-    id: 2,
-    title: "Growthly - SaaS Analytics & Sales Website",
-    image: "/img_design/growthly.png",
-    accentColor: "#A78BFA",
-  },
-  {
-    id: 3,
-    title: "Planna - Project Management App",
-    image: "/img_design/planna.png",
-    accentColor: "#E5E7EB",
-  },
-  {
-    id: 4,
-    title: "Funiro - furniture website",
-    image: "/img_design/funiro.png",
-    accentColor: "#E5E7EB",
-  },
-];
-
-
-const MIN_CARDS_FOR_BAR = 4; 
-
-export default function PortfoliosSection({ portfolios = defaultPortfolios }: PortfoliosSectionProps) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
-  const [canScroll, setCanScroll] = useState(false);
-
-  const updateProgress = () => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const { scrollLeft, scrollWidth, clientWidth } = el;
-    const maxScroll = scrollWidth - clientWidth;
-
-    if (maxScroll <= 1) {
-      setCanScroll(false);
-      setProgress(0);
-      return;
-    }
-
-    setCanScroll(true);
-    setProgress(scrollLeft / maxScroll);
+  const openAddModal = () => {
+    setEditingPortfolio(null);
+    setModalOpen(true);
   };
 
-  useEffect(() => {
-    updateProgress();
-    const el = scrollRef.current;
-    if (!el) return;
-
-    el.addEventListener("scroll", updateProgress);
-    window.addEventListener("resize", updateProgress);
-
-    return () => {
-      el.removeEventListener("scroll", updateProgress);
-      window.removeEventListener("resize", updateProgress);
-    };
-    
-  }, [portfolios]);
-
-  const showBar = portfolios.length >= MIN_CARDS_FOR_BAR;
-  const THUMB_WIDTH_PERCENT = 30;
-  const trackAvailable = 100 - THUMB_WIDTH_PERCENT;
-  const thumbLeft = progress * trackAvailable;
+  const openEditModal = (portfolio: CandidatePortfolio) => {
+    setEditingPortfolio(portfolio);
+    setModalOpen(true);
+  };
 
   return (
     <div className="bg-white border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-5">
-        <h2 className="text-[18px] font-bold text-[#202430]">Portfolios</h2>
-        <button className="cursor-pointer border border-gray-200 p-1.5  ">
+        <h2 className="text-[18px] font-bold text-[#202430]">Portfolio</h2>
+        <button
+          type="button"
+          onClick={openAddModal}
+          aria-label="Add project"
+          className="cursor-pointer border border-gray-200 p-1.5 hover:border-brand"
+        >
           <PlusIcon className="w-4 h-4 text-brand" />
         </button>
       </div>
 
-      <div
-        ref={scrollRef}
-        className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-hide"
-      >
-        {portfolios.map((p) => (
-          <div
-            key={p.id}
-            className="flex-shrink-0 w-[200px] sm:w-[calc(33.333%-12px)] md:w-[calc(28%-12px)]"
-          >
-            <div
-              className="h-[140px] rounded-lg overflow-hidden mb-2 border-t-4"
-              style={{ borderColor: p.accentColor }}
-            >
-              <Image
-                src={p.image}
-                alt={p.title}
-                width={200}
-                height={140}
-                className="object-cover w-full h-full"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = "none";
-                }}
-              />
-            </div>
-            <p className="text-[13px] text-gray-500 leading-snug">{p.title}</p>
-          </div>
-        ))}
-      </div>
-
-    
-      {canScroll && showBar && (
-        <div className="relative h-[3px] bg-gray-100 rounded-full mt-3 overflow-hidden">
-          <div
-            className="absolute top-0 h-full bg-brand rounded-full transition-[left] duration-150 ease-out"
-            style={{
-              width: `${THUMB_WIDTH_PERCENT}%`,
-              left: `${thumbLeft}%`,
-            }}
-          />
+      {isLoading && (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <SectionSkeleton rows={1} />
+          <SectionSkeleton rows={1} />
         </div>
       )}
+
+      {!isLoading && isError && (
+        <p className="text-[14px] text-gray-500">We couldn&apos;t load your portfolio right now. Please refresh the page to try again.</p>
+      )}
+
+      {!isLoading && !isError && portfolios.length === 0 && (
+        <div className="flex flex-col items-center justify-center gap-2 py-8 text-center">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 text-brand">
+            <FolderPlusIcon className="h-5 w-5" />
+          </span>
+          <p className="text-[15px] font-medium text-[#202430]">Showcase your work</p>
+          <p className="text-[14px] text-gray-500">Add projects so recruiters can see what you&apos;ve built.</p>
+          <button
+            type="button"
+            onClick={openAddModal}
+            className="mt-2 cursor-pointer text-[14px] font-semibold text-brand transition-colors hover:text-indigo-800"
+          >
+            + Add Project
+          </button>
+        </div>
+      )}
+
+      {!isLoading && !isError && portfolios.length > 0 && (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {portfolios.map((portfolio, index) => (
+            <PortfolioItem key={portfolio.id} portfolio={portfolio} index={index} onEdit={openEditModal} onDelete={setDeletingPortfolio} />
+          ))}
+        </div>
+      )}
+
+      <PortfolioModal open={modalOpen} onOpenChange={setModalOpen} portfolio={editingPortfolio} />
+      <DeletePortfolioDialog portfolio={deletingPortfolio} onOpenChange={(open) => !open && setDeletingPortfolio(null)} />
     </div>
   );
 }

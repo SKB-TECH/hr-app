@@ -5,6 +5,5 @@ export function normalizeCandidateProfile(raw: CandidateProfile): CandidateProfi
   return {
     ...raw,
     avatar: raw.avatar ? mediaUrl(raw.avatar) : null,
-    coverImage: raw.coverImage ? mediaUrl(raw.coverImage) : null,
   };
 }

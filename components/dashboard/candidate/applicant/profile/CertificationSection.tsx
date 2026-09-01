@@ -7,6 +7,7 @@ import { useCandidateCertifications } from "@/core/hooks/candidate/use-candidate
 import CertificationItem from "./Certification/CertificationItem";
 import CertificationModal from "./Certification/CertificationModal";
 import DeleteCertificationDialog from "./Certification/DeleteCertificationDialog";
+import { SectionSkeleton } from "./shared/Skeleton";
 import type { CandidateCertification } from "@/core/types/candidate-certification";
 
 export default function CertificationSection() {
@@ -40,17 +41,7 @@ export default function CertificationSection() {
         </button>
       </div>
 
-      {isLoading && (
-        <div className="space-y-4" aria-live="polite" aria-busy="true">
-          {[0, 1].map((key) => (
-            <div key={key} className="animate-pulse">
-              <div className="h-4 w-1/3 rounded bg-gray-100" />
-              <div className="mt-2 h-3 w-1/4 rounded bg-gray-100" />
-              <div className="mt-2 h-3 w-1/5 rounded bg-gray-100" />
-            </div>
-          ))}
-        </div>
-      )}
+      {isLoading && <SectionSkeleton rows={2} />}
 
       {!isLoading && isError && (
         <p className="text-[14px] text-gray-500">
