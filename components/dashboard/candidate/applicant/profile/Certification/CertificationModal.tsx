@@ -10,6 +10,7 @@ import { DialogFooter } from "@/components/ui/dialog";
 
 import ProfileEntryModal from "../shared/ProfileEntryModal";
 import DateField from "../shared/DateField";
+import SubmitButton from "../shared/SubmitButton";
 import { isBeforeDate, isFutureDate, isValidUrl } from "../shared/profile-document-validation";
 import { useCreateCandidateCertification } from "@/core/hooks/candidate/use-create-candidate-certification";
 import { useUpdateCandidateCertification } from "@/core/hooks/candidate/use-update-candidate-certification";
@@ -275,9 +276,7 @@ export default function CertificationModal({ open, onOpenChange, certification }
           <Button type="button" variant="outline" onClick={handleClose} disabled={isPending}>
             Cancel
           </Button>
-          <Button type="submit" disabled={isPending} className="bg-brand text-white hover:bg-[#3730c4]">
-            {isPending ? "Saving..." : isEditing ? "Update Certification" : "Save Certification"}
-          </Button>
+          <SubmitButton isPending={isPending} label={isEditing ? "Update Certification" : "Save Certification"} />
         </DialogFooter>
       </form>
     </ProfileEntryModal>

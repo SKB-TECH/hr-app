@@ -1,51 +1,58 @@
+"use client";
 
-import { PencilSquareIcon, EnvelopeIcon, DevicePhoneMobileIcon, LanguageIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
+import { PencilSquareIcon, EnvelopeIcon, DevicePhoneMobileIcon } from "@heroicons/react/24/outline";
 
-interface AdditionalDetailsSectionProps {
-  email?: string;
-  phone?: string;
-  languages?: string;
-}
+import { useMyCandidateProfile } from "@/core/hooks/candidate/use-my-candidate-profile";
+import { SectionSkeleton } from "./shared/Skeleton";
+import EditAdditionalDetailsModal from "./Profile/EditAdditionalDetailsModal";
 
-export default function AdditionalDetailsSection({
-  email = "jakegyll@email.com",
-  phone = "+44 1245 572 135",
-  languages = "English, French",
-}: AdditionalDetailsSectionProps) {
+export default function AdditionalDetailsSection() {
+  const { data: profile, isLoading, isError } = useMyCandidateProfile();
+  const [editOpen, setEditOpen] = useState(false);
+
   return (
     <div className="bg-white border border-gray-200 p-6 font-epilogue">
       <div className="flex items-center justify-between mb-5">
         <h2 className="text-[18px] font-bold text-[#25324B]">Additional Details</h2>
-        <button className="cursor-pointer border border-gray-200 p-1.5  ">
+        <button
+          type="button"
+          onClick={() => setEditOpen(true)}
+          disabled={isLoading}
+          aria-label="Edit additional details"
+          className="cursor-pointer border border-gray-200 p-1.5 hover:border-brand disabled:cursor-not-allowed disabled:opacity-50"
+        >
           <PencilSquareIcon className="w-4 h-4 text-brand" />
         </button>
       </div>
 
-      <div className="flex flex-col gap-5">
-        <div className="flex items-center gap-3">
-          <EnvelopeIcon className="w-5 h-5 text-[#7C8493] flex-shrink-0 mt-0.5" />
-          <div>
-            <p className="text-[14px] text-[#7C8493]">Email</p>
-            <p className="text-[16px] font-medium text-[#25324B] mt-0.5">{email}</p>
-          </div>
-        </div>
+      {isLoading && <SectionSkeleton rows={2} />}
 
-        <div className="flex items-center gap-3">
-          <DevicePhoneMobileIcon className="w-5 h-5 text-[#7C8493] flex-shrink-0 mt-0.5" />
-          <div>
-            <p className="text-[14px] text-[#7C8493]">Phone</p>
-            <p className="text-[16px] font-medium text-[#25324B] mt-0.5">{phone}</p>
-          </div>
-        </div>
+      {!isLoading && isError && (
+        <p className="text-[14px] text-gray-500">We couldn&apos;t load your details right now. Please refresh the page to try again.</p>
+      )}
 
-        <div className="flex items-center gap-3">
-          <LanguageIcon className="w-5 h-5 text-[#7C8493] flex-shrink-0 mt-1" />
-          <div>
-            <p className="text-[14px] text-[#7C8493]">Languages</p>
-            <p className="text-[16px] font-medium text-[#25324B] mt-0.5">{languages}</p>
+      {!isLoading && !isError && profile && (
+        <div className="flex flex-col gap-5">
+          <div className="flex items-center gap-3">
+            <EnvelopeIcon className="w-5 h-5 text-[#7C8493] flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-[14px] text-[#7C8493]">Email</p>
+              <p className="text-[16px] font-medium text-[#25324B] mt-0.5">{profile.email}</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <DevicePhoneMobileIcon className="w-5 h-5 text-[#7C8493] flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-[14px] text-[#7C8493]">Phone</p>
+              <p className="text-[16px] font-medium text-[#25324B] mt-0.5">{profile.phoneNumber || "Not provided"}</p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
+
+      {profile && <EditAdditionalDetailsModal open={editOpen} onOpenChange={setEditOpen} profile={profile} />}
     </div>
   );
 }

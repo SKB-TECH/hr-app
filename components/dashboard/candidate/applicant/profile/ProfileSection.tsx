@@ -6,6 +6,7 @@ import Image from "next/image";
 
 import { useMyCandidateProfile } from "@/core/hooks/candidate/use-my-candidate-profile";
 import EditProfileModal from "./Profile/EditProfileModal";
+import { Skeleton } from "./shared/Skeleton";
 
 const DEFAULT_AVATAR = "/img_design/jakePro.png";
 const DEFAULT_COVER = "/profile-bg.jpg";
@@ -17,11 +18,11 @@ export default function ProfileSection() {
   if (isLoading) {
     return (
       <div className="bg-white border border-gray-200 font-epilogue">
-        <div className="h-[140px] animate-pulse bg-gray-100 sm:h-[160px]" />
+        <Skeleton className="h-[140px] rounded-none sm:h-[160px]" />
         <div className="px-6 py-6">
-          <div className="-mt-12 mb-4 h-24 w-24 animate-pulse rounded-full border-4 border-white bg-gray-200 sm:-mt-14 sm:h-28 sm:w-28" />
-          <div className="h-6 w-48 animate-pulse rounded bg-gray-100" />
-          <div className="mt-2 h-4 w-64 animate-pulse rounded bg-gray-100" />
+          <Skeleton className="-mt-12 mb-4 h-24 w-24 rounded-full border-4 border-white sm:-mt-14 sm:h-28 sm:w-28" />
+          <Skeleton className="h-6 w-48" />
+          <Skeleton className="mt-2 h-4 w-64" />
         </div>
       </div>
     );

@@ -10,7 +10,9 @@ import { DialogFooter } from "@/components/ui/dialog";
 
 import ProfileEntryModal from "../shared/ProfileEntryModal";
 import ImageUpload from "../shared/ImageUpload";
+import SubmitButton from "../shared/SubmitButton";
 import { useUpdateCandidateProfile } from "@/core/hooks/candidate/use-update-candidate-profile";
+import { toCandidateProfileInput } from "@/core/services/candidate/to-candidate-profile-input";
 import type { CandidateProfile } from "@/core/types/candidate-profile";
 import { ApiError } from "@/core/types/api";
 
@@ -71,32 +73,16 @@ export default function EditProfileModal({ open, onOpenChange, profile }: EditPr
     submittingRef.current = true;
 
     try {
-      const existingDetails = profile.candidateProfile;
-      await updateProfile.mutateAsync({
-        fullName: values.fullName.trim(),
-        phoneNumber: profile.phoneNumber,
-        // Carry forward fields not yet editable in this form so this partial
-        // update never wipes out data (bio, salary, links, etc.) saved elsewhere.
-        gender: existingDetails?.gender,
-        birthDate: existingDetails?.birthDate ? existingDetails.birthDate.slice(0, 10) : existingDetails?.birthDate,
-        bio: existingDetails?.bio,
-        address: existingDetails?.address,
-        currentSalary: existingDetails?.currentSalary,
-        expectedSalary: existingDetails?.expectedSalary,
-        salaryCurrency: existingDetails?.salaryCurrency,
-        yearsExperience: existingDetails?.yearsExperience,
-        linkedinUrl: existingDetails?.linkedinUrl,
-        githubUrl: existingDetails?.githubUrl,
-        portfolioUrl: existingDetails?.portfolioUrl,
-        availability: existingDetails?.availability,
-        workType: existingDetails?.workType,
-        profileVisibility: existingDetails?.profileVisibility,
-        headline: values.headline.trim() || null,
-        cityName: values.cityName.trim() || null,
-        countryName: values.countryName.trim() || null,
-        openToWork: values.openToWork,
-        avatarFile: avatarFile || undefined,
-      });
+      await updateProfile.mutateAsync(
+        toCandidateProfileInput(profile, {
+          fullName: values.fullName.trim(),
+          headline: values.headline.trim() || null,
+          cityName: values.cityName.trim() || null,
+          countryName: values.countryName.trim() || null,
+          openToWork: values.openToWork,
+          avatarFile: avatarFile || undefined,
+        }),
+      );
 
       toast.success("Profile updated successfully.");
       onOpenChange(false);
@@ -209,9 +195,7 @@ export default function EditProfileModal({ open, onOpenChange, profile }: EditPr
           <Button type="button" variant="outline" onClick={handleClose} disabled={isPending}>
             Cancel
           </Button>
-          <Button type="submit" disabled={isPending} className="bg-brand text-white hover:bg-[#3730c4]">
-            {isPending ? "Saving..." : "Save Changes"}
-          </Button>
+          <SubmitButton isPending={isPending} label="Save Changes" />
         </DialogFooter>
       </form>
     </ProfileEntryModal>
