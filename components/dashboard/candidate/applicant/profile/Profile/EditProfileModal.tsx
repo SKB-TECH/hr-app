@@ -32,7 +32,11 @@ interface EditProfileModalProps {
   profile: CandidateProfile;
 }
 
-export default function EditProfileModal({ open, onOpenChange, profile }: EditProfileModalProps) {
+export default function EditProfileModal({
+  open,
+  onOpenChange,
+  profile,
+}: EditProfileModalProps) {
   const updateProfile = useUpdateCandidateProfile();
   const isPending = updateProfile.isPending;
   const submittingRef = useRef(false);
@@ -46,7 +50,13 @@ export default function EditProfileModal({ open, onOpenChange, profile }: EditPr
     reset,
     formState: { errors },
   } = useForm<ProfileFormValues>({
-    defaultValues: { fullName: "", headline: "", cityName: "", countryName: "", openToWork: false },
+    defaultValues: {
+      fullName: "",
+      headline: "",
+      cityName: "",
+      countryName: "",
+      openToWork: false,
+    },
   });
 
   useEffect(() => {
@@ -88,9 +98,16 @@ export default function EditProfileModal({ open, onOpenChange, profile }: EditPr
       onOpenChange(false);
     } catch (error) {
       if (error instanceof ApiError) {
-        console.error("Profile update rejected by backend:", error.status, error.details);
+        console.log(
+          "Profile update rejected by backend:",
+          error.status,
+          error.details,
+        );
       }
-      const message = error instanceof ApiError ? error.message : "Something went wrong. Please try again.";
+      const message =
+        error instanceof ApiError
+          ? error.message
+          : "Something went wrong. Please try again.";
       toast.error(message);
     } finally {
       submittingRef.current = false;
@@ -102,9 +119,9 @@ export default function EditProfileModal({ open, onOpenChange, profile }: EditPr
       open={open}
       onOpenChange={onOpenChange}
       isPending={isPending}
-      icon={<UserCircleIcon className="h-5 w-5" />}
-      title="Edit Profile"
-      description="Keep your public profile up to date so recruiters can find and recognize you."
+      icon={<UserCircleIcon className='h-5 w-5' />}
+      title='Edit Profile'
+      description='Keep your public profile up to date so recruiters can find and recognize you.'
     >
       <form
         noValidate
@@ -112,90 +129,127 @@ export default function EditProfileModal({ open, onOpenChange, profile }: EditPr
           event.preventDefault();
           handleSubmit(onSubmit)(event);
         }}
-        className="mt-5 space-y-5"
+        className='mt-5 space-y-5'
       >
-        <ImageUpload label="Profile Photo" shape="circle" file={avatarFile} currentImageUrl={profile.avatar} onSelect={setAvatarFile} />
+        <ImageUpload
+          label='Profile Photo'
+          shape='circle'
+          file={avatarFile}
+          currentImageUrl={profile.avatar}
+          onSelect={setAvatarFile}
+        />
 
         <div>
-          <label htmlFor="profile-full-name" className="mb-2 block text-sm font-medium text-[#25324B]">
+          <label
+            htmlFor='profile-full-name'
+            className='mb-2 block text-sm font-medium text-[#25324B]'
+          >
             Full Name
           </label>
           <input
-            id="profile-full-name"
-            type="text"
-            placeholder="e.g. Jake Gyll"
+            id='profile-full-name'
+            type='text'
+            placeholder='e.g. Jake Gyll'
             aria-invalid={Boolean(errors.fullName)}
-            aria-describedby={errors.fullName ? "profile-full-name-error" : undefined}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            aria-describedby={
+              errors.fullName ? "profile-full-name-error" : undefined
+            }
+            className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("fullName", {
               required: "Full name is required.",
-              validate: (value) => value.trim().length > 0 || "Full name is required.",
+              validate: (value) =>
+                value.trim().length > 0 || "Full name is required.",
             })}
           />
           {errors.fullName && (
-            <p id="profile-full-name-error" className="mt-1.5 text-[13px] text-red-500">
+            <p
+              id='profile-full-name-error'
+              className='mt-1.5 text-[13px] text-red-500'
+            >
               {errors.fullName.message}
             </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="profile-headline" className="mb-2 block text-sm font-medium text-[#25324B]">
+          <label
+            htmlFor='profile-headline'
+            className='mb-2 block text-sm font-medium text-[#25324B]'
+          >
             Headline
           </label>
           <input
-            id="profile-headline"
-            type="text"
+            id='profile-headline'
+            type='text'
             maxLength={HEADLINE_MAX_LENGTH}
-            placeholder="e.g. Product Designer at Twitter"
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            placeholder='e.g. Product Designer at Twitter'
+            className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("headline")}
           />
-          <p className="mt-1.5 text-right text-[12px] text-gray-400">
+          <p className='mt-1.5 text-right text-[12px] text-gray-400'>
             {headlineValue?.length || 0}/{HEADLINE_MAX_LENGTH}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
           <div>
-            <label htmlFor="profile-city" className="mb-2 block text-sm font-medium text-[#25324B]">
+            <label
+              htmlFor='profile-city'
+              className='mb-2 block text-sm font-medium text-[#25324B]'
+            >
               City
             </label>
             <input
-              id="profile-city"
-              type="text"
-              placeholder="e.g. Manchester"
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+              id='profile-city'
+              type='text'
+              placeholder='e.g. Manchester'
+              className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
               {...register("cityName")}
             />
           </div>
           <div>
-            <label htmlFor="profile-country" className="mb-2 block text-sm font-medium text-[#25324B]">
+            <label
+              htmlFor='profile-country'
+              className='mb-2 block text-sm font-medium text-[#25324B]'
+            >
               Country
             </label>
             <input
-              id="profile-country"
-              type="text"
-              placeholder="e.g. United Kingdom"
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+              id='profile-country'
+              type='text'
+              placeholder='e.g. United Kingdom'
+              className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
               {...register("countryName")}
             />
           </div>
         </div>
 
-        <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-gray-200 p-4">
-          <input type="checkbox" className="mt-0.5 h-4 w-4 cursor-pointer accent-brand" {...register("openToWork")} />
+        <label className='flex cursor-pointer items-start gap-3 rounded-lg border border-gray-200 p-4'>
+          <input
+            type='checkbox'
+            className='mt-0.5 h-4 w-4 cursor-pointer accent-brand'
+            {...register("openToWork")}
+          />
           <span>
-            <span className="block text-[14px] font-medium text-[#25324B]">Open for opportunities</span>
-            <span className="block text-[13px] text-gray-500">Let recruiters know you&apos;re open to new roles.</span>
+            <span className='block text-[14px] font-medium text-[#25324B]'>
+              Open for opportunities
+            </span>
+            <span className='block text-[13px] text-gray-500'>
+              Let recruiters know you&apos;re open to new roles.
+            </span>
           </span>
         </label>
 
-        <DialogFooter className="-mx-6 -mb-6 mt-2 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4">
-          <Button type="button" variant="outline" onClick={handleClose} disabled={isPending}>
+        <DialogFooter className='-mx-6 -mb-6 mt-2 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4'>
+          <Button
+            type='button'
+            variant='outline'
+            onClick={handleClose}
+            disabled={isPending}
+          >
             Cancel
           </Button>
-          <SubmitButton isPending={isPending} label="Save Changes" />
+          <SubmitButton isPending={isPending} label='Save Changes' />
         </DialogFooter>
       </form>
     </ProfileEntryModal>
