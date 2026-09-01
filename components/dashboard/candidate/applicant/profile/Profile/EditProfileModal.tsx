@@ -11,7 +11,6 @@ import { DialogFooter } from "@/components/ui/dialog";
 import ProfileEntryModal from "../shared/ProfileEntryModal";
 import ImageUpload from "../shared/ImageUpload";
 import { useUpdateCandidateProfile } from "@/core/hooks/candidate/use-update-candidate-profile";
-import { useUpdateCandidateProfileBranding } from "@/core/hooks/candidate/use-update-candidate-profile-branding";
 import type { CandidateProfile } from "@/core/types/candidate-profile";
 import { ApiError } from "@/core/types/api";
 
@@ -20,7 +19,8 @@ const HEADLINE_MAX_LENGTH = 120;
 type ProfileFormValues = {
   fullName: string;
   headline: string;
-  location: string;
+  cityName: string;
+  countryName: string;
   openToWork: boolean;
 };
 
@@ -32,12 +32,10 @@ interface EditProfileModalProps {
 
 export default function EditProfileModal({ open, onOpenChange, profile }: EditProfileModalProps) {
   const updateProfile = useUpdateCandidateProfile();
-  const updateBranding = useUpdateCandidateProfileBranding();
-  const isPending = updateProfile.isPending || updateBranding.isPending;
+  const isPending = updateProfile.isPending;
   const submittingRef = useRef(false);
 
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
-  const [coverFile, setCoverFile] = useState<File | null>(null);
 
   const {
     register,
@@ -46,19 +44,19 @@ export default function EditProfileModal({ open, onOpenChange, profile }: EditPr
     reset,
     formState: { errors },
   } = useForm<ProfileFormValues>({
-    defaultValues: { fullName: "", headline: "", location: "", openToWork: false },
+    defaultValues: { fullName: "", headline: "", cityName: "", countryName: "", openToWork: false },
   });
 
   useEffect(() => {
     if (!open) return;
     reset({
       fullName: profile.fullName || "",
-      headline: profile.headline || "",
-      location: profile.location || "",
-      openToWork: profile.openToWork || false,
+      headline: profile.candidateProfile?.headline || "",
+      cityName: profile.candidateProfile?.cityName || "",
+      countryName: profile.candidateProfile?.countryName || "",
+      openToWork: profile.candidateProfile?.openToWork || false,
     });
     setAvatarFile(null);
-    setCoverFile(null);
   }, [open, profile, reset]);
 
   const headlineValue = watch("headline");
@@ -73,23 +71,39 @@ export default function EditProfileModal({ open, onOpenChange, profile }: EditPr
     submittingRef.current = true;
 
     try {
+      const existingDetails = profile.candidateProfile;
       await updateProfile.mutateAsync({
         fullName: values.fullName.trim(),
+        phoneNumber: profile.phoneNumber,
+        // Carry forward fields not yet editable in this form so this partial
+        // update never wipes out data (bio, salary, links, etc.) saved elsewhere.
+        gender: existingDetails?.gender,
+        birthDate: existingDetails?.birthDate ? existingDetails.birthDate.slice(0, 10) : existingDetails?.birthDate,
+        bio: existingDetails?.bio,
+        address: existingDetails?.address,
+        currentSalary: existingDetails?.currentSalary,
+        expectedSalary: existingDetails?.expectedSalary,
+        salaryCurrency: existingDetails?.salaryCurrency,
+        yearsExperience: existingDetails?.yearsExperience,
+        linkedinUrl: existingDetails?.linkedinUrl,
+        githubUrl: existingDetails?.githubUrl,
+        portfolioUrl: existingDetails?.portfolioUrl,
+        availability: existingDetails?.availability,
+        workType: existingDetails?.workType,
+        profileVisibility: existingDetails?.profileVisibility,
         headline: values.headline.trim() || null,
-        location: values.location.trim() || null,
+        cityName: values.cityName.trim() || null,
+        countryName: values.countryName.trim() || null,
         openToWork: values.openToWork,
+        avatarFile: avatarFile || undefined,
       });
-
-      if (avatarFile || coverFile) {
-        await updateBranding.mutateAsync({
-          avatarFile: avatarFile || undefined,
-          coverFile: coverFile || undefined,
-        });
-      }
 
       toast.success("Profile updated successfully.");
       onOpenChange(false);
     } catch (error) {
+      if (error instanceof ApiError) {
+        console.error("Profile update rejected by backend:", error.status, error.details);
+      }
       const message = error instanceof ApiError ? error.message : "Something went wrong. Please try again.";
       toast.error(message);
     } finally {
@@ -114,10 +128,7 @@ export default function EditProfileModal({ open, onOpenChange, profile }: EditPr
         }}
         className="mt-5 space-y-5"
       >
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <ImageUpload label="Profile Photo" shape="circle" file={avatarFile} currentImageUrl={profile.avatar} onSelect={setAvatarFile} />
-          <ImageUpload label="Cover Photo" shape="rectangle" file={coverFile} currentImageUrl={profile.coverImage} onSelect={setCoverFile} />
-        </div>
+        <ImageUpload label="Profile Photo" shape="circle" file={avatarFile} currentImageUrl={profile.avatar} onSelect={setAvatarFile} />
 
         <div>
           <label htmlFor="profile-full-name" className="mb-2 block text-sm font-medium text-[#25324B]">
@@ -159,17 +170,31 @@ export default function EditProfileModal({ open, onOpenChange, profile }: EditPr
           </p>
         </div>
 
-        <div>
-          <label htmlFor="profile-location" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Location
-          </label>
-          <input
-            id="profile-location"
-            type="text"
-            placeholder="e.g. Manchester, UK"
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
-            {...register("location")}
-          />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="profile-city" className="mb-2 block text-sm font-medium text-[#25324B]">
+              City
+            </label>
+            <input
+              id="profile-city"
+              type="text"
+              placeholder="e.g. Manchester"
+              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+              {...register("cityName")}
+            />
+          </div>
+          <div>
+            <label htmlFor="profile-country" className="mb-2 block text-sm font-medium text-[#25324B]">
+              Country
+            </label>
+            <input
+              id="profile-country"
+              type="text"
+              placeholder="e.g. United Kingdom"
+              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+              {...register("countryName")}
+            />
+          </div>
         </div>
 
         <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-gray-200 p-4">
