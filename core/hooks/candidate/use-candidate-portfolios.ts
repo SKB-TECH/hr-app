@@ -6,6 +6,6 @@ import { candidatePortfolioKeys } from "./candidate-portfolio-query-keys";
 export function useCandidatePortfolios() {
   return useQuery({
     queryKey: candidatePortfolioKeys.mine,
-    queryFn: () => getCandidatePortfolios().then((response) => response.data),
+    queryFn: () => getCandidatePortfolios().then((response) => (Array.isArray(response.data) ? response.data : [])),
   });
 }

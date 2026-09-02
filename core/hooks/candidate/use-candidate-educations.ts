@@ -6,6 +6,6 @@ import { candidateEducationKeys } from "./candidate-education-query-keys";
 export function useCandidateEducations() {
   return useQuery({
     queryKey: candidateEducationKeys.mine,
-    queryFn: () => getCandidateEducations().then((response) => response.data),
+    queryFn: () => getCandidateEducations().then((response) => (Array.isArray(response.data) ? response.data : [])),
   });
 }

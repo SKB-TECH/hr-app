@@ -6,7 +6,6 @@ import { candidateCertificationKeys } from "./candidate-certification-query-keys
 export function useCandidateCertifications() {
   return useQuery({
     queryKey: candidateCertificationKeys.mine,
-    queryFn: () =>
-      getCandidateCertifications().then((response) => response.data),
+    queryFn: () => getCandidateCertifications().then((response) => (Array.isArray(response.data) ? response.data : [])),
   });
 }
