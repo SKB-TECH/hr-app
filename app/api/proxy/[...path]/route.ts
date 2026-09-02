@@ -32,6 +32,8 @@ function buildHeaders(req: NextRequest): Headers {
         'origin',
         'referer',
         'x-client-type',
+        'idempotency-key',
+        'x-request-id',
     ] as const;
 
     forward.forEach((key) => {
