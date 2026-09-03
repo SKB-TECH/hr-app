@@ -311,11 +311,11 @@ function MessageBubble({
   return (
     <div className={`flex ${own ? "justify-end" : "justify-start"}`}>
       <article
-        className={`max-w-[78%] p-3 text-sm ${own ? "bg-brand text-white" : "border border-brand-light-neutral bg-white text-neutral-100"}`}
+        className={`max-w-[78%] rounded-2xl p-3 text-sm shadow-sm ${own ? "rounded-br-md bg-brand text-white" : "rounded-bl-md border border-brand-light-neutral bg-white text-neutral-100"}`}
       >
         {message.type === "JOB_PROPOSAL" && message.job && (
           <div
-            className={`mb-2 border p-3 ${own ? "border-white/30" : "border-brand-light-neutral"}`}
+            className={`mb-2 rounded-xl border p-3 ${own ? "border-white/30" : "border-brand-light-neutral"}`}
           >
             <p className="flex items-center gap-2 text-xs font-bold uppercase">
               <BriefcaseBusiness size={15} />
