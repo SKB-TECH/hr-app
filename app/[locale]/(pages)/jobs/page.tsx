@@ -29,7 +29,7 @@ export default function JobsPage() {
           setViewGrid={setViewGrid}
           search=""
           onPageChange={setCurrentPage}
-          getApplyLink={(id) => `/en/jobs/${id}`}
+          getApplyLink={(id) => `/jobs/${id}`}
         />
       </div>
     </div>

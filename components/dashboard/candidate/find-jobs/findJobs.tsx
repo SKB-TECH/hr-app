@@ -36,7 +36,7 @@ export const FindJobs = () => {
           setViewGrid={setViewGrid}
           search={debouncedSearch}
           onPageChange={setCurrentPage}
-          getApplyLink={(id) => `/en/candidate/find-jobs/${id}`}
+          getApplyLink={(id) => `/candidate/find-jobs/${id}`}
         />
       </div>
     </div>

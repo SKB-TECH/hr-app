@@ -20,7 +20,7 @@ export default async function CategoryCompanyCard({
         className="mx-auto"
       />
       <h3 className="font-clash cursor-pointer hover:text-brand text-base font-semibold text-[#202430]">
-        <Link href={`/en/companies/${company.id}`}>{company.name}</Link>
+        <Link href={`/companies/${company.id}`}>{company.name}</Link>
       </h3>
       <p className="text-[14px] text-gray-500">{t("shared.jobsCount", { count: company.jobs })}</p>
     </article>
