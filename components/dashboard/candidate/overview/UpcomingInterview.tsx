@@ -1,122 +1,56 @@
 "use client";
 
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
-
-const timeSlots = ["10:00 AM", "10:30 AM", "11:00 AM"];
-
-const interviews = [
-  {
-    time: "10:30 AM",
-    name: "Joe Bartmann",
-    role: "HR Manager at Divvy",
-    avatar: "/joe.png",
-  },
-  {
-    time: "1:30 PM",
-    name: "Zack Carlos",
-    role: "Fresh Graduated",
-    avatar: "/zack.jpg",
-  },
-];
+import { format } from "date-fns";
+import { CalendarDaysIcon } from "@heroicons/react/24/outline";
+import { useMyApplications } from "@/core/hooks/applications/use-my-applications";
+import { useUpcomingInterviews } from "@/core/hooks/interviews/use-upcoming-interviews";
 
 export function UpcomingInterviews() {
+  const { data: applicationsPage } = useMyApplications({ limit: 20 });
+  const applicationIds = (applicationsPage?.data ?? []).map((application) => application.id);
+  const { data: interviews, isLoading } = useUpcomingInterviews(applicationIds);
+
   return (
     <div className="border border-gray-200 bg-white flex flex-col">
       {/* Title */}
       <div className="border-b border-b-gray-200 p-4">
         <p className="text-[16px] xl:text-[18px] font-epilogue tracking-wider font-bold text-[#202430]">
-          Upcomming Interviews
+          Upcoming Interviews
         </p>
       </div>
 
-      {/* Date nav */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-100">
-        <p className="text-[14px] font-semibold text-[#202430]">
-          Today, <span className="font-normal text-gray-400">26 November</span>
-        </p>
-        <div className="flex items-center gap-1">
-          <button className="p-1 hover:text-indigo-600 transition-colors text-gray-400">
-            <ChevronLeftIcon className="w-4 h-4" />
-          </button>
-          <button className="p-1 hover:text-indigo-600 transition-colors text-gray-900">
-            <ChevronRightIcon className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
+      <div className="p-4">
+        {isLoading && <p className="text-[13px] text-gray-400">Loading interviews…</p>}
 
-      {/* ── MOBILE: 2-col card grid ── */}
-      <div className="sm:hidden grid grid-cols-2 gap-3 p-4">
-        {interviews.map((interview) => (
-          <div
-            key={interview.name}
-            className="bg-[#E9EBFD] rounded-xl p-4 flex flex-col gap-3"
-          >
-            {/* Avatar */}
-            <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-300 flex-shrink-0">
-              <Image
-                src={interview.avatar}
-                alt={interview.name}
-                width={48}
-                height={48}
-                className="object-cover w-full h-full"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = "none";
-                }}
-              />
-            </div>
-
-            {/* Info */}
-            <div>
-              <p className="text-[13px] font-bold text-[#202430]">
-                {interview.name}
-              </p>
-              <p className="text-[11px] text-gray-400 mt-0.5">
-                {interview.role}
-              </p>
-              <p className="text-[12px] font-semibold text-[#202430] mt-2">
-                {interview.time}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* ── DESKTOP: time-slot list ── */}
-      <div className="hidden sm:flex flex-col gap-2 pl-4 pr-2">
-        {timeSlots.map((slot) => (
-          <div key={slot} className="flex items-center gap-2 min-h-[44px]">
-            <span className="text-[12px] text-gray-400 w-[68px] flex-shrink-0">
-              {slot}
+        {!isLoading && interviews.length === 0 && (
+          <div className="flex flex-col items-center justify-center gap-2 py-6 text-center">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-50 text-brand">
+              <CalendarDaysIcon className="h-5 w-5" />
             </span>
-            {slot === interviews[0].time ? (
-              <div className="flex-1 flex items-center gap-3 bg-[#E9EBFD] px-4 py-3 rounded-md">
-                <div className="w-9 h-9 rounded-full overflow-hidden bg-gray-300 flex-shrink-0">
-                  <Image
-                    src={interviews[0].avatar}
-                    alt={interviews[0].name}
-                    width={36}
-                    height={36}
-                    className="object-cover w-full h-full"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = "none";
-                    }}
-                  />
-                </div>
-                <div>
-                  <p className="text-[13px] font-bold text-[#202430]">
-                    {interviews[0].name}
-                  </p>
-                  <p className="text-[11px] text-gray-400">
-                    {interviews[0].role}
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <div className="flex-1 h-px bg-gray-100" />
-            )}
+            <p className="text-[13px] text-gray-400">No upcoming interviews scheduled.</p>
           </div>
-        ))}
+        )}
+
+        {!isLoading && interviews.length > 0 && (
+          <div className="flex flex-col gap-2">
+            {interviews.map((interview) => (
+              <div key={interview.id} className="flex items-center gap-3 bg-[#E9EBFD] px-4 py-3 rounded-md">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-brand">
+                  <CalendarDaysIcon className="h-4 w-4" />
+                </div>
+                <div className="min-w-0">
+                  <p className="truncate text-[13px] font-bold text-[#202430]">{interview.title}</p>
+                  <p className="truncate text-[11px] text-gray-400">
+                    {interview.interviewerName || "Interviewer TBC"}
+                  </p>
+                </div>
+                <p className="ml-auto shrink-0 text-[12px] font-semibold text-[#202430]">
+                  {format(new Date(interview.scheduledAt), "MMM d, h:mm a")}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

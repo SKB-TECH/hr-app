@@ -7,6 +7,7 @@ import SkillsSection from "@/components/dashboard/candidate/applicant/profile/Sk
 import SocialLinksSection from "@/components/dashboard/candidate/applicant/profile/SocialLinksSection";
 import EducationsSection from "@/components/dashboard/candidate/applicant/profile/EducationsSection";
 import CertificationSection from "@/components/dashboard/candidate/applicant/profile/CertificationSection";
+import ResumesSection from "@/components/dashboard/candidate/applicant/profile/ResumesSection";
 
 export default function ProfilePage() {
   return (
@@ -19,6 +20,7 @@ export default function ProfilePage() {
           <EducationsSection />
           <CertificationSection />
           <SkillsSection />
+          <ResumesSection />
           <PortfoliosSection />
         </div>
 

@@ -77,7 +77,7 @@ export default function SignInPage() {
         <div><Label htmlFor="password" className="mb-2 block">Password</Label><Input id="password" type="password" autoComplete="current-password" required minLength={6} value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Enter your password" className="h-14 rounded-none" /></div>
         <div className="flex items-center justify-between gap-3 text-sm">
           <button type="button" onClick={() => setRememberMe((value) => !value)} className="flex items-center gap-3 text-slate-600"><FilterTick key={String(rememberMe)} defaultChecked={rememberMe} onChange={setRememberMe} /> Remember me</button>
-          <span className="text-indigo-600">Forgot password?</span>
+          <Link href="/forgot-password" className="text-indigo-600">Forgot password?</Link>
         </div>
         <button disabled={login.isPending} type="submit" className="h-14 w-full bg-indigo-600 font-semibold text-white disabled:opacity-60">{login.isPending ? "Signing in…" : "Sign In"}</button>
         <p className="text-sm text-gray-600">Don&apos;t have an account? <Link href="/sign-up" className="font-semibold text-indigo-600">Sign Up</Link></p>

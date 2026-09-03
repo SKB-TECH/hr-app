@@ -11,6 +11,7 @@ import { DialogFooter } from "@/components/ui/dialog";
 import ProfileEntryModal from "../shared/ProfileEntryModal";
 import ImageUpload from "../shared/ImageUpload";
 import SubmitButton from "../shared/SubmitButton";
+import CountryCitySelect from "../shared/CountryCitySelect";
 import { useUpdateCandidateProfile } from "@/core/hooks/candidate/use-update-candidate-profile";
 import { toCandidateProfileInput } from "@/core/services/candidate/to-candidate-profile-input";
 import type { CandidateProfile } from "@/core/types/candidate-profile";
@@ -48,6 +49,7 @@ export default function EditProfileModal({
     handleSubmit,
     watch,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<ProfileFormValues>({
     defaultValues: {
@@ -191,38 +193,14 @@ export default function EditProfileModal({
           </p>
         </div>
 
-        <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
-          <div>
-            <label
-              htmlFor='profile-city'
-              className='mb-2 block text-sm font-medium text-[#25324B]'
-            >
-              City
-            </label>
-            <input
-              id='profile-city'
-              type='text'
-              placeholder='e.g. Manchester'
-              className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
-              {...register("cityName")}
-            />
-          </div>
-          <div>
-            <label
-              htmlFor='profile-country'
-              className='mb-2 block text-sm font-medium text-[#25324B]'
-            >
-              Country
-            </label>
-            <input
-              id='profile-country'
-              type='text'
-              placeholder='e.g. United Kingdom'
-              className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
-              {...register("countryName")}
-            />
-          </div>
-        </div>
+        <CountryCitySelect
+          countryValue={watch("countryName")}
+          cityValue={watch("cityName")}
+          onCountryChange={(value) => setValue("countryName", value, { shouldDirty: true })}
+          onCityChange={(value) => setValue("cityName", value, { shouldDirty: true })}
+          countryInputId='profile-country'
+          cityInputId='profile-city'
+        />
 
         <label className='flex cursor-pointer items-start gap-3 rounded-lg border border-gray-200 p-4'>
           <input

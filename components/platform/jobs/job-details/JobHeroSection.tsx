@@ -1,25 +1,23 @@
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import TriggerApplicationForm from "./job-application-form/TriggerApplicationForm";
+import type { CompanyJob } from "@/core/types/job";
+import { humanizeEmploymentType } from "@/core/lib/format";
 
-interface JobDetails {
-  title: string;
-  image: string;
-  company: string;
-  location: string;
-  jobType: string;
-}
 interface JobHeroSectionProps {
-  jobDetails: JobDetails;
+  job: CompanyJob;
   showLinks?: boolean;
   className?: string;
 }
 
 export default function JobHeroSection({
-  jobDetails,
+  job,
   showLinks = false,
-  className = ""
+  className = "",
 }: JobHeroSectionProps) {
+  const companyLabel = job.companyName || "—";
+  const jobType = job.employmentTypes[0] ? humanizeEmploymentType(job.employmentTypes[0]) : "—";
+
   return (
     <div
       className={`${className} w-full bg-light-brand-neutral py-8 lg:mt-6 md:py-12`}
@@ -42,26 +40,8 @@ export default function JobHeroSection({
 
             <span className="mx-2 shrink-0">/</span>
 
-            <Link
-              href="/companies"
-              className="hover:text-[#4640DE] transition-colors truncate max-w-[90px] md:max-w-none"
-            >
-              Companies
-            </Link>
-
-            <span className="mx-2 shrink-0">/</span>
-
-            <Link
-              href={"/companies/1"}
-              className="hover:text-[#4640DE] transition-colors truncate max-w-[80px] md:max-w-none"
-            >
-              {jobDetails.company}
-            </Link>
-
-            <span className="mx-2 shrink-0">/</span>
-
             <span className="text-[#25324B] font-medium text-nowrap">
-              {jobDetails.title}
+              {job.title}
             </span>
           </div>
         )}
@@ -73,8 +53,8 @@ export default function JobHeroSection({
               <div className="flex justify-between items-center ">
                 <div className="relative w-18 h-18 shrink-0">
                   <Image
-                    src={jobDetails.image}
-                    alt={jobDetails.title}
+                    src={job.companyLogoUrl || "/logo/lgo.png"}
+                    alt={job.title}
                     fill
                     quality={100}
                     className="object-cover"
@@ -92,15 +72,15 @@ export default function JobHeroSection({
 
               <div className="flex-1">
                 <h1 className="text-[32px] leading-[1.05] max-md:text-[28px] tracking-0 font-bold text-[#25324B] tracking-[-0.02em]">
-                  {jobDetails.title}
+                  {job.title}
                 </h1>
 
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mt-4 text-[14px]  text-[#515B6F]">
-                  <span>{jobDetails.company}</span>
+                  <span>{companyLabel}</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#A8ADB7]" />
-                  <span>{jobDetails.location}</span>
+                  <span>{job.location || "Remote"}</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#A8ADB7]" />
-                  <span>{jobDetails.jobType}</span>
+                  <span>{jobType}</span>
                 </div>
               </div>
             </div>
@@ -112,7 +92,7 @@ export default function JobHeroSection({
 
               <div className="hidden md:block w-px h-14 bg-[#D6DDEB]" />
 
-              <TriggerApplicationForm />
+              <TriggerApplicationForm job={job} />
             </div>
           </div>
         </div>

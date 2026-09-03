@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Company } from "@/types/types";
+import { Building2 } from "lucide-react";
+import type { Company } from "@/core/types/company";
 import SharedCard from "@/components/common/navbar/SharedCard";
 import { Link } from "@/i18n/routing";
 
@@ -8,13 +9,19 @@ export function CompanyCard({ company }: { company: Company }) {
     <SharedCard>
       <div className="flex justify-between items-start ">
         <div className="flex flex-col gap-2">
-          <Image
-            src={company.src}
-            alt={company.name}
-            width={80}
-            height={80}
-            className="max-sm:w-[48px] max-sm:h-[48px]"
-          />
+          {company.logo ? (
+            <Image
+              src={company.logo}
+              alt={company.name}
+              width={80}
+              height={80}
+              className="max-sm:w-[48px] max-sm:h-[48px] object-contain"
+            />
+          ) : (
+            <span className="flex h-[80px] w-[80px] max-sm:h-[48px] max-sm:w-[48px] items-center justify-center bg-accent-light-brand text-brand">
+              <Building2 className="h-8 w-8" />
+            </span>
+          )}
           <div className="flex flex-col ">
             <Link
               href={`/companies/${company.id}`}
@@ -23,32 +30,31 @@ export function CompanyCard({ company }: { company: Company }) {
               {company.name}
             </Link>
             <p className="max-md:block hidden text-[16px]  md:font-bold text-neutral-100 mb-2 ">
-              {company.location}
+              {company.location || "Remote"}
             </p>
           </div>
         </div>
-        <span className="bg-accent-light-brand text-brand px-3 text-sm py-1 ">
-          {company.availableJobs} Jobs
-        </span>
+        {company.industry && (
+          <span className="bg-accent-light-brand text-brand px-3 text-sm py-1 ">
+            {company.industry}
+          </span>
+        )}
       </div>
       <p className="text-neutral-80 text-[16px] mb-3 line-clamp-2 md:line-clamp-4">
-        {company.description}
+        {company.description || "No description available."}
       </p>
-      <div className="flex flex-wrap gap-2">
-        {company.industry.map((tag, idx) => (
-          <span
-            key={idx}
-            style={{
-              backgroundColor: tag.style.bg,
-              borderColor: tag.style.color,
-              color: tag.style.color,
-            }}
-            className="text-[14px] px-4 py-1.5 rounded-full font-medium border"
-          >
-            {tag.name}
-          </span>
-        ))}
-      </div>
+      {company.techStack.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {company.techStack.map((tech) => (
+            <span
+              key={tech}
+              className="text-[14px] px-4 py-1.5 rounded-full font-medium border border-indigo-100 bg-indigo-50 text-brand"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      )}
     </SharedCard>
   );
 }

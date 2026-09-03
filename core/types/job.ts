@@ -8,6 +8,8 @@ export type CompanyJob = {
   employmentTypes: string[];
   category: string | null;
   location: string | null;
+  companyName: string | null;
+  companyLogoUrl: string | null;
   minSalary: number | null;
   maxSalary: number | null;
   description: string | null;
@@ -40,7 +42,14 @@ export type CompanyJobInput = {
   status?: JobStatus;
 };
 
-export type CompanyJobQuery = { status?: JobStatus; search?: string; page?: number; limit?: number };
+export type CompanyJobQuery = {
+  status?: JobStatus;
+  search?: string;
+  location?: string;
+  category?: string;
+  page?: number;
+  limit?: number;
+};
 
 export type CompanyJobStats = {
   total: number;

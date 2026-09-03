@@ -1,28 +1,29 @@
 "use client";
 
 import { useState } from "react";
+import toast from "react-hot-toast";
+
 import UpdateEmail from "./UpdateEmail";
 import UpdatePassword from "./UpdatePassword";
-import { useDeleteAccount } from "@/hooks/use-account";
-import toast from "react-hot-toast";
 import DeleteAccountConfirmation from "./DeleteAccountConfirmation";
+import { useCloseAccount } from "@/core/hooks/users/use-close-account";
+import { ApiError } from "@/core/types/api";
+import { useRouter } from "@/i18n/routing";
 
 function SettingsLoginDetails() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
+  const closeAccount = useCloseAccount();
 
-  const { deleteAccount, isPending } = useDeleteAccount({
-    onSuccess: () => {
+  const handleDelete = async () => {
+    try {
+      await closeAccount.mutateAsync();
       toast.success("Account deleted successfully");
       setIsModalOpen(false);
-    },
-    onError: () => {
-      toast.error("Failed to delete account");
-      setIsModalOpen(false);
-    },
-  });
-
-  const handleDelete = () => {
-    deleteAccount();
+      router.replace("/sign-in");
+    } catch (error) {
+      toast.error(error instanceof ApiError ? error.message : "Failed to delete account");
+    }
   };
 
   return (
@@ -75,7 +76,7 @@ function SettingsLoginDetails() {
       <DeleteAccountConfirmation
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
-        isPending={isPending}
+        isPending={closeAccount.isPending}
         handleDelete={handleDelete}
       />
     </div>

@@ -1,23 +1,31 @@
 "use client";
 
-import { useState, useRef } from "react";
 import { BASIC_FIELDS, LINK_FIELDS } from "../../../../../data/form-data";
-import { FormField } from "../../../../../types/form-types";
+import type { FormField } from "../../../../../types/form-types";
+import type { ApplicationFormValues } from "./ApplyOverlay";
+import type { CandidateResume } from "@/core/types/candidate-resume";
 
 interface OverlayFormProps {
   company: string;
+  values: ApplicationFormValues;
+  onChange: (key: keyof ApplicationFormValues, value: string) => void;
+  resumes: CandidateResume[];
+  isLoadingResumes: boolean;
+  resumeId?: string;
+  onResumeChange: (id: string) => void;
+  onUploadNewResume: () => void;
 }
 
-export default function OverlayForm({ company }: OverlayFormProps) {
-  const [charCount, setCharCount] = useState(0);
-  const [fileName, setFileName] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) setFileName(file.name);
-  };
-
+export default function OverlayForm({
+  company,
+  values,
+  onChange,
+  resumes,
+  isLoadingResumes,
+  resumeId,
+  onResumeChange,
+  onUploadNewResume,
+}: OverlayFormProps) {
   return (
     <div className="apply-overlay__body">
       {/* Intro */}
@@ -31,12 +39,14 @@ export default function OverlayForm({ company }: OverlayFormProps) {
       <div className="apply-overlay__fields">
         {/* Basic fields */}
         {BASIC_FIELDS.map((field: FormField) => (
-          <div key={field.label} className="apply-overlay__field">
+          <div key={field.key} className="apply-overlay__field">
             <label className="apply-overlay__label">{field.label}</label>
             <input
               type={field.type}
               className="apply-overlay__input"
               placeholder={field.placeholder}
+              value={values[field.key as keyof ApplicationFormValues]}
+              onChange={(e) => onChange(field.key as keyof ApplicationFormValues, e.target.value)}
             />
           </div>
         ))}
@@ -45,12 +55,14 @@ export default function OverlayForm({ company }: OverlayFormProps) {
         <div className="apply-overlay__section">
           <p className="apply-overlay__section-title">LINKS</p>
           {LINK_FIELDS.map((field: FormField) => (
-            <div key={field.label} className="apply-overlay__field">
+            <div key={field.key} className="apply-overlay__field">
               <label className="apply-overlay__label">{field.label}</label>
               <input
                 type={field.type}
                 className="apply-overlay__input"
                 placeholder={field.placeholder}
+                value={values[field.key as keyof ApplicationFormValues]}
+                onChange={(e) => onChange(field.key as keyof ApplicationFormValues, e.target.value)}
               />
             </div>
           ))}
@@ -63,7 +75,8 @@ export default function OverlayForm({ company }: OverlayFormProps) {
             className="apply-overlay__textarea"
             placeholder="Add a cover letter or anything else you want to share"
             maxLength={500}
-            onChange={(e) => setCharCount(e.target.value.length)}
+            value={values.coverLetter}
+            onChange={(e) => onChange("coverLetter", e.target.value)}
           />
           <div className="apply-overlay__textarea-footer">
             <div className="apply-overlay__toolbar">
@@ -83,21 +96,35 @@ export default function OverlayForm({ company }: OverlayFormProps) {
                 🔗
               </button>
             </div>
-            <span className="apply-overlay__char-count">{charCount} / 500</span>
+            <span className="apply-overlay__char-count">{values.coverLetter.length} / 500</span>
           </div>
           <p className="apply-overlay__max-chars">Maximum 500 characters</p>
         </div>
 
         {/* Resume */}
         <div className="apply-overlay__resume">
-          <span className="apply-overlay__resume-label">
-            {fileName ?? "Attach your resume"}
-          </span>
-          <button
-            type="button"
-            className="apply-overlay__resume-btn"
-            onClick={() => fileInputRef.current?.click()}
-          >
+          {isLoadingResumes ? (
+            <span className="apply-overlay__resume-label">Loading resumes…</span>
+          ) : resumes.length > 0 ? (
+            <select
+              className="apply-overlay__input"
+              value={resumeId || ""}
+              onChange={(e) => onResumeChange(e.target.value)}
+            >
+              <option value="" disabled>
+                Select a resume
+              </option>
+              {resumes.map((resume) => (
+                <option key={resume.id} value={resume.id}>
+                  {resume.fileName}
+                  {resume.isDefault ? " (Default)" : ""}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <span className="apply-overlay__resume-label">No resumes uploaded yet</span>
+          )}
+          <button type="button" className="apply-overlay__resume-btn" onClick={onUploadNewResume}>
             <svg
               width="15"
               height="15"
@@ -112,13 +139,6 @@ export default function OverlayForm({ company }: OverlayFormProps) {
             </svg>
             Attach Resume/CV
           </button>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept=".pdf,.doc,.docx"
-            style={{ display: "none" }}
-            onChange={handleFileChange}
-          />
         </div>
       </div>
     </div>

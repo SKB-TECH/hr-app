@@ -9,6 +9,8 @@ interface AllJobsProps {
   pageSize: number;
   viewGrid: boolean;
   setViewGrid: React.Dispatch<React.SetStateAction<boolean>>;
+  search: string;
+  onPageChange: (page: number) => void;
   getApplyLink: (id: string | number) => string;
 }
 
@@ -17,6 +19,8 @@ function AllJobs({
   pageSize,
   viewGrid,
   setViewGrid,
+  search,
+  onPageChange,
   getApplyLink,
 }: AllJobsProps) {
   return (
@@ -36,6 +40,8 @@ function AllJobs({
           pageSize={pageSize}
           viewGrid={viewGrid}
           setViewGrid={setViewGrid}
+          search={search}
+          onPageChange={onPageChange}
           getApplyLink={getApplyLink}
         />
       </div>

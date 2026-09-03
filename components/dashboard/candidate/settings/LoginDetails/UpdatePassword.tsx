@@ -1,6 +1,12 @@
+"use client";
+
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+
 import { Button } from "@/components/ui/button";
 import InputField from "../profile/InputField";
-import useSettingsForm from "@/hooks/useSettingsForm";
+import { useUpdateUserPassword } from "@/core/hooks/users/use-update-user-password";
+import { ApiError } from "@/core/types/api";
 
 interface UpdatePasswordFormValues {
   currentPassword: string;
@@ -8,8 +14,26 @@ interface UpdatePasswordFormValues {
 }
 
 function UpdatePassword() {
-  const { register, handleSubmit, onSubmit, errors, isSubmitting } =
-    useSettingsForm<UpdatePasswordFormValues>();
+  const updatePassword = useUpdateUserPassword();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<UpdatePasswordFormValues>({
+    defaultValues: { currentPassword: "", newPassword: "" },
+  });
+
+  const onSubmit = async (values: UpdatePasswordFormValues) => {
+    try {
+      await updatePassword.mutateAsync(values);
+      toast.success("Password changed successfully.");
+      reset({ currentPassword: "", newPassword: "" });
+    } catch (error) {
+      toast.error(error instanceof ApiError ? error.message : "Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <div className="flex max-md:flex-col gap-4 md:gap-16 mb-8">
@@ -33,9 +57,9 @@ function UpdatePassword() {
             type="password"
             placeholder="Enter your old password"
           />
-          {errors && (
+          {errors.currentPassword && (
             <p className="text-red-500 text-sm mt-2">
-              {errors.currentPassword?.message}
+              {errors.currentPassword.message}
             </p>
           )}
 
@@ -51,16 +75,19 @@ function UpdatePassword() {
           type="password"
           placeholder="Enter your new password"
           className="mt-4"
-          {...register("newPassword", { required: "New password is required" })}
+          {...register("newPassword", {
+            required: "New password is required",
+            minLength: { value: 8, message: "Minimum 8 characters." },
+          })}
         />
-        {errors && (
+        {errors.newPassword && (
           <p className="text-red-500 text-sm mt-2">
-            {errors.newPassword?.message}
+            {errors.newPassword.message}
           </p>
         )}
 
-        <Button type="submit" variant="custom-secondary">
-          {isSubmitting ? "Changing Password..." : "Change Password"}
+        <Button type="submit" variant="custom-secondary" disabled={updatePassword.isPending}>
+          {updatePassword.isPending ? "Changing Password..." : "Change Password"}
         </Button>
       </form>
     </div>

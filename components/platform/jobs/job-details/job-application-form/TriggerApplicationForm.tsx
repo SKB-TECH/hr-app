@@ -1,11 +1,30 @@
 "use client";
 
 import { useState } from "react";
+import toast from "react-hot-toast";
 import ApplyOverlay from "./ApplyOverlay";
+import { useSession } from "@/core/hooks/auth/use-session";
+import { useRouter } from "@/i18n/routing";
+import type { CompanyJob } from "@/core/types/job";
 
-function TriggerApplicationForm() {
+interface TriggerApplicationFormProps {
+  job: CompanyJob;
+}
+
+function TriggerApplicationForm({ job }: TriggerApplicationFormProps) {
+  const router = useRouter();
+  const { data: session, isLoading } = useSession();
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const showForm = () => setIsFormOpen(true);
+
+  const showForm = () => {
+    if (isLoading) return;
+    if (!session) {
+      toast.error("Please sign in to apply for this job.");
+      router.push("/sign-in");
+      return;
+    }
+    setIsFormOpen(true);
+  };
 
   return (
     <div>
@@ -20,6 +39,7 @@ function TriggerApplicationForm() {
         <ApplyOverlay
           isOpen={isFormOpen}
           onClose={() => setIsFormOpen(false)}
+          job={job}
         />
       )}
     </div>

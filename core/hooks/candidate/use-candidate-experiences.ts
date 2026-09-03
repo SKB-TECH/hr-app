@@ -7,6 +7,12 @@ import { candidateExperienceKeys } from "./candidate-experience-query-keys";
 export function useCandidateExperiences() {
   return useQuery({
     queryKey: candidateExperienceKeys.mine,
-    queryFn: () => getCandidateExperiences().then((response) => (Array.isArray(response.data) ? response.data : [])),
+    queryFn: () =>
+      getCandidateExperiences().then((response) => {
+        // console.log("useCandidateExperiences response:", response);
+        return Array.isArray(response.data.experiences)
+          ? response.data.experiences
+          : [];
+      }),
   });
 }

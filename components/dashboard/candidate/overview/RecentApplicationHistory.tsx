@@ -5,59 +5,23 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { DateRange } from "react-day-picker";
-import { parse, isWithinInterval, startOfDay, endOfDay } from "date-fns";
+import { format, parseISO, isWithinInterval, startOfDay, endOfDay } from "date-fns";
+import { useMyApplications } from "@/core/hooks/applications/use-my-applications";
+import { SectionSkeleton } from "../applicant/profile/shared/Skeleton";
 
-type ApplicationStatus = "In Review" | "Shortlisted" | "Declined";
-
-interface Application {
-  id: number;
-  title: string;
-  company: string;
-  location: string;
-  type: string;
-  dateApplied: string; // e.g. "24 July 2021"
-  status: ApplicationStatus;
-  logo: string;
+function stageStyles(stageName: string): string {
+  const label = stageName.toLowerCase();
+  if (label.includes("reject") || label.includes("declin") || label.includes("unsuitable")) {
+    return "text-red-500 border border-red-400";
+  }
+  if (label.includes("hire") || label.includes("offer")) {
+    return "text-indigo-600 border border-indigo-500 font-bold";
+  }
+  if (label.includes("interview") || label.includes("shortlist")) {
+    return "text-yellow-500 border border-yellow-400";
+  }
+  return "text-gray-500 border border-gray-300";
 }
-
-const applications: Application[] = [
-  {
-    id: 1,
-    title: "Social Media Assistant",
-    company: "Nomad",
-    location: "Paris, France",
-    type: "Full-Time",
-    dateApplied: "24 July 2021",
-    status: "In Review",
-    logo: "/Nomad.png",
-  },
-  {
-    id: 2,
-    title: "Social Media Assistant",
-    company: "Udacity",
-    location: "New York, USA",
-    type: "Full-Time",
-    dateApplied: "23 July 2021",
-    status: "Shortlisted",
-    logo: "/Udacity.png",
-  },
-  {
-    id: 3,
-    title: "Social Media Assistant",
-    company: "Packer",
-    location: "Madrid, Spain",
-    type: "Full-Time",
-    dateApplied: "22 July 2021",
-    status: "Declined",
-    logo: "/Packer.png",
-  },
-];
-
-const statusStyles: Record<ApplicationStatus, string> = {
-  "In Review": "text-yellow-500 border border-yellow-400",
-  Shortlisted: "text-indigo-600 border border-indigo-500 font-bold",
-  Declined: "text-red-500 border border-red-400",
-};
 
 function ThreeDots() {
   return (
@@ -78,13 +42,12 @@ interface RecentApplicationsProps {
 export default function RecentApplicationsHistory({
   dateRange,
 }: RecentApplicationsProps) {
-  // Filter logic
-  const filteredApplications = applications.filter((app) => {
+  const { data: applicationsPage, isLoading, isError } = useMyApplications({ limit: 20 });
+  const applications = applicationsPage?.data ?? [];
+
+  const filteredApplications = applications.filter((application) => {
     if (!dateRange?.from || !dateRange?.to) return true;
-
-    // Parse string date ("24 July 2021") into Date object
-    const appliedDate = parse(app.dateApplied, "d MMMM yyyy", new Date());
-
+    const appliedDate = parseISO(application.appliedAt);
     return isWithinInterval(appliedDate, {
       start: startOfDay(dateRange.from),
       end: endOfDay(dateRange.to),
@@ -100,21 +63,29 @@ export default function RecentApplicationsHistory({
 
       {/* List */}
       <div className="flex flex-col gap-3 p-6">
-        {filteredApplications.length > 0 ? (
-          filteredApplications.map((app) => (
+        {isLoading && <SectionSkeleton rows={3} />}
+
+        {!isLoading && isError && (
+          <p className="text-center text-[#7C8493] py-6">
+            We couldn&apos;t load your applications right now. Please refresh the page to try again.
+          </p>
+        )}
+
+        {!isLoading && !isError && filteredApplications.length > 0
+          ? filteredApplications.map((application) => {
+              const status = application.stage?.name || "Applied";
+              return (
             <div
-              key={app.id}
-              className={`${
-                app.status === "Shortlisted" ? "" : "bg-[#F8F8FD]"
-              } px-5 py-4 rounded-md`}
+              key={application.id}
+              className="bg-[#F8F8FD] px-5 py-4 rounded-md"
             >
               {/* MOBILE layout */}
               <div className="sm:hidden">
                 <div className="flex items-start justify-between mb-3">
                   <div className="w-14 h-14 flex items-center justify-center">
                     <Image
-                      src={app.logo}
-                      alt={app.company}
+                      src={application.job.companyLogoUrl || "/logo/lgo.png"}
+                      alt={application.job.companyName || application.job.title}
                       width={52}
                       height={52}
                       className="object-contain rounded-lg"
@@ -123,14 +94,12 @@ export default function RecentApplicationsHistory({
                   <ThreeDots />
                 </div>
                 <p className="text-[18px] font-bold text-[#25324B] mb-1">
-                  {app.title}
+                  {application.job.title}
                 </p>
                 <p className="text-[13px] text-gray-400 flex items-center gap-1.5 flex-wrap mb-3">
-                  <span>{app.company}</span>
+                  <span>{application.job.companyName || "—"}</span>
                   <span className="text-gray-300">•</span>
-                  <span>{app.location}</span>
-                  <span className="text-gray-300">•</span>
-                  <span>{app.type}</span>
+                  <span>{application.job.location || "Remote"}</span>
                 </p>
                 <div className="flex items-end justify-between">
                   <div>
@@ -138,15 +107,13 @@ export default function RecentApplicationsHistory({
                       Date Applied
                     </p>
                     <p className="text-[14px] text-[#7C8493] mt-0.5">
-                      {app.dateApplied}
+                      {format(parseISO(application.appliedAt), "d MMMM yyyy")}
                     </p>
                   </div>
                   <span
-                    className={`text-[12px] font-semibold px-4 py-1.5 rounded-full ${
-                      statusStyles[app.status]
-                    }`}
+                    className={`text-[12px] font-semibold px-4 py-1.5 rounded-full ${stageStyles(status)}`}
                   >
-                    {app.status}
+                    {status}
                   </span>
                 </div>
               </div>
@@ -156,8 +123,8 @@ export default function RecentApplicationsHistory({
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
                     <Image
-                      src={app.logo}
-                      alt={app.company}
+                      src={application.job.companyLogoUrl || "/logo/lgo.png"}
+                      alt={application.job.companyName || application.job.title}
                       width={44}
                       height={44}
                       className="object-contain rounded-lg"
@@ -165,14 +132,12 @@ export default function RecentApplicationsHistory({
                   </div>
                   <div className="min-w-0">
                     <p className="text-[18px] font-bold text-[#25324B]">
-                      {app.title}
+                      {application.job.title}
                     </p>
                     <p className="text-[16px] text-gray-400 mt-0.5 flex items-center gap-1.5 flex-wrap">
-                      <span>{app.company}</span>
+                      <span>{application.job.companyName || "—"}</span>
                       <span className="text-gray-300">•</span>
-                      <span>{app.location}</span>
-                      <span className="text-gray-300">•</span>
-                      <span>{app.type}</span>
+                      <span>{application.job.location || "Remote"}</span>
                     </p>
                   </div>
                 </div>
@@ -182,29 +147,29 @@ export default function RecentApplicationsHistory({
                     Date Applied
                   </p>
                   <p className="text-[16px] font-medium text-[#7C8493] mt-0.5">
-                    {app.dateApplied}
+                    {format(parseISO(application.appliedAt), "d MMMM yyyy")}
                   </p>
                 </div>
 
                 <div className="flex-shrink-0">
                   <span
-                    className={`text-[12px] font-semibold px-4 py-1.5 rounded-full ${
-                      statusStyles[app.status]
-                    }`}
+                    className={`text-[12px] font-semibold px-4 py-1.5 rounded-full ${stageStyles(status)}`}
                   >
-                    {app.status}
+                    {status}
                   </span>
                 </div>
 
                 <ThreeDots />
               </div>
             </div>
-          ))
-        ) : (
-          <p className="text-center text-[#7C8493] py-6">
-            No applications found for the selected date range.
-          </p>
-        )}
+              );
+            })
+          : !isLoading &&
+            !isError && (
+              <p className="text-center text-[#7C8493] py-6">
+                No applications found for the selected date range.
+              </p>
+            )}
       </div>
 
       {/* Footer link */}

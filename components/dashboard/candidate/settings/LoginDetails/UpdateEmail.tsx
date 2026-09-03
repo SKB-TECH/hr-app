@@ -1,15 +1,39 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { CheckCircle } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 import InputField from "../profile/InputField";
-import useSettingsForm from "@/hooks/useSettingsForm";
+import { useSession } from "@/core/hooks/auth/use-session";
+import { useUpdateUserEmail } from "@/core/hooks/users/use-update-user-email";
+import { ApiError } from "@/core/types/api";
 
 interface UpdateEmailFormValues {
   email: string;
 }
 
 function UpdateEmail() {
-  const { register, handleSubmit, onSubmit, errors, isSubmitting } =
-    useSettingsForm<UpdateEmailFormValues>();
+  const { data: session } = useSession();
+  const updateEmail = useUpdateUserEmail();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<UpdateEmailFormValues>({ defaultValues: { email: "" } });
+
+  const onSubmit = async (values: UpdateEmailFormValues) => {
+    try {
+      await updateEmail.mutateAsync({ email: values.email.trim() });
+      toast.success("Email updated successfully.");
+      reset({ email: "" });
+    } catch (error) {
+      toast.error(error instanceof ApiError ? error.message : "Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <div className="flex max-md:flex-col max-md:gap-5  gap-16 mb-8">
@@ -27,14 +51,16 @@ function UpdateEmail() {
         <div className="max-md:bg-brand-light-neutral/25 p-3">
           <div className="flex items-center gap-2">
             <div className="flex gap-2 items-center text-sm font-medium text-neutral-100">
-              <span>jakegyll@email.com</span>
-              <span aria-label="Verified" className="text-accent-green text-sm">
-                <CheckCircle size={16} />{" "}
-              </span>
+              <span>{session?.email || "—"}</span>
+              {session?.emailVerified && (
+                <span aria-label="Verified" className="text-accent-green text-sm">
+                  <CheckCircle size={16} />{" "}
+                </span>
+              )}
             </div>
           </div>
           <p className="text-sm text-gray-500 mt-1">
-            Your email address is verified.
+            {session?.emailVerified ? "Your email address is verified." : "Your email address is not verified yet."}
           </p>
         </div>
 
@@ -48,15 +74,15 @@ function UpdateEmail() {
               placeholder="Enter your new email address"
               className="!placeholder:text-neutral-60 "
             />
-            {errors && (
+            {errors.email && (
               <p className="text-red-500 text-sm mt-2">
-                {errors.email?.message}
+                {errors.email.message}
               </p>
             )}
           </div>
 
-          <Button type="submit" variant="custom-secondary">
-            {isSubmitting ? "Updating..." : "Update Email"}
+          <Button type="submit" variant="custom-secondary" disabled={updateEmail.isPending}>
+            {updateEmail.isPending ? "Updating..." : "Update Email"}
           </Button>
         </form>
       </div>

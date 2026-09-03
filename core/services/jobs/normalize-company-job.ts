@@ -1,11 +1,15 @@
+import { mediaUrl } from "@/core/lib/media-url";
 import type { CompanyJob } from "@/core/types/job";
 
 type ApiJob = Record<string, unknown>;
 
 export function normalizeCompanyJob(value: ApiJob): CompanyJob {
+  const company = (value.company || {}) as Record<string, unknown>;
+  const companyLogo = company.logoUrl ?? company.logo;
+
   return {
     id: String(value.id),
-    companyId: String(value.companyId),
+    companyId: String(value.companyId ?? company.id ?? ""),
     title: String(value.title || "Untitled job"),
     status: (value.status || "DRAFT") as CompanyJob["status"],
     employmentTypes: Array.isArray(value.employmentTypes)
@@ -15,6 +19,8 @@ export function normalizeCompanyJob(value: ApiJob): CompanyJob {
         : [],
     category: value.category ? String(value.category) : null,
     location: value.location ? String(value.location) : null,
+    companyName: company.name ? String(company.name) : null,
+    companyLogoUrl: companyLogo ? mediaUrl(String(companyLogo)) : null,
     minSalary: numberOrNull(value.salaryMin),
     maxSalary: numberOrNull(value.salaryMax),
     description: value.description ? String(value.description) : null,

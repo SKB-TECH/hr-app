@@ -31,7 +31,11 @@ interface PortfolioModalProps {
   portfolio?: CandidatePortfolio | null;
 }
 
-export default function PortfolioModal({ open, onOpenChange, portfolio }: PortfolioModalProps) {
+export default function PortfolioModal({
+  open,
+  onOpenChange,
+  portfolio,
+}: PortfolioModalProps) {
   const isEditing = Boolean(portfolio);
   const createPortfolio = useCreateCandidatePortfolio();
   const updatePortfolio = useUpdateCandidatePortfolio();
@@ -46,7 +50,9 @@ export default function PortfolioModal({ open, onOpenChange, portfolio }: Portfo
     watch,
     reset,
     formState: { errors },
-  } = useForm<PortfolioFormValues>({ defaultValues: { title: "", projectUrl: "", description: "" } });
+  } = useForm<PortfolioFormValues>({
+    defaultValues: { title: "", projectUrl: "", description: "" },
+  });
 
   useEffect(() => {
     if (!open) return;
@@ -94,9 +100,17 @@ export default function PortfolioModal({ open, onOpenChange, portfolio }: Portfo
       onOpenChange(false);
     } catch (error) {
       if (error instanceof ApiError) {
-        console.error("Portfolio project save rejected by backend:", error.status, error.details);
+        console.log(
+          "Portfolio project save rejected by backend:",
+          error.status,
+          error.details,
+        );
       }
-      toast.error(error instanceof ApiError ? error.message : "Something went wrong. Please try again.");
+      toast.error(
+        error instanceof ApiError
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
     } finally {
       submittingRef.current = false;
     }
@@ -107,7 +121,7 @@ export default function PortfolioModal({ open, onOpenChange, portfolio }: Portfo
       open={open}
       onOpenChange={onOpenChange}
       isPending={isPending}
-      icon={<FolderIcon className="h-5 w-5" />}
+      icon={<FolderIcon className='h-5 w-5' />}
       title={isEditing ? "Edit Project" : "Add Project"}
       description="Showcase work you're proud of so recruiters can see what you can build."
     >
@@ -117,11 +131,11 @@ export default function PortfolioModal({ open, onOpenChange, portfolio }: Portfo
           event.preventDefault();
           handleSubmit(onSubmit)(event);
         }}
-        className="mt-5 space-y-5"
+        className='mt-5 space-y-5'
       >
         <ImageUpload
           label={isEditing ? "Project Thumbnail" : "Project Thumbnail *"}
-          shape="rectangle"
+          shape='rectangle'
           file={thumbnailFile}
           currentImageUrl={portfolio?.thumbnailUrl}
           onSelect={(file) => {
@@ -132,86 +146,121 @@ export default function PortfolioModal({ open, onOpenChange, portfolio }: Portfo
         />
 
         <div>
-          <label htmlFor="portfolio-title" className="mb-2 block text-sm font-medium text-[#25324B]">
+          <label
+            htmlFor='portfolio-title'
+            className='mb-2 block text-sm font-medium text-[#25324B]'
+          >
             Project Title
           </label>
           <input
-            id="portfolio-title"
-            type="text"
-            placeholder="e.g. Growthly - SaaS Analytics Dashboard"
+            id='portfolio-title'
+            type='text'
+            placeholder='e.g. Growthly - SaaS Analytics Dashboard'
             aria-invalid={Boolean(errors.title)}
-            aria-describedby={errors.title ? "portfolio-title-error" : undefined}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            aria-describedby={
+              errors.title ? "portfolio-title-error" : undefined
+            }
+            className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("title", {
               required: "Project title is required.",
-              validate: (value) => value.trim().length > 0 || "Project title is required.",
+              validate: (value) =>
+                value.trim().length > 0 || "Project title is required.",
             })}
           />
           {errors.title && (
-            <p id="portfolio-title-error" className="mt-1.5 text-[13px] text-red-500">
+            <p
+              id='portfolio-title-error'
+              className='mt-1.5 text-[13px] text-red-500'
+            >
               {errors.title.message}
             </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="portfolio-project-url" className="mb-2 block text-sm font-medium text-[#25324B]">
+          <label
+            htmlFor='portfolio-project-url'
+            className='mb-2 block text-sm font-medium text-[#25324B]'
+          >
             Project Link
           </label>
           <input
-            id="portfolio-project-url"
-            type="url"
-            placeholder="https://..."
+            id='portfolio-project-url'
+            type='url'
+            placeholder='https://...'
             aria-invalid={Boolean(errors.projectUrl)}
-            aria-describedby={errors.projectUrl ? "portfolio-project-url-error" : undefined}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            aria-describedby={
+              errors.projectUrl ? "portfolio-project-url-error" : undefined
+            }
+            className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("projectUrl", {
-              validate: (value) => isValidUrl(value) || "Please enter a valid URL.",
+              validate: (value) =>
+                isValidUrl(value) || "Please enter a valid URL.",
             })}
           />
           {errors.projectUrl && (
-            <p id="portfolio-project-url-error" className="mt-1.5 text-[13px] text-red-500">
+            <p
+              id='portfolio-project-url-error'
+              className='mt-1.5 text-[13px] text-red-500'
+            >
               {errors.projectUrl.message}
             </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="portfolio-description" className="mb-2 block text-sm font-medium text-[#25324B]">
+          <label
+            htmlFor='portfolio-description'
+            className='mb-2 block text-sm font-medium text-[#25324B]'
+          >
             Description
           </label>
           <textarea
-            id="portfolio-description"
+            id='portfolio-description'
             rows={4}
             maxLength={DESCRIPTION_MAX_LENGTH}
-            placeholder="Briefly describe the project, your role, and the tools you used."
+            placeholder='Briefly describe the project, your role, and the tools you used.'
             aria-invalid={Boolean(errors.description)}
-            aria-describedby={errors.description ? "portfolio-description-error" : undefined}
-            className="w-full rounded-lg border border-gray-300 p-4 outline-none transition focus:border-brand"
+            aria-describedby={
+              errors.description ? "portfolio-description-error" : undefined
+            }
+            className='w-full rounded-lg border border-gray-300 p-4 outline-none transition focus:border-brand'
             {...register("description", {
               required: "Description is required.",
-              validate: (value) => value.trim().length > 0 || "Description is required.",
+              validate: (value) =>
+                value.trim().length > 0 || "Description is required.",
             })}
           />
-          <div className="mt-1.5 flex items-start justify-between gap-2">
+          <div className='mt-1.5 flex items-start justify-between gap-2'>
             {errors.description ? (
-              <p id="portfolio-description-error" className="text-[13px] text-red-500">
+              <p
+                id='portfolio-description-error'
+                className='text-[13px] text-red-500'
+              >
                 {errors.description.message}
               </p>
             ) : (
               <span />
             )}
-            <p className="shrink-0 text-right text-[12px] text-gray-400">
+            <p className='shrink-0 text-right text-[12px] text-gray-400'>
               {descriptionValue?.length || 0}/{DESCRIPTION_MAX_LENGTH}
             </p>
           </div>
         </div>
 
-        <DialogFooter className="-mx-6 -mb-6 mt-2 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4">
-          <Button type="button" variant="outline" onClick={handleClose} disabled={isPending}>
+        <DialogFooter className='-mx-6 -mb-6 mt-2 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4'>
+          <Button
+            type='button'
+            variant='outline'
+            onClick={handleClose}
+            disabled={isPending}
+          >
             Cancel
           </Button>
-          <SubmitButton isPending={isPending} label={isEditing ? "Update Project" : "Save Project"} />
+          <SubmitButton
+            isPending={isPending}
+            label={isEditing ? "Update Project" : "Save Project"}
+          />
         </DialogFooter>
       </form>
     </ProfileEntryModal>

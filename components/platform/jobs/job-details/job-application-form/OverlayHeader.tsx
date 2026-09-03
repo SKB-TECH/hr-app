@@ -1,20 +1,23 @@
 import Image from "next/image";
-import { JobInfo } from "../../../../../types/form-types";
+import type { CompanyJob } from "@/core/types/job";
+import { humanizeEmploymentType } from "@/core/lib/format";
 
 interface OverlayHeaderProps {
-  job: JobInfo;
+  job: CompanyJob;
   onClose: () => void;
 }
 
 export default function OverlayHeader({ job, onClose }: OverlayHeaderProps) {
+  const companyLabel = job.companyName || job.title;
+
   return (
     <div className="apply-overlay__header">
       <div className="apply-overlay__job-info">
         <div className="apply-overlay__logo">
-          {job.logo ? (
-            <Image src={job.logo} alt={job.company} width={42} height={42} />
+          {job.companyLogoUrl ? (
+            <Image src={job.companyLogoUrl} alt={companyLabel} width={42} height={42} />
           ) : (
-            <span>{job.company[0]}</span>
+            <span>{companyLabel[0]}</span>
           )}
         </div>
         <div>
@@ -22,19 +25,15 @@ export default function OverlayHeader({ job, onClose }: OverlayHeaderProps) {
             {job.title}
           </p>
           <p className="apply-overlay__job-meta">
-            {job.company}
+            {job.companyName || "—"}
             <span className="apply-overlay__dot" />
-            {job.location}
+            {job.location || "Remote"}
             <span className="apply-overlay__dot" />
-            {job.type}
+            {job.employmentTypes[0] ? humanizeEmploymentType(job.employmentTypes[0]) : "—"}
           </p>
         </div>
       </div>
-      <button
-        className="apply-overlay__close"
-        onClick={onClose}
-        aria-label="Close"
-      >
+      <button className="apply-overlay__close" onClick={onClose} aria-label="Close">
         ✕
       </button>
     </div>

@@ -29,6 +29,18 @@ export type CompanyApplication = {
 
 export type ApplicationQuery = { stageId?: string; search?: string; page?: number; limit?: number };
 
+export type CreateApplicationInput = {
+  jobId: string;
+  resumeId?: string;
+  fullName: string;
+  email: string;
+  phone?: string | null;
+  currentJobTitle?: string | null;
+  linkedinUrl?: string | null;
+  portfolioUrl?: string | null;
+  coverLetter?: string | null;
+};
+
 export type ApplicationStageHistory = {
   id: string;
   applicationId: string;
@@ -37,6 +49,34 @@ export type ApplicationStageHistory = {
   note: string | null;
   createdAt: string;
   changedBy?: { id: string; fullName?: string | null; email?: string | null };
+};
+
+export type MyApplicationJob = {
+  id: string;
+  title: string;
+  companyName: string | null;
+  companyLogoUrl: string | null;
+  location: string | null;
+  employmentTypes: string[];
+};
+
+export type MyApplication = {
+  id: string;
+  jobId: string;
+  job: MyApplicationJob;
+  stageId: string | null;
+  stage: PipelineStage | null;
+  appliedAt: string;
+};
+
+export type MyApplicationQuery = { search?: string; stageId?: string; page?: number; limit?: number };
+
+export type MyApplicationStats = {
+  totalApplied: number;
+  interviewed: number;
+  shortlisted: number;
+  hired: number;
+  rejected: number;
 };
 
 export type Interview = {

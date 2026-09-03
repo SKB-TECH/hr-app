@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { application } from "./data";
 
 type Application = {
   id: string;
@@ -30,7 +29,7 @@ const statusStyles: Record<string, string> = {
 };
 
 export default function ApplicationsTable({ items }: { items: Application[] }) {
-  if (!application.length)
+  if (!items.length)
     return (
       <div className="p-6 bg-white mt-4 text-center">
         No applications found.

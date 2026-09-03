@@ -11,6 +11,7 @@ import { DialogFooter } from "@/components/ui/dialog";
 import ProfileEntryModal from "../shared/ProfileEntryModal";
 import DateField from "../shared/DateField";
 import SubmitButton from "../shared/SubmitButton";
+import CountryCitySelect from "../shared/CountryCitySelect";
 import { isFutureDate } from "../shared/profile-document-validation";
 import { EMPLOYMENT_TYPE_OPTIONS, isEndBeforeStart } from "./experience-options";
 import { useCreateCandidateExperience } from "@/core/hooks/candidate/use-create-candidate-experience";
@@ -21,10 +22,11 @@ import { ApiError } from "@/core/types/api";
 const DESCRIPTION_MAX_LENGTH = 500;
 
 type ExperienceFormValues = {
-  title: string;
+  position: string;
   companyName: string;
   employmentType: string;
-  location: string;
+  countryName: string;
+  cityName: string;
   startDate: string;
   endDate: string;
   description: string;
@@ -55,21 +57,22 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
     trigger,
     formState: { errors },
   } = useForm<ExperienceFormValues>({
-    defaultValues: { title: "", companyName: "", employmentType: "", location: "", startDate: "", endDate: "", description: "" },
+    defaultValues: { position: "", companyName: "", employmentType: "", countryName: "", cityName: "", startDate: "", endDate: "", description: "" },
   });
 
   useEffect(() => {
     if (!open) return;
     reset({
-      title: experience?.title || "",
+      position: experience?.position || "",
       companyName: experience?.companyName || "",
       employmentType: experience?.employmentType || "",
-      location: experience?.location || "",
+      countryName: experience?.countryName || "",
+      cityName: experience?.cityName || "",
       startDate: experience?.startDate ? experience.startDate.slice(0, 10) : "",
       endDate: experience?.endDate ? experience.endDate.slice(0, 10) : "",
       description: experience?.description || "",
     });
-    setIsCurrent(Boolean(experience) && !experience?.endDate);
+    setIsCurrent(Boolean(experience?.isCurrent));
   }, [open, experience, reset]);
 
   const startDateValue = watch("startDate");
@@ -87,12 +90,14 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
 
     try {
       const input = {
-        title: values.title.trim(),
+        position: values.position.trim(),
         companyName: values.companyName.trim(),
         employmentType: values.employmentType || null,
-        location: values.location.trim() || null,
+        countryName: values.countryName.trim() || null,
+        cityName: values.cityName.trim() || null,
         startDate: values.startDate,
         endDate: isCurrent ? null : values.endDate || null,
+        isCurrent,
         description: values.description.trim() || null,
       };
 
@@ -132,24 +137,24 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
         className="mt-5 space-y-5"
       >
         <div>
-          <label htmlFor="experience-job-title" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Job Title
+          <label htmlFor="experience-position" className="mb-2 block text-sm font-medium text-[#25324B]">
+            Position
           </label>
           <input
-            id="experience-job-title"
+            id="experience-position"
             type="text"
             placeholder="e.g. Senior Product Designer"
-            aria-invalid={Boolean(errors.title)}
-            aria-describedby={errors.title ? "experience-job-title-error" : undefined}
+            aria-invalid={Boolean(errors.position)}
+            aria-describedby={errors.position ? "experience-position-error" : undefined}
             className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
-            {...register("title", {
-              required: "Job title is required.",
-              validate: (value) => value.trim().length > 0 || "Job title is required.",
+            {...register("position", {
+              required: "Position is required.",
+              validate: (value) => value.trim().length > 0 || "Position is required.",
             })}
           />
-          {errors.title && (
-            <p id="experience-job-title-error" className="mt-1.5 text-[13px] text-red-500">
-              {errors.title.message}
+          {errors.position && (
+            <p id="experience-position-error" className="mt-1.5 text-[13px] text-red-500">
+              {errors.position.message}
             </p>
           )}
         </div>
@@ -197,18 +202,14 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
           </div>
         </div>
 
-        <div>
-          <label htmlFor="experience-location" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Location
-          </label>
-          <input
-            id="experience-location"
-            type="text"
-            placeholder="e.g. Manchester, UK"
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
-            {...register("location")}
-          />
-        </div>
+        <CountryCitySelect
+          countryValue={watch("countryName")}
+          cityValue={watch("cityName")}
+          onCountryChange={(value) => setValue("countryName", value, { shouldDirty: true })}
+          onCityChange={(value) => setValue("cityName", value, { shouldDirty: true })}
+          countryInputId="experience-country-name"
+          cityInputId="experience-city-name"
+        />
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>

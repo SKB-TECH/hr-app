@@ -1,49 +1,27 @@
 "use client";
-import { Company } from "@/types/types";
-import { AtsDetailsReturnProps, getAtsDetails } from "@/lib/candidate";
+import type { CompanyJob } from "@/core/types/job";
 import GridJobCard from "./GridJobCard";
 import LayeredCard from "./LayeredCard";
 
-export interface AtsProps {
-  score: number;
-  atsInfo: AtsDetailsReturnProps;
-}
 export interface JobsCardProps {
   applyLink: string;
-  company: Company;
-  atsProps?: AtsProps;
+  job: CompanyJob;
 }
 
 export function JobsCard({
-  company,
+  job,
   viewGrid,
   applyLink,
 }: {
-  company: Company;
+  job: CompanyJob;
   viewGrid: boolean;
   applyLink: string;
 }) {
-  const score = company.atsScore ?? 0;
-  const atsInfo = getAtsDetails(score);
-  const currentAtsProps: AtsProps = { score, atsInfo };
-
-  //grid on md screen and above
+  // grid on md screen and above
   if (viewGrid) {
-    return (
-      <GridJobCard
-        company={company}
-        applyLink={applyLink}
-        atsProps={currentAtsProps}
-      />
-    );
+    return <GridJobCard job={job} applyLink={applyLink} />;
   }
 
   // current layout card (list view)
-  return (
-    <LayeredCard
-      company={company}
-      applyLink={applyLink}
-      atsProps={currentAtsProps}
-    />
-  );
+  return <LayeredCard job={job} applyLink={applyLink} />;
 }

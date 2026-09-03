@@ -1,18 +1,13 @@
-export interface JobInfo {
-  title: string;
-  company: string;
-  location: string;
-  type: string;
-  logo?: string;
-}
+import type { CompanyJob } from "@/core/types/job";
 
 export interface ApplyOverlayProps {
   isOpen: boolean;
   onClose: () => void;
-  job?: JobInfo;
+  job: CompanyJob;
 }
 
 export interface FormField {
+  key: string;
   label: string;
   type: string;
   placeholder: string;

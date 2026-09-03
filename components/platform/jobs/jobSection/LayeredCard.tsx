@@ -1,21 +1,19 @@
 import SharedCard from "@/components/common/navbar/SharedCard";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-import AtsScore from "./AtsScore";
-import { JobsCardProps } from "./JobsCard";
-import { getAtsDetails } from "@/lib/candidate";
+import type { JobsCardProps } from "./JobsCard";
+import { humanizeEmploymentType } from "@/core/lib/format";
 
-function LayeredCard({ company, applyLink, atsProps }: JobsCardProps) {
-  const score = atsProps?.score ?? company.atsScore ?? 0;
-  const atsInfo = atsProps?.atsInfo ?? getAtsDetails(score);
+function LayeredCard({ job, applyLink }: JobsCardProps) {
+  const tags = [...job.employmentTypes.map(humanizeEmploymentType), ...(job.category ? [job.category] : [])];
 
   return (
     <SharedCard>
       <div className="flex flex-col justify-between h-full md:flex-row gap-4 md:gap-5">
         <div className="flex flex-col md:flex-row gap-6 flex-1">
           <Image
-            src={company.src}
-            alt={company.name}
+            src={job.companyLogoUrl || "/logo/lgo.png"}
+            alt={job.companyName || job.title}
             width={80}
             height={80}
             className="max-sm:w-[48px] max-sm:h-[48px] w-20 h-20 object-cover shrink-0"
@@ -24,31 +22,28 @@ function LayeredCard({ company, applyLink, atsProps }: JobsCardProps) {
             <div>
               <Link href={applyLink}>
                 <h2 className="text-[20px] hover:text-brand font-semibold md:font-bold text-neutral-100 md:my-2 block">
-                  {company.name}
+                  {job.title}
                 </h2>
               </Link>
+              {job.companyName && <p className="text-[15px] font-medium text-neutral-80 mb-1">{job.companyName}</p>}
 
-              <p className="text-neutral-60 font-epilogue text-[16px] mb-3 line-clamp-2 md:line-clamp-4">
-                {company.description}
-              </p>
+              {job.description && (
+                <p className="text-neutral-60 font-epilogue text-[16px] mb-3 line-clamp-2 md:line-clamp-4">
+                  {job.description}
+                </p>
+              )}
             </div>
 
             <div className="flex flex-wrap gap-2 items-center">
-              <span className="text-[14px] px-4 py-1.5 rounded-full font-medium bg-[#56CDAD1A] text-[#56CDAD]">
-                {company.location}
-              </span>
-              <div className="h-8 w-0.5 bg-gray-200 self-center hidden sm:block" />
-              {company.industry.map((tag, idx) => (
-                <span
-                  key={idx}
-                  style={{
-                    backgroundColor: tag.style.bg,
-                    borderColor: tag.style.color,
-                    color: tag.style.color,
-                  }}
-                  className=" text-[14px] px-4 py-1.5 rounded-full font-medium border "
-                >
-                  {tag.name}
+              {job.location && (
+                <span className="text-[14px] px-4 py-1.5 rounded-full font-medium bg-[#56CDAD1A] text-[#56CDAD]">
+                  {job.location}
+                </span>
+              )}
+              {tags.length > 0 && <div className="h-8 w-0.5 bg-gray-200 self-center hidden sm:block" />}
+              {tags.map((tag) => (
+                <span key={tag} className="text-[14px] px-4 py-1.5 rounded-full font-medium border border-indigo-100 bg-indigo-50 text-brand">
+                  {tag}
                 </span>
               ))}
             </div>
@@ -63,26 +58,15 @@ function LayeredCard({ company, applyLink, atsProps }: JobsCardProps) {
             Apply
           </Link>
 
-          {/* ATS Score */}
-          <AtsScore score={score} atsInfo={atsInfo} />
-
-          <div className="w-full">
-            <div className="w-full h-1.5 bg-gray-200 overflow-hidden">
-              <div
-                className="h-full bg-[#56CDAD]"
-                style={{
-                  width: `${(company.applied / company.capacity) * 100}%`,
-                }}
-              />
-            </div>
-
-            <p className="mt-2 text-sm text-neutral-60">
+          {(job.minSalary || job.maxSalary) && (
+            <p className="text-sm text-neutral-60">
               <span className="font-semibold text-neutral-100">
-                {company.applied} Applied
+                {job.minSalary ?? ""}
+                {job.minSalary && job.maxSalary ? " - " : ""}
+                {job.maxSalary ?? ""}
               </span>
-              <span> of {company.capacity} capacity</span>
             </p>
-          </div>
+          )}
         </div>
       </div>
     </SharedCard>

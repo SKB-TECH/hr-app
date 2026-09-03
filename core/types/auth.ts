@@ -38,3 +38,7 @@ export type RegistrationRequest = {
 };
 export type VerifyOtpInput = { requestId: string; otp: string };
 export type SetupPasswordInput = { password: string; confirmPassword: string };
+
+export type RequestPasswordResetInput = { email: string };
+export type ConfirmPasswordResetOtpInput = { requestId: string; otp: string };
+export type SetNewPasswordInput = { password: string; confirmPassword: string };

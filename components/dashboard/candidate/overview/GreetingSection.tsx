@@ -4,16 +4,25 @@
 import { DateRange } from "react-day-picker";
 import { format } from "date-fns";
 import { DateRangePicker } from "@/components/ui/DateRangePicker";
+import { useSession } from "@/core/hooks/auth/use-session";
 
 interface DashboardHeaderProps {
   dateRange?: DateRange;
   onDateChange: (range: DateRange | undefined) => void;
 }
 
+function greetingForHour(hour: number) {
+  if (hour < 12) return "Good morning";
+  if (hour < 18) return "Good afternoon";
+  return "Good evening";
+}
+
 export default function DashboardHeader({
   dateRange,
   onDateChange,
 }: DashboardHeaderProps) {
+  const { data: session } = useSession();
+  const firstName = session?.fullName?.trim().split(" ")[0] || "there";
   const formattedSubtitle =
     dateRange?.from && dateRange?.to
       ? `from ${format(dateRange.from, "MMM dd")} – ${format(dateRange.to, "MMM dd")}`
@@ -24,7 +33,7 @@ export default function DashboardHeader({
       {/* Greeting */}
       <div>
         <h1 className="text-[24px] font-bold text-[#25324B] tracking-tight">
-          Good morning, Jake
+          {greetingForHour(new Date().getHours())}, {firstName}
         </h1>
         <p className="text-[16px] text-[#7C8493] mt-1">
           Here is {`what's`} happening with your job search applications{" "}

@@ -36,7 +36,7 @@ export default function DeleteExperienceDialog({ experience, onOpenChange }: Del
       description={
         <>
           Are you sure you want to remove
-          {experience ? <span className="font-medium text-[#202430]"> &ldquo;{experience.title}&rdquo;</span> : " this experience"} at{" "}
+          {experience ? <span className="font-medium text-[#202430]"> &ldquo;{experience.position}&rdquo;</span> : " this experience"} at{" "}
           {experience?.companyName}? This action cannot be undone.
         </>
       }

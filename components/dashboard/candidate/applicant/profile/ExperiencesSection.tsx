@@ -29,6 +29,9 @@ export default function ExperiencesSection() {
     isError,
   } = useCandidateExperiences();
 
+  // console.log("ExperiencesSection profile:", profile);
+  console.log("ExperiencesSection experiences:", experiences);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [editingExperience, setEditingExperience] =
     useState<CandidateExperience | null>(null);
@@ -46,8 +49,6 @@ export default function ExperiencesSection() {
     setModalOpen(true);
   };
 
-  console.log("Data experience: ", experiences);
-
   const details = profile?.candidateProfile;
   const workTypeLabel = optionLabel(
     WORK_TYPE_OPTIONS,
@@ -57,6 +58,7 @@ export default function ExperiencesSection() {
     AVAILABILITY_OPTIONS,
     details?.availability ?? null,
   );
+
   const preferenceChips = [
     details?.yearsExperience != null
       ? `${details.yearsExperience} ${details.yearsExperience === 1 ? "year" : "years"} experience`
@@ -134,6 +136,16 @@ export default function ExperiencesSection() {
         </div>
       )}
 
+      {!isLoading && !isError && experiences.length === 0 && (
+        <button
+          type='button'
+          onClick={openAddModal}
+          className='mt-2 cursor-pointer text-[14px] font-semibold text-brand hover:text-indigo-800 transition-colors'
+        >
+          + Add Experience
+        </button>
+      )}
+
       {!isLoading && !isError && experiences.length > 0 && (
         <div>
           {experiences.map((experience, index) => (
@@ -153,10 +165,12 @@ export default function ExperiencesSection() {
         onOpenChange={setModalOpen}
         experience={editingExperience}
       />
+
       <DeleteExperienceDialog
         experience={deletingExperience}
         onOpenChange={(open) => !open && setDeletingExperience(null)}
       />
+
       {profile && (
         <EditWorkPreferencesModal
           open={preferencesOpen}

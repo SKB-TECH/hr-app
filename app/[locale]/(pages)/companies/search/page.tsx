@@ -25,7 +25,7 @@ function SearchCompaniesPage() {
             />
           </div>
 
-          <CompanyList />
+          <CompanyList search="" />
         </div>
       </div>
     </section>
