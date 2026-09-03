@@ -10,11 +10,30 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/routing";
 
-export const columns: ColumnDef<TableDataTypes>[] = [
+export const getColumns = (
+  onPublish: (jobId: string) => void,
+  publishingId?: string,
+): ColumnDef<TableDataTypes>[] => [
   {
     accessorKey: "role",
     header: "Roles",
     cell: ({ row }) => {
+      if (row.original.status === "Draft") {
+        const id = String(row.original.id);
+        return (
+          <button
+            type="button"
+            disabled={publishingId === id}
+            onClick={(event) => {
+              event.stopPropagation();
+              onPublish(id);
+            }}
+            className="ml-auto bg-brand px-4 py-2 text-xs font-bold text-white disabled:opacity-50"
+          >
+            {publishingId === id ? "Publishing…" : "Publish"}
+          </button>
+        );
+      }
       return (
         <Link
           href={`/company/job-listing/${row.original.id}`}

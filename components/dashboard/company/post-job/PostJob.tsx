@@ -13,7 +13,6 @@ import { JobData } from "./types";
 import { Link, useRouter } from "@/i18n/routing";
 import { useMyCompany } from "@/core/hooks/company/use-my-company";
 import { useCreateCompanyJob } from "@/core/hooks/jobs/use-create-company-job";
-import AiJobGenerator from "./AiJobGenerator";
 
 export default function PostJob() {
   const router = useRouter();
@@ -21,7 +20,6 @@ export default function PostJob() {
   const createJob = useCreateCompanyJob(company.data?.id || "");
 
   const [currentStep, setCurrentStep] = useState(1);
-  const [showEditor, setShowEditor] = useState(false);
 
   const [jobData, setJobData] = useState<JobData>({
     jobTitle: "",
@@ -70,7 +68,6 @@ export default function PostJob() {
     if (!jobData.category) {
       toast.error("Sélectionnez une catégorie avant d’enregistrer l’offre");
       setCurrentStep(1);
-      setShowEditor(true);
       return;
     }
     if (status === "LIVE" && (!jobData.employmentTypes.length || !jobData.jobDescription.trim())) {
@@ -118,25 +115,6 @@ export default function PostJob() {
           </Link>
         </div>
 
-        {!showEditor && <AiJobGenerator
-            data={jobData}
-            updateData={updateData}
-            companyName={company.data?.name || "Company"}
-            industry={company.data?.industry}
-            saving={createJob.isPending}
-            onGenerated={() => setCurrentStep(1)}
-            onReview={() => {
-              setCurrentStep(1);
-              setShowEditor(true);
-            }}
-            onManual={() => {
-              setCurrentStep(1);
-              setShowEditor(true);
-            }}
-            onSave={(status) => void handleSubmit(status)}
-        />}
-
-        {showEditor && <>
         <Stepper currentStep={currentStep} />
 
         {currentStep === 1 && (
@@ -189,7 +167,6 @@ export default function PostJob() {
               </button></div>
           )}
         </div>
-        </>}
       </section>
   );
 }

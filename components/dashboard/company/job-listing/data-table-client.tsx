@@ -1,6 +1,6 @@
 "use client";
 
-import { columns } from "./columns";
+import { getColumns } from "./columns";
 import { TableDataTypes } from "@/data/company-job-listing";
 import { DataTable } from "./data-table";
 import TableHeader from "./table-header";
@@ -16,7 +16,7 @@ export interface JobListingTable {
   onPageChange?: (page: number) => void;
 }
 
-function DataTableClient({ jobs }: { jobs: TableDataTypes[] }) {
+function DataTableClient({ jobs, onPublish, publishingId }: { jobs: TableDataTypes[]; onPublish: (jobId: string) => void; publishingId?: string }) {
   const router = useRouter();
 
   const [jobsPerPage, setJobsPerPage] = useState<number>(7);
@@ -64,6 +64,10 @@ function DataTableClient({ jobs }: { jobs: TableDataTypes[] }) {
   }, [jobs, statusFilters, jobTypeFilters]);
 
   const totalPages = Math.ceil(filteredData.length / jobsPerPage);
+  const columns = useMemo(
+    () => getColumns(onPublish, publishingId),
+    [onPublish, publishingId],
+  );
 
   return (
       <div className="w-full">

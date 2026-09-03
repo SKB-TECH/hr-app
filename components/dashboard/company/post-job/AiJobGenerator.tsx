@@ -46,22 +46,39 @@ export default function AiJobGenerator({ data, updateData, companyName, industry
       onSuccess: (draft) => {
         const qualifications = [draft.minimumExperienceYears != null ? `${draft.minimumExperienceYears} années d’expérience minimum` : null, ...draft.education, ...draft.languages].filter(Boolean).join("\n");
         const categoryAliases: Record<string, string> = { development: "ENGINEERING" };
+        const categoryText = `${draft.title} ${brief}`.toLowerCase();
+        const inferredCategory =
+          /dévelop|develop|engineer|frontend|front-end|backend|full.?stack|software|program/.test(categoryText)
+            ? "ENGINEERING"
+            : /informatique|technology|cloud|devops|data|cyber/.test(categoryText)
+              ? "TECHNOLOGY"
+              : /design|ux|ui|graph/.test(categoryText)
+                ? "DESIGN"
+                : /marketing|seo|communication/.test(categoryText)
+                  ? "MARKETING"
+                  : /vente|sales|commercial/.test(categoryText)
+                    ? "SALES"
+                    : /finance|comptab|audit/.test(categoryText)
+                      ? "FINANCE"
+                      : /ressources humaines|human resource|recrut/.test(categoryText)
+                        ? "HUMAN_RESOURCE"
+                        : "";
         const requestedCategory = draft.category
           ? categoryAliases[draft.category.toLowerCase()] || draft.category
-          : "";
+          : inferredCategory;
         const generatedCategory = categories.find((item) =>
           [item.code, item.name].some((value) => value.toLowerCase() === requestedCategory.toLowerCase()),
         );
         const generatedSkills = draft.requiredSkills.flatMap((name) => {
           const match = skillDirectory.find((item) => item.name.toLowerCase() === name.toLowerCase());
-          return match ? [match.name] : [];
+          return [match?.name || name];
         });
         const generatedBenefits = draft.benefits.flatMap((benefit, index) => {
           const match = benefits.find((item) => item.name.toLowerCase() === benefit.title.toLowerCase());
-          return match ? [{ id: Date.now() + index, title: match.name, description: match.description || benefit.description, icon: match.icon || benefit.icon }] : [];
+          return [{ id: Date.now() + index, title: match?.name || benefit.title, description: match?.description || benefit.description, icon: match?.icon || benefit.icon }];
         });
         updateData({
-          jobTitle: draft.title,
+          jobTitle: draft.title || data.jobTitle,
           location: draft.location || data.location,
           employmentTypes: draft.employmentTypes.length ? draft.employmentTypes : data.employmentTypes,
           category:
@@ -71,11 +88,16 @@ export default function AiJobGenerator({ data, updateData, companyName, industry
               : data.category),
           minSalary: draft.salary?.min ?? data.minSalary,
           maxSalary: draft.salary?.max ?? data.maxSalary,
-          jobDescription: draft.summary,
-          responsibilities: draft.responsibilities.join("\n"),
+          jobDescription: draft.summary || data.jobDescription || brief.trim(),
+          responsibilities: draft.responsibilities.length
+            ? draft.responsibilities.join("\n")
+            : draft.summary || data.responsibilities || brief.trim(),
           skills: generatedSkills.length ? generatedSkills : data.skills,
-          whoYouAre: qualifications,
-          niceToHave: draft.niceToHaveSkills.join("\n"),
+          whoYouAre:
+            qualifications || draft.summary || data.whoYouAre || brief.trim(),
+          niceToHave: draft.niceToHaveSkills.length
+            ? draft.niceToHaveSkills.join("\n")
+            : data.niceToHave,
           benefits: generatedBenefits.length ? generatedBenefits : data.benefits,
         });
         setGenerated(true);

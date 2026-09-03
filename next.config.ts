@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "i.pravatar.cc" },
       { protocol: "https", hostname: "flagcdn.com" },
       {
+        protocol: "https",
+        hostname: "**.s3.eu-north-1.amazonaws.com",
+        pathname: "/**",
+      },
+      {
         protocol: "http",
         hostname: "localhost",
         port: "3000",

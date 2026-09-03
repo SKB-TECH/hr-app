@@ -7,7 +7,7 @@ import {
 } from "@/data/company-job-listing";
 import { Link } from "@/i18n/routing";
 
-function JobCard({ job }: { job: TableDataTypes }) {
+function JobCard({ job, onPublish, publishing }: { job: TableDataTypes; onPublish: (jobId: string) => void; publishing: boolean }) {
   const readableDate = new Date(job.date_posted).toLocaleDateString("en-US", {
     day: "numeric",
     month: "long",
@@ -69,6 +69,20 @@ function JobCard({ job }: { job: TableDataTypes }) {
         </span>
       </div>
       <p className="mt-3 text-right text-xs font-bold text-brand">Open ATS →</p>
+      {job.status === "Draft" && (
+        <button
+          type="button"
+          disabled={publishing}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            onPublish(String(job.id));
+          }}
+          className="mt-3 w-full bg-brand px-4 py-2.5 text-sm font-bold text-white disabled:opacity-50"
+        >
+          {publishing ? "Publishing…" : "Publish job"}
+        </button>
+      )}
     </Link>
   );
 }

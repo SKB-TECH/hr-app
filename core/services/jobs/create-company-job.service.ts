@@ -8,7 +8,12 @@ export const createCompanyJob = async (_companyId: string, input: CompanyJobInpu
     method: "POST",
     body: JSON.stringify({ ...fields, whoYouAre: requirements }),
   });
-  const job = normalizeCompanyJob(created.data);
+  const nested = created.data?.data;
+  const payload =
+    nested && typeof nested === "object"
+      ? (nested as Record<string, unknown>)
+      : created.data;
+  const job = normalizeCompanyJob(payload);
   if (status === "LIVE") {
     await apiRequest(`jobs/${job.id}/publish`, { method: "POST" });
     return { ...job, status: "LIVE", publishedAt: new Date().toISOString() };

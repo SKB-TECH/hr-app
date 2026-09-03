@@ -5,7 +5,7 @@ import { TableDataTypes } from "@/data/company-job-listing";
 import TableHeader, { TableHeaderFilters } from "./table-header";
 import JobCard from "./job-card";
 
-function JobListingCards({ jobs }: { jobs: TableDataTypes[] }) {
+function JobListingCards({ jobs, onPublish, publishingId }: { jobs: TableDataTypes[]; onPublish: (jobId: string) => void; publishingId?: string }) {
   const [statusFilters, setStatusFilters] = useState<string[]>([]);
   const [jobTypeFilters, setJobTypeFilters] = useState<string[]>([]);
 
@@ -58,7 +58,7 @@ function JobListingCards({ jobs }: { jobs: TableDataTypes[] }) {
         {filteredData.length > 0 ? (
           filteredData
             .slice(0, 7)
-            .map((job) => <JobCard key={job.id} job={job} />)
+            .map((job) => <JobCard key={job.id} job={job} onPublish={onPublish} publishing={publishingId === String(job.id)} />)
         ) : (
           <p className="text-center text-[#7C8493] py-10 text-sm">
             No jobs match the selected filters.
