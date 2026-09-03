@@ -9,6 +9,7 @@ import {
   ImageOff,
 } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { useCompany } from "@/core/hooks/company/use-company";
 import { Skeleton } from "@/components/dashboard/candidate/applicant/profile/shared/Skeleton";
@@ -44,6 +45,7 @@ function ProfileSkeleton() {
 }
 
 export function PublicCompanyProfile({ id }: { id: string }) {
+  const t = useTranslations("companiesBrowse");
   const company = useCompany(id);
 
   if (company.isPending) return <ProfileSkeleton />;
@@ -56,17 +58,17 @@ export function PublicCompanyProfile({ id }: { id: string }) {
             <Building2 size={28} />
           </span>
           <p className='text-lg font-bold text-neutral-100'>
-            Company not found
+            {t("profile.notFound.title")}
           </p>
           <p className='max-w-sm text-sm text-neutral-60'>
-            This company may have been removed or the link is incorrect.
+            {t("profile.notFound.description")}
           </p>
           <Link
             href='/companies'
             className='mt-2 inline-flex items-center gap-1.5 text-sm font-bold text-brand hover:underline'
           >
             <ArrowLeft size={15} />
-            Back to companies
+            {t("profile.notFound.backLink")}
           </Link>
         </div>
       </div>
@@ -92,10 +94,10 @@ export function PublicCompanyProfile({ id }: { id: string }) {
         <div className='absolute left-4 top-4 md:left-12 md:top-6'>
           <Link
             href='/companies'
-            className='inline-flex items-center gap-1.5 rounded-none bg-white/90 px-3 py-1.5 text-xs font-semibold text-neutral-100 backdrop-blur transition hover:bg-white'
+            className='inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-xs font-semibold text-neutral-100 backdrop-blur transition hover:bg-white'
           >
             <ArrowLeft size={13} />
-            All companies
+            {t("profile.allCompaniesLink")}
           </Link>
         </div>
       </div>
@@ -112,19 +114,19 @@ export function PublicCompanyProfile({ id }: { id: string }) {
               className='z-10 size-24 shrink-0 rounded-2xl border-4 border-white bg-white object-contain shadow-md md:size-28'
             />
           ) : (
-            <span className='z-10 grid size-24 shrink-0 place-items-center rounded-none border-4 border-white bg-white shadow-md md:size-28'>
+            <span className='z-10 grid size-24 shrink-0 place-items-center rounded-2xl border-4 border-white bg-white shadow-md md:size-28'>
               <Building2 size={40} className='text-neutral-60' />
             </span>
           )}
 
-          <div className='pb-1 bg-red-50/0 sm:flex-1 sm:pb-0'>
-            <h1 className='mt-20 text-2xl font-bold text-neutral-100 md:text-3xl'>
+          <div className='pb-1 sm:flex-1 sm:pb-0'>
+            <h1 className='text-2xl font-bold text-neutral-100 md:text-3xl'>
               {item.name}
             </h1>
             <div className='mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-neutral-60'>
               <span className='flex items-center gap-1'>
                 <MapPin size={14} />
-                {item.location || "Remote"}
+                {item.location || t("shared.remoteFallback")}
               </span>
               {item.industry && (
                 <span className='flex items-center gap-1'>
@@ -135,7 +137,7 @@ export function PublicCompanyProfile({ id }: { id: string }) {
               {item.companySize && (
                 <span className='flex items-center gap-1'>
                   <Users size={14} />
-                  {item.companySize} employees
+                  {t("profile.employeesCount", { size: item.companySize })}
                 </span>
               )}
             </div>
@@ -145,9 +147,9 @@ export function PublicCompanyProfile({ id }: { id: string }) {
               href={item.website}
               target='_blank'
               rel='noreferrer'
-              className='inline-flex items-center justify-center gap-2 rounded-none bg-brand px-5 py-2.5 text-sm font-bold text-white transition hover:bg-indigo-800 sm:ml-auto sm:mb-1'
+              className='inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-bold text-white transition hover:bg-indigo-800 sm:ml-auto sm:mb-1'
             >
-              Visit website
+              {t("profile.visitWebsite")}
               <ExternalLink size={15} />
             </a>
           )}
@@ -157,10 +159,10 @@ export function PublicCompanyProfile({ id }: { id: string }) {
         <div className='mt-10 grid gap-10 lg:grid-cols-[2fr_1fr]'>
           <article className='min-w-0'>
             <h2 className='text-xl font-bold text-neutral-100 md:text-2xl'>
-              About
+              {t("profile.about")}
             </h2>
             <p className='mt-3 whitespace-pre-line leading-7 text-neutral-80'>
-              {item.description || "No description available."}
+              {item.description || t("shared.noDescriptionFallback")}
             </p>
 
             {item.gallery.length > 0 && (
@@ -172,7 +174,7 @@ export function PublicCompanyProfile({ id }: { id: string }) {
                   >
                     <Image
                       src={src}
-                      alt='Company'
+                      alt={t("profile.galleryImageAlt")}
                       fill
                       className='object-cover transition hover:scale-105'
                     />
@@ -184,7 +186,7 @@ export function PublicCompanyProfile({ id }: { id: string }) {
             {item.perks.length > 0 && (
               <div className='mt-10'>
                 <h2 className='text-xl font-bold text-neutral-100 md:text-2xl'>
-                  Benefits
+                  {t("profile.benefits")}
                 </h2>
                 <div className='mt-4 grid gap-3 sm:grid-cols-2'>
                   {item.perks.map((perk) => (
@@ -203,35 +205,35 @@ export function PublicCompanyProfile({ id }: { id: string }) {
             )}
 
             {item.gallery.length === 0 && item.perks.length === 0 && (
-              <div className='mt-10 flex flex-col items-center gap-2 rounded-none border border-dashed border-brand-light-neutral py-10 text-center text-neutral-60'>
+              <div className='mt-10 flex flex-col items-center gap-2 rounded-lg border border-dashed border-brand-light-neutral py-10 text-center text-neutral-60'>
                 <ImageOff size={22} />
                 <p className='text-sm'>
-                  This company hasn&apos;t added photos or benefits yet.
+                  {t("profile.noContent")}
                 </p>
               </div>
             )}
           </article>
 
           <aside className='lg:sticky lg:top-6 lg:self-start'>
-            <div className='rounded-none border border-brand-light-neutral p-5'>
+            <div className='rounded-xl border border-brand-light-neutral p-5'>
               <h2 className='text-lg font-bold text-neutral-100'>
-                Company details
+                {t("profile.details.title")}
               </h2>
               <dl className='mt-4 space-y-4 text-sm'>
                 <div>
-                  <dt className='text-neutral-60'>Industry</dt>
+                  <dt className='text-neutral-60'>{t("profile.details.industry")}</dt>
                   <dd className='font-bold text-neutral-100'>
                     {item.industry || "—"}
                   </dd>
                 </div>
                 <div>
-                  <dt className='text-neutral-60'>Company size</dt>
+                  <dt className='text-neutral-60'>{t("profile.details.companySize")}</dt>
                   <dd className='font-bold text-neutral-100'>
                     {item.companySize || "—"}
                   </dd>
                 </div>
                 <div>
-                  <dt className='text-neutral-60'>Locations</dt>
+                  <dt className='text-neutral-60'>{t("profile.details.locations")}</dt>
                   <dd className='font-bold text-neutral-100'>
                     {item.locations.length > 0
                       ? item.locations.join(", ")
@@ -243,7 +245,7 @@ export function PublicCompanyProfile({ id }: { id: string }) {
               {item.techStack.length > 0 && (
                 <>
                   <h3 className='mt-6 text-sm font-bold text-neutral-100'>
-                    Tech stack
+                    {t("profile.details.techStack")}
                   </h3>
                   <div className='mt-3 flex flex-wrap gap-2'>
                     {item.techStack.map((tech) => (

@@ -1,11 +1,13 @@
+import { useTranslations } from "next-intl";
+
 const TABS = [
-  { key: "all", label: "All" },
-  { key: "in_review", label: "In Review" },
-  { key: "interviewing", label: "Interviewing" },
-  { key: "assessment", label: "Assessment" },
-  { key: "offered", label: "Offered" },
-  { key: "hired", label: "Hired" },
-];
+  { key: "all", labelKey: "all" },
+  { key: "in_review", labelKey: "inReview" },
+  { key: "interviewing", labelKey: "interviewing" },
+  { key: "assessment", labelKey: "assessment" },
+  { key: "offered", labelKey: "offered" },
+  { key: "hired", labelKey: "hired" },
+] as const;
 export default function ApplicationsTabs({
   value,
   onChange,
@@ -15,21 +17,23 @@ export default function ApplicationsTabs({
   onChange: (v: string) => void;
   counts: Record<string, number>;
 }) {
+  const t = useTranslations("candidateApplications.tabs");
+
   return (
     <div className="pt-3 md:pt-6 bg-white">
       <div className="overflow-x-auto no-scrollbar">
         <nav className="flex  w-20 gap-8  md:gap-10">
-          {TABS.map((t) => (
+          {TABS.map((tab) => (
             <button
-              key={t.key}
-              onClick={() => onChange(t.key)}
-              className={`shrink-0   tracking-wide font-medium whitespace-nowrap py-2 text-[14px] font-epilogue  ${value === t.key ? "border-b-2 border-brand text-black " : "text-neutral-80 "}`}
+              key={tab.key}
+              onClick={() => onChange(tab.key)}
+              className={`shrink-0   tracking-wide font-medium whitespace-nowrap py-2 text-[14px] font-epilogue  ${value === tab.key ? "border-b-2 border-brand text-black " : "text-neutral-80 "}`}
             >
-              {t.label}{" "}
+              {t(tab.labelKey)}{" "}
               <span
-                className={` ${value === t.key && "text-brand font-bold"} `}
+                className={` ${value === tab.key && "text-brand font-bold"} `}
               >
-                ({t.key === "all" ? counts.all : (counts[t.key] ?? 0)})
+                ({tab.key === "all" ? counts.all : (counts[tab.key] ?? 0)})
               </span>
             </button>
           ))}

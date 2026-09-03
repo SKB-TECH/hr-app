@@ -1,43 +1,46 @@
 import { FormField } from "../types/form-types";
 
+// `label` and `placeholder` below are translation keys, not literal text.
+// Consumers must resolve them via useTranslations("findJobs") as
+// `apply.form.fields.<key>.label` / `apply.form.fields.<key>.placeholder`.
 export const BASIC_FIELDS: FormField[] = [
   {
     key: "fullName",
-    label: "Full name",
+    label: "fullName",
     type: "text",
-    placeholder: "Enter your fullname",
+    placeholder: "fullName",
   },
   {
     key: "email",
-    label: "Email address",
+    label: "email",
     type: "email",
-    placeholder: "Enter your email address",
+    placeholder: "email",
   },
   {
     key: "phone",
-    label: "Phone number",
+    label: "phone",
     type: "tel",
-    placeholder: "Enter your phone number",
+    placeholder: "phone",
   },
   {
     key: "currentJobTitle",
-    label: "Current or previous job title",
+    label: "currentJobTitle",
     type: "text",
-    placeholder: "What's your current or previous job title?",
+    placeholder: "currentJobTitle",
   },
 ];
 
 export const LINK_FIELDS: FormField[] = [
   {
     key: "linkedinUrl",
-    label: "LinkedIn URL",
+    label: "linkedinUrl",
     type: "url",
-    placeholder: "Link to your LinkedIn URL",
+    placeholder: "linkedinUrl",
   },
   {
     key: "portfolioUrl",
-    label: "Portfolio URL",
+    label: "portfolioUrl",
     type: "url",
-    placeholder: "Link to your portfolio URL",
+    placeholder: "portfolioUrl",
   },
 ];

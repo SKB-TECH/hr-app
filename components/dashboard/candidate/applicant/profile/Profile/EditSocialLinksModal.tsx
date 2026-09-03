@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { LinkIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
@@ -25,6 +26,7 @@ interface EditSocialLinksModalProps {
 }
 
 export default function EditSocialLinksModal({ open, onOpenChange, profile }: EditSocialLinksModalProps) {
+  const t = useTranslations("candidateProfileCore.editSocialLinksModal");
   const updateProfile = useUpdateCandidateProfile();
   const isPending = updateProfile.isPending;
   const submittingRef = useRef(false);
@@ -62,13 +64,13 @@ export default function EditSocialLinksModal({ open, onOpenChange, profile }: Ed
           portfolioUrl: values.portfolioUrl.trim() || null,
         }),
       );
-      toast.success("Social links updated successfully.");
+      toast.success(t("successToast"));
       onOpenChange(false);
     } catch (error) {
       if (error instanceof ApiError) {
         console.error("Social links update rejected by backend:", error.status, error.details);
       }
-      toast.error(error instanceof ApiError ? error.message : "Something went wrong. Please try again.");
+      toast.error(error instanceof ApiError ? error.message : t("errorToast"));
     } finally {
       submittingRef.current = false;
     }
@@ -80,8 +82,8 @@ export default function EditSocialLinksModal({ open, onOpenChange, profile }: Ed
       onOpenChange={onOpenChange}
       isPending={isPending}
       icon={<LinkIcon className="h-5 w-5" />}
-      title="Edit Social Links"
-      description="Link your professional profiles so recruiters can learn more about you."
+      title={t("title")}
+      description={t("description")}
     >
       <form
         noValidate
@@ -93,17 +95,17 @@ export default function EditSocialLinksModal({ open, onOpenChange, profile }: Ed
       >
         <div>
           <label htmlFor="profile-linkedin-url" className="mb-2 block text-sm font-medium text-[#25324B]">
-            LinkedIn URL
+            {t("linkedinLabel")}
           </label>
           <input
             id="profile-linkedin-url"
             type="url"
-            placeholder="https://linkedin.com/in/username"
+            placeholder={t("linkedinPlaceholder")}
             aria-invalid={Boolean(errors.linkedinUrl)}
             aria-describedby={errors.linkedinUrl ? "profile-linkedin-url-error" : undefined}
             className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("linkedinUrl", {
-              validate: (value) => isValidUrl(value) || "Please enter a valid URL.",
+              validate: (value) => isValidUrl(value) || t("urlInvalid"),
             })}
           />
           {errors.linkedinUrl && (
@@ -115,17 +117,17 @@ export default function EditSocialLinksModal({ open, onOpenChange, profile }: Ed
 
         <div>
           <label htmlFor="profile-github-url" className="mb-2 block text-sm font-medium text-[#25324B]">
-            GitHub URL
+            {t("githubLabel")}
           </label>
           <input
             id="profile-github-url"
             type="url"
-            placeholder="https://github.com/username"
+            placeholder={t("githubPlaceholder")}
             aria-invalid={Boolean(errors.githubUrl)}
             aria-describedby={errors.githubUrl ? "profile-github-url-error" : undefined}
             className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("githubUrl", {
-              validate: (value) => isValidUrl(value) || "Please enter a valid URL.",
+              validate: (value) => isValidUrl(value) || t("urlInvalid"),
             })}
           />
           {errors.githubUrl && (
@@ -137,17 +139,17 @@ export default function EditSocialLinksModal({ open, onOpenChange, profile }: Ed
 
         <div>
           <label htmlFor="profile-portfolio-url" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Portfolio / Website URL
+            {t("portfolioLabel")}
           </label>
           <input
             id="profile-portfolio-url"
             type="url"
-            placeholder="https://portfolio.dev"
+            placeholder={t("portfolioPlaceholder")}
             aria-invalid={Boolean(errors.portfolioUrl)}
             aria-describedby={errors.portfolioUrl ? "profile-portfolio-url-error" : undefined}
             className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("portfolioUrl", {
-              validate: (value) => isValidUrl(value) || "Please enter a valid URL.",
+              validate: (value) => isValidUrl(value) || t("urlInvalid"),
             })}
           />
           {errors.portfolioUrl && (
@@ -159,9 +161,9 @@ export default function EditSocialLinksModal({ open, onOpenChange, profile }: Ed
 
         <DialogFooter className="-mx-6 -mb-6 mt-2 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4">
           <Button type="button" variant="outline" onClick={handleClose} disabled={isPending}>
-            Cancel
+            {t("cancel")}
           </Button>
-          <SubmitButton isPending={isPending} label="Save Changes" />
+          <SubmitButton isPending={isPending} label={t("save")} />
         </DialogFooter>
       </form>
     </ProfileEntryModal>

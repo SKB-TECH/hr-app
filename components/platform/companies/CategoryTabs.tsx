@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Category, CategoryConfig, CategoryIcon } from "@/data/companies";
 import type { LucideIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type CategoryTabsProps = {
   categoryConfig: CategoryConfig[];
@@ -22,6 +23,7 @@ export default function CategoryTabs({
   tabsRef,
   onScroll,
 }: CategoryTabsProps) {
+  const t = useTranslations("companiesBrowse");
   const scrollLeft = () => {
     tabsRef.current?.scrollBy({ left: -200, behavior: "smooth" });
   };
@@ -32,7 +34,7 @@ export default function CategoryTabs({
       <button
         type="button"
         onClick={scrollLeft}
-        aria-label="Scroll categories left"
+        aria-label={t("categoryTabs.scrollLeft")}
         className="flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full bg-brand text-white cursor-pointer"
       >
         <ChevronLeft size={18} />
@@ -74,7 +76,7 @@ export default function CategoryTabs({
       <button
         type="button"
         onClick={onScroll}
-        aria-label="Scroll categories right"
+        aria-label={t("categoryTabs.scrollRight")}
         className="flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full bg-brand text-white cursor-pointer"
       >
         <ChevronRight size={18} />

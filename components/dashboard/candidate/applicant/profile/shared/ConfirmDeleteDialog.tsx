@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { AlertTriangle, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import {
   Dialog,
   DialogContent,
@@ -30,9 +31,12 @@ export default function ConfirmDeleteDialog({
   isPending,
   onConfirm,
   onOpenChange,
-  confirmLabel = "Delete",
-  pendingLabel = "Deleting...",
+  confirmLabel,
+  pendingLabel,
 }: ConfirmDeleteDialogProps) {
+  const t = useTranslations("candidateProfileCore.shared.confirmDeleteDialog");
+  const resolvedConfirmLabel = confirmLabel ?? t("confirmLabel");
+  const resolvedPendingLabel = pendingLabel ?? t("pendingLabel");
   return (
     <Dialog open={open} onOpenChange={(value) => !value && !isPending && onOpenChange(false)}>
       <DialogContent className="max-w-md rounded-lg border border-gray-200 bg-white p-6 shadow-xl">
@@ -55,7 +59,7 @@ export default function ConfirmDeleteDialog({
             disabled={isPending}
             className="w-full sm:w-auto"
           >
-            Cancel
+            {t("cancel")}
           </Button>
           <Button
             type="button"
@@ -66,10 +70,10 @@ export default function ConfirmDeleteDialog({
             {isPending ? (
               <>
                 <Loader2 className="mr-2 size-4 animate-spin" />
-                {pendingLabel}
+                {resolvedPendingLabel}
               </>
             ) : (
-              confirmLabel
+              resolvedConfirmLabel
             )}
           </Button>
         </DialogFooter>

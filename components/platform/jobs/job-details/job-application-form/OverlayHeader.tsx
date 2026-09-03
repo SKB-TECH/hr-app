@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import type { CompanyJob } from "@/core/types/job";
 import { humanizeEmploymentType } from "@/core/lib/format";
 
@@ -8,6 +11,7 @@ interface OverlayHeaderProps {
 }
 
 export default function OverlayHeader({ job, onClose }: OverlayHeaderProps) {
+  const t = useTranslations("findJobs");
   const companyLabel = job.companyName || job.title;
 
   return (
@@ -27,13 +31,13 @@ export default function OverlayHeader({ job, onClose }: OverlayHeaderProps) {
           <p className="apply-overlay__job-meta">
             {job.companyName || "—"}
             <span className="apply-overlay__dot" />
-            {job.location || "Remote"}
+            {job.location || t("apply.header.remoteFallback")}
             <span className="apply-overlay__dot" />
             {job.employmentTypes[0] ? humanizeEmploymentType(job.employmentTypes[0]) : "—"}
           </p>
         </div>
       </div>
-      <button className="apply-overlay__close" onClick={onClose} aria-label="Close">
+      <button className="apply-overlay__close" onClick={onClose} aria-label={t("apply.header.close")}>
         ✕
       </button>
     </div>

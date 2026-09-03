@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import {
   NotificationItem,
@@ -16,15 +17,17 @@ function SettingsNotificationsUI({
   toggle,
   items,
 }: SettingsNotificationsUIProps) {
+  const t = useTranslations("candidateSettings.notifications");
+
   return (
     <div>
       {/* Basic Information */}
       <div className="max-md:mb-2 mb-6">
         <h1 className="text-[16px] font-semibold text-neutral-100">
-          Basic Information
+          {t("basicInformation.title")}
         </h1>
         <p className="text-[15px] leading-relaxed font-epilogue text-gray-500 mt-1">
-          This is notifications preferences that you can update anytime.
+          {t("basicInformation.description")}
         </p>
       </div>
 
@@ -34,10 +37,10 @@ function SettingsNotificationsUI({
       <div className="flex max-md:flex-col gap-6 md:gap-16">
         <div className="max-md:w-full w-48 shrink-0">
           <h2 className="text-[16px] font-semibold text-neutral-100">
-            Notifications
+            {t("section.title")}
           </h2>
           <p className="text-[15px] leading-relaxed font-epilogue text-gray-500 mt-1">
-            Customize your preferred notification settings
+            {t("section.description")}
           </p>
         </div>
 
@@ -81,7 +84,7 @@ function SettingsNotificationsUI({
           ))}
 
           <Button variant="custom-secondary" className="px-8">
-            Update Email
+            {t("submit")}
           </Button>
         </div>
       </div>

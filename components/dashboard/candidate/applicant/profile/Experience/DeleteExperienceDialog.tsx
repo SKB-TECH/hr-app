@@ -1,6 +1,7 @@
 "use client";
 
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 import ConfirmDeleteDialog from "../shared/ConfirmDeleteDialog";
 import { useRemoveCandidateExperience } from "@/core/hooks/candidate/use-remove-candidate-experience";
 import type { CandidateExperience } from "@/core/types/candidate-experience";
@@ -12,16 +13,17 @@ interface DeleteExperienceDialogProps {
 }
 
 export default function DeleteExperienceDialog({ experience, onOpenChange }: DeleteExperienceDialogProps) {
+  const t = useTranslations("candidateProfileSections");
   const removeExperience = useRemoveCandidateExperience();
 
   const handleDelete = async () => {
     if (!experience || removeExperience.isPending) return;
     try {
       await removeExperience.mutateAsync(experience.id);
-      toast.success("Experience removed successfully.");
+      toast.success(t("experience.toasts.removed"));
       onOpenChange(false);
     } catch (error) {
-      const message = error instanceof ApiError ? error.message : "Failed to remove experience. Please try again.";
+      const message = error instanceof ApiError ? error.message : t("experience.toasts.removeError");
       toast.error(message);
     }
   };
@@ -32,13 +34,17 @@ export default function DeleteExperienceDialog({ experience, onOpenChange }: Del
       onOpenChange={onOpenChange}
       isPending={removeExperience.isPending}
       onConfirm={handleDelete}
-      title="Delete experience?"
+      title={t("experience.deleteDialog.title")}
       description={
-        <>
-          Are you sure you want to remove
-          {experience ? <span className="font-medium text-[#202430]"> &ldquo;{experience.position}&rdquo;</span> : " this experience"} at{" "}
-          {experience?.companyName}? This action cannot be undone.
-        </>
+        experience ? (
+          t.rich("experience.deleteDialog.descriptionWithName", {
+            position: experience.position,
+            companyName: experience.companyName,
+            bold: (chunks) => <span className="font-medium text-[#202430]">{chunks}</span>,
+          })
+        ) : (
+          t("experience.deleteDialog.descriptionFallback")
+        )
       }
     />
   );

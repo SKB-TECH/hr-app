@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { mockSidebarCompanyFilters } from "@/data/companyPageData";
 
 import SearchHeader from "@/components/dashboard/candidate/browse-companies/SearchHeader";
@@ -10,9 +11,9 @@ import SharedDisplayMobileFilter from "@/components/platform/companies/search/Sh
 import { SidebarFilters } from "@/components/platform/companies/search/SidebarFilters";
 import { useDebouncedValue } from "@/core/hooks/shared/use-debounced-value";
 
-const tags = ["Tech", "Finance", "Healthcare", "Education", "Retail"];
-
 function SearchCompaniesPage() {
+  const t = useTranslations("companiesBrowse");
+  const tags = t.raw("tags") as string[];
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebouncedValue(search, 300);
 
@@ -20,7 +21,7 @@ function SearchCompaniesPage() {
     <section className='min-h-screen relative max-w-[2500px] '>
       <div className='border-b border-brand-light-neutral py-8 '>
         <div className='mx-4 md:mx-6'>
-          <SearchHeader value={search} onChange={setSearch} />
+          <SearchHeader value={search} onChange={setSearch} placeholder={t("directory.searchPlaceholder")} />
           <PopularTags tags={tags} />
         </div>
       </div>

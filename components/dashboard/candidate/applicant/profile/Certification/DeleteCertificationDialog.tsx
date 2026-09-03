@@ -1,6 +1,7 @@
 "use client";
 
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 import ConfirmDeleteDialog from "../shared/ConfirmDeleteDialog";
 import { useRemoveCandidateCertification } from "@/core/hooks/candidate/use-remove-candidate-certification";
 import type { CandidateCertification } from "@/core/types/candidate-certification";
@@ -12,16 +13,17 @@ interface DeleteCertificationDialogProps {
 }
 
 export default function DeleteCertificationDialog({ certification, onOpenChange }: DeleteCertificationDialogProps) {
+  const t = useTranslations("candidateProfileSections");
   const removeCertification = useRemoveCandidateCertification();
 
   const handleDelete = async () => {
     if (!certification || removeCertification.isPending) return;
     try {
       await removeCertification.mutateAsync(certification.id);
-      toast.success("Certification deleted successfully.");
+      toast.success(t("certification.toasts.deleted"));
       onOpenChange(false);
     } catch (error) {
-      const message = error instanceof ApiError ? error.message : "Failed to delete certification. Please try again.";
+      const message = error instanceof ApiError ? error.message : t("certification.toasts.deleteError");
       toast.error(message);
     }
   };
@@ -32,13 +34,16 @@ export default function DeleteCertificationDialog({ certification, onOpenChange 
       onOpenChange={onOpenChange}
       isPending={removeCertification.isPending}
       onConfirm={handleDelete}
-      title="Delete Certification?"
+      title={t("certification.deleteDialog.title")}
       description={
-        <>
-          Are you sure you want to delete
-          {certification ? <span className="font-medium text-[#202430]"> &ldquo;{certification.title}&rdquo;</span> : " this certification"}? This
-          action cannot be undone.
-        </>
+        certification ? (
+          t.rich("certification.deleteDialog.descriptionWithName", {
+            title: certification.title,
+            bold: (chunks) => <span className="font-medium text-[#202430]">{chunks}</span>,
+          })
+        ) : (
+          t("certification.deleteDialog.descriptionFallback")
+        )
       }
     />
   );

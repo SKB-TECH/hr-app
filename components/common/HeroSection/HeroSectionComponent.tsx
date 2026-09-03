@@ -13,9 +13,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
+import { useTranslations } from "next-intl";
+
+const SELECT_LOCATION = "";
 
 const locations = [
-  "select location",
+  SELECT_LOCATION,
   "Florence, Italy",
   "Cairo, Egypt",
   "London, UK",
@@ -24,6 +27,7 @@ const locations = [
 ];
 
 export default function HeroSectionComponent() {
+  const t = useTranslations("common");
   const [selectedLocation, setSelectedLocation] = useState(locations[0]);
   const router = useRouter();
 
@@ -58,11 +62,11 @@ export default function HeroSectionComponent() {
         <div className="relative  z-20 mx-auto w-full max-w-7xl px-0 md:px-6 lg:absolute lg:inset-x-0 lg:top-16 lg:px-12">
           <div className="flex flex-col justify-center pb-6 md:pb-10 lg:pb-16">
             <h1 className="text-[42px] font-clash font-bold leading-[1.05] tracking-[-0.04em] text-neutral-100 sm:text-[56px] lg:text-[72px] lg:leading-[1.1]">
-              Discover <br />
-              more than <br />
+              {t("heroSection.headingLine1")} <br />
+              {t("heroSection.headingLine2")} <br />
               <div className="relative w-fit">
                 <span className="relative inline-block text-[#26A4FF]">
-                  5000+ Jobs
+                  {t("heroSection.headingHighlight")}
                 </span>
                 <Image
                   src="/Vector.png"
@@ -75,8 +79,7 @@ export default function HeroSectionComponent() {
             </h1>
 
             <p className="relative z-20 mt-6 max-w-[540px] text-[18px] font-epilogue leading-6 text-neutral-80 md:mt-10 md:text-[21px] md:leading-8">
-              Great platform for the job seeker that searching for new career
-              heights and passionate about startups.
+              {t("heroSection.subheading")}
             </p>
 
             {/* Search Form */}
@@ -88,7 +91,7 @@ export default function HeroSectionComponent() {
                   className="shrink-0 text-[#25324B] md:size-[25px]"
                 />
                 <Input
-                  placeholder="Job title or keyword"
+                  placeholder={t("heroSection.searchPlaceholder")}
                   className="h-10 border-b placeholder:text-[18px] border-[#D6DDEB] px-0 text-sm shadow-none placeholder:text-[#B8C0CC] focus-visible:ring-0 lg:h-full lg:text-base"
                 />
               </div>
@@ -105,7 +108,11 @@ export default function HeroSectionComponent() {
                       className="shrink-0 text-[#25324B] md:size-[25px]"
                     />
                     <div className="flex-1 truncate border-b border-[#D6DDEB] py-2 text-[18px] text-[#25324B] lg:py-0 lg:text-base">
-                      <p className="mb-3">{selectedLocation}</p>
+                      <p className="mb-3">
+                        {selectedLocation === SELECT_LOCATION
+                          ? t("heroSection.selectLocationOption")
+                          : selectedLocation}
+                      </p>
                     </div>
                     <ChevronDown
                       size={14}
@@ -120,7 +127,9 @@ export default function HeroSectionComponent() {
                       className="cursor-pointer rounded-none px-3 py-2 text-sm text-[#25324B] focus:bg-[#F8F8FD] focus:text-[#25324B]"
                       onSelect={() => setSelectedLocation(location)}
                     >
-                      {location}
+                      {location === SELECT_LOCATION
+                        ? t("heroSection.selectLocationOption")
+                        : location}
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
@@ -131,15 +140,16 @@ export default function HeroSectionComponent() {
                 onClick={navigateTosearchResults}
                 className="mt-4 h-12 cursor-pointer rounded-none bg-[#4640DE] text-sm font-medium  hover:bg-[#3730c9] lg:ml-auto lg:mt-0 lg:h-full lg:flex-1 lg:text-lg"
               >
-                Search my job
+                {t("heroSection.searchButton")}
               </Button>
             </div>
 
             <p className="mt-4 text-xs leading-5 text-[#515B6F] md:mt-5 md:text-base">
-              Popular : <span className="font-semibold">UI Designer</span>,{" "}
-              <span className="font-semibold">UX Researcher</span>,{" "}
-              <span className="font-semibold">Android</span>,{" "}
-              <span className="font-semibold">Admin</span>
+              {t("heroSection.popular.label")}{" "}
+              <span className="font-semibold">{t("heroSection.popular.uiDesigner")}</span>,{" "}
+              <span className="font-semibold">{t("heroSection.popular.uxResearcher")}</span>,{" "}
+              <span className="font-semibold">{t("heroSection.popular.android")}</span>,{" "}
+              <span className="font-semibold">{t("heroSection.popular.admin")}</span>
             </p>
           </div>
         </div>
@@ -148,7 +158,7 @@ export default function HeroSectionComponent() {
         <div className="pointer-events-none -translate-y-1 absolute bottom-0 right-0 z-10 hidden h-full w-[52%] lg:block">
           <Image
             src="/images/hero.png"
-            alt="Job seeker"
+            alt={t("heroSection.heroImageAlt")}
             width={500}
             height={900}
             priority

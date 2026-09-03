@@ -1,4 +1,5 @@
 import { ListFilter, Search } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Controls({
   search,
@@ -7,12 +8,14 @@ export default function Controls({
   search: string;
   setSearch: (s: string) => void;
 }) {
+  const t = useTranslations("candidateApplications.controls");
+
   return (
     <div className="  md:gap-3">
       <div className="border-t-2 border-neutral-30  -mx-5 " />
       <div className="gap-2 mt-5 md:mt-10 flex flex-col md:flex-row justify-between">
         <h3 className="text-lg text-neutral-100 font-clash font-bold md:font-semibold ">
-          Applications History
+          {t("title")}
         </h3>
         <div className="flex items-center gap-1 md:gap-2 bg-white">
           <div className="relative border border-[#D6DDEB]">
@@ -21,13 +24,13 @@ export default function Controls({
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search"
+              placeholder={t("searchPlaceholder")}
               className="w-auto md:w-30 border md:py-2 md:pl-10 md:pr-3 py-2 pl-12 pr-8 outline-none"
             />
           </div>
           <button className="border border-[#D6DDEB] px-4 py-2  flex gap-2 cursor-pointer">
             <ListFilter />
-            <span className="hidden md:block"> Filter</span>
+            <span className="hidden md:block"> {t("filter")}</span>
           </button>
         </div>
       </div>

@@ -24,6 +24,7 @@ import {
 import CategoryTabs from "./CategoryTabs";
 import CategoryCompanyCard from "./CategoryCompanyCard";
 import SectionHeader from "./SectionHeader";
+import { useTranslations } from "next-intl";
 
 const categoryIconMap: Record<CategoryIcon, typeof Palette> = {
   palette: Palette,
@@ -50,6 +51,7 @@ type CategorySectionProps = {
 };
 
 export default function CategorySection({ copy }: CategorySectionProps) {
+  const t = useTranslations("companiesBrowse");
   const [activeTab, setActiveTab] = useState<Category>("Design");
   const [showAll, setShowAll] = useState(false);
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -108,7 +110,7 @@ export default function CategorySection({ copy }: CategorySectionProps) {
           className="inline-flex cursor-pointer items-center gap-1.5 mt-6 text-[15px] font-semibold text-brand hover:underline"
         >
           {showAll
-            ? `Show less ${activeLabel}`
+            ? t("categorySection.showLess", { label: activeLabel })
             : `${copy.viewMorePrefix} ${activeLabel} ${copy.viewMoreSuffix}`}
           <span aria-hidden>{showAll ? "↑" : "→"}</span>
         </button>

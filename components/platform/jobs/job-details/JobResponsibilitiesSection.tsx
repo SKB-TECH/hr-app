@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import JobBulletList from "./JobBulletList";
 
 type Props = {
@@ -13,20 +16,22 @@ export default function JobResponsibilitiesSection({
   niceToHaves,
   className = "",
 }: Props) {
+  const t = useTranslations("findJobs");
+
   return (
     <div className={className}>
-      <JobBulletList title="Responsibilities" items={responsibilities} />
+      <JobBulletList title={t("detail.responsibilities.title")} items={responsibilities} />
       {/* separator for small devices */}
       <hr className="block md:hidden border-t border-light-brand-neutral my-6" />
       <JobBulletList
-        title="Who you are"
+        title={t("detail.responsibilities.whoYouAreTitle")}
         items={whoYouAre}
         className="md:pt-10 "
       />
       {/* separator for small devices */}
       <hr className="block md:hidden border-t border-light-brand-neutral my-6" />
       <JobBulletList
-        title="Nice to Have"
+        title={t("detail.responsibilities.niceToHaveTitle")}
         items={niceToHaves}
         className="md:pt-10"
       />

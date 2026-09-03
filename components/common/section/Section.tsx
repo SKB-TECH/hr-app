@@ -3,15 +3,17 @@ import { ArrowRight } from "lucide-react";
 import { categoriesData } from "@/data/category";
 import { CategoryProp } from "@/data/category";
 import { SectionTitle } from "@/components/ui/Title";
+import { getTranslations } from "next-intl/server";
 
-export default function SectionComponent() {
+export default async function SectionComponent() {
+  const t = await getTranslations("common");
   return (
     <div className="px-4 md:px-12   w-full max-w-7xl mx-auto ">
       <section className="py-8 ">
         <SectionTitle
-          title="Explore by"
-          highlight="category"
-          showAllText="Show all jobs"
+          title={t("section.titlePrefix")}
+          highlight={t("section.titleHighlight")}
+          showAllText={t("section.showAllJobs")}
           showAllLink="/jobs"
           isExpanded
         />
@@ -51,7 +53,7 @@ export default function SectionComponent() {
                 </h2>
                 <div className="flex flex-row items-center justify-between ">
                   <span className="text-[16px] text-neutral-60 group-hover:text-white">
-                    {category.availableJobs} jobs available
+                    {t("section.jobsAvailable", { count: category.availableJobs })}
                   </span>
                   <span className="flex-shrink-0 text-neutral-100  group-hover:text-white">
                     <ArrowRight size={24} />
@@ -68,7 +70,7 @@ export default function SectionComponent() {
             href="/jobs"
             className="flex flex-row text-brand text-[16px] font-semibold items-center gap-1"
           >
-            <span>Show all jobs</span>
+            <span>{t("section.showAllJobs")}</span>
             <ArrowRight size={14} />
           </Link>
         </div>

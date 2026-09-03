@@ -1,6 +1,7 @@
 "use client";
 
 import { format, parseISO } from "date-fns";
+import { useTranslations } from "next-intl";
 import { PencilSquareIcon, TrashIcon, LinkIcon } from "@heroicons/react/24/outline";
 import type { CandidateCertification } from "@/core/types/candidate-certification";
 
@@ -20,6 +21,7 @@ function formatCertificationDate(value: string) {
 }
 
 export default function CertificationItem({ certification, isLast, onEdit, onDelete }: CertificationItemProps) {
+  const t = useTranslations("candidateProfileSections");
   const issueDate = formatCertificationDate(certification.issueDate);
   const expirationDate = certification.expirationDate ? formatCertificationDate(certification.expirationDate) : null;
 
@@ -32,7 +34,7 @@ export default function CertificationItem({ certification, isLast, onEdit, onDel
             <button
               type="button"
               onClick={() => onEdit(certification)}
-              aria-label={`Edit ${certification.title}`}
+              aria-label={t("certification.editAriaLabel", { title: certification.title })}
               className="cursor-pointer border border-gray-200 p-1.5 hover:border-brand"
             >
               <PencilSquareIcon className="w-4 h-4 text-brand" />
@@ -40,7 +42,7 @@ export default function CertificationItem({ certification, isLast, onEdit, onDel
             <button
               type="button"
               onClick={() => onDelete(certification)}
-              aria-label={`Delete ${certification.title}`}
+              aria-label={t("certification.deleteAriaLabel", { title: certification.title })}
               className="cursor-pointer border border-gray-200 p-1.5 hover:border-red-300"
             >
               <TrashIcon className="w-4 h-4 text-[#FF6550]" />
@@ -50,11 +52,11 @@ export default function CertificationItem({ certification, isLast, onEdit, onDel
 
         <p className="text-[16px] text-gray-500 mt-1">{certification.organization}</p>
         <p className="text-[16px] text-gray-400 mt-1">
-          Issued {issueDate}
-          {expirationDate && <span> · Expires {expirationDate}</span>}
+          {t("certification.issuedLabel", { date: issueDate })}
+          {expirationDate && <span> · {t("certification.expiresLabel", { date: expirationDate })}</span>}
         </p>
         {certification.credentialId && (
-          <p className="text-[14px] text-gray-400 mt-1">Credential ID: {certification.credentialId}</p>
+          <p className="text-[14px] text-gray-400 mt-1">{t("certification.credentialIdPrefix", { id: certification.credentialId })}</p>
         )}
 
         {certification.credentialUrl && (
@@ -66,7 +68,7 @@ export default function CertificationItem({ certification, isLast, onEdit, onDel
               className="inline-flex items-center gap-1.5 text-[14px] font-medium text-brand hover:underline"
             >
               <LinkIcon className="h-4 w-4" />
-              View credential
+              {t("certification.viewCredential")}
             </a>
           </div>
         )}

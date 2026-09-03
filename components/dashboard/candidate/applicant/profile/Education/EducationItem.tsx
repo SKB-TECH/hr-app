@@ -1,6 +1,7 @@
 "use client";
 
 import { format, parseISO } from "date-fns";
+import { useTranslations } from "next-intl";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import type { CandidateEducation } from "@/core/types/candidate-education";
 
@@ -20,8 +21,9 @@ function formatEducationDate(value: string) {
 }
 
 export default function EducationItem({ education, isLast, onEdit, onDelete }: EducationItemProps) {
+  const t = useTranslations("candidateProfileSections");
   const startLabel = formatEducationDate(education.startDate);
-  const endLabel = education.endDate ? formatEducationDate(education.endDate) : "Present";
+  const endLabel = education.endDate ? formatEducationDate(education.endDate) : t("education.present");
 
   return (
     <div className={`sm:flex gap-4 ${!isLast ? "pb-6 mb-6 border-b border-gray-100" : ""}`}>
@@ -32,7 +34,7 @@ export default function EducationItem({ education, isLast, onEdit, onDelete }: E
             <button
               type="button"
               onClick={() => onEdit(education)}
-              aria-label={`Edit ${education.schoolName}`}
+              aria-label={t("education.editAriaLabel", { schoolName: education.schoolName })}
               className="cursor-pointer border border-gray-200 p-1.5 hover:border-brand"
             >
               <PencilSquareIcon className="w-4 h-4 text-brand" />
@@ -40,7 +42,7 @@ export default function EducationItem({ education, isLast, onEdit, onDelete }: E
             <button
               type="button"
               onClick={() => onDelete(education)}
-              aria-label={`Delete ${education.schoolName}`}
+              aria-label={t("education.deleteAriaLabel", { schoolName: education.schoolName })}
               className="cursor-pointer border border-gray-200 p-1.5 hover:border-red-300"
             >
               <TrashIcon className="w-4 h-4 text-[#FF6550]" />
@@ -55,7 +57,7 @@ export default function EducationItem({ education, isLast, onEdit, onDelete }: E
         <p className="text-[16px] text-gray-400 mt-1">
           {startLabel} - {endLabel}
         </p>
-        {education.grade && <p className="text-[14px] text-gray-400 mt-1">Grade: {education.grade}</p>}
+        {education.grade && <p className="text-[14px] text-gray-400 mt-1">{t("education.gradePrefix", { grade: education.grade })}</p>}
 
         {education.description && (
           <p className="text-[16px] text-gray-500 leading-relaxed mt-3">{education.description}</p>

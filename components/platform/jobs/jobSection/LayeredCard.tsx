@@ -1,10 +1,14 @@
+"use client";
+
 import SharedCard from "@/components/common/navbar/SharedCard";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import type { JobsCardProps } from "./JobsCard";
 import { humanizeEmploymentType } from "@/core/lib/format";
 
 function LayeredCard({ job, applyLink }: JobsCardProps) {
+  const t = useTranslations("findJobs");
   const tags = [...job.employmentTypes.map(humanizeEmploymentType), ...(job.category ? [job.category] : [])];
 
   return (
@@ -55,7 +59,7 @@ function LayeredCard({ job, applyLink }: JobsCardProps) {
             href={applyLink}
             className="bg-brand hover:bg-indigo-800 duration-300 text-white font-epilogue px-8 py-3 text-center font-semibold block"
           >
-            Apply
+            {t("jobCard.apply")}
           </Link>
 
           {(job.minSalary || job.maxSalary) && (

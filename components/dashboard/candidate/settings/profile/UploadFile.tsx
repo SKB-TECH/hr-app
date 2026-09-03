@@ -2,6 +2,7 @@ import useDropImage from "@/hooks/useDropImage";
 import Image from "next/image";
 import { Image as Gallery } from "lucide-react";
 import { UseFormSetValue, FieldValues } from "react-hook-form";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 function UploadFile<T extends FieldValues>({
@@ -15,6 +16,7 @@ function UploadFile<T extends FieldValues>({
   imageClassName?: string;
   dropzoneClassName?: string;
 }) {
+  const t = useTranslations("candidateSettings.profile.uploadFile");
   const { error, profileImage, getInputProps, getRootProps, isDragActive } =
     useDropImage(setValue);
 
@@ -22,7 +24,7 @@ function UploadFile<T extends FieldValues>({
     <div className="flex min-w-0 items-center gap-6">
       <Image
         src={profileImage || imagePlaceholder!}
-        alt="Profile Picture"
+        alt={t("profilePictureAlt")}
         width={96}
         height={96}
         className={cn(
@@ -44,7 +46,7 @@ function UploadFile<T extends FieldValues>({
         >
           {isDragActive ? (
             <div className="h-full flex flex-col justify-center  ">
-              <p className="text-brand font-medium">Drop the files here</p>
+              <p className="text-brand font-medium">{t("dropHere")}</p>
             </div>
           ) : (
             <>
@@ -68,20 +70,20 @@ function UploadFile<T extends FieldValues>({
 
               <div className="relative z-10   h-full ">
                 <div className="flex flex-col items-center  h-full justify-center  mb-2">
-                  <span aria-label="Upload Icon" className="text-brand">
+                  <span aria-label={t("uploadIconLabel")} className="text-brand">
                     <Gallery />
                   </span>
                   <p className="text-sm ">
                     <span className="text-brand font-medium ">
-                      Click to replace
+                      {t("clickToReplace")}
                     </span>{" "}
                     <span className="text-gray-500 font-medium">
-                      or drag and drop
+                      {t("orDragAndDrop")}
                     </span>
                   </p>
 
                   <p className="mt-1 text-xs text-gray-400">
-                    SVG, PNG, JPG or GIF (max. 400 x 400px)
+                    {t("fileHint")}
                   </p>
                 </div>
               </div>

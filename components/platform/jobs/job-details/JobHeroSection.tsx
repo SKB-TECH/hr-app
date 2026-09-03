@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import TriggerApplicationForm from "./job-application-form/TriggerApplicationForm";
 import type { CompanyJob } from "@/core/types/job";
@@ -15,6 +18,7 @@ export default function JobHeroSection({
   showLinks = false,
   className = "",
 }: JobHeroSectionProps) {
+  const t = useTranslations("findJobs");
   const companyLabel = job.companyName || "—";
   const jobType = job.employmentTypes[0] ? humanizeEmploymentType(job.employmentTypes[0]) : "—";
 
@@ -35,7 +39,7 @@ export default function JobHeroSection({
               href="/"
               className="hover:text-[#4640DE] transition-colors truncate max-w-[60px] md:max-w-none"
             >
-              Home
+              {t("detail.breadcrumbHome")}
             </Link>
 
             <span className="mx-2 shrink-0">/</span>
@@ -63,7 +67,7 @@ export default function JobHeroSection({
                 <button className="md:hidden text-[#7C8493] hover:text-[#4640DE] transition-colors cursor-pointer">
                   <Image
                     src="/linkIcon.png"
-                    alt="Share"
+                    alt={t("detail.shareAlt")}
                     width={28}
                     height={28}
                   />
@@ -78,7 +82,7 @@ export default function JobHeroSection({
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mt-4 text-[14px]  text-[#515B6F]">
                   <span>{companyLabel}</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#A8ADB7]" />
-                  <span>{job.location || "Remote"}</span>
+                  <span>{job.location || t("detail.remoteFallback")}</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#A8ADB7]" />
                   <span>{jobType}</span>
                 </div>
@@ -87,7 +91,7 @@ export default function JobHeroSection({
 
             <div className="flex md:flex-row flex-col md:items-center gap-6 md:gap-8">
               <button className="hidden md:block text-[#7C8493] hover:text-[#4640DE] transition-colors cursor-pointer">
-                <Image src="/linkIcon.png" alt="Share" width={28} height={28} />
+                <Image src="/linkIcon.png" alt={t("detail.shareAlt")} width={28} height={28} />
               </button>
 
               <div className="hidden md:block w-px h-14 bg-[#D6DDEB]" />

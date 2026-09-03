@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export function FooterBrand() {
+  const t = useTranslations("landing");
+
   return (
     <div className="col-span-2 md:col-span-2">
       <div className="mb-5">
@@ -14,8 +19,7 @@ export function FooterBrand() {
           />
       </div>
       <p className="text-sm text-gray-400 leading-relaxed max-w-[300px]">
-        Great platform for the job seeker that passionate about startups. Find
-        your dream job easier.
+        {t("footer.brandDescription")}
       </p>
     </div>
   );

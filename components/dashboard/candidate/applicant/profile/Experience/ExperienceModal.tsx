@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslations } from "next-intl";
 import { BriefcaseIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
 
@@ -39,6 +40,7 @@ interface ExperienceModalProps {
 }
 
 export default function ExperienceModal({ open, onOpenChange, experience }: ExperienceModalProps) {
+  const t = useTranslations("candidateProfileSections");
   const isEditing = Boolean(experience);
   const createExperience = useCreateCandidateExperience();
   const updateExperience = useUpdateCandidateExperience();
@@ -103,17 +105,17 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
 
       if (isEditing && experience) {
         await updateExperience.mutateAsync({ id: experience.id, input });
-        toast.success("Experience updated successfully.");
+        toast.success(t("experience.toasts.updated"));
       } else {
         await createExperience.mutateAsync(input);
-        toast.success("Experience added successfully.");
+        toast.success(t("experience.toasts.added"));
       }
       onOpenChange(false);
     } catch (error) {
       if (error instanceof ApiError) {
         console.error("Experience save rejected by backend:", error.status, error.details);
       }
-      toast.error(error instanceof ApiError ? error.message : "Something went wrong. Please try again.");
+      toast.error(error instanceof ApiError ? error.message : t("experience.toasts.genericError"));
     } finally {
       submittingRef.current = false;
     }
@@ -125,8 +127,8 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
       onOpenChange={onOpenChange}
       isPending={isPending}
       icon={<BriefcaseIcon className="h-5 w-5" />}
-      title={isEditing ? "Edit Experience" : "Add Experience"}
-      description="Add your work history to show recruiters what you've built and led."
+      title={isEditing ? t("experience.modal.editTitle") : t("experience.modal.addTitle")}
+      description={t("experience.modal.description")}
     >
       <form
         noValidate
@@ -138,18 +140,18 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
       >
         <div>
           <label htmlFor="experience-position" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Position
+            {t("experience.modal.positionLabel")}
           </label>
           <input
             id="experience-position"
             type="text"
-            placeholder="e.g. Senior Product Designer"
+            placeholder={t("experience.modal.positionPlaceholder")}
             aria-invalid={Boolean(errors.position)}
             aria-describedby={errors.position ? "experience-position-error" : undefined}
             className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("position", {
-              required: "Position is required.",
-              validate: (value) => value.trim().length > 0 || "Position is required.",
+              required: t("experience.modal.positionRequired"),
+              validate: (value) => value.trim().length > 0 || t("experience.modal.positionRequired"),
             })}
           />
           {errors.position && (
@@ -162,18 +164,18 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="experience-company-name" className="mb-2 block text-sm font-medium text-[#25324B]">
-              Company
+              {t("experience.modal.companyLabel")}
             </label>
             <input
               id="experience-company-name"
               type="text"
-              placeholder="e.g. Twitter"
+              placeholder={t("experience.modal.companyPlaceholder")}
               aria-invalid={Boolean(errors.companyName)}
               aria-describedby={errors.companyName ? "experience-company-name-error" : undefined}
               className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
               {...register("companyName", {
-                required: "Company is required.",
-                validate: (value) => value.trim().length > 0 || "Company is required.",
+                required: t("experience.modal.companyRequired"),
+                validate: (value) => value.trim().length > 0 || t("experience.modal.companyRequired"),
               })}
             />
             {errors.companyName && (
@@ -185,14 +187,14 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
 
           <div>
             <label htmlFor="experience-employment-type" className="mb-2 block text-sm font-medium text-[#25324B]">
-              Employment Type
+              {t("experience.modal.employmentTypeLabel")}
             </label>
             <select
               id="experience-employment-type"
               className="w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-brand"
               {...register("employmentType")}
             >
-              <option value="">Select an option</option>
+              <option value="">{t("experience.modal.selectOption")}</option>
               {EMPLOYMENT_TYPE_OPTIONS.map((option) => (
                 <option key={option} value={option}>
                   {option}
@@ -214,16 +216,16 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="experience-start-date" className="mb-2 block text-sm font-medium text-[#25324B]">
-              Start Date
+              {t("experience.modal.startDateLabel")}
             </label>
             <input
               type="hidden"
               id="experience-start-date"
               {...register("startDate", {
-                required: "Start date is required.",
+                required: t("experience.modal.startDateRequired"),
                 validate: (value) => {
-                  if (!value) return "Start date is required.";
-                  if (isFutureDate(value)) return "Start date cannot be in the future.";
+                  if (!value) return t("experience.modal.startDateRequired");
+                  if (isFutureDate(value)) return t("experience.modal.startDateFuture");
                   return true;
                 },
               })}
@@ -235,7 +237,7 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
                 setValue("startDate", value, { shouldValidate: true, shouldDirty: true });
                 if (endDateValue) trigger("endDate");
               }}
-              placeholder="Select the start date"
+              placeholder={t("experience.modal.startDatePlaceholder")}
               error={errors.startDate?.message}
               maxDate={new Date()}
             />
@@ -245,7 +247,7 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
           <div>
             <div className="mb-2 flex items-center justify-between gap-2">
               <label htmlFor="experience-end-date" className="block text-sm font-medium text-[#25324B]">
-                End Date
+                {t("experience.modal.endDateLabel")}
               </label>
               <label className="flex cursor-pointer items-center gap-1.5 text-[13px] font-medium text-gray-500">
                 <input
@@ -257,13 +259,13 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
                   }}
                   className="h-3.5 w-3.5 cursor-pointer accent-brand"
                 />
-                I currently work here
+                {t("experience.modal.currentlyWorkHere")}
               </label>
             </div>
 
             {isCurrent ? (
               <div className="flex h-[50px] items-center rounded-lg border border-gray-200 bg-gray-50 px-4 text-[14px] text-gray-500">
-                Currently working — no end date
+                {t("experience.modal.currentlyWorkingNoEndDate")}
               </div>
             ) : (
               <>
@@ -273,10 +275,10 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
                   {...register("endDate", {
                     validate: (value) => {
                       if (isCurrent) return true;
-                      if (!value) return "End date is required.";
-                      if (isFutureDate(value)) return "End date cannot be in the future.";
+                      if (!value) return t("experience.modal.endDateRequired");
+                      if (isFutureDate(value)) return t("experience.modal.endDateFuture");
                       if (isEndBeforeStart(getValues("startDate"), value)) {
-                        return "End date cannot be earlier than the start date.";
+                        return t("experience.modal.endDateBeforeStart");
                       }
                       return true;
                     },
@@ -286,7 +288,7 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
                   id="experience-end-date-trigger"
                   value={endDateValue}
                   onChange={(value) => setValue("endDate", value, { shouldValidate: true, shouldDirty: true })}
-                  placeholder="Select the end date"
+                  placeholder={t("experience.modal.endDatePlaceholder")}
                   error={errors.endDate?.message}
                   maxDate={new Date()}
                 />
@@ -298,13 +300,13 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
 
         <div>
           <label htmlFor="experience-description" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Description
+            {t("experience.modal.descriptionLabel")}
           </label>
           <textarea
             id="experience-description"
             rows={4}
             maxLength={DESCRIPTION_MAX_LENGTH}
-            placeholder="Describe your responsibilities, achievements, and impact in this role."
+            placeholder={t("experience.modal.descriptionPlaceholder")}
             className="w-full rounded-lg border border-gray-300 p-4 outline-none transition focus:border-brand"
             {...register("description")}
           />
@@ -315,9 +317,9 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
 
         <DialogFooter className="-mx-6 -mb-6 mt-2 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4">
           <Button type="button" variant="outline" onClick={handleClose} disabled={isPending}>
-            Cancel
+            {t("experience.modal.cancel")}
           </Button>
-          <SubmitButton isPending={isPending} label={isEditing ? "Update Experience" : "Save Experience"} />
+          <SubmitButton isPending={isPending} label={isEditing ? t("experience.modal.updateSubmit") : t("experience.modal.saveSubmit")} />
         </DialogFooter>
       </form>
     </ProfileEntryModal>

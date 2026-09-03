@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { sortOptions } from "@/data/companyPageData";
 import { JobsCard } from "./JobsCard";
 import { SharedListingHeader } from "../../companies/search/SharedListingHeader";
@@ -24,6 +27,7 @@ function JobsList({
   onPageChange,
   getApplyLink,
 }: JobsListProps) {
+  const t = useTranslations("findJobs");
   const { data: jobsPage, isLoading, isError } = useJobs({ page: currentPage, limit: pageSize, search });
   const jobs = jobsPage?.data ?? [];
   const totalResults = jobsPage?.meta?.totalItems ?? jobs.length;
@@ -36,19 +40,19 @@ function JobsList({
         sortOptions={sortOptions}
         viewGrid={viewGrid}
         setViewGrid={setViewGrid}
-        header="All Jobs"
+        header={t("listing.header")}
       />
 
       {isLoading && <SectionSkeleton rows={4} />}
 
       {!isLoading && isError && (
         <p className="text-[14px] text-gray-500">
-          We couldn&apos;t load jobs right now. Please refresh the page to try again.
+          {t("listing.errorLoading")}
         </p>
       )}
 
       {!isLoading && !isError && jobs.length === 0 && (
-        <p className="text-[14px] text-gray-500">No jobs match your search right now.</p>
+        <p className="text-[14px] text-gray-500">{t("listing.noResults")}</p>
       )}
 
       {!isLoading && !isError && jobs.length > 0 && (

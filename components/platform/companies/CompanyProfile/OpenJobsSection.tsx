@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
 import type { Job } from "@/data/jobDetailsData";
+import { getTranslations } from "next-intl/server";
 
 interface SimilarJobsSectionProps {
   jobs: Job[];
@@ -9,11 +10,13 @@ interface SimilarJobsSectionProps {
   title?: string;
 }
 
-export default function OpenJobsSection({
+export default async function OpenJobsSection({
   jobs,
   showAllHref = "#",
-  title = "Open Jobs",
+  title,
 }: SimilarJobsSectionProps) {
+  const t = await getTranslations("companiesBrowse");
+  const resolvedTitle = title ?? t("openJobsSection.title");
   return (
     <div className="relative w-full min-h-[500px] mt-16 overflow-hidden">
       <Image
@@ -29,13 +32,13 @@ export default function OpenJobsSection({
       <div className="relative z-10  py-12 px-4 md:px-12   w-full max-w-7xl mx-auto ">
         <div className="flex justify-between items-center gap-4">
           <h1 className="text-[24px] md:text-[32px] text-neutral-100 font-bold font-clash">
-            {title}
+            {resolvedTitle}
           </h1>
           <Link
             href={showAllHref}
             className="flex text-brand text-[16px] font-bold items-center gap-1"
           >
-            <span>Show all jobs</span>
+            <span>{t("openJobsSection.showAllJobs")}</span>
             <ArrowRight size={20} />
           </Link>
         </div>

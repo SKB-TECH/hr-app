@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { getTranslations } from "next-intl/server";
 
 interface TeamSectionProps {
   teamMembers: {
@@ -9,16 +10,17 @@ interface TeamSectionProps {
   }[];
 }
 
-const TeamSection = ({ teamMembers }: TeamSectionProps) => {
+const TeamSection = async ({ teamMembers }: TeamSectionProps) => {
+  const t = await getTranslations("companiesBrowse");
   return (
     <div className="px-4 md:px-12   w-full max-w-7xl mx-auto py-6 md:py-10">
       <hr className="bg-[#D6DDEB]" />
       <div className="flex mb-5 mt-15 justify-between">
         <h1 className="text-neutral-100 text-3xl font-clash font-bold ">
-          Team
+          {t("teamSection.title")}
         </h1>
         <h1 className="text-brand text-lg font-epilogue font-semibold">
-          See all (47)
+          {t("teamSection.seeAll", { count: 47 })}
         </h1>
       </div>
       <div className="flex gap-4 overflow-x-auto no-scrollbar md:grid md:grid-cols-3 lg:grid-cols-5">

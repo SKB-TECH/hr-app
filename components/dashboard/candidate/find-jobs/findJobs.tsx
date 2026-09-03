@@ -2,12 +2,13 @@
 import PopularTags from "../browse-companies/PopularTags";
 import SearchHeader from "../browse-companies/SearchHeader";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import AllJobs from "@/components/platform/jobs/jobSection/AllJobs";
 import { useDebouncedValue } from "@/core/hooks/shared/use-debounced-value";
 
-const tags = ["Tech", "Finance", "Healthcare", "Education", "Retail"];
-
 export const FindJobs = () => {
+  const t = useTranslations("findJobs");
+  const tags = t.raw("popularTags") as string[];
   const [currentPage, setCurrentPage] = useState(1);
   const [viewGrid, setViewGrid] = useState(false);
   const [search, setSearch] = useState("");
