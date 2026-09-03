@@ -35,7 +35,7 @@ export default function CategoryTabs({
         type="button"
         onClick={scrollLeft}
         aria-label={t("categoryTabs.scrollLeft")}
-        className="flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full bg-brand text-white cursor-pointer"
+        className="flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-none bg-brand text-white cursor-pointer"
       >
         <ChevronLeft size={18} />
       </button>
@@ -77,7 +77,7 @@ export default function CategoryTabs({
         type="button"
         onClick={onScroll}
         aria-label={t("categoryTabs.scrollRight")}
-        className="flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full bg-brand text-white cursor-pointer"
+        className="flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-none bg-brand text-white cursor-pointer"
       >
         <ChevronRight size={18} />
       </button>

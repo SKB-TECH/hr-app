@@ -49,14 +49,14 @@ function Pagination({
         {/* pagination view */}
         <div className="flex items-center gap-1">
           <Button
-            className="p-5 px-4.5 font-bold bg-brand text-white rounded-sm hover:bg-brand/90"
+            className="p-5 px-4.5 font-bold bg-brand text-white rounded-none hover:bg-brand/90"
             onClick={() => onPageChange?.(currentPage)}
           >
             {currentPage}
           </Button>
           {currentPage < totalPages && (
             <Button
-              className="p-5 px-4.5 font-bold bg-white text-brand rounded-sm hover:bg-brand/10"
+              className="p-5 px-4.5 font-bold bg-white text-brand rounded-none hover:bg-brand/10"
               onClick={() => onPageChange?.(currentPage + 1)}
             >
               {currentPage + 1}

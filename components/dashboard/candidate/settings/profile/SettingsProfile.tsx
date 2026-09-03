@@ -4,12 +4,14 @@ import PersonalDetails from "./PersonalDetails";
 import ProfileHeader from "./ProfileHeader";
 import ProfilePhoto from "./ProfilePhoto";
 import SaveProfileButton from "./SaveProfileButton";
+import type { CandidateProfile } from "@/core/types/candidate-profile";
 import {
   FieldErrors,
   SubmitHandler,
   UseFormHandleSubmit,
   UseFormRegister,
   UseFormSetValue,
+  UseFormWatch,
 } from "react-hook-form";
 
 export interface ProfileFormValues {
@@ -18,26 +20,29 @@ export interface ProfileFormValues {
   email: string;
   dateOfBirth: string;
   gender: string;
-  accountType: "jobSeeker" | "employer";
   profileImage: File | null;
 }
 
 export interface PersonalFormProps {
+  profile: CandidateProfile;
   handleSubmit: UseFormHandleSubmit<ProfileFormValues>;
   onSubmit: SubmitHandler<ProfileFormValues>;
   errors: FieldErrors<ProfileFormValues>;
   isSubmitting?: boolean;
   register: UseFormRegister<ProfileFormValues>;
   setValue?: UseFormSetValue<ProfileFormValues>;
+  watch: UseFormWatch<ProfileFormValues>;
 }
 
 function SettingsProfile({
+  profile,
   handleSubmit,
   onSubmit,
   errors,
   isSubmitting,
   register,
   setValue,
+  watch,
 }: PersonalFormProps) {
   const t = useTranslations("candidateSettings.profile");
 
@@ -54,21 +59,24 @@ function SettingsProfile({
           heading={t("profilePhoto.heading")}
           paragraph={t("profilePhoto.description")}
           imagePlaceholder="/profileImage.jpg"
+          currentImageUrl={profile.avatar}
           setValue={setValue}
         />
         <hr className="mb-8" />
 
         <PersonalDetails
+          profile={profile}
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
           errors={errors}
           isSubmitting={isSubmitting}
           register={register}
           setValue={setValue}
+          watch={watch}
         />
         <hr className="mb-8" />
 
-        <AccountType register={register} />
+        <AccountType />
         <hr className="mb-6" />
 
         {isSubmitting !== undefined && (

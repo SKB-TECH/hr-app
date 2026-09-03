@@ -14,7 +14,7 @@ function SelectField({ label, options, required, ...props }: SelectFieldProps) {
 
       <select
         {...props}
-        className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm bg-white"
+        className="w-full border border-gray-200 rounded-none px-4 py-3 text-sm bg-white"
       >
         {options.map((opt: string) => (
           <option key={opt} value={opt}>

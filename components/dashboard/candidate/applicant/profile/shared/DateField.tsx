@@ -47,7 +47,7 @@ export default function DateField({
           type="button"
           disabled={disabled}
           aria-describedby={error ? `${id}-error` : undefined}
-          className={`flex h-auto w-full cursor-pointer items-center justify-between gap-2 rounded-lg border px-4 py-3 text-left text-[15px] transition disabled:cursor-not-allowed disabled:opacity-50 ${
+          className={`flex h-auto w-full cursor-pointer items-center justify-between gap-2 rounded-none border px-4 py-3 text-left text-[15px] transition disabled:cursor-not-allowed disabled:opacity-50 ${
             error ? "border-red-300" : "border-gray-300 hover:border-brand"
           } ${!hasValidSelection ? "text-gray-400" : "text-[#202430]"}`}
         >

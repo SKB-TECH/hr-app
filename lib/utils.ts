@@ -82,7 +82,14 @@ export function getNavItems(viewerRole: UserRoles) {
 
 export function getParentPath(pathname: string) {
   const segments = pathname.split("/").filter(Boolean);
-  return "/" + segments.slice(0, -1).join("/");
+  // Drop any leading locale segment (e.g. "fr") so the result is safe to pass
+  // into a locale-aware `Link`, which re-prepends the current locale itself —
+  // keeping it here would double-prefix the href (e.g. "/fr/fr/candidate/...").
+  const roleIndex = segments.findIndex(
+    (segment) => segment === "company" || segment === "candidate",
+  );
+  const roleSegments = roleIndex === -1 ? segments : segments.slice(roleIndex);
+  return "/" + roleSegments.slice(0, -1).join("/");
 }
 
 export function isNavItemActive(currentPath: string, itemPath: string) {

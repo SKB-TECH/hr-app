@@ -4,15 +4,18 @@ import { Image as Gallery } from "lucide-react";
 import { UseFormSetValue, FieldValues } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { mediaUrl } from "@/core/lib/media-url";
 
 function UploadFile<T extends FieldValues>({
   setValue,
   imagePlaceholder,
+  currentImageUrl,
   imageClassName,
   dropzoneClassName,
 }: {
   setValue?: UseFormSetValue<T>;
   imagePlaceholder?: string;
+  currentImageUrl?: string | null;
   imageClassName?: string;
   dropzoneClassName?: string;
 }) {
@@ -23,12 +26,12 @@ function UploadFile<T extends FieldValues>({
   return (
     <div className="flex min-w-0 items-center gap-6">
       <Image
-        src={profileImage || imagePlaceholder!}
+        src={profileImage || mediaUrl(currentImageUrl, imagePlaceholder!)}
         alt={t("profilePictureAlt")}
         width={96}
         height={96}
         className={cn(
-          "h-32 w-32 shrink-0 self-start rounded-full object-cover max-sm:h-18 max-sm:w-18",
+          "h-32 w-32 shrink-0 self-start rounded-none object-cover max-sm:h-18 max-sm:w-18",
           imageClassName,
         )}
       />
@@ -40,7 +43,7 @@ function UploadFile<T extends FieldValues>({
         <input {...getInputProps()} />
 
         <div
-          className={`relative h-[140px] rounded-lg text-center py-6 px-4 cursor-pointer transition-colors ${
+          className={`relative h-[140px] rounded-none text-center py-6 px-4 cursor-pointer transition-colors ${
             isDragActive ? "bg-indigo-50" : "bg-[#F8F8FD]"
           }`}
         >
@@ -60,7 +63,7 @@ function UploadFile<T extends FieldValues>({
                   y="2"
                   width="calc(100% - 4px)"
                   height="calc(100% - 4px)"
-                  rx="8"
+                  rx="0"
                   fill="none"
                   stroke={error ? "#DC2626" : "#4640DE"}
                   strokeWidth="2"

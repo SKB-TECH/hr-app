@@ -109,9 +109,7 @@ export default function EditProfileModal({
         );
       }
       const message =
-        error instanceof ApiError
-          ? error.message
-          : t("errorToast");
+        error instanceof ApiError ? error.message : t("errorToast");
       toast.error(message);
     } finally {
       submittingRef.current = false;
@@ -158,7 +156,7 @@ export default function EditProfileModal({
             aria-describedby={
               errors.fullName ? "profile-full-name-error" : undefined
             }
-            className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
+            className='w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("fullName", {
               required: t("fullNameRequired"),
               validate: (value) =>
@@ -187,7 +185,7 @@ export default function EditProfileModal({
             type='text'
             maxLength={HEADLINE_MAX_LENGTH}
             placeholder={t("headlinePlaceholder")}
-            className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
+            className='w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("headline")}
           />
           <p className='mt-1.5 text-right text-[12px] text-gray-400'>
@@ -198,13 +196,17 @@ export default function EditProfileModal({
         <CountryCitySelect
           countryValue={watch("countryName")}
           cityValue={watch("cityName")}
-          onCountryChange={(value) => setValue("countryName", value, { shouldDirty: true })}
-          onCityChange={(value) => setValue("cityName", value, { shouldDirty: true })}
+          onCountryChange={(value) =>
+            setValue("countryName", value, { shouldDirty: true })
+          }
+          onCityChange={(value) =>
+            setValue("cityName", value, { shouldDirty: true })
+          }
           countryInputId='profile-country'
           cityInputId='profile-city'
         />
 
-        <label className='flex cursor-pointer items-start gap-3 rounded-lg border border-gray-200 p-4'>
+        <label className='flex cursor-pointer items-start gap-3 rounded-none border border-gray-200 p-4'>
           <input
             type='checkbox'
             className='mt-0.5 h-4 w-4 cursor-pointer accent-brand'

@@ -18,10 +18,14 @@ function SearchCompaniesPage() {
   const debouncedSearch = useDebouncedValue(search, 300);
 
   return (
-    <section className='min-h-screen relative max-w-[2500px] '>
+    <section className='min-h-screen relative mx-auto max-w-[1200px] '>
       <div className='border-b border-brand-light-neutral py-8 '>
         <div className='mx-4 md:mx-6'>
-          <SearchHeader value={search} onChange={setSearch} placeholder={t("directory.searchPlaceholder")} />
+          <SearchHeader
+            value={search}
+            onChange={setSearch}
+            placeholder={t("directory.searchPlaceholder")}
+          />
           <PopularTags tags={tags} />
         </div>
       </div>

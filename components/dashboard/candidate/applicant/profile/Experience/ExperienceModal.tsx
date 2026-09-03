@@ -14,7 +14,10 @@ import DateField from "../shared/DateField";
 import SubmitButton from "../shared/SubmitButton";
 import CountryCitySelect from "../shared/CountryCitySelect";
 import { isFutureDate } from "../shared/profile-document-validation";
-import { EMPLOYMENT_TYPE_OPTIONS, isEndBeforeStart } from "./experience-options";
+import {
+  EMPLOYMENT_TYPE_OPTIONS,
+  isEndBeforeStart,
+} from "./experience-options";
 import { useCreateCandidateExperience } from "@/core/hooks/candidate/use-create-candidate-experience";
 import { useUpdateCandidateExperience } from "@/core/hooks/candidate/use-update-candidate-experience";
 import type { CandidateExperience } from "@/core/types/candidate-experience";
@@ -39,7 +42,11 @@ interface ExperienceModalProps {
   experience?: CandidateExperience | null;
 }
 
-export default function ExperienceModal({ open, onOpenChange, experience }: ExperienceModalProps) {
+export default function ExperienceModal({
+  open,
+  onOpenChange,
+  experience,
+}: ExperienceModalProps) {
   const t = useTranslations("candidateProfileSections");
   const isEditing = Boolean(experience);
   const createExperience = useCreateCandidateExperience();
@@ -59,7 +66,16 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
     trigger,
     formState: { errors },
   } = useForm<ExperienceFormValues>({
-    defaultValues: { position: "", companyName: "", employmentType: "", countryName: "", cityName: "", startDate: "", endDate: "", description: "" },
+    defaultValues: {
+      position: "",
+      companyName: "",
+      employmentType: "",
+      countryName: "",
+      cityName: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+    },
   });
 
   useEffect(() => {
@@ -113,9 +129,17 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
       onOpenChange(false);
     } catch (error) {
       if (error instanceof ApiError) {
-        console.error("Experience save rejected by backend:", error.status, error.details);
+        console.error(
+          "Experience save rejected by backend:",
+          error.status,
+          error.details,
+        );
       }
-      toast.error(error instanceof ApiError ? error.message : t("experience.toasts.genericError"));
+      toast.error(
+        error instanceof ApiError
+          ? error.message
+          : t("experience.toasts.genericError"),
+      );
     } finally {
       submittingRef.current = false;
     }
@@ -126,8 +150,12 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
       open={open}
       onOpenChange={onOpenChange}
       isPending={isPending}
-      icon={<BriefcaseIcon className="h-5 w-5" />}
-      title={isEditing ? t("experience.modal.editTitle") : t("experience.modal.addTitle")}
+      icon={<BriefcaseIcon className='h-5 w-5' />}
+      title={
+        isEditing
+          ? t("experience.modal.editTitle")
+          : t("experience.modal.addTitle")
+      }
       description={t("experience.modal.description")}
     >
       <form
@@ -136,65 +164,88 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
           event.preventDefault();
           handleSubmit(onSubmit)(event);
         }}
-        className="mt-5 space-y-5"
+        className='mt-5 space-y-5'
       >
         <div>
-          <label htmlFor="experience-position" className="mb-2 block text-sm font-medium text-[#25324B]">
+          <label
+            htmlFor='experience-position'
+            className='mb-2 block text-sm font-medium text-[#25324B]'
+          >
             {t("experience.modal.positionLabel")}
           </label>
           <input
-            id="experience-position"
-            type="text"
+            id='experience-position'
+            type='text'
             placeholder={t("experience.modal.positionPlaceholder")}
             aria-invalid={Boolean(errors.position)}
-            aria-describedby={errors.position ? "experience-position-error" : undefined}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            aria-describedby={
+              errors.position ? "experience-position-error" : undefined
+            }
+            className='w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("position", {
               required: t("experience.modal.positionRequired"),
-              validate: (value) => value.trim().length > 0 || t("experience.modal.positionRequired"),
+              validate: (value) =>
+                value.trim().length > 0 ||
+                t("experience.modal.positionRequired"),
             })}
           />
           {errors.position && (
-            <p id="experience-position-error" className="mt-1.5 text-[13px] text-red-500">
+            <p
+              id='experience-position-error'
+              className='mt-1.5 text-[13px] text-red-500'
+            >
               {errors.position.message}
             </p>
           )}
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
           <div>
-            <label htmlFor="experience-company-name" className="mb-2 block text-sm font-medium text-[#25324B]">
+            <label
+              htmlFor='experience-company-name'
+              className='mb-2 block text-sm font-medium text-[#25324B]'
+            >
               {t("experience.modal.companyLabel")}
             </label>
             <input
-              id="experience-company-name"
-              type="text"
+              id='experience-company-name'
+              type='text'
               placeholder={t("experience.modal.companyPlaceholder")}
               aria-invalid={Boolean(errors.companyName)}
-              aria-describedby={errors.companyName ? "experience-company-name-error" : undefined}
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+              aria-describedby={
+                errors.companyName ? "experience-company-name-error" : undefined
+              }
+              className='w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
               {...register("companyName", {
                 required: t("experience.modal.companyRequired"),
-                validate: (value) => value.trim().length > 0 || t("experience.modal.companyRequired"),
+                validate: (value) =>
+                  value.trim().length > 0 ||
+                  t("experience.modal.companyRequired"),
               })}
             />
             {errors.companyName && (
-              <p id="experience-company-name-error" className="mt-1.5 text-[13px] text-red-500">
+              <p
+                id='experience-company-name-error'
+                className='mt-1.5 text-[13px] text-red-500'
+              >
                 {errors.companyName.message}
               </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="experience-employment-type" className="mb-2 block text-sm font-medium text-[#25324B]">
+            <label
+              htmlFor='experience-employment-type'
+              className='mb-2 block text-sm font-medium text-[#25324B]'
+            >
               {t("experience.modal.employmentTypeLabel")}
             </label>
             <select
-              id="experience-employment-type"
-              className="w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-brand"
+              id='experience-employment-type'
+              className='w-full cursor-pointer rounded-none border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-brand'
               {...register("employmentType")}
             >
-              <option value="">{t("experience.modal.selectOption")}</option>
+              <option value=''>{t("experience.modal.selectOption")}</option>
               {EMPLOYMENT_TYPE_OPTIONS.map((option) => (
                 <option key={option} value={option}>
                   {option}
@@ -207,76 +258,95 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
         <CountryCitySelect
           countryValue={watch("countryName")}
           cityValue={watch("cityName")}
-          onCountryChange={(value) => setValue("countryName", value, { shouldDirty: true })}
-          onCityChange={(value) => setValue("cityName", value, { shouldDirty: true })}
-          countryInputId="experience-country-name"
-          cityInputId="experience-city-name"
+          onCountryChange={(value) =>
+            setValue("countryName", value, { shouldDirty: true })
+          }
+          onCityChange={(value) =>
+            setValue("cityName", value, { shouldDirty: true })
+          }
+          countryInputId='experience-country-name'
+          cityInputId='experience-city-name'
         />
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
           <div>
-            <label htmlFor="experience-start-date" className="mb-2 block text-sm font-medium text-[#25324B]">
+            <label
+              htmlFor='experience-start-date'
+              className='mb-2 block text-sm font-medium text-[#25324B]'
+            >
               {t("experience.modal.startDateLabel")}
             </label>
             <input
-              type="hidden"
-              id="experience-start-date"
+              type='hidden'
+              id='experience-start-date'
               {...register("startDate", {
                 required: t("experience.modal.startDateRequired"),
                 validate: (value) => {
                   if (!value) return t("experience.modal.startDateRequired");
-                  if (isFutureDate(value)) return t("experience.modal.startDateFuture");
+                  if (isFutureDate(value))
+                    return t("experience.modal.startDateFuture");
                   return true;
                 },
               })}
             />
             <DateField
-              id="experience-start-date-trigger"
+              id='experience-start-date-trigger'
               value={startDateValue}
               onChange={(value) => {
-                setValue("startDate", value, { shouldValidate: true, shouldDirty: true });
+                setValue("startDate", value, {
+                  shouldValidate: true,
+                  shouldDirty: true,
+                });
                 if (endDateValue) trigger("endDate");
               }}
               placeholder={t("experience.modal.startDatePlaceholder")}
               error={errors.startDate?.message}
               maxDate={new Date()}
             />
-            {errors.startDate && <p className="mt-1.5 text-[13px] text-red-500">{errors.startDate.message}</p>}
+            {errors.startDate && (
+              <p className='mt-1.5 text-[13px] text-red-500'>
+                {errors.startDate.message}
+              </p>
+            )}
           </div>
 
           <div>
-            <div className="mb-2 flex items-center justify-between gap-2">
-              <label htmlFor="experience-end-date" className="block text-sm font-medium text-[#25324B]">
+            <div className='mb-2 flex items-center justify-between gap-2'>
+              <label
+                htmlFor='experience-end-date'
+                className='block text-sm font-medium text-[#25324B]'
+              >
                 {t("experience.modal.endDateLabel")}
               </label>
-              <label className="flex cursor-pointer items-center gap-1.5 text-[13px] font-medium text-gray-500">
+              <label className='flex cursor-pointer items-center gap-1.5 text-[13px] font-medium text-gray-500'>
                 <input
-                  type="checkbox"
+                  type='checkbox'
                   checked={isCurrent}
                   onChange={(event) => {
                     setIsCurrent(event.target.checked);
                     trigger("endDate");
                   }}
-                  className="h-3.5 w-3.5 cursor-pointer accent-brand"
+                  className='h-3.5 w-3.5 cursor-pointer accent-brand'
                 />
                 {t("experience.modal.currentlyWorkHere")}
               </label>
             </div>
 
             {isCurrent ? (
-              <div className="flex h-[50px] items-center rounded-lg border border-gray-200 bg-gray-50 px-4 text-[14px] text-gray-500">
+              <div className='flex h-[50px] items-center rounded-lg border border-gray-200 bg-gray-50 px-4 text-[14px] text-gray-500'>
                 {t("experience.modal.currentlyWorkingNoEndDate")}
               </div>
             ) : (
               <>
                 <input
-                  type="hidden"
-                  id="experience-end-date"
+                  type='hidden'
+                  id='experience-end-date'
                   {...register("endDate", {
                     validate: (value) => {
                       if (isCurrent) return true;
                       if (!value) return t("experience.modal.endDateRequired");
-                      if (isFutureDate(value)) return t("experience.modal.endDateFuture");
+                      if (isFutureDate(value))
+                        return t("experience.modal.endDateFuture");
                       if (isEndBeforeStart(getValues("startDate"), value)) {
                         return t("experience.modal.endDateBeforeStart");
                       }
@@ -285,41 +355,65 @@ export default function ExperienceModal({ open, onOpenChange, experience }: Expe
                   })}
                 />
                 <DateField
-                  id="experience-end-date-trigger"
+                  id='experience-end-date-trigger'
                   value={endDateValue}
-                  onChange={(value) => setValue("endDate", value, { shouldValidate: true, shouldDirty: true })}
+                  onChange={(value) =>
+                    setValue("endDate", value, {
+                      shouldValidate: true,
+                      shouldDirty: true,
+                    })
+                  }
                   placeholder={t("experience.modal.endDatePlaceholder")}
                   error={errors.endDate?.message}
                   maxDate={new Date()}
                 />
               </>
             )}
-            {!isCurrent && errors.endDate && <p className="mt-1.5 text-[13px] text-red-500">{errors.endDate.message}</p>}
+            {!isCurrent && errors.endDate && (
+              <p className='mt-1.5 text-[13px] text-red-500'>
+                {errors.endDate.message}
+              </p>
+            )}
           </div>
         </div>
 
         <div>
-          <label htmlFor="experience-description" className="mb-2 block text-sm font-medium text-[#25324B]">
+          <label
+            htmlFor='experience-description'
+            className='mb-2 block text-sm font-medium text-[#25324B]'
+          >
             {t("experience.modal.descriptionLabel")}
           </label>
           <textarea
-            id="experience-description"
+            id='experience-description'
             rows={4}
             maxLength={DESCRIPTION_MAX_LENGTH}
             placeholder={t("experience.modal.descriptionPlaceholder")}
-            className="w-full rounded-lg border border-gray-300 p-4 outline-none transition focus:border-brand"
+            className='w-full rounded-none border border-gray-300 p-4 outline-none transition focus:border-brand'
             {...register("description")}
           />
-          <p className="mt-1.5 text-right text-[12px] text-gray-400">
+          <p className='mt-1.5 text-right text-[12px] text-gray-400'>
             {descriptionValue?.length || 0}/{DESCRIPTION_MAX_LENGTH}
           </p>
         </div>
 
-        <DialogFooter className="-mx-6 -mb-6 mt-2 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4">
-          <Button type="button" variant="outline" onClick={handleClose} disabled={isPending}>
+        <DialogFooter className='-mx-6 -mb-6 mt-2 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4'>
+          <Button
+            type='button'
+            variant='outline'
+            onClick={handleClose}
+            disabled={isPending}
+          >
             {t("experience.modal.cancel")}
           </Button>
-          <SubmitButton isPending={isPending} label={isEditing ? t("experience.modal.updateSubmit") : t("experience.modal.saveSubmit")} />
+          <SubmitButton
+            isPending={isPending}
+            label={
+              isEditing
+                ? t("experience.modal.updateSubmit")
+                : t("experience.modal.saveSubmit")
+            }
+          />
         </DialogFooter>
       </form>
     </ProfileEntryModal>

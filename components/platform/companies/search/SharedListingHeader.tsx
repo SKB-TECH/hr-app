@@ -74,7 +74,7 @@ export function SharedListingHeader({
           <div className="h-8 w-2px bg-slate-200 mx-1 hidden md:block" />
           <div className="hidden md:flex items-center gap-1 p-1 rounded-lg">
             <button
-              className={`p-1.5 rounded-md transition ${
+              className={`p-1.5 rounded-none transition ${
                 viewGrid
                   ? "bg-brand/6 text-brand"
                   : "text-slate-400 hover:text-slate-600"
@@ -88,7 +88,7 @@ export function SharedListingHeader({
               />
             </button>
             <button
-              className={`p-1.5 rounded-md transition ${
+              className={`p-1.5 rounded-none transition ${
                 !viewGrid
                   ? "bg-brand/6 text-brand"
                   : "text-slate-400 hover:text-slate-600"

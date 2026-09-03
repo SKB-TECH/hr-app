@@ -103,7 +103,7 @@ export default function EditSocialLinksModal({ open, onOpenChange, profile }: Ed
             placeholder={t("linkedinPlaceholder")}
             aria-invalid={Boolean(errors.linkedinUrl)}
             aria-describedby={errors.linkedinUrl ? "profile-linkedin-url-error" : undefined}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("linkedinUrl", {
               validate: (value) => isValidUrl(value) || t("urlInvalid"),
             })}
@@ -125,7 +125,7 @@ export default function EditSocialLinksModal({ open, onOpenChange, profile }: Ed
             placeholder={t("githubPlaceholder")}
             aria-invalid={Boolean(errors.githubUrl)}
             aria-describedby={errors.githubUrl ? "profile-github-url-error" : undefined}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("githubUrl", {
               validate: (value) => isValidUrl(value) || t("urlInvalid"),
             })}
@@ -147,7 +147,7 @@ export default function EditSocialLinksModal({ open, onOpenChange, profile }: Ed
             placeholder={t("portfolioPlaceholder")}
             aria-invalid={Boolean(errors.portfolioUrl)}
             aria-describedby={errors.portfolioUrl ? "profile-portfolio-url-error" : undefined}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("portfolioUrl", {
               validate: (value) => isValidUrl(value) || t("urlInvalid"),
             })}

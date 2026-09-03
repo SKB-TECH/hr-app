@@ -3,7 +3,7 @@ import HelpSideBar from "@/components/dashboard/candidate/help-center/helpSideBa
 
 export default function HelpPage() {
   return (
-    <main className=" ">
+    <main className='mx-auto max-w-[1200px]'>
       <HelpSideBar />
       <ChatButton />
     </main>

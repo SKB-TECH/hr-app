@@ -323,7 +323,12 @@
         "jobSeekerTitle": "Chercheur d'emploi",
         "jobSeekerDescription": "À la recherche d'un emploi",
         "employerTitle": "Employeur",
-        "employerDescription": "Recrutement, recherche de candidats ou publication d'offres d'emploi"
+        "employerDescription": "Recrutement, recherche de candidats ou publication d'offres d'emploi",
+        "currentBadge": "Actuel",
+        "switchButton": "Changer",
+        "switchedToEmployer": "Basculé vers le profil employeur",
+        "switchedToJobSeeker": "Basculé vers le profil candidat",
+        "switchError": "Impossible de changer de profil"
       },
       "saveButton": {
         "save": "Enregistrer les modifications",

@@ -12,7 +12,7 @@ import ResumesSection from "@/components/dashboard/candidate/applicant/profile/R
 export default function ProfilePage() {
   return (
     <main className='flex-1 bg-white px-5 sm:px-7 py-8 font-epilogue'>
-      <div className='max-w-7xl  grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6'>
+      <div className='max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6'>
         <div className='flex flex-col gap-6'>
           <ProfileSection />
           <AboutSection />

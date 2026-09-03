@@ -138,7 +138,7 @@ export default function CertificationModal({ open, onOpenChange, certification }
             placeholder={t("certification.modal.titlePlaceholder")}
             aria-invalid={Boolean(errors.title)}
             aria-describedby={errors.title ? "certification-title-error" : undefined}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("title", {
               required: t("certification.modal.titleRequired"),
               validate: (value) => value.trim().length > 0 || t("certification.modal.titleRequired"),
@@ -161,7 +161,7 @@ export default function CertificationModal({ open, onOpenChange, certification }
             placeholder={t("certification.modal.organizationPlaceholder")}
             aria-invalid={Boolean(errors.organization)}
             aria-describedby={errors.organization ? "certification-organization-error" : undefined}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("organization", {
               required: t("certification.modal.organizationRequired"),
               validate: (value) => value.trim().length > 0 || t("certification.modal.organizationRequired"),
@@ -248,7 +248,7 @@ export default function CertificationModal({ open, onOpenChange, certification }
             id="certification-credential-id"
             type="text"
             placeholder={t("certification.modal.credentialIdPlaceholder")}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("credentialId")}
           />
         </div>
@@ -263,7 +263,7 @@ export default function CertificationModal({ open, onOpenChange, certification }
             placeholder={t("certification.modal.urlPlaceholder")}
             aria-invalid={Boolean(errors.credentialUrl)}
             aria-describedby="certification-credential-url-hint"
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("credentialUrl", {
               validate: (value) => isValidUrl(value) || t("certification.modal.urlInvalid"),
             })}

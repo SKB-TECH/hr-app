@@ -322,7 +322,12 @@
         "jobSeekerTitle": "Job Seeker",
         "jobSeekerDescription": "Looking for a job",
         "employerTitle": "Employer",
-        "employerDescription": "Hiring, sourcing candidates, or posting jobs"
+        "employerDescription": "Hiring, sourcing candidates, or posting jobs",
+        "currentBadge": "Current",
+        "switchButton": "Switch",
+        "switchedToEmployer": "Switched to employer profile",
+        "switchedToJobSeeker": "Switched to job seeker profile",
+        "switchError": "Unable to switch profile"
       },
       "saveButton": {
         "save": "Save Changes",

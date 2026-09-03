@@ -9,7 +9,6 @@ import {
 import ChatPanel from "./ChatPanel";
 import ConversationSidebar from "./ConvasationSidebar";
 
-
 export default function MessagesClient() {
   const [convos, setConvos] = useState<Conversation[]>(initialConversations);
 
@@ -95,9 +94,9 @@ export default function MessagesClient() {
     : ordered;
 
   return (
-    <div className="flex h-full min-h-0 w-full flex-col overflow-hidden bg-white">
+    <div className='flex h-full min-h-0 w-full flex-col overflow-hidden bg-white mx-auto max-w-[1200px]'>
       {/* Main Chat Area */}
-      <div className="flex min-h-0 flex-1 overflow-hidden hide-scrollbar">
+      <div className='flex min-h-0 flex-1 overflow-hidden hide-scrollbar'>
         {/* Sidebar */}
         <ConversationSidebar
           conversations={filtered}
@@ -128,7 +127,7 @@ export default function MessagesClient() {
               onBack={() => setShowChat(false)}
             />
           ) : (
-            <div className="flex flex-1 items-center justify-center text-sm text-[#A8ADB7]">
+            <div className='flex flex-1 items-center justify-center text-sm text-[#A8ADB7]'>
               Select a conversation
             </div>
           )}

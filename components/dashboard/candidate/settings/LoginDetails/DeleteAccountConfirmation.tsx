@@ -57,7 +57,7 @@ function DeleteAccountConfirmation({
             type="button"
             onClick={handleDelete}
             disabled={isPending}
-            className="w-full sm:w-auto h-11 px-5 bg-[#FF6550] hover:bg-[#e0503c] text-white font-semibold flex items-center justify-center gap-2 transition-colors rounded-lg border-none"
+            className="w-full sm:w-auto h-11 px-5 bg-[#FF6550] hover:bg-[#e0503c] text-white font-semibold flex items-center justify-center gap-2 transition-colors rounded-none border-none"
           >
             {isPending ? (
               <>

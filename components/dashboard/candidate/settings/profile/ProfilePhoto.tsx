@@ -5,6 +5,7 @@ interface ProfilePhotoProps<T extends FieldValues> {
   heading?: string;
   paragraph?: string;
   imagePlaceholder: string;
+  currentImageUrl?: string | null;
   setValue?: UseFormSetValue<T>;
   imageClassName?: string;
   dropzoneClassName?: string;
@@ -14,6 +15,7 @@ function ProfilePhoto<T extends FieldValues>({
   heading,
   paragraph,
   imagePlaceholder,
+  currentImageUrl,
   setValue,
   imageClassName,
   dropzoneClassName,
@@ -31,6 +33,7 @@ function ProfilePhoto<T extends FieldValues>({
 
       <UploadFile
         imagePlaceholder={imagePlaceholder}
+        currentImageUrl={currentImageUrl}
         setValue={setValue}
         imageClassName={imageClassName}
         dropzoneClassName={dropzoneClassName}

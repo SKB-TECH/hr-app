@@ -163,7 +163,7 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
             placeholder={t("education.modal.schoolPlaceholder")}
             aria-invalid={Boolean(errors.schoolName)}
             aria-describedby={errors.schoolName ? "education-school-name-error" : undefined}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("schoolName", {
               required: t("education.modal.schoolRequired"),
               validate: (value) => value.trim().length > 0 || t("education.modal.schoolRequired"),
@@ -188,7 +188,7 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
               placeholder={t("education.modal.degreePlaceholder")}
               aria-invalid={Boolean(errors.degree)}
               aria-describedby={errors.degree ? "education-degree-error" : undefined}
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+              className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
               {...register("degree", {
                 required: t("education.modal.degreeRequired"),
                 validate: (value) => value.trim().length > 0 || t("education.modal.degreeRequired"),
@@ -214,7 +214,7 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
               id="education-field-of-study"
               type="text"
               placeholder={t("education.modal.fieldOfStudyPlaceholder")}
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+              className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
               {...register("fieldOfStudy")}
             />
           </div>
@@ -315,7 +315,7 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
             id="education-grade"
             type="text"
             placeholder={t("education.modal.gradePlaceholder")}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("grade")}
           />
         </div>

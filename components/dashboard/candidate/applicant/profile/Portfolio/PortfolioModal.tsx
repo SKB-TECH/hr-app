@@ -162,7 +162,7 @@ export default function PortfolioModal({
             aria-describedby={
               errors.title ? "portfolio-title-error" : undefined
             }
-            className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
+            className='w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("title", {
               required: t("portfolio.modal.titleRequired"),
               validate: (value) =>
@@ -194,7 +194,7 @@ export default function PortfolioModal({
             aria-describedby={
               errors.projectUrl ? "portfolio-project-url-error" : undefined
             }
-            className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
+            className='w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("projectUrl", {
               validate: (value) =>
                 isValidUrl(value) || t("portfolio.modal.urlInvalid"),

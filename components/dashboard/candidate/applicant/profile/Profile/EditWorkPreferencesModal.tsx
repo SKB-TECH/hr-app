@@ -121,7 +121,7 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
             placeholder={t("yearsPlaceholder")}
             aria-invalid={Boolean(errors.yearsExperience)}
             aria-describedby={errors.yearsExperience ? "profile-years-experience-error" : undefined}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("yearsExperience", {
               validate: (value) => {
                 if (!value.trim()) return true;
@@ -143,7 +143,7 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
           </label>
           <select
             id="profile-work-type"
-            className="w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full cursor-pointer rounded-none border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-brand"
             {...register("workType")}
           >
             <option value="">{t("selectOption")}</option>
@@ -161,7 +161,7 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
           </label>
           <select
             id="profile-availability"
-            className="w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full cursor-pointer rounded-none border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-brand"
             {...register("availability")}
           >
             <option value="">{t("selectOption")}</option>

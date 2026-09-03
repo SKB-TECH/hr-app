@@ -30,7 +30,11 @@ export default function Applications() {
   const [page, setPage] = useState(1);
   const debouncedSearch = useDebouncedValue(search, 300);
 
-  const { data: applicationsPage, isLoading, isError } = useMyApplications({
+  const {
+    data: applicationsPage,
+    isLoading,
+    isError,
+  } = useMyApplications({
     search: debouncedSearch,
     limit: FETCH_LIMIT,
   });
@@ -60,12 +64,13 @@ export default function Applications() {
     return map;
   }, [items]);
 
-  const filtered = tab === "all" ? items : items.filter((item) => item.tabKey === tab);
+  const filtered =
+    tab === "all" ? items : items.filter((item) => item.tabKey === tab);
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const pageItems = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   return (
-    <div className="px-5 md:px-5 py-6 md:py-8">
+    <div className='px-5 mx-auto max-w-[1200px] md:px-5 py-6 md:py-8'>
       <TopHeader />
       <Banner />
 
@@ -87,21 +92,26 @@ export default function Applications() {
       />
 
       {isLoading && (
-        <div className="mt-6 bg-white p-5">
+        <div className='mt-6 bg-white p-5'>
           <SectionSkeleton rows={4} />
         </div>
       )}
 
       {!isLoading && isError && (
-        <div className="p-6 bg-white mt-4 text-center text-gray-500">
-          We couldn&apos;t load your applications right now. Please refresh the page to try again.
+        <div className='p-6 bg-white mt-4 text-center text-gray-500'>
+          We couldn&apos;t load your applications right now. Please refresh the
+          page to try again.
         </div>
       )}
 
       {!isLoading && !isError && <ApplicationsTable items={pageItems} />}
 
       {!isLoading && !isError && filtered.length > 0 && (
-        <Pager currentPage={page} totalPages={totalPages} onChange={(p) => setPage(p)} />
+        <Pager
+          currentPage={page}
+          totalPages={totalPages}
+          onChange={(p) => setPage(p)}
+        />
       )}
     </div>
   );

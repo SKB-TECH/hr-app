@@ -88,7 +88,7 @@ export default function EditAdditionalDetailsModal({ open, onOpenChange, profile
             type="email"
             value={profile.email}
             disabled
-            className="w-full cursor-not-allowed rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-gray-500 outline-none"
+            className="w-full cursor-not-allowed rounded-none border border-gray-200 bg-gray-50 px-4 py-3 text-gray-500 outline-none"
           />
           <p className="mt-1.5 text-[12px] text-gray-400">{t("emailHint")}</p>
         </div>
@@ -101,7 +101,7 @@ export default function EditAdditionalDetailsModal({ open, onOpenChange, profile
             id="profile-phone"
             type="tel"
             placeholder={t("phonePlaceholder")}
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
+            className="w-full rounded-none border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("phoneNumber")}
           />
         </div>
