@@ -6,6 +6,9 @@ export function useUpdateApplicationStage(jobId: string) {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: ({ applicationId, stageId, note }: { applicationId: string; stageId: string; note?: string }) => updateApplicationStage(applicationId, stageId, note),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["applications", "job", jobId] }),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ["applications", "job", jobId] });
+      void queryClient.invalidateQueries({ queryKey: ["applications", "company"] });
+    },
   });
 }

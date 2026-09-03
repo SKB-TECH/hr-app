@@ -16,6 +16,7 @@ export const ENV = {
 
     /** Identifiant du canal applicatif */
     API_CHANNEL: process.env.API_CHANNEL ?? process.env.NEXT_PUBLIC_API_CHANNEL ?? "",
+    SOCKET_URL: process.env.NEXT_PUBLIC_SOCKET_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL ?? "",
 
     /** Base URL pour les fichiers/images du backend */
     FILES_BASE_URL: process.env.NEXT_PUBLIC_FILES_BASE_URL ?? "",

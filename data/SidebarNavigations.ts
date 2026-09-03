@@ -72,6 +72,14 @@ export const navItems: NavItem[] = [
     badge: null,
     roles: ["candidate"],
   },
+  {
+    id: 12,
+    name: "My Schedule",
+    path: "/schedule",
+    icon: Calendar,
+    badge: null,
+    roles: ["candidate"],
+  },
 
   // company only
   {
