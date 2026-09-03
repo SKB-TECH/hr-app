@@ -37,7 +37,7 @@ export const navItems: NavItem[] = [
     name: "Messages",
     path: "/messages",
     icon: MessageSquareText,
-    badge: "1",
+    badge: null,
     roles: ["candidate", "company"],
   },
   {

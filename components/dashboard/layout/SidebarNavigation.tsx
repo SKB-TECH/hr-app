@@ -3,7 +3,7 @@
 import { UserRoles } from "@/data/SidebarNavigations";
 import { NavItem } from "./candidate/NavItem";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSession } from "@/core/hooks/auth/use-session";
 import {
   getActivePathname,
@@ -17,6 +17,11 @@ function SidebarNavigation() {
   const { data: user } = useSession();
   const role: UserRoles = user?.activeProfile === "COMPANY" ? "company" : "candidate";
   const pathname = getActivePathname(fullPathname);
+  const [unreadMessages, setUnreadMessages] = useState(0);
+  useEffect(() => {
+    const update = (event?: Event) => setUnreadMessages(event instanceof CustomEvent ? Number(event.detail) || 0 : Number(localStorage.getItem("messages:unread")) || 0);
+    update(); window.addEventListener("messages:unread", update); return () => window.removeEventListener("messages:unread", update);
+  }, []);
   const [navItems, settingItems] = useMemo(() => getNavItems(role), [role]);
 
   return (
@@ -31,7 +36,7 @@ function SidebarNavigation() {
               path={getRolePath(role, item.path)}
               name={item.name}
               icon={item.icon}
-              badge={item.badge}
+              badge={item.path === "/messages" && unreadMessages > 0 ? String(unreadMessages) : item.badge}
             />
           );
         })}

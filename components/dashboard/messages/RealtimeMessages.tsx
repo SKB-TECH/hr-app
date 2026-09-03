@@ -42,6 +42,7 @@ export default function RealtimeMessages({
   const [query, setQuery] = useState("");
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const socketRef = useRef<Socket | null>(null);
   const selected = conversations.find((item) => item.id === selectedId);
 
@@ -90,6 +91,8 @@ export default function RealtimeMessages({
             ),
         );
         socketRef.current = socket;
+      } catch (cause) {
+        if (active) setError(cause instanceof Error ? cause.message : "Messagerie indisponible.");
       } finally {
         if (active) setLoading(false);
       }
@@ -107,7 +110,11 @@ export default function RealtimeMessages({
       conversationId: selectedId,
     });
     void markConversationRead(selectedId);
-  }, [selectedId]);
+    setConversations((current) => current.map((conversation) => conversation.id === selectedId ? { ...conversation, messages: conversation.messages.map((message) => message.senderId === session.data?.id ? message : { ...message, readAt: message.readAt || new Date().toISOString() }) } : conversation));
+    const remaining = conversations.flatMap((conversation) => conversation.id === selectedId ? [] : conversation.messages).filter((message) => !message.readAt && message.senderId !== session.data?.id).length;
+    localStorage.setItem("messages:unread", String(remaining));
+    window.dispatchEvent(new CustomEvent("messages:unread", { detail: remaining }));
+  }, [selectedId, session.data?.id]);
   const filtered = useMemo(
     () =>
       conversations.filter((conversation) =>
@@ -141,9 +148,10 @@ export default function RealtimeMessages({
   if (loading)
     return (
       <div className="grid h-full place-items-center text-sm text-neutral-60">
-        Chargement des messages…
-      </div>
-    );
+      Chargement des messages…
+    </div>
+  );
+  if (error) return <div className="grid h-full place-items-center p-8 text-center"><div><h2 className="font-bold text-neutral-100">Messagerie indisponible</h2><p className="mt-2 max-w-md text-sm text-neutral-60">{error}</p><p className="mt-2 text-xs text-neutral-60">Déployez l’API contenant le module Messages et exécutez sa migration.</p></div></div>;
   return (
     <div className="flex h-full min-h-0 overflow-hidden bg-white">
       <aside
