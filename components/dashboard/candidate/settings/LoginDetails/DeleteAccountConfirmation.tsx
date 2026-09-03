@@ -27,7 +27,7 @@ function DeleteAccountConfirmation({
 
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DialogContent className="max-w-md p-6 rounded-lg bg-white border border-brand-light-neutral shadow-xl">
+      <DialogContent className="max-w-md p-6 rounded-none bg-white border border-brand-light-neutral shadow-xl">
         <div className="flex flex-col items-center text-center sm:items-start sm:text-left gap-4">
           <div className="flex size-12 items-center justify-center rounded-full bg-red-50 text-[#FF6550] shrink-0 border border-red-100">
             <AlertTriangle size={24} />

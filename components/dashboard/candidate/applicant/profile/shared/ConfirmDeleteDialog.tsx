@@ -39,7 +39,7 @@ export default function ConfirmDeleteDialog({
   const resolvedPendingLabel = pendingLabel ?? t("pendingLabel");
   return (
     <Dialog open={open} onOpenChange={(value) => !value && !isPending && onOpenChange(false)}>
-      <DialogContent className="max-w-md rounded-lg border border-gray-200 bg-white p-6 shadow-xl">
+      <DialogContent className="max-w-md rounded-none border border-gray-200 bg-white p-6 shadow-xl">
         <div className="flex flex-col items-center gap-4 text-center sm:items-start sm:text-left">
           <div className="flex size-12 shrink-0 items-center justify-center rounded-full border border-red-100 bg-red-50 text-[#FF6550]">
             <AlertTriangle size={24} />
