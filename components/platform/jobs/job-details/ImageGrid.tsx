@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+
 interface ImageGridProps {
   mainImage: string;
   topRightImage: string;
@@ -10,11 +14,13 @@ export default function ImageGrid({
   topRightImage,
   bottomRightImage,
 }: ImageGridProps) {
+  const t = useTranslations("findJobs");
+
   return (
     <div className="flex gap-4 items-start w-full max-w-[640px] ">
       {/* Left Large Image */}
       <div className="relative w-[320px] max-w-full max-sm:w-full h-[270px] rounded-sm overflow-hidden flex-shrink">
-        <Image src={mainImage} alt="Main" fill className="object-cover" />
+        <Image src={mainImage} alt={t("detail.companyOverview.imageAlts.main")} fill className="object-cover" />
       </div>
 
       {/* Right Side Images */}
@@ -22,7 +28,7 @@ export default function ImageGrid({
         <div className="relative max-lg:w-full  w-[160px] max-w-full max-sm:w-[105px] h-[130px] rounded-sm overflow-hidden flex-shrink">
           <Image
             src={topRightImage}
-            alt="Top Right"
+            alt={t("detail.companyOverview.imageAlts.topRight")}
             fill
             className="object-cover"
           />
@@ -31,7 +37,7 @@ export default function ImageGrid({
         <div className="relative max-lg:w-full  w-[160px] max-w-full max-sm:w-[105px] h-[130px] rounded-sm overflow-hidden flex-shrink">
           <Image
             src={bottomRightImage}
-            alt="Bottom Right"
+            alt={t("detail.companyOverview.imageAlts.bottomRight")}
             fill
             className="object-cover"
           />

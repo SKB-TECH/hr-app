@@ -7,6 +7,7 @@ import {
   FlagIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import { useMyCandidateProfile } from "@/core/hooks/candidate/use-my-candidate-profile";
 import EditProfileModal from "./Profile/EditProfileModal";
@@ -16,6 +17,7 @@ const DEFAULT_AVATAR = "/avatar.jpg";
 const DEFAULT_COVER = "/profile-bg.jpg";
 
 export default function ProfileSection() {
+  const t = useTranslations("candidateProfileCore.profileSection");
   const { data: profile, isLoading, isError } = useMyCandidateProfile();
   const [editOpen, setEditOpen] = useState(false);
 
@@ -36,8 +38,7 @@ export default function ProfileSection() {
     return (
       <div className='bg-white border border-gray-200 p-6 font-epilogue'>
         <p className='text-[14px] text-gray-500'>
-          We couldn&apos;t load your profile right now. Please refresh the page
-          to try again.
+          {t("errorLoading")}
         </p>
       </div>
     );
@@ -64,7 +65,7 @@ export default function ProfileSection() {
         <button
           type='button'
           onClick={() => setEditOpen(true)}
-          aria-label='Edit profile'
+          aria-label={t("editProfileAria")}
           className='absolute top-4 right-4 sm:top-5 sm:right-5 bg-white/90 p-2 transition-colors z-10 cursor-pointer'
         >
           <PencilSquareIcon className='w-4 h-4 text-brand' />
@@ -110,7 +111,7 @@ export default function ProfileSection() {
             {profile.candidateProfile?.openToWork && (
               <div className='mt-4 w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#56CDAD1A] text-[#56CDAD] text-[12px] md:text-[16px] font-bold px-4 py-2 tracking-wide'>
                 <FlagIcon className='w-5 h-5' />
-                OPEN FOR OPPORTUNITIES
+                {t("openForOpportunities")}
               </div>
             )}
           </div>
@@ -120,7 +121,7 @@ export default function ProfileSection() {
             onClick={() => setEditOpen(true)}
             className='mt-4 w-full sm:mt-0 sm:w-auto border border-gray-200 text-brand font-bold font-epilogue text-[14px] px-5 py-2.5 whitespace-nowrap self-stretch sm:self-start cursor-pointer'
           >
-            Edit Profile
+            {t("editProfileButton")}
           </button>
         </div>
       </div>

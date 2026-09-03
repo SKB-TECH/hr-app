@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { Job } from "@/data/jobDetailsData";
 
 interface SimilarJobsSectionProps {
@@ -13,9 +16,12 @@ interface SimilarJobsSectionProps {
 export default function SimilarJobsSection({
   jobs,
   showAllHref = "#",
-  title = "Similar Jobs",
+  title,
   jobId,
 }: SimilarJobsSectionProps) {
+  const t = useTranslations("findJobs");
+  const resolvedTitle = title ?? t("detail.similarJobs.title");
+
   return (
     <div className="relative w-full min-h-[500px] mt-16 overflow-hidden ">
       <Image
@@ -36,14 +42,14 @@ export default function SimilarJobsSection({
       <div className="relative z-10 px-4 md:px-12   w-full max-w-7xl mx-auto py-12">
         <div className="flex justify-between items-center gap-4">
           <h1 className="text-[32px]  text-neutral-100 font-bold font-clash">
-            {title}
+            {resolvedTitle}
           </h1>
 
           <Link
             href={showAllHref}
             className="flex text-brand text-[16px] font-bold items-center gap-1"
           >
-            <span>Show all jobs</span>
+            <span>{t("detail.similarJobs.showAll")}</span>
             <ArrowRight size={20} />
           </Link>
         </div>

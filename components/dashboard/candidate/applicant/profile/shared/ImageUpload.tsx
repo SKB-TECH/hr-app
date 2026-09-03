@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 import { CameraIcon } from "@heroicons/react/24/outline";
+import { useTranslations } from "next-intl";
 import { ACCEPTED_IMAGE_TYPES, IMAGE_FILE_HINT, MAX_IMAGE_FILE_SIZE } from "./profile-document-validation";
 
 interface ImageUploadProps {
@@ -15,6 +16,7 @@ interface ImageUploadProps {
 }
 
 export default function ImageUpload({ label, shape = "rectangle", file, currentImageUrl, onSelect, error }: ImageUploadProps) {
+  const t = useTranslations("candidateProfileCore.shared.imageUpload");
   const preview = useMemo(() => (file ? URL.createObjectURL(file) : null), [file]);
   const imageSrc = preview || currentImageUrl;
 
@@ -33,13 +35,13 @@ export default function ImageUpload({ label, shape = "rectangle", file, currentI
     if (!firstError) return null;
     switch (firstError.code) {
       case "file-invalid-type":
-        return "Unsupported file type. Please upload a JPG, PNG, or WEBP.";
+        return t("invalidType");
       case "file-too-large":
-        return "This file is too large. Maximum allowed size is 5 MB.";
+        return t("tooLarge");
       default:
-        return firstError.message || "Upload failed.";
+        return firstError.message || t("uploadFailed");
     }
-  }, [fileRejections]);
+  }, [fileRejections, t]);
 
   return (
     <div>
@@ -68,7 +70,7 @@ export default function ImageUpload({ label, shape = "rectangle", file, currentI
           )}
         </div>
         <div className="min-w-0">
-          <p className="text-[14px] font-medium text-brand">{file ? "Change photo" : "Click to upload or drag & drop"}</p>
+          <p className="text-[14px] font-medium text-brand">{file ? t("changePhoto") : t("clickToUpload")}</p>
           <p className="mt-0.5 text-[12px] text-gray-400">{IMAGE_FILE_HINT}</p>
         </div>
       </div>

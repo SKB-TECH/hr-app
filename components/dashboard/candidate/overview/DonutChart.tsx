@@ -1,5 +1,6 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 
 export function DonutChart({
@@ -9,6 +10,7 @@ export function DonutChart({
   unsuitable?: number;
   interviewed?: number;
 }) {
+  const t = useTranslations("candidateDashboard.donutChart");
   const data = [
     { name: "Unsuitable", value: unsuitable, color: "#4640DE" },
     { name: "Interviewed", value: interviewed, color: "#D6D5F8" },
@@ -17,7 +19,7 @@ export function DonutChart({
   return (
     <div className="border border-gray-200 bg-white p-6 flex flex-col justify-between">
       <p className="text-[16px] xl:text-[18px] font-epilogue tracking-wider font-bold text-[#202430] mb-2">
-        Jobs Applied Status
+        {t("title")}
       </p>
 
       <div className="flex items-center justify-center gap-8 flex-1 py-2">
@@ -52,7 +54,7 @@ export function DonutChart({
               <p className="text-[18px] font-bold text-[#202430] leading-tight">
                 {unsuitable}%
               </p>
-              <p className="text-[14px] text-gray-400">Unsuitable</p>
+              <p className="text-[14px] text-gray-400">{t("unsuitable")}</p>
             </div>
           </div>
           <div className="flex items-center gap-2.5">
@@ -61,7 +63,7 @@ export function DonutChart({
               <p className="text-[18px] font-bold text-[#202430] leading-tight">
                 {interviewed}%
               </p>
-              <p className="text-[14px] text-gray-400">Interviewed</p>
+              <p className="text-[14px] text-gray-400">{t("interviewed")}</p>
             </div>
           </div>
         </div>
@@ -71,7 +73,7 @@ export function DonutChart({
         href="/candidate/applications"
         className="flex items-center gap-1.5 text-[13px] font-semibold text-[#4640DE] hover:text-indigo-800 transition-colors mt-4"
       >
-        View All Applications
+        {t("viewAllApplications")}
         <ArrowRightIcon className="w-4 h-4" />
       </Link>
     </div>

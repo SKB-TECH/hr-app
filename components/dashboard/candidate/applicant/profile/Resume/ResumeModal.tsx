@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { DocumentTextIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
 
@@ -19,6 +20,7 @@ interface ResumeModalProps {
 }
 
 export default function ResumeModal({ open, onOpenChange }: ResumeModalProps) {
+  const t = useTranslations("candidateProfileSections");
   const createResume = useCreateCandidateResume();
   const isPending = createResume.isPending;
   const submittingRef = useRef(false);
@@ -40,7 +42,7 @@ export default function ResumeModal({ open, onOpenChange }: ResumeModalProps) {
   const handleSubmit = async () => {
     if (submittingRef.current) return;
     if (!file) {
-      setFileError("Please select a resume file to upload.");
+      setFileError(t("resume.modal.fileRequired"));
       return;
     }
     setFileError("");
@@ -48,10 +50,10 @@ export default function ResumeModal({ open, onOpenChange }: ResumeModalProps) {
 
     try {
       await createResume.mutateAsync({ file });
-      toast.success("Resume uploaded successfully.");
+      toast.success(t("resume.toasts.uploaded"));
       onOpenChange(false);
     } catch (error) {
-      toast.error(error instanceof ApiError ? error.message : "Something went wrong. Please try again.");
+      toast.error(error instanceof ApiError ? error.message : t("resume.toasts.genericError"));
     } finally {
       submittingRef.current = false;
     }
@@ -63,8 +65,8 @@ export default function ResumeModal({ open, onOpenChange }: ResumeModalProps) {
       onOpenChange={onOpenChange}
       isPending={isPending}
       icon={<DocumentTextIcon className="h-5 w-5" />}
-      title="Upload Resume"
-      description="Add a resume so recruiters and job applications can access your latest CV."
+      title={t("resume.modal.title")}
+      description={t("resume.modal.description")}
     >
       <form
         onSubmit={(event) => {
@@ -74,7 +76,7 @@ export default function ResumeModal({ open, onOpenChange }: ResumeModalProps) {
         className="mt-5 space-y-5"
       >
         <DocumentUpload
-          label="Resume File"
+          label={t("resume.modal.fileLabel")}
           file={file}
           error={fileError}
           onSelect={(selected) => {
@@ -85,9 +87,9 @@ export default function ResumeModal({ open, onOpenChange }: ResumeModalProps) {
 
         <DialogFooter className="-mx-6 -mb-6 mt-2 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4">
           <Button type="button" variant="outline" onClick={handleClose} disabled={isPending}>
-            Cancel
+            {t("resume.modal.cancel")}
           </Button>
-          <SubmitButton isPending={isPending} label="Upload Resume" />
+          <SubmitButton isPending={isPending} label={t("resume.modal.uploadSubmit")} />
         </DialogFooter>
       </form>
     </ProfileEntryModal>

@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import StatusLabel from "./StatusLabel";
 
 import { getStyleForCategory } from "@/lib/utils";
@@ -13,12 +16,13 @@ type Props = {
 };
 
 export default function JobCategories({ labels, className = "" }: Props) {
+  const t = useTranslations("findJobs");
   const styles = getStyleForCategory(labels);
 
   return (
     <div className={`py-8 ${className}`}>
       <h1 className="pb-4 text-[24px] md:text-[32px] text-neutral-100 font-bold font-clash">
-        Categories
+        {t("detail.categories.title")}
       </h1>
       <div className="flex items-center gap-4 flex-wrap">
         {labels.map((label, index) => {

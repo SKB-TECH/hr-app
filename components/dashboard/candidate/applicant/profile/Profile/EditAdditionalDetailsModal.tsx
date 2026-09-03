@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { DevicePhoneMobileIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
@@ -24,6 +25,7 @@ interface EditAdditionalDetailsModalProps {
 }
 
 export default function EditAdditionalDetailsModal({ open, onOpenChange, profile }: EditAdditionalDetailsModalProps) {
+  const t = useTranslations("candidateProfileCore.editAdditionalDetailsModal");
   const updateProfile = useUpdateCandidateProfile();
   const isPending = updateProfile.isPending;
   const submittingRef = useRef(false);
@@ -48,13 +50,13 @@ export default function EditAdditionalDetailsModal({ open, onOpenChange, profile
 
     try {
       await updateProfile.mutateAsync(toCandidateProfileInput(profile, { phoneNumber: values.phoneNumber.trim() || null }));
-      toast.success("Additional details updated successfully.");
+      toast.success(t("successToast"));
       onOpenChange(false);
     } catch (error) {
       if (error instanceof ApiError) {
         console.error("Additional details update rejected by backend:", error.status, error.details);
       }
-      toast.error(error instanceof ApiError ? error.message : "Something went wrong. Please try again.");
+      toast.error(error instanceof ApiError ? error.message : t("errorToast"));
     } finally {
       submittingRef.current = false;
     }
@@ -66,8 +68,8 @@ export default function EditAdditionalDetailsModal({ open, onOpenChange, profile
       onOpenChange={onOpenChange}
       isPending={isPending}
       icon={<DevicePhoneMobileIcon className="h-5 w-5" />}
-      title="Edit Additional Details"
-      description="Keep your contact details current so employers can reach you."
+      title={t("title")}
+      description={t("description")}
     >
       <form
         noValidate
@@ -79,7 +81,7 @@ export default function EditAdditionalDetailsModal({ open, onOpenChange, profile
       >
         <div>
           <label htmlFor="profile-email-readonly" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Email
+            {t("emailLabel")}
           </label>
           <input
             id="profile-email-readonly"
@@ -88,17 +90,17 @@ export default function EditAdditionalDetailsModal({ open, onOpenChange, profile
             disabled
             className="w-full cursor-not-allowed rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-gray-500 outline-none"
           />
-          <p className="mt-1.5 text-[12px] text-gray-400">Your email address can&apos;t be changed here.</p>
+          <p className="mt-1.5 text-[12px] text-gray-400">{t("emailHint")}</p>
         </div>
 
         <div>
           <label htmlFor="profile-phone" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Phone
+            {t("phoneLabel")}
           </label>
           <input
             id="profile-phone"
             type="tel"
-            placeholder="e.g. +250 788 123 456"
+            placeholder={t("phonePlaceholder")}
             className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("phoneNumber")}
           />
@@ -106,9 +108,9 @@ export default function EditAdditionalDetailsModal({ open, onOpenChange, profile
 
         <DialogFooter className="-mx-6 -mb-6 mt-2 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4">
           <Button type="button" variant="outline" onClick={handleClose} disabled={isPending}>
-            Cancel
+            {t("cancel")}
           </Button>
-          <SubmitButton isPending={isPending} label="Save Changes" />
+          <SubmitButton isPending={isPending} label={t("save")} />
         </DialogFooter>
       </form>
     </ProfileEntryModal>

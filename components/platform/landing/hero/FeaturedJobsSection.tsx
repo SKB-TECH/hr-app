@@ -4,6 +4,7 @@ import { featuredJobsData } from "@/data/featuredJob";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
 
 const marqueeJobs = [...featuredJobsData, ...featuredJobsData];
 
@@ -19,9 +20,11 @@ const defaultTag = "bg-gray-50 text-gray-500  border border-gray-200";
 function FeaturedJobCard({
   job,
   isDuplicate = false,
+  fullTimeLabel,
 }: {
   job: FeaturedJob;
   isDuplicate?: boolean;
+  fullTimeLabel: string;
 }) {
   return (
     <article
@@ -39,7 +42,7 @@ function FeaturedJobCard({
           className="object-contain flex-none"
         />
         <span className="text-xs font-semibold text-brand border border-brand px-2 py-1 whitespace-nowrap">
-          Full Time
+          {fullTimeLabel}
         </span>
       </div>
 
@@ -79,14 +82,17 @@ function FeaturedJobCard({
   );
 }
 
-export default function FeaturedJobsSection() {
+export default async function FeaturedJobsSection() {
+  const t = await getTranslations("landing");
+  const fullTimeLabel = t("featuredJobs.fullTimeBadge");
+
   return (
     <section className="pb-8  px-4 md:px-12  w-full max-w-7xl mx-auto">
       <div>
         <SectionTitle
-          title="Featured"
-          highlight="jobs"
-          showAllText="Show all jobs"
+          title={t("featuredJobs.titlePrefix")}
+          highlight={t("featuredJobs.titleHighlight")}
+          showAllText={t("shared.showAllJobs")}
           showAllLink="/jobs"
           isExpanded
         />
@@ -98,6 +104,7 @@ export default function FeaturedJobsSection() {
                 key={`${job.id}-${index}`}
                 job={job}
                 isDuplicate={index >= featuredJobsData.length}
+                fullTimeLabel={fullTimeLabel}
               />
             ))}
           </div>
@@ -108,7 +115,7 @@ export default function FeaturedJobsSection() {
             href="/jobs"
             className="flex flex-row text-brand text-[16px] font-semibold items-center gap-1"
           >
-            <span>Show all jobs</span>
+            <span>{t("shared.showAllJobs")}</span>
             <ArrowRight size={14} />
           </Link>
         </div>

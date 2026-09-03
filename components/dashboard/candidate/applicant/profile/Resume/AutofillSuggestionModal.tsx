@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { SparklesIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
 
@@ -36,6 +37,7 @@ function Field({ label, value }: { label: string; value?: string | null }) {
 }
 
 export default function AutofillSuggestionModal({ open, onOpenChange, resume }: AutofillSuggestionModalProps) {
+  const t = useTranslations("candidateProfileSections.resume.autofill");
   const [checked, setChecked] = useState(false);
   const resumeId = resume?.id || null;
 
@@ -58,9 +60,9 @@ export default function AutofillSuggestionModal({ open, onOpenChange, resume }: 
     try {
       await extract.mutateAsync(resumeId);
       setChecked(true);
-      toast.success("Suggestions generated from your resume.");
+      toast.success(t("toasts.generated"));
     } catch (error) {
-      toast.error(error instanceof ApiError ? error.message : "Couldn't generate suggestions. Please try again.");
+      toast.error(error instanceof ApiError ? error.message : t("toasts.generateError"));
     }
   };
 
@@ -68,10 +70,10 @@ export default function AutofillSuggestionModal({ open, onOpenChange, resume }: 
     if (!resumeId) return;
     try {
       await discard.mutateAsync(resumeId);
-      toast.success("Suggestion discarded.");
+      toast.success(t("toasts.discarded"));
       onOpenChange(false);
     } catch (error) {
-      toast.error(error instanceof ApiError ? error.message : "Couldn't discard the suggestion. Please try again.");
+      toast.error(error instanceof ApiError ? error.message : t("toasts.discardError"));
     }
   };
 
@@ -86,45 +88,44 @@ export default function AutofillSuggestionModal({ open, onOpenChange, resume }: 
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-indigo-50 text-brand">
                 <SparklesIcon className="h-5 w-5" />
               </span>
-              <DialogTitle className="text-[20px] font-bold text-[#25324B]">Autofill from CV</DialogTitle>
+              <DialogTitle className="text-[20px] font-bold text-[#25324B]">{t("title")}</DialogTitle>
             </div>
             <DialogDescription className="text-[14px] text-gray-500">
-              We&apos;ll read {resume?.fileName || "this resume"} and propose profile details for you to review. Nothing is
-              added to your profile automatically.
+              {t("description", { fileName: resume?.fileName || t("thisResume") })}
             </DialogDescription>
           </DialogHeader>
 
           <div className="mt-5 space-y-4">
             {!checked && (
               <Button type="button" onClick={handleCheckExisting} className="w-full bg-brand text-white hover:bg-[#3730c4]">
-                Check for an existing suggestion
+                {t("checkExisting")}
               </Button>
             )}
 
-            {checked && isLoading && <p className="text-[14px] text-gray-500">Checking…</p>}
+            {checked && isLoading && <p className="text-[14px] text-gray-500">{t("checking")}</p>}
 
             {checked && !isLoading && isError && (
               <div className="space-y-3">
-                <p className="text-[14px] text-gray-500">No suggestion found yet for this resume.</p>
+                <p className="text-[14px] text-gray-500">{t("noSuggestionFound")}</p>
                 <Button
                   type="button"
                   onClick={handleGenerate}
                   disabled={extract.isPending}
                   className="w-full bg-brand text-white hover:bg-[#3730c4]"
                 >
-                  {extract.isPending ? "Generating…" : "Generate Suggestions"}
+                  {extract.isPending ? t("generating") : t("generateButton")}
                 </Button>
               </div>
             )}
 
             {hasSuggestion && (
               <div className="space-y-4">
-                <Field label="Headline" value={suggestion.headline} />
-                <Field label="Bio" value={suggestion.bio} />
+                <Field label={t("fields.headline")} value={suggestion.headline} />
+                <Field label={t("fields.bio")} value={suggestion.bio} />
 
                 {suggestion.skills && suggestion.skills.length > 0 && (
                   <div>
-                    <p className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-gray-400">Skills</p>
+                    <p className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-gray-400">{t("fields.skills")}</p>
                     <div className="flex flex-wrap gap-2">
                       {suggestion.skills.map((skill) => (
                         <span key={skill} className="rounded-full bg-indigo-50 px-3 py-1 text-[13px] font-medium text-brand">
@@ -137,7 +138,7 @@ export default function AutofillSuggestionModal({ open, onOpenChange, resume }: 
 
                 {suggestion.experiences && suggestion.experiences.length > 0 && (
                   <div>
-                    <p className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-gray-400">Experience</p>
+                    <p className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-gray-400">{t("fields.experience")}</p>
                     <div className="space-y-2">
                       {suggestion.experiences.map((experience, index) => (
                         <div key={index} className="rounded-lg border border-gray-100 p-3">
@@ -151,7 +152,7 @@ export default function AutofillSuggestionModal({ open, onOpenChange, resume }: 
 
                 {suggestion.educations && suggestion.educations.length > 0 && (
                   <div>
-                    <p className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-gray-400">Education</p>
+                    <p className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-gray-400">{t("fields.education")}</p>
                     <div className="space-y-2">
                       {suggestion.educations.map((education, index) => (
                         <div key={index} className="rounded-lg border border-gray-100 p-3">
@@ -165,7 +166,7 @@ export default function AutofillSuggestionModal({ open, onOpenChange, resume }: 
 
                 {suggestion.certifications && suggestion.certifications.length > 0 && (
                   <div>
-                    <p className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-gray-400">Certifications</p>
+                    <p className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-gray-400">{t("fields.certifications")}</p>
                     <div className="space-y-2">
                       {suggestion.certifications.map((certification, index) => (
                         <div key={index} className="rounded-lg border border-gray-100 p-3">
@@ -178,7 +179,7 @@ export default function AutofillSuggestionModal({ open, onOpenChange, resume }: 
                 )}
 
                 <p className="text-[12px] text-gray-400">
-                  Copy the details you want into the matching profile sections yourself, or discard this suggestion.
+                  {t("copyHint")}
                 </p>
               </div>
             )}
@@ -186,7 +187,7 @@ export default function AutofillSuggestionModal({ open, onOpenChange, resume }: 
 
           <DialogFooter className="-mx-6 -mb-6 mt-5 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4">
             <Button type="button" variant="outline" onClick={() => handleOpenChange(false)}>
-              Close
+              {t("close")}
             </Button>
             {hasSuggestion && (
               <Button
@@ -195,7 +196,7 @@ export default function AutofillSuggestionModal({ open, onOpenChange, resume }: 
                 disabled={discard.isPending}
                 className="border-none bg-[#FF6550] text-white hover:bg-[#e0503c]"
               >
-                {discard.isPending ? "Discarding..." : "Discard Suggestion"}
+                {discard.isPending ? t("discarding") : t("discardButton")}
               </Button>
             )}
           </DialogFooter>

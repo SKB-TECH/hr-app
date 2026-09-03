@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import ImageGrid from "./ImageGrid";
 import { Link } from "@/i18n/routing";
 
@@ -24,6 +27,8 @@ export default function CompanyOverviewSection({
   className = "",
   companyId,
 }: Props) {
+  const t = useTranslations("findJobs");
+
   return (
     <section
       className={`py-8 md:py-20 flex flex-col lg:flex-row justify-between gap-20   ${className}`}
@@ -45,7 +50,7 @@ export default function CompanyOverviewSection({
               href={`/companies/${companyId}`}
               className="flex items-center gap-2 text-brand"
             >
-              <span className="font-semibold">Read more about {company}</span>
+              <span className="font-semibold">{t("detail.companyOverview.readMore", { company })}</span>
               <ArrowRight size={16} />
             </Link>
           </div>

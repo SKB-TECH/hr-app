@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -9,6 +10,7 @@ import {
 } from "@/components/platform/landing/icons";
 
 export default function FooterBottom() {
+  const t = useTranslations("landing");
   const socials = [
     { icon: <FacebookIcon />, label: "Facebook" },
     { icon: <InstagramIcon />, label: "Instagram" },
@@ -20,7 +22,7 @@ export default function FooterBottom() {
   return (
     <div className="flex flex-col items-center gap-4 pt-6 border-t border-gray-700 md:flex-row md:justify-between">
       <p className="text-xs text-gray-500 text-center md:text-left">
-        {new Date().getFullYear()} ©JobHuntly. All rights reserved.
+        {t("footer.bottom.copyright", { year: new Date().getFullYear() })}
       </p>
 
       <div className="flex items-center justify-center md:justify-end gap-3 flex-wrap">

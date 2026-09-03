@@ -1,6 +1,7 @@
 "use client";
 
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 import { DocumentTextIcon, TrashIcon, ArrowDownTrayIcon, StarIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
 
@@ -17,15 +18,16 @@ interface ResumeItemProps {
 }
 
 export default function ResumeItem({ resume, isLast, onDelete, onAutofill }: ResumeItemProps) {
+  const t = useTranslations("candidateProfileSections");
   const setDefaultResume = useSetDefaultCandidateResume();
 
   const handleSetDefault = async () => {
     if (resume.isDefault || setDefaultResume.isPending) return;
     try {
       await setDefaultResume.mutateAsync(resume.id);
-      toast.success("Default resume updated.");
+      toast.success(t("resume.toasts.defaultUpdated"));
     } catch (error) {
-      toast.error(error instanceof ApiError ? error.message : "Failed to set default resume. Please try again.");
+      toast.error(error instanceof ApiError ? error.message : t("resume.toasts.defaultError"));
     }
   };
 
@@ -39,7 +41,7 @@ export default function ResumeItem({ resume, isLast, onDelete, onAutofill }: Res
         <div className="flex items-center gap-2">
           <p className="truncate text-[15px] font-semibold text-[#202430]">{resume.fileName}</p>
           {resume.isDefault && (
-            <span className="shrink-0 rounded-full bg-indigo-50 px-2.5 py-0.5 text-[11px] font-semibold text-brand">Default</span>
+            <span className="shrink-0 rounded-full bg-indigo-50 px-2.5 py-0.5 text-[11px] font-semibold text-brand">{t("resume.defaultBadge")}</span>
           )}
         </div>
         {resume.fileSize != null && <p className="text-[13px] text-gray-400">{formatFileSize(resume.fileSize)}</p>}
@@ -49,7 +51,7 @@ export default function ResumeItem({ resume, isLast, onDelete, onAutofill }: Res
         <button
           type="button"
           onClick={() => onAutofill(resume)}
-          aria-label={`Autofill profile from ${resume.fileName}`}
+          aria-label={t("resume.autofillAriaLabel", { fileName: resume.fileName })}
           className="cursor-pointer border border-gray-200 p-1.5 hover:border-brand"
         >
           <SparklesIcon className="w-4 h-4 text-brand" />
@@ -58,7 +60,7 @@ export default function ResumeItem({ resume, isLast, onDelete, onAutofill }: Res
           type="button"
           onClick={handleSetDefault}
           disabled={resume.isDefault || setDefaultResume.isPending}
-          aria-label={resume.isDefault ? `${resume.fileName} is your default resume` : `Set ${resume.fileName} as default`}
+          aria-label={resume.isDefault ? t("resume.isDefaultAriaLabel", { fileName: resume.fileName }) : t("resume.setDefaultAriaLabel", { fileName: resume.fileName })}
           className="cursor-pointer border border-gray-200 p-1.5 hover:border-brand disabled:cursor-not-allowed disabled:opacity-50"
         >
           {resume.isDefault ? <StarIconSolid className="w-4 h-4 text-brand" /> : <StarIcon className="w-4 h-4 text-brand" />}
@@ -68,7 +70,7 @@ export default function ResumeItem({ resume, isLast, onDelete, onAutofill }: Res
             href={resume.fileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Download ${resume.fileName}`}
+            aria-label={t("resume.downloadAriaLabel", { fileName: resume.fileName })}
             className="cursor-pointer border border-gray-200 p-1.5 hover:border-brand"
           >
             <ArrowDownTrayIcon className="w-4 h-4 text-brand" />
@@ -77,7 +79,7 @@ export default function ResumeItem({ resume, isLast, onDelete, onAutofill }: Res
         <button
           type="button"
           onClick={() => onDelete(resume)}
-          aria-label={`Delete ${resume.fileName}`}
+          aria-label={t("resume.deleteAriaLabel", { fileName: resume.fileName })}
           className="cursor-pointer border border-gray-200 p-1.5 hover:border-red-300"
         >
           <TrashIcon className="w-4 h-4 text-[#FF6550]" />

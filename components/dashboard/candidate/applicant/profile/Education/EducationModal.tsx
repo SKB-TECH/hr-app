@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslations } from "next-intl";
 import { BookOpenIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
 
@@ -12,7 +13,18 @@ import ProfileEntryModal from "../shared/ProfileEntryModal";
 import DateField from "../shared/DateField";
 import SubmitButton from "../shared/SubmitButton";
 import { isFutureDate } from "../shared/profile-document-validation";
-import { DEGREE_SUGGESTIONS, isEndBeforeStart } from "./education-validation";
+import { isEndBeforeStart } from "./education-validation";
+
+const DEGREE_SUGGESTION_KEYS = [
+  "highSchoolDiploma",
+  "associateDegree",
+  "bachelorsDegree",
+  "mastersDegree",
+  "doctoratePhd",
+  "professionalCertificate",
+  "diploma",
+  "advancedDiploma",
+] as const;
 import { useCreateCandidateEducation } from "@/core/hooks/candidate/use-create-candidate-education";
 import { useUpdateCandidateEducation } from "@/core/hooks/candidate/use-update-candidate-education";
 import type { CandidateEducation } from "@/core/types/candidate-education";
@@ -37,6 +49,7 @@ interface EducationModalProps {
 }
 
 export default function EducationModal({ open, onOpenChange, education }: EducationModalProps) {
+  const t = useTranslations("candidateProfileSections");
   const isEditing = Boolean(education);
   const createEducation = useCreateCandidateEducation();
   const updateEducation = useUpdateCandidateEducation();
@@ -109,14 +122,14 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
 
       if (isEditing && education) {
         await updateEducation.mutateAsync({ id: education.id, input });
-        toast.success("Education updated successfully.");
+        toast.success(t("education.toasts.updated"));
       } else {
         await createEducation.mutateAsync(input);
-        toast.success("Education added successfully.");
+        toast.success(t("education.toasts.added"));
       }
       onOpenChange(false);
     } catch (error) {
-      const message = error instanceof ApiError ? error.message : "Something went wrong. Please try again.";
+      const message = error instanceof ApiError ? error.message : t("education.toasts.genericError");
       toast.error(message);
     } finally {
       submittingRef.current = false;
@@ -129,8 +142,8 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
       onOpenChange={onOpenChange}
       isPending={isPending}
       icon={<BookOpenIcon className="h-5 w-5" />}
-      title={isEditing ? "Edit Education" : "Add Education"}
-      description="Add your academic background to help employers better understand your qualifications."
+      title={isEditing ? t("education.modal.editTitle") : t("education.modal.addTitle")}
+      description={t("education.modal.description")}
     >
       <form
         noValidate
@@ -142,18 +155,18 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
       >
         <div>
           <label htmlFor="education-school-name" className="mb-2 block text-sm font-medium text-[#25324B]">
-            School or Institution
+            {t("education.modal.schoolLabel")}
           </label>
           <input
             id="education-school-name"
             type="text"
-            placeholder="e.g. University of Rwanda"
+            placeholder={t("education.modal.schoolPlaceholder")}
             aria-invalid={Boolean(errors.schoolName)}
             aria-describedby={errors.schoolName ? "education-school-name-error" : undefined}
             className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("schoolName", {
-              required: "School or institution is required.",
-              validate: (value) => value.trim().length > 0 || "School or institution is required.",
+              required: t("education.modal.schoolRequired"),
+              validate: (value) => value.trim().length > 0 || t("education.modal.schoolRequired"),
             })}
           />
           {errors.schoolName && (
@@ -166,24 +179,24 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="education-degree" className="mb-2 block text-sm font-medium text-[#25324B]">
-              Degree or Qualification
+              {t("education.modal.degreeLabel")}
             </label>
             <input
               id="education-degree"
               type="text"
               list="education-degree-options"
-              placeholder="e.g. Bachelor's Degree"
+              placeholder={t("education.modal.degreePlaceholder")}
               aria-invalid={Boolean(errors.degree)}
               aria-describedby={errors.degree ? "education-degree-error" : undefined}
               className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
               {...register("degree", {
-                required: "Degree or qualification is required.",
-                validate: (value) => value.trim().length > 0 || "Degree or qualification is required.",
+                required: t("education.modal.degreeRequired"),
+                validate: (value) => value.trim().length > 0 || t("education.modal.degreeRequired"),
               })}
             />
             <datalist id="education-degree-options">
-              {DEGREE_SUGGESTIONS.map((degree) => (
-                <option key={degree} value={degree} />
+              {DEGREE_SUGGESTION_KEYS.map((key) => (
+                <option key={key} value={t(`education.modal.degreeSuggestions.${key}`)} />
               ))}
             </datalist>
             {errors.degree && (
@@ -195,12 +208,12 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
 
           <div>
             <label htmlFor="education-field-of-study" className="mb-2 block text-sm font-medium text-[#25324B]">
-              Field of Study
+              {t("education.modal.fieldOfStudyLabel")}
             </label>
             <input
               id="education-field-of-study"
               type="text"
-              placeholder="e.g. Computer Science"
+              placeholder={t("education.modal.fieldOfStudyPlaceholder")}
               className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
               {...register("fieldOfStudy")}
             />
@@ -210,16 +223,16 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="education-start-date" className="mb-2 block text-sm font-medium text-[#25324B]">
-              Start Date
+              {t("education.modal.startDateLabel")}
             </label>
             <input
               type="hidden"
               id="education-start-date"
               {...register("startDate", {
-                required: "Start date is required.",
+                required: t("education.modal.startDateRequired"),
                 validate: (value) => {
-                  if (!value) return "Start date is required.";
-                  if (isFutureDate(value)) return "Start date cannot be in the future.";
+                  if (!value) return t("education.modal.startDateRequired");
+                  if (isFutureDate(value)) return t("education.modal.startDateFuture");
                   return true;
                 },
               })}
@@ -231,7 +244,7 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
                 setValue("startDate", value, { shouldValidate: true, shouldDirty: true });
                 if (endDateValue) trigger("endDate");
               }}
-              placeholder="Select the start date"
+              placeholder={t("education.modal.startDatePlaceholder")}
               error={errors.startDate?.message}
               maxDate={new Date()}
             />
@@ -243,7 +256,7 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
           <div>
             <div className="mb-2 flex items-center justify-between gap-2">
               <label htmlFor="education-end-date" className="block text-sm font-medium text-[#25324B]">
-                End Date
+                {t("education.modal.endDateLabel")}
               </label>
               <label className="flex cursor-pointer items-center gap-1.5 text-[13px] font-medium text-gray-500">
                 <input
@@ -255,13 +268,13 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
                   }}
                   className="h-3.5 w-3.5 cursor-pointer accent-brand"
                 />
-                Currently studying here
+                {t("education.modal.currentlyStudyingHere")}
               </label>
             </div>
 
             {isCurrent ? (
               <div className="flex h-[50px] items-center rounded-lg border border-gray-200 bg-gray-50 px-4 text-[14px] text-gray-500">
-                Currently studying — no end date
+                {t("education.modal.currentlyStudyingNoEndDate")}
               </div>
             ) : (
               <>
@@ -271,10 +284,10 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
                   {...register("endDate", {
                     validate: (value) => {
                       if (isCurrent) return true;
-                      if (!value) return "End date is required.";
-                      if (isFutureDate(value)) return "End date cannot be in the future.";
+                      if (!value) return t("education.modal.endDateRequired");
+                      if (isFutureDate(value)) return t("education.modal.endDateFuture");
                       if (isEndBeforeStart(getValues("startDate"), value)) {
-                        return "End date cannot be earlier than the start date.";
+                        return t("education.modal.endDateBeforeStart");
                       }
                       return true;
                     },
@@ -284,7 +297,7 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
                   id="education-end-date-trigger"
                   value={endDateValue}
                   onChange={(value) => setValue("endDate", value, { shouldValidate: true, shouldDirty: true })}
-                  placeholder="Select the end date"
+                  placeholder={t("education.modal.endDatePlaceholder")}
                   error={errors.endDate?.message}
                   maxDate={new Date()}
                 />
@@ -296,12 +309,12 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
 
         <div>
           <label htmlFor="education-grade" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Grade or Score
+            {t("education.modal.gradeLabel")}
           </label>
           <input
             id="education-grade"
             type="text"
-            placeholder="e.g. 3.8 GPA, Distinction"
+            placeholder={t("education.modal.gradePlaceholder")}
             className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
             {...register("grade")}
           />
@@ -309,13 +322,13 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
 
         <div>
           <label htmlFor="education-description" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Description
+            {t("education.modal.descriptionLabel")}
           </label>
           <textarea
             id="education-description"
             rows={4}
             maxLength={DESCRIPTION_MAX_LENGTH}
-            placeholder="Add additional information about your education, achievements, specialization, or relevant coursework."
+            placeholder={t("education.modal.descriptionPlaceholder")}
             className="w-full rounded-lg border border-gray-300 p-4 outline-none transition focus:border-brand"
             {...register("description")}
           />
@@ -326,9 +339,9 @@ export default function EducationModal({ open, onOpenChange, education }: Educat
 
         <DialogFooter className="-mx-6 -mb-6 mt-2 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4">
           <Button type="button" variant="outline" onClick={handleClose} disabled={isPending}>
-            Cancel
+            {t("education.modal.cancel")}
           </Button>
-          <SubmitButton isPending={isPending} label={isEditing ? "Update Education" : "Save Education"} />
+          <SubmitButton isPending={isPending} label={isEditing ? t("education.modal.updateSubmit") : t("education.modal.saveSubmit")} />
         </DialogFooter>
       </form>
     </ProfileEntryModal>

@@ -1,6 +1,7 @@
 "use client";
 
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 import ConfirmDeleteDialog from "../shared/ConfirmDeleteDialog";
 import { useRemoveCandidatePortfolio } from "@/core/hooks/candidate/use-remove-candidate-portfolio";
 import type { CandidatePortfolio } from "@/core/types/candidate-portfolio";
@@ -12,16 +13,17 @@ interface DeletePortfolioDialogProps {
 }
 
 export default function DeletePortfolioDialog({ portfolio, onOpenChange }: DeletePortfolioDialogProps) {
+  const t = useTranslations("candidateProfileSections");
   const removePortfolio = useRemoveCandidatePortfolio();
 
   const handleDelete = async () => {
     if (!portfolio || removePortfolio.isPending) return;
     try {
       await removePortfolio.mutateAsync(portfolio.id);
-      toast.success("Project removed successfully.");
+      toast.success(t("portfolio.toasts.removed"));
       onOpenChange(false);
     } catch (error) {
-      const message = error instanceof ApiError ? error.message : "Failed to remove project. Please try again.";
+      const message = error instanceof ApiError ? error.message : t("portfolio.toasts.removeError");
       toast.error(message);
     }
   };
@@ -32,13 +34,16 @@ export default function DeletePortfolioDialog({ portfolio, onOpenChange }: Delet
       onOpenChange={onOpenChange}
       isPending={removePortfolio.isPending}
       onConfirm={handleDelete}
-      title="Delete project?"
+      title={t("portfolio.deleteDialog.title")}
       description={
-        <>
-          Are you sure you want to remove
-          {portfolio ? <span className="font-medium text-[#202430]"> &ldquo;{portfolio.title}&rdquo;</span> : " this project"}? This action
-          cannot be undone.
-        </>
+        portfolio ? (
+          t.rich("portfolio.deleteDialog.descriptionWithName", {
+            title: portfolio.title,
+            bold: (chunks) => <span className="font-medium text-[#202430]">{chunks}</span>,
+          })
+        ) : (
+          t("portfolio.deleteDialog.descriptionFallback")
+        )
       }
     />
   );

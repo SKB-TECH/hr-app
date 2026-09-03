@@ -1,6 +1,7 @@
 "use client";
 
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 import ConfirmDeleteDialog from "../shared/ConfirmDeleteDialog";
 import { useRemoveCandidateEducation } from "@/core/hooks/candidate/use-remove-candidate-education";
 import type { CandidateEducation } from "@/core/types/candidate-education";
@@ -12,16 +13,17 @@ interface DeleteEducationDialogProps {
 }
 
 export default function DeleteEducationDialog({ education, onOpenChange }: DeleteEducationDialogProps) {
+  const t = useTranslations("candidateProfileSections");
   const removeEducation = useRemoveCandidateEducation();
 
   const handleDelete = async () => {
     if (!education || removeEducation.isPending) return;
     try {
       await removeEducation.mutateAsync(education.id);
-      toast.success("Education removed successfully.");
+      toast.success(t("education.toasts.removed"));
       onOpenChange(false);
     } catch (error) {
-      const message = error instanceof ApiError ? error.message : "Failed to remove education. Please try again.";
+      const message = error instanceof ApiError ? error.message : t("education.toasts.removeError");
       toast.error(message);
     }
   };
@@ -32,13 +34,16 @@ export default function DeleteEducationDialog({ education, onOpenChange }: Delet
       onOpenChange={onOpenChange}
       isPending={removeEducation.isPending}
       onConfirm={handleDelete}
-      title="Delete education?"
+      title={t("education.deleteDialog.title")}
       description={
-        <>
-          Are you sure you want to remove
-          {education ? <span className="font-medium text-[#202430]"> &ldquo;{education.schoolName}&rdquo;</span> : " this education record"}?
-          This action cannot be undone.
-        </>
+        education ? (
+          t.rich("education.deleteDialog.descriptionWithName", {
+            schoolName: education.schoolName,
+            bold: (chunks) => <span className="font-medium text-[#202430]">{chunks}</span>,
+          })
+        ) : (
+          t("education.deleteDialog.descriptionFallback")
+        )
       }
     />
   );

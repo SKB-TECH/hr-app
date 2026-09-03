@@ -6,22 +6,25 @@ import {
   SelectGroup,
   SelectItem,
 } from "@/components/ui/select";
+import { useTranslations } from "next-intl";
 import InputField from "./InputField";
 import { PersonalFormProps } from "./SettingsProfile";
 
-const genderOptions = [
-  { value: "male", label: "Male" },
-  { value: "female", label: "Female" },
-  { value: "other", label: "Other" },
-];
-
 function PersonalDetails({ register, errors, setValue }: PersonalFormProps) {
-  register("gender", { required: "Gender is required" }); // Register the gender
+  const t = useTranslations("candidateSettings.profile.personalDetails");
+
+  const genderOptions = [
+    { value: "male", label: t("genderOptions.male") },
+    { value: "female", label: t("genderOptions.female") },
+    { value: "other", label: t("genderOptions.other") },
+  ];
+
+  register("gender", { required: t("genderRequired") }); // Register the gender
   return (
     <div className="flex max-md:flex-col gap-6 md:gap-16 mb-8">
       <div className="w-48 shrink-0">
         <h2 className="text-[16px]  font-semibold text-neutral-100">
-          Personal Details
+          {t("title")}
         </h2>
       </div>
 
@@ -29,10 +32,10 @@ function PersonalDetails({ register, errors, setValue }: PersonalFormProps) {
         <div>
           <InputField
             {...register("fullName", {
-              required: "Full name is required",
+              required: t("fullNameRequired"),
             })}
-            label="Full Name"
-            placeholder="Jake Gyll"
+            label={t("fullNameLabel")}
+            placeholder={t("fullNamePlaceholder")}
             required={true}
           />
           {errors.fullName && (
@@ -46,11 +49,11 @@ function PersonalDetails({ register, errors, setValue }: PersonalFormProps) {
           <div>
             <InputField
               {...register("phone", {
-                required: "Phone number is required",
+                required: t("phoneRequired"),
               })}
-              label="Phone Number"
+              label={t("phoneLabel")}
               required={true}
-              placeholder="+1 234 567 890"
+              placeholder={t("phonePlaceholder")}
             />
             {errors.phone && (
               <p className="text-red-500 text-sm mt-2">
@@ -61,11 +64,11 @@ function PersonalDetails({ register, errors, setValue }: PersonalFormProps) {
           <div>
             <InputField
               {...register("email", {
-                required: "Email is required",
+                required: t("emailRequired"),
               })}
-              label="email"
+              label={t("emailLabel")}
               required={true}
-              placeholder="Jakegyll@gmail.com"
+              placeholder={t("emailPlaceholder")}
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-2">
@@ -79,12 +82,12 @@ function PersonalDetails({ register, errors, setValue }: PersonalFormProps) {
           <div>
             <InputField
               {...register("dateOfBirth", {
-                required: "Date of birth is required",
+                required: t("dobRequired"),
               })}
-              label="Date of Birth"
+              label={t("dobLabel")}
               type="date"
               required={true}
-              placeholder="09/08/1997"
+              placeholder={t("dobPlaceholder")}
             />
             {errors.dateOfBirth && (
               <p className="text-red-500 text-sm mt-2">
@@ -95,7 +98,7 @@ function PersonalDetails({ register, errors, setValue }: PersonalFormProps) {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Gender <span className="text-red-500">*</span>
+              {t("genderLabel")} <span className="text-red-500">*</span>
             </label>
             <Select
               onValueChange={(value) => {
@@ -105,7 +108,7 @@ function PersonalDetails({ register, errors, setValue }: PersonalFormProps) {
               <SelectTrigger className="text-neutral-100! w-full border border-gray-200 placeholder:text-neutral-100  px-4 py-5.5 text-sm rounded-none !focus:outline-brand">
                 <SelectValue
                   className="!placeholder:text-neutral-100"
-                  placeholder="Select Gender"
+                  placeholder={t("genderPlaceholder")}
                 />
               </SelectTrigger>
               <SelectContent>

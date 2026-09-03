@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { PencilSquareIcon, LinkIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 import { useMyCandidateProfile } from "@/core/hooks/candidate/use-my-candidate-profile";
 import { SectionSkeleton } from "./shared/Skeleton";
@@ -35,25 +36,26 @@ function displayUrl(url: string) {
 type SocialLink = { platform: string; url: string; icon: React.ReactNode };
 
 export default function SocialLinksSection() {
+  const t = useTranslations("candidateProfileCore.socialLinksSection");
   const { data: profile, isLoading, isError } = useMyCandidateProfile();
   const [editOpen, setEditOpen] = useState(false);
 
   const candidates: { platform: string; url: string | null | undefined; icon: React.ReactNode }[] = [
-    { platform: "LinkedIn", url: profile?.candidateProfile?.linkedinUrl, icon: <LinkedInIcon /> },
-    { platform: "GitHub", url: profile?.candidateProfile?.githubUrl, icon: <GitHubIcon /> },
-    { platform: "Website", url: profile?.candidateProfile?.portfolioUrl, icon: <GlobeAltIcon className="h-5 w-5" /> },
+    { platform: t("platforms.linkedin"), url: profile?.candidateProfile?.linkedinUrl, icon: <LinkedInIcon /> },
+    { platform: t("platforms.github"), url: profile?.candidateProfile?.githubUrl, icon: <GitHubIcon /> },
+    { platform: t("platforms.website"), url: profile?.candidateProfile?.portfolioUrl, icon: <GlobeAltIcon className="h-5 w-5" /> },
   ];
   const links: SocialLink[] = candidates.filter((link): link is SocialLink => Boolean(link.url));
 
   return (
     <div className="bg-white border border-gray-200 p-6 font-epilogue">
       <div className="flex items-center justify-between mb-5">
-        <h2 className="text-[18px] font-bold text-[#202430]">Social Links</h2>
+        <h2 className="text-[18px] font-bold text-[#202430]">{t("title")}</h2>
         <button
           type="button"
           onClick={() => setEditOpen(true)}
           disabled={isLoading}
-          aria-label="Edit social links"
+          aria-label={t("editAria")}
           className="cursor-pointer border border-gray-200 p-1.5 hover:border-indigo-400 transition-colors disabled:cursor-not-allowed disabled:opacity-50"
         >
           <PencilSquareIcon className="w-4 h-4 text-brand" />
@@ -63,7 +65,7 @@ export default function SocialLinksSection() {
       {isLoading && <SectionSkeleton rows={2} />}
 
       {!isLoading && isError && (
-        <p className="text-[14px] text-gray-500">We couldn&apos;t load your social links right now. Please refresh the page to try again.</p>
+        <p className="text-[14px] text-gray-500">{t("errorLoading")}</p>
       )}
 
       {!isLoading && !isError && links.length === 0 && (
@@ -71,14 +73,14 @@ export default function SocialLinksSection() {
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 text-brand">
             <LinkIcon className="h-5 w-5" />
           </span>
-          <p className="text-[15px] font-medium text-[#202430]">Add your social links</p>
-          <p className="text-[14px] text-gray-500">Connect your LinkedIn and GitHub so recruiters can learn more about you.</p>
+          <p className="text-[15px] font-medium text-[#202430]">{t("emptyTitle")}</p>
+          <p className="text-[14px] text-gray-500">{t("emptyDescription")}</p>
           <button
             type="button"
             onClick={() => setEditOpen(true)}
             className="mt-2 cursor-pointer text-[14px] font-semibold text-brand transition-colors hover:text-indigo-800"
           >
-            + Add Social Links
+            {t("addButton")}
           </button>
         </div>
       )}

@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import {
   VodafoneLogo,
   IntelLogo,
@@ -24,10 +25,13 @@ const defaultCompanies: Company[] = [
   { name: "Talkit", logo: <TalkitLogo /> },
 ];
 
-export default function CompaniesSection({
-  label = "Companies we helped grow",
+export default async function CompaniesSection({
+  label,
   companies = defaultCompanies,
 }: CompaniesSectionProps) {
+  const t = await getTranslations("landing");
+  const resolvedLabel = label ?? t("companiesMarquee.defaultLabel");
+
   // Repeat 4 times so 50% marquee shift is seamless even on ultra-wide screens
   const marqueeCompanies = [
     ...companies,
@@ -39,7 +43,7 @@ export default function CompaniesSection({
   return (
     <section className="px-4 py-10 lg:py-22 md:px-12 w-full max-w-7xl mx-auto overflow-hidden">
       <p className="text-[14px] font-epilogue text-neutral-60 font-normal mb-4">
-        {label}
+        {resolvedLabel}
       </p>
 
       <div className="overflow-hidden w-full">

@@ -2,6 +2,7 @@
 
 import { format, parse, isValid as isValidDate } from "date-fns";
 import { CalendarDaysIcon } from "@heroicons/react/24/outline";
+import { useTranslations } from "next-intl";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 
@@ -22,12 +23,14 @@ export default function DateField({
   id,
   value,
   onChange,
-  placeholder = "Select a date",
+  placeholder,
   error,
   disabled,
   maxDate,
   minDate,
 }: DateFieldProps) {
+  const t = useTranslations("candidateProfileCore.shared.dateField");
+  const resolvedPlaceholder = placeholder ?? t("placeholder");
   const selectedDate = value ? parse(value, DATE_FIELD_FORMAT, new Date()) : undefined;
   const hasValidSelection = Boolean(value) && isValidDate(selectedDate!);
 
@@ -48,7 +51,7 @@ export default function DateField({
             error ? "border-red-300" : "border-gray-300 hover:border-brand"
           } ${!hasValidSelection ? "text-gray-400" : "text-[#202430]"}`}
         >
-          <span>{hasValidSelection ? format(selectedDate!, "MMMM d, yyyy") : placeholder}</span>
+          <span>{hasValidSelection ? format(selectedDate!, "MMMM d, yyyy") : resolvedPlaceholder}</span>
           <CalendarDaysIcon className="h-4 w-4 shrink-0 text-brand" />
         </button>
       </PopoverTrigger>

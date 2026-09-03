@@ -1,12 +1,13 @@
 "use client";
 
 import { Globe2 } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 type Locale = "fr" | "en";
 
 export default function LanguageSwitcher({ className = "" }: { className?: string }) {
   const locale = useLocale() as Locale;
+  const t = useTranslations("common");
 
   function changeLocale(nextLocale: Locale) {
     if (nextLocale === locale) return;
@@ -22,7 +23,7 @@ export default function LanguageSwitcher({ className = "" }: { className?: strin
     <div
       className={`inline-flex h-9 items-center border border-brand-light-neutral bg-white p-1 ${className}`}
       role="group"
-      aria-label={locale === "fr" ? "Changer la langue" : "Change language"}
+      aria-label={t("languageSwitcher.changeLanguage")}
     >
       <Globe2 className="mx-1 hidden size-4 text-neutral-60 sm:block" aria-hidden="true" />
       {(["fr", "en"] as const).map((item) => (

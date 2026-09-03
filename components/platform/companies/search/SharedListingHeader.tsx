@@ -9,6 +9,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useTranslations } from "next-intl";
 
 interface SearchHeaderProps {
   totalResults: number;
@@ -25,6 +26,7 @@ export function SharedListingHeader({
   setViewGrid,
   header,
 }: SearchHeaderProps) {
+  const t = useTranslations("companiesBrowse");
   const [selectedSort, setSelectedSort] = useState(sortOptions[0] ?? "Sort");
 
   return (
@@ -35,14 +37,14 @@ export function SharedListingHeader({
             {header}
           </h1>
           <p className="text-slate-500 text-[16px] ">
-            Showing {totalResults} results
+            {t("listingHeader.showingResults", { count: totalResults })}
           </p>
         </div>
 
         <div className="flex items-center gap-4 ">
           <div className="  flex items-center gap-2">
             <span className="text-[16px] text-slate-500 max-sm:hidden">
-              Sort by:
+              {t("listingHeader.sortByLabel")}
             </span>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -77,7 +79,7 @@ export function SharedListingHeader({
                   ? "bg-brand/6 text-brand"
                   : "text-slate-400 hover:text-slate-600"
               }`}
-              aria-label="Grid view"
+              aria-label={t("listingHeader.gridViewAriaLabel")}
               onClick={() => setViewGrid(true)}
             >
               <LayoutGrid
@@ -91,7 +93,7 @@ export function SharedListingHeader({
                   ? "bg-brand/6 text-brand"
                   : "text-slate-400 hover:text-slate-600"
               }`}
-              aria-label="List view"
+              aria-label={t("listingHeader.listViewAriaLabel")}
               onClick={() => setViewGrid(false)}
             >
               <StretchHorizontal

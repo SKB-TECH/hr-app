@@ -8,9 +8,11 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
+import { useTranslations } from "next-intl";
 
 export default function NavbarComponentLandingPage() {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations("common");
 
   return (
     <nav className="w-full sticky top-0 z-50 backdrop-blur-sm h-[70px] ">
@@ -46,13 +48,13 @@ export default function NavbarComponentLandingPage() {
             href="/sign-in"
             className="font-medium hover:text-indigo-800 text-brand pr-4 border-r"
           >
-            Login
+            {t("navbar.login")}
           </Link>
           <Button
             className="bg-brand text-sm font-bold hover:bg-[#3730c9] hover:text-white px-4 py-5 cursor-pointer text-white"
             asChild
           >
-            <Link href="/sign-up">Sign Up</Link>
+            <Link href="/sign-up">{t("navbar.signUp")}</Link>
           </Button>
         </div>
 
@@ -60,7 +62,7 @@ export default function NavbarComponentLandingPage() {
         <button
           className="md:hidden p-2"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
+          aria-label={t("navbar.toggleMenu")}
         >
           {isOpen ? (
             <X size={22} />
@@ -91,14 +93,14 @@ export default function NavbarComponentLandingPage() {
               href="/sign-in"
               className="text-sm text-gray-600 hover:text-indigo-600"
             >
-              Login
+              {t("navbar.login")}
             </Link>
             <Button
               variant="ghost"
               className="bg-indigo-500 hover:bg-indigo-900 hover:text-white px-4 py-4 rounded-none text-white text-sm"
               asChild
             >
-              <Link href="/sign-up">Sign Up</Link>
+              <Link href="/sign-up">{t("navbar.signUp")}</Link>
             </Button>
           </div>
         </div>

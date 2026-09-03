@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { PencilSquareIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
+import { useTranslations } from "next-intl";
 
 import { useMyCandidateProfile } from "@/core/hooks/candidate/use-my-candidate-profile";
 import { SectionSkeleton } from "./shared/Skeleton";
 import EditBioModal from "./Profile/EditBioModal";
 
 export default function AboutSection() {
+  const t = useTranslations("candidateProfileCore.aboutSection");
   const { data: profile, isLoading, isError } = useMyCandidateProfile();
   const [editOpen, setEditOpen] = useState(false);
 
@@ -17,12 +19,12 @@ export default function AboutSection() {
   return (
     <div className="bg-white border border-gray-200 p-6 font-epilogue">
       <div className="flex items-center justify-between mb-5">
-        <h2 className="text-[20px] font-bold text-[#202430]">About Me</h2>
+        <h2 className="text-[20px] font-bold text-[#202430]">{t("title")}</h2>
         <button
           type="button"
           onClick={() => setEditOpen(true)}
           disabled={isLoading}
-          aria-label="Edit about me"
+          aria-label={t("editAria")}
           className="cursor-pointer border border-gray-200 p-1.5 transition-colors hover:border-brand disabled:cursor-not-allowed disabled:opacity-50"
         >
           <PencilSquareIcon className="w-4 h-4 text-brand" />
@@ -32,7 +34,7 @@ export default function AboutSection() {
       {isLoading && <SectionSkeleton rows={2} />}
 
       {!isLoading && isError && (
-        <p className="text-[14px] text-gray-500">We couldn&apos;t load your bio right now. Please refresh the page to try again.</p>
+        <p className="text-[14px] text-gray-500">{t("errorLoading")}</p>
       )}
 
       {!isLoading && !isError && paragraphs.length === 0 && (
@@ -40,14 +42,14 @@ export default function AboutSection() {
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 text-brand">
             <DocumentTextIcon className="h-5 w-5" />
           </span>
-          <p className="text-[15px] font-medium text-[#202430]">Tell your story</p>
-          <p className="text-[14px] text-gray-500">Add a short bio so recruiters can learn more about you.</p>
+          <p className="text-[15px] font-medium text-[#202430]">{t("emptyTitle")}</p>
+          <p className="text-[14px] text-gray-500">{t("emptyDescription")}</p>
           <button
             type="button"
             onClick={() => setEditOpen(true)}
             className="mt-2 cursor-pointer text-[14px] font-semibold text-brand transition-colors hover:text-indigo-800"
           >
-            + Add About Me
+            {t("addButton")}
           </button>
         </div>
       )}

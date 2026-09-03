@@ -1,10 +1,14 @@
+"use client";
+
 import SharedCard from "@/components/common/navbar/SharedCard";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import type { JobsCardProps } from "./JobsCard";
 import { humanizeEmploymentType } from "@/core/lib/format";
 
 function GridJobCard({ job, applyLink }: JobsCardProps) {
+  const t = useTranslations("findJobs");
   const tags = [...job.employmentTypes.map(humanizeEmploymentType), ...(job.category ? [job.category] : [])];
 
   return (
@@ -47,7 +51,10 @@ function GridJobCard({ job, applyLink }: JobsCardProps) {
 
         <div className="mt-auto pt-3 border-t border-gray-100 flex flex-col gap-2">
           <p className="text-sm text-neutral-60">
-            <span className="font-semibold text-neutral-100">{job.applicantsCount}</span> applicants
+            {t.rich("jobCard.applicantsCount", {
+              count: job.applicantsCount,
+              bold: (chunks) => <span className="font-semibold text-neutral-100">{chunks}</span>,
+            })}
           </p>
         </div>
       </div>

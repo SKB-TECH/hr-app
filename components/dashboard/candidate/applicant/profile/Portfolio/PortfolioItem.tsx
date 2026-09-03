@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { ArrowTopRightOnSquareIcon, PencilSquareIcon, TrashIcon, FolderIcon } from "@heroicons/react/24/outline";
 import type { CandidatePortfolio } from "@/core/types/candidate-portfolio";
 
@@ -13,6 +14,7 @@ interface PortfolioItemProps {
 }
 
 export default function PortfolioItem({ portfolio, index, onEdit, onDelete }: PortfolioItemProps) {
+  const t = useTranslations("candidateProfileSections");
   const accentColor = ACCENT_COLORS[index % ACCENT_COLORS.length];
 
   return (
@@ -42,7 +44,7 @@ export default function PortfolioItem({ portfolio, index, onEdit, onDelete }: Po
           <button
             type="button"
             onClick={() => onEdit(portfolio)}
-            aria-label={`Edit ${portfolio.title}`}
+            aria-label={t("portfolio.editAriaLabel", { title: portfolio.title })}
             className="cursor-pointer border border-gray-200 bg-white/95 p-1.5 hover:border-brand"
           >
             <PencilSquareIcon className="w-4 h-4 text-brand" />
@@ -50,7 +52,7 @@ export default function PortfolioItem({ portfolio, index, onEdit, onDelete }: Po
           <button
             type="button"
             onClick={() => onDelete(portfolio)}
-            aria-label={`Delete ${portfolio.title}`}
+            aria-label={t("portfolio.deleteAriaLabel", { title: portfolio.title })}
             className="cursor-pointer border border-gray-200 bg-white/95 p-1.5 hover:border-red-300"
           >
             <TrashIcon className="w-4 h-4 text-[#FF6550]" />
@@ -70,7 +72,7 @@ export default function PortfolioItem({ portfolio, index, onEdit, onDelete }: Po
             rel="noopener noreferrer"
             className="mt-3 inline-flex items-center gap-1.5 text-[13px] font-medium text-brand hover:underline"
           >
-            View project
+            {t("portfolio.viewProject")}
             <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />
           </a>
         )}

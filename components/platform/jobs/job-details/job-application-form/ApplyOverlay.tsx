@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 import "./ApplyOverlay.css";
 import type { ApplyOverlayProps } from "@/types/form-types";
@@ -36,6 +37,7 @@ const EMPTY_VALUES: ApplicationFormValues = {
 };
 
 export default function ApplyOverlay({ isOpen, onClose, job }: ApplyOverlayProps) {
+  const t = useTranslations("findJobs");
   const { data: session } = useSession();
   const { data: profile } = useMyCandidateProfile();
   const { data: resumes = [], isLoading: isLoadingResumes } = useCandidateResumes();
@@ -75,7 +77,7 @@ export default function ApplyOverlay({ isOpen, onClose, job }: ApplyOverlayProps
 
   const handleSubmit = async () => {
     if (!values.fullName.trim() || !values.email.trim()) {
-      toast.error("Full name and email are required.");
+      toast.error(t("apply.requiredFieldsMissing"));
       return;
     }
 
@@ -91,10 +93,10 @@ export default function ApplyOverlay({ isOpen, onClose, job }: ApplyOverlayProps
         portfolioUrl: values.portfolioUrl.trim() || null,
         coverLetter: values.coverLetter.trim() || null,
       });
-      toast.success("Application submitted successfully.");
+      toast.success(t("apply.submitSuccess"));
       onClose();
     } catch (error) {
-      toast.error(error instanceof ApiError ? error.message : "Something went wrong. Please try again.");
+      toast.error(error instanceof ApiError ? error.message : t("apply.submitError"));
     }
   };
 

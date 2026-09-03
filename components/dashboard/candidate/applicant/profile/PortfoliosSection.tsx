@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { PlusIcon, FolderPlusIcon } from "@heroicons/react/24/outline";
 
 import { useCandidatePortfolios } from "@/core/hooks/candidate/use-candidate-portfolios";
@@ -11,6 +12,7 @@ import DeletePortfolioDialog from "./Portfolio/DeletePortfolioDialog";
 import type { CandidatePortfolio } from "@/core/types/candidate-portfolio";
 
 export default function PortfoliosSection() {
+  const t = useTranslations("candidateProfileSections");
   const { data: portfolios = [], isLoading, isError } = useCandidatePortfolios();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -30,11 +32,11 @@ export default function PortfoliosSection() {
   return (
     <div className="bg-white border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-5">
-        <h2 className="text-[18px] font-bold text-[#202430]">Portfolio</h2>
+        <h2 className="text-[18px] font-bold text-[#202430]">{t("portfolio.sectionTitle")}</h2>
         <button
           type="button"
           onClick={openAddModal}
-          aria-label="Add project"
+          aria-label={t("portfolio.addAriaLabel")}
           className="cursor-pointer border border-gray-200 p-1.5 hover:border-brand"
         >
           <PlusIcon className="w-4 h-4 text-brand" />
@@ -49,7 +51,7 @@ export default function PortfoliosSection() {
       )}
 
       {!isLoading && isError && (
-        <p className="text-[14px] text-gray-500">We couldn&apos;t load your portfolio right now. Please refresh the page to try again.</p>
+        <p className="text-[14px] text-gray-500">{t("portfolio.loadError")}</p>
       )}
 
       {!isLoading && !isError && portfolios.length === 0 && (
@@ -57,14 +59,14 @@ export default function PortfoliosSection() {
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 text-brand">
             <FolderPlusIcon className="h-5 w-5" />
           </span>
-          <p className="text-[15px] font-medium text-[#202430]">Showcase your work</p>
-          <p className="text-[14px] text-gray-500">Add projects so recruiters can see what you&apos;ve built.</p>
+          <p className="text-[15px] font-medium text-[#202430]">{t("portfolio.emptyTitle")}</p>
+          <p className="text-[14px] text-gray-500">{t("portfolio.emptyDescription")}</p>
           <button
             type="button"
             onClick={openAddModal}
             className="mt-2 cursor-pointer text-[14px] font-semibold text-brand transition-colors hover:text-indigo-800"
           >
-            + Add Project
+            {t("portfolio.addButton")}
           </button>
         </div>
       )}

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslations } from "next-intl";
 import { FolderIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
 
@@ -36,6 +37,7 @@ export default function PortfolioModal({
   onOpenChange,
   portfolio,
 }: PortfolioModalProps) {
+  const t = useTranslations("candidateProfileSections");
   const isEditing = Boolean(portfolio);
   const createPortfolio = useCreateCandidatePortfolio();
   const updatePortfolio = useUpdateCandidatePortfolio();
@@ -76,7 +78,7 @@ export default function PortfolioModal({
     if (submittingRef.current) return;
 
     if (!isEditing && !thumbnailFile) {
-      setThumbnailError("A project thumbnail is required.");
+      setThumbnailError(t("portfolio.modal.thumbnailRequired"));
       return;
     }
     setThumbnailError("");
@@ -92,10 +94,10 @@ export default function PortfolioModal({
 
       if (isEditing && portfolio) {
         await updatePortfolio.mutateAsync({ id: portfolio.id, input });
-        toast.success("Project updated successfully.");
+        toast.success(t("portfolio.toasts.updated"));
       } else {
         await createPortfolio.mutateAsync(input);
-        toast.success("Project added successfully.");
+        toast.success(t("portfolio.toasts.added"));
       }
       onOpenChange(false);
     } catch (error) {
@@ -109,7 +111,7 @@ export default function PortfolioModal({
       toast.error(
         error instanceof ApiError
           ? error.message
-          : "Something went wrong. Please try again.",
+          : t("portfolio.toasts.genericError"),
       );
     } finally {
       submittingRef.current = false;
@@ -122,8 +124,8 @@ export default function PortfolioModal({
       onOpenChange={onOpenChange}
       isPending={isPending}
       icon={<FolderIcon className='h-5 w-5' />}
-      title={isEditing ? "Edit Project" : "Add Project"}
-      description="Showcase work you're proud of so recruiters can see what you can build."
+      title={isEditing ? t("portfolio.modal.editTitle") : t("portfolio.modal.addTitle")}
+      description={t("portfolio.modal.description")}
     >
       <form
         noValidate
@@ -134,7 +136,7 @@ export default function PortfolioModal({
         className='mt-5 space-y-5'
       >
         <ImageUpload
-          label={isEditing ? "Project Thumbnail" : "Project Thumbnail *"}
+          label={isEditing ? t("portfolio.modal.thumbnailLabel") : t("portfolio.modal.thumbnailLabelRequired")}
           shape='rectangle'
           file={thumbnailFile}
           currentImageUrl={portfolio?.thumbnailUrl}
@@ -150,21 +152,21 @@ export default function PortfolioModal({
             htmlFor='portfolio-title'
             className='mb-2 block text-sm font-medium text-[#25324B]'
           >
-            Project Title
+            {t("portfolio.modal.titleLabel")}
           </label>
           <input
             id='portfolio-title'
             type='text'
-            placeholder='e.g. Growthly - SaaS Analytics Dashboard'
+            placeholder={t("portfolio.modal.titlePlaceholder")}
             aria-invalid={Boolean(errors.title)}
             aria-describedby={
               errors.title ? "portfolio-title-error" : undefined
             }
             className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("title", {
-              required: "Project title is required.",
+              required: t("portfolio.modal.titleRequired"),
               validate: (value) =>
-                value.trim().length > 0 || "Project title is required.",
+                value.trim().length > 0 || t("portfolio.modal.titleRequired"),
             })}
           />
           {errors.title && (
@@ -182,12 +184,12 @@ export default function PortfolioModal({
             htmlFor='portfolio-project-url'
             className='mb-2 block text-sm font-medium text-[#25324B]'
           >
-            Project Link
+            {t("portfolio.modal.projectUrlLabel")}
           </label>
           <input
             id='portfolio-project-url'
             type='url'
-            placeholder='https://...'
+            placeholder={t("portfolio.modal.urlPlaceholder")}
             aria-invalid={Boolean(errors.projectUrl)}
             aria-describedby={
               errors.projectUrl ? "portfolio-project-url-error" : undefined
@@ -195,7 +197,7 @@ export default function PortfolioModal({
             className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("projectUrl", {
               validate: (value) =>
-                isValidUrl(value) || "Please enter a valid URL.",
+                isValidUrl(value) || t("portfolio.modal.urlInvalid"),
             })}
           />
           {errors.projectUrl && (
@@ -213,22 +215,22 @@ export default function PortfolioModal({
             htmlFor='portfolio-description'
             className='mb-2 block text-sm font-medium text-[#25324B]'
           >
-            Description
+            {t("portfolio.modal.descriptionLabel")}
           </label>
           <textarea
             id='portfolio-description'
             rows={4}
             maxLength={DESCRIPTION_MAX_LENGTH}
-            placeholder='Briefly describe the project, your role, and the tools you used.'
+            placeholder={t("portfolio.modal.descriptionPlaceholder")}
             aria-invalid={Boolean(errors.description)}
             aria-describedby={
               errors.description ? "portfolio-description-error" : undefined
             }
             className='w-full rounded-lg border border-gray-300 p-4 outline-none transition focus:border-brand'
             {...register("description", {
-              required: "Description is required.",
+              required: t("portfolio.modal.descriptionRequired"),
               validate: (value) =>
-                value.trim().length > 0 || "Description is required.",
+                value.trim().length > 0 || t("portfolio.modal.descriptionRequired"),
             })}
           />
           <div className='mt-1.5 flex items-start justify-between gap-2'>
@@ -255,11 +257,11 @@ export default function PortfolioModal({
             onClick={handleClose}
             disabled={isPending}
           >
-            Cancel
+            {t("portfolio.modal.cancel")}
           </Button>
           <SubmitButton
             isPending={isPending}
-            label={isEditing ? "Update Project" : "Save Project"}
+            label={isEditing ? t("portfolio.modal.updateSubmit") : t("portfolio.modal.saveSubmit")}
           />
         </DialogFooter>
       </form>

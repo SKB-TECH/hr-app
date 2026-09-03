@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { BriefcaseIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
@@ -22,6 +23,12 @@ type WorkPreferencesFormValues = {
   availability: string;
 };
 
+// Maps the snake_case values in candidate-profile-options.ts to the camelCase
+// translation keys under candidateProfileCore.workTypeOptions / availabilityOptions.
+function toOptionKey(value: string): string {
+  return value.replace(/_([a-z])/g, (_match, letter: string) => letter.toUpperCase());
+}
+
 interface EditWorkPreferencesModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -29,6 +36,9 @@ interface EditWorkPreferencesModalProps {
 }
 
 export default function EditWorkPreferencesModal({ open, onOpenChange, profile }: EditWorkPreferencesModalProps) {
+  const t = useTranslations("candidateProfileCore.editWorkPreferencesModal");
+  const tWorkType = useTranslations("candidateProfileCore.workTypeOptions");
+  const tAvailability = useTranslations("candidateProfileCore.availabilityOptions");
   const updateProfile = useUpdateCandidateProfile();
   const isPending = updateProfile.isPending;
   const submittingRef = useRef(false);
@@ -69,13 +79,13 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
           availability: values.availability || null,
         }),
       );
-      toast.success("Work preferences updated successfully.");
+      toast.success(t("successToast"));
       onOpenChange(false);
     } catch (error) {
       if (error instanceof ApiError) {
         console.error("Work preferences update rejected by backend:", error.status, error.details);
       }
-      toast.error(error instanceof ApiError ? error.message : "Something went wrong. Please try again.");
+      toast.error(error instanceof ApiError ? error.message : t("errorToast"));
     } finally {
       submittingRef.current = false;
     }
@@ -87,8 +97,8 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
       onOpenChange={onOpenChange}
       isPending={isPending}
       icon={<BriefcaseIcon className="h-5 w-5" />}
-      title="Edit Work Preferences"
-      description="Help recruiters understand your experience level and how soon you could start."
+      title={t("title")}
+      description={t("description")}
     >
       <form
         noValidate
@@ -100,7 +110,7 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
       >
         <div>
           <label htmlFor="profile-years-experience" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Years of Experience
+            {t("yearsLabel")}
           </label>
           <input
             id="profile-years-experience"
@@ -108,7 +118,7 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
             min={0}
             max={60}
             step={1}
-            placeholder="e.g. 5"
+            placeholder={t("yearsPlaceholder")}
             aria-invalid={Boolean(errors.yearsExperience)}
             aria-describedby={errors.yearsExperience ? "profile-years-experience-error" : undefined}
             className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand"
@@ -116,7 +126,7 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
               validate: (value) => {
                 if (!value.trim()) return true;
                 const parsed = Number(value);
-                return (Number.isInteger(parsed) && parsed >= 0 && parsed <= 60) || "Enter a whole number of years between 0 and 60.";
+                return (Number.isInteger(parsed) && parsed >= 0 && parsed <= 60) || t("yearsError");
               },
             })}
           />
@@ -129,17 +139,17 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
 
         <div>
           <label htmlFor="profile-work-type" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Preferred Work Type
+            {t("workTypeLabel")}
           </label>
           <select
             id="profile-work-type"
             className="w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-brand"
             {...register("workType")}
           >
-            <option value="">Select an option</option>
+            <option value="">{t("selectOption")}</option>
             {WORK_TYPE_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
-                {option.label}
+                {tWorkType(toOptionKey(option.value))}
               </option>
             ))}
           </select>
@@ -147,17 +157,17 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
 
         <div>
           <label htmlFor="profile-availability" className="mb-2 block text-sm font-medium text-[#25324B]">
-            Availability
+            {t("availabilityLabel")}
           </label>
           <select
             id="profile-availability"
             className="w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-brand"
             {...register("availability")}
           >
-            <option value="">Select an option</option>
+            <option value="">{t("selectOption")}</option>
             {AVAILABILITY_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
-                {option.label}
+                {tAvailability(toOptionKey(option.value))}
               </option>
             ))}
           </select>
@@ -165,9 +175,9 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
 
         <DialogFooter className="-mx-6 -mb-6 mt-2 rounded-b-xl border-t border-gray-100 bg-gray-50/60 px-6 py-4">
           <Button type="button" variant="outline" onClick={handleClose} disabled={isPending}>
-            Cancel
+            {t("cancel")}
           </Button>
-          <SubmitButton isPending={isPending} label="Save Changes" />
+          <SubmitButton isPending={isPending} label={t("save")} />
         </DialogFooter>
       </form>
     </ProfileEntryModal>

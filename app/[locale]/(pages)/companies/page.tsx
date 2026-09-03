@@ -1,16 +1,19 @@
 import { CompaniesDirectory } from "@/components/platform/companies/CompaniesDirectory";
 import ReusableHeroSection from "@/components/platform/jobs/HeroSection/ReusableHeroSection";
+import { getTranslations } from "next-intl/server";
 
-export default function CompaniesPage() {
+export default async function CompaniesPage() {
+  const t = await getTranslations("companiesBrowse");
+
   return (
     <main className="w-full mx-auto p-0">
       {/* Hero — full width */}
       <ReusableHeroSection
-        title="Find your  "
-        highlight=" dream company"
-        subtitle="Find your next career at companies like HubSpot, Nike, and Dropbox"
+        title={t("hero.title")}
+        highlight={t("hero.highlight")}
+        subtitle={t("hero.subtitle")}
         searchEnabled={true}
-        popularTags={["UI Designer", "UX Researcher", "Android", "Admin"]}
+        popularTags={t.raw("hero.popularTags")}
         underlineSize="md"
       />
 

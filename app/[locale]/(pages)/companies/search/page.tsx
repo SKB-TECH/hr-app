@@ -3,16 +3,19 @@ import SharedDisplayMobileFilter from "@/components/platform/companies/search/Sh
 import { SidebarFilters } from "@/components/platform/companies/search/SidebarFilters";
 import ReusableHeroSection from "@/components/platform/jobs/HeroSection/ReusableHeroSection";
 import { mockSidebarCompanyFilters } from "@/data/companyPageData";
+import { getTranslations } from "next-intl/server";
 
-function SearchCompaniesPage() {
+async function SearchCompaniesPage() {
+  const t = await getTranslations("companiesBrowse");
+
   return (
     <section className="min-h-screen relative">
       <ReusableHeroSection
-        title="Find your  "
-        highlight=" dream companies"
-        subtitle="Find the dream companies you dream work for"
+        title={t("searchHero.title")}
+        highlight={t("searchHero.highlight")}
+        subtitle={t("searchHero.subtitle")}
         searchEnabled={true}
-        popularTags={["Twitter, Microsoft, Apple, Facebook"]}
+        popularTags={t.raw("searchHero.popularTags")}
         underlineSize="lg"
       />
       <SharedDisplayMobileFilter DataToFilter={mockSidebarCompanyFilters} />

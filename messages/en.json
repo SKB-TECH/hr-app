@@ -26,5 +26,1019 @@
     "showing": "Showing",
     "of": "of",
     "entries": "entries"
+  },
+  "common": {
+    "languageSwitcher": {
+      "changeLanguage": "Change language"
+    },
+    "navbar": {
+      "login": "Login",
+      "signUp": "Sign Up",
+      "toggleMenu": "Toggle menu"
+    },
+    "section": {
+      "titlePrefix": "Explore by",
+      "titleHighlight": "category",
+      "showAllJobs": "Show all jobs",
+      "jobsAvailable": "{count} jobs available"
+    },
+    "heroSection": {
+      "headingLine1": "Discover",
+      "headingLine2": "more than",
+      "headingHighlight": "5000+ Jobs",
+      "subheading": "Great platform for the job seeker that searching for new career heights and passionate about startups.",
+      "searchPlaceholder": "Job title or keyword",
+      "selectLocationOption": "select location",
+      "searchButton": "Search my job",
+      "heroImageAlt": "Job seeker",
+      "popular": {
+        "label": "Popular :",
+        "uiDesigner": "UI Designer",
+        "uxResearcher": "UX Researcher",
+        "android": "Android",
+        "admin": "Admin"
+      }
+    },
+    "heroContent": {
+      "heading": "Discover\nmore than",
+      "headingHighlight": "5000+ Jobs",
+      "subheading": "Great platform for the job seeker that searching for\nnew career heights and passionate about startups."
+    }
+  },
+  "auth": {
+    "shared": {
+      "jobSeeker": "Job Seeker",
+      "company": "Company",
+      "emailAddress": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "verificationCode": "Verification code",
+      "resendCode": "Resend code",
+      "codeResent": "Code resent",
+      "pleaseWait": "Please wait…",
+      "signIn": "Sign In",
+      "signUp": "Sign Up",
+      "stepOf": "Step {current} of {total}",
+      "otpSentToPrefix": "Enter the 6-digit code sent to",
+      "otpSentToSuffix": ".",
+      "passwordsDoNotMatch": "Passwords do not match."
+    },
+    "signIn": {
+      "welcomeBack": "Welcome Back",
+      "subtitleJobSeeker": "Sign in to continue your job search and manage your applications.",
+      "subtitleCompany": "Sign in to manage your jobs, candidates and recruitment process.",
+      "signInWithGoogle": "Sign in with Google",
+      "orLoginWithEmail": "Or login with email",
+      "enterEmailAddress": "Enter email address",
+      "enterPassword": "Enter your password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "signingIn": "Signing in…",
+      "noAccount": "Don't have an account?",
+      "signInSuccess": "Signed in successfully",
+      "invalidCredentials": "Incorrect email address or password.",
+      "portalMismatchCompany": "This candidate account cannot access the company portal.",
+      "portalMismatchCandidate": "This company account cannot access the candidate portal.",
+      "signInFailed": "Unable to sign in."
+    },
+    "signUp": {
+      "createAccount": "Create your account",
+      "fullName": "Full name",
+      "acceptTerms": "I accept the terms and privacy policy.",
+      "continue": "Continue",
+      "verifyEmail": "Verify email",
+      "finishRegistration": "Finish registration",
+      "alreadyRegistered": "Already registered?",
+      "codeSentByEmail": "Code sent by email",
+      "emailVerified": "Email verified",
+      "accountCreated": "Account created successfully",
+      "genericError": "An error occurred."
+    },
+    "forgotPassword": {
+      "title": "Reset your password",
+      "instructions": "Enter the email address linked to your account and we'll send you a verification code.",
+      "sendCode": "Send code",
+      "verifyCode": "Verify code",
+      "newPassword": "New password",
+      "resetPassword": "Reset password",
+      "rememberedPassword": "Remembered your password?",
+      "codeSentToEmail": "Code sent to your email",
+      "codeVerified": "Code verified",
+      "passwordResetSuccess": "Password reset successfully",
+      "genericError": "Something went wrong. Please try again."
+    }
+  },
+  "landing": {
+    "about": {
+      "heading": "About Us"
+    },
+    "companiesMarquee": {
+      "defaultLabel": "Companies we helped grow"
+    },
+    "featuredJobs": {
+      "titlePrefix": "Featured",
+      "titleHighlight": "jobs",
+      "fullTimeBadge": "Full Time"
+    },
+    "latestJobs": {
+      "titlePrefix": "Latest",
+      "titleHighlight": "jobs open"
+    },
+    "shared": {
+      "showAllJobs": "Show all jobs"
+    },
+    "postJobsCta": {
+      "ariaLabel": "Post jobs call to action",
+      "dashboardPreviewAlt": "Dashboard preview"
+    },
+    "footer": {
+      "brandDescription": "Great platform for the job seeker that passionate about startups. Find your dream job easier.",
+      "columns": {
+        "about": {
+          "title": "About",
+          "links": ["Companies", "Pricing", "Terms", "Advice", "Privacy Policy"]
+        },
+        "resources": {
+          "title": "Resources",
+          "links": ["Help Docs", "Guide", "Updates", "Contact Us"]
+        }
+      },
+      "newsletter": {
+        "heading": "Get job notifications",
+        "description": "The latest job news, articles, sent to your inbox weekly.",
+        "emailPlaceholder": "Email Address",
+        "subscribeButton": "Subscribe"
+      },
+      "bottom": {
+        "copyright": "{year} ©JobHuntly. All rights reserved."
+      }
+    }
+  },
+  "candidateDashboard": {
+    "greeting": {
+      "morning": "Good morning",
+      "afternoon": "Good afternoon",
+      "evening": "Good evening",
+      "title": "{greeting}, {firstName}",
+      "subtitle": "Here is what's happening with your job search applications {dateRangeText}.",
+      "dateRange": "from {from} – {to}",
+      "selectDateRange": "select a date range",
+      "fallbackName": "there"
+    },
+    "stats": {
+      "totalJobsApplied": "Total Jobs Applied",
+      "interviewed": "Interviewed",
+      "iconAlt": "icon"
+    },
+    "donutChart": {
+      "title": "Jobs Applied Status",
+      "unsuitable": "Unsuitable",
+      "interviewed": "Interviewed",
+      "viewAllApplications": "View All Applications"
+    },
+    "recentApplications": {
+      "title": "Recent Applications History",
+      "errorMessage": "We couldn't load your applications right now. Please refresh the page to try again.",
+      "dateApplied": "Date Applied",
+      "noResults": "No applications found for the selected date range.",
+      "viewAllHistory": "View all applications history",
+      "defaultStage": "Applied"
+    },
+    "upcomingInterviews": {
+      "title": "Upcoming Interviews",
+      "loading": "Loading interviews…",
+      "noInterviews": "No upcoming interviews scheduled.",
+      "interviewerFallback": "Interviewer TBC"
+    }
+  },
+  "candidateSettings": {
+    "tabs": {
+      "myProfile": "My Profile",
+      "loginDetails": "Login Details",
+      "notifications": "Notifications"
+    },
+    "loginDetails": {
+      "basicInformation": {
+        "title": "Basic Information",
+        "description": "This is login information that you can update anytime."
+      },
+      "closeAccount": "Close Account",
+      "toasts": {
+        "accountDeleted": "Account deleted successfully",
+        "accountDeleteFailed": "Failed to delete account"
+      },
+      "updateEmail": {
+        "title": "Update Email",
+        "description": "Update your email address to make sure it is safe",
+        "verifiedLabel": "Verified",
+        "verifiedStatus": "Your email address is verified.",
+        "unverifiedStatus": "Your email address is not verified yet.",
+        "emailRequired": "Email is required",
+        "fieldLabel": "Update Email",
+        "placeholder": "Enter your new email address",
+        "submit": "Update Email",
+        "submitting": "Updating...",
+        "toastSuccess": "Email updated successfully.",
+        "toastError": "Something went wrong. Please try again."
+      },
+      "updatePassword": {
+        "title": "New Password",
+        "description": "Manage your password to make sure it is safe",
+        "oldPasswordLabel": "Old Password",
+        "oldPasswordPlaceholder": "Enter your old password",
+        "oldPasswordRequired": "Old password is required",
+        "minCharactersHint": "Minimum 8 characters.",
+        "newPasswordLabel": "New Password",
+        "newPasswordPlaceholder": "Enter your new password",
+        "newPasswordRequired": "New password is required",
+        "minCharactersError": "Minimum 8 characters.",
+        "submit": "Change Password",
+        "submitting": "Changing Password...",
+        "toastSuccess": "Password changed successfully.",
+        "toastError": "Something went wrong. Please try again."
+      },
+      "deleteAccount": {
+        "title": "Close Account?",
+        "description": "Are you sure you want to close your account? This action is permanent and will remove all your profile data, application history, and saved preferences. This action cannot be undone.",
+        "cancel": "Cancel",
+        "confirm": "Delete Account",
+        "confirming": "Closing Account..."
+      }
+    },
+    "notifications": {
+      "basicInformation": {
+        "title": "Basic Information",
+        "description": "This is notifications preferences that you can update anytime."
+      },
+      "section": {
+        "title": "Notifications",
+        "description": "Customize your preferred notification settings"
+      },
+      "submit": "Update Email"
+    },
+    "profile": {
+      "basicInformation": {
+        "title": "Basic information",
+        "description": "This is your personal information that you can update anytime. "
+      },
+      "profilePhoto": {
+        "heading": "Profile Photo",
+        "description": "This image will be shown publicly as your profile picture. it will help recruiters recognize you!"
+      },
+      "uploadFile": {
+        "dropHere": "Drop the files here",
+        "clickToReplace": "Click to replace",
+        "orDragAndDrop": "or drag and drop",
+        "fileHint": "SVG, PNG, JPG or GIF (max. 400 x 400px)",
+        "uploadIconLabel": "Upload Icon",
+        "profilePictureAlt": "Profile Picture"
+      },
+      "personalDetails": {
+        "title": "Personal Details",
+        "fullNameLabel": "Full Name",
+        "fullNamePlaceholder": "Jake Gyll",
+        "fullNameRequired": "Full name is required",
+        "phoneLabel": "Phone Number",
+        "phonePlaceholder": "+1 234 567 890",
+        "phoneRequired": "Phone number is required",
+        "emailLabel": "email",
+        "emailPlaceholder": "Jakegyll@gmail.com",
+        "emailRequired": "Email is required",
+        "dobLabel": "Date of Birth",
+        "dobPlaceholder": "09/08/1997",
+        "dobRequired": "Date of birth is required",
+        "genderLabel": "Gender",
+        "genderPlaceholder": "Select Gender",
+        "genderRequired": "Gender is required",
+        "genderOptions": {
+          "male": "Male",
+          "female": "Female",
+          "other": "Other"
+        }
+      },
+      "accountType": {
+        "title": "Account Type",
+        "description": "You can update your account type",
+        "jobSeekerTitle": "Job Seeker",
+        "jobSeekerDescription": "Looking for a job",
+        "employerTitle": "Employer",
+        "employerDescription": "Hiring, sourcing candidates, or posting jobs"
+      },
+      "saveButton": {
+        "save": "Save Changes",
+        "saving": "Saving..."
+      }
+    }
+  },
+  "candidateApplications": {
+    "errorMessage": "We couldn't load your applications right now. Please refresh the page to try again.",
+    "topHeader": {
+      "greeting": "Keep it up, {firstName}",
+      "subtitle": "Here is your job applications status."
+    },
+    "banner": {
+      "title": "New Feature",
+      "description": "You can request a follow-up 7 days after applying for a job if the application status is in review. Only one follow-up is allowed per job."
+    },
+    "tabs": {
+      "all": "All",
+      "inReview": "In Review",
+      "interviewing": "Interviewing",
+      "assessment": "Assessment",
+      "offered": "Offered",
+      "hired": "Hired"
+    },
+    "controls": {
+      "title": "Applications History",
+      "searchPlaceholder": "Search",
+      "filter": "Filter"
+    },
+    "table": {
+      "columns": {
+        "number": "#",
+        "companyName": "Company Name",
+        "roles": "Roles",
+        "dateApplied": "Date Applied",
+        "status": "Status"
+      },
+      "empty": "No applications found."
+    }
+  },
+  "candidateProfileCore": {
+    "profileSection": {
+      "errorLoading": "We couldn't load your profile right now. Please refresh the page to try again.",
+      "editProfileAria": "Edit profile",
+      "editProfileButton": "Edit Profile",
+      "openForOpportunities": "OPEN FOR OPPORTUNITIES"
+    },
+    "aboutSection": {
+      "title": "About Me",
+      "editAria": "Edit about me",
+      "errorLoading": "We couldn't load your bio right now. Please refresh the page to try again.",
+      "emptyTitle": "Tell your story",
+      "emptyDescription": "Add a short bio so recruiters can learn more about you.",
+      "addButton": "+ Add About Me"
+    },
+    "skillsSection": {
+      "title": "Skills",
+      "addAria": "Add skills",
+      "errorLoading": "We couldn't load your skills right now. Please refresh the page to try again.",
+      "emptyTitle": "No skills added yet",
+      "addButton": "Add Skills",
+      "removeAria": "Remove {name}",
+      "removeSuccess": "Removed {name} from your skills.",
+      "removeError": "Failed to remove skill. Please try again."
+    },
+    "socialLinksSection": {
+      "title": "Social Links",
+      "editAria": "Edit social links",
+      "errorLoading": "We couldn't load your social links right now. Please refresh the page to try again.",
+      "emptyTitle": "Add your social links",
+      "emptyDescription": "Connect your LinkedIn and GitHub so recruiters can learn more about you.",
+      "addButton": "+ Add Social Links",
+      "platforms": {
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "website": "Website"
+      }
+    },
+    "additionalDetailsSection": {
+      "title": "Additional Details",
+      "editAria": "Edit additional details",
+      "errorLoading": "We couldn't load your details right now. Please refresh the page to try again.",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone number"
+    },
+    "editProfileModal": {
+      "title": "Edit Profile",
+      "description": "Keep your public profile up to date so recruiters can find and recognize you.",
+      "photoLabel": "Profile Photo",
+      "fullNameLabel": "Full Name",
+      "fullNamePlaceholder": "e.g. Jake Gyll",
+      "fullNameRequired": "Full name is required.",
+      "headlineLabel": "Headline",
+      "headlinePlaceholder": "e.g. Product Designer at Twitter",
+      "openToWorkLabel": "Open for opportunities",
+      "openToWorkDescription": "Let recruiters know you're open to new roles.",
+      "cancel": "Cancel",
+      "save": "Save Changes",
+      "successToast": "Profile updated successfully.",
+      "errorToast": "Something went wrong. Please try again."
+    },
+    "editBioModal": {
+      "title": "Edit About Me",
+      "description": "Tell recruiters who you are, what you do, and what you're looking for.",
+      "label": "About Me",
+      "placeholder": "I'm a product designer + filmmaker currently working remotely...",
+      "cancel": "Cancel",
+      "save": "Save Changes",
+      "successToast": "About section updated successfully.",
+      "errorToast": "Something went wrong. Please try again."
+    },
+    "editAdditionalDetailsModal": {
+      "title": "Edit Additional Details",
+      "description": "Keep your contact details current so employers can reach you.",
+      "emailLabel": "Email",
+      "emailHint": "Your email address can't be changed here.",
+      "phoneLabel": "Phone",
+      "phonePlaceholder": "e.g. +250 788 123 456",
+      "cancel": "Cancel",
+      "save": "Save Changes",
+      "successToast": "Additional details updated successfully.",
+      "errorToast": "Something went wrong. Please try again."
+    },
+    "editSocialLinksModal": {
+      "title": "Edit Social Links",
+      "description": "Link your professional profiles so recruiters can learn more about you.",
+      "linkedinLabel": "LinkedIn URL",
+      "linkedinPlaceholder": "https://linkedin.com/in/username",
+      "githubLabel": "GitHub URL",
+      "githubPlaceholder": "https://github.com/username",
+      "portfolioLabel": "Portfolio / Website URL",
+      "portfolioPlaceholder": "https://portfolio.dev",
+      "urlInvalid": "Please enter a valid URL.",
+      "cancel": "Cancel",
+      "save": "Save Changes",
+      "successToast": "Social links updated successfully.",
+      "errorToast": "Something went wrong. Please try again."
+    },
+    "editWorkPreferencesModal": {
+      "title": "Edit Work Preferences",
+      "description": "Help recruiters understand your experience level and how soon you could start.",
+      "yearsLabel": "Years of Experience",
+      "yearsPlaceholder": "e.g. 5",
+      "yearsError": "Enter a whole number of years between 0 and 60.",
+      "workTypeLabel": "Preferred Work Type",
+      "availabilityLabel": "Availability",
+      "selectOption": "Select an option",
+      "cancel": "Cancel",
+      "save": "Save Changes",
+      "successToast": "Work preferences updated successfully.",
+      "errorToast": "Something went wrong. Please try again."
+    },
+    "workTypeOptions": {
+      "remote": "Remote",
+      "hybrid": "Hybrid",
+      "onsite": "On-site"
+    },
+    "availabilityOptions": {
+      "immediate": "Immediate",
+      "twoWeeks": "2 weeks notice",
+      "oneMonth": "1 month notice",
+      "notAvailable": "Not available"
+    },
+    "skillsModal": {
+      "title": "Add Skills",
+      "description": "Search the skills directory and select the ones that best represent your expertise.",
+      "removeAria": "Remove {name}",
+      "searchPlaceholder": "Search skills e.g. React, SQL, Copywriting",
+      "searching": "Searching skills…",
+      "noResults": "No skills found. Try a different search term.",
+      "otherCategory": "Other",
+      "cancel": "Cancel",
+      "save": "Save Skills",
+      "saving": "Saving...",
+      "successToast": "Skills updated successfully.",
+      "errorToast": "Something went wrong. Please try again."
+    },
+    "shared": {
+      "imageUpload": {
+        "invalidType": "Unsupported file type. Please upload a JPG, PNG, or WEBP.",
+        "tooLarge": "This file is too large. Maximum allowed size is 5 MB.",
+        "uploadFailed": "Upload failed.",
+        "changePhoto": "Change photo",
+        "clickToUpload": "Click to upload or drag & drop"
+      },
+      "documentUpload": {
+        "invalidType": "Unsupported file type. Please upload a PDF, DOC, or DOCX.",
+        "tooLarge": "This file is too large. Maximum allowed size is 10 MB.",
+        "uploadFailed": "Upload failed.",
+        "clickToUpload": "Click to upload or drag & drop",
+        "sizeAndReplace": "{size} — click to replace"
+      },
+      "confirmDeleteDialog": {
+        "cancel": "Cancel",
+        "confirmLabel": "Delete",
+        "pendingLabel": "Deleting..."
+      },
+      "dateField": {
+        "placeholder": "Select a date"
+      },
+      "countryCitySelect": {
+        "countryLabel": "Country",
+        "cityLabel": "City",
+        "loadingCountries": "Loading countries...",
+        "selectCountry": "Select a country",
+        "loadingCities": "Loading cities...",
+        "selectCountryFirst": "Select a country first",
+        "selectCity": "Select a city"
+      },
+      "submitButton": {
+        "defaultPendingLabel": "Saving..."
+      }
+    }
+  },
+  "candidateProfileSections": {
+    "certification": {
+      "sectionTitle": "Certifications",
+      "addAriaLabel": "Add certification",
+      "loadError": "We couldn't load your certifications right now. Please refresh the page to try again.",
+      "emptyTitle": "No certifications yet",
+      "emptyDescription": "Add your certifications to help recruiters see your validated skills.",
+      "addButton": "Add Certification",
+      "editAriaLabel": "Edit {title}",
+      "deleteAriaLabel": "Delete {title}",
+      "issuedLabel": "Issued {date}",
+      "expiresLabel": "Expires {date}",
+      "credentialIdPrefix": "Credential ID: {id}",
+      "viewCredential": "View credential",
+      "deleteDialog": {
+        "title": "Delete certification?",
+        "descriptionWithName": "Are you sure you want to remove <bold>\"{title}\"</bold>? This action cannot be undone.",
+        "descriptionFallback": "Are you sure you want to remove this certification? This action cannot be undone."
+      },
+      "toasts": {
+        "deleted": "Certification removed successfully.",
+        "deleteError": "Failed to remove certification. Please try again.",
+        "updated": "Certification updated successfully.",
+        "added": "Certification added successfully.",
+        "genericError": "Something went wrong. Please try again."
+      },
+      "modal": {
+        "editTitle": "Edit Certification",
+        "addTitle": "Add Certification",
+        "description": "Showcase your certifications to build trust with recruiters.",
+        "titleLabel": "Certification Title",
+        "titlePlaceholder": "e.g. AWS Certified Solutions Architect",
+        "titleRequired": "Certification title is required.",
+        "organizationLabel": "Issuing Organization",
+        "organizationPlaceholder": "e.g. Amazon Web Services",
+        "organizationRequired": "Issuing organization is required.",
+        "issueDateLabel": "Issue Date",
+        "issueDateRequired": "Issue date is required.",
+        "issueDateFuture": "Issue date cannot be in the future.",
+        "issueDatePlaceholder": "Select the issue date",
+        "expirationDateLabel": "Expiration Date",
+        "expirationBeforeIssue": "Expiration date cannot be earlier than the issue date.",
+        "noExpirationPlaceholder": "No expiration date",
+        "credentialIdLabel": "Credential ID",
+        "credentialIdPlaceholder": "e.g. ABC-123456",
+        "credentialUrlLabel": "Credential URL",
+        "urlPlaceholder": "https://...",
+        "urlHint": "Link to verify this credential.",
+        "urlInvalid": "Please enter a valid URL.",
+        "cancel": "Cancel",
+        "updateSubmit": "Update Certification",
+        "saveSubmit": "Save Certification"
+      }
+    },
+    "education": {
+      "sectionTitle": "Education",
+      "addAriaLabel": "Add education",
+      "loadError": "We couldn't load your education right now. Please refresh the page to try again.",
+      "emptyTitle": "No education added yet",
+      "emptyDescription": "Add your education history to help recruiters know your background.",
+      "addButton": "Add Education",
+      "present": "Present",
+      "editAriaLabel": "Edit {schoolName}",
+      "deleteAriaLabel": "Delete {schoolName}",
+      "gradePrefix": "Grade: {grade}",
+      "deleteDialog": {
+        "title": "Delete education?",
+        "descriptionWithName": "Are you sure you want to remove <bold>\"{schoolName}\"</bold>? This action cannot be undone.",
+        "descriptionFallback": "Are you sure you want to remove this education entry? This action cannot be undone."
+      },
+      "toasts": {
+        "removed": "Education removed successfully.",
+        "removeError": "Failed to remove education. Please try again.",
+        "updated": "Education updated successfully.",
+        "added": "Education added successfully.",
+        "genericError": "Something went wrong. Please try again."
+      },
+      "modal": {
+        "editTitle": "Edit Education",
+        "addTitle": "Add Education",
+        "description": "Add your education history to show recruiters your academic background.",
+        "schoolLabel": "School",
+        "schoolPlaceholder": "e.g. Harvard University",
+        "schoolRequired": "School is required.",
+        "degreeLabel": "Degree",
+        "degreePlaceholder": "e.g. Bachelor's Degree",
+        "degreeRequired": "Degree is required.",
+        "degreeSuggestions": {
+          "highSchoolDiploma": "High School Diploma",
+          "associateDegree": "Associate Degree",
+          "bachelorsDegree": "Bachelor's Degree",
+          "mastersDegree": "Master's Degree",
+          "doctoratePhd": "Doctorate (PhD)",
+          "professionalCertificate": "Professional Certificate",
+          "diploma": "Diploma",
+          "advancedDiploma": "Advanced Diploma"
+        },
+        "fieldOfStudyLabel": "Field of Study",
+        "fieldOfStudyPlaceholder": "e.g. Computer Science",
+        "startDateLabel": "Start Date",
+        "startDateRequired": "Start date is required.",
+        "startDateFuture": "Start date cannot be in the future.",
+        "startDatePlaceholder": "Select the start date",
+        "endDateLabel": "End Date",
+        "currentlyStudyingHere": "I'm currently studying here",
+        "currentlyStudyingNoEndDate": "Currently studying — no end date",
+        "endDateRequired": "End date is required.",
+        "endDateFuture": "End date cannot be in the future.",
+        "endDateBeforeStart": "End date cannot be earlier than the start date.",
+        "endDatePlaceholder": "Select the end date",
+        "gradeLabel": "Grade",
+        "gradePlaceholder": "e.g. 3.8 GPA",
+        "descriptionLabel": "Description",
+        "descriptionPlaceholder": "Describe your achievements, activities, or areas of focus.",
+        "cancel": "Cancel",
+        "updateSubmit": "Update Education",
+        "saveSubmit": "Save Education"
+      }
+    },
+    "portfolio": {
+      "sectionTitle": "Portfolio",
+      "addAriaLabel": "Add project",
+      "loadError": "We couldn't load your portfolio right now. Please refresh the page to try again.",
+      "emptyTitle": "Showcase your work",
+      "emptyDescription": "Add projects so recruiters can see what you've built.",
+      "addButton": "+ Add Project",
+      "editAriaLabel": "Edit {title}",
+      "deleteAriaLabel": "Delete {title}",
+      "viewProject": "View project",
+      "deleteDialog": {
+        "title": "Delete project?",
+        "descriptionWithName": "Are you sure you want to remove <bold>\"{title}\"</bold>? This action cannot be undone.",
+        "descriptionFallback": "Are you sure you want to remove this project? This action cannot be undone."
+      },
+      "toasts": {
+        "removed": "Project removed successfully.",
+        "removeError": "Failed to remove project. Please try again.",
+        "updated": "Project updated successfully.",
+        "added": "Project added successfully.",
+        "genericError": "Something went wrong. Please try again."
+      },
+      "modal": {
+        "thumbnailRequired": "A project thumbnail is required.",
+        "editTitle": "Edit Project",
+        "addTitle": "Add Project",
+        "description": "Showcase work you're proud of so recruiters can see what you can build.",
+        "thumbnailLabel": "Project Thumbnail",
+        "thumbnailLabelRequired": "Project Thumbnail *",
+        "titleLabel": "Project Title",
+        "titlePlaceholder": "e.g. Growthly - SaaS Analytics Dashboard",
+        "titleRequired": "Project title is required.",
+        "projectUrlLabel": "Project Link",
+        "urlPlaceholder": "https://...",
+        "urlInvalid": "Please enter a valid URL.",
+        "descriptionLabel": "Description",
+        "descriptionPlaceholder": "Briefly describe the project, your role, and the tools you used.",
+        "descriptionRequired": "Description is required.",
+        "cancel": "Cancel",
+        "updateSubmit": "Update Project",
+        "saveSubmit": "Save Project"
+      }
+    },
+    "experience": {
+      "sectionTitle": "Experience",
+      "addAriaLabel": "Add experience",
+      "loadError": "We couldn't load your experience right now. Please refresh the page to try again.",
+      "emptyTitle": "Add your work history",
+      "emptyDescription": "Show recruiters the roles you've held and the impact you've made.",
+      "addButton": "+ Add Experience",
+      "editWorkPreferencesAriaLabel": "Edit work preferences",
+      "editPreferences": "Edit preferences",
+      "addWorkPreferences": "Add work preferences",
+      "yearsExperience": "{count, plural, one {# year} other {# years}} experience",
+      "present": "Present",
+      "editAriaLabel": "Edit {position}",
+      "deleteAriaLabel": "Delete {position}",
+      "employmentTypes": {
+        "FULL_TIME": "Full Time",
+        "PART_TIME": "Part Time",
+        "CONTRACT": "Contract",
+        "INTERNSHIP": "Internship",
+        "FREELANCE": "Freelance",
+        "TEMPORARY": "Temporary",
+        "VOLUNTEER": "Volunteer"
+      },
+      "deleteDialog": {
+        "title": "Delete experience?",
+        "descriptionWithName": "Are you sure you want to remove <bold>\"{position}\"</bold> at {companyName}? This action cannot be undone.",
+        "descriptionFallback": "Are you sure you want to remove this experience? This action cannot be undone."
+      },
+      "toasts": {
+        "updated": "Experience updated successfully.",
+        "added": "Experience added successfully.",
+        "genericError": "Something went wrong. Please try again.",
+        "removed": "Experience removed successfully.",
+        "removeError": "Failed to remove experience. Please try again."
+      },
+      "modal": {
+        "editTitle": "Edit Experience",
+        "addTitle": "Add Experience",
+        "description": "Add your work history to show recruiters what you've built and led.",
+        "positionLabel": "Position",
+        "positionPlaceholder": "e.g. Senior Product Designer",
+        "positionRequired": "Position is required.",
+        "companyLabel": "Company",
+        "companyPlaceholder": "e.g. Twitter",
+        "companyRequired": "Company is required.",
+        "employmentTypeLabel": "Employment Type",
+        "selectOption": "Select an option",
+        "startDateLabel": "Start Date",
+        "startDateRequired": "Start date is required.",
+        "startDateFuture": "Start date cannot be in the future.",
+        "startDatePlaceholder": "Select the start date",
+        "endDateLabel": "End Date",
+        "currentlyWorkHere": "I currently work here",
+        "currentlyWorkingNoEndDate": "Currently working — no end date",
+        "endDateRequired": "End date is required.",
+        "endDateFuture": "End date cannot be in the future.",
+        "endDateBeforeStart": "End date cannot be earlier than the start date.",
+        "endDatePlaceholder": "Select the end date",
+        "descriptionLabel": "Description",
+        "descriptionPlaceholder": "Describe your responsibilities, achievements, and impact in this role.",
+        "cancel": "Cancel",
+        "updateSubmit": "Update Experience",
+        "saveSubmit": "Save Experience"
+      }
+    },
+    "resume": {
+      "sectionTitle": "Resumes",
+      "uploadAriaLabel": "Upload resume",
+      "loadError": "We couldn't load your resumes right now. Please refresh the page to try again.",
+      "emptyTitle": "No resumes yet",
+      "emptyDescription": "Upload a resume so you can apply to jobs in one click.",
+      "uploadButton": "Upload Resume",
+      "defaultBadge": "Default",
+      "autofillAriaLabel": "Autofill profile from {fileName}",
+      "isDefaultAriaLabel": "{fileName} is your default resume",
+      "setDefaultAriaLabel": "Set {fileName} as default",
+      "downloadAriaLabel": "Download {fileName}",
+      "deleteAriaLabel": "Delete {fileName}",
+      "deleteDialog": {
+        "title": "Delete resume?",
+        "descriptionWithName": "Are you sure you want to remove <bold>\"{fileName}\"</bold>? This action cannot be undone.",
+        "descriptionFallback": "Are you sure you want to remove this resume? This action cannot be undone."
+      },
+      "toasts": {
+        "removed": "Resume removed successfully.",
+        "removeError": "Failed to remove resume. Please try again.",
+        "defaultUpdated": "Default resume updated.",
+        "defaultError": "Failed to set default resume. Please try again.",
+        "uploaded": "Resume uploaded successfully.",
+        "genericError": "Something went wrong. Please try again."
+      },
+      "modal": {
+        "title": "Upload Resume",
+        "description": "Add a resume so recruiters and job applications can access your latest CV.",
+        "fileRequired": "Please select a resume file to upload.",
+        "fileLabel": "Resume File",
+        "cancel": "Cancel",
+        "uploadSubmit": "Upload Resume"
+      },
+      "autofill": {
+        "title": "Autofill from CV",
+        "description": "We'll read {fileName} and propose profile details for you to review. Nothing is added to your profile automatically.",
+        "thisResume": "this resume",
+        "checkExisting": "Check for an existing suggestion",
+        "checking": "Checking…",
+        "noSuggestionFound": "No suggestion found yet for this resume.",
+        "generating": "Generating…",
+        "generateButton": "Generate Suggestions",
+        "fields": {
+          "headline": "Headline",
+          "bio": "Bio",
+          "skills": "Skills",
+          "experience": "Experience",
+          "education": "Education",
+          "certifications": "Certifications"
+        },
+        "copyHint": "Copy the details you want into the matching profile sections yourself, or discard this suggestion.",
+        "close": "Close",
+        "discarding": "Discarding...",
+        "discardButton": "Discard Suggestion",
+        "toasts": {
+          "generated": "Suggestions generated from your resume.",
+          "generateError": "Couldn't generate suggestions. Please try again.",
+          "discarded": "Suggestion discarded.",
+          "discardError": "Couldn't discard the suggestion. Please try again."
+        }
+      }
+    }
+  },
+  "companiesBrowse": {
+    "shared": {
+      "remoteFallback": "Remote",
+      "noDescriptionFallback": "No description available.",
+      "jobsCount": "{count} Jobs"
+    },
+    "directory": {
+      "heading": "Explore companies",
+      "subtitle": "Discover verified employers and their opportunities.",
+      "searchPlaceholder": "Search companies",
+      "loading": "Loading companies…",
+      "error": "Unable to load companies.",
+      "industryFallback": "Company",
+      "descriptionFallback": "Discover this company and its open positions."
+    },
+    "hero": {
+      "title": "Find your  ",
+      "highlight": " dream company",
+      "subtitle": "Find your next career at companies like HubSpot, Nike, and Dropbox",
+      "popularTags": ["UI Designer", "UX Researcher", "Android", "Admin"]
+    },
+    "searchHero": {
+      "title": "Find your  ",
+      "highlight": " dream companies",
+      "subtitle": "Find the dream companies you dream work for",
+      "popularTags": ["Twitter, Microsoft, Apple, Facebook"]
+    },
+    "tags": ["Tech", "Finance", "Healthcare", "Education", "Retail"],
+    "list": {
+      "header": "All Companies",
+      "errorMessage": "We couldn't load companies right now. Please refresh the page to try again.",
+      "noResults": "No companies match your search right now."
+    },
+    "categorySection": {
+      "showLess": "Show less {label}"
+    },
+    "categoryTabs": {
+      "scrollLeft": "Scroll categories left",
+      "scrollRight": "Scroll categories right"
+    },
+    "heroSection": {
+      "home": "Home",
+      "companiesLink": "Companies",
+      "founded": "Founded",
+      "employees": "Employees",
+      "location": "Location",
+      "industry": "Industry"
+    },
+    "openJobsSection": {
+      "title": "Open Jobs",
+      "showAllJobs": "Show all jobs"
+    },
+    "teamSection": {
+      "title": "Team",
+      "seeAll": "See all ({count})"
+    },
+    "mobileFilters": {
+      "moreFilters": "More Filters",
+      "apply": "Apply"
+    },
+    "listingHeader": {
+      "showingResults": "Showing {count} results",
+      "sortByLabel": "Sort by:",
+      "gridViewAriaLabel": "Grid view",
+      "listViewAriaLabel": "List view"
+    },
+    "profile": {
+      "notFound": {
+        "title": "Company not found",
+        "description": "This company may have been removed or the link is incorrect.",
+        "backLink": "Back to companies"
+      },
+      "allCompaniesLink": "All companies",
+      "about": "About",
+      "galleryImageAlt": "Company",
+      "benefits": "Benefits",
+      "noContent": "This company hasn't added photos or benefits yet.",
+      "visitWebsite": "Visit website",
+      "employeesSuffix": "employees",
+      "employeesCount": "{size} employees",
+      "details": {
+        "title": "Company details",
+        "industry": "Industry",
+        "companySize": "Company size",
+        "locations": "Locations",
+        "techStack": "Tech stack"
+      }
+    }
+  },
+  "findJobs": {
+    "hero": {
+      "title": "Find your  ",
+      "highlight": " dream job",
+      "subtitle": "Find your next career at companies like HubSpot, Nike, and Dropbox",
+      "popularTags": ["UI Designer", "UX Researcher", "Android", "Admin"]
+    },
+    "popularTags": ["Tech", "Finance", "Healthcare", "Education", "Retail"],
+    "searchHeader": {
+      "placeholder": "Job title or keyword"
+    },
+    "search": {
+      "selectLocation": "Select location",
+      "remoteOption": "Remote",
+      "searchButton": "Search my job",
+      "popularLabel": "Popular"
+    },
+    "listing": {
+      "header": "All Jobs",
+      "errorLoading": "We couldn't load jobs right now. Please refresh the page to try again.",
+      "noResults": "No jobs match your search right now."
+    },
+    "jobCard": {
+      "applicantsCount": "<bold>{count}</bold> applicants",
+      "apply": "Apply"
+    },
+    "detail": {
+      "loading": "Loading job details…",
+      "notFound": "Job not found",
+      "noDescription": "No description provided.",
+      "breadcrumbHome": "Home",
+      "shareAlt": "Share",
+      "remoteFallback": "Remote",
+      "salaryNotDisclosed": "Not disclosed",
+      "applyBeforeFallback": "Not specified",
+      "postedOnDraftFallback": "Draft",
+      "description": {
+        "title": "Description"
+      },
+      "responsibilities": {
+        "title": "Responsibilities",
+        "whoYouAreTitle": "Who you are",
+        "niceToHaveTitle": "Nice to Have"
+      },
+      "summaryCard": {
+        "title": "About this role",
+        "applyBefore": "Apply Before",
+        "jobPostedOn": "Job Posted On",
+        "jobType": "Job Type",
+        "salary": "Salary"
+      },
+      "categories": {
+        "title": "Categories"
+      },
+      "requiredSkills": {
+        "title": "Required Skills"
+      },
+      "statusLabel": {
+        "defaultLabel": "Label"
+      },
+      "perks": {
+        "title": "Perks & Benefits",
+        "description": "This job comes with several perks and benefits designed to support your success."
+      },
+      "companyOverview": {
+        "readMore": "Read more about {company}",
+        "imageAlts": {
+          "main": "Company photo",
+          "topRight": "Company photo",
+          "bottomRight": "Company photo"
+        }
+      },
+      "similarJobs": {
+        "title": "Similar Jobs",
+        "showAll": "Show all jobs"
+      }
+    },
+    "apply": {
+      "applyButton": "Apply",
+      "signInRequired": "Please sign in to apply for this job.",
+      "requiredFieldsMissing": "Full name and email are required.",
+      "submitSuccess": "Application submitted successfully.",
+      "submitError": "Something went wrong. Please try again.",
+      "header": {
+        "remoteFallback": "Remote",
+        "close": "Close"
+      },
+      "form": {
+        "introTitle": "Submit your application",
+        "introSubtitle": "The following is required and will only be shared with {company}.",
+        "fields": {
+          "fullName": { "label": "Full name", "placeholder": "Enter your fullname" },
+          "email": { "label": "Email address", "placeholder": "Enter your email address" },
+          "phone": { "label": "Phone number", "placeholder": "Enter your phone number" },
+          "currentJobTitle": { "label": "Current or previous job title", "placeholder": "What's your current or previous job title?" },
+          "linkedinUrl": { "label": "LinkedIn URL", "placeholder": "Link to your LinkedIn URL" },
+          "portfolioUrl": { "label": "Portfolio URL", "placeholder": "Link to your portfolio URL" }
+        },
+        "linksSectionTitle": "LINKS",
+        "additionalInfoLabel": "Additional information",
+        "coverLetterPlaceholder": "Add a cover letter or anything else you want to share",
+        "toolbar": {
+          "bold": "Bold",
+          "italic": "Italic",
+          "underline": "Underline",
+          "orderedList": "Ordered list",
+          "link": "Link"
+        },
+        "charCount": "{count} / {max}",
+        "maxCharsNote": "Maximum 500 characters",
+        "loadingResumes": "Loading resumes…",
+        "selectResume": "Select a resume",
+        "defaultResumeSuffix": " (Default)",
+        "noResumes": "No resumes uploaded yet",
+        "attachResume": "Attach Resume/CV"
+      },
+      "footer": {
+        "submitting": "Submitting...",
+        "submit": "Submit Application",
+        "terms": "By sending the request you can confirm that you accept our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
+      }
+    }
   }
 }

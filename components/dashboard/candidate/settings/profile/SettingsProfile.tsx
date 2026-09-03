@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import AccountType from "./AccountType";
 import PersonalDetails from "./PersonalDetails";
 import ProfileHeader from "./ProfileHeader";
@@ -38,18 +39,20 @@ function SettingsProfile({
   register,
   setValue,
 }: PersonalFormProps) {
+  const t = useTranslations("candidateSettings.profile");
+
   return (
     <div>
       <ProfileHeader
-        header="Basic information"
-        paragraph="This is your personal information that you can update anytime. "
+        header={t("basicInformation.title")}
+        paragraph={t("basicInformation.description")}
       />
       <hr className="mb-8" />
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <ProfilePhoto
-          heading="Profile Photo"
-          paragraph="This image will be shown publicly as your profile picture. it will help recruiters recognize you!"
+          heading={t("profilePhoto.heading")}
+          paragraph={t("profilePhoto.description")}
           imagePlaceholder="/profileImage.jpg"
           setValue={setValue}
         />

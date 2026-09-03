@@ -1,6 +1,8 @@
 export interface NavigationItem<T extends string> {
   id: number;
   title: T;
+  /** Optional translated/display label. Falls back to `title` when omitted. */
+  label?: string;
 }
 
 interface ReusableHeadersProps<T extends string> {
@@ -31,7 +33,7 @@ function ReusableHeaders<T extends string>({
                 : "text-neutral-60 hover:text-neutral-100"
             }`}
           >
-            {item.title}
+            {item.label ?? item.title}
           </p>
 
           <span

@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 export type UserLevel = "job-seeker" | "company";
 
 type Props = {
@@ -11,6 +13,7 @@ export default function TabsUserLevel({
                                           value,
                                           onChange,
                                       }: Props) {
+    const t = useTranslations("auth");
     return (
         <div className="mx-auto flex w-fit items-center justify-center border border-brand-light-neutral bg-white p-1">
             <button
@@ -22,7 +25,7 @@ export default function TabsUserLevel({
                         : "border-transparent bg-transparent text-slate-500 hover:bg-slate-50 hover:text-indigo-600"
                 }`}
             >
-                Job Seeker
+                {t("shared.jobSeeker")}
             </button>
 
             <button
@@ -34,7 +37,7 @@ export default function TabsUserLevel({
                         : "border-transparent bg-transparent text-slate-500 hover:bg-slate-50 hover:text-indigo-600"
                 }`}
             >
-                Company
+                {t("shared.company")}
             </button>
         </div>
     );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { PlusIcon, BookOpenIcon } from "@heroicons/react/24/outline";
 
 import { useCandidateEducations } from "@/core/hooks/candidate/use-candidate-educations";
@@ -11,6 +12,7 @@ import { SectionSkeleton } from "./shared/Skeleton";
 import type { CandidateEducation } from "@/core/types/candidate-education";
 
 export default function EducationsSection() {
+  const t = useTranslations("candidateProfileSections");
   const {
     data: educations = [],
     isLoading,
@@ -36,11 +38,11 @@ export default function EducationsSection() {
   return (
     <div className='bg-white border border-gray-200 p-6'>
       <div className='flex items-center justify-between mb-6'>
-        <h2 className='text-[20px] font-bold text-[#25324B]'>Educations</h2>
+        <h2 className='text-[20px] font-bold text-[#25324B]'>{t("education.sectionTitle")}</h2>
         <button
           type='button'
           onClick={openAddModal}
-          aria-label='Add education'
+          aria-label={t("education.addAriaLabel")}
           className='cursor-pointer border border-gray-200 p-1.5 hover:border-brand'
         >
           <PlusIcon className='w-4 h-4 text-brand' />
@@ -51,8 +53,7 @@ export default function EducationsSection() {
 
       {!isLoading && isError && (
         <p className='text-[14px] text-gray-500'>
-          We couldn&apos;t load your education history right now. Please refresh
-          the page to try again.
+          {t("education.loadError")}
         </p>
       )}
 
@@ -62,18 +63,17 @@ export default function EducationsSection() {
             <BookOpenIcon className='h-5 w-5' />
           </span>
           <p className='text-[15px] font-medium text-[#202430]'>
-            Add your education
+            {t("education.emptyTitle")}
           </p>
           <p className='text-[14px] text-gray-500'>
-            Show employers your academic background and qualifications by adding
-            your education history.
+            {t("education.emptyDescription")}
           </p>
           <button
             type='button'
             onClick={openAddModal}
             className='mt-2 cursor-pointer text-[14px] font-semibold text-brand hover:text-indigo-800 transition-colors'
           >
-            + Add Education
+            {t("education.addButton")}
           </button>
         </div>
       )}

@@ -2,6 +2,7 @@ import { SectionTitle } from "@/components/ui/Title";
 import { latestJobs } from "@/data/latestJobs";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
 
 const tagStyles: Record<string, string> = {
   "Full-Time": "text-accent-green bg-accent-light-green  ",
@@ -9,7 +10,9 @@ const tagStyles: Record<string, string> = {
   Design: "text-indigo-600 border border-indigo-500 bg-transparent font-bold",
 };
 
-export default function LatestJobsOpenSection() {
+export default async function LatestJobsOpenSection() {
+  const t = await getTranslations("landing");
+
   return (
     <section className="relative mt-16 min-h-[500px] w-full overflow-hidden py-10">
       <Image
@@ -29,9 +32,9 @@ export default function LatestJobsOpenSection() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 md:px-12">
         <SectionTitle
-          title="Latest"
-          highlight="jobs open"
-          showAllText="Show all jobs"
+          title={t("latestJobs.titlePrefix")}
+          highlight={t("latestJobs.titleHighlight")}
+          showAllText={t("shared.showAllJobs")}
           showAllLink="/jobs"
           isExpanded
         />

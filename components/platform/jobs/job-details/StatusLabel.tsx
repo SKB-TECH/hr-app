@@ -1,10 +1,17 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 type Props = {
   label?: string;
   style?: React.CSSProperties;
   className?: string;
 };
 
-function StatusLabel({ label = "add label name", style, className }: Props) {
+function StatusLabel({ label, style, className }: Props) {
+  const t = useTranslations("findJobs");
+  const resolvedLabel = label ?? t("detail.statusLabel.defaultLabel");
+
   return (
     <div
       role="status"
@@ -14,7 +21,7 @@ function StatusLabel({ label = "add label name", style, className }: Props) {
       }
       style={style}
     >
-      <span>{label}</span>
+      <span>{resolvedLabel}</span>
     </div>
   );
 }

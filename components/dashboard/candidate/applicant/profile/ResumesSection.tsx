@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { PlusIcon, DocumentPlusIcon } from "@heroicons/react/24/outline";
 
 import { useCandidateResumes } from "@/core/hooks/candidate/use-candidate-resumes";
@@ -12,6 +13,7 @@ import AutofillSuggestionModal from "./Resume/AutofillSuggestionModal";
 import type { CandidateResume } from "@/core/types/candidate-resume";
 
 export default function ResumesSection() {
+  const t = useTranslations("candidateProfileSections");
   const { data: resumes = [], isLoading, isError } = useCandidateResumes();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -21,11 +23,11 @@ export default function ResumesSection() {
   return (
     <div className="bg-white border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-[20px] font-bold text-[#25324B]">Resumes</h2>
+        <h2 className="text-[20px] font-bold text-[#25324B]">{t("resume.sectionTitle")}</h2>
         <button
           type="button"
           onClick={() => setModalOpen(true)}
-          aria-label="Upload resume"
+          aria-label={t("resume.uploadAriaLabel")}
           className="cursor-pointer border border-gray-200 p-1.5 hover:border-brand"
         >
           <PlusIcon className="w-4 h-4 text-brand" />
@@ -36,7 +38,7 @@ export default function ResumesSection() {
 
       {!isLoading && isError && (
         <p className="text-[14px] text-gray-500">
-          We couldn&apos;t load your resumes right now. Please refresh the page to try again.
+          {t("resume.loadError")}
         </p>
       )}
 
@@ -45,14 +47,14 @@ export default function ResumesSection() {
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 text-brand">
             <DocumentPlusIcon className="h-5 w-5" />
           </span>
-          <p className="text-[15px] font-medium text-[#202430]">No resumes yet</p>
-          <p className="text-[14px] text-gray-500">Upload a resume so you can apply to jobs in one click.</p>
+          <p className="text-[15px] font-medium text-[#202430]">{t("resume.emptyTitle")}</p>
+          <p className="text-[14px] text-gray-500">{t("resume.emptyDescription")}</p>
           <button
             type="button"
             onClick={() => setModalOpen(true)}
             className="mt-2 cursor-pointer text-[14px] font-semibold text-brand hover:text-indigo-800 transition-colors"
           >
-            Upload Resume
+            {t("resume.uploadButton")}
           </button>
         </div>
       )}

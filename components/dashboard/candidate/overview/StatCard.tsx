@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export function StatCard({
   label,
@@ -9,6 +10,7 @@ export function StatCard({
   value: number;
   icon: string;
 }) {
+  const t = useTranslations("candidateDashboard.stats");
   return (
     <div className="border border-gray-200 relative bg-white p-6 flex flex-col justify-between min-h-[140px]">
       <div className="flex items-start justify-between">
@@ -17,7 +19,7 @@ export function StatCard({
         </p>
         <Image
           src={icon}
-          alt="icon"
+          alt={t("iconAlt")}
           width={88}
           height={88}
           className="absolute bottom-0 right-4"

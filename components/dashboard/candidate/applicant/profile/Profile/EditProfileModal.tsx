@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
@@ -38,6 +39,7 @@ export default function EditProfileModal({
   onOpenChange,
   profile,
 }: EditProfileModalProps) {
+  const t = useTranslations("candidateProfileCore.editProfileModal");
   const updateProfile = useUpdateCandidateProfile();
   const isPending = updateProfile.isPending;
   const submittingRef = useRef(false);
@@ -96,7 +98,7 @@ export default function EditProfileModal({
         }),
       );
 
-      toast.success("Profile updated successfully.");
+      toast.success(t("successToast"));
       onOpenChange(false);
     } catch (error) {
       if (error instanceof ApiError) {
@@ -109,7 +111,7 @@ export default function EditProfileModal({
       const message =
         error instanceof ApiError
           ? error.message
-          : "Something went wrong. Please try again.";
+          : t("errorToast");
       toast.error(message);
     } finally {
       submittingRef.current = false;
@@ -122,8 +124,8 @@ export default function EditProfileModal({
       onOpenChange={onOpenChange}
       isPending={isPending}
       icon={<UserCircleIcon className='h-5 w-5' />}
-      title='Edit Profile'
-      description='Keep your public profile up to date so recruiters can find and recognize you.'
+      title={t("title")}
+      description={t("description")}
     >
       <form
         noValidate
@@ -134,7 +136,7 @@ export default function EditProfileModal({
         className='mt-5 space-y-5'
       >
         <ImageUpload
-          label='Profile Photo'
+          label={t("photoLabel")}
           shape='circle'
           file={avatarFile}
           currentImageUrl={profile.avatar}
@@ -146,21 +148,21 @@ export default function EditProfileModal({
             htmlFor='profile-full-name'
             className='mb-2 block text-sm font-medium text-[#25324B]'
           >
-            Full Name
+            {t("fullNameLabel")}
           </label>
           <input
             id='profile-full-name'
             type='text'
-            placeholder='e.g. Jake Gyll'
+            placeholder={t("fullNamePlaceholder")}
             aria-invalid={Boolean(errors.fullName)}
             aria-describedby={
               errors.fullName ? "profile-full-name-error" : undefined
             }
             className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("fullName", {
-              required: "Full name is required.",
+              required: t("fullNameRequired"),
               validate: (value) =>
-                value.trim().length > 0 || "Full name is required.",
+                value.trim().length > 0 || t("fullNameRequired"),
             })}
           />
           {errors.fullName && (
@@ -178,13 +180,13 @@ export default function EditProfileModal({
             htmlFor='profile-headline'
             className='mb-2 block text-sm font-medium text-[#25324B]'
           >
-            Headline
+            {t("headlineLabel")}
           </label>
           <input
             id='profile-headline'
             type='text'
             maxLength={HEADLINE_MAX_LENGTH}
-            placeholder='e.g. Product Designer at Twitter'
+            placeholder={t("headlinePlaceholder")}
             className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-brand'
             {...register("headline")}
           />
@@ -210,10 +212,10 @@ export default function EditProfileModal({
           />
           <span>
             <span className='block text-[14px] font-medium text-[#25324B]'>
-              Open for opportunities
+              {t("openToWorkLabel")}
             </span>
             <span className='block text-[13px] text-gray-500'>
-              Let recruiters know you&apos;re open to new roles.
+              {t("openToWorkDescription")}
             </span>
           </span>
         </label>
@@ -225,9 +227,9 @@ export default function EditProfileModal({
             onClick={handleClose}
             disabled={isPending}
           >
-            Cancel
+            {t("cancel")}
           </Button>
-          <SubmitButton isPending={isPending} label='Save Changes' />
+          <SubmitButton isPending={isPending} label={t("save")} />
         </DialogFooter>
       </form>
     </ProfileEntryModal>

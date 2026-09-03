@@ -27,5 +27,1019 @@
     "showing": "Affichage de",
     "of": "sur",
     "entries": "entrées"
+  },
+  "common": {
+    "languageSwitcher": {
+      "changeLanguage": "Changer la langue"
+    },
+    "navbar": {
+      "login": "Connexion",
+      "signUp": "S'inscrire",
+      "toggleMenu": "Basculer le menu"
+    },
+    "section": {
+      "titlePrefix": "Explorer par",
+      "titleHighlight": "catégorie",
+      "showAllJobs": "Voir toutes les offres",
+      "jobsAvailable": "{count} offres disponibles"
+    },
+    "heroSection": {
+      "headingLine1": "Découvrez",
+      "headingLine2": "plus de",
+      "headingHighlight": "5000+ offres",
+      "subheading": "Une excellente plateforme pour les chercheurs d'emploi en quête de nouvelles perspectives de carrière et passionnés par les startups.",
+      "searchPlaceholder": "Titre du poste ou mot-clé",
+      "selectLocationOption": "sélectionner un lieu",
+      "searchButton": "Rechercher un emploi",
+      "heroImageAlt": "Chercheur d'emploi",
+      "popular": {
+        "label": "Populaire :",
+        "uiDesigner": "Designer UI",
+        "uxResearcher": "Chercheur UX",
+        "android": "Android",
+        "admin": "Administration"
+      }
+    },
+    "heroContent": {
+      "heading": "Découvrez\nplus de",
+      "headingHighlight": "5000+ offres",
+      "subheading": "Une excellente plateforme pour les chercheurs d'emploi en quête de\nnouvelles perspectives de carrière et passionnés par les startups."
+    }
+  },
+  "auth": {
+    "shared": {
+      "jobSeeker": "Candidat",
+      "company": "Entreprise",
+      "emailAddress": "Adresse e-mail",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "verificationCode": "Code de vérification",
+      "resendCode": "Renvoyer le code",
+      "codeResent": "Code renvoyé",
+      "pleaseWait": "Veuillez patienter…",
+      "signIn": "Se connecter",
+      "signUp": "S'inscrire",
+      "stepOf": "Étape {current} sur {total}",
+      "otpSentToPrefix": "Saisissez le code à 6 chiffres envoyé à",
+      "otpSentToSuffix": ".",
+      "passwordsDoNotMatch": "Les mots de passe ne correspondent pas."
+    },
+    "signIn": {
+      "welcomeBack": "Bon retour",
+      "subtitleJobSeeker": "Connectez-vous pour poursuivre votre recherche d'emploi et gérer vos candidatures.",
+      "subtitleCompany": "Connectez-vous pour gérer vos offres, vos candidats et votre processus de recrutement.",
+      "signInWithGoogle": "Se connecter avec Google",
+      "orLoginWithEmail": "Ou connectez-vous avec votre e-mail",
+      "enterEmailAddress": "Saisissez votre adresse e-mail",
+      "enterPassword": "Saisissez votre mot de passe",
+      "rememberMe": "Se souvenir de moi",
+      "forgotPassword": "Mot de passe oublié ?",
+      "signingIn": "Connexion en cours…",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "signInSuccess": "Connexion réussie",
+      "invalidCredentials": "Adresse e-mail ou mot de passe incorrect.",
+      "portalMismatchCompany": "Ce compte candidat ne peut pas accéder à l'espace entreprise.",
+      "portalMismatchCandidate": "Ce compte entreprise ne peut pas accéder à l'espace candidat.",
+      "signInFailed": "Connexion impossible."
+    },
+    "signUp": {
+      "createAccount": "Créez votre compte",
+      "fullName": "Nom complet",
+      "acceptTerms": "J'accepte les conditions générales et la politique de confidentialité.",
+      "continue": "Continuer",
+      "verifyEmail": "Vérifier l'e-mail",
+      "finishRegistration": "Terminer l'inscription",
+      "alreadyRegistered": "Déjà inscrit ?",
+      "codeSentByEmail": "Code envoyé par e-mail",
+      "emailVerified": "E-mail vérifié",
+      "accountCreated": "Compte créé avec succès",
+      "genericError": "Une erreur est survenue."
+    },
+    "forgotPassword": {
+      "title": "Réinitialisez votre mot de passe",
+      "instructions": "Saisissez l'adresse e-mail associée à votre compte et nous vous enverrons un code de vérification.",
+      "sendCode": "Envoyer le code",
+      "verifyCode": "Vérifier le code",
+      "newPassword": "Nouveau mot de passe",
+      "resetPassword": "Réinitialiser le mot de passe",
+      "rememberedPassword": "Vous vous souvenez de votre mot de passe ?",
+      "codeSentToEmail": "Code envoyé à votre adresse e-mail",
+      "codeVerified": "Code vérifié",
+      "passwordResetSuccess": "Mot de passe réinitialisé avec succès",
+      "genericError": "Une erreur est survenue. Veuillez réessayer."
+    }
+  },
+  "landing": {
+    "about": {
+      "heading": "À propos de nous"
+    },
+    "companiesMarquee": {
+      "defaultLabel": "Les entreprises que nous avons aidées à se développer"
+    },
+    "featuredJobs": {
+      "titlePrefix": "Emplois",
+      "titleHighlight": "vedettes",
+      "fullTimeBadge": "Temps plein"
+    },
+    "latestJobs": {
+      "titlePrefix": "Derniers",
+      "titleHighlight": "emplois disponibles"
+    },
+    "shared": {
+      "showAllJobs": "Voir toutes les offres"
+    },
+    "postJobsCta": {
+      "ariaLabel": "Appel à l'action pour publier des offres d'emploi",
+      "dashboardPreviewAlt": "Aperçu du tableau de bord"
+    },
+    "footer": {
+      "brandDescription": "Une excellente plateforme pour les chercheurs d'emploi passionnés par les startups. Trouvez plus facilement l'emploi de vos rêves.",
+      "columns": {
+        "about": {
+          "title": "À propos",
+          "links": ["Entreprises", "Tarifs", "Conditions", "Conseils", "Politique de confidentialité"]
+        },
+        "resources": {
+          "title": "Ressources",
+          "links": ["Documentation d'aide", "Guide", "Mises à jour", "Contactez-nous"]
+        }
+      },
+      "newsletter": {
+        "heading": "Recevez des notifications d'emploi",
+        "description": "Les dernières actualités et articles sur l'emploi, envoyés chaque semaine dans votre boîte de réception.",
+        "emailPlaceholder": "Adresse e-mail",
+        "subscribeButton": "S'abonner"
+      },
+      "bottom": {
+        "copyright": "{year} ©JobHuntly. Tous droits réservés."
+      }
+    }
+  },
+  "candidateDashboard": {
+    "greeting": {
+      "morning": "Bonjour",
+      "afternoon": "Bon après-midi",
+      "evening": "Bonsoir",
+      "title": "{greeting}, {firstName}",
+      "subtitle": "Voici ce qui se passe avec vos candidatures {dateRangeText}.",
+      "dateRange": "du {from} au {to}",
+      "selectDateRange": "sélectionnez une plage de dates",
+      "fallbackName": "cher candidat"
+    },
+    "stats": {
+      "totalJobsApplied": "Total des offres postulées",
+      "interviewed": "Entretiens",
+      "iconAlt": "icône"
+    },
+    "donutChart": {
+      "title": "Statut des candidatures",
+      "unsuitable": "Non retenu",
+      "interviewed": "Entretien",
+      "viewAllApplications": "Voir toutes les candidatures"
+    },
+    "recentApplications": {
+      "title": "Historique récent des candidatures",
+      "errorMessage": "Nous n'avons pas pu charger vos candidatures pour le moment. Veuillez actualiser la page pour réessayer.",
+      "dateApplied": "Date de candidature",
+      "noResults": "Aucune candidature trouvée pour la période sélectionnée.",
+      "viewAllHistory": "Voir tout l'historique des candidatures",
+      "defaultStage": "Candidature envoyée"
+    },
+    "upcomingInterviews": {
+      "title": "Entretiens à venir",
+      "loading": "Chargement des entretiens…",
+      "noInterviews": "Aucun entretien prévu.",
+      "interviewerFallback": "Intervieweur à confirmer"
+    }
+  },
+  "candidateSettings": {
+    "tabs": {
+      "myProfile": "Mon profil",
+      "loginDetails": "Informations de connexion",
+      "notifications": "Notifications"
+    },
+    "loginDetails": {
+      "basicInformation": {
+        "title": "Informations de base",
+        "description": "Ce sont les informations de connexion que vous pouvez mettre à jour à tout moment."
+      },
+      "closeAccount": "Fermer le compte",
+      "toasts": {
+        "accountDeleted": "Compte supprimé avec succès",
+        "accountDeleteFailed": "Échec de la suppression du compte"
+      },
+      "updateEmail": {
+        "title": "Mettre à jour l'e-mail",
+        "description": "Mettez à jour votre adresse e-mail pour vous assurer qu'elle est sécurisée",
+        "verifiedLabel": "Vérifié",
+        "verifiedStatus": "Votre adresse e-mail est vérifiée.",
+        "unverifiedStatus": "Votre adresse e-mail n'est pas encore vérifiée.",
+        "emailRequired": "L'e-mail est requis",
+        "fieldLabel": "Mettre à jour l'e-mail",
+        "placeholder": "Entrez votre nouvelle adresse e-mail",
+        "submit": "Mettre à jour l'e-mail",
+        "submitting": "Mise à jour en cours...",
+        "toastSuccess": "E-mail mis à jour avec succès.",
+        "toastError": "Une erreur s'est produite. Veuillez réessayer."
+      },
+      "updatePassword": {
+        "title": "Nouveau mot de passe",
+        "description": "Gérez votre mot de passe pour vous assurer qu'il est sécurisé",
+        "oldPasswordLabel": "Ancien mot de passe",
+        "oldPasswordPlaceholder": "Entrez votre ancien mot de passe",
+        "oldPasswordRequired": "L'ancien mot de passe est requis",
+        "minCharactersHint": "Minimum 8 caractères.",
+        "newPasswordLabel": "Nouveau mot de passe",
+        "newPasswordPlaceholder": "Entrez votre nouveau mot de passe",
+        "newPasswordRequired": "Le nouveau mot de passe est requis",
+        "minCharactersError": "Minimum 8 caractères.",
+        "submit": "Changer le mot de passe",
+        "submitting": "Changement du mot de passe...",
+        "toastSuccess": "Mot de passe changé avec succès.",
+        "toastError": "Une erreur s'est produite. Veuillez réessayer."
+      },
+      "deleteAccount": {
+        "title": "Fermer le compte ?",
+        "description": "Êtes-vous sûr de vouloir fermer votre compte ? Cette action est définitive et supprimera toutes vos données de profil, votre historique de candidatures et vos préférences enregistrées. Cette action est irréversible.",
+        "cancel": "Annuler",
+        "confirm": "Supprimer le compte",
+        "confirming": "Fermeture du compte..."
+      }
+    },
+    "notifications": {
+      "basicInformation": {
+        "title": "Informations de base",
+        "description": "Ce sont les préférences de notifications que vous pouvez mettre à jour à tout moment."
+      },
+      "section": {
+        "title": "Notifications",
+        "description": "Personnalisez vos préférences de notification"
+      },
+      "submit": "Mettre à jour l'e-mail"
+    },
+    "profile": {
+      "basicInformation": {
+        "title": "Informations de base",
+        "description": "Ce sont vos informations personnelles que vous pouvez mettre à jour à tout moment. "
+      },
+      "profilePhoto": {
+        "heading": "Photo de profil",
+        "description": "Cette image sera affichée publiquement comme votre photo de profil. Elle aidera les recruteurs à vous reconnaître !"
+      },
+      "uploadFile": {
+        "dropHere": "Déposez les fichiers ici",
+        "clickToReplace": "Cliquez pour remplacer",
+        "orDragAndDrop": "ou glissez-déposez",
+        "fileHint": "SVG, PNG, JPG ou GIF (max. 400 x 400px)",
+        "uploadIconLabel": "Icône de téléversement",
+        "profilePictureAlt": "Photo de profil"
+      },
+      "personalDetails": {
+        "title": "Détails personnels",
+        "fullNameLabel": "Nom complet",
+        "fullNamePlaceholder": "Jake Gyll",
+        "fullNameRequired": "Le nom complet est requis",
+        "phoneLabel": "Numéro de téléphone",
+        "phonePlaceholder": "+1 234 567 890",
+        "phoneRequired": "Le numéro de téléphone est requis",
+        "emailLabel": "e-mail",
+        "emailPlaceholder": "Jakegyll@gmail.com",
+        "emailRequired": "L'e-mail est requis",
+        "dobLabel": "Date de naissance",
+        "dobPlaceholder": "09/08/1997",
+        "dobRequired": "La date de naissance est requise",
+        "genderLabel": "Genre",
+        "genderPlaceholder": "Sélectionner le genre",
+        "genderRequired": "Le genre est requis",
+        "genderOptions": {
+          "male": "Homme",
+          "female": "Femme",
+          "other": "Autre"
+        }
+      },
+      "accountType": {
+        "title": "Type de compte",
+        "description": "Vous pouvez mettre à jour votre type de compte",
+        "jobSeekerTitle": "Chercheur d'emploi",
+        "jobSeekerDescription": "À la recherche d'un emploi",
+        "employerTitle": "Employeur",
+        "employerDescription": "Recrutement, recherche de candidats ou publication d'offres d'emploi"
+      },
+      "saveButton": {
+        "save": "Enregistrer les modifications",
+        "saving": "Enregistrement en cours..."
+      }
+    }
+  },
+  "candidateApplications": {
+    "errorMessage": "Nous n'avons pas pu charger vos candidatures pour le moment. Veuillez actualiser la page pour réessayer.",
+    "topHeader": {
+      "greeting": "Continuez ainsi, {firstName}",
+      "subtitle": "Voici le statut de vos candidatures."
+    },
+    "banner": {
+      "title": "Nouvelle fonctionnalité",
+      "description": "Vous pouvez demander un suivi 7 jours après avoir postulé à une offre si le statut de la candidature est en cours d'examen. Un seul suivi est autorisé par offre."
+    },
+    "tabs": {
+      "all": "Toutes",
+      "inReview": "En cours d'examen",
+      "interviewing": "Entretien",
+      "assessment": "Évaluation",
+      "offered": "Offre reçue",
+      "hired": "Embauché"
+    },
+    "controls": {
+      "title": "Historique des candidatures",
+      "searchPlaceholder": "Rechercher",
+      "filter": "Filtrer"
+    },
+    "table": {
+      "columns": {
+        "number": "#",
+        "companyName": "Nom de l'entreprise",
+        "roles": "Postes",
+        "dateApplied": "Date de candidature",
+        "status": "Statut"
+      },
+      "empty": "Aucune candidature trouvée."
+    }
+  },
+  "candidateProfileCore": {
+    "profileSection": {
+      "errorLoading": "Nous n'avons pas pu charger votre profil pour le moment. Veuillez actualiser la page pour réessayer.",
+      "editProfileAria": "Modifier le profil",
+      "editProfileButton": "Modifier le profil",
+      "openForOpportunities": "OUVERT AUX OPPORTUNITÉS"
+    },
+    "aboutSection": {
+      "title": "À propos de moi",
+      "editAria": "Modifier à propos de moi",
+      "errorLoading": "Nous n'avons pas pu charger votre biographie pour le moment. Veuillez actualiser la page pour réessayer.",
+      "emptyTitle": "Racontez votre histoire",
+      "emptyDescription": "Ajoutez une courte biographie pour que les recruteurs en apprennent plus sur vous.",
+      "addButton": "+ Ajouter à propos de moi"
+    },
+    "skillsSection": {
+      "title": "Compétences",
+      "addAria": "Ajouter des compétences",
+      "errorLoading": "Nous n'avons pas pu charger vos compétences pour le moment. Veuillez actualiser la page pour réessayer.",
+      "emptyTitle": "Aucune compétence ajoutée",
+      "addButton": "Ajouter des compétences",
+      "removeAria": "Retirer {name}",
+      "removeSuccess": "{name} a été retiré de vos compétences.",
+      "removeError": "Échec de la suppression de la compétence. Veuillez réessayer."
+    },
+    "socialLinksSection": {
+      "title": "Liens sociaux",
+      "editAria": "Modifier les liens sociaux",
+      "errorLoading": "Nous n'avons pas pu charger vos liens sociaux pour le moment. Veuillez actualiser la page pour réessayer.",
+      "emptyTitle": "Ajoutez vos liens sociaux",
+      "emptyDescription": "Connectez votre LinkedIn et GitHub pour que les recruteurs en apprennent plus sur vous.",
+      "addButton": "+ Ajouter des liens sociaux",
+      "platforms": {
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "website": "Site web"
+      }
+    },
+    "additionalDetailsSection": {
+      "title": "Détails supplémentaires",
+      "editAria": "Modifier les détails supplémentaires",
+      "errorLoading": "Nous n'avons pas pu charger vos détails pour le moment. Veuillez actualiser la page pour réessayer.",
+      "emailLabel": "E-mail",
+      "phoneLabel": "Numéro de téléphone"
+    },
+    "editProfileModal": {
+      "title": "Modifier le profil",
+      "description": "Gardez votre profil public à jour afin que les recruteurs puissent vous trouver et vous reconnaître.",
+      "photoLabel": "Photo de profil",
+      "fullNameLabel": "Nom complet",
+      "fullNamePlaceholder": "ex. Jake Gyll",
+      "fullNameRequired": "Le nom complet est requis.",
+      "headlineLabel": "Titre",
+      "headlinePlaceholder": "ex. Designer produit chez Twitter",
+      "openToWorkLabel": "Ouvert aux opportunités",
+      "openToWorkDescription": "Faites savoir aux recruteurs que vous êtes ouvert à de nouveaux rôles.",
+      "cancel": "Annuler",
+      "save": "Enregistrer les modifications",
+      "successToast": "Profil mis à jour avec succès.",
+      "errorToast": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "editBioModal": {
+      "title": "Modifier à propos de moi",
+      "description": "Dites aux recruteurs qui vous êtes, ce que vous faites et ce que vous recherchez.",
+      "label": "À propos de moi",
+      "placeholder": "Je suis designer produit + cinéaste, actuellement en télétravail...",
+      "cancel": "Annuler",
+      "save": "Enregistrer les modifications",
+      "successToast": "Section à propos mise à jour avec succès.",
+      "errorToast": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "editAdditionalDetailsModal": {
+      "title": "Modifier les détails supplémentaires",
+      "description": "Gardez vos coordonnées à jour afin que les employeurs puissent vous joindre.",
+      "emailLabel": "E-mail",
+      "emailHint": "Votre adresse e-mail ne peut pas être modifiée ici.",
+      "phoneLabel": "Téléphone",
+      "phonePlaceholder": "ex. +250 788 123 456",
+      "cancel": "Annuler",
+      "save": "Enregistrer les modifications",
+      "successToast": "Détails supplémentaires mis à jour avec succès.",
+      "errorToast": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "editSocialLinksModal": {
+      "title": "Modifier les liens sociaux",
+      "description": "Associez vos profils professionnels afin que les recruteurs en apprennent plus sur vous.",
+      "linkedinLabel": "URL LinkedIn",
+      "linkedinPlaceholder": "https://linkedin.com/in/username",
+      "githubLabel": "URL GitHub",
+      "githubPlaceholder": "https://github.com/username",
+      "portfolioLabel": "URL du portfolio / site web",
+      "portfolioPlaceholder": "https://portfolio.dev",
+      "urlInvalid": "Veuillez saisir une URL valide.",
+      "cancel": "Annuler",
+      "save": "Enregistrer les modifications",
+      "successToast": "Liens sociaux mis à jour avec succès.",
+      "errorToast": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "editWorkPreferencesModal": {
+      "title": "Modifier les préférences de travail",
+      "description": "Aidez les recruteurs à comprendre votre niveau d'expérience et votre délai de disponibilité.",
+      "yearsLabel": "Années d'expérience",
+      "yearsPlaceholder": "ex. 5",
+      "yearsError": "Saisissez un nombre entier d'années entre 0 et 60.",
+      "workTypeLabel": "Type de travail préféré",
+      "availabilityLabel": "Disponibilité",
+      "selectOption": "Sélectionner une option",
+      "cancel": "Annuler",
+      "save": "Enregistrer les modifications",
+      "successToast": "Préférences de travail mises à jour avec succès.",
+      "errorToast": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "workTypeOptions": {
+      "remote": "Télétravail",
+      "hybrid": "Hybride",
+      "onsite": "Sur site"
+    },
+    "availabilityOptions": {
+      "immediate": "Immédiate",
+      "twoWeeks": "Préavis de 2 semaines",
+      "oneMonth": "Préavis d'1 mois",
+      "notAvailable": "Non disponible"
+    },
+    "skillsModal": {
+      "title": "Ajouter des compétences",
+      "description": "Recherchez dans l'annuaire des compétences et sélectionnez celles qui représentent le mieux votre expertise.",
+      "removeAria": "Retirer {name}",
+      "searchPlaceholder": "Rechercher des compétences ex. React, SQL, Rédaction",
+      "searching": "Recherche de compétences…",
+      "noResults": "Aucune compétence trouvée. Essayez un autre terme de recherche.",
+      "otherCategory": "Autre",
+      "cancel": "Annuler",
+      "save": "Enregistrer les compétences",
+      "saving": "Enregistrement...",
+      "successToast": "Compétences mises à jour avec succès.",
+      "errorToast": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "shared": {
+      "imageUpload": {
+        "invalidType": "Type de fichier non pris en charge. Veuillez téléverser un JPG, PNG ou WEBP.",
+        "tooLarge": "Ce fichier est trop volumineux. La taille maximale autorisée est de 5 Mo.",
+        "uploadFailed": "Échec du téléversement.",
+        "changePhoto": "Changer la photo",
+        "clickToUpload": "Cliquez pour téléverser ou glissez-déposez"
+      },
+      "documentUpload": {
+        "invalidType": "Type de fichier non pris en charge. Veuillez téléverser un PDF, DOC ou DOCX.",
+        "tooLarge": "Ce fichier est trop volumineux. La taille maximale autorisée est de 10 Mo.",
+        "uploadFailed": "Échec du téléversement.",
+        "clickToUpload": "Cliquez pour téléverser ou glissez-déposez",
+        "sizeAndReplace": "{size} — cliquez pour remplacer"
+      },
+      "confirmDeleteDialog": {
+        "cancel": "Annuler",
+        "confirmLabel": "Supprimer",
+        "pendingLabel": "Suppression..."
+      },
+      "dateField": {
+        "placeholder": "Sélectionner une date"
+      },
+      "countryCitySelect": {
+        "countryLabel": "Pays",
+        "cityLabel": "Ville",
+        "loadingCountries": "Chargement des pays...",
+        "selectCountry": "Sélectionner un pays",
+        "loadingCities": "Chargement des villes...",
+        "selectCountryFirst": "Sélectionnez d'abord un pays",
+        "selectCity": "Sélectionner une ville"
+      },
+      "submitButton": {
+        "defaultPendingLabel": "Enregistrement..."
+      }
+    }
+  },
+  "candidateProfileSections": {
+    "certification": {
+      "sectionTitle": "Certifications",
+      "addAriaLabel": "Ajouter une certification",
+      "loadError": "Nous n'avons pas pu charger vos certifications pour le moment. Veuillez actualiser la page pour réessayer.",
+      "emptyTitle": "Aucune certification pour le moment",
+      "emptyDescription": "Ajoutez vos certifications pour aider les recruteurs à voir vos compétences validées.",
+      "addButton": "Ajouter une certification",
+      "editAriaLabel": "Modifier {title}",
+      "deleteAriaLabel": "Supprimer {title}",
+      "issuedLabel": "Délivrée le {date}",
+      "expiresLabel": "Expire le {date}",
+      "credentialIdPrefix": "ID de certification : {id}",
+      "viewCredential": "Voir la certification",
+      "deleteDialog": {
+        "title": "Supprimer la certification ?",
+        "descriptionWithName": "Êtes-vous sûr de vouloir supprimer <bold>\"{title}\"</bold> ? Cette action est irréversible.",
+        "descriptionFallback": "Êtes-vous sûr de vouloir supprimer cette certification ? Cette action est irréversible."
+      },
+      "toasts": {
+        "deleted": "Certification supprimée avec succès.",
+        "deleteError": "Échec de la suppression de la certification. Veuillez réessayer.",
+        "updated": "Certification mise à jour avec succès.",
+        "added": "Certification ajoutée avec succès.",
+        "genericError": "Une erreur s'est produite. Veuillez réessayer."
+      },
+      "modal": {
+        "editTitle": "Modifier la certification",
+        "addTitle": "Ajouter une certification",
+        "description": "Mettez en valeur vos certifications pour gagner la confiance des recruteurs.",
+        "titleLabel": "Titre de la certification",
+        "titlePlaceholder": "ex. AWS Certified Solutions Architect",
+        "titleRequired": "Le titre de la certification est requis.",
+        "organizationLabel": "Organisme de délivrance",
+        "organizationPlaceholder": "ex. Amazon Web Services",
+        "organizationRequired": "L'organisme de délivrance est requis.",
+        "issueDateLabel": "Date de délivrance",
+        "issueDateRequired": "La date de délivrance est requise.",
+        "issueDateFuture": "La date de délivrance ne peut pas être dans le futur.",
+        "issueDatePlaceholder": "Sélectionner la date de délivrance",
+        "expirationDateLabel": "Date d'expiration",
+        "expirationBeforeIssue": "La date d'expiration ne peut pas être antérieure à la date de délivrance.",
+        "noExpirationPlaceholder": "Aucune date d'expiration",
+        "credentialIdLabel": "ID de certification",
+        "credentialIdPlaceholder": "ex. ABC-123456",
+        "credentialUrlLabel": "URL de la certification",
+        "urlPlaceholder": "https://...",
+        "urlHint": "Lien pour vérifier cette certification.",
+        "urlInvalid": "Veuillez saisir une URL valide.",
+        "cancel": "Annuler",
+        "updateSubmit": "Mettre à jour la certification",
+        "saveSubmit": "Enregistrer la certification"
+      }
+    },
+    "education": {
+      "sectionTitle": "Formation",
+      "addAriaLabel": "Ajouter une formation",
+      "loadError": "Nous n'avons pas pu charger votre formation pour le moment. Veuillez actualiser la page pour réessayer.",
+      "emptyTitle": "Aucune formation ajoutée",
+      "emptyDescription": "Ajoutez votre parcours scolaire pour aider les recruteurs à connaître votre profil.",
+      "addButton": "Ajouter une formation",
+      "present": "Aujourd'hui",
+      "editAriaLabel": "Modifier {schoolName}",
+      "deleteAriaLabel": "Supprimer {schoolName}",
+      "gradePrefix": "Note : {grade}",
+      "deleteDialog": {
+        "title": "Supprimer la formation ?",
+        "descriptionWithName": "Êtes-vous sûr de vouloir supprimer <bold>\"{schoolName}\"</bold> ? Cette action est irréversible.",
+        "descriptionFallback": "Êtes-vous sûr de vouloir supprimer cette formation ? Cette action est irréversible."
+      },
+      "toasts": {
+        "removed": "Formation supprimée avec succès.",
+        "removeError": "Échec de la suppression de la formation. Veuillez réessayer.",
+        "updated": "Formation mise à jour avec succès.",
+        "added": "Formation ajoutée avec succès.",
+        "genericError": "Une erreur s'est produite. Veuillez réessayer."
+      },
+      "modal": {
+        "editTitle": "Modifier la formation",
+        "addTitle": "Ajouter une formation",
+        "description": "Ajoutez votre parcours scolaire pour montrer votre formation académique aux recruteurs.",
+        "schoolLabel": "Établissement",
+        "schoolPlaceholder": "ex. Université de Harvard",
+        "schoolRequired": "L'établissement est requis.",
+        "degreeLabel": "Diplôme",
+        "degreePlaceholder": "ex. Licence",
+        "degreeRequired": "Le diplôme est requis.",
+        "degreeSuggestions": {
+          "highSchoolDiploma": "Diplôme d'études secondaires",
+          "associateDegree": "Diplôme d'études collégiales",
+          "bachelorsDegree": "Licence",
+          "mastersDegree": "Master",
+          "doctoratePhd": "Doctorat",
+          "professionalCertificate": "Certificat professionnel",
+          "diploma": "Diplôme",
+          "advancedDiploma": "Diplôme avancé"
+        },
+        "fieldOfStudyLabel": "Domaine d'étude",
+        "fieldOfStudyPlaceholder": "ex. Informatique",
+        "startDateLabel": "Date de début",
+        "startDateRequired": "La date de début est requise.",
+        "startDateFuture": "La date de début ne peut pas être dans le futur.",
+        "startDatePlaceholder": "Sélectionner la date de début",
+        "endDateLabel": "Date de fin",
+        "currentlyStudyingHere": "J'étudie actuellement ici",
+        "currentlyStudyingNoEndDate": "Études en cours — aucune date de fin",
+        "endDateRequired": "La date de fin est requise.",
+        "endDateFuture": "La date de fin ne peut pas être dans le futur.",
+        "endDateBeforeStart": "La date de fin ne peut pas être antérieure à la date de début.",
+        "endDatePlaceholder": "Sélectionner la date de fin",
+        "gradeLabel": "Note",
+        "gradePlaceholder": "ex. 3.8 GPA",
+        "descriptionLabel": "Description",
+        "descriptionPlaceholder": "Décrivez vos réalisations, activités ou domaines de spécialisation.",
+        "cancel": "Annuler",
+        "updateSubmit": "Mettre à jour la formation",
+        "saveSubmit": "Enregistrer la formation"
+      }
+    },
+    "portfolio": {
+      "sectionTitle": "Portfolio",
+      "addAriaLabel": "Ajouter un projet",
+      "loadError": "Nous n'avons pas pu charger votre portfolio pour le moment. Veuillez actualiser la page pour réessayer.",
+      "emptyTitle": "Mettez en valeur votre travail",
+      "emptyDescription": "Ajoutez des projets pour que les recruteurs voient ce que vous avez réalisé.",
+      "addButton": "+ Ajouter un projet",
+      "editAriaLabel": "Modifier {title}",
+      "deleteAriaLabel": "Supprimer {title}",
+      "viewProject": "Voir le projet",
+      "deleteDialog": {
+        "title": "Supprimer le projet ?",
+        "descriptionWithName": "Êtes-vous sûr de vouloir supprimer <bold>\"{title}\"</bold> ? Cette action est irréversible.",
+        "descriptionFallback": "Êtes-vous sûr de vouloir supprimer ce projet ? Cette action est irréversible."
+      },
+      "toasts": {
+        "removed": "Projet supprimé avec succès.",
+        "removeError": "Échec de la suppression du projet. Veuillez réessayer.",
+        "updated": "Projet mis à jour avec succès.",
+        "added": "Projet ajouté avec succès.",
+        "genericError": "Une erreur s'est produite. Veuillez réessayer."
+      },
+      "modal": {
+        "thumbnailRequired": "Une image de couverture du projet est requise.",
+        "editTitle": "Modifier le projet",
+        "addTitle": "Ajouter un projet",
+        "description": "Mettez en valeur un travail dont vous êtes fier pour que les recruteurs voient ce que vous savez construire.",
+        "thumbnailLabel": "Image du projet",
+        "thumbnailLabelRequired": "Image du projet *",
+        "titleLabel": "Titre du projet",
+        "titlePlaceholder": "ex. Growthly - Tableau de bord analytique SaaS",
+        "titleRequired": "Le titre du projet est requis.",
+        "projectUrlLabel": "Lien du projet",
+        "urlPlaceholder": "https://...",
+        "urlInvalid": "Veuillez saisir une URL valide.",
+        "descriptionLabel": "Description",
+        "descriptionPlaceholder": "Décrivez brièvement le projet, votre rôle et les outils utilisés.",
+        "descriptionRequired": "La description est requise.",
+        "cancel": "Annuler",
+        "updateSubmit": "Mettre à jour le projet",
+        "saveSubmit": "Enregistrer le projet"
+      }
+    },
+    "experience": {
+      "sectionTitle": "Expérience",
+      "addAriaLabel": "Ajouter une expérience",
+      "loadError": "Nous n'avons pas pu charger votre expérience pour le moment. Veuillez actualiser la page pour réessayer.",
+      "emptyTitle": "Ajoutez votre parcours professionnel",
+      "emptyDescription": "Montrez aux recruteurs les postes que vous avez occupés et votre impact.",
+      "addButton": "+ Ajouter une expérience",
+      "editWorkPreferencesAriaLabel": "Modifier les préférences de travail",
+      "editPreferences": "Modifier les préférences",
+      "addWorkPreferences": "Ajouter des préférences de travail",
+      "yearsExperience": "{count, plural, one {# an} other {# ans}} d'expérience",
+      "present": "Aujourd'hui",
+      "editAriaLabel": "Modifier {position}",
+      "deleteAriaLabel": "Supprimer {position}",
+      "employmentTypes": {
+        "FULL_TIME": "Temps plein",
+        "PART_TIME": "Temps partiel",
+        "CONTRACT": "Contrat",
+        "INTERNSHIP": "Stage",
+        "FREELANCE": "Freelance",
+        "TEMPORARY": "Temporaire",
+        "VOLUNTEER": "Bénévolat"
+      },
+      "deleteDialog": {
+        "title": "Supprimer l'expérience ?",
+        "descriptionWithName": "Êtes-vous sûr de vouloir supprimer <bold>\"{position}\"</bold> chez {companyName} ? Cette action est irréversible.",
+        "descriptionFallback": "Êtes-vous sûr de vouloir supprimer cette expérience ? Cette action est irréversible."
+      },
+      "toasts": {
+        "updated": "Expérience mise à jour avec succès.",
+        "added": "Expérience ajoutée avec succès.",
+        "genericError": "Une erreur s'est produite. Veuillez réessayer.",
+        "removed": "Expérience supprimée avec succès.",
+        "removeError": "Échec de la suppression de l'expérience. Veuillez réessayer."
+      },
+      "modal": {
+        "editTitle": "Modifier l'expérience",
+        "addTitle": "Ajouter une expérience",
+        "description": "Ajoutez votre parcours professionnel pour montrer aux recruteurs ce que vous avez construit et dirigé.",
+        "positionLabel": "Poste",
+        "positionPlaceholder": "ex. Designer produit senior",
+        "positionRequired": "Le poste est requis.",
+        "companyLabel": "Entreprise",
+        "companyPlaceholder": "ex. Twitter",
+        "companyRequired": "L'entreprise est requise.",
+        "employmentTypeLabel": "Type de contrat",
+        "selectOption": "Sélectionner une option",
+        "startDateLabel": "Date de début",
+        "startDateRequired": "La date de début est requise.",
+        "startDateFuture": "La date de début ne peut pas être dans le futur.",
+        "startDatePlaceholder": "Sélectionner la date de début",
+        "endDateLabel": "Date de fin",
+        "currentlyWorkHere": "Je travaille actuellement ici",
+        "currentlyWorkingNoEndDate": "Poste actuel — aucune date de fin",
+        "endDateRequired": "La date de fin est requise.",
+        "endDateFuture": "La date de fin ne peut pas être dans le futur.",
+        "endDateBeforeStart": "La date de fin ne peut pas être antérieure à la date de début.",
+        "endDatePlaceholder": "Sélectionner la date de fin",
+        "descriptionLabel": "Description",
+        "descriptionPlaceholder": "Décrivez vos responsabilités, réalisations et impact dans ce poste.",
+        "cancel": "Annuler",
+        "updateSubmit": "Mettre à jour l'expérience",
+        "saveSubmit": "Enregistrer l'expérience"
+      }
+    },
+    "resume": {
+      "sectionTitle": "CV",
+      "uploadAriaLabel": "Téléverser un CV",
+      "loadError": "Nous n'avons pas pu charger vos CV pour le moment. Veuillez actualiser la page pour réessayer.",
+      "emptyTitle": "Aucun CV pour le moment",
+      "emptyDescription": "Téléversez un CV pour postuler aux offres en un clic.",
+      "uploadButton": "Téléverser un CV",
+      "defaultBadge": "Par défaut",
+      "autofillAriaLabel": "Pré-remplir le profil à partir de {fileName}",
+      "isDefaultAriaLabel": "{fileName} est votre CV par défaut",
+      "setDefaultAriaLabel": "Définir {fileName} comme CV par défaut",
+      "downloadAriaLabel": "Télécharger {fileName}",
+      "deleteAriaLabel": "Supprimer {fileName}",
+      "deleteDialog": {
+        "title": "Supprimer le CV ?",
+        "descriptionWithName": "Êtes-vous sûr de vouloir supprimer <bold>\"{fileName}\"</bold> ? Cette action est irréversible.",
+        "descriptionFallback": "Êtes-vous sûr de vouloir supprimer ce CV ? Cette action est irréversible."
+      },
+      "toasts": {
+        "removed": "CV supprimé avec succès.",
+        "removeError": "Échec de la suppression du CV. Veuillez réessayer.",
+        "defaultUpdated": "CV par défaut mis à jour.",
+        "defaultError": "Échec de la définition du CV par défaut. Veuillez réessayer.",
+        "uploaded": "CV téléversé avec succès.",
+        "genericError": "Une erreur s'est produite. Veuillez réessayer."
+      },
+      "modal": {
+        "title": "Téléverser un CV",
+        "description": "Ajoutez un CV pour que les recruteurs et vos candidatures puissent accéder à votre CV le plus récent.",
+        "fileRequired": "Veuillez sélectionner un fichier de CV à téléverser.",
+        "fileLabel": "Fichier du CV",
+        "cancel": "Annuler",
+        "uploadSubmit": "Téléverser le CV"
+      },
+      "autofill": {
+        "title": "Pré-remplissage depuis le CV",
+        "description": "Nous allons lire {fileName} et proposer des informations de profil à examiner. Rien n'est ajouté automatiquement à votre profil.",
+        "thisResume": "ce CV",
+        "checkExisting": "Vérifier s'il existe déjà une suggestion",
+        "checking": "Vérification…",
+        "noSuggestionFound": "Aucune suggestion trouvée pour ce CV pour le moment.",
+        "generating": "Génération…",
+        "generateButton": "Générer des suggestions",
+        "fields": {
+          "headline": "Titre",
+          "bio": "Bio",
+          "skills": "Compétences",
+          "experience": "Expérience",
+          "education": "Formation",
+          "certifications": "Certifications"
+        },
+        "copyHint": "Copiez vous-même les informations souhaitées dans les sections de profil correspondantes, ou ignorez cette suggestion.",
+        "close": "Fermer",
+        "discarding": "Suppression...",
+        "discardButton": "Ignorer la suggestion",
+        "toasts": {
+          "generated": "Suggestions générées à partir de votre CV.",
+          "generateError": "Impossible de générer des suggestions. Veuillez réessayer.",
+          "discarded": "Suggestion ignorée.",
+          "discardError": "Impossible d'ignorer la suggestion. Veuillez réessayer."
+        }
+      }
+    }
+  },
+  "companiesBrowse": {
+    "shared": {
+      "remoteFallback": "À distance",
+      "noDescriptionFallback": "Aucune description disponible.",
+      "jobsCount": "{count} offres"
+    },
+    "directory": {
+      "heading": "Découvrir les entreprises",
+      "subtitle": "Découvrez des employeurs vérifiés et leurs opportunités.",
+      "searchPlaceholder": "Rechercher des entreprises",
+      "loading": "Chargement des entreprises…",
+      "error": "Impossible de charger les entreprises.",
+      "industryFallback": "Entreprise",
+      "descriptionFallback": "Découvrez cette entreprise et ses postes ouverts."
+    },
+    "hero": {
+      "title": "Trouvez votre  ",
+      "highlight": " entreprise de rêve",
+      "subtitle": "Faites évoluer votre carrière chez des entreprises comme HubSpot, Nike et Dropbox",
+      "popularTags": ["Designer UI", "Chercheur UX", "Android", "Administration"]
+    },
+    "searchHero": {
+      "title": "Trouvez vos  ",
+      "highlight": " entreprises de rêve",
+      "subtitle": "Trouvez les entreprises de rêve pour lesquelles vous rêvez de travailler",
+      "popularTags": ["Twitter, Microsoft, Apple, Facebook"]
+    },
+    "tags": ["Technologie", "Finance", "Santé", "Éducation", "Commerce de détail"],
+    "list": {
+      "header": "Toutes les entreprises",
+      "errorMessage": "Nous n'avons pas pu charger les entreprises pour le moment. Veuillez actualiser la page pour réessayer.",
+      "noResults": "Aucune entreprise ne correspond à votre recherche pour le moment."
+    },
+    "categorySection": {
+      "showLess": "Afficher moins {label}"
+    },
+    "categoryTabs": {
+      "scrollLeft": "Faire défiler les catégories vers la gauche",
+      "scrollRight": "Faire défiler les catégories vers la droite"
+    },
+    "heroSection": {
+      "home": "Accueil",
+      "companiesLink": "Entreprises",
+      "founded": "Fondée",
+      "employees": "Employés",
+      "location": "Lieu",
+      "industry": "Secteur"
+    },
+    "openJobsSection": {
+      "title": "Offres ouvertes",
+      "showAllJobs": "Voir toutes les offres"
+    },
+    "teamSection": {
+      "title": "Équipe",
+      "seeAll": "Voir tout ({count})"
+    },
+    "mobileFilters": {
+      "moreFilters": "Plus de filtres",
+      "apply": "Appliquer"
+    },
+    "listingHeader": {
+      "showingResults": "Affichage de {count} résultats",
+      "sortByLabel": "Trier par :",
+      "gridViewAriaLabel": "Vue en grille",
+      "listViewAriaLabel": "Vue en liste"
+    },
+    "profile": {
+      "notFound": {
+        "title": "Entreprise introuvable",
+        "description": "Cette entreprise a peut-être été supprimée ou le lien est incorrect.",
+        "backLink": "Retour aux entreprises"
+      },
+      "allCompaniesLink": "Toutes les entreprises",
+      "about": "À propos",
+      "galleryImageAlt": "Entreprise",
+      "benefits": "Avantages",
+      "noContent": "Cette entreprise n'a pas encore ajouté de photos ou d'avantages.",
+      "visitWebsite": "Visiter le site web",
+      "employeesSuffix": "employés",
+      "employeesCount": "{size} employés",
+      "details": {
+        "title": "Détails de l'entreprise",
+        "industry": "Secteur",
+        "companySize": "Taille de l'entreprise",
+        "locations": "Emplacements",
+        "techStack": "Stack technique"
+      }
+    }
+  },
+  "findJobs": {
+    "hero": {
+      "title": "Trouvez votre  ",
+      "highlight": " emploi de rêve",
+      "subtitle": "Faites évoluer votre carrière chez des entreprises comme HubSpot, Nike et Dropbox",
+      "popularTags": ["Designer UI", "Chercheur UX", "Android", "Administration"]
+    },
+    "popularTags": ["Technologie", "Finance", "Santé", "Éducation", "Commerce de détail"],
+    "searchHeader": {
+      "placeholder": "Titre du poste ou mot-clé"
+    },
+    "search": {
+      "selectLocation": "Sélectionner un lieu",
+      "remoteOption": "À distance",
+      "searchButton": "Rechercher un emploi",
+      "popularLabel": "Populaire"
+    },
+    "listing": {
+      "header": "Toutes les offres",
+      "errorLoading": "Nous n'avons pas pu charger les offres pour le moment. Veuillez actualiser la page pour réessayer.",
+      "noResults": "Aucune offre ne correspond à votre recherche pour le moment."
+    },
+    "jobCard": {
+      "applicantsCount": "<bold>{count}</bold> candidatures",
+      "apply": "Postuler"
+    },
+    "detail": {
+      "loading": "Chargement des détails de l'offre…",
+      "notFound": "Offre introuvable",
+      "noDescription": "Aucune description fournie.",
+      "breadcrumbHome": "Accueil",
+      "shareAlt": "Partager",
+      "remoteFallback": "À distance",
+      "salaryNotDisclosed": "Non communiqué",
+      "applyBeforeFallback": "Non précisé",
+      "postedOnDraftFallback": "Brouillon",
+      "description": {
+        "title": "Description"
+      },
+      "responsibilities": {
+        "title": "Responsabilités",
+        "whoYouAreTitle": "Votre profil",
+        "niceToHaveTitle": "Atouts appréciés"
+      },
+      "summaryCard": {
+        "title": "À propos de ce poste",
+        "applyBefore": "Date limite",
+        "jobPostedOn": "Publiée le",
+        "jobType": "Type de contrat",
+        "salary": "Salaire"
+      },
+      "categories": {
+        "title": "Catégories"
+      },
+      "requiredSkills": {
+        "title": "Compétences requises"
+      },
+      "statusLabel": {
+        "defaultLabel": "Étiquette"
+      },
+      "perks": {
+        "title": "Avantages",
+        "description": "Ce poste s'accompagne de plusieurs avantages conçus pour favoriser votre réussite."
+      },
+      "companyOverview": {
+        "readMore": "En savoir plus sur {company}",
+        "imageAlts": {
+          "main": "Photo de l'entreprise",
+          "topRight": "Photo de l'entreprise",
+          "bottomRight": "Photo de l'entreprise"
+        }
+      },
+      "similarJobs": {
+        "title": "Offres similaires",
+        "showAll": "Voir toutes les offres"
+      }
+    },
+    "apply": {
+      "applyButton": "Postuler",
+      "signInRequired": "Veuillez vous connecter pour postuler à cette offre.",
+      "requiredFieldsMissing": "Le nom complet et l'e-mail sont requis.",
+      "submitSuccess": "Candidature envoyée avec succès.",
+      "submitError": "Une erreur s'est produite. Veuillez réessayer.",
+      "header": {
+        "remoteFallback": "À distance",
+        "close": "Fermer"
+      },
+      "form": {
+        "introTitle": "Envoyez votre candidature",
+        "introSubtitle": "Les informations suivantes sont requises et ne seront partagées qu'avec {company}.",
+        "fields": {
+          "fullName": { "label": "Nom complet", "placeholder": "Entrez votre nom complet" },
+          "email": { "label": "Adresse e-mail", "placeholder": "Entrez votre adresse e-mail" },
+          "phone": { "label": "Numéro de téléphone", "placeholder": "Entrez votre numéro de téléphone" },
+          "currentJobTitle": { "label": "Poste actuel ou précédent", "placeholder": "Quel est votre poste actuel ou précédent ?" },
+          "linkedinUrl": { "label": "URL LinkedIn", "placeholder": "Lien vers votre profil LinkedIn" },
+          "portfolioUrl": { "label": "URL du portfolio", "placeholder": "Lien vers votre portfolio" }
+        },
+        "linksSectionTitle": "LIENS",
+        "additionalInfoLabel": "Informations complémentaires",
+        "coverLetterPlaceholder": "Ajoutez une lettre de motivation ou toute autre information à partager",
+        "toolbar": {
+          "bold": "Gras",
+          "italic": "Italique",
+          "underline": "Souligné",
+          "orderedList": "Liste numérotée",
+          "link": "Lien"
+        },
+        "charCount": "{count} / {max}",
+        "maxCharsNote": "500 caractères maximum",
+        "loadingResumes": "Chargement des CV…",
+        "selectResume": "Sélectionner un CV",
+        "defaultResumeSuffix": " (Par défaut)",
+        "noResumes": "Aucun CV téléversé pour le moment",
+        "attachResume": "Joindre un CV"
+      },
+      "footer": {
+        "submitting": "Envoi en cours...",
+        "submit": "Envoyer la candidature",
+        "terms": "En envoyant cette demande, vous confirmez accepter nos <terms>Conditions d'utilisation</terms> et notre <privacy>Politique de confidentialité</privacy>"
+      }
+    }
   }
 }

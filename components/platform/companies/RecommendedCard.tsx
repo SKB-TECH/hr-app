@@ -1,6 +1,7 @@
 import type { RecommendedCompany } from "@/data/companies";
 import CompanyLogo from "./CompanyLogo";
 import { Link } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
 
 type RecommendedCardProps = {
   company: RecommendedCompany;
@@ -13,14 +14,15 @@ const tagVariantStyles: Record<string, string> = {
   education: "bg-red-50 text-red-500",
 };
 
-export default function RecommendedCard({ company }: RecommendedCardProps) {
+export default async function RecommendedCard({ company }: RecommendedCardProps) {
+  const t = await getTranslations("companiesBrowse");
   return (
     <article className="flex flex-col gap-4 p-6 border border-gray-200 bg-white min-h-full">
       {/* Top: logo + jobs count */}
       <div className="flex items-start justify-between gap-3">
         <CompanyLogo name={company.name} src={company.logo} size={48} />
         <span className="text-[14px] font-semibold text-indigo-600 whitespace-nowrap rounded-full bg-indigo-50 px-2 py-0.5">
-          {company.jobs} Jobs
+          {t("shared.jobsCount", { count: company.jobs })}
         </span>
       </div>
 

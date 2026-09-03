@@ -1,6 +1,7 @@
 "use client";
 
 import { format, parseISO } from "date-fns";
+import { useTranslations } from "next-intl";
 import {
   PencilSquareIcon,
   TrashIcon,
@@ -29,15 +30,22 @@ export default function ExperienceItem({
   onEdit,
   onDelete,
 }: ExperienceItemProps) {
+  const t = useTranslations("candidateProfileSections");
   const startLabel = formatExperienceDate(experience.startDate);
   const endLabel = experience.isCurrent
-    ? "Present"
+    ? t("experience.present")
     : experience.endDate
       ? formatExperienceDate(experience.endDate)
-      : "Present";
+      : t("experience.present");
   const locationLabel = [experience.cityName, experience.countryName]
     .filter(Boolean)
     .join(", ");
+
+  const employmentTypeLabel = experience.employmentType
+    ? t.has(`experience.employmentTypes.${experience.employmentType}`)
+      ? t(`experience.employmentTypes.${experience.employmentType}`)
+      : experience.employmentType
+    : null;
 
   return (
     <div
@@ -56,7 +64,7 @@ export default function ExperienceItem({
             <button
               type='button'
               onClick={() => onEdit(experience)}
-              aria-label={`Edit ${experience.position}`}
+              aria-label={t("experience.editAriaLabel", { position: experience.position })}
               className='cursor-pointer border border-gray-200 p-1.5 hover:border-brand'
             >
               <PencilSquareIcon className='w-4 h-4 text-brand' />
@@ -64,7 +72,7 @@ export default function ExperienceItem({
             <button
               type='button'
               onClick={() => onDelete(experience)}
-              aria-label={`Delete ${experience.position}`}
+              aria-label={t("experience.deleteAriaLabel", { position: experience.position })}
               className='cursor-pointer border border-gray-200 p-1.5 hover:border-red-300'
             >
               <TrashIcon className='w-4 h-4 text-[#FF6550]' />
@@ -76,24 +84,10 @@ export default function ExperienceItem({
           <span className='font-semibold text-[#202430]'>
             {experience.companyName}
           </span>
-          {experience.employmentType && (
+          {employmentTypeLabel && (
             <>
               <span className='text-gray-300'>•</span>
-              <span>
-                {experience.employmentType === "FULL_TIME"
-                  ? "Full Time"
-                  : experience.employmentType === "PART_TIME"
-                    ? "Part Time"
-                    : experience.employmentType === "CONTRACT"
-                      ? "Contract"
-                      : experience.employmentType === "INTERNSHIP"
-                        ? "Internship"
-                        : experience.employmentType === "FREELANCE"
-                          ? "Freelance"
-                          : experience.employmentType === "TEMPORARY"
-                            ? "Temporary"
-                            : experience.employmentType === "VOLUNTEER"}
-              </span>
+              <span>{employmentTypeLabel}</span>
             </>
           )}
           <span className='text-gray-300'>•</span>

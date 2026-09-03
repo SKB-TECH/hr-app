@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
 type PostJobsCtaProps = {
   copy: {
@@ -9,10 +10,12 @@ type PostJobsCtaProps = {
   };
 };
 
-export default function PostJobsCta({ copy }: PostJobsCtaProps) {
+export default async function PostJobsCta({ copy }: PostJobsCtaProps) {
+  const t = await getTranslations("landing");
+
   return (
     <section
-      aria-label="Post jobs call to action"
+      aria-label={t("postJobsCta.ariaLabel")}
       className="relative w-full overflow-hidden mb-14 min-h-[380px]"
     >
       {/* Background SVG — fills full height including mockup on mobile */}
@@ -65,7 +68,7 @@ export default function PostJobsCta({ copy }: PostJobsCtaProps) {
             <div className="w-full block leading-none">
               <Image
                 src="/logo/dashboard-preview.png"
-                alt="Dashboard preview"
+                alt={t("postJobsCta.dashboardPreviewAlt")}
                 width={480}
                 height={360}
                 style={{ width: "100%", height: "auto" }}

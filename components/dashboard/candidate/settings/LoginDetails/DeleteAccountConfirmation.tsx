@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface DeleteAccountConfirmationProps {
   isModalOpen: boolean;
@@ -22,6 +23,8 @@ function DeleteAccountConfirmation({
   isPending,
   handleDelete,
 }: DeleteAccountConfirmationProps) {
+  const t = useTranslations("candidateSettings.loginDetails.deleteAccount");
+
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DialogContent className="max-w-md p-6 rounded-lg bg-white border border-brand-light-neutral shadow-xl">
@@ -32,12 +35,10 @@ function DeleteAccountConfirmation({
 
           <DialogHeader className="p-0 gap-1.5">
             <DialogTitle className="text-lg font-bold font-epilogue text-neutral-100">
-              Close Account?
+              {t("title")}
             </DialogTitle>
             <DialogDescription className="text-sm text-neutral-60 font-epilogue leading-relaxed">
-              Are you sure you want to close your account? This action is
-              permanent and will remove all your profile data, application
-              history, and saved preferences. This action cannot be undone.
+              {t("description")}
             </DialogDescription>
           </DialogHeader>
         </div>
@@ -50,7 +51,7 @@ function DeleteAccountConfirmation({
             disabled={isPending}
             className="w-full sm:w-auto h-11 px-5 border-gray-300 text-neutral-100 font-semibold hover:bg-gray-50 rounded-lg"
           >
-            Cancel
+            {t("cancel")}
           </Button>
           <Button
             type="button"
@@ -61,10 +62,10 @@ function DeleteAccountConfirmation({
             {isPending ? (
               <>
                 <Loader2 className="size-4 animate-spin" />
-                Closing Account...
+                {t("confirming")}
               </>
             ) : (
-              "Delete Account"
+              t("confirm")
             )}
           </Button>
         </DialogFooter>

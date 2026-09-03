@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   PlusIcon,
   BriefcaseIcon,
@@ -22,15 +23,13 @@ import {
 import type { CandidateExperience } from "@/core/types/candidate-experience";
 
 export default function ExperiencesSection() {
+  const t = useTranslations("candidateProfileSections");
   const { data: profile } = useMyCandidateProfile();
   const {
     data: experiences = [],
     isLoading,
     isError,
   } = useCandidateExperiences();
-
-  // console.log("ExperiencesSection profile:", profile);
-  console.log("ExperiencesSection experiences:", experiences);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [editingExperience, setEditingExperience] =
@@ -61,7 +60,7 @@ export default function ExperiencesSection() {
 
   const preferenceChips = [
     details?.yearsExperience != null
-      ? `${details.yearsExperience} ${details.yearsExperience === 1 ? "year" : "years"} experience`
+      ? t("experience.yearsExperience", { count: details.yearsExperience })
       : null,
     workTypeLabel,
     availabilityLabel,
@@ -70,11 +69,11 @@ export default function ExperiencesSection() {
   return (
     <div className='bg-white border border-gray-200 p-6'>
       <div className='flex items-center justify-between mb-3'>
-        <h2 className='text-[20px] font-bold text-[#25324B]'>Experience</h2>
+        <h2 className='text-[20px] font-bold text-[#25324B]'>{t("experience.sectionTitle")}</h2>
         <button
           type='button'
           onClick={openAddModal}
-          aria-label='Add experience'
+          aria-label={t("experience.addAriaLabel")}
           className='cursor-pointer border border-gray-200 p-1.5 hover:border-brand'
         >
           <PlusIcon className='w-4 h-4 text-brand' />
@@ -94,13 +93,13 @@ export default function ExperiencesSection() {
           <button
             type='button'
             onClick={() => setPreferencesOpen(true)}
-            aria-label='Edit work preferences'
+            aria-label={t("experience.editWorkPreferencesAriaLabel")}
             className='inline-flex cursor-pointer items-center gap-1 text-[12px] font-medium text-gray-400 hover:text-brand'
           >
             <PencilSquareIcon className='h-3.5 w-3.5' />
             {preferenceChips.length > 0
-              ? "Edit preferences"
-              : "Add work preferences"}
+              ? t("experience.editPreferences")
+              : t("experience.addWorkPreferences")}
           </button>
         </div>
       )}
@@ -109,8 +108,7 @@ export default function ExperiencesSection() {
 
       {!isLoading && isError && (
         <p className='text-[14px] text-gray-500'>
-          We couldn&apos;t load your experience right now. Please refresh the
-          page to try again.
+          {t("experience.loadError")}
         </p>
       )}
 
@@ -120,18 +118,17 @@ export default function ExperiencesSection() {
             <BriefcaseIcon className='h-5 w-5' />
           </span>
           <p className='text-[15px] font-medium text-[#202430]'>
-            Add your work history
+            {t("experience.emptyTitle")}
           </p>
           <p className='text-[14px] text-gray-500'>
-            Show recruiters the roles you&apos;ve held and the impact
-            you&apos;ve made.
+            {t("experience.emptyDescription")}
           </p>
           <button
             type='button'
             onClick={openAddModal}
             className='mt-2 cursor-pointer text-[14px] font-semibold text-brand hover:text-indigo-800 transition-colors'
           >
-            + Add Experience
+            {t("experience.addButton")}
           </button>
         </div>
       )}
@@ -142,7 +139,7 @@ export default function ExperiencesSection() {
           onClick={openAddModal}
           className='mt-2 cursor-pointer text-[14px] font-semibold text-brand hover:text-indigo-800 transition-colors'
         >
-          + Add Experience
+          {t("experience.addButton")}
         </button>
       )}
 
