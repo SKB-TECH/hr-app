@@ -4,6 +4,7 @@ import FormSection from "./FormSection";
 import SalaryRange from "./SalaryRange";
 import SkillInput from "./SkillInput";
 import { JobData } from "./types";
+import { usePlatformReferences } from "@/core/hooks/references/use-platform-references";
 
 const employmentTypes = [
   "Full-Time",
@@ -11,14 +12,6 @@ const employmentTypes = [
   "Remote",
   "Internship",
   "Contract",
-];
-
-const categories = [
-  "Design",
-  "Development",
-  "Marketing",
-  "Business",
-  "Finance",
 ];
 
 interface JobInformationProps {
@@ -30,6 +23,8 @@ export default function JobInformation({
   data,
   updateData,
 }: JobInformationProps) {
+  const { data: categories = [], isLoading: categoriesLoading } =
+    usePlatformReferences("job_category");
   const toggleEmploymentType = (type: string) => {
     const updatedTypes = data.employmentTypes.includes(type)
       ? data.employmentTypes.filter((item) => item !== type)
@@ -150,12 +145,12 @@ export default function JobInformation({
           className="w-80 border border-gray-300 px-4 py-3 outline-none focus:border-indigo-600 text-neutral-"
         >
           <option value="" className="">
-            Select Category
+            {categoriesLoading ? "Loading categories..." : "Select Category"}
           </option>
 
           {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
+            <option key={category.id} value={category.code}>
+              {category.name}
             </option>
           ))}
         </select>

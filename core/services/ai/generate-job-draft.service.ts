@@ -2,6 +2,10 @@ import { apiRequest } from "@/core/lib/api-client";
 
 export type GeneratedJobDraft = {
   title: string;
+  location: string | null;
+  employmentTypes: string[];
+  category: string | null;
+  salary: { min: number; max: number } | null;
   summary: string;
   responsibilities: string[];
   requiredSkills: string[];
@@ -10,6 +14,11 @@ export type GeneratedJobDraft = {
   education: string[];
   languages: string[];
   keywords: string[];
+  benefits: Array<{
+    title: string;
+    description: string;
+    icon: "Healthcare" | "Remote" | "Vacation" | "Gym" | "Learning";
+  }>;
 };
 
 export const generateJobDraft = (evidence: Record<string, unknown>) =>

@@ -41,4 +41,9 @@ export type SetupPasswordInput = { password: string; confirmPassword: string };
 
 export type RequestPasswordResetInput = { email: string };
 export type ConfirmPasswordResetOtpInput = { requestId: string; otp: string };
-export type SetNewPasswordInput = { password: string; confirmPassword: string };
+export type ConfirmPasswordResetOtpResult = { resetToken: string };
+export type SetNewPasswordInput = {
+  resetToken: string;
+  newPassword: string;
+  confirmPassword: string;
+};

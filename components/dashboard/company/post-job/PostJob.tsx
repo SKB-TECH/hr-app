@@ -21,6 +21,7 @@ export default function PostJob() {
   const createJob = useCreateCompanyJob(company.data?.id || "");
 
   const [currentStep, setCurrentStep] = useState(1);
+  const [showEditor, setShowEditor] = useState(false);
 
   const [jobData, setJobData] = useState<JobData>({
     jobTitle: "",
@@ -34,29 +35,7 @@ export default function PostJob() {
     responsibilities: "",
     whoYouAre: "",
     niceToHave: "",
-    benefits: [
-      {
-        id: 1,
-        title: "Full Healthcare",
-        description:
-            "We believe in thriving communities and that starts with our team being happy and healthy.",
-        icon: "Healthcare",
-      },
-      {
-        id: 2,
-        title: "Unlimited Vacation",
-        description:
-            "We believe you should have a flexible schedule that makes space for family, wellness, and fun.",
-        icon: "Remote",
-      },
-      {
-        id: 3,
-        title: "Skill Development",
-        description:
-            "We believe in always learning and leveling up our skills. Whether it's a conference or online course.",
-        icon: "Vacation",
-      },
-    ],
+    benefits: [],
   });
 
   const updateData = (values: Partial<JobData>) => {
@@ -81,6 +60,16 @@ export default function PostJob() {
   const handleSubmit = async (status: "DRAFT" | "LIVE") => {
     if (!company.data) {
       toast.error("Create your company profile first");
+      return;
+    }
+    if (!jobData.jobTitle.trim()) {
+      toast.error("Le titre du poste est obligatoire");
+      setCurrentStep(1);
+      return;
+    }
+    if (status === "LIVE" && (!jobData.employmentTypes.length || !jobData.jobDescription.trim())) {
+      toast.error("Vérifiez le type de contrat et la description avant publication");
+      setCurrentStep(!jobData.employmentTypes.length ? 1 : 2);
       return;
     }
 
@@ -123,9 +112,26 @@ export default function PostJob() {
           </Link>
         </div>
 
-        <Stepper currentStep={currentStep} />
+        {!showEditor && <AiJobGenerator
+            data={jobData}
+            updateData={updateData}
+            companyName={company.data?.name || "Company"}
+            industry={company.data?.industry}
+            saving={createJob.isPending}
+            onGenerated={() => setCurrentStep(1)}
+            onReview={() => {
+              setCurrentStep(1);
+              setShowEditor(true);
+            }}
+            onManual={() => {
+              setCurrentStep(1);
+              setShowEditor(true);
+            }}
+            onSave={(status) => void handleSubmit(status)}
+        />}
 
-        <AiJobGenerator data={jobData} updateData={updateData} companyName={company.data?.name || "Company"} industry={company.data?.industry}/>
+        {showEditor && <>
+        <Stepper currentStep={currentStep} />
 
         {currentStep === 1 && (
             <JobInformation data={jobData} updateData={updateData} />
@@ -177,6 +183,7 @@ export default function PostJob() {
               </button></div>
           )}
         </div>
+        </>}
       </section>
   );
 }

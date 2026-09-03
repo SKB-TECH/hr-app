@@ -22,6 +22,7 @@ export default function ForgotPasswordPage() {
   const [step, setStep] = useState<Step>("email");
   const [email, setEmail] = useState("");
   const [requestId, setRequestId] = useState("");
+  const [resetToken, setResetToken] = useState("");
   const [otp, setOtp] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -41,7 +42,8 @@ export default function ForgotPasswordPage() {
   async function submitOtp(event: FormEvent) {
     event.preventDefault();
     try {
-      await confirm.mutateAsync({ requestId, otp });
+      const result = await confirm.mutateAsync({ requestId, otp });
+      setResetToken(result.resetToken);
       setStep("password");
       toast.success("Code verified");
     } catch (error) { fail(error); }
@@ -51,9 +53,13 @@ export default function ForgotPasswordPage() {
     event.preventDefault();
     if (password !== confirmPassword) return toast.error("Passwords do not match.");
     try {
-      await setNewPassword.mutateAsync({ password, confirmPassword });
+      const user = await setNewPassword.mutateAsync({
+        resetToken,
+        newPassword: password,
+        confirmPassword,
+      });
       toast.success("Password reset successfully");
-      router.replace("/candidate");
+      router.replace(user.activeProfile === "COMPANY" ? "/company" : "/candidate");
     } catch (error) { fail(error); }
   }
 
