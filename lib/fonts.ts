@@ -1,22 +1,21 @@
-import { Epilogue, Red_Hat_Display, Inter } from "next/font/google";
 import localFont from "next/font/local";
 
-export const epilogue = Epilogue({
+export const epilogue = localFont({
+  src: "../public/fonts/clash-display/ClashDisplay-Variable.woff2",
   variable: "--font-epilogue",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
+  display: "swap",
 });
 
-export const redHat = Red_Hat_Display({
+export const redHat = localFont({
+  src: "../public/fonts/clash-display/ClashDisplay-Variable.woff2",
   variable: "--font-red-hat",
-  weight: ["300", "400", "500", "700"],
-  subsets: ["latin"],
+  display: "swap",
 });
 
-export const inter = Inter({
+export const inter = localFont({
+  src: "../public/fonts/clash-display/ClashDisplay-Variable.woff2",
   variable: "--font-inter",
-  weight: ["300", "400", "500", "700"],
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const clashDisplay = localFont({
@@ -27,4 +26,5 @@ export const clashDisplay = localFont({
     },
   ],
   variable: "--font-clash-display",
+  display: "swap",
 });
