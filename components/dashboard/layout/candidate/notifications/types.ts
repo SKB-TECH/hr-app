@@ -23,4 +23,5 @@ export interface NotificationItem {
   timestamp: string;
   badge?: NotificationBadge;
   interviewCard?: InterviewCardData;
+  conversationId?: string;
 }

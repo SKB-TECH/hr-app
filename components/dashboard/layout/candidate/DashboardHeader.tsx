@@ -11,9 +11,6 @@ interface DashboardHeaderProps {
   pathname: string;
 }
 
-const HAS_NOTIFICATIONS = true;
-const NOTIFICATION_COUNT = 4;
-
 export default function DashboardHeader({
   pathname,
   toggleMobileMenu,
@@ -63,11 +60,7 @@ export default function DashboardHeader({
             />
           </Link>
 
-          <NotificationBell
-            hasNotifications={HAS_NOTIFICATIONS}
-            notificationCount={NOTIFICATION_COUNT}
-            role="candidate"
-          />
+          <NotificationBell role="candidate" />
         </div>
       </div>
     </header>

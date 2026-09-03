@@ -15,9 +15,6 @@ import { Check, Building2 } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-const HAS_NOTIFICATIONS = true;
-const NOTIFICATION_COUNT = 4;
-
 export default function CompanyDashboardHeader({
   toggleMobileMenu,
 }: CandidateMobileSidebarProps) {
@@ -68,11 +65,7 @@ export default function CompanyDashboardHeader({
         <LanguageSwitcher />
 
         {/* Notifications */}
-        <NotificationBell
-          hasNotifications={HAS_NOTIFICATIONS}
-          notificationCount={NOTIFICATION_COUNT}
-          role="company"
-        />
+        <NotificationBell role="company" />
 
         {/* Desktop button */}
         <Button

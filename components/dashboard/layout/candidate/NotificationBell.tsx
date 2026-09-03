@@ -5,19 +5,25 @@ import { NotificationPopup } from "./notifications/NotificationPopup";
 import { UserRoles } from "@/data/SidebarNavigations";
 
 interface NotificationBellProps {
-  hasNotifications: boolean;
-  notificationCount: number;
   role?: UserRoles;
 }
 export function NotificationBell({
-  hasNotifications,
-  notificationCount,
   role = "candidate",
 }: NotificationBellProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [notificationCount, setNotificationCount] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const hasNotifications = notificationCount > 0;
   // Close the popup when the user clicks anywhere outside this component
   useEffect(() => {
+    const updateCount = (event?: Event) => {
+      const count = event instanceof CustomEvent
+        ? Number(event.detail)
+        : Number(localStorage.getItem("messages:unread"));
+      setNotificationCount(Number.isFinite(count) ? count : 0);
+    };
+    updateCount();
+    window.addEventListener("messages:unread", updateCount);
     function handleClickOutside(event: MouseEvent) {
       if (
         containerRef.current &&
@@ -27,7 +33,10 @@ export function NotificationBell({
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("messages:unread", updateCount);
+    };
   }, []);
   return (
     <div ref={containerRef} className="relative">
