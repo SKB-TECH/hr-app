@@ -1,12 +1,13 @@
+"use client";
+
 import { SectionTitle } from "@/components/ui/Title";
-import { FeaturedJob } from "@/data/featuredJob";
-import { featuredJobsData } from "@/data/featuredJob";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-import { getTranslations } from "next-intl/server";
-
-const marqueeJobs = [...featuredJobsData, ...featuredJobsData];
+import { useTranslations } from "next-intl";
+import { useJobs } from "@/core/hooks/jobs/use-jobs";
+import type { CompanyJob } from "@/core/types/job";
+import { humanizeEmploymentType } from "@/core/lib/format";
 
 const tagStyles: Record<string, string> = {
   Marketing: "bg-accent-light-yellow  text-accent-yellow  ",
@@ -22,7 +23,7 @@ function FeaturedJobCard({
   isDuplicate = false,
   fullTimeLabel,
 }: {
-  job: FeaturedJob;
+  job: CompanyJob;
   isDuplicate?: boolean;
   fullTimeLabel: string;
 }) {
@@ -35,14 +36,14 @@ function FeaturedJobCard({
     >
       <div className="flex justify-between items-start gap-4">
         <Image
-          src={job.companyLogo}
-          alt={`${job.companyName} logo`}
+          src={job.companyLogoUrl || "/logo/lgo.png"}
+          alt={`${job.companyName || job.title} logo`}
           width={48}
           height={48}
           className="object-contain flex-none"
         />
         <span className="text-xs font-semibold text-brand border border-brand px-2 py-1 whitespace-nowrap">
-          {fullTimeLabel}
+          {job.employmentTypes[0] ? humanizeEmploymentType(job.employmentTypes[0]) : fullTimeLabel}
         </span>
       </div>
 
@@ -54,9 +55,7 @@ function FeaturedJobCard({
           {job.title}
         </Link>
         <p className="text-[14px] font-epilogue text-neutral-100 mt-1 flex items-center gap-1.5">
-          <Link href={`/companies/${job.id}`} className="truncate">
-            {job.companyName}
-          </Link>
+          <Link href={`/companies/${job.companyId}`} className="truncate">{job.companyName || "—"}</Link>
           <span className="text-gray-400" aria-hidden="true">
             &bull;
           </span>
@@ -65,11 +64,11 @@ function FeaturedJobCard({
       </div>
 
       <p className="text-[14px] text-neutral-60 leading-relaxed">
-        {job.description}
+        {job.description || "—"}
       </p>
 
       <div className="flex flex-wrap gap-2 mt-auto">
-        {job.tags.map((tag) => (
+        {[...(job.category ? [job.category] : []), ...job.skills.slice(0, 2)].map((tag) => (
           <span
             key={tag}
             className={`inline-flex items-center justify-center text-center text-[14px] px-2 py-1 md:px-4 md:py-1.5 rounded-full font-medium ${tagStyles[tag] ?? defaultTag}`}
@@ -82,8 +81,11 @@ function FeaturedJobCard({
   );
 }
 
-export default async function FeaturedJobsSection() {
-  const t = await getTranslations("landing");
+export default function FeaturedJobsSection() {
+  const t = useTranslations("landing");
+  const jobs = useJobs({ status: "LIVE", limit: 8 });
+  const sourceJobs = jobs.data?.data ?? [];
+  const marqueeJobs = [...sourceJobs, ...sourceJobs];
   const fullTimeLabel = t("featuredJobs.fullTimeBadge");
 
   return (
@@ -99,14 +101,15 @@ export default async function FeaturedJobsSection() {
 
         <div className="mt-6 overflow-hidden md:mt-1 max-md:-mx-4 max-md:px-4">
           <div className="max-md:flex md:grid md:grid-cols-3 lg:grid-cols-4 w-max gap-4 max-md:animate-[featured-jobs-marquee_100s_linear_infinite] max-md:hover:[animation-play-state:paused] max-md:focus-within:[animation-play-state:paused] motion-reduce:animate-none md:w-auto md:flex-wrap md:items-stretch md:justify-between">
-            {marqueeJobs.map((job: FeaturedJob, index) => (
+            {marqueeJobs.map((job, index) => (
               <FeaturedJobCard
                 key={`${job.id}-${index}`}
                 job={job}
-                isDuplicate={index >= featuredJobsData.length}
+                isDuplicate={index >= sourceJobs.length}
                 fullTimeLabel={fullTimeLabel}
               />
             ))}
+            {!jobs.isPending && sourceJobs.length === 0 && <p className="py-8 text-sm text-neutral-60">Aucune offre publiée pour le moment.</p>}
           </div>
         </div>
         {/* Show all jobs — mobile only, below the list */}

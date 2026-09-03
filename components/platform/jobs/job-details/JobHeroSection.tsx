@@ -6,6 +6,7 @@ import { Link } from "@/i18n/routing";
 import TriggerApplicationForm from "./job-application-form/TriggerApplicationForm";
 import type { CompanyJob } from "@/core/types/job";
 import { humanizeEmploymentType } from "@/core/lib/format";
+import ShareJobButton from "./ShareJobButton";
 
 interface JobHeroSectionProps {
   job: CompanyJob;
@@ -64,14 +65,7 @@ export default function JobHeroSection({
                     className="object-cover"
                   />
                 </div>
-                <button className="md:hidden text-[#7C8493] hover:text-[#4640DE] transition-colors cursor-pointer">
-                  <Image
-                    src="/linkIcon.png"
-                    alt={t("detail.shareAlt")}
-                    width={28}
-                    height={28}
-                  />
-                </button>
+                <ShareJobButton title={job.title} label={t("detail.shareAlt")} className="md:hidden" />
               </div>
 
               <div className="flex-1">
@@ -90,9 +84,7 @@ export default function JobHeroSection({
             </div>
 
             <div className="flex md:flex-row flex-col md:items-center gap-6 md:gap-8">
-              <button className="hidden md:block text-[#7C8493] hover:text-[#4640DE] transition-colors cursor-pointer">
-                <Image src="/linkIcon.png" alt={t("detail.shareAlt")} width={28} height={28} />
-              </button>
+              <ShareJobButton title={job.title} label={t("detail.shareAlt")} className="hidden md:block" />
 
               <div className="hidden md:block w-px h-14 bg-[#D6DDEB]" />
 

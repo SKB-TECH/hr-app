@@ -1,8 +1,11 @@
+"use client";
+
 import { SectionTitle } from "@/components/ui/Title";
-import { latestJobs } from "@/data/latestJobs";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
+import { useJobs } from "@/core/hooks/jobs/use-jobs";
+import { humanizeEmploymentType } from "@/core/lib/format";
 
 const tagStyles: Record<string, string> = {
   "Full-Time": "text-accent-green bg-accent-light-green  ",
@@ -10,8 +13,10 @@ const tagStyles: Record<string, string> = {
   Design: "text-indigo-600 border border-indigo-500 bg-transparent font-bold",
 };
 
-export default async function LatestJobsOpenSection() {
-  const t = await getTranslations("landing");
+export default function LatestJobsOpenSection() {
+  const t = useTranslations("landing");
+  const jobs = useJobs({ status: "LIVE", limit: 8 });
+  const latestJobs = jobs.data?.data ?? [];
 
   return (
     <section className="relative mt-16 min-h-[500px] w-full overflow-hidden py-10">
@@ -52,8 +57,8 @@ export default async function LatestJobsOpenSection() {
               {/* Logo */}
               <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center">
                 <Image
-                  src={job.companyLogo}
-                  alt={job.companyName}
+                  src={job.companyLogoUrl || "/logo/lgo.png"}
+                  alt={job.companyName || job.title}
                   width={56}
                   height={56}
                   className="object-contain"
@@ -69,8 +74,8 @@ export default async function LatestJobsOpenSection() {
                   {job.title}
                 </Link>
                 <p className="text-sm text-gray-400 flex items-center gap-1.5">
-                  <Link href={`/companies/${job.id}`} className="truncate">
-                    {job.companyName}
+                  <Link href={`/companies/${job.companyId}`} className="truncate">
+                    {job.companyName || "—"}
                   </Link>
                   <span className="text-gray-300">•</span>
                   {job.location}
@@ -79,7 +84,7 @@ export default async function LatestJobsOpenSection() {
                 {/* Tags row */}
                 <div className="flex items-center gap-2 flex-wrap mt-1">
                   {/* Category tags */}
-                  {job.tags.map((tag) => (
+                  {[...job.employmentTypes.map(humanizeEmploymentType), ...(job.category ? [job.category] : [])].map((tag) => (
                     <span
                       key={tag}
                       className={`text-xs font-semibold px-3 py-1 rounded-full ${
@@ -94,6 +99,7 @@ export default async function LatestJobsOpenSection() {
               </div>
             </div>
           ))}
+          {!jobs.isPending && latestJobs.length === 0 && <p className="py-8 text-sm text-neutral-60">Aucune offre publiée pour le moment.</p>}
         </div>
       </div>
     </section>
