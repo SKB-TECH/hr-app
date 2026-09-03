@@ -7,6 +7,10 @@ import { useGenerateJobDraft } from "@/core/hooks/ai/use-generate-job-draft";
 import { ApiError } from "@/core/types/api";
 import { usePlatformReferences } from "@/core/hooks/references/use-platform-references";
 import { useSkillsDirectory } from "@/core/hooks/candidate/use-skills-directory";
+import {
+  DEFAULT_JOB_CATEGORIES,
+  JOB_CATEGORY_CODES,
+} from "@/core/constants/job-categories";
 import type { JobData } from "./types";
 
 type Props = {
@@ -28,6 +32,9 @@ export default function AiJobGenerator({ data, updateData, companyName, industry
   const { data: categories = [] } = usePlatformReferences("job_category");
   const { data: benefits = [] } = usePlatformReferences("benefit");
   const { data: skillDirectory = [] } = useSkillsDirectory("");
+  const displayedCategories = categories.length
+    ? categories
+    : DEFAULT_JOB_CATEGORIES;
 
   const submit = () => {
     if (brief.trim().length < 20) return toast.error("Décrivez le poste en au moins 20 caractères");
@@ -57,7 +64,11 @@ export default function AiJobGenerator({ data, updateData, companyName, industry
           jobTitle: draft.title,
           location: draft.location || data.location,
           employmentTypes: draft.employmentTypes.length ? draft.employmentTypes : data.employmentTypes,
-          category: generatedCategory?.code || data.category,
+          category:
+            generatedCategory?.code ||
+            (JOB_CATEGORY_CODES.has(requestedCategory)
+              ? requestedCategory
+              : data.category),
           minSalary: draft.salary?.min ?? data.minSalary,
           maxSalary: draft.salary?.max ?? data.maxSalary,
           jobDescription: draft.summary,
@@ -81,7 +92,7 @@ export default function AiJobGenerator({ data, updateData, companyName, industry
       <label className="text-sm font-semibold text-neutral-100">Titre du poste<input value={data.jobTitle} onChange={(event) => updateData({ jobTitle: event.target.value })} placeholder="Ex. Senior Full-Stack Developer" className="mt-2 h-12 w-full border border-brand-light-neutral bg-white px-3 font-normal outline-none focus:border-brand"/></label>
       <label className="text-sm font-semibold text-neutral-100">Localisation<input value={data.location} onChange={(event) => updateData({ location: event.target.value })} placeholder="Ex. Kinshasa, RDC ou Remote" className="mt-2 h-12 w-full border border-brand-light-neutral bg-white px-3 font-normal outline-none focus:border-brand"/></label>
       <label className="text-sm font-semibold text-neutral-100">Type de contrat<select value={data.employmentTypes[0] || ""} onChange={(event) => updateData({ employmentTypes: event.target.value ? [event.target.value] : [] })} className="mt-2 h-12 w-full border border-brand-light-neutral bg-white px-3 font-normal outline-none focus:border-brand"><option value="">À déterminer par l’IA</option>{["Full-Time", "Part-Time", "Remote", "Internship", "Contract"].map((type) => <option key={type} value={type}>{type}</option>)}</select></label>
-      <label className="text-sm font-semibold text-neutral-100">Catégorie<select value={data.category} onChange={(event) => updateData({ category: event.target.value })} className="mt-2 h-12 w-full border border-brand-light-neutral bg-white px-3 font-normal outline-none focus:border-brand"><option value="">À déterminer par l’IA</option>{categories.map((category) => <option key={category.id} value={category.code}>{category.name}</option>)}</select></label>
+      <label className="text-sm font-semibold text-neutral-100">Catégorie<select value={data.category} onChange={(event) => updateData({ category: event.target.value })} className="mt-2 h-12 w-full border border-brand-light-neutral bg-white px-3 font-normal outline-none focus:border-brand"><option value="">À déterminer par l’IA</option>{displayedCategories.map((category) => <option key={category.id} value={category.code}>{category.name}</option>)}</select></label>
     </div>
     <label className="mt-4 block text-sm font-semibold text-neutral-100">Besoin, niveau et contraintes<textarea value={brief} onChange={(event) => setBrief(event.target.value)} placeholder="Décrivez l’expérience, les technologies, le contrat, le salaire, les responsabilités, les langues et les avantages…" className="mt-2 min-h-32 w-full border border-brand-light-neutral bg-white p-3 font-normal outline-none focus:border-brand"/></label>
     <div className="mt-4 flex flex-wrap items-center justify-between gap-3"><button type="button" onClick={onManual} className="h-12 border border-brand px-5 text-sm font-bold text-brand">Remplir manuellement</button><button type="button" disabled={generate.isPending} onClick={submit} className="flex h-12 items-center gap-2 bg-brand px-6 text-sm font-bold text-white disabled:opacity-50"><Sparkles size={17}/>{generate.isPending ? "Génération complète…" : generated ? "Régénérer l’offre" : "Générer toute l’offre"}</button></div>

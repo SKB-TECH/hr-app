@@ -67,6 +67,12 @@ export default function PostJob() {
       setCurrentStep(1);
       return;
     }
+    if (!jobData.category) {
+      toast.error("Sélectionnez une catégorie avant d’enregistrer l’offre");
+      setCurrentStep(1);
+      setShowEditor(true);
+      return;
+    }
     if (status === "LIVE" && (!jobData.employmentTypes.length || !jobData.jobDescription.trim())) {
       toast.error("Vérifiez le type de contrat et la description avant publication");
       setCurrentStep(!jobData.employmentTypes.length ? 1 : 2);

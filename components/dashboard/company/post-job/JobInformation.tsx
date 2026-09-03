@@ -5,6 +5,7 @@ import SalaryRange from "./SalaryRange";
 import SkillInput from "./SkillInput";
 import { JobData } from "./types";
 import { usePlatformReferences } from "@/core/hooks/references/use-platform-references";
+import { DEFAULT_JOB_CATEGORIES } from "@/core/constants/job-categories";
 
 const employmentTypes = [
   "Full-Time",
@@ -25,6 +26,9 @@ export default function JobInformation({
 }: JobInformationProps) {
   const { data: categories = [], isLoading: categoriesLoading } =
     usePlatformReferences("job_category");
+  const displayedCategories = categories.length
+    ? categories
+    : DEFAULT_JOB_CATEGORIES;
   const toggleEmploymentType = (type: string) => {
     const updatedTypes = data.employmentTypes.includes(type)
       ? data.employmentTypes.filter((item) => item !== type)
@@ -148,7 +152,7 @@ export default function JobInformation({
             {categoriesLoading ? "Loading categories..." : "Select Category"}
           </option>
 
-          {categories.map((category) => (
+          {displayedCategories.map((category) => (
             <option key={category.id} value={category.code}>
               {category.name}
             </option>
