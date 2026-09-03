@@ -1,0 +1,21 @@
+export type PublicCandidateProfile = {
+  id: string;
+  fullName: string;
+  avatar: string | null;
+  headline: string | null;
+  bio: string | null;
+  countryName: string | null;
+  cityName: string | null;
+  yearsExperience: number | null;
+  linkedinUrl: string | null;
+  githubUrl: string | null;
+  portfolioUrl: string | null;
+  availability: string | null;
+  workType: string | null;
+  openToWork: boolean;
+  skills: Array<{ id: string; name?: string | null; level?: string | null; yearsExperience?: number | null }>;
+  experiences: Array<{ id: string; jobTitle?: string | null; companyName?: string | null; description?: string | null }>;
+  education: Array<{ id: string; institution?: string | null; degree?: string | null; fieldOfStudy?: string | null }>;
+  certifications: Array<{ id: string; name?: string | null; issuingOrganization?: string | null }>;
+  portfolios: Array<{ id: string; title?: string | null; description?: string | null; projectUrl?: string | null; imageUrl?: string | null }>;
+};

@@ -14,7 +14,14 @@ export type CompanyApplication = {
     fullName: string;
     email: string;
     avatar?: string | null;
-    candidateProfile?: { location?: string | null; headline?: string | null } | null;
+    candidateProfile?: {
+      id: string;
+      location?: string | null;
+      cityName?: string | null;
+      countryName?: string | null;
+      headline?: string | null;
+      profileVisibility?: "public" | "recruiters_only" | "private";
+    } | null;
   };
   fullName: string;
   email: string;
