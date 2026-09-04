@@ -8,6 +8,14 @@ export type CompanyApplication = {
   candidateId: string;
   stageId: string | null;
   stage: PipelineStage | null;
+  resumeId?: string | null;
+  resume?: {
+    id: string;
+    title: string;
+    fileUrl: string;
+    publicId: string;
+    isDefault: boolean;
+  } | null;
   job: CompanyJob;
   candidate?: {
     id: string;

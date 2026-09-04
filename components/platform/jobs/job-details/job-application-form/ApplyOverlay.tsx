@@ -121,7 +121,7 @@ export default function ApplyOverlay({ isOpen, onClose, job }: ApplyOverlayProps
         />
         <OverlayFooter isPending={createApplication.isPending} onSubmit={handleSubmit} />
       </div>
-      <ResumeModal open={resumeModalOpen} onOpenChange={setResumeModalOpen} />
+      <ResumeModal open={resumeModalOpen} onOpenChange={setResumeModalOpen} onUploaded={setResumeId} />
     </div>
   );
 }

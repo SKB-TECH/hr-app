@@ -9,6 +9,7 @@ export function useUpdateApplicationStage(jobId: string) {
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ["applications", "job", jobId] });
       void queryClient.invalidateQueries({ queryKey: ["applications", "company"] });
+      void queryClient.invalidateQueries({ queryKey: ["applications", "detail"] });
     },
   });
 }

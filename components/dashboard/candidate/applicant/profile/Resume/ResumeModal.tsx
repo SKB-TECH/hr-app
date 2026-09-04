@@ -17,9 +17,10 @@ import { ApiError } from "@/core/types/api";
 interface ResumeModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onUploaded?: (resumeId: string) => void;
 }
 
-export default function ResumeModal({ open, onOpenChange }: ResumeModalProps) {
+export default function ResumeModal({ open, onOpenChange, onUploaded }: ResumeModalProps) {
   const t = useTranslations("candidateProfileSections");
   const createResume = useCreateCandidateResume();
   const isPending = createResume.isPending;
@@ -49,7 +50,8 @@ export default function ResumeModal({ open, onOpenChange }: ResumeModalProps) {
     submittingRef.current = true;
 
     try {
-      await createResume.mutateAsync({ file });
+      const resume = await createResume.mutateAsync({ file });
+      onUploaded?.(resume.id);
       toast.success(t("resume.toasts.uploaded"));
       onOpenChange(false);
     } catch (error) {

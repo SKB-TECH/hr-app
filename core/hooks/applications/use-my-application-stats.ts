@@ -7,5 +7,7 @@ export function useMyApplicationStats() {
   return useQuery({
     queryKey: myApplicationKeys.stats,
     queryFn: getMyApplicationStats,
+    refetchInterval: 15_000,
+    refetchOnWindowFocus: true,
   });
 }

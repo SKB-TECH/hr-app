@@ -8,5 +8,7 @@ export function useMyApplications(query: MyApplicationQuery = {}) {
   return useQuery({
     queryKey: myApplicationKeys.list(query),
     queryFn: () => getMyApplications(query),
+    refetchInterval: 15_000,
+    refetchOnWindowFocus: true,
   });
 }
