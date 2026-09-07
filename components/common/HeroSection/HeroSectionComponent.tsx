@@ -1,34 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { ChevronDown, MapPin, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
+import CountrySelect from "@/components/ui/CountrySelect";
 import { useTranslations } from "next-intl";
-
-const SELECT_LOCATION = "";
-
-const locations = [
-  SELECT_LOCATION,
-  "Florence, Italy",
-  "Cairo, Egypt",
-  "London, UK",
-  "Berlin, Germany",
-  "Remote",
-];
 
 export default function HeroSectionComponent() {
   const t = useTranslations("common");
-  const [selectedLocation, setSelectedLocation] = useState(locations[0]);
+  const [selectedLocation, setSelectedLocation] = useState("");
   const router = useRouter();
 
   const navigateTosearchResults = () => router.push("/companies/search");
@@ -97,43 +81,14 @@ export default function HeroSectionComponent() {
               </div>
 
               {/* Location */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button
-                    type="button"
-                    className="flex w-full items-center gap-3 px-2 py-2 text-left outline-none lg:w-[270px] lg:px-4 lg:py-0"
-                  >
-                    <MapPin
-                      size={20}
-                      className="shrink-0 text-[#25324B] md:size-[25px]"
-                    />
-                    <div className="flex-1 truncate border-b border-[#D6DDEB] py-2 text-[18px] text-[#25324B] lg:py-0 lg:text-base">
-                      <p className="mb-3">
-                        {selectedLocation === SELECT_LOCATION
-                          ? t("heroSection.selectLocationOption")
-                          : selectedLocation}
-                      </p>
-                    </div>
-                    <ChevronDown
-                      size={14}
-                      className="shrink-0 text-[#7C8493] md:size-4"
-                    />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="rounded-none bg-white p-1 shadow-[0_16px_40px_rgba(37,50,75,0.08)]">
-                  {locations.map((location) => (
-                    <DropdownMenuItem
-                      key={location}
-                      className="cursor-pointer rounded-none px-3 py-2 text-sm text-[#25324B] focus:bg-[#F8F8FD] focus:text-[#25324B]"
-                      onSelect={() => setSelectedLocation(location)}
-                    >
-                      {location === SELECT_LOCATION
-                        ? t("heroSection.selectLocationOption")
-                        : location}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <div className="w-full px-2 py-2 lg:w-[270px] lg:px-4 lg:py-0">
+                <CountrySelect
+                  value={selectedLocation}
+                  onChange={setSelectedLocation}
+                  placeholder={t("heroSection.selectLocationOption")}
+                  className="h-10 rounded-none border-0 border-b border-[#D6DDEB] px-0 lg:h-12"
+                />
+              </div>
 
               {/* CTA */}
               <Button

@@ -1,21 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import DropDownSelector from "./DropDownSelector";
-
-const locations = [
-  "Florence, Italy",
-  "New York, USA",
-  "London, UK",
-  "Paris, France",
-];
+import CountrySelect from "@/components/ui/CountrySelect";
 
 interface HeroSearchBarProps {
   popularTags?: string[];
 }
 
 const HeroSearchBar = ({ popularTags }: HeroSearchBarProps) => {
-  const [location, setLocation] = useState(locations[0]);
+  const [location, setLocation] = useState("");
   const [keyword, setKeyword] = useState("");
 
   return (
@@ -40,10 +33,11 @@ const HeroSearchBar = ({ popularTags }: HeroSearchBarProps) => {
 
         {/* Location */}
         <div className="flex flex-1 items-center">
-          <DropDownSelector
-            items={locations}
+          <CountrySelect
             value={location}
             onChange={setLocation}
+            placeholder="Sélectionner un pays"
+            className="h-auto rounded-none border-0 border-b-2 border-brand-light-neutral px-0 py-2"
           />
         </div>
 

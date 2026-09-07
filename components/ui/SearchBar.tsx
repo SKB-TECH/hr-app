@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { MagnifyingGlassIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
+import CountrySelect from "@/components/ui/CountrySelect";
 
 export interface SearchBarProps {
   placeholder?: string;
@@ -16,12 +17,7 @@ export interface SearchBarProps {
 
 export default function SearchBar({
   placeholder = "Job title or keyword",
-  locations = [
-    "Florence, Italy", "Rome, Italy", "Milan, Italy",
-    "New York, USA", "London, UK", "Paris, France",
-    "Berlin, Germany", "Madrid, Spain",
-  ],
-  defaultLocation = "Florence, Italy",
+  defaultLocation = "",
   searchLabel = "Search my job",
   popularLabel = "Popular :",
   popularTags = ["UI Designer", "UX Researcher", "Android", "Admin"],
@@ -55,20 +51,12 @@ export default function SearchBar({
         {/* Location select */}
         <div className="flex items-center gap-2 px-3 py-2">
           <MapPinIcon className="w-5 h-5 text-[#7C8493] shrink-0" />
-          <select
+          <CountrySelect
             value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            className="flex-1 sm:flex-none text-[14px] py-4 text-[#202430] bg-transparent border-b border-b-[#D6DDEB] outline-none cursor-pointer appearance-none pr-6 min-w-[160px]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%237C8493' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "right 0px center",
-            }}
-          >
-            {locations.map((loc) => (
-              <option key={loc} value={loc}>{loc}</option>
-            ))}
-          </select>
+            onChange={setLocation}
+            placeholder="Sélectionner un pays"
+            className="min-w-[190px] rounded-none border-0 border-b border-b-[#D6DDEB] px-0 py-4 text-[14px]"
+          />
         </div>
 
         <Button  variant="ghost" className="w-full sm:w-auto  text-white font-bold text-[15px] px-10 py-5 border-none cursor-pointer whitespace-nowrap transition-all">

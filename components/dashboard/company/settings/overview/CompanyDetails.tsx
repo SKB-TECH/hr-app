@@ -10,6 +10,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import TagInput from "./TagInput";
+import { useCountries } from "@/core/hooks/localization/use-countries";
 
 import { UseFormRegister, FieldErrors, UseFormSetValue } from "react-hook-form";
 import { ProfileFormValues } from "../Overview";
@@ -59,15 +60,6 @@ const months = [
   "December",
 ];
 
-const locationOptions = [
-  "England",
-  "Japan",
-  "Australia",
-  "Canada",
-  "Germany",
-  "United States",
-];
-
 const techStackOptions = [
   "HTML 5",
   "CSS 3",
@@ -86,6 +78,7 @@ function CompanyDetails({
   techStackTags,
   setTechStackTags,
 }: CompanyDetailsProps) {
+  const { data: countries = [] } = useCountries();
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
@@ -140,7 +133,7 @@ function CompanyDetails({
           label="Location"
           tags={locationTags}
           onTagsChange={setLocationTags}
-          options={locationOptions}
+          options={countries.map((country) => country.name)}
           placeholder="Add location..."
         />
 
