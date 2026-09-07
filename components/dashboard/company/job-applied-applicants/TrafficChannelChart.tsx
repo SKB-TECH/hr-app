@@ -23,7 +23,7 @@ const CustomTooltip = ({
   );
 };
 
-export default function TrafficChannelChart() {
+export default function TrafficChannelChart({data=trafficChannelData}:{data?:Array<{name:string;value:number;color:string}>}) {
   return (
     <CardWrapper>
       {/* Header */}
@@ -36,14 +36,14 @@ export default function TrafficChannelChart() {
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
-              data={trafficChannelData}
+              data={data}
               dataKey="value"
               innerRadius={67}
               outerRadius={100}
               stroke="none"
               paddingAngle={0}
             >
-              {trafficChannelData.map((item) => (
+              {data.map((item) => (
                 <Cell key={item.name} fill={item.color} />
               ))}
             </Pie>
@@ -55,7 +55,7 @@ export default function TrafficChannelChart() {
 
       {/* Legend */}
       <div className="mt-1 grid grid-cols-2 gap-y-6">
-        {trafficChannelData.map((item) => (
+        {data.map((item) => (
           <div key={item.name} className="flex items-center gap-3">
             <span
               className="h-4 w-4 rounded-[4px]"

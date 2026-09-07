@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { countryVisitorsData } from "@/data/company-job-listing";
 
-export default function VisitorsByCountryStats() {
+export default function VisitorsByCountryStats({data=countryVisitorsData}:{data?:typeof countryVisitorsData}) {
   return (
     <CardWrapper>
       <h2 className=" mb-6 text-2xl font-semibold text-[#25324B]">
@@ -11,7 +11,7 @@ export default function VisitorsByCountryStats() {
       </h2>
 
       <div className="max-h-[230px] space-y-5 overflow-y-auto country-visitors-scroll pr-2">
-        {countryVisitorsData.map((country) => (
+        {data.map((country) => (
           <div key={country.id} className="flex items-center justify-between">
             <div className="flex items-center gap-4 text-neutral-100">
               <Image
@@ -30,6 +30,7 @@ export default function VisitorsByCountryStats() {
             </span>
           </div>
         ))}
+        {data.length === 0 && <p className="py-12 text-center text-sm text-neutral-60">Aucune donnée géographique collectée.</p>}
       </div>
     </CardWrapper>
   );

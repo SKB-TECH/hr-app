@@ -14,7 +14,7 @@ import CardWrapper from "./CardWrapper";
 
 import { viewStatsData } from "@/data/company-job-listing";
 
-export default function JobListingChart() {
+export default function JobListingChart({data=viewStatsData}:{data?:Array<{date:string;views:number}>}) {
   return (
     <CardWrapper className="min-h-[400px] md:h-full flex flex-col">
       {/* Header */}
@@ -35,7 +35,7 @@ export default function JobListingChart() {
       <div className="relative w-full h-[350px] md:flex-1 md:h-full min-h-0">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
-            data={viewStatsData}
+            data={data}
             margin={{
               top: 5,
               right: 0,
