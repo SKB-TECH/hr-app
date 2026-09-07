@@ -2,6 +2,7 @@
 
 import { useCountries } from "@/core/hooks/localization/use-countries";
 import { useCities } from "@/core/hooks/localization/use-cities";
+import CountrySelect from "@/components/ui/CountrySelect";
 
 interface CountryCitySelectProps {
   countryValue: string;
@@ -42,27 +43,7 @@ export default function CountryCitySelect({
         >
           {countryLabel}
         </label>
-        <select
-          id={countryInputId}
-          className='w-full cursor-pointer rounded-none border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-brand'
-          value={countryValue}
-          onChange={(event) => {
-            onCountryChange(event.target.value);
-            onCityChange("");
-          }}
-        >
-          <option value=''>
-            {isLoadingCountries ? "Loading countries..." : "Select a country"}
-          </option>
-          {countries.map((country) => (
-            <option key={country.code} value={country.name}>
-              {country.name}
-            </option>
-          ))}
-          {countryValue && !selectedCountry && (
-            <option value={countryValue}>{countryValue}</option>
-          )}
-        </select>
+        <CountrySelect id={countryInputId} value={countryValue} placeholder={isLoadingCountries ? "Chargement des pays…" : "Sélectionner un pays"} onChange={(name)=>{onCountryChange(name);onCityChange("")}}/>
       </div>
 
       <div>

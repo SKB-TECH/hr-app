@@ -6,6 +6,6 @@ export const getCountries = () =>
   apiRequest<PlatformReference[]>("references/countries?limit=300").then(
     (response) =>
       response.data.map(
-        (country): Country => ({ code: country.code, name: country.name }),
+        (country): Country => ({ code: country.code, name: country.name, phoneCode: country.phoneCode }),
       ),
   );
