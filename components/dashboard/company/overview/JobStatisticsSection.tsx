@@ -4,6 +4,7 @@ import { useState } from "react";
 import { BarChart, Bar, XAxis, ResponsiveContainer, Tooltip } from "recharts";
 import { EyeIcon, ClipboardDocumentIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import type { CompanyJob } from "@/core/types/job";
 
 const weekData = [
   { day: "Mon", jobView: 80, jobApplied: 90 },
@@ -39,7 +40,7 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
   );
 }
 
-export default function JobStatisticsSection() {
+export default function JobStatisticsSection({applications=0,jobs=[]}:{applications?:number;jobs?:CompanyJob[]}) {
   const [range, setRange] = useState<RangeTab>("Week");
   const [view, setView] = useState<ViewTab>("Overview");
 
@@ -167,7 +168,7 @@ export default function JobStatisticsSection() {
               </span>
             </div>
             <p className="text-[36px] font-extrabold text-[#25324B] leading-none">
-              2,342
+              {jobs.length}
             </p>
             <p className="text-[16px] text-gray-400 mt-2">
               This Week{" "}
@@ -185,7 +186,7 @@ export default function JobStatisticsSection() {
               </span>
             </div>
             <p className="text-[36px] font-extrabold text-[#202430] leading-none">
-              654
+              {applications}
             </p>
             <p className="text-[16px] text-gray-400 mt-2">
               This Week{" "}

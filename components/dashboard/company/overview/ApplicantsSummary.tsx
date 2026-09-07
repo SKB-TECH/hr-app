@@ -21,7 +21,7 @@ export default function ApplicantsSummary({
   total = 67,
   segments = defaultSegments,
 }: ApplicantsSummaryProps) {
-  const grandTotal = segments.reduce((sum, s) => sum + s.value, 0);
+  const grandTotal = Math.max(1, segments.reduce((sum, s) => sum + s.value, 0));
 
   return (
     <div className="bg-white border border-gray-200 p-6">

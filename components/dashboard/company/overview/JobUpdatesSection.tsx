@@ -5,7 +5,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
 interface JobUpdate {
-  id: number;
+  id: string | number;
   title: string;
   company: string;
   location: string;
@@ -13,6 +13,7 @@ interface JobUpdate {
   tags: string[];
   applied: number;
   capacity: number;
+  employmentType?: string;
 }
 
 interface JobUpdatesSectionProps {
@@ -105,7 +106,7 @@ export default function JobUpdatesSection({ jobs = defaultJobs }: JobUpdatesSect
                 />
               
                 <span className="text-[12px] font-medium text-teal-700 bg-teal-50 px-3.5 py-1.5 rounded-full">
-                  Full-Time
+                  {job.employmentType || "Full-Time"}
                 </span>
               </div>
 
