@@ -7,7 +7,9 @@ import type {
 export const getPlatformReferences = (
   type: PlatformReferenceType,
   search = "",
-) =>
-  apiRequest<PlatformReference[]>(
-    `references/${type}${toQueryString({ q: search, limit: 100 })}`,
+) => {
+  const endpoint = type === "country" ? "countries" : type === "language" ? "languages" : type === "skill_category" ? "skill-categories" : type;
+  return apiRequest<PlatformReference[]>(
+    `references/${endpoint}${toQueryString({ q: search, limit: 100 })}`,
   ).then((response) => response.data);
+}
