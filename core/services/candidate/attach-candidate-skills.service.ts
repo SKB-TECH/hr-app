@@ -3,6 +3,6 @@ import type { AttachCandidateSkillsInput, CandidateSkill } from "@/core/types/ca
 
 export const attachCandidateSkills = (input: AttachCandidateSkillsInput) =>
   apiRequest<CandidateSkill[]>("candidate/skills", {
-    method: "POST",
+    method: "PUT",
     body: JSON.stringify(input),
   }).then((response) => response.data);
