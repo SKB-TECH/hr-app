@@ -26,6 +26,7 @@ export function buildCandidateProfileFormData(input: CandidateProfileInput) {
   appendIfDefined(body, "availability", input.availability);
   appendIfDefined(body, "workType", input.workType);
   appendIfDefined(body, "profileVisibility", input.profileVisibility);
+  input.languageCodes?.forEach((code) => body.append("languageCodes", code));
   if (input.avatarFile) body.append("avatarFile", input.avatarFile);
   return body;
 }

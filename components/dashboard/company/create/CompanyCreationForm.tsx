@@ -8,6 +8,9 @@ import { useRouter } from "@/i18n/routing";
 import type { CompanyVisibility } from "@/core/types/company";
 import { useQueryClient } from "@tanstack/react-query";
 import { companyKeys } from "@/core/hooks/company/company-query-keys";
+import CountrySelect from "@/components/ui/CountrySelect";
+import IndustrySelect from "@/components/ui/IndustrySelect";
+import SkillCatalogMultiSelect from "@/components/ui/SkillCatalogMultiSelect";
 
 const sizes = ["1-10 employees", "11-50 employees", "51-100 employees", "101-250 employees", "251-500 employees", "500+ employees"];
 
@@ -15,7 +18,7 @@ export default function CompanyCreationForm() {
   const create = useCreateCompany();
   const router = useRouter();
   const queryClient = useQueryClient();
-  const [form, setForm] = useState({ name: "", industry: "", location: "", companySize: "", foundationDate: "", website: "", description: "", visibility: "public" as CompanyVisibility });
+  const [form, setForm] = useState({ name: "", industry: "", location: "", companySize: "", foundationDate: "", website: "", description: "", visibility: "public" as CompanyVisibility, techStack: [] as string[] });
   const [logo, setLogo] = useState<File>();
   const [cover, setCover] = useState<File>();
   const set = (key: keyof typeof form, value: string) => setForm((current) => ({ ...current, [key]: value }));
@@ -25,7 +28,7 @@ export default function CompanyCreationForm() {
       const company = await create.mutateAsync({
         name: form.name.trim(), industry: form.industry.trim() || null, location: form.location.trim() || null,
         locations: form.location.trim() ? [form.location.trim()] : [], companySize: form.companySize || null,
-        foundationDate: form.foundationDate ? new Date(form.foundationDate).toISOString() : null,
+        foundationDate: form.foundationDate ? new Date(form.foundationDate).toISOString() : null, techStack: form.techStack,
         website: form.website.trim() || null, description: form.description.trim() || null, visibility: form.visibility,
       });
       if (logo || cover) {
@@ -39,7 +42,7 @@ export default function CompanyCreationForm() {
   };
   return <main className="h-full overflow-y-auto bg-[#f8f8fc] p-4 sm:p-6 lg:p-8"><form onSubmit={submit} className="mx-auto max-w-5xl border border-brand-light-neutral bg-white">
     <header className="border-b border-brand-light-neutral p-6 sm:p-8"><span className="grid size-12 place-items-center bg-accent-light-brand text-brand"><Building2/></span><h1 className="mt-4 text-2xl font-bold text-neutral-100">Créer une nouvelle entreprise</h1><p className="mt-2 text-sm text-neutral-60">Renseignez les informations qui seront utilisées sur le profil public et dans vos recrutements.</p></header>
-    <div className="space-y-8 p-6 sm:p-8"><Section title="Identité de l’entreprise"><div className="grid gap-5 md:grid-cols-2"><Field required label="Nom officiel" value={form.name} onChange={(v)=>set("name",v)} placeholder="Infinity Innovation"/><Field required label="Secteur d’activité" value={form.industry} onChange={(v)=>set("industry",v)} placeholder="Technologie, Finance, Santé…"/><Field required label="Localisation principale" value={form.location} onChange={(v)=>set("location",v)} placeholder="Kinshasa, RDC"/><Select required label="Taille de l’entreprise" value={form.companySize} onChange={(v)=>set("companySize",v)} options={sizes}/><Field label="Date de fondation" type="date" value={form.foundationDate} onChange={(v)=>set("foundationDate",v)}/><Field label="Site web" type="url" value={form.website} onChange={(v)=>set("website",v)} placeholder="https://entreprise.com"/></div><label className="mt-5 block text-sm font-bold">Description<textarea required maxLength={2000} value={form.description} onChange={(e)=>set("description",e.target.value)} className="mt-2 min-h-32 w-full border border-brand-light-neutral p-3 font-normal outline-none focus:border-brand" placeholder="Présentez l’entreprise, sa mission et ses activités."/></label></Section>
+    <div className="space-y-8 p-6 sm:p-8"><Section title="Identité de l’entreprise"><div className="grid gap-5 md:grid-cols-2"><Field required label="Nom officiel" value={form.name} onChange={(v)=>set("name",v)} placeholder="Infinity Innovation"/><label className="block text-sm font-bold">Secteur d’activité<IndustrySelect required value={form.industry} onChange={value=>set("industry",value)}/></label><label className="block text-sm font-bold">Localisation principale<CountrySelect value={form.location} onChange={value=>set("location",value)}/></label><Select required label="Taille de l’entreprise" value={form.companySize} onChange={(v)=>set("companySize",v)} options={sizes}/><Field label="Date de fondation" type="date" value={form.foundationDate} onChange={(v)=>set("foundationDate",v)}/><Field label="Site web" type="url" value={form.website} onChange={(v)=>set("website",v)} placeholder="https://entreprise.com"/></div><label className="mt-5 block text-sm font-bold">Description<textarea required maxLength={2000} value={form.description} onChange={(e)=>set("description",e.target.value)} className="mt-2 min-h-32 w-full border border-brand-light-neutral p-3 font-normal outline-none focus:border-brand" placeholder="Présentez l’entreprise, sa mission et ses activités."/></label></Section><Section title="Technologies"><SkillCatalogMultiSelect values={form.techStack} onChange={values=>setForm(current=>({...current,techStack:values}))}/></Section>
     <Section title="Identité visuelle"><div className="grid gap-5 md:grid-cols-2"><Upload label="Logo" hint="PNG, JPG ou WebP — carré recommandé" file={logo} onChange={setLogo}/><Upload label="Image de couverture" hint="Format horizontal recommandé" file={cover} onChange={setCover}/></div></Section>
     <Section title="Visibilité"><Select label="Qui peut voir cette entreprise ?" value={form.visibility} onChange={(v)=>set("visibility",v)} options={["public","authenticated","verified_candidates","private"]}/></Section></div>
     <footer className="flex justify-end gap-3 border-t border-brand-light-neutral p-6 sm:px-8"><button type="button" onClick={()=>router.back()} className="h-11 border border-brand-light-neutral px-6 text-sm font-bold">Annuler</button><button disabled={create.isPending} className="h-11 bg-brand px-7 text-sm font-bold text-white disabled:opacity-50">{create.isPending?"Création…":"Créer l’entreprise"}</button></footer>

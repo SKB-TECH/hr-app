@@ -7,6 +7,7 @@ import { useGenerateJobDraft } from "@/core/hooks/ai/use-generate-job-draft";
 import { ApiError } from "@/core/types/api";
 import { usePlatformReferences } from "@/core/hooks/references/use-platform-references";
 import { useSkillsDirectory } from "@/core/hooks/candidate/use-skills-directory";
+import CountrySelect from "@/components/ui/CountrySelect";
 import {
   DEFAULT_JOB_CATEGORIES,
   JOB_CATEGORY_CODES,
@@ -112,7 +113,7 @@ export default function AiJobGenerator({ data, updateData, companyName, industry
     <div className="flex items-start gap-3"><span className="grid size-11 shrink-0 place-items-center bg-brand text-white"><Sparkles size={20}/></span><div><p className="text-xs font-bold uppercase tracking-wider text-brand">Commencer avec l’IA</p><h2 className="mt-1 text-xl font-bold text-neutral-100">Créez toute l’offre en une seule génération</h2><p className="mt-1 text-sm text-neutral-60">Renseignez d’abord les éléments essentiels. L’IA complétera les informations, la description, les compétences et les avantages.</p></div></div>
     <div className="mt-6 grid gap-4 md:grid-cols-2">
       <label className="text-sm font-semibold text-neutral-100">Titre du poste<input value={data.jobTitle} onChange={(event) => updateData({ jobTitle: event.target.value })} placeholder="Ex. Senior Full-Stack Developer" className="mt-2 h-12 w-full border border-brand-light-neutral bg-white px-3 font-normal outline-none focus:border-brand"/></label>
-      <label className="text-sm font-semibold text-neutral-100">Localisation<input value={data.location} onChange={(event) => updateData({ location: event.target.value })} placeholder="Ex. Kinshasa, RDC ou Remote" className="mt-2 h-12 w-full border border-brand-light-neutral bg-white px-3 font-normal outline-none focus:border-brand"/></label>
+      <label className="text-sm font-semibold text-neutral-100">Localisation<CountrySelect value={data.location} onChange={location=>updateData({location})}/></label>
       <label className="text-sm font-semibold text-neutral-100">Type de contrat<select value={data.employmentTypes[0] || ""} onChange={(event) => updateData({ employmentTypes: event.target.value ? [event.target.value] : [] })} className="mt-2 h-12 w-full border border-brand-light-neutral bg-white px-3 font-normal outline-none focus:border-brand"><option value="">À déterminer par l’IA</option>{["Full-Time", "Part-Time", "Remote", "Internship", "Contract"].map((type) => <option key={type} value={type}>{type}</option>)}</select></label>
       <label className="text-sm font-semibold text-neutral-100">Catégorie<select value={data.category} onChange={(event) => updateData({ category: event.target.value })} className="mt-2 h-12 w-full border border-brand-light-neutral bg-white px-3 font-normal outline-none focus:border-brand"><option value="">À déterminer par l’IA</option>{displayedCategories.map((category) => <option key={category.id} value={category.code}>{category.name}</option>)}</select></label>
     </div>

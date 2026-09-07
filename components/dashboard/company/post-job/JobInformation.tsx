@@ -6,6 +6,7 @@ import SkillInput from "./SkillInput";
 import { JobData } from "./types";
 import { usePlatformReferences } from "@/core/hooks/references/use-platform-references";
 import { DEFAULT_JOB_CATEGORIES } from "@/core/constants/job-categories";
+import CountrySelect from "@/components/ui/CountrySelect";
 
 const employmentTypes = [
   "Full-Time",
@@ -85,12 +86,7 @@ export default function JobInformation({
         title="Location"
         description="Use a city and country in Central Africa, or Remote."
       >
-        <input
-          value={data.location}
-          onChange={(e) => updateData({ location: e.target.value })}
-          placeholder="e.g. Kinshasa, DRC"
-          className="w-full border border-neutral-20 px-4 py-3 outline-none focus:border-indigo-600"
-        />
+        <CountrySelect value={data.location} onChange={(location)=>updateData({location})}/>
       </FormSection>
 
       {/* Employment */}

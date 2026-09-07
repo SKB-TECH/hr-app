@@ -1,0 +1,3 @@
+"use client";
+import { usePlatformReferences } from "@/core/hooks/references/use-platform-references";
+export default function IndustrySelect({value,onChange,required}:{value:string;onChange:(value:string)=>void;required?:boolean}){const {data:items=[],isLoading}=usePlatformReferences("skill_category");return <select required={required} value={value} onChange={event=>onChange(event.target.value)} className="h-12 w-full border border-brand-light-neutral bg-white px-3 outline-none focus:border-brand"><option value="">{isLoading?"Chargement…":"Sélectionner un secteur"}</option>{items.map(item=><option key={item.id} value={item.name}>{item.name}</option>)}{value&&!items.some(item=>item.name===value)&&<option value={value}>{value}</option>}</select>}

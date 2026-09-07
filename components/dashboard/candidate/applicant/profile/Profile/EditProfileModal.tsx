@@ -17,6 +17,7 @@ import { useUpdateCandidateProfile } from "@/core/hooks/candidate/use-update-can
 import { toCandidateProfileInput } from "@/core/services/candidate/to-candidate-profile-input";
 import type { CandidateProfile } from "@/core/types/candidate-profile";
 import { ApiError } from "@/core/types/api";
+import LanguageMultiSelect from "@/components/ui/LanguageMultiSelect";
 
 const HEADLINE_MAX_LENGTH = 120;
 
@@ -26,6 +27,7 @@ type ProfileFormValues = {
   cityName: string;
   countryName: string;
   openToWork: boolean;
+  languageCodes: string[];
 };
 
 interface EditProfileModalProps {
@@ -60,6 +62,7 @@ export default function EditProfileModal({
       cityName: "",
       countryName: "",
       openToWork: false,
+      languageCodes: [],
     },
   });
 
@@ -71,6 +74,7 @@ export default function EditProfileModal({
       cityName: profile.candidateProfile?.cityName || "",
       countryName: profile.candidateProfile?.countryName || "",
       openToWork: profile.candidateProfile?.openToWork || false,
+      languageCodes: profile.candidateProfile?.languageCodes || [],
     });
     setAvatarFile(null);
   }, [open, profile, reset]);
@@ -94,6 +98,7 @@ export default function EditProfileModal({
           cityName: values.cityName.trim() || null,
           countryName: values.countryName.trim() || null,
           openToWork: values.openToWork,
+          languageCodes: values.languageCodes,
           avatarFile: avatarFile || undefined,
         }),
       );
@@ -205,6 +210,8 @@ export default function EditProfileModal({
           countryInputId='profile-country'
           cityInputId='profile-city'
         />
+
+        <div><label className="mb-2 block text-sm font-medium text-[#25324B]">Langues</label><LanguageMultiSelect values={watch("languageCodes")} onChange={values=>setValue("languageCodes",values,{shouldDirty:true})}/></div>
 
         <label className='flex cursor-pointer items-start gap-3 rounded-none border border-gray-200 p-4'>
           <input

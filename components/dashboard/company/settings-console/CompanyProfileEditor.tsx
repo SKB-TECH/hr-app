@@ -7,6 +7,9 @@ import { useUpdateCompany } from "@/core/hooks/company/use-update-company";
 import { updateCompanyBranding } from "@/core/services/company/update-company-branding.service";
 import { companyKeys } from "@/core/hooks/company/company-query-keys";
 import type { Company, CompanyVisibility } from "@/core/types/company";
+import CountrySelect from "@/components/ui/CountrySelect";
+import IndustrySelect from "@/components/ui/IndustrySelect";
+import SkillCatalogMultiSelect from "@/components/ui/SkillCatalogMultiSelect";
 
 const sizes = ["1-10 employees", "11-50 employees", "51-100 employees", "101-250 employees", "251-500 employees", "500+ employees"];
 
@@ -16,7 +19,7 @@ export default function CompanyProfileEditor({ company }: { company: Company }) 
   const [uploading, setUploading] = useState(false);
   const [form, setForm] = useState({
     name: company.name, industry: company.industry || "", location: company.location || "", companySize: company.companySize || "",
-    foundationDate: company.foundationDate?.slice(0, 10) || "", website: company.website || "", description: company.description || "", visibility: company.visibility,
+    foundationDate: company.foundationDate?.slice(0, 10) || "", website: company.website || "", description: company.description || "", visibility: company.visibility, techStack: company.techStack || [],
   });
   const [logo, setLogo] = useState<File>();
   const [cover, setCover] = useState<File>();
@@ -27,7 +30,7 @@ export default function CompanyProfileEditor({ company }: { company: Company }) 
       const saved = await update.mutateAsync({
         name: form.name.trim(), industry: form.industry.trim() || null, location: form.location.trim() || null,
         locations: form.location.trim() ? [form.location.trim()] : [], companySize: form.companySize || null,
-        foundationDate: form.foundationDate ? new Date(form.foundationDate).toISOString() : null,
+        foundationDate: form.foundationDate ? new Date(form.foundationDate).toISOString() : null, techStack: form.techStack,
         website: form.website.trim() || null, description: form.description.trim() || null, visibility: form.visibility,
       });
       let finalCompany = saved;
@@ -45,7 +48,7 @@ export default function CompanyProfileEditor({ company }: { company: Company }) 
   const pending = update.isPending || uploading;
   return <form onSubmit={submit} className="w-full max-w-none">
     <header className="mb-7"><span className="grid size-11 place-items-center bg-accent-light-brand text-brand"><Building2 size={22}/></span><h2 className="mt-4 text-xl font-bold">Profil de l’entreprise</h2><p className="mt-1 text-sm text-neutral-60">Modifiez les informations visibles par les candidats et utilisées dans vos recrutements.</p></header>
-    <div className="space-y-8"><Section title="Identité et activité"><div className="grid gap-5 md:grid-cols-2"><Field required label="Nom officiel" value={form.name} onChange={(v)=>set("name",v)}/><Field required label="Secteur d’activité" value={form.industry} onChange={(v)=>set("industry",v)}/><Field required label="Localisation principale" value={form.location} onChange={(v)=>set("location",v)}/><Select required label="Taille de l’entreprise" value={form.companySize} onChange={(v)=>set("companySize",v)} options={sizes}/><Field label="Date de fondation" type="date" value={form.foundationDate} onChange={(v)=>set("foundationDate",v)}/><Field label="Site web" type="url" value={form.website} onChange={(v)=>set("website",v)} placeholder="https://entreprise.com"/></div><label className="mt-5 block text-sm font-bold">Description<textarea required maxLength={2000} value={form.description} onChange={(e)=>set("description",e.target.value)} className="mt-2 min-h-32 w-full border border-brand-light-neutral p-3 font-normal outline-none focus:border-brand"/></label></Section>
+    <div className="space-y-8"><Section title="Identité et activité"><div className="grid gap-5 md:grid-cols-2"><Field required label="Nom officiel" value={form.name} onChange={(v)=>set("name",v)}/><label className="block text-sm font-bold">Secteur d’activité<IndustrySelect required value={form.industry} onChange={value=>set("industry",value)}/></label><label className="block text-sm font-bold">Localisation principale<CountrySelect value={form.location} onChange={value=>set("location",value)}/></label><Select required label="Taille de l’entreprise" value={form.companySize} onChange={(v)=>set("companySize",v)} options={sizes}/><Field label="Date de fondation" type="date" value={form.foundationDate} onChange={(v)=>set("foundationDate",v)}/><Field label="Site web" type="url" value={form.website} onChange={(v)=>set("website",v)} placeholder="https://entreprise.com"/></div><label className="mt-5 block text-sm font-bold">Description<textarea required maxLength={2000} value={form.description} onChange={(e)=>set("description",e.target.value)} className="mt-2 min-h-32 w-full border border-brand-light-neutral p-3 font-normal outline-none focus:border-brand"/></label></Section><Section title="Technologies"><SkillCatalogMultiSelect values={form.techStack} onChange={values=>setForm(current=>({...current,techStack:values}))}/></Section>
       <Section title="Identité visuelle"><div className="grid gap-5 md:grid-cols-2"><Upload label="Remplacer le logo" current={company.logo} file={logo} onChange={setLogo}/><Upload label="Remplacer la couverture" current={company.coverImage} file={cover} onChange={setCover}/></div></Section>
       <Section title="Visibilité"><Select label="Qui peut voir cette entreprise ?" value={form.visibility} onChange={(v)=>set("visibility",v as CompanyVisibility)} options={["public","authenticated","verified_candidates","private"]}/></Section>
     </div><button disabled={pending} className="mt-8 h-12 min-w-64 bg-brand px-8 text-sm font-bold text-white disabled:opacity-50">{pending?"Enregistrement…":"Enregistrer les modifications"}</button>

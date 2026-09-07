@@ -24,6 +24,7 @@ export function toCandidateProfileInput(
     countryName: details?.countryName,
     cityName: details?.cityName,
     address: details?.address,
+    languageCodes: details?.languageCodes || [],
     currentSalary: details?.currentSalary,
     expectedSalary: details?.expectedSalary,
     salaryCurrency: details?.salaryCurrency,

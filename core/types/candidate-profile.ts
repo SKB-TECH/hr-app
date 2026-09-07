@@ -7,6 +7,7 @@ export type CandidateProfileDetails = {
   countryName: string | null;
   cityName: string | null;
   address: string | null;
+  languageCodes: string[];
   currentSalary: string | null;
   expectedSalary: string | null;
   salaryCurrency: string | null;
