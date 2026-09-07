@@ -74,7 +74,7 @@ export default function SkillsSection() {
               {skill.name}
               <button
                 type="button"
-                onClick={() => handleDetach(skill.skillId, skill.name)}
+                onClick={() => handleDetach(skill.id, skill.name)}
                 aria-label={`Remove ${skill.name}`}
                 className="cursor-pointer text-brand/70 hover:text-brand"
               >
