@@ -12,6 +12,7 @@ import { useTranslations } from "next-intl";
 import { useMyCandidateProfile } from "@/core/hooks/candidate/use-my-candidate-profile";
 import EditProfileModal from "./Profile/EditProfileModal";
 import { Skeleton } from "./shared/Skeleton";
+import CountryFlag from "@/components/ui/CountryFlag";
 
 const DEFAULT_AVATAR = "/avatar.jpg";
 const DEFAULT_COVER = "/profile-bg.jpg";
@@ -103,6 +104,7 @@ export default function ProfileSection() {
             {location && (
               <div className='text-[18px] text-gray-400 mt-2 flex gap-1.5'>
                 <MapPinIcon className='w-5 h-5' />
+                <CountryFlag countryName={profile.candidateProfile?.countryName} />
                 <p>{location}</p>
               </div>
             )}
