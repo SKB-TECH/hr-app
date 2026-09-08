@@ -44,7 +44,7 @@ export function AddEventModal({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4">
-      <div className="bg-white w-full max-w-md   p-6">
+      <div className="w-full max-w-2xl bg-white p-6">
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-[17px] font-bold text-[#202430]">Create Event</h3>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors">

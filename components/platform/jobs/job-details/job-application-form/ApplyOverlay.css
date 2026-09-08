@@ -14,7 +14,7 @@
 .apply-overlay__modal {
   background: #fff;
   width: 100%;
-  max-width: 460px;
+  max-width: 720px;
   max-height: 90vh;
   display: flex;
   flex-direction: column;

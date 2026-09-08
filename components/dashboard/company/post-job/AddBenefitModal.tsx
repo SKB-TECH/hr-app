@@ -66,7 +66,7 @@ export default function AddBenefitModal({
 }: AddBenefitModalProps) {
   return (
     <Dialog open={open} onOpenChange={(value) => !value && onClose()}>
-      <DialogContent className="max-w-lg rounded-none">
+      <DialogContent className="rounded-none sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle>{form.id ? "Edit Benefit" : "Add Benefit"}</DialogTitle>
         </DialogHeader>

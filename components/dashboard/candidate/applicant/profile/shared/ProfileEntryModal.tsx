@@ -30,7 +30,7 @@ export default function ProfileEntryModal({
 }: ProfileEntryModalProps) {
   return (
     <Dialog open={open} onOpenChange={(value) => !value && !isPending && onOpenChange(false)}>
-      <DialogContent className="max-w-lg gap-0 rounded-none p-0 sm:max-w-lg">
+      <DialogContent className="gap-0 rounded-none p-0 sm:max-w-2xl lg:max-w-4xl">
         <div className="max-h-[85vh] overflow-y-auto p-6">
           <DialogHeader className="mb-1 gap-1.5">
             <div className="flex items-center gap-3">

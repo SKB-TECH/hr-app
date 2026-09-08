@@ -99,7 +99,7 @@ export default function ProposeJobModal({
       className="fixed inset-0 z-50 grid place-items-center bg-neutral-100/55 p-4 backdrop-blur-[1px]"
       onMouseDown={(event) => event.target === event.currentTarget && onClose()}
     >
-      <div className="relative max-h-[92vh] w-full max-w-2xl overflow-y-auto bg-white p-6 shadow-2xl lg:p-8">
+      <div className="relative max-h-[92vh] w-full max-w-4xl overflow-y-auto bg-white p-6 shadow-2xl lg:p-8">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 grid size-8 place-items-center text-neutral-60 hover:bg-[#f4f4fa]"
