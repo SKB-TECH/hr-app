@@ -7,6 +7,10 @@ import { useSwitchProfile } from "@/core/hooks/auth/use-switch-profile";
 import { useEnableProfile } from "@/core/hooks/auth/use-enable-profile";
 import { useRouter } from "@/i18n/routing";
 import type { AccountProfile } from "@/core/services/auth/switch-profile.service";
+import ProfessionSelect from "@/components/ui/ProfessionSelect";
+import { useEffect, useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { updateAccountProfile } from "@/core/services/users/update-account-profile.service";
 
 function AccountType() {
   const t = useTranslations("candidateSettings.profile.accountType");
@@ -14,6 +18,10 @@ function AccountType() {
   const switchProfile = useSwitchProfile();
   const enableProfile = useEnableProfile();
   const router = useRouter();
+  const queryClient = useQueryClient();
+  const [professionId, setProfessionId] = useState("");
+  useEffect(() => setProfessionId(user?.professionId ?? ""), [user?.professionId]);
+  const updateProfession = useMutation({ mutationFn: updateAccountProfile, onSuccess: (updated) => { queryClient.setQueryData(["auth", "session"], updated); void queryClient.invalidateQueries({ queryKey: ["auth"] }); toast.success("Profession mise à jour."); }, onError: () => toast.error("Impossible de modifier la profession.") });
 
   const isPending = switchProfile.isPending || enableProfile.isPending;
   const isCompanyActive = user?.activeProfile === "COMPANY";
@@ -21,6 +29,7 @@ function AccountType() {
   const switchTo = (target: AccountProfile) => {
     if (isPending || user?.activeProfile === target) return;
 
+    const companyProfileIsNew = target === "COMPANY" && !user?.profiles?.includes("COMPANY");
     const goTo = () => {
       switchProfile.mutate(
         { profile: target },
@@ -31,7 +40,7 @@ function AccountType() {
                 ? t("switchedToEmployer")
                 : t("switchedToJobSeeker"),
             );
-            router.replace(target === "COMPANY" ? "/company" : "/candidate");
+            router.replace(target === "COMPANY" ? (companyProfileIsNew ? "/company/create" : "/company") : "/candidate");
           },
           onError: () => toast.error(t("switchError")),
         },
@@ -59,6 +68,11 @@ function AccountType() {
       </div>
 
       <div className="flex-1 space-y-4">
+        <div className="border border-brand-light-neutral p-4">
+          <p className="mb-2 text-[15px] font-semibold">Profession</p>
+          <ProfessionSelect value={professionId} onChange={setProfessionId}/>
+          <button type="button" disabled={!professionId || professionId === user?.professionId || updateProfession.isPending} onClick={()=>updateProfession.mutate({professionId})} className="mt-3 bg-brand px-4 py-2 text-sm font-semibold text-white disabled:opacity-40">Enregistrer</button>
+        </div>
         <AccountTypeOption
           title={t("jobSeekerTitle")}
           description={t("jobSeekerDescription")}

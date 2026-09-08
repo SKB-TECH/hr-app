@@ -17,6 +17,8 @@ export type AuthUser = {
   activeProfile: "CANDIDATE" | "COMPANY";
   status?: string;
   emailVerified?: boolean;
+  professionId?: string | null;
+  profession?: { id: string; name: string; code: string; category: string | null } | null;
 };
 
 export type LoginInput = {
@@ -29,7 +31,7 @@ export type RegisterInput = {
   fullName: string;
   email: string;
   acceptTerms: boolean;
-  role: "CANDIDATE" | "COMPANY_OWNER";
+  professionId: string;
 };
 export type RegistrationRequest = {
   requestId: string;

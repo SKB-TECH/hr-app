@@ -1,6 +1,5 @@
 "use client";
 
-import TabsUserLevel, { type UserLevel } from "@/components/common/auth/TabsUserLevel";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useRegister } from "@/core/hooks/auth/use-register";
@@ -12,6 +11,7 @@ import { Link, useRouter } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { FormEvent, ReactNode, useState } from "react";
 import toast from "react-hot-toast";
+import ProfessionSelect from "@/components/ui/ProfessionSelect";
 
 type Step = "account" | "otp" | "password";
 
@@ -23,7 +23,7 @@ export default function SignUpPage() {
   const resend = useResendOtp();
   const setupPassword = useSetupPassword();
   const [step, setStep] = useState<Step>("account");
-  const [userLevel, setUserLevel] = useState<UserLevel>("job-seeker");
+  const [professionId, setProfessionId] = useState("");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
@@ -33,18 +33,18 @@ export default function SignUpPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const fail = (error: unknown) => toast.error(error instanceof ApiError ? error.message : t("signUp.genericError"));
-  async function submitAccount(event: FormEvent) { event.preventDefault(); try { const result = await register.mutateAsync({ fullName: fullName.trim(), email: email.trim(), acceptTerms, role: userLevel === "company" ? "COMPANY_OWNER" : "CANDIDATE" }); setRequestId(result.requestId); setStep("otp"); toast.success(t("signUp.codeSentByEmail")); } catch (error) { fail(error); } }
+  async function submitAccount(event: FormEvent) { event.preventDefault(); if(!professionId)return toast.error("Sélectionnez votre profession."); try { const result = await register.mutateAsync({ fullName: fullName.trim(), email: email.trim(), acceptTerms, professionId }); setRequestId(result.requestId); setStep("otp"); toast.success(t("signUp.codeSentByEmail")); } catch (error) { fail(error); } }
   async function submitOtp(event: FormEvent) { event.preventDefault(); try { await verify.mutateAsync({ requestId, otp }); setStep("password"); toast.success(t("signUp.emailVerified")); } catch (error) { fail(error); } }
-  async function submitPassword(event: FormEvent) { event.preventDefault(); if (password !== confirmPassword) return toast.error(t("shared.passwordsDoNotMatch")); try { const user = await setupPassword.mutateAsync({ password, confirmPassword }); toast.success(t("signUp.accountCreated")); router.replace(userLevel === "company" || user.role === "COMPANY_OWNER" ? "/company" : "/candidate"); } catch (error) { fail(error); } }
+  async function submitPassword(event: FormEvent) { event.preventDefault(); if (password !== confirmPassword) return toast.error(t("shared.passwordsDoNotMatch")); try { await setupPassword.mutateAsync({ password, confirmPassword }); toast.success(t("signUp.accountCreated")); router.replace("/candidate"); } catch (error) { fail(error); } }
 
   return (
     <main className="flex w-full flex-1 items-center justify-center">
       <div className="w-full max-w-xl space-y-5">
         <div className="text-center"><p className="text-xs font-semibold uppercase tracking-widest text-indigo-600">{t("shared.stepOf", { current: step === "account" ? 1 : step === "otp" ? 2 : 3, total: 3 })}</p><h1 className="mt-2 text-3xl font-extrabold text-slate-900">{t("signUp.createAccount")}</h1></div>
         {step === "account" && <form onSubmit={submitAccount} className="space-y-5">
-          <TabsUserLevel value={userLevel} onChange={setUserLevel} />
           <Field label={t("signUp.fullName")} id="fullName"><Input id="fullName" required minLength={2} value={fullName} onChange={(e) => setFullName(e.target.value)} className="h-14 rounded-none" /></Field>
           <Field label={t("shared.emailAddress")} id="email"><Input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="h-14 rounded-none" /></Field>
+          <Field label="Profession" id="profession"><ProfessionSelect value={professionId} onChange={setProfessionId}/></Field>
           <label className="flex items-start gap-3 text-sm text-slate-600"><input type="checkbox" checked={acceptTerms} onChange={(e) => setAcceptTerms(e.target.checked)} required className="mt-1" />{t("signUp.acceptTerms")}</label>
           <Submit pending={register.isPending}>{t("signUp.continue")}</Submit>
         </form>}
