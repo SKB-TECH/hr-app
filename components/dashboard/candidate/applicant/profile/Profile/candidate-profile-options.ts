@@ -6,9 +6,9 @@ export const WORK_TYPE_OPTIONS = [
 
 export const AVAILABILITY_OPTIONS = [
   { value: "immediate", label: "Immediate" },
+  { value: "one_week", label: "1 week notice" },
   { value: "two_weeks", label: "2 weeks notice" },
   { value: "one_month", label: "1 month notice" },
-  { value: "not_available", label: "Not available" },
 ];
 
 export function optionLabel(options: { value: string; label: string }[], value: string | null): string | null {

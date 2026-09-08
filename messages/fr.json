@@ -489,6 +489,7 @@
     },
     "availabilityOptions": {
       "immediate": "Immédiate",
+      "oneWeek": "Préavis d'1 semaine",
       "twoWeeks": "Préavis de 2 semaines",
       "oneMonth": "Préavis d'1 mois",
       "notAvailable": "Non disponible"

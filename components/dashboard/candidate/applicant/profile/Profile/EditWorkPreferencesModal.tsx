@@ -99,21 +99,35 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
 
   const onSubmit = async (values: WorkPreferencesFormValues) => {
     if (submittingRef.current) return;
+    const salaryMin = values.expectedSalaryMin.trim() ? Number(values.expectedSalaryMin) : null;
+    const salaryMax = values.expectedSalaryMax.trim() ? Number(values.expectedSalaryMax) : null;
+    if (salaryMin !== null && salaryMax !== null && salaryMin > salaryMax) {
+      toast.error("Le salaire minimum ne peut pas dépasser le salaire maximum.");
+      return;
+    }
     submittingRef.current = true;
 
     try {
+      const validLanguageCodes = new Set(languageCatalog.data?.map((item) => item.code.toLowerCase()) || []);
+      const validProfessionIds = new Set(professionCatalog.data?.map((item) => item.id) || []);
+      const normalizedLanguages = languageCatalog.data
+        ? languages.filter((item) => validLanguageCodes.has(item.code.toLowerCase()))
+        : languages;
+      const normalizedProfessionIds = professionCatalog.data
+        ? professionIds.filter((id) => validProfessionIds.has(id))
+        : professionIds;
       await updateProfile.mutateAsync(
         toCandidateProfileInput(profile, {
           yearsExperience: values.yearsExperience.trim() ? Number(values.yearsExperience) : null,
           workType: values.workType || null,
           availability: values.availability || null,
-          expectedSalaryMin: values.expectedSalaryMin ? values.expectedSalaryMin : null,
-          expectedSalaryMax: values.expectedSalaryMax ? values.expectedSalaryMax : null,
+          expectedSalaryMin: salaryMin !== null ? String(salaryMin) : null,
+          expectedSalaryMax: salaryMax !== null ? String(salaryMax) : null,
           salaryCurrency: values.salaryCurrency || "USD",
-          languageProficiencies: languages,
-          languageCodes: languages.map(item=>item.code),
+          languageProficiencies: normalizedLanguages,
+          languageCodes: normalizedLanguages.map(item=>item.code.toLowerCase()),
           preferredCountries: countries,
-          preferredProfessionIds: professionIds,
+          preferredProfessionIds: normalizedProfessionIds,
           preferredEmploymentTypes: employmentTypes,
           acceptsRemote,
         }),
@@ -121,9 +135,6 @@ export default function EditWorkPreferencesModal({ open, onOpenChange, profile }
       toast.success(t("successToast"));
       onOpenChange(false);
     } catch (error) {
-      if (error instanceof ApiError) {
-        console.error("Work preferences update rejected by backend:", error.status, error.details);
-      }
       toast.error(error instanceof ApiError ? error.message : t("errorToast"));
     } finally {
       submittingRef.current = false;

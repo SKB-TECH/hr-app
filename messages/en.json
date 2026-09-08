@@ -488,6 +488,7 @@
     },
     "availabilityOptions": {
       "immediate": "Immediate",
+      "oneWeek": "1 week notice",
       "twoWeeks": "2 weeks notice",
       "oneMonth": "1 month notice",
       "notAvailable": "Not available"
