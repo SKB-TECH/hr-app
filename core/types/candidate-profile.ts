@@ -8,6 +8,13 @@ export type CandidateProfileDetails = {
   cityName: string | null;
   address: string | null;
   languageCodes: string[];
+  languageProficiencies: Array<{ code: string; level: "beginner" | "intermediate" | "advanced" | "fluent" | "native" }>;
+  preferredProfessionIds: string[];
+  preferredCountries: string[];
+  preferredEmploymentTypes: string[];
+  acceptsRemote: boolean;
+  expectedSalaryMin: string | null;
+  expectedSalaryMax: string | null;
   currentSalary: string | null;
   expectedSalary: string | null;
   salaryCurrency: string | null;

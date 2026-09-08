@@ -13,6 +13,12 @@ export type PublicCandidateProfile = {
   availability: string | null;
   workType: string | null;
   openToWork: boolean;
+  languageCodes: string[];
+  languageProficiencies: Array<{ code: string; level: string }>;
+  preferredProfessionIds: string[];
+  preferredCountries: string[];
+  preferredEmploymentTypes: string[];
+  acceptsRemote: boolean;
   skills: Array<{ id: string; name?: string | null; level?: string | null; yearsExperience?: number | null }>;
   experiences: Array<{ id: string; jobTitle?: string | null; companyName?: string | null; description?: string | null }>;
   education: Array<{ id: string; institution?: string | null; degree?: string | null; fieldOfStudy?: string | null }>;

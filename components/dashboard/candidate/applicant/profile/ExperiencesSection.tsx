@@ -64,6 +64,11 @@ export default function ExperiencesSection() {
       : null,
     workTypeLabel,
     availabilityLabel,
+    details?.expectedSalaryMin || details?.expectedSalaryMax ? `${details.expectedSalaryMin || "—"} – ${details.expectedSalaryMax || "—"} ${details.salaryCurrency || "USD"}` : null,
+    details?.acceptsRemote ? "Télétravail accepté" : null,
+    ...(details?.preferredCountries || []),
+    ...(details?.preferredEmploymentTypes || []).map(type=>type.replaceAll("_"," ")),
+    ...(details?.languageProficiencies || []).map(item=>`${item.code.toUpperCase()} · ${item.level}`),
   ].filter(Boolean) as string[];
 
   return (

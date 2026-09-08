@@ -18,6 +18,8 @@ export function buildCandidateProfileFormData(input: CandidateProfileInput) {
   appendIfDefined(body, "birthDate", input.birthDate);
   appendIfDefined(body, "currentSalary", input.currentSalary);
   appendIfDefined(body, "expectedSalary", input.expectedSalary);
+  appendIfDefined(body, "expectedSalaryMin", input.expectedSalaryMin);
+  appendIfDefined(body, "expectedSalaryMax", input.expectedSalaryMax);
   appendIfDefined(body, "salaryCurrency", input.salaryCurrency);
   appendIfDefined(body, "yearsExperience", input.yearsExperience);
   appendIfDefined(body, "linkedinUrl", input.linkedinUrl);
@@ -27,6 +29,11 @@ export function buildCandidateProfileFormData(input: CandidateProfileInput) {
   appendIfDefined(body, "workType", input.workType);
   appendIfDefined(body, "profileVisibility", input.profileVisibility);
   input.languageCodes?.forEach((code) => body.append("languageCodes", code));
+  if (input.languageProficiencies) body.append("languageProficiencies", JSON.stringify(input.languageProficiencies));
+  if (input.preferredProfessionIds) body.append("preferredProfessionIds", JSON.stringify(input.preferredProfessionIds));
+  if (input.preferredCountries) body.append("preferredCountries", JSON.stringify(input.preferredCountries));
+  if (input.preferredEmploymentTypes) body.append("preferredEmploymentTypes", JSON.stringify(input.preferredEmploymentTypes));
+  if (input.acceptsRemote !== undefined) body.append("acceptsRemote", String(input.acceptsRemote));
   if (input.avatarFile) body.append("avatarFile", input.avatarFile);
   return body;
 }
