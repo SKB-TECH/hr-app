@@ -14,6 +14,7 @@ import { useSwitchActiveCompany } from "@/core/hooks/company/use-switch-active-c
 import { Check, Building2 } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import GlobalSearch from "@/components/dashboard/layout/GlobalSearch";
 
 export default function CompanyDashboardHeader({
   toggleMobileMenu,
@@ -59,6 +60,8 @@ export default function CompanyDashboardHeader({
           <Link href="/company/create" onClick={() => setOpen(false)} className="block w-full border-t px-4 py-3 text-left text-sm font-bold text-brand hover:bg-accent-light-brand">+ Ajouter une entreprise</Link>
         </div>}
       </div>
+
+      <GlobalSearch />
 
       {/* Right section */}
       <div className="flex shrink-0 items-center gap-2 sm:gap-4">

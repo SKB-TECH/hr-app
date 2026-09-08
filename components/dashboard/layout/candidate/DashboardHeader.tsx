@@ -6,6 +6,7 @@ import { getPageName, getParentPath, shouldShowBackButton } from "@/lib/utils";
 import { NotificationBell } from "./NotificationBell";
 import { CandidateMobileSidebarProps } from "./DashBoardHeaderWrapper";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
+import GlobalSearch from "@/components/dashboard/layout/GlobalSearch";
 
 interface DashboardHeaderProps {
   pathname: string;
@@ -28,6 +29,8 @@ export default function DashboardHeader({
         parentPath={parentPath}
         pageName={pageName}
       />
+
+      <GlobalSearch />
 
       {/* Right section */}
       <div className="flex items-center gap-4">

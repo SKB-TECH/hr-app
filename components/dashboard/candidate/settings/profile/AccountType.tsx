@@ -8,7 +8,7 @@ import { useEnableProfile } from "@/core/hooks/auth/use-enable-profile";
 import { useRouter } from "@/i18n/routing";
 import type { AccountProfile } from "@/core/services/auth/switch-profile.service";
 import ProfessionSelect from "@/components/ui/ProfessionSelect";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateAccountProfile } from "@/core/services/users/update-account-profile.service";
 
@@ -19,8 +19,8 @@ function AccountType() {
   const enableProfile = useEnableProfile();
   const router = useRouter();
   const queryClient = useQueryClient();
-  const [professionId, setProfessionId] = useState("");
-  useEffect(() => setProfessionId(user?.professionId ?? ""), [user?.professionId]);
+  const [professionChoice, setProfessionChoice] = useState<string | null>(null);
+  const professionId = professionChoice ?? user?.professionId ?? "";
   const updateProfession = useMutation({ mutationFn: updateAccountProfile, onSuccess: (updated) => { queryClient.setQueryData(["auth", "session"], updated); void queryClient.invalidateQueries({ queryKey: ["auth"] }); toast.success("Profession mise à jour."); }, onError: () => toast.error("Impossible de modifier la profession.") });
 
   const isPending = switchProfile.isPending || enableProfile.isPending;
@@ -70,7 +70,7 @@ function AccountType() {
       <div className="flex-1 space-y-4">
         <div className="border border-brand-light-neutral p-4">
           <p className="mb-2 text-[15px] font-semibold">Profession</p>
-          <ProfessionSelect value={professionId} onChange={setProfessionId}/>
+          <ProfessionSelect value={professionId} onChange={setProfessionChoice}/>
           <button type="button" disabled={!professionId || professionId === user?.professionId || updateProfession.isPending} onClick={()=>updateProfession.mutate({professionId})} className="mt-3 bg-brand px-4 py-2 text-sm font-semibold text-white disabled:opacity-40">Enregistrer</button>
         </div>
         <AccountTypeOption
