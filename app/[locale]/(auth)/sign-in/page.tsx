@@ -11,7 +11,7 @@ import { ApiError } from "@/core/types/api";
 import { Link, useRouter } from "@/i18n/routing";
 import Image from "next/image";
 import { useLocale } from "next-intl";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function SignInPage() {
@@ -22,6 +22,20 @@ export default function SignInPage() {
   const [userLevel, setUserLevel] = useState<UserLevel>("job-seeker");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("error") === "oauth_callback_failed") {
+        toast.error(
+          locale === "fr"
+            ? "La session Google a expiré ou le code a déjà été utilisé. Veuillez réessayer."
+            : "Google authentication session expired or code was already used. Please try signing in again."
+        );
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    }
+  }, [locale]);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

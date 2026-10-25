@@ -98,6 +98,21 @@ export function buildHeaders(req: NextRequest): Headers {
   if (ENV.API_CHANNEL) headers.set("x-api-channel", ENV.API_CHANNEL);
   if (!headers.has("x-client-type")) headers.set("x-client-type", "web");
 
+  // Forward reverse-proxy host & proto so upstream OAuth strategy
+  // accurately matches the client-facing callback URL
+  const host =
+    req.headers.get("x-forwarded-host") ||
+    req.headers.get("host") ||
+    req.nextUrl.host;
+  const proto = (
+    req.headers.get("x-forwarded-proto") ||
+    req.nextUrl.protocol ||
+    "http"
+  ).replace(/:$/, "");
+
+  headers.set("x-forwarded-host", host);
+  headers.set("x-forwarded-proto", proto);
+
   return headers;
 }
 
@@ -137,7 +152,21 @@ export async function proxy(
   ctx?: ProxyCtx
 ): Promise<NextResponse> {
   const path = await resolvePath(req, ctx);
-  const url = buildUpstreamUrl(path, req.nextUrl.search);
+
+  // Normalize query parameters: ensure both 'state' and 'portal' exist for auth routes
+  const searchParams = new URLSearchParams(req.nextUrl.search);
+  const state = searchParams.get("state");
+  const portal = searchParams.get("portal");
+  if (state && !portal) {
+    searchParams.set("portal", state);
+  } else if (portal && !state) {
+    searchParams.set("state", portal);
+  }
+  const queryString = searchParams.toString()
+    ? `?${searchParams.toString()}`
+    : "";
+
+  const url = buildUpstreamUrl(path, queryString);
   const headers = buildHeaders(req);
   const init: RequestInit = { method, headers };
 
@@ -162,18 +191,8 @@ export async function proxy(
       isCallbackPath &&
       (upstream.ok || (upstream.status >= 300 && upstream.status < 400));
 
-    const status = isGoogleSuccess ? 302 : getResponseStatus(upstream, body);
-
-    const res = new NextResponse(isGoogleSuccess ? null : body, {
-      status,
-      headers: { "cache-control": "no-store" },
-    });
-
-    const contentType = upstream.headers.get("content-type");
-    if (contentType) res.headers.set("content-type", contentType);
-
-    // Determine target dashboard based on OAuth state parameter
-    const googleProfile = req.nextUrl.searchParams.get("state")?.toUpperCase();
+    // Determine target dashboard based on OAuth state or portal parameter
+    const googleProfile = (state || portal || "CANDIDATE").toUpperCase();
     const targetPortal =
       googleProfile === "COMPANY" ? "/company" : "/candidate";
 
@@ -184,6 +203,35 @@ export async function proxy(
       referer.includes("/fr/") ||
       referer.endsWith("/fr");
     const defaultRedirect = isFr ? `/fr${targetPortal}` : targetPortal;
+
+    // Handle OAuth callback failure (e.g. single-use authorization code already redeemed or expired)
+    if (isCallbackPath && !isGoogleSuccess) {
+      // Check if user already has an active session (e.g. earlier exchange succeeded)
+      const existingToken =
+        req.cookies.get("access_token")?.value ||
+        req.cookies.get("accessToken")?.value ||
+        req.cookies.get("token")?.value;
+
+      if (existingToken) {
+        return NextResponse.redirect(new URL(defaultRedirect, req.url));
+      }
+
+      // Otherwise redirect user to sign-in with a helpful query param instead of raw 500 JSON
+      const signInPath = isFr ? "/fr/sign-in" : "/sign-in";
+      const signInUrl = new URL(signInPath, req.url);
+      signInUrl.searchParams.set("error", "oauth_callback_failed");
+      return NextResponse.redirect(signInUrl);
+    }
+
+    const status = isGoogleSuccess ? 302 : getResponseStatus(upstream, body);
+
+    const res = new NextResponse(isGoogleSuccess ? null : body, {
+      status,
+      headers: { "cache-control": "no-store" },
+    });
+
+    const contentType = upstream.headers.get("content-type");
+    if (contentType) res.headers.set("content-type", contentType);
 
     let location = isGoogleSuccess
       ? new URL(defaultRedirect, req.url).toString()
