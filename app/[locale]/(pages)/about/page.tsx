@@ -15,7 +15,7 @@ const AboutUsPage = async () => {
       <section className="relative bg-[#132745] text-white py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80"
+            src="/background.png"
             alt="Executive Office Background"
             fill
             priority

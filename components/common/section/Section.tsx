@@ -23,7 +23,7 @@ export default async function SectionComponent() {
             <Link
               href={`/jobs?category=${category.name.toLowerCase()}`}
               key={category.id}
-              className="group relative bg-white border border-gray-200/90 rounded-2xl p-5 md:p-6 cursor-pointer
+              className="group relative bg-white border border-gray-200/90 rounded-none p-5 md:p-6 cursor-pointer
                          hover:border-[#4640DE] hover:shadow-[0_12px_30px_rgba(70,64,222,0.08)]
                          hover:-translate-y-1 transition-all duration-300
                          flex flex-row md:flex-col
@@ -32,7 +32,7 @@ export default async function SectionComponent() {
                          justify-between"
             >
               {/* Category Icon Container */}
-              <div className="w-14 h-14 rounded-2xl bg-[#EEF2FF] flex items-center justify-center shrink-0 group-hover:bg-[#4640DE] transition-colors duration-300">
+              <div className="w-14 h-14 rounded-none bg-[#EEF2FF] flex items-center justify-center shrink-0 group-hover:bg-[#4640DE] transition-colors duration-300">
                 <category.logo
                   width={30}
                   height={30}
@@ -49,7 +49,7 @@ export default async function SectionComponent() {
                   <span className="text-sm text-[#7C8493] font-medium">
                     {t("section.jobsAvailable", { count: category.availableJobs })}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-[#132745] group-hover:bg-[#4640DE] group-hover:text-white transition-all duration-300 shrink-0">
+                  <div className="w-8 h-8 rounded-none bg-gray-50 flex items-center justify-center text-[#132745] group-hover:bg-[#4640DE] group-hover:text-white transition-all duration-300 shrink-0">
                     <ArrowRight size={16} />
                   </div>
                 </div>

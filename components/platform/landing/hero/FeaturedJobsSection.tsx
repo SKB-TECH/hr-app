@@ -30,12 +30,12 @@ function FeaturedJobCard({
   return (
     <article
       aria-hidden={isDuplicate}
-      className={`bg-white rounded-2xl border border-gray-200/90 p-5 md:p-6 flex flex-col gap-3.5 hover:border-[#4640DE] hover:shadow-[0_12px_32px_rgba(70,64,222,0.08)] hover:-translate-y-1 transition-all duration-300 flex-none w-[280px] sm:w-[320px] md:w-auto md:flex-[1_1_280px] ${
+      className={`bg-white rounded-none border border-gray-200/90 p-5 md:p-6 flex flex-col gap-3.5 hover:border-[#4640DE] hover:shadow-[0_12px_32px_rgba(70,64,222,0.08)] hover:-translate-y-1 transition-all duration-300 flex-none w-[280px] sm:w-[320px] md:w-auto md:flex-[1_1_280px] ${
         isDuplicate ? "md:hidden" : ""
       }`}
     >
       <div className="flex justify-between items-start gap-4">
-        <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center p-2 shrink-0">
+        <div className="w-12 h-12 rounded-none bg-gray-50 border border-gray-100 flex items-center justify-center p-2 shrink-0">
           <Image
             src={job.companyLogoUrl || "/logo/lgo.png"}
             alt={`${job.companyName || job.title} logo`}
@@ -44,7 +44,7 @@ function FeaturedJobCard({
             className="object-contain max-h-8 w-auto"
           />
         </div>
-        <span className="text-xs font-semibold text-[#4640DE] bg-[#EEF2FF] border border-[#4640DE]/30 px-3 py-1 rounded-full whitespace-nowrap">
+        <span className="text-xs font-semibold text-[#4640DE] bg-[#EEF2FF] border border-[#4640DE]/30 px-3 py-1 rounded-none whitespace-nowrap">
           {job.employmentTypes[0]
             ? humanizeEmploymentType(job.employmentTypes[0])
             : fullTimeLabel}
@@ -85,7 +85,7 @@ function FeaturedJobCard({
           (tag) => (
             <span
               key={tag}
-              className={`inline-flex items-center justify-center text-xs px-2.5 py-1 rounded-full font-medium ${
+              className={`inline-flex items-center justify-center text-xs px-2.5 py-1 rounded-none font-medium ${
                 tagStyles[tag] ?? defaultTag
               }`}
             >

@@ -34,13 +34,13 @@ export default function LatestJobsOpenSection() {
           {latestJobs.map((job, i) => (
             <div
               key={job.id + "-" + i}
-              className="flex items-start sm:items-center gap-4 sm:gap-5 p-5 sm:p-6 bg-white rounded-2xl
+              className="flex items-start sm:items-center gap-4 sm:gap-5 p-5 sm:p-6 bg-white rounded-none
                          border border-gray-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)]
                          hover:shadow-[0_12px_30px_rgba(70,64,222,0.08)] hover:border-[#4640DE]
                          hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
             >
               {/* Company Logo */}
-              <div className="shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center p-2.5 group-hover:scale-105 transition-transform">
+              <div className="shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-none bg-gray-50 border border-gray-100 flex items-center justify-center p-2.5 group-hover:scale-105 transition-transform">
                 <Image
                   src={job.companyLogoUrl || "/logo/lgo.png"}
                   alt={job.companyName || job.title}
@@ -74,7 +74,7 @@ export default function LatestJobsOpenSection() {
                   </span>
                 </p>
 
-                {/* Tags row */}
+                {/* Tags row with rounded-none */}
                 <div className="flex items-center gap-2 flex-wrap mt-2">
                   {[
                     ...job.employmentTypes.map(humanizeEmploymentType),
@@ -82,7 +82,7 @@ export default function LatestJobsOpenSection() {
                   ].map((tag) => (
                     <span
                       key={tag}
-                      className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${
+                      className={`text-xs font-semibold px-2.5 py-0.5 rounded-none ${
                         (tag && tagStyles[tag]) ??
                         "text-[#7C8493] bg-gray-50 border border-gray-200"
                       }`}
@@ -93,8 +93,8 @@ export default function LatestJobsOpenSection() {
                 </div>
               </div>
 
-              {/* Arrow Indicator */}
-              <div className="hidden sm:flex w-9 h-9 rounded-full bg-gray-50 items-center justify-center text-[#132745] group-hover:bg-[#4640DE] group-hover:text-white transition-all shrink-0">
+              {/* Arrow Indicator with rounded-none */}
+              <div className="hidden sm:flex w-9 h-9 rounded-none bg-gray-50 items-center justify-center text-[#132745] group-hover:bg-[#4640DE] group-hover:text-white transition-all shrink-0">
                 <ArrowRight size={16} />
               </div>
             </div>

@@ -15,7 +15,7 @@ const HomePage = () => {
       {/* 1. Hero Section: Photographic Header with Integrated Executive Search */}
       <HeroSectionComponent />
 
-      {/* 2. Partners Bar: Dark Teal Band matching Exuta */}
+      {/* 2. Partners Bar: Clean White Marquee Band with 50% Opacity */}
       <CompagniesSection />
 
       {/* 3. About Section: Exuta 2-Column Collage & Experience Card */}
@@ -33,7 +33,7 @@ const HomePage = () => {
       {/* 7. Milestones & Story: 2x2 Metric Grid */}
       <ExecutiveMilestonesSection />
 
-      {/* 8. Impact & Statistics Panel: Gold Metrics on Deep Teal */}
+      {/* 8. Impact & Statistics Panel: Gold Metrics on Deep Corporate Navy */}
       <ExecutiveStatsSection />
 
       {/* 9. Latest Job Openings */}

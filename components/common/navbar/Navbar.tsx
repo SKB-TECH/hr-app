@@ -25,7 +25,7 @@ export default function NavbarComponentLandingPage() {
 
   return (
     <header className="sticky top-0 z-50 w-full transition-all duration-300">
-      {/* Top Utility Bar — Deep Navy with Brand Blue & Coral Accents */}
+      {/* Top Utility Bar — Deep Navy */}
       <div className="hidden lg:block bg-[#132745] text-white/80 text-xs py-2 px-6 lg:px-12 border-b border-white/10">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
@@ -88,13 +88,13 @@ export default function NavbarComponentLandingPage() {
                   className="text-sm font-semibold text-[#25324B] hover:text-[#4640DE] transition-colors duration-200 relative group py-1"
                 >
                   {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#4640DE] transition-all duration-200 group-hover:w-full rounded-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#4640DE] transition-all duration-200 group-hover:w-full" />
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* Right Actions: Language + Auth + CTA in Brand Blue */}
+          {/* Right Actions: Language + Auth + CTA with rounded-none */}
           <div className="hidden md:flex items-center gap-3 lg:gap-4">
             <LanguageSwitcher />
 
@@ -106,7 +106,7 @@ export default function NavbarComponentLandingPage() {
             </Link>
 
             <Button
-              className="bg-[#4640DE] hover:bg-[#3730C9] text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-[0_4px_14px_rgba(70,64,222,0.35)] transition-all duration-300 hover:shadow-[0_6px_20px_rgba(70,64,222,0.45)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+              className="bg-[#4640DE] hover:bg-[#3730C9] text-white text-sm font-bold px-6 py-2.5 rounded-none shadow-sm transition-all duration-300 cursor-pointer"
               asChild
             >
               <Link href="/sign-up" className="flex items-center gap-1.5">
@@ -116,18 +116,18 @@ export default function NavbarComponentLandingPage() {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button with rounded-none */}
           <div className="flex items-center gap-2 md:hidden">
             <LanguageSwitcher />
             <button
-              className="p-2 rounded-xl text-[#25324B] hover:bg-[#F8F8FD] transition-colors"
+              className="p-2 text-[#25324B] hover:bg-[#F8F8FD] transition-colors rounded-none"
               onClick={() => setIsOpen(!isOpen)}
               aria-label={t("navbar.toggleMenu")}
             >
               {isOpen ? (
                 <X size={24} className="text-[#25324B]" />
               ) : (
-                <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#F8F8FD] border border-[#25324B]/15">
+                <div className="w-10 h-10 flex items-center justify-center bg-[#F8F8FD] border border-[#25324B]/15 rounded-none">
                   <HiOutlineMenuAlt2 size={22} className="text-[#25324B]" />
                 </div>
               )}
@@ -156,12 +156,12 @@ export default function NavbarComponentLandingPage() {
               <Link
                 href="/sign-in"
                 onClick={() => setIsOpen(false)}
-                className="w-full text-center py-2.5 font-semibold text-[#25324B] hover:text-[#4640DE] border border-[#25324B]/20 rounded-full transition-colors"
+                className="w-full text-center py-2.5 font-semibold text-[#25324B] hover:text-[#4640DE] border border-[#25324B]/20 rounded-none transition-colors"
               >
                 {t("navbar.login")}
               </Link>
               <Button
-                className="w-full bg-[#4640DE] hover:bg-[#3730C9] text-white font-semibold py-2.5 rounded-full shadow-md"
+                className="w-full bg-[#4640DE] hover:bg-[#3730C9] text-white font-semibold py-2.5 rounded-none shadow-md"
                 asChild
               >
                 <Link href="/sign-up" onClick={() => setIsOpen(false)}>

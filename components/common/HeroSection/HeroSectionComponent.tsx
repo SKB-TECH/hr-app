@@ -26,15 +26,15 @@ export default function HeroSectionComponent() {
 
   return (
     <section className="relative overflow-hidden bg-[#132745] text-white">
-      {/* Background Photography with Brand Navy & Indigo Gradient Overlay */}
+      {/* Local Background Photography with Brand Navy & Indigo Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80"
-          alt="Modern Executive Office"
+          src="/background.png"
+          alt="Executive Office Background"
           fill
           priority
           quality={85}
-          className="object-cover object-center opacity-25 mix-blend-luminosity scale-105 transition-transform duration-1000"
+          className="object-cover object-center opacity-25 mix-blend-luminosity scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B132B]/95 via-[#132745]/90 to-[#1C315E]/85" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(70,64,222,0.2),transparent_60%)]" />
@@ -44,8 +44,8 @@ export default function HeroSectionComponent() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Heading, Subheading, and Search */}
           <div className="lg:col-span-8 flex flex-col items-start">
-            {/* Top Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[#FFB836] text-xs font-semibold uppercase tracking-wider mb-6">
+            {/* Top Badge with rounded-none */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-white/10 backdrop-blur-md border border-white/15 text-[#FFB836] text-xs font-semibold uppercase tracking-wider mb-6">
               <Sparkles size={14} className="text-[#26A4FF]" />
               <span>Executive Search & Talent Matching</span>
             </div>
@@ -64,8 +64,8 @@ export default function HeroSectionComponent() {
               {t("heroSection.subheading")}
             </p>
 
-            {/* Modern Floating Search Bar in Brand Blue */}
-            <div className="mt-8 w-full max-w-3xl bg-white rounded-2xl sm:rounded-full p-2 sm:p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20 transition-all flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+            {/* Floating Search Bar with rounded-none */}
+            <div className="mt-8 w-full max-w-3xl bg-white rounded-none p-2 sm:p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20 transition-all flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
               {/* Keyword Search Input */}
               <div className="flex-1 flex items-center gap-3 px-4 py-2 sm:py-0">
                 <Search size={20} className="shrink-0 text-[#25324B]/60" />
@@ -74,7 +74,7 @@ export default function HeroSectionComponent() {
                   onChange={(e) => setKeyword(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSearch()}
                   placeholder={t("heroSection.searchPlaceholder")}
-                  className="h-10 sm:h-12 border-0 bg-transparent text-[#25324B] text-sm sm:text-base placeholder:text-[#7C8493] shadow-none focus-visible:ring-0 px-0"
+                  className="h-10 sm:h-12 border-0 rounded-none bg-transparent text-[#25324B] text-sm sm:text-base placeholder:text-[#7C8493] shadow-none focus-visible:ring-0 px-0"
                 />
               </div>
 
@@ -89,21 +89,21 @@ export default function HeroSectionComponent() {
                     value={selectedLocation}
                     onChange={setSelectedLocation}
                     placeholder={t("heroSection.selectLocationOption")}
-                    className="h-10 sm:h-12 border-0 bg-transparent text-[#25324B] text-sm sm:text-base shadow-none px-0"
+                    className="h-10 sm:h-12 border-0 rounded-none bg-transparent text-[#25324B] text-sm sm:text-base shadow-none px-0"
                   />
                 </div>
               </div>
 
-              {/* Search CTA Button in Brand Blue */}
+              {/* Search CTA Button with rounded-none */}
               <Button
                 onClick={handleSearch}
-                className="h-11 sm:h-12 px-7 rounded-xl sm:rounded-full bg-[#4640DE] hover:bg-[#3730C9] text-white font-semibold text-sm sm:text-base shadow-[0_4px_16px_rgba(70,64,222,0.4)] transition-all cursor-pointer shrink-0"
+                className="h-11 sm:h-12 px-7 rounded-none bg-[#4640DE] hover:bg-[#3730C9] text-white font-bold text-sm sm:text-base shadow-sm transition-all cursor-pointer shrink-0"
               >
                 {t("heroSection.searchButton")}
               </Button>
             </div>
 
-            {/* Popular Searches */}
+            {/* Popular Searches with rounded-none */}
             <div className="mt-5 flex flex-wrap items-center gap-2 text-xs sm:text-sm text-white/70">
               <span className="font-medium text-white/90">
                 {t("heroSection.popular.label")}
@@ -120,7 +120,7 @@ export default function HeroSectionComponent() {
                     setKeyword(item);
                     router.push(`/jobs?q=${encodeURIComponent(item)}`);
                   }}
-                  className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 text-white/90 hover:text-white transition-colors cursor-pointer text-xs"
+                  className="px-3 py-1 rounded-none bg-white/10 hover:bg-white/20 border border-white/10 text-white/90 hover:text-white transition-colors cursor-pointer text-xs"
                 >
                   {item}
                 </button>
@@ -138,22 +138,22 @@ export default function HeroSectionComponent() {
                 <span>Confidential Search</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#26A4FF] animate-pulse" />
+                <span className="w-2 h-2 bg-[#26A4FF] animate-pulse" />
                 <span>Active Global Matching</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Refined Executive Portrait Card */}
+          {/* Right Column: Local Executive Portrait Card with rounded-none */}
           <div className="lg:col-span-4 hidden lg:flex justify-end relative">
             <div className="relative w-[340px] xl:w-[380px]">
-              {/* Outer Decorative Ring in Brand Blue */}
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#4640DE]/25 via-[#26A4FF]/20 to-transparent blur-xl" />
+              {/* Outer Decorative Ring */}
+              <div className="absolute -inset-2 bg-gradient-to-tr from-[#4640DE]/25 via-[#26A4FF]/20 to-transparent blur-md" />
 
-              {/* Main Rounded Image Card */}
-              <div className="relative rounded-3xl overflow-hidden border-2 border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.5)] aspect-[4/5] bg-[#132745]">
+              {/* Main Image Card with rounded-none */}
+              <div className="relative rounded-none overflow-hidden border-2 border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.5)] aspect-[4/5] bg-[#132745]">
                 <Image
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
+                  src="/images/hero2.png"
                   alt="Executive Recruitment Director"
                   fill
                   priority
@@ -163,9 +163,9 @@ export default function HeroSectionComponent() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B] via-transparent to-transparent opacity-60" />
               </div>
 
-              {/* Floating Stat Badge 1 (Top Left) */}
-              <div className="absolute -top-4 -left-6 bg-white text-[#132745] p-3.5 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-3 backdrop-blur-md">
-                <div className="w-10 h-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center text-[#4640DE] font-bold text-lg">
+              {/* Floating Stat Badge 1 (Top Left) with rounded-none */}
+              <div className="absolute -top-4 -left-6 bg-white text-[#132745] p-3.5 rounded-none shadow-xl border border-gray-100 flex items-center gap-3 backdrop-blur-md">
+                <div className="w-10 h-10 rounded-none bg-[#EEF2FF] flex items-center justify-center text-[#4640DE] font-bold text-lg">
                   15Y
                 </div>
                 <div>
@@ -174,9 +174,9 @@ export default function HeroSectionComponent() {
                 </div>
               </div>
 
-              {/* Floating Stat Badge 2 (Bottom Right) */}
-              <div className="absolute -bottom-5 -right-5 bg-[#132745] text-white p-4 rounded-2xl shadow-2xl border border-white/15 flex items-center gap-3.5 backdrop-blur-md">
-                <div className="w-10 h-10 rounded-xl bg-[#4640DE]/20 flex items-center justify-center text-[#26A4FF]">
+              {/* Floating Stat Badge 2 (Bottom Right) with rounded-none */}
+              <div className="absolute -bottom-5 -right-5 bg-[#132745] text-white p-4 rounded-none shadow-2xl border border-white/15 flex items-center gap-3.5 backdrop-blur-md">
+                <div className="w-10 h-10 rounded-none bg-[#4640DE]/20 flex items-center justify-center text-[#26A4FF]">
                   <Sparkles size={20} />
                 </div>
                 <div>

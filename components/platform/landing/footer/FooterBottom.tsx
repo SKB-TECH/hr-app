@@ -31,7 +31,7 @@ export default function FooterBottom() {
             key={label}
             href="#"
             aria-label={label}
-            className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-[#4640DE] hover:border-[#4640DE] hover:scale-105 transition-all duration-300"
+            className="w-9 h-9 rounded-none bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-[#4640DE] hover:border-[#4640DE] hover:scale-105 transition-all duration-300"
           >
             {icon}
           </a>

@@ -27,7 +27,7 @@ export default function Footer() {
     <footer className="bg-[#0B132B] text-white pt-16 md:pt-20 pb-10 border-t border-white/10">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-white/10">
-          {/* Column 1: Brand Info Inspired by Exuta */}
+          {/* Column 1: Brand Info */}
           <div className="lg:col-span-4 flex flex-col items-start">
             <Link href="/" className="mb-5 inline-block">
               <Image
@@ -41,8 +41,8 @@ export default function Footer() {
             <p className="text-sm text-white/70 leading-relaxed max-w-sm">
               {t("footer.brandDescription")}
             </p>
-            <div className="mt-6 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-[#FFB836] font-medium">
-              <span className="w-2 h-2 rounded-full bg-[#26A4FF]" />
+            <div className="mt-6 flex items-center gap-2 px-3 py-1.5 rounded-none bg-white/5 border border-white/10 text-xs text-[#FFB836] font-medium">
+              <span className="w-2 h-2 bg-[#26A4FF]" />
               <span>Certified Executive Recruitment Platform</span>
             </div>
           </div>
@@ -162,23 +162,23 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Compact Newsletter Input */}
+            {/* Compact Newsletter Input with rounded-none */}
             <form onSubmit={handleSubscribe} className="w-full">
               <p className="text-xs text-white/70 mb-2">
                 {t("footer.newsletter.heading")}
               </p>
-              <div className="flex items-center rounded-full bg-white/10 border border-white/15 p-1 focus-within:border-[#4640DE] transition-colors">
+              <div className="flex items-center rounded-none bg-white/10 border border-white/15 p-1 focus-within:border-[#4640DE] transition-colors">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t("footer.newsletter.emailPlaceholder")}
-                  className="w-full bg-transparent px-3 py-1.5 text-xs text-white placeholder:text-white/40 outline-none"
+                  className="w-full bg-transparent px-3 py-1.5 text-xs text-white placeholder:text-white/40 outline-none rounded-none"
                   required
                 />
                 <button
                   type="submit"
-                  className="px-4 py-1.5 rounded-full bg-[#4640DE] hover:bg-[#3730C9] text-white text-xs font-semibold shrink-0 transition-colors"
+                  className="px-4 py-2 rounded-none bg-[#4640DE] hover:bg-[#3730C9] text-white text-xs font-semibold shrink-0 transition-colors"
                 >
                   {subscribed ? "✓" : <ArrowRight size={14} />}
                 </button>

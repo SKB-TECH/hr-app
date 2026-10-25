@@ -31,8 +31,8 @@ export default function ExecutiveVisionSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Vision Details & Capabilities */}
           <div className="lg:col-span-7 flex flex-col items-start">
-            {/* Coral Label */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFF1F0] border border-[#FF6550]/30 text-[#FF6550] text-xs font-bold uppercase tracking-wider mb-4">
+            {/* Coral Label with rounded-none */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#FFF1F0] border border-[#FF6550]/30 text-[#FF6550] text-xs font-bold uppercase tracking-wider mb-4">
               {t("executiveVision.badge")}
             </div>
 
@@ -41,14 +41,14 @@ export default function ExecutiveVisionSection() {
               {t("executiveVision.heading")}
             </h2>
 
-            {/* Capability Features Grid */}
+            {/* Capability Features Grid with rounded-none */}
             <div className="mt-8 space-y-6 w-full">
               {capabilities.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-4 p-4 rounded-2xl bg-[#F8F8FD] border border-gray-100 hover:border-[#4640DE]/30 transition-all duration-300 group"
+                  className="flex items-start gap-4 p-4 rounded-none bg-[#F8F8FD] border border-gray-100 hover:border-[#4640DE]/30 transition-all duration-300 group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center shrink-0 border border-gray-100 group-hover:scale-105 transition-transform">
+                  <div className="w-12 h-12 rounded-none bg-white shadow-sm flex items-center justify-center shrink-0 border border-gray-100 group-hover:scale-105 transition-transform">
                     {item.icon}
                   </div>
                   <div>
@@ -63,15 +63,15 @@ export default function ExecutiveVisionSection() {
               ))}
             </div>
 
-            {/* Highlighted Deep Navy Card Inspired by Exuta */}
-            <div className="mt-8 w-full p-6 sm:p-7 rounded-2xl bg-[#132745] text-white shadow-xl border border-white/10 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#4640DE]/20 rounded-full blur-2xl pointer-events-none" />
+            {/* Highlighted Deep Navy Card with rounded-none */}
+            <div className="mt-8 w-full p-6 sm:p-7 rounded-none bg-[#132745] text-white shadow-xl border border-white/10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#4640DE]/20 rounded-none blur-2xl pointer-events-none" />
               <p className="text-sm text-white/90 leading-relaxed font-normal">
                 {t("executiveVision.highlightDesc")}
               </p>
               <div className="mt-5 pt-5 border-t border-white/15 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-5 h-5 rounded-full bg-[#4640DE] flex items-center justify-center text-white shrink-0">
+                  <div className="w-5 h-5 rounded-none bg-[#4640DE] flex items-center justify-center text-white shrink-0">
                     <Check size={13} strokeWidth={3} />
                   </div>
                   <span className="text-xs sm:text-sm font-semibold text-white">
@@ -79,7 +79,7 @@ export default function ExecutiveVisionSection() {
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <div className="w-5 h-5 rounded-full bg-[#4640DE] flex items-center justify-center text-white shrink-0">
+                  <div className="w-5 h-5 rounded-none bg-[#4640DE] flex items-center justify-center text-white shrink-0">
                     <Check size={13} strokeWidth={3} />
                   </div>
                   <span className="text-xs sm:text-sm font-semibold text-white">
@@ -90,11 +90,11 @@ export default function ExecutiveVisionSection() {
             </div>
           </div>
 
-          {/* Right Column: Tall Executive Portrait in Lounge */}
+          {/* Right Column: Local Tall Executive Portrait with rounded-none */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden shadow-[0_25px_60px_rgba(19,39,69,0.18)] border-4 border-white bg-[#132745] group">
+            <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-none overflow-hidden shadow-[0_25px_60px_rgba(19,39,69,0.18)] border-4 border-white bg-[#132745] group">
               <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80"
+                src="/images/image4.png"
                 alt="Executive Leader in Modern Office Lounge"
                 fill
                 sizes="(max-width: 1024px) 80vw, 420px"
