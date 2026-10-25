@@ -29,6 +29,17 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: "/api/v1/:path*",
+          destination: "/api/proxy/:path*",
+        },
+      ],
+    };
+  },
+
   webpack: (config: Configuration) => {
     config.watchOptions = {
       poll: 1000,
