@@ -20,18 +20,18 @@ export default function FooterBottom() {
   ];
 
   return (
-    <div className="flex flex-col items-center gap-4 pt-6 border-t border-gray-700 md:flex-row md:justify-between">
-      <p className="text-xs text-gray-500 text-center md:text-left">
+    <div className="flex flex-col items-center gap-4 pt-8 md:flex-row md:justify-between">
+      <p className="text-xs text-white/50 text-center md:text-left">
         {t("footer.bottom.copyright", { year: new Date().getFullYear() })}
       </p>
 
-      <div className="flex items-center justify-center md:justify-end gap-3 flex-wrap">
+      <div className="flex items-center justify-center md:justify-end gap-2.5 flex-wrap">
         {socials.map(({ icon, label }) => (
           <a
             key={label}
             href="#"
             aria-label={label}
-            className="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-colors"
+            className="w-9 h-9 rounded-none bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-[#4640DE] hover:border-[#4640DE] hover:scale-105 transition-all duration-300"
           >
             {icon}
           </a>
