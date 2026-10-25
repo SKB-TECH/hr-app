@@ -132,8 +132,66 @@
     "about": {
       "heading": "About Us"
     },
+    "executiveAbout": {
+      "badge": "About Us",
+      "heading": "We Are The Executive Search And Recruitment Expert",
+      "description": "Connecting premier enterprises with proven leadership and world-class specialists. We bring precision, discretion, and strategic insight to executive talent acquisition.",
+      "benefit1": "Deep industry network across technology, finance, and leadership",
+      "benefit2": "Comprehensive candidate vetting and executive culture alignment",
+      "benefit3": "Accelerated placement cycle with dedicated search partners",
+      "experienceYears": "15+ Years",
+      "experienceLabel": "Proven leadership and specialized talent placement worldwide",
+      "cta": "Explore Opportunities"
+    },
+    "executiveVision": {
+      "badge": "Our Vision",
+      "heading": "Experienced Recruiters Specializes In Finding The Right Executive Talent",
+      "card1Title": "Building Great Network",
+      "card1Desc": "Nurturing relationships with top-tier executives, leaders, and pioneering innovators across international markets.",
+      "card2Title": "Have Talent Resource",
+      "card2Desc": "Access to a pre-vetted confidential database of high-impact leaders ready for their next career milestone.",
+      "card3Title": "Good Interviewed Process",
+      "card3Desc": "Structured, multi-stage evaluations focusing on strategic competence, emotional intelligence, and leadership agility.",
+      "highlightTitle": "Executive Placement Standards",
+      "highlightDesc": "Empowering organizations with senior talent that drives sustainable growth and transformational results.",
+      "highlightItem1": "Best Team Work & Dedicated Advisors",
+      "highlightItem2": "Great Relation & High-Touch Networking"
+    },
+    "executiveMilestones": {
+      "badge": "Our Story",
+      "heading": "We Have Completed 15 Years Of Business Experience",
+      "description": "From a specialized recruitment boutique to a premier international talent consultancy, our journey is defined by lasting partnerships and leadership excellence.",
+      "milestone1Year": "2013",
+      "milestone1Title": "Business Founded",
+      "milestone1Desc": "Established with a focus on executive recruitment and leadership placement.",
+      "milestone2Year": "2016",
+      "milestone2Title": "Outsource Agency",
+      "milestone2Desc": "Expanded operations globally to support multinational enterprises and rapid-scale startups.",
+      "milestone3Year": "2018",
+      "milestone3Title": "Have Talent Resource",
+      "milestone3Desc": "Launched proprietary AI-assisted executive matching and confidential search.",
+      "milestone4Year": "2023",
+      "milestone4Title": "Best Business Awards",
+      "milestone4Desc": "Honored as a top executive search and talent intelligence platform."
+    },
+    "executiveStats": {
+      "stat1Value": "8,950+",
+      "stat1Label": "Talent Found",
+      "stat2Value": "1,650+",
+      "stat2Label": "Executive Talent",
+      "stat3Value": "4,506+",
+      "stat3Label": "Outsource Placements",
+      "stat4Value": "15Y+",
+      "stat4Label": "Business Experience"
+    },
+    "executiveCta": {
+      "heading": "Ready To Get Executive Talent With Us?",
+      "subtitle": "Partner with our specialized executive recruiters to discover top-tier leaders who will drive your enterprise forward.",
+      "button": "Get A Quotation",
+      "secondaryButton": "Explore Jobs"
+    },
     "companiesMarquee": {
-      "defaultLabel": "Companies we helped grow"
+      "defaultLabel": "Our Featured Partners"
     },
     "featuredJobs": {
       "titlePrefix": "Featured",

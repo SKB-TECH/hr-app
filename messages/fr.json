@@ -133,8 +133,66 @@
     "about": {
       "heading": "À propos de nous"
     },
+    "executiveAbout": {
+      "badge": "À Propos",
+      "heading": "Les Experts du Recrutement et de la Chasse de Têtes Exécutive",
+      "description": "Nous connectons les entreprises d'élite avec des leaders éprouvés et des talents d'exception. Précision, discrétion et vision stratégique au service de votre croissance.",
+      "benefit1": "Réseau sectoriel étendu en technologie, finance et gouvernance",
+      "benefit2": "Évaluation rigoureuse des compétences et de l'adéquation culturelle",
+      "benefit3": "Cycle de recrutement accéléré avec conseillers dédiés",
+      "experienceYears": "15+ Ans",
+      "experienceLabel": "Excellence prouvée dans le placement de dirigeants à travers le monde",
+      "cta": "Découvrir les Opportunités"
+    },
+    "executiveVision": {
+      "badge": "Notre Vision",
+      "heading": "Des Chasseurs de Têtes Spécialisés Pour Dénicher les Meilleurs Talents",
+      "card1Title": "Réseau Professionnel d'Élite",
+      "card1Desc": "Relations privilégiées avec des dirigeants et des innovateurs sur les marchés mondiaux.",
+      "card2Title": "Bassin de Talents Qualifié",
+      "card2Desc": "Accès à un vivier exclusif de hauts potentiels prêts pour de nouveaux défis stratégiques.",
+      "card3Title": "Processus d'Entretien Rigoureux",
+      "card3Desc": "Évaluations approfondies axées sur le leadership, l'intelligence émotionnelle et l'agilité.",
+      "highlightTitle": "Standards de Recrutement Exécutif",
+      "highlightDesc": "Propulsez votre organisation grâce à des talents d'envergure générateurs de résultats durables.",
+      "highlightItem1": "Travail d'Équipe d'Excellence & Conseillers Dédiés",
+      "highlightItem2": "Relations Privilégiées & Réseau de Confiance"
+    },
+    "executiveMilestones": {
+      "badge": "Notre Histoire",
+      "heading": "Plus de 15 Ans d'Excellence et d'Expérience Professionnelle",
+      "description": "D'un cabinet de recrutement spécialisé à un leader international de la recherche de cadres, notre parcours repose sur la confiance et l'impact de nos placements.",
+      "milestone1Year": "2013",
+      "milestone1Title": "Fondation de l'Entreprise",
+      "milestone1Desc": "Création du cabinet axé sur la recherche de cadres dirigeants et de spécialistes.",
+      "milestone2Year": "2016",
+      "milestone2Title": "Expansion Internationale",
+      "milestone2Desc": "Déploiement mondial au service de multinationales et d'entreprises en forte croissance.",
+      "milestone3Year": "2018",
+      "milestone3Title": "Plateforme Intelligente",
+      "milestone3Desc": "Déploiement d'algorithmes avancés pour le matching confidentiel de talents.",
+      "milestone4Year": "2023",
+      "milestone4Title": "Prix d'Excellence",
+      "milestone4Desc": "Reconnu parmi les meilleurs cabinets de recrutement et d'intelligence RH."
+    },
+    "executiveStats": {
+      "stat1Value": "8 950+",
+      "stat1Label": "Talents Placés",
+      "stat2Value": "1 650+",
+      "stat2Label": "Cadres Dirigeants",
+      "stat3Value": "4 506+",
+      "stat3Label": "Missions Complétées",
+      "stat4Value": "15 Ans+",
+      "stat4Label": "Expérience Métier"
+    },
+    "executiveCta": {
+      "heading": "Prêt à Recruter vos Prochains Dirigeants Avec Nous ?",
+      "subtitle": "Faites équipe avec nos consultants pour identifier les leaders d'exception qui façonneront l'avenir de votre entreprise.",
+      "button": "Demander un Devis",
+      "secondaryButton": "Explorer les Offres"
+    },
     "companiesMarquee": {
-      "defaultLabel": "Les entreprises que nous avons aidées à se développer"
+      "defaultLabel": "Nos Partenaires Privilégiés"
     },
     "featuredJobs": {
       "titlePrefix": "Emplois",

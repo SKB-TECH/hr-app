@@ -69,6 +69,24 @@
   --color-accent-red: var(--accent-red);
   --color-accent-light-red: var(--accent-light-red);
   --color-foreground-primary: var(--foreground-primary);
+
+  /* Exuta Design System Tokens */
+  --color-teal-950: var(--teal-950);
+  --color-teal-900: var(--teal-900);
+  --color-teal-800: var(--teal-800);
+  --color-teal-700: var(--teal-700);
+  --color-teal-600: var(--teal-600);
+  --color-turquoise-500: var(--turquoise-500);
+  --color-turquoise-600: var(--turquoise-600);
+  --color-turquoise-50: var(--turquoise-50);
+  --color-coral-500: var(--coral-500);
+  --color-coral-600: var(--coral-600);
+  --color-coral-50: var(--coral-50);
+  --color-gold-500: var(--gold-500);
+  --color-gold-400: var(--gold-400);
+  --color-gold-50: var(--gold-50);
+  --color-slate-corporate: var(--slate-corporate);
+  --color-muted-corporate: var(--muted-corporate);
 }
 
 :root {
@@ -124,6 +142,24 @@
   --accent-red: #ff6550;
   --accent-light-red: #ff65501a;
   --foreground-primary: #202430;
+
+  /* Corporate Palette (Refined to Brand Blue & Midnight Navy) */
+  --teal-950: #0B132B;
+  --teal-900: #132745;
+  --teal-800: #1C315E;
+  --teal-700: #25324B;
+  --teal-600: #2E4057;
+  --turquoise-500: #4640DE;
+  --turquoise-600: #3730C9;
+  --turquoise-50: #EEF2FF;
+  --coral-500: #FF6550;
+  --coral-600: #E04834;
+  --coral-50: #FFF1F0;
+  --gold-500: #FFB836;
+  --gold-400: #FFC966;
+  --gold-50: #FFF9EB;
+  --slate-corporate: #25324B;
+  --muted-corporate: #7C8493;
 }
 
 .dark {
