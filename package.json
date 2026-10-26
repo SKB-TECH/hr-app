@@ -9,7 +9,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "npx tsx scripts/run-tests.mjs",
+    "typecheck": "tsc --noEmit",
+    "audit:security": "npm audit --audit-level=high",
+    "audit:ci": "npm run lint && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {
     "@babel/runtime": "^8.0.0",
@@ -53,6 +57,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
+    "tsx": "^4.19.3",
     "typescript": "^5",
     "webpack": "^5.107.2"
   },

@@ -32,8 +32,7 @@ export default function HeroSectionComponent() {
           src="/background.png"
           alt="Executive Office Background"
           fill
-          priority
-          quality={85}
+          sizes="100vw"
           className="object-cover object-center opacity-25 mix-blend-luminosity scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B132B]/95 via-[#132745]/90 to-[#1C315E]/85" />
