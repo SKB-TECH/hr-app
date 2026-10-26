@@ -43,24 +43,21 @@ export default function JobInformation({
   return (
     <div className="bg-white ">
       {/* Header */}
-      <div className="mb-10">
-        <h2 className="text-[18px] font-epilogue text-neutral-100 font-semibold">
+      <div className="mb-8 pb-4 border-b border-[#D6DDEB]">
+        <h2 className="text-xl font-bold font-clash text-[#132745]">
           Basic Information
         </h2>
-
-        <p className="mt-1 text-neutral-60 ">
-          This information will be displayed publicly.
+        <p className="mt-1 text-sm text-[#7C8493]">
+          This information will be displayed publicly on candidate search feeds.
         </p>
       </div>
-
-      <hr />
 
       {/* Job Title */}
       <FormSection
         title="Job Title"
-        description="Job titles must describe one position."
+        description="Job titles must describe one distinct executive or specialist role."
       >
-        <div className="">
+        <div className="max-w-xl">
           <input
             value={data.jobTitle}
             onChange={(e) =>
@@ -68,13 +65,13 @@ export default function JobInformation({
                 jobTitle: e.target.value,
               })
             }
-            placeholder="e.g. Software Engineer"
-            className="w-full border border-neutral-20  px-4 py-3 outline-none focus:border-indigo-600 "
+            placeholder="e.g. Chief Financial Officer, Senior Tech Lead"
+            className="w-full border border-[#D6DDEB] bg-white rounded-none px-4 py-3 outline-none focus:border-[#4640DE] focus:ring-1 focus:ring-[#4640DE] text-sm sm:text-base text-[#132745] font-medium"
           />
 
           <p
-            className={`mt-2 text-sm ${
-              data.jobTitle.length >= 80 ? "text-green-600" : "text-gray-400"
+            className={`mt-2 text-xs ${
+              data.jobTitle.length >= 80 ? "text-amber-600" : "text-[#7C8493]"
             }`}
           >
             {data.jobTitle.length}/80 characters
@@ -84,39 +81,51 @@ export default function JobInformation({
 
       <FormSection
         title="Location"
-        description="Use a city and country in Central Africa, or Remote."
+        description="Select a country/city across Central Africa, or Remote."
       >
-        <CountrySelect value={data.location} onChange={(location)=>updateData({location})}/>
+        <div className="max-w-xl">
+          <CountrySelect
+            value={data.location}
+            onChange={(location) => updateData({ location })}
+            className="rounded-none border-[#D6DDEB]"
+          />
+        </div>
       </FormSection>
 
       {/* Employment */}
       <FormSection
         title="Type of Employment"
-        description="You can select multiple employment types."
+        description="You can select multiple employment arrangements."
       >
-        <div className="space-y-4">
-          {employmentTypes.map((item) => (
-            <label
-              key={item}
-              className="flex items-center text-neutral-80 gap-3"
-            >
-              <input
-                type="checkbox"
-                checked={data.employmentTypes.includes(item)}
-                onChange={() => toggleEmploymentType(item)}
-                className="h-4 w-4"
-              />
-
-              <span>{item}</span>
-            </label>
-          ))}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-xl">
+          {employmentTypes.map((item) => {
+            const selected = data.employmentTypes.includes(item);
+            return (
+              <label
+                key={item}
+                className={`flex items-center gap-3 p-3 border rounded-none cursor-pointer text-sm font-medium transition-all ${
+                  selected
+                    ? "border-[#4640DE] bg-[#F8F9FC] text-[#4640DE]"
+                    : "border-[#D6DDEB] text-[#515B6F] hover:border-gray-400"
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={selected}
+                  onChange={() => toggleEmploymentType(item)}
+                  className="h-4 w-4 rounded-none accent-[#4640DE]"
+                />
+                <span>{item}</span>
+              </label>
+            );
+          })}
         </div>
       </FormSection>
 
       {/* Salary */}
       <FormSection
-        title="Salary"
-        description="Please specify the estimated salary range for the role. You can leave this blank."
+        title="Estimated Compensation"
+        description="Specify the estimated monthly or annual salary range (USD). You can leave this blank."
       >
         <SalaryRange
           minSalary={data.minSalary}
@@ -132,8 +141,8 @@ export default function JobInformation({
 
       {/* Category */}
       <FormSection
-        title="Category"
-        description="You can select multiple job categories"
+        title="Job Category"
+        description="Select the business function that best categorizes this opening."
       >
         <select
           value={data.category}
@@ -142,9 +151,9 @@ export default function JobInformation({
               category: e.target.value,
             })
           }
-          className="w-80 border border-gray-300 px-4 py-3 outline-none focus:border-indigo-600 text-neutral-"
+          className="w-full max-w-xl border border-[#D6DDEB] bg-white rounded-none px-4 py-3 outline-none focus:border-[#4640DE] focus:ring-1 focus:ring-[#4640DE] text-sm text-[#132745] font-medium"
         >
-          <option value="" className="">
+          <option value="">
             {categoriesLoading ? "Loading categories..." : "Select Category"}
           </option>
 
@@ -158,14 +167,15 @@ export default function JobInformation({
 
       {/* Skills */}
       <FormSection
-        title="Required Skills"
-        description="Add required skills for the job"
+        title="Required Skills & Competencies"
+        description="Add key leadership and technical proficiencies."
       >
         <SkillInput
           defaultSkills={data.skills}
           onChange={(skills) => updateData({ skills })}
         />
       </FormSection>
+
     </div>
   );
 }

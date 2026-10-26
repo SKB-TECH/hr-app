@@ -16,8 +16,8 @@ export default function RichTextarea({
   maxLength = 500,
 }: RichTextareaProps) {
   return (
-    <div>
-      <div className="overflow-hidden border border-neutral-200 bg-white">
+    <div className="space-y-2 max-w-2xl">
+      <div className="border border-[#D6DDEB] bg-white rounded-none focus-within:border-[#4640DE] focus-within:ring-1 focus-within:ring-[#4640DE] transition-all">
         {/* Textarea */}
         <textarea
           value={value}
@@ -27,42 +27,34 @@ export default function RichTextarea({
             }
           }}
           placeholder={placeholder}
-          className="h-52 w-full resize-none border-none p-4 outline-none"
+          className="h-44 w-full resize-none border-none p-4 text-sm sm:text-base text-[#132745] outline-none placeholder:text-[#7C8493]"
         />
 
         {/* Toolbar */}
-        <div className="flex items-center justify-between border-t border-neutral-200 px-4 py-2">
-          <div className="flex items-center gap-4 text-neutral-500">
-            <button type="button">
-              <Smile size={18} />
+        <div className="flex items-center justify-between border-t border-[#F0F2F7] bg-[#F8F9FC] px-4 py-2.5">
+          <div className="flex items-center gap-3 text-[#7C8493]">
+            <button type="button" className="p-1 hover:text-[#4640DE] transition-colors cursor-pointer" title="Add emoji">
+              <Smile size={16} />
             </button>
-
-            <button type="button">
-              <Bold size={18} />
+            <button type="button" className="p-1 hover:text-[#4640DE] transition-colors cursor-pointer" title="Bold">
+              <Bold size={16} />
             </button>
-
-            <button type="button">
-              <Italic size={18} />
+            <button type="button" className="p-1 hover:text-[#4640DE] transition-colors cursor-pointer" title="Italic">
+              <Italic size={16} />
             </button>
-
-            <button type="button">
-              <List size={18} />
+            <button type="button" className="p-1 hover:text-[#4640DE] transition-colors cursor-pointer" title="Bullet List">
+              <List size={16} />
             </button>
-
-            <button type="button">
-              <Link2 size={18} />
+            <button type="button" className="p-1 hover:text-[#4640DE] transition-colors cursor-pointer" title="Add Link">
+              <Link2 size={16} />
             </button>
           </div>
+          <span className="text-xs font-semibold text-[#7C8493]">
+            {value.length} / {maxLength}
+          </span>
         </div>
-      </div>{" "}
-      <div className="flex justify-between items-center">
-        <h1 className=" font-epilogue text-neutral-60">
-          Maximum 500 characters
-        </h1>
-        <span className="text-xs text-neutral-500">
-          {value.length} / {maxLength}
-        </span>
       </div>
     </div>
+
   );
 }

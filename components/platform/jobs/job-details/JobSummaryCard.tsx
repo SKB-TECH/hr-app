@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { ProgressWithLabel } from "@/components/ui/ProgressWithLabel";
+import { Calendar, Clock, Briefcase, DollarSign } from "lucide-react";
 
 type Props = {
   applyBefore: string;
@@ -11,11 +12,24 @@ type Props = {
   className?: string;
 };
 
-function InfoRow({ label, value }: { label: string; value: string }) {
+function InfoRow({
+  icon: Icon,
+  label,
+  value,
+  isHighlight = false,
+}: {
+  icon: React.ElementType;
+  label: string;
+  value: string;
+  isHighlight?: boolean;
+}) {
   return (
-    <div className="flex justify-between font-epilogue">
-      <p className="text-neutral-80">{label}</p>
-      <span className="font-semibold text-neutral-100 text-[16px]">
+    <div className="flex items-center justify-between py-3 border-b border-[#F0F2F7] last:border-b-0 text-sm">
+      <div className="flex items-center gap-2.5 text-[#7C8493]">
+        <Icon size={16} className="text-[#4640DE]" />
+        <span>{label}</span>
+      </div>
+      <span className={`font-semibold ${isHighlight ? "text-[#4640DE] text-base" : "text-[#132745]"}`}>
         {value}
       </span>
     </div>
@@ -32,19 +46,22 @@ export default function JobSummaryCard({
   const t = useTranslations("findJobs");
 
   return (
-    <div className={`pb-6 md:py-8 ${className}`}>
-      <h1 className=" text-[24px] md:text-[32px] text-neutral-100 font-bold font-clash">
+    <div className={`border border-[#D6DDEB] bg-white p-6 rounded-none shadow-[0_4px_20px_rgba(0,0,0,0.03)] ${className}`}>
+      <h3 className="text-xl text-[#132745] font-bold font-clash tracking-tight">
         {t("detail.summaryCard.title")}
-      </h1>
-      <div className=" w-full mt-6 h-18.5 px-4 bg-[#F8F8FD] flex items-center justify-center">
+      </h3>
+
+      <div className="w-full mt-4 p-3 bg-[#F8F9FC] border border-[#E4E7EC] rounded-none flex items-center justify-center">
         <ProgressWithLabel />
       </div>
-      <div className="w-full mt-4 space-y-4 p-2">
-        <InfoRow label={t("detail.summaryCard.applyBefore")} value={applyBefore} />
-        <InfoRow label={t("detail.summaryCard.jobPostedOn")} value={postedOn} />
-        <InfoRow label={t("detail.summaryCard.jobType")} value={jobType} />
-        <InfoRow label={t("detail.summaryCard.salary")} value={salary} />
+
+      <div className="w-full mt-4 divide-y divide-[#F0F2F7]">
+        <InfoRow icon={Calendar} label={t("detail.summaryCard.applyBefore")} value={applyBefore} />
+        <InfoRow icon={Clock} label={t("detail.summaryCard.jobPostedOn")} value={postedOn} />
+        <InfoRow icon={Briefcase} label={t("detail.summaryCard.jobType")} value={jobType} />
+        <InfoRow icon={DollarSign} label={t("detail.summaryCard.salary")} value={salary} isHighlight />
       </div>
     </div>
   );
 }
+

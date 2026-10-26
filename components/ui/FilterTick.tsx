@@ -26,15 +26,15 @@ export function FilterTick({
     <div
       onClick={toggle}
       className={`
-        w-6 h-6 rounded flex items-center justify-center cursor-pointer transition-all border
+        w-5 h-5 rounded-none flex items-center justify-center cursor-pointer transition-all border
         ${
           checked
-            ? "bg-indigo-600 border-indigo-600 shadow-sm"
-            : "bg-white border-slate-200 hover:border-indigo-300"
+            ? "bg-[#4640DE] border-[#4640DE] shadow-sm text-white"
+            : "bg-white border-[#D6DDEB] hover:border-[#4640DE]"
         }
       `}
     >
-      {checked && <Check size={16} className="text-white stroke-[3px]" />}
+      {checked && <Check size={14} className="text-white stroke-[3px]" />}
     </div>
   );
 }

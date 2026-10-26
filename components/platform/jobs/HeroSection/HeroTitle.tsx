@@ -1,6 +1,5 @@
 import React from "react";
-import Image from "next/image";
-import { UNDERLINE_SIZES } from "./ReusableHeroSection";
+
 
 interface HeroTitleProps {
   title: string;
@@ -13,26 +12,18 @@ const HeroTitle = ({
   title,
   highlight,
   subtitle,
-  underlineSize = "sm",
 }: HeroTitleProps) => {
-  const { width, height } = UNDERLINE_SIZES[underlineSize];
-
   return (
-    <div className="text-center pt-15">
-      <h1 className="text-4xl md:text-5xl font-bold font-clash text-neutral-100">
+    <div className="text-center pt-10 md:pt-14 max-w-3xl mx-auto">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-clash text-white tracking-tight leading-tight">
         {title}{" "}
-        <span className="relative inline-block text-accent-light-blue">
+        <span className="text-[#26A4FF] underline decoration-[#26A4FF]/40 underline-offset-8">
           {highlight}
-          <Image
-            width={width}
-            height={height}
-            src="/image.png"
-            alt="underline"
-            className="mt-2"
-          />
         </span>
       </h1>
-      <p className="mt-4 text-neutral-80 font-epilogue">{subtitle}</p>
+      <p className="mt-4 text-base sm:text-lg text-white/80 font-normal leading-relaxed">
+        {subtitle}
+      </p>
     </div>
   );
 };

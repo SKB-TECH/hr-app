@@ -33,8 +33,8 @@ const HomePage = () => {
       {/* 7. Milestones & Story: 2x2 Metric Grid */}
       <ExecutiveMilestonesSection />
 
-      {/* 8. Impact & Statistics Panel: Gold Metrics on Deep Corporate Navy */}
-      <ExecutiveStatsSection />
+      {/* 8. Impact & Statistics Panel: Gold Metrics on Deep Corporate Navy - Commented out for now as requested */}
+      {/* <ExecutiveStatsSection /> */}
 
       {/* 9. Latest Job Openings */}
       <LatestJobsOpenSection />

@@ -41,10 +41,10 @@ export default function Footer() {
             <p className="text-sm text-white/70 leading-relaxed max-w-sm">
               {t("footer.brandDescription")}
             </p>
-            <div className="mt-6 flex items-center gap-2 px-3 py-1.5 rounded-none bg-white/5 border border-white/10 text-xs text-[#FFB836] font-medium">
+            {/* <div className="mt-6 flex items-center gap-2 px-3 py-1.5 rounded-none bg-white/5 border border-white/10 text-xs text-[#FFB836] font-medium">
               <span className="w-2 h-2 bg-[#26A4FF]" />
               <span>Certified Executive Recruitment Platform</span>
-            </div>
+            </div> */}
           </div>
 
           {/* Column 2: Quick Links */}
@@ -145,21 +145,30 @@ export default function Footer() {
                   contact@fast2hire.com
                 </a>
               </div>
-              <div className="flex items-center gap-3">
-                <Phone size={16} className="text-[#26A4FF] shrink-0" />
-                <a
-                  href="tel:+15552345678"
-                  className="hover:text-[#4640DE] transition-colors"
-                >
-                  +1 (555) 234-5678
-                </a>
+              <div className="flex items-start gap-3">
+                <Phone size={16} className="text-[#26A4FF] shrink-0 mt-0.5" />
+                <div className="flex flex-col gap-1 text-sm">
+                  <a
+                    href="tel:+250784545831"
+                    className="hover:text-[#4640DE] transition-colors"
+                  >
+                    +250 784 545 831
+                  </a>
+                  <a
+                    href="tel:+243977423201"
+                    className="hover:text-[#4640DE] transition-colors"
+                  >
+                    +243 977 423 201
+                  </a>
+                </div>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#FF6550] shrink-0 mt-0.5" />
                 <span className="text-white/70">
-                  1200 Avenue of the Americas, New York, NY 10036
+                  Kinshasa, Gombe &amp; Rwanda Gisenyi
                 </span>
               </div>
+
             </div>
 
             {/* Compact Newsletter Input with rounded-none */}

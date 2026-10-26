@@ -229,8 +229,9 @@
         "subscribeButton": "S'abonner"
       },
       "bottom": {
-        "copyright": "{year} ©JobHuntly. Tous droits réservés."
+        "copyright": "{year} © Infinity-Innovations. Tous droits réservés."
       }
+
     }
   },
   "candidateDashboard": {

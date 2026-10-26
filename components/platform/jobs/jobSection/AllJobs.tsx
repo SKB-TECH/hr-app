@@ -9,7 +9,9 @@ interface AllJobsProps {
   pageSize: number;
   viewGrid: boolean;
   setViewGrid: React.Dispatch<React.SetStateAction<boolean>>;
-  search: string;
+  search?: string;
+  location?: string;
+  category?: string;
   onPageChange: (page: number) => void;
   getApplyLink: (id: string | number) => string;
 }
@@ -19,7 +21,9 @@ function AllJobs({
   pageSize,
   viewGrid,
   setViewGrid,
-  search,
+  search = "",
+  location = "",
+  category = "",
   onPageChange,
   getApplyLink,
 }: AllJobsProps) {
@@ -27,9 +31,9 @@ function AllJobs({
     <section className="relative">
       <SharedDisplayMobileFilter DataToFilter={Alljobsfilter} />
       <div className="flex flex-col md:flex-row gap-8 px-4 md:px-0">
-        <div className="hidden md:block  space-y-20">
+        <div className="hidden md:block space-y-20">
           <SidebarFilters
-            className=" lg:!w-fit  !mr-2 mt-4"
+            className="lg:!w-fit !mr-2 mt-4"
             sidebarFilterData={Alljobsfilter}
             isCollapsible={true}
           />
@@ -41,6 +45,8 @@ function AllJobs({
           viewGrid={viewGrid}
           setViewGrid={setViewGrid}
           search={search}
+          location={location}
+          category={category}
           onPageChange={onPageChange}
           getApplyLink={getApplyLink}
         />
@@ -49,3 +55,4 @@ function AllJobs({
   );
 }
 export default AllJobs;
+

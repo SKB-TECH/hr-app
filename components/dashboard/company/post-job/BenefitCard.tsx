@@ -38,40 +38,43 @@ export default function BenefitCard({
   onEdit,
 }: BenefitCardProps) {
   return (
-    <div className="group rounded-sm border border-gray-200 bg-white p-3 transition hover:border-indigo-300 hover:shadow-md">
+    <div className="group rounded-none border border-[#D6DDEB] bg-white p-5 transition-all hover:border-[#4640DE] hover:shadow-[0_4px_20px_rgba(70,64,222,0.06)]">
       <div className="flex items-start justify-between">
-        {/* Icon */}
-        <div className="flex h-14 w-14 items-center justify-center rounded-xl text-indigo-600">
+        {/* Icon Container */}
+        <div className="flex h-12 w-12 items-center justify-center rounded-none bg-[#F8F9FC] border border-[#E4E7EC] text-[#4640DE]">
           {iconMap[benefit.icon as keyof typeof iconMap]}
         </div>
 
         {/* Actions */}
-        <div className="flex gap-2 ">
-          <button
-            type="button"
-            onClick={() => onEdit?.(benefit)}
-            className="rounded-md p-2 text-gray-500 opacity-0 transition group-hover:opacity-100 hover:text-indigo-600"
-          >
-            <Pencil size={18} />
-          </button>
+        <div className="flex items-center gap-1">
+          {onEdit && (
+            <button
+              type="button"
+              onClick={() => onEdit(benefit)}
+              className="rounded-none p-1.5 text-gray-400 opacity-0 transition-opacity group-hover:opacity-100 hover:text-[#4640DE] cursor-pointer"
+            >
+              <Pencil size={16} />
+            </button>
+          )}
 
           <button
             type="button"
             onClick={() => onDelete(benefit.id)}
-            className="p-2 text-neutral-500 "
+            className="p-1.5 text-gray-400 hover:text-red-500 transition-colors cursor-pointer rounded-none"
           >
-            <X size={18} />
+            <X size={16} />
           </button>
         </div>
       </div>
 
-      <h3 className="mt-5 text-lg font-semibold text-gray-900">
+      <h3 className="mt-4 text-base font-bold font-clash text-[#132745]">
         {benefit.title}
       </h3>
 
-      <p className="mt-2 text-sm leading-6 text-gray-500">
+      <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-[#7C8493]">
         {benefit.description}
       </p>
     </div>
   );
 }
+

@@ -1,6 +1,6 @@
 "use client";
 
-import { BriefcaseBusiness, ClipboardList, Gift } from "lucide-react";
+import { BriefcaseBusiness, ClipboardList, Gift, Check } from "lucide-react";
 
 interface StepperProps {
   currentStep: number;
@@ -21,7 +21,7 @@ const steps = [
   },
   {
     id: 3,
-    title: "Perks & Benefit",
+    title: "Perks & Benefits",
     subtitle: "Step 3/3",
     icon: Gift,
   },
@@ -29,106 +29,84 @@ const steps = [
 
 export default function Stepper({ currentStep }: StepperProps) {
   return (
-    <div>
-      <div className="hidden md:block w-full border border-neutral-20">
-        <div className="flex flex-col md:flex-row">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
+    <div className="w-full">
+      {/* Desktop Stepper */}
+      <div className="hidden md:grid md:grid-cols-3 gap-4 w-full">
+        {steps.map((step) => {
+          const Icon = step.icon;
+          const active = currentStep === step.id;
+          const completed = currentStep > step.id;
 
-            const active = currentStep === step.id;
-            const completed = currentStep > step.id;
+          return (
+            <div
+              key={step.id}
+              className={`relative flex items-center p-4 border transition-all rounded-none ${
+                active
+                  ? "bg-white border-[#4640DE] shadow-[0_4px_20px_rgba(70,64,222,0.08)]"
+                  : completed
+                    ? "bg-[#F8F9FC] border-[#D6DDEB]"
+                    : "bg-white border-[#E4E7EC] opacity-70"
+              }`}
+            >
+              {/* Active Indicator Top/Bottom Bar */}
+              {active && (
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#4640DE]" />
+              )}
 
-            return (
-              <div key={step.id} className="flex flex-1 items-center p-5">
-                {/* Circle */}
-                <div
-                  className={`flex h-12 w-12 items-center justify-center rounded-full transition-all
-                ${
-                  active
-                    ? "bg-brand text-white"
-                    : completed
-                      ? "bg-brand text-white"
-                      : "bg-[#E9EBFD] text-gray-400"
+              {/* Step Icon / Status */}
+              <div
+                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-none transition-all ${
+                  completed
+                    ? "bg-[#4640DE] text-white"
+                    : active
+                      ? "bg-[#4640DE] text-white"
+                      : "bg-[#F0F2F7] text-[#7C8493]"
                 }`}
-                >
-                  <Icon size={20} />
-                </div>
-
-                {/* Text */}
-                <div className="ml-4">
-                  <p
-                    className={`text-xs ${
-                      active || completed ? "text-brand" : "text-gray-400"
-                    }`}
-                  >
-                    {step.subtitle}
-                  </p>
-
-                  <h3
-                    className={`font-semibold ${
-                      active || completed
-                        ? "text-neutral-100"
-                        : "text-neutral-60"
-                    }`}
-                  >
-                    {step.title}
-                  </h3>
-                </div>
-
-                {/* Line */}
-                {index !== steps.length - 1 && (
-                  <hr className="hidden bg-gray-200 md:block w-0.5 h-10 mx-auto" />
-                )}
+              >
+                {completed ? <Check size={18} strokeWidth={2.5} /> : <Icon size={18} />}
               </div>
-            );
-          })}
-        </div>
+
+              {/* Step Info */}
+              <div className="ml-3.5 flex-1 min-w-0">
+                <span
+                  className={`text-xs font-semibold uppercase tracking-wider block ${
+                    active || completed ? "text-[#4640DE]" : "text-[#7C8493]"
+                  }`}
+                >
+                  {step.subtitle}
+                </span>
+                <h3
+                  className={`font-bold font-clash text-sm truncate ${
+                    active ? "text-[#132745]" : completed ? "text-[#132745]" : "text-[#7C8493]"
+                  }`}
+                >
+                  {step.title}
+                </h3>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
-      {/* mobile screen */}
-      <div className="md:hidden">
-        <hr className="w-screen h-0.5 bg-neutral-40 -mx-4" />
-        <div className="mt-4 flex items-center justify-between">
-          {steps.map((step, index) => {
-            const active = currentStep === step.id;
-            const completed = currentStep > step.id;
-            const Icon = step.icon;
-            return (
-              <div key={step.id}>
-                <div className="flex gap-4 items-center">
-                  <div
-                    className={`flex h-12 w-12 items-center justify-center rounded-full transition-all
-                ${
-                  active
-                    ? "bg-brand text-white"
-                    : completed
-                      ? "bg-brand text-white"
-                      : "bg-[#E9EBFD] text-gray-400"
-                }`}
-                  >
-                    <Icon size={20} />
-                  </div>
-                  <div className="">
-                    {index !== steps.length - 1 && (
-                      <hr className="bg-gray-200  h-0.5 w-15 mt-2" />
-                    )}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+      {/* Mobile Stepper */}
+      <div className="md:hidden bg-white border border-[#D6DDEB] p-4 rounded-none">
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#4640DE]">
+            Step {currentStep} of {steps.length}
+          </span>
+          <span className="text-xs font-semibold text-[#132745]">
+            {steps.find((s) => s.id === currentStep)?.title}
+          </span>
         </div>
-        <div className="mt-4 flex items-center gap-3">
-          <p className="text-sm text-brand">
-            Step {currentStep}/{steps.length}
-          </p>
-          <hr className="w-[1px] h-5 bg-gray-200 " />
-          <h3 className="font-semibold text-gray-900">
-            {steps.find((step) => step.id === currentStep)?.title}
-          </h3>
+        {/* Progress Bar */}
+        <div className="w-full bg-[#E4E7EC] h-1.5 rounded-none overflow-hidden">
+          <div
+            className="bg-[#4640DE] h-full transition-all duration-300"
+            style={{ width: `${(currentStep / steps.length) * 100}%` }}
+          />
         </div>
-        <hr className="w-screen h-0.5 bg-neutral-20 -mx-4 mt-5" />
       </div>
     </div>
   );
 }
+

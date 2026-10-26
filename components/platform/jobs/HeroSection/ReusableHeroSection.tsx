@@ -27,16 +27,20 @@ const ReusableHeroSection = ({
   underlineSize = "sm",
 }: HeroSectionProps) => {
   return (
-    <section className="relative w-full overflow-hidden">
-      {/* Background Image */}
-      <Image
-        fill
-        src="/BG.webp"
-        alt="Hero background"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#0B132B] via-[#132745] to-[#0A1128] border-b border-[#1E3A66]">
+      {/* Background Overlay */}
+      <div className="absolute inset-0 pointer-events-none">
+        <Image
+          fill
+          src="/BG.webp"
+          alt="Hero background"
+          priority
+          className="object-cover opacity-20 mix-blend-luminosity"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B132B]/90 via-transparent to-[#0B132B]/90" />
+      </div>
 
-      <div className="relative z-10 px-4 md:px-12   w-full max-w-7xl mx-auto">
+      <div className="relative z-10 px-4 md:px-12 w-full max-w-7xl mx-auto py-8 md:py-12">
         <HeroTitle
           title={title}
           highlight={highlight}
@@ -51,3 +55,4 @@ const ReusableHeroSection = ({
 };
 
 export default React.memo(ReusableHeroSection);
+

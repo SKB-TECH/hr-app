@@ -56,9 +56,9 @@ export default function SkillInput({
       <button
         type="button"
         onClick={openPicker}
-        className="flex items-center gap-2 border border-neutral-20 px-4 py-2 font-medium text-brand "
+        className="inline-flex items-center gap-2 border border-[#D6DDEB] hover:border-[#4640DE] bg-white px-4 py-2 text-xs font-bold text-[#4640DE] rounded-none transition-all cursor-pointer shadow-sm"
       >
-        <Plus size={18} />
+        <Plus size={15} />
         Add Skill
       </button>
 
@@ -69,12 +69,12 @@ export default function SkillInput({
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={placeholder}
-            className="w-full border border-neutral-20 px-3 py-2 outline-none focus:border-brand"
+            className="w-full border border-[#D6DDEB] bg-white rounded-none px-3.5 py-2 text-sm text-[#132745] outline-none focus:border-[#4640DE] focus:ring-1 focus:ring-[#4640DE]"
           />
-          <div className="max-h-52 overflow-y-auto border border-neutral-20 bg-white">
-            {isLoading && <p className="p-3 text-sm text-gray-500">Loading skills...</p>}
+          <div className="max-h-52 overflow-y-auto border border-[#D6DDEB] bg-white rounded-none shadow-lg">
+            {isLoading && <p className="p-3 text-xs text-gray-500">Loading skills...</p>}
             {!isLoading && directory.length === 0 && (
-              <p className="p-3 text-sm text-gray-500">No predefined skill found.</p>
+              <p className="p-3 text-xs text-gray-500">No predefined skill found. Press enter or click to add custom skill.</p>
             )}
             {directory
               .filter((skill) => !skills.includes(skill.name))
@@ -83,11 +83,11 @@ export default function SkillInput({
                   key={skill.id}
                   type="button"
                   onClick={() => addSkill(skill.name)}
-                  className="block w-full border-b border-neutral-20 px-3 py-2 text-left text-sm last:border-b-0 hover:bg-[#F8F8FD]"
+                  className="block w-full border-b border-[#F0F2F7] px-3.5 py-2 text-left text-xs sm:text-sm last:border-b-0 hover:bg-[#F8F9FC] text-[#132745] font-medium transition-colors"
                 >
                   {skill.name}
                   {skill.category?.name && (
-                    <span className="ml-2 text-xs text-gray-400">{skill.category.name}</span>
+                    <span className="ml-2 text-xs text-gray-400 font-normal">{skill.category.name}</span>
                   )}
                 </button>
               ))}
@@ -96,24 +96,26 @@ export default function SkillInput({
       )}
 
       {/* Added Skills */}
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2 pt-2">
         {skills.map((skill) => (
           <div
             key={skill}
-            className="flex items-center gap-2 bg-[#F8F8FD] px-4 py-2 text-sm font-medium text-brand"
+            className="inline-flex items-center gap-2 bg-[#F8F9FC] border border-[#D6DDEB] px-3 py-1.5 text-xs font-semibold text-[#132745] rounded-none"
           >
-            {skill}
+            <span>{skill}</span>
 
             <button
               type="button"
               onClick={() => removeSkill(skill)}
-              className="rounded-full p-1 hover:bg-gray-200"
+              className="text-gray-400 hover:text-red-500 transition-colors cursor-pointer rounded-none"
+              aria-label={`Remove skill ${skill}`}
             >
-              <X size={14} />
+              <X size={13} />
             </button>
           </div>
         ))}
       </div>
+
     </div>
   );
 }

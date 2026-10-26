@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 type PostJobsCtaProps = {
   copy?: {
@@ -40,10 +40,10 @@ export default async function PostJobsCta({ copy }: PostJobsCtaProps) {
       <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 px-6 sm:px-10 md:px-14 py-12 md:py-16">
         {/* Text & CTAs with rounded-none */}
         <div className="flex flex-col items-start max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-white/10 backdrop-blur-md border border-white/15 text-[#FFB836] text-xs font-semibold uppercase tracking-wider mb-4">
+          {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-white/10 backdrop-blur-md border border-white/15 text-[#FFB836] text-xs font-semibold uppercase tracking-wider mb-4">
             <Sparkles size={13} className="text-[#26A4FF]" />
             <span>Executive Search & Placement</span>
-          </div>
+          </div> */}
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-white leading-[1.2] tracking-tight">
             {title}

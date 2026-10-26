@@ -50,14 +50,14 @@ export default function JobDetailsView({ jobId, showBreadcrumbs = false }: JobDe
   }
 
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-[#F8F9FC] min-h-screen">
       <JobHeroSection className="mt-0!" showLinks={showBreadcrumbs} job={job} />
 
       <div className="px-4 md:px-12 w-full max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3 md:gap-14 py-8 md:py-20">
-          <div className="col-span-2 md:space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 py-8 md:py-16">
+          <div className="lg:col-span-2 bg-white border border-[#D6DDEB] p-6 md:p-10 rounded-none shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-8">
             <JobDescriptionSection description={job.description || t("detail.noDescription")} />
-            <hr className="block md:hidden border-t border-light-brand-neutral my-6" />
+            <hr className="border-t border-[#E4E7EC]" />
             <JobResponsibilitiesSection
               responsibilities={splitToBullets(job.responsibilities)}
               whoYouAre={splitToBullets(job.requirements)}
@@ -65,19 +65,22 @@ export default function JobDetailsView({ jobId, showBreadcrumbs = false }: JobDe
             />
           </div>
 
-          <JobSidebarSection
-            className="divide-y divide-brand-light-neutral"
-            roleInfo={{
-              applyBefore: job.closesAt ? format(parseISO(job.closesAt), "MMM d, yyyy") : t("detail.applyBeforeFallback"),
-              jobPostedOn: job.publishedAt ? format(parseISO(job.publishedAt), "MMM d, yyyy") : t("detail.postedOnDraftFallback"),
-              jobType: job.employmentTypes.map(humanizeEmploymentType).join(", ") || "—",
-              salary: formatSalary(job.minSalary, job.maxSalary),
-            }}
-            categories={job.category ? [{ id: "category", name: job.category }] : []}
-            requiredSkills={job.skills.map((name, index) => ({ id: index, name }))}
-          />
+          <div className="lg:col-span-1">
+            <JobSidebarSection
+              className="space-y-6"
+              roleInfo={{
+                applyBefore: job.closesAt ? format(parseISO(job.closesAt), "MMM d, yyyy") : t("detail.applyBeforeFallback"),
+                jobPostedOn: job.publishedAt ? format(parseISO(job.publishedAt), "MMM d, yyyy") : t("detail.postedOnDraftFallback"),
+                jobType: job.employmentTypes.map(humanizeEmploymentType).join(", ") || "—",
+                salary: formatSalary(job.minSalary, job.maxSalary),
+              }}
+              categories={job.category ? [{ id: "category", name: job.category }] : []}
+              requiredSkills={job.skills.map((name, index) => ({ id: index, name }))}
+            />
+          </div>
         </div>
       </div>
     </section>
   );
 }
+

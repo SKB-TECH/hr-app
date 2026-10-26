@@ -17,70 +17,77 @@ export default function SalaryRange({
   const STEP = 500;
 
   return (
-    <div className="w-full max-w-xl space-y-8 items-center">
+    <div className="w-full max-w-xl space-y-6">
       {/* Salary Inputs */}
-      <div className="flex items-center mx-auto gap-5 justify-between">
-        <div className="relative">
-          <span className="absolute flex left-2 top-1/2 -translate-y-1/2 text-neutral-500">
-            $<div className="mx-2  h-5 w-px bg-neutral-300" />
+      <div className="flex items-center gap-4">
+        <div className="relative flex-1">
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-[#7C8493]">
+            USD $
           </span>
-
           <input
             type="number"
             value={minSalary}
-            min={minSalary}
+            min={MIN}
             max={MAX}
+            step={STEP}
             onChange={(e) =>
               onChange(Math.min(Number(e.target.value), maxSalary), maxSalary)
             }
-            className="w-full border border-neutral-20 py-3 pl-8 outline-none focus:border-indigo-600"
+            placeholder="Min Salary"
+            className="w-full border border-[#D6DDEB] bg-white rounded-none py-2.5 pl-16 pr-3 text-sm font-semibold text-[#132745] outline-none focus:border-[#4640DE] focus:ring-1 focus:ring-[#4640DE]"
           />
         </div>
-        <h1 className="text-neutral-80">to</h1>
-        <div className="relative gap-3 ">
-          <span className="absolute flex left-2 top-1/2 -translate-y-1/2  text-neutral-500 focus:border-none justify-between">
-            $
-            <div className="mx-2  h-5 w-px bg-neutral-300" />
+
+        <span className="text-sm font-semibold text-[#7C8493]">to</span>
+
+        <div className="relative flex-1">
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-[#7C8493]">
+            USD $
           </span>
           <input
             type="number"
             value={maxSalary}
             min={minSalary}
             max={MAX}
+            step={STEP}
             onChange={(e) =>
               onChange(minSalary, Math.max(Number(e.target.value), minSalary))
             }
-            className="w-full border border-neutral-20 py-3 pl-8 outline-none transition focus:border-none"
+            placeholder="Max Salary"
+            className="w-full border border-[#D6DDEB] bg-white rounded-none py-2.5 pl-16 pr-3 text-sm font-semibold text-[#132745] outline-none focus:border-[#4640DE] focus:ring-1 focus:ring-[#4640DE]"
           />
         </div>
       </div>
 
       {/* Range Slider */}
-      <ReactSlider
-        value={[minSalary, maxSalary]}
-        min={MIN}
-        max={MAX}
-        step={STEP}
-        pearling
-        minDistance={STEP}
-        onChange={(values) => onChange(values[0], values[1])}
-        className="relative h-2 w-full"
-        thumbClassName="h-5 w-5 -top-2 cursor-pointer rounded-full  bg-indigo-600"
-        trackClassName="h-2 rounded-full"
-        renderTrack={(props, state) => {
-          const { key, ...rest } = props;
+      <div className="px-1 pt-2">
+        <ReactSlider
+          value={[minSalary, maxSalary]}
+          min={MIN}
+          max={MAX}
+          step={STEP}
+          pearling
+          minDistance={STEP}
+          onChange={(values) => onChange(values[0], values[1])}
+          className="relative h-2 w-full"
+          thumbClassName="h-5 w-5 -top-1.5 cursor-pointer rounded-none bg-[#4640DE] shadow-md border-2 border-white focus:outline-none"
+          trackClassName="h-2 rounded-none"
+          renderTrack={(props, state) => {
+            const { key, ...rest } = props;
 
-          return (
-            <div
-              key={key}
-              {...rest}
-              className={`h-2 rounded-full ${
-                state.index === 1 ? "bg-indigo-600" : "bg-neutral-200"
-              }`}
-            />
-          );
-        }}
-      />
+            return (
+              <div
+                key={key}
+                {...rest}
+                className={`h-2 rounded-none ${
+                  state.index === 1 ? "bg-[#4640DE]" : "bg-[#E4E7EC]"
+                }`}
+              />
+            );
+          }}
+        />
+      </div>
     </div>
+
   );
 }

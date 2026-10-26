@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { Users, Database, ShieldCheck, Check } from "lucide-react";
+import { Users, Database, ShieldCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
+
 
 export default function ExecutiveVisionSection() {
   const t = useTranslations("landing");
@@ -63,8 +64,8 @@ export default function ExecutiveVisionSection() {
               ))}
             </div>
 
-            {/* Highlighted Deep Navy Card with rounded-none */}
-            <div className="mt-8 w-full p-6 sm:p-7 rounded-none bg-[#132745] text-white shadow-xl border border-white/10 relative overflow-hidden">
+            {/* Highlighted Deep Navy Card with rounded-none - Commented out as requested */}
+            {/* <div className="mt-8 w-full p-6 sm:p-7 rounded-none bg-[#132745] text-white shadow-xl border border-white/10 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#4640DE]/20 rounded-none blur-2xl pointer-events-none" />
               <p className="text-sm text-white/90 leading-relaxed font-normal">
                 {t("executiveVision.highlightDesc")}
@@ -87,7 +88,7 @@ export default function ExecutiveVisionSection() {
                   </span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Column: Local Tall Executive Portrait with rounded-none */}
