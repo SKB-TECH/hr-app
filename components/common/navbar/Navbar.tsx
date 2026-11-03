@@ -31,26 +31,35 @@ export default function NavbarComponentLandingPage() {
           <div className="flex items-center gap-6">
             <a
               href="mailto:contact@fast2hire.com"
-              className="flex items-center gap-2 hover:text-[#26A4FF] transition-colors"
+              className="flex items-center gap-2 hover:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
             >
-              <Mail size={13} className="text-[#26A4FF]" />
+              <Mail size={13} className="text-[#26A4FF]" aria-hidden="true" />
               <span>contact@fast2hire.com</span>
             </a>
-            <span className="text-white/20">|</span>
-            <a
-              href="tel:+15552345678"
-              className="flex items-center gap-2 hover:text-[#26A4FF] transition-colors"
-            >
-              <Phone size={13} className="text-[#26A4FF]" />
-              <span>+1 (555) 234-5678</span>
-            </a>
+            <span className="text-white/20" aria-hidden="true">|</span>
+            <div className="flex items-center gap-2">
+              <Phone size={13} className="text-[#26A4FF]" aria-hidden="true" />
+              <a
+                href="tel:+250784545831"
+                className="hover:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
+              >
+                +250 784 545 831
+              </a>
+              <span className="text-white/30" aria-hidden="true">/</span>
+              <a
+                href="tel:+243977423201"
+                className="hover:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
+              >
+                +243 977 423 201
+              </a>
+            </div>
           </div>
 
           <div className="flex items-center gap-4 text-white/70">
             <span className="text-[11px] uppercase tracking-wider text-[#FF6550] font-semibold">
               Executive Search & Recruitment
             </span>
-            <span className="text-white/20">|</span>
+            <span className="text-white/20" aria-hidden="true">|</span>
             <div className="flex items-center gap-3">
               <span className="text-xs text-white/70">Global Talent Network</span>
             </div>
@@ -76,7 +85,6 @@ export default function NavbarComponentLandingPage() {
                 width={160}
                 height={40}
                 className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
-
               />
             </Link>
 
