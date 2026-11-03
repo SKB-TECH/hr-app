@@ -1,5 +1,5 @@
 "use client";
-import ReactSlider from "react-slider";
+import * as Slider from "@radix-ui/react-slider";
 
 interface SalaryRangeProps {
   minSalary: number;
@@ -55,32 +55,33 @@ export default function SalaryRange({
         </div>
       </div>
 
-      {/* Range Slider */}
-      <ReactSlider
+      <Slider.Root
         value={[minSalary, maxSalary]}
         min={MIN}
         max={MAX}
         step={STEP}
-        pearling
-        minDistance={STEP}
-        onChange={(values) => onChange(values[0], values[1])}
-        className="relative h-2 w-full"
-        thumbClassName="h-5 w-5 -top-2 cursor-pointer rounded-full  bg-indigo-600"
-        trackClassName="h-2 rounded-full"
-        renderTrack={(props, state) => {
-          const { key, ...rest } = props;
-
-          return (
-            <div
-              key={key}
-              {...rest}
-              className={`h-2 rounded-full ${
-                state.index === 1 ? "bg-indigo-600" : "bg-neutral-200"
-              }`}
-            />
-          );
+        minStepsBetweenThumbs={1}
+        onValueChange={(values) => {
+          const [nextMin, nextMax] = values;
+          if (nextMin !== undefined && nextMax !== undefined) {
+            onChange(nextMin, nextMax);
+          }
         }}
-      />
+        className="relative flex h-5 w-full touch-none select-none items-center"
+        aria-label="Salary range"
+      >
+        <Slider.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-neutral-200">
+          <Slider.Range className="absolute h-full bg-indigo-600" />
+        </Slider.Track>
+        <Slider.Thumb
+          aria-label="Minimum salary"
+          className="block h-5 w-5 rounded-full bg-indigo-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2"
+        />
+        <Slider.Thumb
+          aria-label="Maximum salary"
+          className="block h-5 w-5 rounded-full bg-indigo-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2"
+        />
+      </Slider.Root>
     </div>
   );
 }
