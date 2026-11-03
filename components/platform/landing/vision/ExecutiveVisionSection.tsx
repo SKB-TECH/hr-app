@@ -1,25 +1,26 @@
-"use client";
-
 import Image from "next/image";
 import { Users, Database, ShieldCheck, Check } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function ExecutiveVisionSection() {
-  const t = useTranslations("landing");
+export default async function ExecutiveVisionSection() {
+  const t = await getTranslations("landing");
 
   const capabilities = [
     {
-      icon: <Users size={22} className="text-[#4640DE]" />,
+      id: "cap-network",
+      icon: <Users size={22} className="text-[#4640DE]" aria-hidden="true" />,
       title: t("executiveVision.card1Title"),
       description: t("executiveVision.card1Desc"),
     },
     {
-      icon: <Database size={22} className="text-[#FFB836]" />,
+      id: "cap-talent",
+      icon: <Database size={22} className="text-[#FFB836]" aria-hidden="true" />,
       title: t("executiveVision.card2Title"),
       description: t("executiveVision.card2Desc"),
     },
     {
-      icon: <ShieldCheck size={22} className="text-[#FF6550]" />,
+      id: "cap-process",
+      icon: <ShieldCheck size={22} className="text-[#FF6550]" aria-hidden="true" />,
       title: t("executiveVision.card3Title"),
       description: t("executiveVision.card3Desc"),
     },
@@ -43,9 +44,9 @@ export default function ExecutiveVisionSection() {
 
             {/* Capability Features Grid with rounded-none */}
             <div className="mt-8 space-y-6 w-full">
-              {capabilities.map((item, idx) => (
+              {capabilities.map((item) => (
                 <div
-                  key={idx}
+                  key={item.id}
                   className="flex items-start gap-4 p-4 rounded-none bg-[#F8F8FD] border border-gray-100 hover:border-[#4640DE]/30 transition-all duration-300 group"
                 >
                   <div className="w-12 h-12 rounded-none bg-white shadow-sm flex items-center justify-center shrink-0 border border-gray-100 group-hover:scale-105 transition-transform">
@@ -72,7 +73,7 @@ export default function ExecutiveVisionSection() {
               <div className="mt-5 pt-5 border-t border-white/15 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="flex items-center gap-2.5">
                   <div className="w-5 h-5 rounded-none bg-[#4640DE] flex items-center justify-center text-white shrink-0">
-                    <Check size={13} strokeWidth={3} />
+                    <Check size={13} strokeWidth={3} aria-hidden="true" />
                   </div>
                   <span className="text-xs sm:text-sm font-semibold text-white">
                     {t("executiveVision.highlightItem1")}
@@ -80,7 +81,7 @@ export default function ExecutiveVisionSection() {
                 </div>
                 <div className="flex items-center gap-2.5">
                   <div className="w-5 h-5 rounded-none bg-[#4640DE] flex items-center justify-center text-white shrink-0">
-                    <Check size={13} strokeWidth={3} />
+                    <Check size={13} strokeWidth={3} aria-hidden="true" />
                   </div>
                   <span className="text-xs sm:text-sm font-semibold text-white">
                     {t("executiveVision.highlightItem2")}
@@ -97,6 +98,7 @@ export default function ExecutiveVisionSection() {
                 src="/images/image4.png"
                 alt="Executive Leader in Modern Office Lounge"
                 fill
+                loading="lazy"
                 sizes="(max-width: 1024px) 80vw, 420px"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />

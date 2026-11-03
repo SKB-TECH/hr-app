@@ -16,7 +16,7 @@ function MobileSidebarHeader({
 
       <div className="flex items-center gap-2">
         <Image src="/logoIcon.png" alt="logo" width={28} height={28} />
-        <span className="font-bold text-xl">JobHuntly</span>
+        <span className="font-bold text-xl">Fast2Hire</span>
       </div>
     </header>
   );

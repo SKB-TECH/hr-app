@@ -76,7 +76,7 @@ export default function NavbarComponentLandingPage() {
                 width={160}
                 height={40}
                 className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
-                priority
+
               />
             </Link>
 

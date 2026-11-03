@@ -3,12 +3,22 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { AppProvider } from "@/context/AppContext";
-import { epilogue, clashDisplay, redHat, inter } from "@/lib/fonts";
+import { JobProvider } from "@/context/JobContext";
+import {
+  roboto,
+  ubuntu,
+  epilogue,
+  clashDisplay,
+  redHat,
+  inter,
+} from "@/lib/fonts";
 import { Toaster } from "react-hot-toast";
 import { QueryProvider } from "@/core/providers/query-provider";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://fast2hire.com"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL || "https://fast2hire.com",
+  ),
   title: {
     default: "Fast2Hire — Executive Recruitment & Global Talent Platform",
     template: "%s | Fast2Hire",
@@ -33,7 +43,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Fast2Hire — Executive Recruitment & Global Talent Platform",
-    description: "Fast2Hire connects executive talent with leading global companies. Hire faster and discover verified executive roles.",
+    description:
+      "Fast2Hire connects executive talent with leading global companies. Hire faster and discover verified executive roles.",
     url: "https://fast2hire.com",
     siteName: "Fast2Hire",
     images: [
@@ -50,7 +61,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Fast2Hire — Executive Recruitment Platform",
-    description: "Connect with verified executive talent and leading global companies.",
+    description:
+      "Connect with verified executive talent and leading global companies.",
     images: ["/images/hero2.png"],
   },
   robots: {
@@ -82,18 +94,20 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${epilogue.variable} ${clashDisplay.variable} ${redHat.variable} ${inter.variable} h-full antialiased`}
+      className={`${roboto.variable} ${ubuntu.variable} ${epilogue.variable} ${clashDisplay.variable} ${redHat.variable} ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body
-        className='min-h-full flex flex-col font-sans'
+        className="min-h-full flex flex-col font-sans"
         suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>
             <AppProvider>
-              {children}
-              <Toaster position='top-center' />
+              <JobProvider>
+                {children}
+                <Toaster position="top-center" />
+              </JobProvider>
             </AppProvider>
           </QueryProvider>
         </NextIntlClientProvider>

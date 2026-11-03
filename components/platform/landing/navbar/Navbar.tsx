@@ -9,7 +9,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2.5">
             <LogoIcon />
             <span className="text-xl font-extrabold text-indigo-600 tracking-tight">
-              JobHuntly
+              Fast2Hire
             </span>
           </div>
 

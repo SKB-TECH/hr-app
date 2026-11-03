@@ -29,22 +29,24 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-white/10">
           {/* Column 1: Brand Info */}
           <div className="lg:col-span-4 flex flex-col items-start">
-            <Link href="/" className="mb-5 inline-block">
+            <Link
+              href="/"
+              aria-label="Fast2Hire Home"
+              className="mb-5 inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF]"
+            >
               <Image
                 src="/logo/logow.png"
                 alt="Fast2Hire Logo"
                 width={160}
                 height={40}
+                sizes="160px"
+                loading="lazy"
                 className="h-9 w-auto object-contain"
               />
             </Link>
             <p className="text-sm text-white/70 leading-relaxed max-w-sm">
               {t("footer.brandDescription")}
             </p>
-            <div className="mt-6 flex items-center gap-2 px-3 py-1.5 rounded-none bg-white/5 border border-white/10 text-xs text-[#FFB836] font-medium">
-              <span className="w-2 h-2 bg-[#26A4FF]" />
-              <span>Certified Executive Recruitment Platform</span>
-            </div>
           </div>
 
           {/* Column 2: Quick Links */}
@@ -56,7 +58,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/"
-                  className="text-sm text-white/70 hover:text-[#4640DE] transition-colors"
+                  className="text-sm text-white/70 hover:text-[#4640DE] active:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
                 >
                   Homepage
                 </Link>
@@ -64,7 +66,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/about"
-                  className="text-sm text-white/70 hover:text-[#4640DE] transition-colors"
+                  className="text-sm text-white/70 hover:text-[#4640DE] active:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
                 >
                   About Us
                 </Link>
@@ -72,7 +74,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/jobs"
-                  className="text-sm text-white/70 hover:text-[#4640DE] transition-colors"
+                  className="text-sm text-white/70 hover:text-[#4640DE] active:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
                 >
                   Find Jobs
                 </Link>
@@ -80,7 +82,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/companies"
-                  className="text-sm text-white/70 hover:text-[#4640DE] transition-colors"
+                  className="text-sm text-white/70 hover:text-[#4640DE] active:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
                 >
                   Browse Companies
                 </Link>
@@ -95,36 +97,36 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#"
-                  className="text-sm text-white/70 hover:text-[#4640DE] transition-colors"
+                <Link
+                  href="/privacy"
+                  className="text-sm text-white/70 hover:text-[#4640DE] active:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-sm text-white/70 hover:text-[#4640DE] transition-colors"
+                <Link
+                  href="/terms"
+                  className="text-sm text-white/70 hover:text-[#4640DE] active:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
                 >
-                  Terms & Conditions
-                </a>
+                  Terms &amp; Conditions
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-sm text-white/70 hover:text-[#4640DE] transition-colors"
+                <Link
+                  href="/gdpr"
+                  className="text-sm text-white/70 hover:text-[#4640DE] active:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
                 >
                   GDPR Compliance
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-sm text-white/70 hover:text-[#4640DE] transition-colors"
+                <Link
+                  href="/cookies"
+                  className="text-sm text-white/70 hover:text-[#4640DE] active:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
                 >
                   Cookie Usage
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -137,52 +139,72 @@ export default function Footer() {
 
             <div className="space-y-3 text-sm text-white/80 w-full mb-6">
               <div className="flex items-center gap-3">
-                <Mail size={16} className="text-[#26A4FF] shrink-0" />
+                <Mail size={16} className="text-[#26A4FF] shrink-0" aria-hidden="true" />
                 <a
                   href="mailto:contact@fast2hire.com"
-                  className="hover:text-[#4640DE] transition-colors truncate"
+                  className="hover:text-[#4640DE] active:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors truncate"
                 >
                   contact@fast2hire.com
                 </a>
               </div>
-              <div className="flex items-center gap-3">
-                <Phone size={16} className="text-[#26A4FF] shrink-0" />
-                <a
-                  href="tel:+15552345678"
-                  className="hover:text-[#4640DE] transition-colors"
-                >
-                  +1 (555) 234-5678
-                </a>
+              <div className="flex items-start gap-3">
+                <Phone size={16} className="text-[#26A4FF] shrink-0 mt-0.5" aria-hidden="true" />
+                <div className="flex flex-col gap-1 text-sm">
+                  <a
+                    href="tel:+250784545831"
+                    className="hover:text-[#4640DE] active:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
+                  >
+                    +250 784 545 831
+                  </a>
+                  <a
+                    href="tel:+243977423201"
+                    className="hover:text-[#4640DE] active:text-[#26A4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] transition-colors"
+                  >
+                    +243 977 423 201
+                  </a>
+                </div>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin size={16} className="text-[#FF6550] shrink-0 mt-0.5" />
+                <MapPin size={16} className="text-[#FF6550] shrink-0 mt-0.5" aria-hidden="true" />
                 <span className="text-white/70">
-                  1200 Avenue of the Americas, New York, NY 10036
+                  Kinshasa, Gombe &amp; Rwanda Gisenyi
                 </span>
               </div>
             </div>
 
-            {/* Compact Newsletter Input with rounded-none */}
-            <form onSubmit={handleSubscribe} className="w-full">
-              <p className="text-xs text-white/70 mb-2">
+            {/* Compact Newsletter Input with accessible label and focus/active states */}
+            <form onSubmit={handleSubscribe} className="w-full" aria-label="Newsletter subscription">
+              <label
+                htmlFor="footer-newsletter-email"
+                className="block text-xs text-white/70 mb-2 cursor-pointer"
+              >
                 {t("footer.newsletter.heading")}
-              </p>
-              <div className="flex items-center rounded-none bg-white/10 border border-white/15 p-1 focus-within:border-[#4640DE] transition-colors">
+              </label>
+              <div className="flex items-center rounded-none bg-white/10 border border-white/15 p-1 focus-within:border-[#4640DE] focus-within:ring-1 focus-within:ring-[#4640DE] transition-colors">
                 <input
+                  id="footer-newsletter-email"
+                  name="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t("footer.newsletter.emailPlaceholder")}
+                  aria-label={t("footer.newsletter.emailPlaceholder")}
                   className="w-full bg-transparent px-3 py-1.5 text-xs text-white placeholder:text-white/40 outline-none rounded-none"
                   required
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-none bg-[#4640DE] hover:bg-[#3730C9] text-white text-xs font-semibold shrink-0 transition-colors"
+                  aria-label={t("footer.newsletter.subscribeButton")}
+                  className="px-4 py-2 rounded-none bg-[#4640DE] hover:bg-[#3730C9] active:bg-[#2A24A3] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26A4FF] text-white text-xs font-semibold shrink-0 transition-all cursor-pointer"
                 >
-                  {subscribed ? "✓" : <ArrowRight size={14} />}
+                  {subscribed ? "✓" : <ArrowRight size={14} aria-hidden="true" />}
                 </button>
               </div>
+              {subscribed && (
+                <p role="status" aria-live="polite" className="mt-1.5 text-xs text-[#56CDAD]">
+                  Subscribed successfully!
+                </p>
+              )}
             </form>
           </div>
         </div>

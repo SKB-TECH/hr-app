@@ -11,7 +11,7 @@ export default function Sidebar() {
         <Link href="/" className="flex items-center gap-2  p-4">
           <Image
             src="/logo/lgo.png"
-            alt="JobHuntly Logo"
+            alt="Fast2Hire Logo"
             width={180}
             height={180}
             className="object-cover"

@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ArrowTopRightOnSquareIcon, PencilSquareIcon, TrashIcon, FolderIcon } from "@heroicons/react/24/outline";
 import type { CandidatePortfolio } from "@/core/types/candidate-portfolio";
@@ -16,21 +18,20 @@ interface PortfolioItemProps {
 export default function PortfolioItem({ portfolio, index, onEdit, onDelete }: PortfolioItemProps) {
   const t = useTranslations("candidateProfileSections");
   const accentColor = ACCENT_COLORS[index % ACCENT_COLORS.length];
+  const [imageError, setImageError] = useState(false);
 
   return (
     <div className="flex flex-col border border-gray-100 transition-colors hover:border-gray-200">
       <div className="relative h-[140px] overflow-hidden border-t-4" style={{ borderColor: accentColor }}>
-        {portfolio.thumbnailUrl ? (
-          // Thumbnails come from arbitrary external storage URLs, so a plain
-          // <img> avoids next/image's remote-pattern allow-list restriction.
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+        {portfolio.thumbnailUrl && !imageError ? (
+          <Image
             src={portfolio.thumbnailUrl}
             alt={portfolio.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            unoptimized
             className="h-full w-full object-cover"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = "none";
-            }}
+            onError={() => setImageError(true)}
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center" style={{ backgroundColor: `${accentColor}0D` }}>
@@ -45,7 +46,7 @@ export default function PortfolioItem({ portfolio, index, onEdit, onDelete }: Po
             type="button"
             onClick={() => onEdit(portfolio)}
             aria-label={t("portfolio.editAriaLabel", { title: portfolio.title })}
-            className="cursor-pointer border border-gray-200 bg-white/95 p-1.5 hover:border-brand"
+            className="cursor-pointer border border-gray-200 bg-white/95 p-1.5 hover:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand active:scale-95"
           >
             <PencilSquareIcon className="w-4 h-4 text-brand" />
           </button>
@@ -53,7 +54,7 @@ export default function PortfolioItem({ portfolio, index, onEdit, onDelete }: Po
             type="button"
             onClick={() => onDelete(portfolio)}
             aria-label={t("portfolio.deleteAriaLabel", { title: portfolio.title })}
-            className="cursor-pointer border border-gray-200 bg-white/95 p-1.5 hover:border-red-300"
+            className="cursor-pointer border border-gray-200 bg-white/95 p-1.5 hover:border-red-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 active:scale-95"
           >
             <TrashIcon className="w-4 h-4 text-[#FF6550]" />
           </button>

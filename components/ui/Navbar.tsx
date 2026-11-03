@@ -13,7 +13,7 @@ export default function Navbar() {
             <span className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white">
               <Briefcase/>
             </span>
-            JobHuntly
+            Fast2Hire
           </Link>
 
           <div className="flex flex-col md:flex-row gap-2">

@@ -1,24 +1,26 @@
-"use client";
+import { getTranslations } from "next-intl/server";
 
-import { useTranslations } from "next-intl";
-
-export default function ExecutiveStatsSection() {
-  const t = useTranslations("landing");
+export default async function ExecutiveStatsSection() {
+  const t = await getTranslations("landing");
 
   const stats = [
     {
+      id: "stat-talent-found",
       value: t("executiveStats.stat1Value"),
       label: t("executiveStats.stat1Label"),
     },
     {
+      id: "stat-exec-talent",
       value: t("executiveStats.stat2Value"),
       label: t("executiveStats.stat2Label"),
     },
     {
+      id: "stat-outsource",
       value: t("executiveStats.stat3Value"),
       label: t("executiveStats.stat3Label"),
     },
     {
+      id: "stat-experience",
       value: t("executiveStats.stat4Value"),
       label: t("executiveStats.stat4Label"),
     },
@@ -34,7 +36,7 @@ export default function ExecutiveStatsSection() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 lg:gap-10 text-center">
           {stats.map((item, index) => (
             <div
-              key={index}
+              key={item.id}
               className={`flex flex-col items-center justify-center p-4 sm:p-6 rounded-none bg-white/[0.03] border border-white/10 hover:border-[#4640DE]/40 hover:bg-white/[0.06] transition-all duration-300 ${
                 index < stats.length - 1 ? "md:border-r md:border-r-white/10" : ""
               }`}

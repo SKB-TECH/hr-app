@@ -20,8 +20,7 @@ export default function ChatMessageBubble({
 
   return (
     <div className="w-full">
-     
-          {/* CURRENT USER MESSAGE */}
+      {/* CURRENT USER MESSAGE */}
       {isOwn ? (
         <div className="flex w-full justify-end">
           <div className="flex max-w-[85%] flex-col items-end sm:max-w-[70%] md:max-w-[55%] lg:max-w-[480px]">
@@ -65,11 +64,13 @@ export default function ChatMessageBubble({
               {message.attachment && (
                 <div className={message.text ? "mb-2" : ""}>
                   {message.attachment.isImage ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                       src={message.attachment.url}
                       alt={message.attachment.name}
-                      className="max-h-48 max-w-full rounded object-cover"
+                      width={320}
+                      height={192}
+                      unoptimized
+                      className="max-h-48 w-auto max-w-full rounded object-cover"
                     />
                   ) : (
                     <a
@@ -139,7 +140,7 @@ export default function ChatMessageBubble({
 
             {/* Message bubble */}
             <div
-                className="
+              className="
                 ml-8
                 w-fit
                 max-w-full
@@ -161,11 +162,13 @@ export default function ChatMessageBubble({
               {message.attachment && (
                 <div className={message.text ? "mb-2" : ""}>
                   {message.attachment.isImage ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                       src={message.attachment.url}
                       alt={message.attachment.name}
-                      className="max-h-48 max-w-full rounded object-cover"
+                      width={320}
+                      height={192}
+                      unoptimized
+                      className="max-h-48 w-auto max-w-full rounded object-cover"
                     />
                   ) : (
                     <a

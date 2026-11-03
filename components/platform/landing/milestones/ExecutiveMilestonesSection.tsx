@@ -1,31 +1,33 @@
-"use client";
-
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function ExecutiveMilestonesSection() {
-  const t = useTranslations("landing");
+export default async function ExecutiveMilestonesSection() {
+  const t = await getTranslations("landing");
 
   const milestones = [
     {
+      id: "milestone-2013",
       year: t("executiveMilestones.milestone1Year"),
       title: t("executiveMilestones.milestone1Title"),
       desc: t("executiveMilestones.milestone1Desc"),
       highlighted: false,
     },
     {
+      id: "milestone-2016",
       year: t("executiveMilestones.milestone2Year"),
       title: t("executiveMilestones.milestone2Title"),
       desc: t("executiveMilestones.milestone2Desc"),
       highlighted: false,
     },
     {
+      id: "milestone-2018",
       year: t("executiveMilestones.milestone3Year"),
       title: t("executiveMilestones.milestone3Title"),
       desc: t("executiveMilestones.milestone3Desc"),
-      highlighted: true, // Deep navy card matching Exuta
+      highlighted: true,
     },
     {
+      id: "milestone-2023",
       year: t("executiveMilestones.milestone4Year"),
       title: t("executiveMilestones.milestone4Title"),
       desc: t("executiveMilestones.milestone4Desc"),
@@ -44,6 +46,7 @@ export default function ExecutiveMilestonesSection() {
                 src="/images/image5.png"
                 alt="Executive Career Leader"
                 fill
+                loading="lazy"
                 sizes="(max-width: 1024px) 80vw, 420px"
                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
               />
@@ -70,9 +73,9 @@ export default function ExecutiveMilestonesSection() {
 
             {/* 2x2 Milestones Grid with rounded-none */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 w-full">
-              {milestones.map((m, idx) => (
+              {milestones.map((m) => (
                 <div
-                  key={idx}
+                  key={m.id}
                   className={`p-6 rounded-none transition-all duration-300 ${
                     m.highlighted
                       ? "bg-[#132745] text-white shadow-xl border border-white/10 hover:shadow-2xl"

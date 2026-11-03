@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import Image from "next/image";
 import { useDropzone } from "react-dropzone";
 import { CameraIcon } from "@heroicons/react/24/outline";
 import { useTranslations } from "next-intl";
@@ -60,7 +61,7 @@ export default function ImageUpload({
 
   return (
     <div>
-      <label className='mb-2 block text-sm font-medium text-[#25324B]'>
+      <label className="mb-2 block text-sm font-medium text-[#25324B]">
         {label}
       </label>
       <div
@@ -75,28 +76,34 @@ export default function ImageUpload({
       >
         <input {...getInputProps()} aria-label={label} />
         <div
-          className={`flex shrink-0 items-center justify-center overflow-hidden bg-gray-100 text-gray-400 ${
+          className={`relative flex shrink-0 items-center justify-center overflow-hidden bg-gray-100 text-gray-400 ${
             shape === "circle"
               ? "h-16 w-16 rounded-full"
               : "h-16 w-28 rounded-md"
           }`}
         >
           {imageSrc ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={imageSrc} alt='' className='h-full w-full object-cover' />
+            <Image
+              src={imageSrc}
+              alt={label}
+              width={shape === "circle" ? 64 : 112}
+              height={64}
+              unoptimized
+              className="h-full w-full object-cover"
+            />
           ) : (
-            <CameraIcon className='h-6 w-6' />
+            <CameraIcon className="h-6 w-6" />
           )}
         </div>
-        <div className='min-w-0'>
-          <p className='text-[14px] font-medium text-brand'>
+        <div className="min-w-0">
+          <p className="text-[14px] font-medium text-brand">
             {file ? t("changePhoto") : t("clickToUpload")}
           </p>
-          <p className='mt-0.5 text-[12px] text-gray-400'>{IMAGE_FILE_HINT}</p>
+          <p className="mt-0.5 text-[12px] text-gray-400">{IMAGE_FILE_HINT}</p>
         </div>
       </div>
       {(rejectionMessage || error) && (
-        <p className='mt-2 text-[13px] text-red-500'>
+        <p className="mt-2 text-[13px] text-red-500">
           {rejectionMessage || error}
         </p>
       )}

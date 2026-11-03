@@ -1,4 +1,3 @@
-
 export interface FeaturedJob {
   id: number;
   title: string;
@@ -6,16 +5,88 @@ export interface FeaturedJob {
   description: string;
   location: string;
   tags: string[];
-  companyName:string
+  companyName: string;
 }
 
-export const featuredJobsData = [
-  { id: 1, companyName:"Revolut" ,title: "Email Marketing", companyLogo: "/revolut.png", description: "Revolut look for Email marketing to help team ma... ", location: "Madrid, Spain", tags: ["Marketing", "Design"] },
-  { id: 2, companyName:"Dropbox" , title: "Brand Designer", companyLogo: "/Dropbox.png", description: "Dropbox is looking for a creative brand designer to help team t...", location: "San Francisco, US", tags: ["Design", "Business"] },
-  { id: 3, companyName:"Potch" , title: "Email Marketing", companyLogo: "/Pitch.png", description: "Pitch is looking for customer manager to join marketiing t...", location: " berlin -germany", tags: ["Marketing"] },
-  { id: 4, companyName:"Blinklist" ,  title: "Visual Designer", companyLogo: "/Blin.png", description: "Blinklist look for a visual designer to help team desi... ", location: " Granada - spain", tags: ["Design"] },
-  { id: 5,  companyName:"ClassPass" , title: "Product Designer", companyLogo: "/ClassPass.png", description: "Classpass look for a product designer to help us...", location: "machester , Uk", tags: ["Marketing","Design" ] },
-  { id: 6, companyName:"Canva"  ,title: "Lead Designer", companyLogo: "/Canva.png", description: "Canva look for lead engineer to help develop n... ", location: "otario-canada", tags: ["Design","Business"] },
-  { id: 7, companyName:"GoDaddy",  title: "Brand Strategy", companyLogo: "/GoDaddy.png", description: "GoDaddy is looking for a brand strategy to join the team...", location: " Marceille , France", tags: ["Marketing"] },
-  { id: 8, companyName:"Twitter" , title: "Data Analyst", companyLogo: "/Twitter.png", description: "twitter look for Data Analyst to help  team Design...", location: " San diego , us ", tags: ["Technology"] },
+export const featuredJobsData: FeaturedJob[] = [
+  {
+    id: 1,
+    companyName: "Infinity Company",
+    title: "Senior Full-Stack Developer",
+    companyLogo: "/logo/lgo.png",
+    description:
+      "Architect and scale resilient full-stack web applications using TypeScript, Next.js, and cloud backend services.",
+    location: "Kinshasa, DRC / Remote",
+    tags: ["Engineering", "Technology"],
+  },
+  {
+    id: 2,
+    companyName: "Infinity Company",
+    title: "Designer UX/UI",
+    companyLogo: "/logo/lgo.png",
+    description:
+      "Design intuitive user interfaces, wireframes, and scalable Figma design systems across web and mobile products.",
+    location: "Kigali, Rwanda / Remote",
+    tags: ["Design"],
+  },
+  {
+    id: 3,
+    companyName: "Dropbox",
+    title: "Senior Product Designer (UX/UI)",
+    companyLogo: "/Dropbox.png",
+    description:
+      "Lead user research, interaction design, and high-fidelity prototyping for core cloud workspace products.",
+    location: "San Francisco, US",
+    tags: ["Design", "Business"],
+  },
+  {
+    id: 4,
+    companyName: "Revolut",
+    title: "Growth Marketing Lead",
+    companyLogo: "/revolut.png",
+    description:
+      "Drive multi-channel customer acquisition and lifecycle marketing campaigns across global fintech markets.",
+    location: "Madrid, Spain",
+    tags: ["Marketing"],
+  },
+  {
+    id: 5,
+    companyName: "Pitch",
+    title: "Enterprise Account Director",
+    companyLogo: "/Pitch.png",
+    description:
+      "Expand enterprise B2B partnerships and guide strategic client onboarding across EMEA.",
+    location: "Berlin, Germany",
+    tags: ["Business", "Marketing"],
+  },
+  {
+    id: 6,
+    companyName: "ClassPass",
+    title: "Head of People & Talent Acquisition",
+    companyLogo: "/ClassPass.png",
+    description:
+      "Lead executive talent acquisition, organizational development, and global people operations.",
+    location: "Manchester, UK",
+    tags: ["Human Resources"],
+  },
+  {
+    id: 7,
+    companyName: "Canva",
+    title: "Principal Frontend Architect",
+    companyLogo: "/Canva.png",
+    description:
+      "Architect high-performance frontend applications and accessible UI component systems.",
+    location: "Ontario, Canada",
+    tags: ["Engineering", "Technology"],
+  },
+  {
+    id: 8,
+    companyName: "Terraform",
+    title: "Cloud Infrastructure Engineer",
+    companyLogo: "/Terraform.png",
+    description:
+      "Build automated cloud infrastructure and multi-region Kubernetes platforms.",
+    location: "Hamburg, Germany",
+    tags: ["Technology", "Engineering"],
+  },
 ];
