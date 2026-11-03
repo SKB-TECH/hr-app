@@ -3,7 +3,18 @@ import type { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://fast2hire.com";
   const locales = ["en", "fr"];
-  const publicRoutes = ["", "/jobs", "/companies", "/about", "/sign-in", "/sign-up"];
+  const publicRoutes = [
+    "",
+    "/jobs",
+    "/companies",
+    "/about",
+    "/privacy",
+    "/terms",
+    "/gdpr",
+    "/cookies",
+    "/sign-in",
+    "/sign-up",
+  ];
 
   return publicRoutes.flatMap((route) =>
     locales.map((locale) => ({

@@ -1,9 +1,9 @@
 import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
-import { categoriesData } from "@/data/category";
-import { CategoryProp } from "@/data/category";
+import { categoriesData, type CategoryProp } from "@/data/category";
 import { SectionTitle } from "@/components/ui/Title";
 import { getTranslations } from "next-intl/server";
+import CategorySelectionPills from "./CategorySelectionPills";
 
 export default async function SectionComponent() {
   const t = await getTranslations("common");
@@ -18,14 +18,17 @@ export default async function SectionComponent() {
           isExpanded
         />
 
+        {/* Isolated Client Component for Category Selection Pills */}
+        <CategorySelectionPills />
+
         <div className="mt-8 pb-5 md:pb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {categoriesData.map((category: CategoryProp) => (
             <Link
-              href={`/jobs?category=${category.name.toLowerCase()}`}
-              key={category.id}
+              href={`/jobs?category=${encodeURIComponent(category.name.toLowerCase())}`}
+              key={`category-card-${category.id}`}
               className="group relative bg-white border border-gray-200/90 rounded-none p-5 md:p-6 cursor-pointer
                          hover:border-[#4640DE] hover:shadow-[0_12px_30px_rgba(70,64,222,0.08)]
-                         hover:-translate-y-1 transition-all duration-300
+                         hover:-translate-y-1 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4640DE] transition-all duration-300
                          flex flex-row md:flex-col
                          items-center md:items-start
                          gap-4 md:gap-4
@@ -36,6 +39,7 @@ export default async function SectionComponent() {
                 <category.logo
                   width={30}
                   height={30}
+                  aria-hidden="true"
                   className="transition-all duration-300 group-hover:brightness-0 group-hover:invert text-[#4640DE]"
                 />
               </div>
@@ -50,7 +54,7 @@ export default async function SectionComponent() {
                     {t("section.jobsAvailable", { count: category.availableJobs })}
                   </span>
                   <div className="w-8 h-8 rounded-none bg-gray-50 flex items-center justify-center text-[#132745] group-hover:bg-[#4640DE] group-hover:text-white transition-all duration-300 shrink-0">
-                    <ArrowRight size={16} />
+                    <ArrowRight size={16} aria-hidden="true" />
                   </div>
                 </div>
               </div>
@@ -62,10 +66,10 @@ export default async function SectionComponent() {
         <div className="md:hidden mt-4 text-center">
           <Link
             href="/jobs"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#4640DE] hover:text-[#3730C9]"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#4640DE] hover:text-[#3730C9] active:text-[#2A24A3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4640DE]"
           >
             <span>{t("section.showAllJobs")}</span>
-            <ArrowRight size={15} />
+            <ArrowRight size={15} aria-hidden="true" />
           </Link>
         </div>
       </section>

@@ -1,4 +1,21 @@
+import { Roboto, Ubuntu } from "next/font/google";
 import localFont from "next/font/local";
+
+export const roboto = Roboto({
+  subsets: ["latin"],
+  axes: ["wdth"],
+  display: "swap",
+  adjustFontFallback: true,
+  variable: "--font-roboto",
+});
+
+export const ubuntu = Ubuntu({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  adjustFontFallback: true,
+  variable: "--font-ubuntu",
+});
 
 export const epilogue = localFont({
   src: "../public/fonts/clash-display/ClashDisplay-Variable.woff2",

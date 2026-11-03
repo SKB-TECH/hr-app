@@ -1,28 +1,17 @@
-"use client";
-
 import Image from "next/image";
-import { Search, MapPin, Sparkles, ShieldCheck, Briefcase } from "lucide-react";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { Sparkles, ShieldCheck, Briefcase } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import HeroSearchForm from "./HeroSearchForm";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import CountrySelect from "@/components/ui/CountrySelect";
-import { useTranslations } from "next-intl";
+export default async function HeroSectionComponent() {
+  const t = await getTranslations("common");
 
-export default function HeroSectionComponent() {
-  const t = useTranslations("common");
-  const [selectedLocation, setSelectedLocation] = useState("");
-  const [keyword, setKeyword] = useState("");
-  const router = useRouter();
-
-  const handleSearch = () => {
-    const params = new URLSearchParams();
-    if (keyword.trim()) params.set("q", keyword.trim());
-    if (selectedLocation) params.set("location", selectedLocation);
-    const queryString = params.toString();
-    router.push(`/jobs${queryString ? `?${queryString}` : ""}`);
-  };
+  const popularItems = [
+    t("heroSection.popular.uiDesigner"),
+    t("heroSection.popular.uxResearcher"),
+    t("heroSection.popular.android"),
+    t("heroSection.popular.admin"),
+  ];
 
   return (
     <section className="relative overflow-hidden bg-[#132745] text-white">
@@ -41,18 +30,20 @@ export default function HeroSectionComponent() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 pt-14 pb-20 md:pt-20 md:pb-28 lg:pt-24 lg:pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Heading, Subheading, and Search */}
+          {/* Left Column: Heading, Subheading, and Isolated Client Search Bar */}
           <div className="lg:col-span-8 flex flex-col items-start">
             {/* Top Badge with rounded-none */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-white/10 backdrop-blur-md border border-white/15 text-[#FFB836] text-xs font-semibold uppercase tracking-wider mb-6">
-              <Sparkles size={14} className="text-[#26A4FF]" />
-              <span>Executive Search & Talent Matching</span>
+              <Sparkles size={14} className="text-[#26A4FF]" aria-hidden="true" />
+              <span>Executive Search &amp; Talent Matching</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[58px] font-bold tracking-tight text-white leading-[1.12]">
               {t("heroSection.headingLine1")}{" "}
-              <span className="text-white/90">{t("heroSection.headingLine2")}</span>{" "}
+              <span className="text-white/90">
+                {t("heroSection.headingLine2")}
+              </span>{" "}
               <span className="relative inline-block text-[#26A4FF] underline decoration-[#FFB836]/60 decoration-wavy decoration-2 underline-offset-8">
                 {t("heroSection.headingHighlight")}
               </span>
@@ -63,93 +54,39 @@ export default function HeroSectionComponent() {
               {t("heroSection.subheading")}
             </p>
 
-            {/* Floating Search Bar with rounded-none */}
-            <div className="mt-8 w-full max-w-3xl bg-white rounded-none p-2 sm:p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20 transition-all flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-              {/* Keyword Search Input */}
-              <div className="flex-1 flex items-center gap-3 px-4 py-2 sm:py-0">
-                <Search size={20} className="shrink-0 text-[#25324B]/60" />
-                <Input
-                  value={keyword}
-                  onChange={(e) => setKeyword(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                  placeholder={t("heroSection.searchPlaceholder")}
-                  className="h-10 sm:h-12 border-0 rounded-none bg-transparent text-[#25324B] text-sm sm:text-base placeholder:text-[#7C8493] shadow-none focus-visible:ring-0 px-0"
-                />
-              </div>
-
-              {/* Divider on Desktop */}
-              <div className="hidden sm:block w-px h-8 bg-gray-200" />
-
-              {/* Location Select Input */}
-              <div className="flex-1 flex items-center gap-2 px-3 py-2 sm:py-0">
-                <MapPin size={20} className="shrink-0 text-[#25324B]/60" />
-                <div className="w-full">
-                  <CountrySelect
-                    value={selectedLocation}
-                    onChange={setSelectedLocation}
-                    placeholder={t("heroSection.selectLocationOption")}
-                    className="h-10 sm:h-12 border-0 rounded-none bg-transparent text-[#25324B] text-sm sm:text-base shadow-none px-0"
-                  />
-                </div>
-              </div>
-
-              {/* Search CTA Button with rounded-none */}
-              <Button
-                onClick={handleSearch}
-                className="h-11 sm:h-12 px-7 rounded-none bg-[#4640DE] hover:bg-[#3730C9] text-white font-bold text-sm sm:text-base shadow-sm transition-all cursor-pointer shrink-0"
-              >
-                {t("heroSection.searchButton")}
-              </Button>
-            </div>
-
-            {/* Popular Searches with rounded-none */}
-            <div className="mt-5 flex flex-wrap items-center gap-2 text-xs sm:text-sm text-white/70">
-              <span className="font-medium text-white/90">
-                {t("heroSection.popular.label")}
-              </span>
-              {[
-                t("heroSection.popular.uiDesigner"),
-                t("heroSection.popular.uxResearcher"),
-                t("heroSection.popular.android"),
-                t("heroSection.popular.admin"),
-              ].map((item, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    setKeyword(item);
-                    router.push(`/jobs?q=${encodeURIComponent(item)}`);
-                  }}
-                  className="px-3 py-1 rounded-none bg-white/10 hover:bg-white/20 border border-white/10 text-white/90 hover:text-white transition-colors cursor-pointer text-xs"
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
+            {/* Isolated Client Search Bar & Popular Pills */}
+            <HeroSearchForm
+              searchPlaceholder={t("heroSection.searchPlaceholder")}
+              selectLocationOption={t("heroSection.selectLocationOption")}
+              searchButtonLabel={t("heroSection.searchButton")}
+              popularLabel={t("heroSection.popular.label")}
+              popularItems={popularItems}
+            />
 
             {/* Trust Markers Bar */}
             <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center gap-6 sm:gap-8 text-xs sm:text-sm text-white/80">
               <div className="flex items-center gap-2">
-                <ShieldCheck size={18} className="text-[#26A4FF]" />
+                <ShieldCheck size={18} className="text-[#26A4FF]" aria-hidden="true" />
                 <span>Verified Executive Roles</span>
               </div>
               <div className="flex items-center gap-2">
-                <Briefcase size={18} className="text-[#FFB836]" />
+                <Briefcase size={18} className="text-[#FFB836]" aria-hidden="true" />
                 <span>Confidential Search</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#26A4FF] animate-pulse" />
+                <span className="w-2 h-2 bg-[#26A4FF] animate-pulse" aria-hidden="true" />
                 <span>Active Global Matching</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Local Executive Portrait Card with rounded-none */}
+          {/* Right Column: Local Executive Portrait Card (Hero Headshot with priority) */}
           <div className="lg:col-span-4 hidden lg:flex justify-end relative">
             <div className="relative w-[340px] xl:w-[380px]">
               {/* Outer Decorative Ring */}
               <div className="absolute -inset-2 bg-gradient-to-tr from-[#4640DE]/25 via-[#26A4FF]/20 to-transparent blur-md" />
 
-              {/* Main Image Card with rounded-none */}
+              {/* Main Image Card with rounded-none — sole priority image */}
               <div className="relative rounded-none overflow-hidden border-2 border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.5)] aspect-[4/5] bg-[#132745]">
                 <Image
                   src="/images/hero2.png"
@@ -168,7 +105,9 @@ export default function HeroSectionComponent() {
                   15Y
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-[#132745]">Industry Leader</p>
+                  <p className="text-xs font-bold text-[#132745]">
+                    Industry Leader
+                  </p>
                   <p className="text-[11px] text-[#7C8493]">Executive Search</p>
                 </div>
               </div>
@@ -176,7 +115,7 @@ export default function HeroSectionComponent() {
               {/* Floating Stat Badge 2 (Bottom Right) with rounded-none */}
               <div className="absolute -bottom-5 -right-5 bg-[#132745] text-white p-4 rounded-none shadow-2xl border border-white/15 flex items-center gap-3.5 backdrop-blur-md">
                 <div className="w-10 h-10 rounded-none bg-[#4640DE]/20 flex items-center justify-center text-[#26A4FF]">
-                  <Sparkles size={20} />
+                  <Sparkles size={20} aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-base font-bold text-[#FFB836]">98%</p>

@@ -1,14 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { CheckCircle2, Play, ArrowRight, Award } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { getTranslations } from "next-intl/server";
 
-export default function ExecutiveAboutSection() {
-  const t = useTranslations("landing");
-  const [isPlaying, setIsPlaying] = useState(false);
+export default async function ExecutiveAboutSection() {
+  const t = await getTranslations("landing");
 
   return (
     <section className="py-20 lg:py-28 bg-[#F8F8FD] overflow-hidden">
@@ -24,6 +20,7 @@ export default function ExecutiveAboutSection() {
                     src="/images/image.png"
                     alt="Senior Executive Search Specialist"
                     fill
+                    loading="lazy"
                     sizes="(max-width: 1024px) 50vw, 320px"
                     className="object-cover object-top hover:scale-105 transition-transform duration-700"
                   />
@@ -33,7 +30,7 @@ export default function ExecutiveAboutSection() {
                 <div className="absolute -bottom-6 left-2 right-2 sm:right-6 bg-[#132745] text-white p-4 rounded-none shadow-xl border border-white/10 z-20">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-none bg-[#4640DE]/20 flex items-center justify-center text-[#FFB836] shrink-0">
-                      <Award size={20} />
+                      <Award size={20} aria-hidden="true" />
                     </div>
                     <div>
                       <p className="text-sm font-bold text-white">
@@ -55,6 +52,7 @@ export default function ExecutiveAboutSection() {
                     src="/images/image1.png"
                     alt="Executive Candidate Interview"
                     fill
+                    loading="lazy"
                     sizes="(max-width: 1024px) 30vw, 220px"
                     className="object-cover hover:scale-105 transition-transform duration-500"
                   />
@@ -66,28 +64,34 @@ export default function ExecutiveAboutSection() {
                     src="/images/image2.png"
                     alt="Corporate Strategy Meeting"
                     fill
+                    loading="lazy"
                     sizes="(max-width: 1024px) 30vw, 220px"
                     className="object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
                 {/* Video Feature Card with Play Button */}
-                <div className="relative aspect-[16/10] rounded-none overflow-hidden shadow-lg border-2 border-white bg-[#0B132B] group cursor-pointer">
+                <div className="relative aspect-[16/10] rounded-none overflow-hidden shadow-lg border-2 border-white bg-[#0B132B] group">
                   <Image
                     src="/images/image3.png"
                     alt="Recruitment Excellence Overview"
                     fill
+                    loading="lazy"
                     sizes="(max-width: 1024px) 30vw, 220px"
                     className="object-cover opacity-75 group-hover:scale-105 group-hover:opacity-85 transition-all duration-500"
                   />
                   <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                    <button
-                      onClick={() => setIsPlaying(!isPlaying)}
-                      aria-label="Play Introduction Video"
-                      className="w-11 h-11 rounded-none bg-white text-[#4640DE] flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300"
+                    <Link
+                      href="/about"
+                      aria-label="Learn more about Fast2Hire methodology"
+                      className="w-11 h-11 rounded-none bg-white text-[#4640DE] flex items-center justify-center shadow-lg transform group-hover:scale-110 hover:bg-[#EEF2FF] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4640DE] transition-all duration-300"
                     >
-                      <Play size={18} className="translate-x-0.5 fill-[#4640DE]" />
-                    </button>
+                      <Play
+                        size={18}
+                        className="translate-x-0.5 fill-[#4640DE]"
+                        aria-hidden="true"
+                      />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -118,9 +122,13 @@ export default function ExecutiveAboutSection() {
                 t("executiveAbout.benefit2"),
                 t("executiveAbout.benefit3"),
               ].map((benefit, index) => (
-                <div key={index} className="flex items-start gap-3.5 group">
+                <div key={`benefit-${index}`} className="flex items-start gap-3.5 group">
                   <div className="w-6 h-6 rounded-none bg-[#EEF2FF] flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-[#4640DE] transition-colors">
-                    <CheckCircle2 size={16} className="text-[#4640DE] group-hover:text-white transition-colors" />
+                    <CheckCircle2
+                      size={16}
+                      className="text-[#4640DE] group-hover:text-white transition-colors"
+                      aria-hidden="true"
+                    />
                   </div>
                   <span className="text-sm sm:text-base font-medium text-[#25324B]">
                     {benefit}
@@ -133,14 +141,14 @@ export default function ExecutiveAboutSection() {
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
                 href="/jobs"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-none bg-[#4640DE] hover:bg-[#3730C9] text-white font-bold text-sm sm:text-base shadow-sm transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-none bg-[#4640DE] hover:bg-[#3730C9] active:bg-[#2A24A3] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4640DE] focus-visible:ring-offset-2 text-white font-bold text-sm sm:text-base shadow-sm transition-all hover:-translate-y-0.5"
               >
                 <span>{t("executiveAbout.cta")}</span>
-                <ArrowRight size={16} />
+                <ArrowRight size={16} aria-hidden="true" />
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-none border-2 border-[#132745]/20 hover:border-[#132745] text-[#132745] font-semibold text-sm sm:text-base transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-none border-2 border-[#132745]/20 hover:border-[#132745] hover:bg-[#132745]/5 active:bg-[#132745]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#132745] text-[#132745] font-semibold text-sm sm:text-base transition-colors"
               >
                 <span>Our Methodology</span>
               </Link>

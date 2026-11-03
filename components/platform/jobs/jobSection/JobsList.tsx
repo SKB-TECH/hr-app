@@ -7,6 +7,8 @@ import { SharedListingHeader } from "../../companies/search/SharedListingHeader"
 import { SectionSkeleton } from "@/components/dashboard/candidate/applicant/profile/shared/Skeleton";
 import Pagination from "../ReusablePagination/ReusablePagination";
 import { useJobs } from "@/core/hooks/jobs/use-jobs";
+import { useJobContext } from "@/context/JobContext";
+import { sanitizeAndDeduplicateJobs } from "@/core/services/jobs/normalize-company-job";
 
 interface JobsListProps {
   currentPage: number;
@@ -28,8 +30,20 @@ function JobsList({
   getApplyLink,
 }: JobsListProps) {
   const t = useTranslations("findJobs");
-  const { data: jobsPage, isLoading, isError } = useJobs({ page: currentPage, limit: pageSize, search });
-  const jobs = jobsPage?.data ?? [];
+  const { filters } = useJobContext();
+  const effectiveSearch = search || filters.keyword || undefined;
+  const effectiveLocation = filters.location || undefined;
+  const effectiveCategory = filters.category || undefined;
+
+  const { data: jobsPage, isLoading, isError } = useJobs({
+    page: currentPage,
+    limit: pageSize,
+    search: effectiveSearch,
+    location: effectiveLocation,
+    category: effectiveCategory,
+  });
+
+  const jobs = sanitizeAndDeduplicateJobs(jobsPage?.data ?? []);
   const totalResults = jobsPage?.meta?.totalItems ?? jobs.length;
   const totalPages = jobsPage?.meta?.totalPages ?? 1;
 
@@ -64,13 +78,22 @@ function JobsList({
           }
         >
           {jobs.map((job) => (
-            <JobsCard key={job.id} job={job} viewGrid={viewGrid} applyLink={getApplyLink(job.id)} />
+            <JobsCard
+              key={job.id}
+              job={job}
+              viewGrid={viewGrid}
+              applyLink={getApplyLink(job.id)}
+            />
           ))}
         </div>
       )}
 
       {!isLoading && !isError && totalPages > 1 && (
-        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={onPageChange} />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
+        />
       )}
     </main>
   );

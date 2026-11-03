@@ -13,7 +13,9 @@
 
   --font-epilogue: var(--font-epilogue);
   --font-clash-display: var(--font-clash-display);
-  --font-sans: var(--font-epilogue);
+  --font-roboto: var(--font-roboto);
+  --font-ubuntu: var(--font-ubuntu);
+  --font-sans: var(--font-roboto), var(--font-ubuntu), var(--font-epilogue);
 
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);

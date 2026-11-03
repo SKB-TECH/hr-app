@@ -19,12 +19,12 @@ const articles = [
   {
     title: "How to access my applications history",
     description:
-      "To access applications history, go to your My Applications page on your dashboard profile. You must be signed in to your JobHuntly account to view this page.",
+      "To access applications history, go to your My Applications page on your dashboard profile. You must be signed in to your Fast2Hire account to view this page.",
   },
   {
     title: "Not seeing jobs you applied in your application list?",
     description:
-      "Please note that we are unable to track materials submitted for jobs you apply to via an employer's site. As a result, these applications are not recorded in the My Applications section of your JobHuntly account. We suggest keeping a personal record of all positions you have applied to externally.",
+      "Please note that we are unable to track materials submitted for jobs you apply to via an employer's site. As a result, these applications are not recorded in the My Applications section of your Fast2Hire account. We suggest keeping a personal record of all positions you have applied to externally.",
   },
 ];
 

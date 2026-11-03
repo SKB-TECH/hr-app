@@ -18,7 +18,7 @@ const AboutUsPage = async () => {
             src="/background.png"
             alt="Executive Office Background"
             fill
-            priority
+            sizes="100vw"
             className="object-cover opacity-20 mix-blend-luminosity"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0B132B]/95 via-[#132745]/90 to-[#1C315E]/80" />

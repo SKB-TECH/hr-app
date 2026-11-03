@@ -105,31 +105,71 @@ export const TwitterIcon = () => (
 
 export const VodafoneLogo = () => (
   <div className="flex items-center gap-2">
-    <Image src="/vodafone.png" alt="Vodafone" width={150} height={150} />
+    <Image
+      src="/vodafone.png"
+      alt="Vodafone"
+      width={150}
+      height={40}
+      loading="lazy"
+      sizes="150px"
+      className="h-auto w-auto object-contain"
+    />
   </div>
 );
 
 export const IntelLogo = () => (
   <div>
-    <Image src="/intel.png" alt="Intel" width={100} height={100} />
+    <Image
+      src="/intel.png"
+      alt="Intel"
+      width={100}
+      height={36}
+      loading="lazy"
+      sizes="100px"
+      className="h-auto w-auto object-contain"
+    />
   </div>
 );
 
 export const TeslaLogo = () => (
   <div>
-    <Image src="/tesla.png" alt="Tesla" width={160} height={160} style={{ height: "auto" }} />
+    <Image
+      src="/tesla.png"
+      alt="Tesla"
+      width={160}
+      height={36}
+      loading="lazy"
+      sizes="160px"
+      className="h-auto w-auto object-contain"
+    />
   </div>
 );
 
 // AMD with the custom arrow mark
 export const AmdLogoSvg = () => (
   <div>
-    <Image src="/amd.png" alt="AMD" width={100} height={100} style={{ height: "auto" }} />
+    <Image
+      src="/amd.png"
+      alt="AMD"
+      width={100}
+      height={36}
+      loading="lazy"
+      sizes="100px"
+      className="h-auto w-auto object-contain"
+    />
   </div>
 );
 
 export const TalkitLogo = () => (
   <div>
-    <Image src="/talkit.png" alt="TALKIT" width={100} height={100} style={{ height: "auto" }} />
+    <Image
+      src="/talkit.png"
+      alt="TALKIT"
+      width={100}
+      height={36}
+      loading="lazy"
+      sizes="100px"
+      className="h-auto w-auto object-contain"
+    />
   </div>
 );

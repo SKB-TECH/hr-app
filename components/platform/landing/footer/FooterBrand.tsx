@@ -11,7 +11,7 @@ export function FooterBrand() {
       <div className="mb-5">
           <Image
               src="/logo/logow.png"
-              alt="JobHuntly Logo"
+              alt="Fast2Hire Logo"
               width={180}
               height={180}
               className="object-cover"

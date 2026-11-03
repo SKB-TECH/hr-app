@@ -1,7 +1,5 @@
-// use this file for data that is used across the app, such as arrays of objects, constants, etc.
 import { Company, SidebarFilterCompany } from "../types/types";
 
-// mock data for search company sidebar filters
 export const mockSidebarCompanyFilters: SidebarFilterCompany[] = [
   {
     title: "Industry",
@@ -21,7 +19,7 @@ export const mockSidebarCompanyFilters: SidebarFilterCompany[] = [
     ],
   },
   {
-    title: "company Size",
+    title: "Company Size",
     options: [
       { name: "1-50", count: 25 },
       { name: "51-150", count: 57 },
@@ -35,12 +33,16 @@ export const mockSidebarCompanyFilters: SidebarFilterCompany[] = [
 
 export const sortOptions = ["Most relevant", "Most recent"];
 
-// job data can be added here as well
 export const Alljobsfilter: SidebarFilterCompany[] = [
   {
     title: "Type of Employment",
-    options: [{ name: "Full-time", count: 3 }, { name: "Part-time", count: 5 },
-    { name: "Remote", count: 2 }, { name: "Internship", count: 24 },{ name: "Contract", count: 3 },],
+    options: [
+      { name: "Full-time", count: 3 },
+      { name: "Part-time", count: 5 },
+      { name: "Remote", count: 2 },
+      { name: "Internship", count: 24 },
+      { name: "Contract", count: 3 },
+    ],
   },
   {
     title: "Categories",
@@ -50,9 +52,9 @@ export const Alljobsfilter: SidebarFilterCompany[] = [
       { name: "Marketing", count: 3 },
       { name: "Business", count: 3, defaultSelected: true },
       { name: "Human Resources", count: 6 },
-      { name: "Finance", count: 4 }, {
-        name: "Engineering", count: 4
-      },{ name: "technology", count: 5, defaultSelected: true },
+      { name: "Finance", count: 4 },
+      { name: "Engineering", count: 4 },
+      { name: "Technology", count: 5, defaultSelected: true },
     ],
   },
   {
@@ -62,7 +64,7 @@ export const Alljobsfilter: SidebarFilterCompany[] = [
       { name: "Mid Level", count: 3 },
       { name: "Senior Level", count: 5 },
       { name: "Director", count: 12, defaultSelected: true },
-      { name: "Vp or Above", count: 8 },
+      { name: "VP or Above", count: 8 },
     ],
   },
   {
@@ -73,89 +75,67 @@ export const Alljobsfilter: SidebarFilterCompany[] = [
       { name: "$1500 - $2000", count: 10 },
       { name: "$3000 or above", count: 4, defaultSelected: true },
     ],
-  }
+  },
 ];
-
 
 export const availableJobs: Company[] = [
   {
     id: 1,
-    src: "/Nomad.png",
+    src: "/logo/lgo.png",
     location: "Full-Time",
     availableJobs: 9,
-    name: "Social Media Assistant",
-    description: "Nomad • Paris, France",
+    name: "Senior Full-Stack Developer",
+    description: "Infinity Company • Kinshasa, DRC",
     industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
+      { name: "Engineering", style: { color: "#4640DE", bg: "#FFFFFF" } },
+      { name: "Technology", style: { color: "#2563EB", bg: "#FFFFFF" } },
     ],
     size: 1000,
     applied: 5,
     capacity: 10,
-    atsScore: 88,
+    atsScore: 92,
   },
   {
     id: 2,
+    src: "/logo/lgo.png",
+    location: "Full-Time",
+    availableJobs: 9,
+    name: "Designer UX/UI",
+    description: "Infinity Company • Kigali, Rwanda",
+    industry: [
+      { name: "Design", style: { color: "#4640DE", bg: "#FFFFFF" } },
+    ],
+    size: 1000,
+    applied: 4,
+    capacity: 10,
+    atsScore: 89,
+  },
+  {
+    id: 3,
     src: "/Dropbox.png",
     location: "Full-Time",
     availableJobs: 9,
-    name: "Brand Designer",
-    description: "Dropbox •  San Fransisco, USA",
+    name: "Senior Product Designer (UX/UI)",
+    description: "Dropbox • San Francisco, USA",
     industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
+      { name: "Design", style: { color: "#4640DE", bg: "#FFFFFF" } },
+      { name: "Business", style: { color: "#FFB836", bg: "#FFFFFF" } },
     ],
     size: 1000,
     applied: 2,
     capacity: 10,
-    atsScore: 72,
+    atsScore: 85,
   },
   {
-    id: 3,
+    id: 4,
     src: "/Terraform.png",
     location: "Full-Time",
     availableJobs: 9,
-    name: "Interactive Developer",
+    name: "Cloud Infrastructure Engineer",
     description: "Terraform • Hamburg, Germany",
     industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
+      { name: "Engineering", style: { color: "#4640DE", bg: "#FFFFFF" } },
+      { name: "Technology", style: { color: "#2563EB", bg: "#FFFFFF" } },
     ],
     size: 1000,
     applied: 8,
@@ -163,253 +143,47 @@ export const availableJobs: Company[] = [
     atsScore: 94,
   },
   {
-    id: 4,
+    id: 5,
     src: "/revolut.png",
     location: "Full-Time",
     availableJobs: 9,
-    name: "Email Marketing",
-    description: "Revolut • Madrid, Spain ",
+    name: "Growth & Lifecycle Marketing Manager",
+    description: "Revolut • Madrid, Spain",
     industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
+      { name: "Marketing", style: { color: "#FFB836", bg: "#FFFFFF" } },
+      { name: "Business", style: { color: "#4640DE", bg: "#FFFFFF" } },
     ],
     size: 1000,
-    applied: 0,
+    applied: 3,
     capacity: 10,
-    atsScore: 55,
-  },
-  {
-    id: 5,
-    src: "/Canva.png",
-    location: "Full-Time",
-    availableJobs: 9,
-    name: "Lead Engineer",
-    description: "Canva • Ankara, Turkey",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 5,
-    capacity: 10,
-    atsScore: 82,
+    atsScore: 78,
   },
   {
     id: 6,
-    src: "/ClassPass.png",
-    location: "Full-Time",
-    availableJobs: 9,
-    name: "Product Designer",
-    description: "ClassPass • Berlin, Germany",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 5,
-    capacity: 10,
-    atsScore: 68,
-  },
-  {
-    id: 7,
-    src: "/Pitch.png",
-    location: "Full-Time",
-    availableJobs: 9,
-    name: "Customer Manager",
-    description: "Pitch • Berlin, Germany",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 5,
-    capacity: 10,
-    atsScore: 91,
-  },
-
-  // second page
-  {
-    id: 8,
-    src: "/Nomad.png",
-    location: "Full-Time",
-    availableJobs: 9,
-    name: "Social Media Assistant",
-    description: "Nomad • Paris, France",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 5,
-    capacity: 10,
-    atsScore: 85,
-  },
-  {
-    id: 9,
-    src: "/Dropbox.png",
-    location: "Full-Time",
-    availableJobs: 9,
-    name: "Brand Designer",
-    description: "Dropbox •  San Fransisco, USA",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 2,
-    capacity: 10,
-    atsScore: 76,
-  },
-  {
-    id: 10,
-    src: "/Terraform.png",
-    location: "Full-Time",
-    availableJobs: 9,
-    name: "Interactive Developer",
-    description: "Terraform • Hamburg, Germany",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 8,
-    capacity: 10,
-    atsScore: 92,
-  },
-  {
-    id: 11,
-    src: "/revolut.png",
-    location: "Full-Time",
-    availableJobs: 9,
-    name: "Email Marketing",
-    description: "Revolut • Madrid, Spain ",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 0,
-    capacity: 10,
-    atsScore: 58,
-  },
-  {
-    id: 12,
     src: "/Canva.png",
     location: "Full-Time",
     availableJobs: 9,
-    name: "Lead Engineer",
+    name: "Principal Frontend Architect",
     description: "Canva • Ankara, Turkey",
     industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
+      { name: "Engineering", style: { color: "#4640DE", bg: "#FFFFFF" } },
+      { name: "Technology", style: { color: "#2563EB", bg: "#FFFFFF" } },
+    ],
+    size: 1000,
+    applied: 5,
+    capacity: 10,
+    atsScore: 88,
+  },
+  {
+    id: 7,
+    src: "/ClassPass.png",
+    location: "Full-Time",
+    availableJobs: 9,
+    name: "Head of People & Talent Acquisition",
+    description: "ClassPass • Berlin, Germany",
+    industry: [
+      { name: "Human Resources", style: { color: "#FFB836", bg: "#FFFFFF" } },
+      { name: "Business", style: { color: "#4640DE", bg: "#FFFFFF" } },
     ],
     size: 1000,
     applied: 5,
@@ -417,65 +191,19 @@ export const availableJobs: Company[] = [
     atsScore: 84,
   },
   {
-    id: 13,
-    src: "/ClassPass.png",
-    location: "Full-Time",
-    availableJobs: 9,
-    name: "Product Designer",
-    description: "ClassPass • Berlin, Germany",
-    industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
-    ],
-    size: 1000,
-    applied: 5,
-    capacity: 10,
-    atsScore: 65,
-  },
-  {
-    id: 14,
+    id: 8,
     src: "/Pitch.png",
     location: "Full-Time",
     availableJobs: 9,
-    name: "Customer Manager",
+    name: "Enterprise Account Director",
     description: "Pitch • Berlin, Germany",
     industry: [
-      {
-        name: "Marketing",
-        style: {
-          color: "#FFB836",
-          bg: "#FFFFFF",
-        },
-      },
-      {
-        name: "Design",
-        style: {
-          color: "#4640DE",
-          bg: "#FFFFFF",
-        },
-      },
+      { name: "Business", style: { color: "#FFB836", bg: "#FFFFFF" } },
+      { name: "Sales", style: { color: "#4640DE", bg: "#FFFFFF" } },
     ],
     size: 1000,
     applied: 5,
     capacity: 10,
-    atsScore: 90,
+    atsScore: 91,
   },
 ];
-  
-
-
-
-
-
