@@ -6,17 +6,19 @@ import { FilterTick } from "@/components/ui/FilterTick";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useLogin } from "@/core/hooks/auth/use-login";
-import { getGoogleAuthUrl } from "@/core/services/auth/get-google-auth-url.service";
+import { getOAuthAuthUrl } from "@/core/services/auth/get-google-auth-url.service";
 import { ApiError } from "@/core/types/api";
 import { Link, useRouter } from "@/i18n/routing";
 import Image from "next/image";
 import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { FormEvent, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function SignInPage() {
   const router = useRouter();
   const locale = useLocale();
+  const t = useTranslations("auth");
   const login = useLogin();
   const [rememberMe, setRememberMe] = useState(false);
   const [userLevel, setUserLevel] = useState<UserLevel>("job-seeker");
@@ -26,16 +28,31 @@ export default function SignInPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
-      if (params.get("error") === "oauth_callback_failed") {
-        toast.error(
-          locale === "fr"
-            ? "La session Google a expiré ou le code a déjà été utilisé. Veuillez réessayer."
-            : "Google authentication session expired or code was already used. Please try signing in again."
-        );
+      const error = params.get("error");
+      if (error?.startsWith("oauth_")) {
+        const messages: Record<string, string> = {
+          oauth_denied: t("signIn.oauthDenied"),
+          oauth_account_exists: t("signIn.oauthAccountExists"),
+          oauth_profile_forbidden: t("signIn.oauthProfileForbidden"),
+          oauth_unavailable: t("signIn.oauthUnavailable"),
+          oauth_callback_failed: t("signIn.oauthFailed"),
+        };
+        toast.error(messages[error] ?? t("signIn.oauthFailed"));
         window.history.replaceState({}, document.title, window.location.pathname);
       }
     }
-  }, [locale]);
+  }, [locale, t]);
+
+  function startOAuth(provider: "google" | "linkedin") {
+    const params = new URLSearchParams(window.location.search);
+    window.location.assign(
+      getOAuthAuthUrl(provider, {
+        portal: userLevel === "company" ? "COMPANY" : "CANDIDATE",
+        locale,
+        returnTo: params.get("next") ?? undefined,
+      }),
+    );
+  }
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -83,10 +100,13 @@ export default function SignInPage() {
           <h1 className="font-epilogue text-3xl font-extrabold text-slate-900">Welcome Back</h1>
           <p className="text-sm text-slate-500">{userLevel === "job-seeker" ? "Sign in to continue your job search and manage your applications." : "Sign in to manage your jobs, candidates and recruitment process."}</p>
         </div>
-        <button type="button" onClick={() => window.location.assign(getGoogleAuthUrl(userLevel === "company" ? "COMPANY" : "CANDIDATE"))} className="flex h-14 w-full items-center justify-center gap-3 border border-gray-300 bg-white font-semibold text-indigo-600 hover:bg-gray-50">
-          <Image width={24} height={24} src="/images/google.svg" alt="Google" /> Sign in with Google
+        <button type="button" onClick={() => startOAuth("google")} className="flex h-14 w-full items-center justify-center gap-3 border border-gray-300 bg-white font-semibold text-indigo-600 hover:bg-gray-50">
+          <Image width={24} height={24} src="/images/google.svg" alt="" /> {t("signIn.signInWithGoogle")}
         </button>
-        <Separator text="Or login with email" />
+        <button type="button" onClick={() => startOAuth("linkedin")} className="flex h-14 w-full items-center justify-center gap-3 border border-gray-300 bg-white font-semibold text-[#0A66C2] hover:bg-gray-50">
+          <span aria-hidden="true" className="flex h-6 w-6 items-center justify-center rounded-sm bg-[#0A66C2] text-sm font-bold text-white">in</span> {t("signIn.signInWithLinkedIn")}
+        </button>
+        <Separator text={t("signIn.orLoginWithEmail")} />
         <div><Label htmlFor="email" className="mb-2 block">Email Address</Label><Input id="email" type="email" autoComplete="email" required value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Enter email address" className="h-14 rounded-none" /></div>
         <div><Label htmlFor="password" className="mb-2 block">Password</Label><Input id="password" type="password" autoComplete="current-password" required minLength={6} value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Enter your password" className="h-14 rounded-none" /></div>
         <div className="flex items-center justify-between gap-3 text-sm">

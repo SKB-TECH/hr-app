@@ -153,18 +153,7 @@ export async function proxy(
 ): Promise<NextResponse> {
   const path = await resolvePath(req, ctx);
 
-  // Normalize query parameters: ensure both 'state' and 'portal' exist for auth routes
-  const searchParams = new URLSearchParams(req.nextUrl.search);
-  const state = searchParams.get("state");
-  const portal = searchParams.get("portal");
-  if (state && !portal) {
-    searchParams.set("portal", state);
-  } else if (portal && !state) {
-    searchParams.set("state", portal);
-  }
-  const queryString = searchParams.toString()
-    ? `?${searchParams.toString()}`
-    : "";
+  const queryString = req.nextUrl.search;
 
   const url = buildUpstreamUrl(path, queryString);
   const headers = buildHeaders(req);
@@ -183,74 +172,49 @@ export async function proxy(
 
     const pathString = path.join("/");
     const normalizedPath = pathString.toLowerCase();
-    const isCallbackPath =
-      normalizedPath.endsWith("auth/google/callback") ||
-      normalizedPath === "auth/google/callback";
-
-    const isGoogleSuccess =
-      isCallbackPath &&
-      (upstream.ok || (upstream.status >= 300 && upstream.status < 400));
-
-    // Determine target dashboard based on OAuth state or portal parameter
-    const googleProfile = (state || portal || "CANDIDATE").toUpperCase();
-    const targetPortal =
-      googleProfile === "COMPANY" ? "/company" : "/candidate";
+    const isOAuthCallback =
+      /^auth\/(?:google|linkedin)\/callback$/i.test(normalizedPath);
+    const upstreamLocation = upstream.headers.get("location");
+    const isOAuthRedirect =
+      isOAuthCallback &&
+      upstream.status >= 300 &&
+      upstream.status < 400 &&
+      Boolean(upstreamLocation);
 
     const localeCookie = req.cookies.get("NEXT_LOCALE")?.value;
-    const referer = req.headers.get("referer") || "";
-    const isFr =
-      localeCookie === "fr" ||
-      referer.includes("/fr/") ||
-      referer.endsWith("/fr");
-    const defaultRedirect = isFr ? `/fr${targetPortal}` : targetPortal;
-
-    // Handle OAuth callback failure (e.g. single-use authorization code already redeemed or expired)
-    if (isCallbackPath && !isGoogleSuccess) {
-      // Check if user already has an active session (e.g. earlier exchange succeeded)
-      const existingToken =
-        req.cookies.get("access_token")?.value ||
-        req.cookies.get("accessToken")?.value ||
-        req.cookies.get("token")?.value;
-
-      if (existingToken) {
-        return NextResponse.redirect(new URL(defaultRedirect, req.url));
+    const isOAuthFailure = isOAuthCallback && !isOAuthRedirect;
+    let status = getResponseStatus(upstream, body);
+    let responseBody: ArrayBuffer | null = body;
+    let location = upstreamLocation;
+    if (isOAuthCallback) {
+      status = 302;
+      responseBody = null;
+      if (isOAuthRedirect && upstreamLocation) {
+        try {
+          const target = new URL(upstreamLocation, req.url);
+          if (target.origin !== new URL(req.url).origin) {
+            throw new Error("OAuth callback redirect must stay on the app origin");
+          }
+          location = target.toString();
+        } catch {
+          location = null;
+        }
       }
-
-      // Otherwise redirect user to sign-in with a helpful query param instead of raw 500 JSON
-      const signInPath = isFr ? "/fr/sign-in" : "/sign-in";
-      const signInUrl = new URL(signInPath, req.url);
-      signInUrl.searchParams.set("error", "oauth_callback_failed");
-      return NextResponse.redirect(signInUrl);
+      if (isOAuthFailure || !location) {
+        const signInPath = localeCookie === "fr" ? "/fr/sign-in" : "/sign-in";
+        const signInUrl = new URL(signInPath, req.url);
+        signInUrl.searchParams.set("error", "oauth_callback_failed");
+        location = signInUrl.toString();
+      }
     }
 
-    const status = isGoogleSuccess ? 302 : getResponseStatus(upstream, body);
-
-    const res = new NextResponse(isGoogleSuccess ? null : body, {
+    const res = new NextResponse(responseBody, {
       status,
-      headers: { "cache-control": "no-store" },
+      headers: { "cache-control": "no-store", "referrer-policy": "no-referrer" },
     });
 
     const contentType = upstream.headers.get("content-type");
     if (contentType) res.headers.set("content-type", contentType);
-
-    let location = isGoogleSuccess
-      ? new URL(defaultRedirect, req.url).toString()
-      : upstream.headers.get("location");
-
-    if (upstream.headers.get("location") && isGoogleSuccess) {
-      const upstreamLoc = upstream.headers.get("location")!;
-      try {
-        const parsed = new URL(upstreamLoc, req.url);
-        if (
-          parsed.pathname.includes("company") ||
-          parsed.pathname.includes("candidate")
-        ) {
-          location = parsed.toString();
-        }
-      } catch {
-        // Fall back to defaultRedirect
-      }
-    }
 
     if (location) res.headers.set("location", location);
 
@@ -286,41 +250,6 @@ export async function proxy(
       res.headers.append("set-cookie", rewritten);
     });
 
-    // Extract tokens from JSON payload if returned directly in body
-    if (isCallbackPath && body.byteLength > 0) {
-      try {
-        const text = new TextDecoder().decode(body);
-        if (text) {
-          const json = JSON.parse(text);
-          const data =
-            json && typeof json === "object" && "data" in json && json.data
-              ? json.data
-              : json;
-          const accessToken =
-            data?.accessToken || data?.access_token || data?.token;
-          const refreshToken = data?.refreshToken || data?.refresh_token;
-
-          const isHttp = req.nextUrl.protocol === "http:";
-          const secureFlag = isHttp ? "" : "; Secure";
-
-          if (accessToken && !cookies.some((c) => /access_token=/i.test(c))) {
-            res.headers.append(
-              "set-cookie",
-              `access_token=${accessToken}; Path=/; HttpOnly; SameSite=Lax${secureFlag}`
-            );
-          }
-          if (refreshToken && !cookies.some((c) => /refresh_token=/i.test(c))) {
-            res.headers.append(
-              "set-cookie",
-              `refresh_token=${refreshToken}; Path=/; HttpOnly; SameSite=Lax${secureFlag}`
-            );
-          }
-        }
-      } catch {
-        // Non-JSON response, ignore
-      }
-    }
-
     return res;
   } catch (e: unknown) {
     const message = e instanceof Error ? e.message : String(e);
@@ -330,10 +259,28 @@ export async function proxy(
         : e instanceof Error && e.cause != null
           ? String(e.cause)
           : undefined;
+    const failedPath = path.join("/").toLowerCase();
+    const isOAuthCallback =
+      /^auth\/(?:google|linkedin)\/callback$/.test(failedPath);
+    if (isOAuthCallback) {
+      const signInPath =
+        req.cookies.get("NEXT_LOCALE")?.value === "fr"
+          ? "/fr/sign-in"
+          : "/sign-in";
+      const signInUrl = new URL(signInPath, req.url);
+      signInUrl.searchParams.set("error", "oauth_callback_failed");
+      const response = NextResponse.redirect(signInUrl);
+      response.headers.set("cache-control", "no-store");
+      response.headers.set("referrer-policy", "no-referrer");
+      return response;
+    }
     return NextResponse.json(
       {
         message: "Proxy fetch failed",
-        upstreamUrl: url,
+        upstreamUrl: (() => {
+          const parsed = new URL(url);
+          return `${parsed.origin}${parsed.pathname}`;
+        })(),
         error: message,
         ...(cause ? { cause } : {}),
       },

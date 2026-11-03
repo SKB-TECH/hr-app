@@ -87,7 +87,13 @@
       "welcomeBack": "Welcome Back",
       "subtitleJobSeeker": "Sign in to continue your job search and manage your applications.",
       "subtitleCompany": "Sign in to manage your jobs, candidates and recruitment process.",
-      "signInWithGoogle": "Sign in with Google",
+      "signInWithGoogle": "Continue with Google",
+      "signInWithLinkedIn": "Continue with LinkedIn",
+      "oauthDenied": "You cancelled the sign-in request.",
+      "oauthAccountExists": "An account already uses this email. Sign in first, then connect this provider in settings.",
+      "oauthProfileForbidden": "This account cannot access the selected portal.",
+      "oauthUnavailable": "The sign-in provider is temporarily unavailable. Please try again.",
+      "oauthFailed": "Authentication could not be completed. Please try again.",
       "orLoginWithEmail": "Or login with email",
       "enterEmailAddress": "Enter email address",
       "enterPassword": "Enter your password",
@@ -104,6 +110,9 @@
     "signUp": {
       "createAccount": "Create your account",
       "fullName": "Full name",
+      "signUpWithGoogle": "Continue with Google",
+      "signUpWithLinkedIn": "Continue with LinkedIn",
+      "orSignUpWithEmail": "Or sign up with email",
       "acceptTerms": "I accept the terms and privacy policy.",
       "continue": "Continue",
       "verifyEmail": "Verify email",
@@ -113,6 +122,17 @@
       "emailVerified": "Email verified",
       "accountCreated": "Account created successfully",
       "genericError": "An error occurred."
+    },
+    "oauth": {
+      "title": "Complete your account",
+      "instructions": "LinkedIn did not provide a verified email address. Enter an email address to verify and finish creating your account.",
+      "emailLabel": "Email address",
+      "sendCode": "Send verification code",
+      "codeSent": "A verification code was sent to your email.",
+      "codeLabel": "Verification code",
+      "verifyCode": "Verify and continue",
+      "missingTicket": "This verification request is invalid or has expired. Start again from sign in.",
+      "genericError": "We could not complete account verification. Please try again."
     },
     "forgotPassword": {
       "title": "Reset your password",
@@ -279,6 +299,21 @@
       "basicInformation": {
         "title": "Basic Information",
         "description": "This is login information that you can update anytime."
+      },
+      "connectedAccounts": {
+        "title": "Connected accounts",
+        "description": "Manage the providers you can use to sign in.",
+        "google": "Google",
+        "linkedin": "LinkedIn",
+        "connected": "Connected",
+        "notConnected": "Not connected",
+        "connect": "Connect",
+        "disconnect": "Disconnect",
+        "working": "Working…",
+        "confirmUnlink": "Disconnect {provider} from your account?",
+        "unlinkSuccess": "{provider} was disconnected.",
+        "loadFailed": "Could not load connected accounts.",
+        "actionFailed": "Could not update connected accounts."
       },
       "closeAccount": "Close Account",
       "toasts": {

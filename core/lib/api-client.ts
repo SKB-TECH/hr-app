@@ -13,6 +13,8 @@ const PUBLIC_AUTH_PATHS = new Set([
   "auth/reset-password/resend-otp",
   "auth/reset-password/confirm-otp",
   "auth/reset-password/set-new-password",
+  "auth/oauth/email",
+  "auth/oauth/verify-email",
 ]);
 
 function url(path: string) {

@@ -88,7 +88,13 @@
       "welcomeBack": "Bon retour",
       "subtitleJobSeeker": "Connectez-vous pour poursuivre votre recherche d'emploi et gérer vos candidatures.",
       "subtitleCompany": "Connectez-vous pour gérer vos offres, vos candidats et votre processus de recrutement.",
-      "signInWithGoogle": "Se connecter avec Google",
+      "signInWithGoogle": "Continuer avec Google",
+      "signInWithLinkedIn": "Continuer avec LinkedIn",
+      "oauthDenied": "Vous avez annulé la demande de connexion.",
+      "oauthAccountExists": "Un compte utilise déjà cette adresse. Connectez-vous d'abord, puis associez ce fournisseur dans les paramètres.",
+      "oauthProfileForbidden": "Ce compte ne peut pas accéder à l'espace sélectionné.",
+      "oauthUnavailable": "Le fournisseur de connexion est temporairement indisponible. Veuillez réessayer.",
+      "oauthFailed": "L'authentification n'a pas abouti. Veuillez réessayer.",
       "orLoginWithEmail": "Ou connectez-vous avec votre e-mail",
       "enterEmailAddress": "Saisissez votre adresse e-mail",
       "enterPassword": "Saisissez votre mot de passe",
@@ -104,6 +110,9 @@
     },
     "signUp": {
       "createAccount": "Créez votre compte",
+      "signUpWithGoogle": "Continuer avec Google",
+      "signUpWithLinkedIn": "Continuer avec LinkedIn",
+      "orSignUpWithEmail": "Ou inscrivez-vous avec votre e-mail",
       "fullName": "Nom complet",
       "acceptTerms": "J'accepte les conditions générales et la politique de confidentialité.",
       "continue": "Continuer",
@@ -114,6 +123,17 @@
       "emailVerified": "E-mail vérifié",
       "accountCreated": "Compte créé avec succès",
       "genericError": "Une erreur est survenue."
+    },
+    "oauth": {
+      "title": "Finalisez votre compte",
+      "instructions": "LinkedIn n'a pas fourni d'adresse e-mail vérifiée. Saisissez une adresse e-mail pour la vérifier et terminer la création du compte.",
+      "emailLabel": "Adresse e-mail",
+      "sendCode": "Envoyer le code de vérification",
+      "codeSent": "Un code de vérification a été envoyé par e-mail.",
+      "codeLabel": "Code de vérification",
+      "verifyCode": "Vérifier et continuer",
+      "missingTicket": "Cette demande de vérification est invalide ou expirée. Recommencez depuis la connexion.",
+      "genericError": "La vérification du compte a échoué. Veuillez réessayer."
     },
     "forgotPassword": {
       "title": "Réinitialisez votre mot de passe",
@@ -280,6 +300,21 @@
       "basicInformation": {
         "title": "Informations de base",
         "description": "Ce sont les informations de connexion que vous pouvez mettre à jour à tout moment."
+      },
+      "connectedAccounts": {
+        "title": "Comptes connectés",
+        "description": "Gérez les fournisseurs utilisables pour vous connecter.",
+        "google": "Google",
+        "linkedin": "LinkedIn",
+        "connected": "Connecté",
+        "notConnected": "Non connecté",
+        "connect": "Connecter",
+        "disconnect": "Déconnecter",
+        "working": "Patientez…",
+        "confirmUnlink": "Déconnecter {provider} de votre compte ?",
+        "unlinkSuccess": "{provider} a été déconnecté.",
+        "loadFailed": "Impossible de charger les comptes connectés.",
+        "actionFailed": "Impossible de modifier les comptes connectés."
       },
       "closeAccount": "Fermer le compte",
       "toasts": {

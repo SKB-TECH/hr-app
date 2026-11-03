@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import UpdateEmail from "./UpdateEmail";
 import UpdatePassword from "./UpdatePassword";
 import DeleteAccountConfirmation from "./DeleteAccountConfirmation";
+import ConnectedAccounts from "./ConnectedAccounts";
 import { useCloseAccount } from "@/core/hooks/users/use-close-account";
 import { ApiError } from "@/core/types/api";
 import { useRouter } from "@/i18n/routing";
@@ -44,6 +45,8 @@ function SettingsLoginDetails() {
       <hr className="border-gray-200 mb-8" />
 
       <UpdatePassword />
+      <hr className="border-gray-200 mb-8" />
+      <ConnectedAccounts />
       <hr className="border-gray-200 mb-8" />
       {/* Close Account */}
       <div className="flex justify-start md:justify-end ">
