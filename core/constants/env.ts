@@ -30,6 +30,9 @@ export const ENV = {
 
     /** Environnement courant */
     NODE_ENV: process.env.NODE_ENV ?? "development",
+
+    /** Canonical public app URL for server-side redirects, when configured */
+    APP_URL: process.env.NEXT_PUBLIC_APP_URL ?? "",
 } as const;
 
 export type EnvConfig = typeof ENV;

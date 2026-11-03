@@ -5,6 +5,53 @@ export type ProxyCtx = {
   params?: Promise<{ path?: string[] }>;
 };
 
+function getPublicOrigin(req: NextRequest): string {
+  const configuredOrigin = ENV.APP_URL;
+  if (configuredOrigin) {
+    const url = new URL(configuredOrigin);
+    if (url.protocol === "http:" || url.protocol === "https:") {
+      return url.origin;
+    }
+  }
+
+  const forwardedHost = req.headers
+    .get("x-forwarded-host")
+    ?.split(",")[0]
+    .trim();
+  const host = forwardedHost || req.headers.get("host") || req.nextUrl.host;
+  const forwardedProto = req.headers
+    .get("x-forwarded-proto")
+    ?.split(",")[0]
+    .trim()
+    .replace(/:$/, "");
+  const protocol = forwardedProto || req.nextUrl.protocol.replace(/:$/, "");
+
+  try {
+    const url = new URL(`${protocol}://${host}`);
+    const isFast2HireHost =
+      url.hostname === "fast2hire.com" ||
+      url.hostname.endsWith(".fast2hire.com");
+    const isLocalDevelopmentHost =
+      ENV.NODE_ENV !== "production" &&
+      ["localhost", "127.0.0.1", "::1"].includes(url.hostname);
+
+    if (
+      (url.protocol === "http:" || url.protocol === "https:") &&
+      (isFast2HireHost || isLocalDevelopmentHost)
+    ) {
+      return url.origin;
+    }
+  } catch {
+    // Use the canonical production origin if proxy host headers are invalid.
+  }
+
+  return "https://fast2hire.com";
+}
+
+function publicUrl(req: NextRequest, path: string): URL {
+  return new URL(path, `${getPublicOrigin(req)}/`);
+}
+
 /**
  * Resolves path segments either from Route Handler dynamic params
  * or by parsing req.nextUrl.pathname for explicit routes.
@@ -191,8 +238,8 @@ export async function proxy(
       responseBody = null;
       if (isOAuthRedirect && upstreamLocation) {
         try {
-          const target = new URL(upstreamLocation, req.url);
-          if (target.origin !== new URL(req.url).origin) {
+          const target = new URL(upstreamLocation, `${getPublicOrigin(req)}/`);
+          if (target.origin !== getPublicOrigin(req)) {
             throw new Error("OAuth callback redirect must stay on the app origin");
           }
           location = target.toString();
@@ -202,7 +249,7 @@ export async function proxy(
       }
       if (isOAuthFailure || !location) {
         const signInPath = localeCookie === "fr" ? "/fr/sign-in" : "/sign-in";
-        const signInUrl = new URL(signInPath, req.url);
+        const signInUrl = publicUrl(req, signInPath);
         signInUrl.searchParams.set("error", "oauth_callback_failed");
         location = signInUrl.toString();
       }
@@ -244,7 +291,7 @@ export async function proxy(
         rewritten += "; Path=/";
       }
       // 5. If running on plain HTTP (e.g. local dev), strip Secure flag so browser saves the cookie
-      if (req.nextUrl.protocol === "http:") {
+      if (!getPublicOrigin(req).startsWith("https://")) {
         rewritten = rewritten.replace(/;\s*Secure/gi, "");
       }
       res.headers.append("set-cookie", rewritten);
@@ -267,7 +314,7 @@ export async function proxy(
         req.cookies.get("NEXT_LOCALE")?.value === "fr"
           ? "/fr/sign-in"
           : "/sign-in";
-      const signInUrl = new URL(signInPath, req.url);
+      const signInUrl = publicUrl(req, signInPath);
       signInUrl.searchParams.set("error", "oauth_callback_failed");
       const response = NextResponse.redirect(signInUrl);
       response.headers.set("cache-control", "no-store");
