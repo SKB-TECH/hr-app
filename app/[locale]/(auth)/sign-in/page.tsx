@@ -43,7 +43,7 @@ export default function SignInPage() {
     }
   }, [locale, t]);
 
-  function startOAuth(provider: "google" | "linkedin") {
+  function startOAuth(provider: "google") {
     const params = new URLSearchParams(window.location.search);
     window.location.assign(
       getOAuthAuthUrl(provider, {
@@ -102,9 +102,6 @@ export default function SignInPage() {
         </div>
         <button type="button" onClick={() => startOAuth("google")} className="flex h-14 w-full items-center justify-center gap-3 border border-gray-300 bg-white font-semibold text-indigo-600 hover:bg-gray-50">
           <Image width={24} height={24} src="/images/google.svg" alt="" /> {t("signIn.signInWithGoogle")}
-        </button>
-        <button type="button" onClick={() => startOAuth("linkedin")} className="flex h-14 w-full items-center justify-center gap-3 border border-gray-300 bg-white font-semibold text-[#0A66C2] hover:bg-gray-50">
-          <span aria-hidden="true" className="flex h-6 w-6 items-center justify-center rounded-sm bg-[#0A66C2] text-sm font-bold text-white">in</span> {t("signIn.signInWithLinkedIn")}
         </button>
         <Separator text={t("signIn.orLoginWithEmail")} />
         <div><Label htmlFor="email" className="mb-2 block">Email Address</Label><Input id="email" type="email" autoComplete="email" required value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Enter email address" className="h-14 rounded-none" /></div>

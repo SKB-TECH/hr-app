@@ -49,9 +49,6 @@ export default function SignUpPage() {
           <button type="button" onClick={() => window.location.assign(getOAuthAuthUrl("google", { portal: "CANDIDATE", locale }))} className="flex h-14 w-full items-center justify-center gap-3 border border-gray-300 bg-white font-semibold text-indigo-600 hover:bg-gray-50">
             <Image width={24} height={24} src="/images/google.svg" alt="" /> {t("signUp.signUpWithGoogle")}
           </button>
-          <button type="button" onClick={() => window.location.assign(getOAuthAuthUrl("linkedin", { portal: "CANDIDATE", locale }))} className="flex h-14 w-full items-center justify-center gap-3 border border-gray-300 bg-white font-semibold text-[#0A66C2] hover:bg-gray-50">
-            <span aria-hidden="true" className="flex h-6 w-6 items-center justify-center rounded-sm bg-[#0A66C2] text-sm font-bold text-white">in</span> {t("signUp.signUpWithLinkedIn")}
-          </button>
           <p className="text-center text-sm text-slate-500">{t("signUp.orSignUpWithEmail")}</p>
         </div>}
         {step === "account" && <form onSubmit={submitAccount} className="space-y-5">

@@ -12,7 +12,7 @@ type ConnectedAccountsData = {
   hasPassword: boolean;
 };
 
-const providers: OAuthProvider[] = ["google", "linkedin"];
+const providers: OAuthProvider[] = ["google"];
 
 export default function ConnectedAccounts() {
   const t = useTranslations("candidateSettings.loginDetails.connectedAccounts");
